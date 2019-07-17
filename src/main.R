@@ -1,8 +1,7 @@
 #############################################################################################
-# Merges the RNE files (historical 2018/07/17 version)
+# Merges all the RNE files (historical 2018/07/17 version).
 # 
 # 07/2019 Vincent Labatut
-# setwd("D:/Users/Vincent/Documents/Travail/Ecrits/_Projets/Trajectoires pol/07. RNE/RNE 20180717")
 #############################################################################################
 
 # filenames to process
@@ -20,7 +19,7 @@ filenames <- c(
 	"K Tous Maires.txt"
 )
 
-# load all the data
+# load all the tables
 for(filename in filenames)
 {	cat("Loading file",filename,"\n")
 	# read the data
@@ -35,27 +34,3 @@ for(filename in filenames)
 		skip=1						# ignore the first line of the file ("Titre du rapport")
 	)
 }
-
-Code du département (Maire)	
-Libellé de département (Maires)	
-Code Insee de la commune	
-Libellé de la commune	
-Population de la commune	
-Nom de l'élu	
-Prénom de l'élu	
-Code sexe	
-Date de naissance	
-Code profession	
-Libellé de la profession	
-Date de début du mandat	
-Date de fin du mandat	
-Motif de fin de mandat	
-Libellé de fonction	
-Date de début de la fonction	
-Date de fin de la fonction	
-Motif de fin de fonction	
-Nuance politique (C. Mun.)	
-N° Identification d'un élu
-		
-
-
