@@ -4,6 +4,8 @@
 # 07/2019 Vincent Labatut
 #############################################################################################
 
+# install stringdist
+
 # filenames to process
 filenames <- c(
 	"A Tous CM 01 30.txt",

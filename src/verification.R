@@ -3,6 +3,7 @@
 # 
 # 07/2019 Vincent Labatut
 #############################################################################################
+library("stringdist")
 
 
 #############################################################################################
@@ -14,13 +15,15 @@
 #############################################################################################
 check.col.numerical <- function(data, col, basename)
 {	vals <- data[,col]
-	# number of unique (distinct) values
+	# unique (distinct) values
 	uvals <- sort(unique(vals))
 	
 	# if not too many unique values, show them all
 	tlog(4, "Distribution:")
 	if(length(uvals)<100)
-	{	tlog(6, capture.output(print(table(vals))))
+	{	txt <- capture.output(print(table(vals)))
+		for(t in txt)
+			tlog(6, t)
 	}
 	else
 		tlog(6, "Too many values")
@@ -85,13 +88,15 @@ check.col.numerical <- function(data, col, basename)
 #############################################################################################
 check.col.categorical <- function(data, col, basename)
 {	vals <- data[,col]
-	# number of unique (distinct) values
+	# unique (distinct) values
 	uvals <- sort(unique(vals))
 	
 	# if not too many unique values, show them all
 	tlog(4, "Distribution:")
 	if(length(uvals)<100)
-	{	tlog(6, capture.output(print(table(vals))))
+	{	txt <- capture.output(print(table(vals)))
+		for(t in txt)
+			tlog(6, t)
 	}
 	else
 		tlog(6, "Too many values")
@@ -115,4 +120,42 @@ check.col.categorical <- function(data, col, basename)
 #		barplot(table(vals), col="Red", main="Frequencies", xlab=col, las=2, xaxt="n")
 #		axis(1,cex.axis=0.2)
 	dev.off()
+}
+
+
+
+
+#############################################################################################
+# Displays the main properties of the specified nominal column. 
+#
+# data: table containing the data.
+# col: name of the column in the table.
+# basename: string used to produce file names.
+#############################################################################################
+check.col.nominal <- function(data, col, basename)
+{	vals <- data[,col]
+	# unique (distinct) values
+	uvals <- sort(unique(vals))
+	
+	# discard missing values
+	tlog(4, "Look for missing values")
+	tmp <- which(is.na(vals))
+	tlog(6, "NA: ", length(tmp))
+	if(length(tmp)>0)
+		vals <- vals[-tmp]
+	
+	# basic stats
+	tlog(4, "Basic stats")
+	tlog(6, "Number of unique values: ", length(uvals))
+	tmp <- sort(table(vals),decreasing=TRUE)
+	tlog(6, "Top 10 frequent values: ")
+	txt <- capture.output(print(tmp[1:min(10,length(tmp))]))
+	for(t in txt)
+		tlog(8, t)
+	
+	# compare strings
+	tlog(4, "Computing distances between unique values")
+	d <- stringdistmatrix(uvals)
+	
+	
 }

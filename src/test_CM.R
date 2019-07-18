@@ -76,5 +76,6 @@ for(filename in filenames)
 #	tlog(0, capture.output(print(table(data[,col]))))
 #}
 
-check.col.numerical(data=data, col="Population de la commune", basename="CM_population_commune")
-check.col.categorical(data=data, col="Libellé de département (Maires)", basename="CM_code_dpt")
+#check.col.numerical(data=data, col="Population de la commune", basename="CM_population_commune")
+#check.col.categorical(data=data, col="Libellé de département (Maires)", basename="CM_code_dpt")
+check.col.nominal(data=data, col="Nom de l'élu", basename="CM_patronyme")
