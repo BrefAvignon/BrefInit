@@ -4,6 +4,7 @@
 # 07/2019 Vincent Labatut
 #############################################################################################
 source("src/common.R")
+source("src/verification.R")
 
 # start logging
 start.rec.log(text="CM")
@@ -17,27 +18,27 @@ filenames <- c(
 )
 
 # names of the columns
-cols <- c(
-	"Code du département (Maire)",
-	"Libellé de département (Maires)",
-	"Code Insee de la commune",
-	"Libellé de la commune",
-	"Population de la commune",
-	"Nom de l'élu",
-	"Prénom de l'élu",
-	"Code sexe",
-	"Date de naissance",
-	"Code profession",
-	"Libellé de la profession",
-	"Date de début du mandat",
-	"Date de fin du mandat",
-	"Motif de fin de mandat",
-	"Libellé de fonction",
-	"Date de début de la fonction",
-	"Date de fin de la fonction",
-	"Motif de fin de fonction",
-	"Nuance politique (C. Mun.)",
-	"N° Identification d'un élu"
+cols <- list(
+	list(name="Code du département (Maire)", tp="cat"),
+	list(name="Libellé de département (Maires)", tp="nom"),
+	list(name="Code Insee de la commune", tp="cat"),
+	list(name="Libellé de la commune", tp="nom"),
+	list(name="Population de la commune", tp="num"),
+	list(name="Nom de l'élu", tp="nom"),
+	list(name="Prénom de l'élu", tp="nom"),
+	list(name="Code sexe", tp="cat"),
+	list(name="Date de naissance", tp="dat"),
+	list(name="Code profession", tp="cat"),
+	list(name="Libellé de la profession", tp="nom"),
+	list(name="Date de début du mandat", tp="dat"),
+	list(name="Date de fin du mandat", tp="dat"),
+	list(name="Motif de fin de mandat", tp="cat"),
+	list(name="Libellé de fonction", tp="cat"),
+	list(name="Date de début de la fonction", tp="dat"),
+	list(name="Date de fin de la fonction", tp="dat"),
+	list(name="Motif de fin de fonction", tp="cat"),
+	list(name="Nuance politique (C. Mun.)", tp="cat"),
+	list(name="N° Identification d'un élu", tp="key")
 )
 
 # load all the tables
@@ -69,9 +70,11 @@ for(filename in filenames)
 }
 
 # display unique values and their distribution
-tlog(0, "Distribution of each column")
-for(col in cols)
-{	tlog(2, "Column \"",col,"\"")
-#	tlog(toString(table(data[,col])))
-	print(table(data[,col]))
-}
+#tlog(0, "Distribution of each column")
+#for(col in cols)
+#{	tlog(2, "Column \"",col,"\"")
+#	tlog(0, capture.output(print(table(data[,col]))))
+#}
+
+check.col.numerical(data=data, col="Population de la commune", basename="CM_population_commune")
+check.col.categorical(data=data, col="Libellé de département (Maires)", basename="CM_code_dpt")
