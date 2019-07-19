@@ -1,5 +1,5 @@
 #############################################################################################
-# Checks the municipal councilor tables. 
+# Checks the councilor tables for Public Establishment for Intercommunal Co-operation (EPCI). 
 # 
 # 07/2019 Vincent Labatut
 #############################################################################################
@@ -7,27 +7,25 @@ source("src/common/include.R")
 source("src/verification/sumup_col.R")
 
 # start logging
-start.rec.log(text="CM")
+start.rec.log(text="EPCI")
 
 # create output folder
-out.folder <- file.path(FOLDER_OUT, "CM")
+out.folder <- file.path(FOLDER_OUT, "EPCI")
 dir.create(path=out.folder, showWarnings=FALSE, recursive=TRUE)
 
 # filenames to process
 filenames <- c(
-	"A Tous CM 01 30.txt",
-	"B Tous CM 31 60.txt",
-	"C Tous CM 61 95.txt",
-	"D Tous CM OM.txt"
+	"E Tous Membres EPCI.txt"
 )
 
 # names of the columns
 cols <- list(
-	list(name="Code du département (Maire)", basename="dpt_code", tp="cat"),
-	list(name="Libellé de département (Maires)", basename="dpt_code", tp="nom"),
-	list(name="Code Insee de la commune", basename="ville_code", tp="cat"),
-	list(name="Libellé de la commune", basename="ville_nom", tp="nom"),
-	list(name="Population de la commune", basename="ville_population", tp="num"),
+	list(name="Code département EPCI", basename="dpt_code_epci", tp="cat"),
+	list(name="Code département commune rattachée", basename="dpt_code_com", tp="cat"),
+	list(name="Code de la commune", basename="ville_code", tp="cat"),
+	list(name="Libellé commune rattachée", basename="ville_nom", tp="nom"),
+	list(name="N° SIREN", basename="epci_siren", tp="cat"),
+	list(name="Libellé de l'EPCI", basename="epci_nom", tp="nom"),
 	list(name="Nom de l'élu", basename="patronyme", tp="nom"),
 	list(name="Prénom de l'élu", basename="prenom", tp="nom"),
 	list(name="Code sexe", basename="sexe", tp="cat"),
@@ -41,7 +39,7 @@ cols <- list(
 	list(name="Date de début de la fonction", basename="fonction_debut", tp="dat"),
 	list(name="Date de fin de la fonction", basename="fonction_fin", tp="dat"),
 	list(name="Motif de fin de fonction", basename="fonction_motif", tp="cat"),
-	list(name="Nuance politique (C. Mun.)", basename="nuance_pol", tp="cat"),
+	list(name="Nuance mandat", basename="nuance_pol", tp="cat"),
 	list(name="N° Identification d'un élu", basename="elu_id", tp="cat")
 )
 
