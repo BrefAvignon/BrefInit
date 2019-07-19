@@ -23,26 +23,26 @@ filenames <- c(
 
 # names of the columns
 cols <- list(
-	list(name="Code du département (Maire)", tp="cat"),
-	list(name="Libellé de département (Maires)", tp="nom"),
-	list(name="Code Insee de la commune", tp="cat"),
-	list(name="Libellé de la commune", tp="nom"),
-	list(name="Population de la commune", tp="num"),
-	list(name="Nom de l'élu", tp="nom"),
-	list(name="Prénom de l'élu", tp="nom"),
-	list(name="Code sexe", tp="cat"),
-	list(name="Date de naissance", tp="dat"),
-	list(name="Code profession", tp="cat"),
-	list(name="Libellé de la profession", tp="nom"),
-	list(name="Date de début du mandat", tp="dat"),
-	list(name="Date de fin du mandat", tp="dat"),
-	list(name="Motif de fin de mandat", tp="cat"),
-	list(name="Libellé de fonction", tp="cat"),
-	list(name="Date de début de la fonction", tp="dat"),
-	list(name="Date de fin de la fonction", tp="dat"),
-	list(name="Motif de fin de fonction", tp="cat"),
-	list(name="Nuance politique (C. Mun.)", tp="cat"),
-	list(name="N° Identification d'un élu", tp="cat")
+	list(name="Code du département (Maire)", basename="dpt_code", tp="cat"),
+	list(name="Libellé de département (Maires)", basename="dpt_code", tp="nom"),
+	list(name="Code Insee de la commune", basename="ville_code", tp="cat"),
+	list(name="Libellé de la commune", basename="ville_nom", tp="nom"),
+	list(name="Population de la commune", basename="ville_population", tp="num"),
+	list(name="Nom de l'élu", basename="patronyme", tp="nom"),
+	list(name="Prénom de l'élu", basename="prenom", tp="nom"),
+	list(name="Code sexe", basename="sexe", tp="cat"),
+	list(name="Date de naissance", basename="naissance_date", tp="dat"),
+	list(name="Code profession", basename="profession_code", tp="cat"),
+	list(name="Libellé de la profession", basename="profession_nom", tp="nom"),
+	list(name="Date de début du mandat", basename="mandat_debut", tp="dat"),
+	list(name="Date de fin du mandat", basename="mandat_fin", tp="dat"),
+	list(name="Motif de fin de mandat", basename="mandat_motif", tp="cat"),
+	list(name="Libellé de fonction", basename="fonction_nom", tp="cat"),
+	list(name="Date de début de la fonction", basename="fonction_debut", tp="dat"),
+	list(name="Date de fin de la fonction", basename="fonction_fin", tp="dat"),
+	list(name="Motif de fin de fonction", basename="fonction_fin", tp="cat"),
+	list(name="Nuance politique (C. Mun.)", basename="nuance_pol", tp="cat"),
+	list(name="N° Identification d'un élu", basename="elu_id", tp="cat")
 )
 
 # load all the tables

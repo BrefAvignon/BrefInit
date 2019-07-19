@@ -118,7 +118,7 @@ check.col.categorical <- function(data, col, basename, ...)
 	file <- paste0(basename,"_bar.pdf")
 	pdf(file)
 		tlog(4, "Plotting barplot in file \"",file,"\"")
-		barplot(table(vals), col="Red", main="Frequencies", xlab=col, las=2, cex.names=2/length(uvals))
+		barplot(table(vals), col="Red", main="Frequencies", xlab=col, las=2, cex.names=20/length(uvals))
 	dev.off()
 }
 
