@@ -118,7 +118,7 @@ check.col.categorical <- function(data, col, basename, ...)
 	file <- paste0(basename,"_bar.pdf")
 	pdf(file)
 		tlog(4, "Plotting barplot in file \"",file,"\"")
-		barplot(table(vals), col="Red", main="Frequencies", xlab=col, las=2, cex.names=20/length(uvals))
+		barplot(table(vals), col="Red", main="Frequencies", xlab=col, las=2, cex.names=min(1,20/length(uvals)))
 	dev.off()
 }
 
@@ -154,18 +154,18 @@ check.col.nominal <- function(data, col, basename, dist.threhsold=3, ...)
 	for(t in txt)
 		tlog(8, t)
 	
-	# compare strings
-	tlog(4, "Computing distances between unique values (may take a while)")
-	cntr <- 0
-	tmp <- lapply(1:length(uvals), function(i)
-		{	cntr <- cntr + 1
-			uval <- uvals[i]
-			d <- stringdist(uval,uvals)
-			idx <- which(d<=dist.threhsold & d!=0)
-			res <- uvals[idx]
-			tlog(6, uvals[i],": ",paste(res,collapse=", "))
-			return(res)
-		})
+#	# compare strings
+#	tlog(4, "Computing distances between unique values (may take a while)")
+#	cntr <- 0
+#	tmp <- lapply(1:length(uvals), function(i)
+#		{	cntr <- cntr + 1
+#			uval <- uvals[i]
+#			d <- stringdist(uval,uvals)
+#			idx <- which(d<=dist.threhsold & d!=0)
+#			res <- uvals[idx]
+#			tlog(6, uvals[i],": ",paste(res,collapse=", "))
+#			return(res)
+#		})
 		
 	# d <- stringdistmatrix(uvals) # too much memory needed
 }
@@ -204,31 +204,36 @@ check.col.temporal <- function(data, col, basename, ...)
 	
 	# show standard statistics
 	tlog(4, "Standard statistics")
-	t5 <- fivenum(vals) 
-	tlog(6, "Min: ",t5[1])
-	tlog(6, "1st quartile: ",t5[2])
-	tlog(6, "Median: ",t5[3])
-	tlog(6, "3rd quartile: ",t5[4])
-	tlog(6, "Max: ",t5[5])
-	tlog(6, "Mean: ",mean(vals))
-	tlog(6, "Stdev: ",sd(vals))
+	ds <- unclass(summary(vals)) 
+	ds <- as.Date(ds, origin="1970-01-01")
+	tlog(6, "Min: ",format(ds[1], format="%d/%m/%Y"))
+	tlog(6, "1st quartile: ",format(ds[2], format="%d/%m/%Y"))
+	tlog(6, "Median: ",format(ds[3], format="%d/%m/%Y"))
+	tlog(6, "3rd quartile: ",format(ds[5], format="%d/%m/%Y"))
+	tlog(6, "Max: ",format(ds[6], format="%d/%m/%Y"))
+	tlog(6, "Mean: ",format(ds[4], format="%d/%m/%Y"))
+	tlog(6, "Stdev: ",sd(vals), "days")
+	
+	# convert dates to epoch
+	secs <- unclass(vals)
 	
 	# plot distribution
-	file <- paste0(basename,"_histo.pdf")
+	file <- paste0(basename,"_histo.pdf") #TODO must fix this date problem
 	pdf(file)
-	tlog(4, "Plotting histogram in file \"",file,"\"")
-	hist(vals, col="Red", main="Distribution", xlab=col)
+		tlog(4, "Plotting histogram in file \"",file,"\"")
+		hist(secs, col="Red", main="Distribution", xlab=col, xaxt="n")
+		axis(1, secs, format(as.Date(secs, origin="1970-01-01"), format="%d/%m/%Y"), cex.axis = .7, las=2)
 	dev.off()
 	file <- paste0(basename,"_dens.pdf")
 	pdf(file)
-	tlog(4, "Plotting density in file \"",file,"\"")
-	plot(density(vals), col="Red", main="Kernel density", xlab=col)
+		tlog(4, "Plotting density in file \"",file,"\"")
+		plot(density(secs), col="Red", main="Kernel density", xlab=col)
 	dev.off()
 	file <- paste0(basename,"_logdens.pdf")
-	pdf(file)
-	tlog(4, "Plotting log density (only positive for values) in file \"",file,"\"")
+		pdf(file)
+		tlog(4, "Plotting log density (only positive for values) in file \"",file,"\"")
 	suppressWarnings(
-			plot(density(vals), col="Red", main="Log Kernel density", xlab=col, log="y")
+			plot(density(secs), col="Red", main="Log Kernel density", xlab=col, log="y")
 	)
 	dev.off()
 }
