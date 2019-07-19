@@ -6,6 +6,8 @@
 library("stringdist")
 
 
+
+
 #############################################################################################
 # Displays the main properties of the specified numerical column. 
 #
@@ -13,7 +15,7 @@ library("stringdist")
 # col: name of the column in the table.
 # basename: string used to produce file names.
 #############################################################################################
-check.col.numerical <- function(data, col, basename)
+check.col.numerical <- function(data, col, basename, ...)
 {	vals <- data[,col]
 	# unique (distinct) values
 	uvals <- sort(unique(vals))
@@ -26,7 +28,7 @@ check.col.numerical <- function(data, col, basename)
 			tlog(6, t)
 	}
 	else
-		tlog(6, "Too many values")
+		tlog(6, "Too many values (",length(uvals),")")
 	
 	# discard non-numerical values
 	# note: should handle NaN and Inf too, but the files do not contain any of them
@@ -57,17 +59,17 @@ check.col.numerical <- function(data, col, basename)
 	tlog(6, "Stdev: ",sd(vals))
 	
 	# plot distribution
-	file <- file.path(FOLDER_OUT, paste0(basename,"_histo.pdf"))
+	file <- paste0(basename,"_histo.pdf")
 	pdf(file)
 		tlog(4, "Plotting histogram in file \"",file,"\"")
 		hist(vals, col="Red", main="Distribution", xlab=col)
 	dev.off()
-	file <- file.path(FOLDER_OUT, paste0(basename,"_dens.pdf"))
+	file <- paste0(basename,"_dens.pdf")
 	pdf(file)
 		tlog(4, "Plotting density in file \"",file,"\"")
 		plot(density(vals), col="Red", main="Kernel density", xlab=col)
 	dev.off()
-	file <- file.path(FOLDER_OUT, paste0(basename,"_logdens.pdf"))
+	file <- paste0(basename,"_logdens.pdf")
 	pdf(file)
 		tlog(4, "Plotting log density (only positive for values) in file \"",file,"\"")
 		suppressWarnings(
@@ -86,7 +88,7 @@ check.col.numerical <- function(data, col, basename)
 # col: name of the column in the table.
 # basename: string used to produce file names.
 #############################################################################################
-check.col.categorical <- function(data, col, basename)
+check.col.categorical <- function(data, col, basename, ...)
 {	vals <- data[,col]
 	# unique (distinct) values
 	uvals <- sort(unique(vals))
@@ -99,7 +101,7 @@ check.col.categorical <- function(data, col, basename)
 			tlog(6, t)
 	}
 	else
-		tlog(6, "Too many values")
+		tlog(6, "Too many values (",length(uvals),")")
 	
 	# discard missing values
 	tlog(4, "Look for missing values")
@@ -113,12 +115,10 @@ check.col.categorical <- function(data, col, basename)
 	tlog(6, "Mode(s): ", paste(stat.mode(vals),collapse=", "))
 	
 	# plot distribution
-	file <- file.path(FOLDER_OUT, paste0(basename,"_bar.pdf"))
+	file <- paste0(basename,"_bar.pdf")
 	pdf(file)
 		tlog(4, "Plotting barplot in file \"",file,"\"")
-		barplot(table(vals), col="Red", main="Frequencies", xlab=col, las=2)
-#		barplot(table(vals), col="Red", main="Frequencies", xlab=col, las=2, xaxt="n")
-#		axis(1,cex.axis=0.2)
+		barplot(table(vals), col="Red", main="Frequencies", xlab=col, las=2, cex.names=2/length(uvals))
 	dev.off()
 }
 
@@ -131,8 +131,9 @@ check.col.categorical <- function(data, col, basename)
 # data: table containing the data.
 # col: name of the column in the table.
 # basename: string used to produce file names.
+# dist.threhsold: distance threshold, used when comparing strings.
 #############################################################################################
-check.col.nominal <- function(data, col, basename)
+check.col.nominal <- function(data, col, basename, dist.threhsold=3, ...)
 {	vals <- data[,col]
 	# unique (distinct) values
 	uvals <- sort(unique(vals))
@@ -154,8 +155,102 @@ check.col.nominal <- function(data, col, basename)
 		tlog(8, t)
 	
 	# compare strings
-	tlog(4, "Computing distances between unique values")
-	d <- stringdistmatrix(uvals)
+	tlog(4, "Computing distances between unique values (may take a while)")
+	cntr <- 0
+	tmp <- lapply(1:length(uvals), function(i)
+		{	cntr <- cntr + 1
+			uval <- uvals[i]
+			d <- stringdist(uval,uvals)
+			idx <- which(d<=dist.threhsold & d!=0)
+			res <- uvals[idx]
+			tlog(6, uvals[i],": ",paste(res,collapse=", "))
+			return(res)
+		})
+		
+	# d <- stringdistmatrix(uvals) # too much memory needed
+}
+
+
+
+
+#############################################################################################
+# Displays the main properties of the specified date column. 
+#
+# data: table containing the data.
+# col: name of the column in the table.
+# basename: string used to produce file names.
+#############################################################################################
+check.col.temporal <- function(data, col, basename, ...)
+{	vals <- data[,col]
+	# unique (distinct) values
+	uvals <- sort(unique(vals))
 	
+	# if not too many unique values, show them all
+	tlog(4, "Distribution:")
+	if(length(uvals)<100)
+	{	txt <- capture.output(print(table(vals)))
+		for(t in txt)
+			tlog(6, t)
+	}
+	else
+		tlog(6, "Too many values (",length(uvals),")")
 	
+	# discard missing values
+	tlog(4, "Look for missing values")
+	tmp <- which(is.na(vals))
+	tlog(6, "NA: ", length(tmp))
+	if(length(tmp)>0)
+		vals <- vals[-tmp]
+	
+	# show standard statistics
+	tlog(4, "Standard statistics")
+	t5 <- fivenum(vals) 
+	tlog(6, "Min: ",t5[1])
+	tlog(6, "1st quartile: ",t5[2])
+	tlog(6, "Median: ",t5[3])
+	tlog(6, "3rd quartile: ",t5[4])
+	tlog(6, "Max: ",t5[5])
+	tlog(6, "Mean: ",mean(vals))
+	tlog(6, "Stdev: ",sd(vals))
+	
+	# plot distribution
+	file <- paste0(basename,"_histo.pdf")
+	pdf(file)
+	tlog(4, "Plotting histogram in file \"",file,"\"")
+	hist(vals, col="Red", main="Distribution", xlab=col)
+	dev.off()
+	file <- paste0(basename,"_dens.pdf")
+	pdf(file)
+	tlog(4, "Plotting density in file \"",file,"\"")
+	plot(density(vals), col="Red", main="Kernel density", xlab=col)
+	dev.off()
+	file <- paste0(basename,"_logdens.pdf")
+	pdf(file)
+	tlog(4, "Plotting log density (only positive for values) in file \"",file,"\"")
+	suppressWarnings(
+			plot(density(vals), col="Red", main="Log Kernel density", xlab=col, log="y")
+	)
+	dev.off()
+}
+
+
+
+#############################################################################################
+# Displays the main properties of the specified column. Can be considered as the main function
+# of this script, as it calls the other ones depending on the type of the considered column.
+#
+# data: table containing the data.
+# col: name of the column in the table.
+# basename: string used to produce file names.
+# tp: type of the column.
+#############################################################################################
+check.col <- function(data, col, basename, tp, ...)
+{	if(tp=="cat")
+		check.col.categorical(data=data, col=col, basename=basename, ...)
+	else if(tp=="nom")
+		check.col.nominal(data=data, col=col, basename=basename, ...)
+	else if(tp=="num")
+		check.col.numerical(data=data, col=col, basename=basename, ...)
+	else if(tp=="dat")
+		check.col.temporal(data=data, col=col, basename=basename, ...)
 }

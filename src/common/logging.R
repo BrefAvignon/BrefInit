@@ -3,6 +3,7 @@
 # 
 # 05/2016 Vincent Labatut
 #############################################################################################
+start.time <- Sys.time()
 
 
 
@@ -11,14 +12,17 @@
 # Start recording the logs in a text file.
 #############################################################################################
 start.rec.log <- function(text=NA)
-{	prefix <- format(Sys.time(),"%Y%m%d_%H%M%S")
+{	start.time <<- Sys.time()
+	
+	prefix <- format(start.time,"%Y%m%d_%H%M%S")
 	log.file <- file.path(FOLDER_LOG,prefix)
 	if(!is.na(text))
 		log.file <- paste0(log.file,"_",text)
 	log.file <- paste0(log.file,".txt")
 	con <- file(log.file, encoding="UTF8")
-	sink(con, append=TRUE, split=TRUE, )
+	sink(con, append=TRUE, split=TRUE)
 }
+
 
 
 
@@ -26,8 +30,12 @@ start.rec.log <- function(text=NA)
 # Stops recording the logs in a text file.
 #############################################################################################
 end.rec.log <- function()
-{	sink()
+{	end.time <- Sys.time()
+	duration <- difftime(end.time, start.time, units="secs")
+	tlog(0, "Total processing time: ", format(.POSIXct(duration,tz="GMT"),"%H:%M:%S"))
+	sink()
 }
+
 
 
 
