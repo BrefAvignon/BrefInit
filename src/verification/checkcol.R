@@ -216,25 +216,30 @@ check.col.temporal <- function(data, col, basename, ...)
 	
 	# convert dates to epoch
 	secs <- unclass(vals)
+	mnd <- min(secs)
+	mxd <- max(secs)
+	ticks <- seq(from=mnd,to=mxd,by=(mxd-mnd)/5)
 	
 	# plot distribution
 	file <- paste0(basename,"_histo.pdf") #TODO must fix this date problem
 	pdf(file)
 		tlog(4, "Plotting histogram in file \"",file,"\"")
-		hist(secs, col="Red", main="Distribution", xlab=col, xaxt="n")
-		axis(1, secs, format(as.Date(secs, origin="1970-01-01"), format="%d/%m/%Y"), cex.axis = .7, las=2)
+		ht <- hist(secs, col="Red", main="Distribution", xlab=col, xaxt="n")
+		axis(1, at=ticks, labels=format(as.Date(ticks, origin="1970-01-01"), format="%d/%m/%Y"), cex.axis=.7, las=2)
 	dev.off()
 	file <- paste0(basename,"_dens.pdf")
 	pdf(file)
 		tlog(4, "Plotting density in file \"",file,"\"")
-		plot(density(secs), col="Red", main="Kernel density", xlab=col)
+		plot(density(secs), col="Red", main="Kernel density", xlab=col, xaxt="n")
+		axis(1, at=ticks, labels=format(as.Date(ticks, origin="1970-01-01"), format="%d/%m/%Y"), cex.axis=.7, las=2)
 	dev.off()
 	file <- paste0(basename,"_logdens.pdf")
 		pdf(file)
 		tlog(4, "Plotting log density (only positive for values) in file \"",file,"\"")
-	suppressWarnings(
-			plot(density(secs), col="Red", main="Log Kernel density", xlab=col, log="y")
-	)
+	suppressWarnings({
+		plot(density(secs), col="Red", main="Log Kernel density", xlab=col, log="y", xaxt="n");
+		axis(1, at=ticks, labels=format(as.Date(ticks, origin="1970-01-01"), format="%d/%m/%Y"), cex.axis=.7, las=2)
+	})
 	dev.off()
 }
 
