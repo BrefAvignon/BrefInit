@@ -1,5 +1,5 @@
 #############################################################################################
-# Checks the councilor tables for Public Establishment for Intercommunal Co-operation (EPCI). 
+# Checks the table related to the councilors for Public Establishment for Intercommunal Co-operation (EPCI). 
 # 
 # 07/2019 Vincent Labatut
 #############################################################################################
