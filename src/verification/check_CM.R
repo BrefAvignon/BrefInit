@@ -89,8 +89,7 @@ for(col in cols)
 }
 
 # summarizes each column separately
-for(col in cols)
-	check.col(data=data, col=col$name, basename=file.path(out.folder,col$basename), tp=col$tp)
+check.cols(data=data, cols=cols, out.folder=out.folder)
 
 # close the log file
 tlog(0,"Done")
