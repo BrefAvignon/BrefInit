@@ -30,7 +30,7 @@ cols <- list(
 	list(name="Nuance politique (C. Gén.)", basename="nuance_pol", tp="cat"),
 	list(name="Libellé de fonction", basename="fonction_nom", tp="cat"),
 	list(name="Code profession", basename="profession_code", tp="cat"),
-	list(name="Libellé de la profession", basename="profession_nom", tp="nom"),
+	list(name="Libellé de la profession", basename="profession_nom", tp="cat"),
 	list(name="Date de naissance", basename="naissance_date", tp="dat"),
 	list(name="N° Identification d'un élu", basename="elu_id", tp="cat"),
 	list(name="Date de début du mandat", basename="mandat_debut", tp="dat"),

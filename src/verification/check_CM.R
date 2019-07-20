@@ -33,7 +33,7 @@ cols <- list(
 	list(name="Code sexe", basename="sexe", tp="cat"),
 	list(name="Date de naissance", basename="naissance_date", tp="dat"),
 	list(name="Code profession", basename="profession_code", tp="cat"),
-	list(name="Libellé de la profession", basename="profession_nom", tp="nom"),
+	list(name="Libellé de la profession", basename="profession_nom", tp="cat"),
 	list(name="Date de début du mandat", basename="mandat_debut", tp="dat"),
 	list(name="Date de fin du mandat", basename="mandat_fin", tp="dat"),
 	list(name="Motif de fin de mandat", basename="mandat_motif", tp="cat"),
