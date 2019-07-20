@@ -25,7 +25,7 @@ check.col.numerical <- function(data, col, basename, ...)
 	tmp <- which(is.na(vals))
 	s <- length(tmp)
 	result[COL_STATS_NA] <- s
-	tlog(6, "NAs: ", s)
+	tlog(6, "NAs: ",s,"/",length(vals))
 	if(length(tmp)>0)
 		vals <- vals[-tmp]
 	
@@ -121,7 +121,7 @@ check.col.categorical <- function(data, col, basename, ...)
 	tmp <- which(is.na(vals))
 	s <- length(tmp)
 	result[COL_STATS_NA] <- s
-	tlog(6, "NAs: ", s)
+	tlog(6, "NAs: ",s,"/",length(vals))
 	if(length(tmp)>0)
 		vals <- vals[-tmp]
 	
@@ -177,7 +177,7 @@ check.col.nominal <- function(data, col, basename, dist.threhsold=3, ...)
 	tmp <- which(is.na(vals))
 	s <- length(tmp)
 	result[COL_STATS_NA] <- s
-	tlog(6, "NAs: ", s)
+	tlog(6, "NAs: ",s,"/",length(vals))
 	if(length(tmp)>0)
 		vals <- vals[-tmp]
 	
@@ -232,7 +232,7 @@ check.col.temporal <- function(data, col, basename, ...)
 	tmp <- which(is.na(vals))
 	s <- length(tmp)
 	result[COL_STATS_NA] <- s
-	tlog(6, "NAs: ", s)
+	tlog(6, "NAs: ",s,"/",length(vals))
 	if(length(tmp)>0)
 		vals <- vals[-tmp]
 	
@@ -321,14 +321,21 @@ check.col.temporal <- function(data, col, basename, ...)
 # tp: type of the column.
 #############################################################################################
 check.col <- function(data, col, basename, tp, ...)
-{	if(tp=="cat")
-		result <- check.col.categorical(data=data, col=col, basename=basename, ...)
-	else if(tp=="nom")
-		result <- check.col.nominal(data=data, col=col, basename=basename, ...)
-	else if(tp=="num")
-		result <- check.col.numerical(data=data, col=col, basename=basename, ...)
-	else if(tp=="dat")
-		result <- check.col.temporal(data=data, col=col, basename=basename, ...)
+{	# check if the column is empty
+	if(all(is.na(data[,col])))
+		tlog(4,"Only NA values: the column is ignored")
+	
+	# other wise, call the appropriate function
+	else
+	{	if(tp=="cat")
+			result <- check.col.categorical(data=data, col=col, basename=basename, ...)
+		else if(tp=="nom")
+			result <- check.col.nominal(data=data, col=col, basename=basename, ...)
+		else if(tp=="num")
+			result <- check.col.numerical(data=data, col=col, basename=basename, ...)
+		else if(tp=="dat")
+			result <- check.col.temporal(data=data, col=col, basename=basename, ...)
+	}
 	
 	return(result)
 }
@@ -350,8 +357,10 @@ check.cols <- function(data, cols, out.folder, ...)
 	
 	# process each column separately
 	for(c in 1:length(cols))
-	{	# get and process the column
-		col <- cols[[c]]
+	{	col <- cols[[c]]
+		tlog(2,"Considering column \"",col$name,"\"")
+		
+		# process the column
 		res <- check.col(
 				data=data, 
 				col=col$name, 
@@ -359,7 +368,7 @@ check.cols <- function(data, cols, out.folder, ...)
 				tp=col$tp,
 				...
 			)
-print(res)			
+		
 		# update stats table
 		for(i in 1:length(res))
 			stats[c,names(res)[i]] <- res[i]

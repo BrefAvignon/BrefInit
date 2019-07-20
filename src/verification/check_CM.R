@@ -89,6 +89,7 @@ for(col in cols)
 }
 
 # summarizes each column separately
+tlog(0,"Examining each column separately")
 check.cols(data=data, cols=cols, out.folder=out.folder)
 
 # close the log file

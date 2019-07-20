@@ -1,5 +1,5 @@
 #############################################################################################
-# Checks the councilor tables for Public Establishment for Intercommunal Co-operation (EPCI). 
+# Checks the municipal councilor tables. 
 # 
 # 07/2019 Vincent Labatut
 #############################################################################################
@@ -7,31 +7,30 @@ source("src/common/include.R")
 source("src/verification/sumup_col.R")
 
 # start logging
-start.rec.log(text="EPCI")
+start.rec.log(text="Dep")
 
 # create output folder
-out.folder <- file.path(FOLDER_OUT, "EPCI")
+out.folder <- file.path(FOLDER_OUT, "Dep")
 dir.create(path=out.folder, showWarnings=FALSE, recursive=TRUE)
 
 # filenames to process
 filenames <- c(
-	"E Tous Membres EPCI.txt"
+	"H Tous Deputes.txt"
 )
 
 # names of the columns
 cols <- list(
-	list(name="Code département EPCI", basename="dpt_code_epci", tp="cat"),
-	list(name="Code département commune rattachée", basename="dpt_code_com", tp="cat"),
-	list(name="Code de la commune", basename="ville_code", tp="cat"),
-	list(name="Libellé commune rattachée", basename="ville_nom", tp="nom"),
-	list(name="N° SIREN", basename="epci_siren", tp="cat"),
-	list(name="Libellé de l'EPCI", basename="epci_nom", tp="nom"),
+	list(name="Code du département", basename="dpt_code", tp="cat"),
+	list(name="Libellé du département", basename="dpt_code", tp="nom"),
+	list(name="Code de la cir.législative", basename="circo_code", tp="cat"),
+	list(name="Libellé de la cir.législative", basename="circo_code", tp="nom"),
 	list(name="Nom de l'élu", basename="patronyme", tp="nom"),
 	list(name="Prénom de l'élu", basename="prenom", tp="nom"),
-	list(name="Code sexe", basename="sexe", tp="cat"),
 	list(name="Date de naissance", basename="naissance_date", tp="dat"),
+	list(name="Code sexe", basename="sexe", tp="cat"),
 	list(name="Code profession", basename="profession_code", tp="cat"),
 	list(name="Libellé de la profession", basename="profession_nom", tp="nom"),
+	list(name="Libellé de mandat", basename="mandat_nom", tp="nom"),
 	list(name="Date de début du mandat", basename="mandat_debut", tp="dat"),
 	list(name="Date de fin du mandat", basename="mandat_fin", tp="dat"),
 	list(name="Motif de fin de mandat", basename="mandat_motif", tp="cat"),
@@ -39,7 +38,7 @@ cols <- list(
 	list(name="Date de début de la fonction", basename="fonction_debut", tp="dat"),
 	list(name="Date de fin de la fonction", basename="fonction_fin", tp="dat"),
 	list(name="Motif de fin de fonction", basename="fonction_motif", tp="cat"),
-	list(name="Nuance mandat", basename="nuance_pol", tp="cat"),
+	list(name="Nuance politique (Député)", basename="nuance_pol", tp="cat"),
 	list(name="N° Identification d'un élu", basename="elu_id", tp="cat")
 )
 
