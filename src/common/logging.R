@@ -4,6 +4,7 @@
 # 05/2016 Vincent Labatut
 #############################################################################################
 start.time <- Sys.time()
+con <- NA
 
 
 
@@ -19,7 +20,7 @@ start.rec.log <- function(text=NA)
 	if(!is.na(text))
 		log.file <- paste0(log.file,"_",text)
 	log.file <- paste0(log.file,".txt")
-	con <- file(log.file, encoding="UTF8")
+	con <<- file(log.file, encoding="UTF8")
 	sink(con, append=TRUE, split=TRUE)
 }
 
@@ -34,6 +35,7 @@ end.rec.log <- function()
 	duration <- difftime(end.time, start.time, units="secs")
 	tlog(0, "Total processing time: ", format(.POSIXct(duration,tz="GMT"),"%H:%M:%S"))
 	sink()
+	close(con)
 }
 
 
