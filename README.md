@@ -23,18 +23,29 @@ TBC
 
 
 ## Installation
-TBC
+You just need to install `R` and the required packages:
+
+1. Install the [`R` language](https://www.r-project.org/)
+2. Install the following R packages:
+   * [`stringdist`](https://cran.r-project.org/web/packages/stringdist/index.html)
+3. Download this project from GitHub and unzip.
+4. Launch `R`, setup the working directory with `setwd("<my directory>")` so that it points at the root of this project.
 
 
 ## Use
-TBC
+In order to load the tables and generate the description files:
+
+1. Open the `R` console.
+2. Set the project root as the working directory, using `setwd` again.
+3. Launch the `check_all.R` script, and the files will be generated in the `out` folder.
 
 
 ## Extension
 N/A
 
+
 ## Dependencies
-TBC
+* [`stringdist`](https://cran.r-project.org/web/packages/stringdist/index.html) package: used to compare names and detect spelling mistakes.
 
 
 ## Todo
@@ -42,5 +53,6 @@ TBC
 
 
 ## References
+TBC
  * **[XX'19]** X. Yyyyyy & A. Bbbbbb, *My title*, My journal, X(X)/XX-XX, 201X. [doi: XXXXXXXXXX](https://doi.org/XXXXXXXXXX) - [⟨hal-XXXXXXXX⟩](https://hal.archives-ouvertes.fr/hal-XXXXXXXX)
  
