@@ -62,20 +62,19 @@ check.col.numerical <- function(data, col, basename, ...)
 	# show standard statistics
 	tlog(4, "Standard statistics")
 	tlog(6, "Number of unique values: ", length(uvals))
-	t5 <- fivenum(vals) 
-	result[COL_STATS_MIN] <- t5[1]
-	tlog(6, "Min: ",t5[1])
-	result[COL_STATS_Q1] <- t5[2]
-	tlog(6, "1st quartile: ",t5[2])
-	result[COL_STATS_MED] <- t5[3]
-	tlog(6, "Median: ",t5[3])
-	result[COL_STATS_Q3] <- t5[4]
-	tlog(6, "3rd quartile: ",t5[4])
-	result[COL_STATS_MAX] <- t5[5]
-	tlog(6, "Max: ",t5[5])
-	s <- mean(vals)
-	result[COL_STATS_AVG] <- s
-	tlog(6, "Mean: ",s)
+	ds <- unclass(summary(vals)) 
+	result[COL_STATS_MIN] <- ds[1]
+	tlog(6, "Min: ",ds[1])
+	result[COL_STATS_Q1] <- ds[2]
+	tlog(6, "1st quartile: ",ds[2])
+	result[COL_STATS_MED] <- ds[3]
+	tlog(6, "Median: ",ds[3])
+	result[COL_STATS_Q3] <- ds[5]
+	tlog(6, "3rd quartile: ",ds[5])
+	result[COL_STATS_MAX] <- ds[6]
+	tlog(6, "Max: ",ds[6])
+	result[COL_STATS_AVG] <- ds[4]
+	tlog(6, "Mean: ",ds[4])
 	s <- sd(vals)
 	result[COL_STATS_STD] <- s
 	tlog(6, "Stdev: ",s)
