@@ -1,5 +1,5 @@
 #############################################################################################
-# Merges all the RNE files (historical 2018/07/17 version).
+# Merges all the RNE files (historical version from 2018/07/17).
 # 
 # 07/2019 Vincent Labatut
 #############################################################################################
@@ -8,17 +8,17 @@
 
 # filenames to process
 filenames <- c(
-	"A Tous CM 01 30.txt",
-	"B Tous CM 31 60.txt",
-	"C Tous CM 61 95.txt",
-	"D Tous CM OM.txt",
-	"E Tous Membres EPCI.txt",
-	"F Tous CD.txt",
-	"G Tous CR.txt",
-	"H Tous Deputes.txt",
-	"I Tous Senateurs.txt",
-	"J Tous RPE.txt",
-	"K Tous Maires.txt"
+	"A Tous CM 01 30.txt",		# municipal councilors part #1
+	"B Tous CM 31 60.txt",		# municipal councilors part #2
+	"C Tous CM 61 95.txt",		# municipal councilors part #3
+	"D Tous CM OM.txt",			# municipal councilors part #4
+	"E Tous Membres EPCI.txt",	# public establishment councilors
+	"F Tous CD.txt",			# departmental councilors
+	"G Tous CR.txt",			# regional councilors
+	"H Tous Deputes.txt",		# members of the (national) parliament
+	"I Tous Senateurs.txt",		# senators
+	"J Tous RPE.txt",			# members of the European parliament
+	"K Tous Maires.txt"			# mayors
 )
 
 # load all the tables

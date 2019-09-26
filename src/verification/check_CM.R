@@ -15,10 +15,10 @@ dir.create(path=out.folder, showWarnings=FALSE, recursive=TRUE)
 
 # filenames to process
 filenames <- c(
-	"A Tous CM 01 30.txt",
-	"B Tous CM 31 60.txt",
-	"C Tous CM 61 95.txt",
-	"D Tous CM OM.txt"
+	"A Tous CM 01 30.txt",	# mainland departments #1
+	"B Tous CM 31 60.txt",	# mainland departments #2
+	"C Tous CM 61 95.txt",	# mainland departments #3
+	"D Tous CM OM.txt"		# overseas territories
 )
 
 # names of the columns

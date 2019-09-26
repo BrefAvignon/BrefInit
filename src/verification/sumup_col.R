@@ -14,6 +14,8 @@ library("stringdist")
 # data: table containing the data.
 # col: name of the column in the table.
 # basename: string used to produce file names.
+#
+# returns: a vector with the main stats.
 #############################################################################################
 check.col.numerical <- function(data, col, basename, ...)
 {	vals <- data[,col]
@@ -110,6 +112,8 @@ check.col.numerical <- function(data, col, basename, ...)
 # data: table containing the data.
 # col: name of the column in the table.
 # basename: string used to produce file names.
+#
+# returns: a vector with the main stats.
 #############################################################################################
 check.col.categorical <- function(data, col, basename, ...)
 {	vals <- data[,col]
@@ -166,6 +170,8 @@ check.col.categorical <- function(data, col, basename, ...)
 # col: name of the column in the table.
 # basename: string used to produce file names.
 # dist.threhsold: distance threshold, used when comparing strings.
+#
+# returns: a vector with the main stats.
 #############################################################################################
 check.col.nominal <- function(data, col, basename, dist.threhsold=3, ...)
 {	vals <- data[,col]
@@ -221,6 +227,8 @@ check.col.nominal <- function(data, col, basename, dist.threhsold=3, ...)
 # data: table containing the data.
 # col: name of the column in the table.
 # basename: string used to produce file names.
+#
+# returns: a vector with the main stats.
 #############################################################################################
 check.col.temporal <- function(data, col, basename, ...)
 {	vals <- data[,col]
@@ -318,6 +326,8 @@ check.col.temporal <- function(data, col, basename, ...)
 # col: name of the column in the table.
 # basename: string used to produce file names.
 # tp: type of the column.
+#
+# returns: a vector with the main stats.
 #############################################################################################
 check.col <- function(data, col, basename, tp, ...)
 {	# check if the column is empty
