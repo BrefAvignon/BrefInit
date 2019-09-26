@@ -47,3 +47,12 @@ for(filename in filenames)
 		skip=1						# ignore the first line of the file ("Titre du rapport")
 	)
 }
+
+
+# TODO
+# - histo sur le nombre de mandats (fréquence de chaque nombre de mandats cumulés possible)
+# - mettre à jour la désignation des types de mandats (S, CE, etc.) dans les données produites (cf. doc sur gdrive)
+# - remplacer valeurs " " par NA 
+# - redondance entre maire dans M et dans CM ? (à tester)
+# - exporter toutes les valeurs uniques dans un fichier txt
+# - mettre les stats en ligne sur Gdrive
