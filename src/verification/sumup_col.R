@@ -160,10 +160,13 @@ check.col.categorical <- function(data, col, basename, ...)
 	tlog(6, "Mode(s): ", paste(s,collapse=", "))
 	
 	# plot distribution
-	file <- paste0(basename,"_bar.pdf")
-	pdf(file)
-		tlog(4, "Plotting barplot in file \"",file,"\"")
-		barplot(table(vals), col="Red", xlab=col, ylab="Frequency", las=2, cex.names=min(1,20/length(uvals))) # TODO could switch xlab to main for space purposes
+	file <- paste0(basename,"_bar.",PLOT_FORMAT)
+	tlog(4, "Plotting barplot in file \"",file,"\"")
+	if(PLOT_FORMAT=="pdf")
+		pdf(file)
+	else if(PLOT_FORMAT=="png")
+		png(file, width=1024, height=1024)
+	barplot(table(vals), col="Red", xlab=col, ylab="Frequency", las=2, cex.names=min(1,20/length(uvals))) # TODO could switch xlab to main for space purposes
 	dev.off()
 	
 	return(result)
@@ -300,26 +303,37 @@ check.col.temporal <- function(data, col, basename, ...)
 	mxd <- max(secs)
 	ticks <- seq(from=mnd,to=mxd,by=(mxd-mnd)/5)
 	
-	# plot distribution
-	file <- paste0(basename,"_histo.pdf") #TODO must fix this date problem
-	pdf(file)
-		tlog(4, "Plotting histogram in file \"",file,"\"")
-		ht <- hist(secs, col="Red", main="Distribution", xlab=col, xaxt="n")
-		axis(1, at=ticks, labels=format(as.Date(ticks, origin="1970-01-01"), format="%d/%m/%Y"), cex.axis=.7, las=2)
+	# plot histogram
+	file <- paste0(basename,"_histo.",PLOT_FORMAT) #TODO must fix this date problem
+	tlog(4, "Plotting histogram in file \"",file,"\"")
+	if(PLOT_FORMAT=="pdf")
+		pdf(file)
+	else if(PLOT_FORMAT=="png")
+		png(file, width=1024, height=1024)
+	ht <- hist(secs, col="Red", main="Distribution", xlab=col, xaxt="n")
+	axis(1, at=ticks, labels=format(as.Date(ticks, origin="1970-01-01"), format="%d/%m/%Y"), cex.axis=.7, las=2)
 	dev.off()
-	file <- paste0(basename,"_dens.pdf")
-	pdf(file)
-		tlog(4, "Plotting density in file \"",file,"\"")
-		plot(density(secs), col="Red", main="Kernel density", xlab=col, xaxt="n")
-		axis(1, at=ticks, labels=format(as.Date(ticks, origin="1970-01-01"), format="%d/%m/%Y"), cex.axis=.7, las=2)
+	# plot density
+	file <- paste0(basename,"_dens.",PLOT_FORMAT)
+	tlog(4, "Plotting density in file \"",file,"\"")
+	if(PLOT_FORMAT=="pdf")
+		pdf(file)
+	else if(PLOT_FORMAT=="png")
+		png(file, width=1024, height=1024)
+	plot(density(secs), col="Red", main="Kernel density", xlab=col, xaxt="n")
+	axis(1, at=ticks, labels=format(as.Date(ticks, origin="1970-01-01"), format="%d/%m/%Y"), cex.axis=.7, las=2)
 	dev.off()
-	file <- paste0(basename,"_logdens.pdf")
-	pdf(file)
-		tlog(4, "Plotting log density (only positive for values) in file \"",file,"\"")
-		suppressWarnings({
-			plot(density(secs), col="Red", main="Log Kernel density", xlab=col, log="y", xaxt="n");
-			axis(1, at=ticks, labels=format(as.Date(ticks, origin="1970-01-01"), format="%d/%m/%Y"), cex.axis=.7, las=2)
-		})
+	# plot log-density
+	file <- paste0(basename,"_logdens.",PLOT_FORMAT)
+	tlog(4, "Plotting log density (only positive for values) in file \"",file,"\"")
+	if(PLOT_FORMAT=="pdf")
+		pdf(file)
+	else if(PLOT_FORMAT=="png")
+		png(file, width=1024, height=1024)
+	suppressWarnings({
+		plot(density(secs), col="Red", main="Log Kernel density", xlab=col, log="y", xaxt="n");
+		axis(1, at=ticks, labels=format(as.Date(ticks, origin="1970-01-01"), format="%d/%m/%Y"), cex.axis=.7, las=2)
+	})
 	dev.off()
 	
 	return(result)
