@@ -3,8 +3,15 @@
 # 
 # 07/2019 Vincent Labatut
 #############################################################################################
+source("src/common/include.R")
+
+
+
 
 # install stringdist
+
+
+
 
 # filenames to process
 filenames <- c(
@@ -21,12 +28,16 @@ filenames <- c(
 	"K Tous Maires.txt"			# mayors
 )
 
+
+
+
 # load all the tables
 for(filename in filenames)
-{	cat("Loading file",filename,"\n")
+{	fn <- file.path(FOLDER_IN,filename)
+	cat("Loading file",filename,"\n")
 	# read the data
 	data <- read.table(
-		file=filename, 				# name of the data file
+		file=fn, 					# name of the data file
 		header=TRUE, 				# look for a header
 		sep="\t", 					# character used to separate columns 
 		check.names=FALSE, 			# don't change the column names from the file
