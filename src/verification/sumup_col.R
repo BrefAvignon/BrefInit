@@ -332,9 +332,11 @@ check.col.temporal <- function(data, col, basename, ...)
 check.col <- function(data, col, basename, tp, ...)
 {	# check if the column is empty
 	if(all(is.na(data[,col])))
-		tlog(4,"Only NA values: the column is ignored")
+	{	tlog(4,"Only NA values: the column is ignored")
+		result <- NULL
+	}
 	
-	# other wise, call the appropriate function
+	# otherwise, call the appropriate function
 	else
 	{	if(tp=="cat")
 			result <- check.col.categorical(data=data, col=col, basename=basename, ...)
@@ -379,8 +381,10 @@ check.cols <- function(data, cols, out.folder, ...)
 			)
 		
 		# update stats table
-		for(i in 1:length(res))
-			stats[c,names(res)[i]] <- res[i]
+		if(length(res)>0)
+		{	for(i in 1:length(res))
+				stats[c,names(res)[i]] <- res[i]
+		}
 	}
 	
 	# record the stats table
