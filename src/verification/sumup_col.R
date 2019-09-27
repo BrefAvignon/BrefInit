@@ -38,14 +38,17 @@ check.col.numerical <- function(data, col, basename, ...)
 	result[COL_STATS_UNQ] <- s
 	
 	# if not too many unique values, show them all
+	tt <- table(vals)
 	tlog(4, "Distribution:")
 	if(s<100)
-	{	txt <- capture.output(print(table(vals)))
+	{	txt <- capture.output(print(tt))
 		for(t in txt)
 			tlog(6, t)
 	}
 	else
 		tlog(6, "Too many values (",length(uvals),")")
+	val.file <- paste0(basename,"_unique_vals.txt")
+	write.table(x=tt,file=val.file,row.names=FALSE,col.names=FALSE,fileEncoding="UTF8")
 	
 	# show signs
 	tlog(4, "Signs:")
@@ -144,14 +147,17 @@ check.col.categorical <- function(data, col, basename, ...)
 	result[COL_STATS_UNQ] <- s
 	
 	# if not too many unique values, show them all
+	tt <- table(vals)
 	tlog(4, "Distribution:")
 	if(s<100)
-	{	txt <- capture.output(print(table(vals)))
+	{	txt <- capture.output(print(tt))
 		for(t in txt)
 			tlog(6, t)
 	}
 	else
 		tlog(6, "Too many values (",length(uvals),")")
+	val.file <- paste0(basename,"_unique_vals.txt")
+	write.table(x=tt,file=val.file,row.names=FALSE,col.names=FALSE,fileEncoding="UTF8")
 	
 	# show standard statistics
 	tlog(4, "Standard statistics")
@@ -203,11 +209,14 @@ check.col.nominal <- function(data, col, basename, dist.threhsold=3, ...)
 	uvals <- sort(unique(vals))
 	s <- length(uvals)
 	result[COL_STATS_UNQ] <- s
+	tt <- table(vals)
+	val.file <- paste0(basename,"_unique_vals.txt")
+	write.table(x=tt,file=val.file,row.names=FALSE,col.names=FALSE,fileEncoding="UTF8")
 	
 	# basic stats
 	tlog(4, "Basic stats")
 	tlog(6, "Number of unique values: ", s)
-	tmp <- sort(table(vals),decreasing=TRUE)
+	tmp <- sort(tt,decreasing=TRUE)
 	tlog(6, "Top 10 frequent values: ")
 	txt <- capture.output(print(tmp[1:min(10,length(tmp))]))
 	for(t in txt)
@@ -262,14 +271,17 @@ check.col.temporal <- function(data, col, basename, ...)
 	result[COL_STATS_UNQ] <- s
 	
 	# if not too many unique values, show them all
+	tt <- table(vals)
 	tlog(4, "Distribution:")
 	if(s<100)
-	{	txt <- capture.output(print(table(vals)))
+	{	txt <- capture.output(print(tt))
 		for(t in txt)
 			tlog(6, t)
 	}
 	else
 		tlog(6, "Too many values (",length(uvals),")")
+	val.file <- paste0(basename,"_unique_vals.txt")
+	write.table(x=tt,file=val.file,row.names=FALSE,col.names=FALSE,fileEncoding="UTF8")
 	
 	# show standard statistics
 	tlog(4, "Standard statistics")
