@@ -3,8 +3,8 @@
 # 
 # 07/2019 Vincent Labatut
 #############################################################################################
-#library("stringdist")
-library("readr")
+library("stringdist")
+#library("readr")
 
 
 
@@ -275,7 +275,7 @@ check.col.temporal <- function(data, col, basename, ...)
 	tlog(4, "Standard statistics")
 	tlog(6, "Number of unique values: ", s)
 	ds <- unclass(summary(vals)) 
-	ds <- as.Date(ds, origin="1970-01-01")
+	ds <- as.Date(ds, origin="1970-01-01", format="%Y-%m-%d")
 	s <- format(ds[1], format="%d/%m/%Y")
 	result[COL_STATS_MIN] <- s
 	tlog(6, "Min: ",s)

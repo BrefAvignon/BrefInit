@@ -32,7 +32,8 @@ load.data <- function(filenames, cols)
 				row.names=NULL, 			# don't look for row names in the file
 				quote="", 					# don't expect double quotes "..." around text fields
 				skip=1,						# ignore the first line of the file ("Titre du rapport")
-				as.is=TRUE					# don't convert strings to factors
+				as.is=TRUE,					# don't convert strings to factors
+				fileEncoding="Latin1"
 		)
 		tlog(2,"Read ",nrow(temp)," lines and ",ncol(temp)," columns")
 		
@@ -74,15 +75,21 @@ load.data <- function(filenames, cols)
 			data <- data[, names(data)!=col$name]
 			data <- cbind(data,vals)
 			names(data)[ncol(data)] <- col$name
+print(class(data[,col$name]))			
 		}
 		else
 			tlog(2,"Col. \"",col$name,"\": not a date")
 	}
 	
 	# setting appropriate encoding of string columns
+	tlog(0,"Converting string encoding")
 	for(c in 1:ncol(data))
-	{	if(class(data[,col]=="character"))
-			data[,col] <- iconv(data[,col], from="latin1", to="UTF-8")
+	{	if(is.character(data[,c]))
+		{	tlog(2,"Col. \"",colnames(data)[c],"\": CONVERTING")
+			data[,c] <- iconv(x=data[,c], from="Latin1", to="UTF8")
+		}
+		else
+			tlog(2,"Col. \"",colnames(data)[c],"\": not a string")
 	}
 
 	return(data)
@@ -128,14 +135,18 @@ load.cd.data <- function()
 	for(col in cols)
 	{	name <- col$name
 		print(name)
+		print(Encoding(name))
 		name <- enc2utf8(as(name, "character"))
 		print(name)
+		print(Encoding(name))
 	}
 	
 	
 	# load the data
 	data <- load.data(filenames, cols)
-	return(data)
+	
+	res <- list(data=data,cols=cols)
+	return(res)
 }
 
 
@@ -181,7 +192,9 @@ load.cm.data <- function()
 	
 	# load the data
 	data <- load.data(filenames, cols)
-	return(data)
+	
+	res <- list(data=data,cols=cols)
+	return(res)
 }
 
 
@@ -224,7 +237,9 @@ load.cr.data <- function()
 	
 	# load the data
 	data <- load.data(filenames, cols)
-	return(data)
+	
+	res <- list(data=data,cols=cols)
+	return(res)
 }
 
 
@@ -267,7 +282,9 @@ load.d.data <- function()
 	
 	# load the data
 	data <- load.data(filenames, cols)
-	return(data)
+	
+	res <- list(data=data,cols=cols)
+	return(res)
 }
 
 
@@ -304,7 +321,9 @@ load.de.data <- function()
 	
 	# load the data
 	data <- load.data(filenames, cols)
-	return(data)
+	
+	res <- list(data=data,cols=cols)
+	return(res)
 }
 
 
@@ -348,7 +367,9 @@ load.epci.data <- function()
 	
 	# load the data
 	data <- load.data(filenames, cols)
-	return(data)
+	
+	res <- list(data=data,cols=cols)
+	return(res)
 }
 
 
@@ -398,12 +419,13 @@ load.m.data <- function()
 	vals <- data[,cn]
 	vals <- gsub("\\s", "",  vals)	# \\s matches all whitespaces
 	vals <- gsub(",00", "",  vals)
-	vals <- as.integer(vals)
+	vals <- suppressWarnings(as.integer(vals))
 	data <- data[, names(data)!=cn]
 	data <- cbind(data,vals)
 	names(data)[ncol(data)] <- cn
 	
-	return(data)
+	res <- list(data=data,cols=cols)
+	return(res)
 }
 
 
@@ -444,5 +466,7 @@ load.s.data <- function()
 	
 	# load the data
 	data <- load.data(filenames, cols)
-	return(data)
+	
+	res <- list(data=data,cols=cols)
+	return(res)
 }
