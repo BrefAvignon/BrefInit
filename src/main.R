@@ -2,6 +2,8 @@
 # Merges all the RNE files (historical version from 2018/07/17).
 # 
 # 07/2019 Vincent Labatut
+#
+# setwd("C:/Users/Vincent/Eclipse/workspaces/Extraction/Datapol")
 #############################################################################################
 source("src/common/include.R")
 
@@ -51,7 +53,6 @@ for(filename in filenames)
 
 # TODO
 # - histo sur le nombre de mandats (fréquence de chaque nombre de mandats cumulés possible)
-# - mettre à jour la désignation des types de mandats (S, CE, etc.) dans les données produites (cf. doc sur gdrive)
 # - remplacer valeurs " " par NA 
 # - redondance entre maire dans M et dans CM ? (à tester)
 # - exporter toutes les valeurs uniques dans un fichier txt

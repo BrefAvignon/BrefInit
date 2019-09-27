@@ -1,22 +1,22 @@
 #############################################################################################
-# Checks the mayor tables. 
+# Checks the table related to the members of the European parliament. 
 # 
 # 07/2019 Vincent Labatut
 #
-# source("src/verification/check_M.R")
+# source("src/verification/check_DE.R")
 #############################################################################################
 source("src/common/include.R")
 source("src/verification/sumup_col.R")
 
 # start logging
-start.rec.log(text="M")
+start.rec.log(text="DE")
 
 # create output folder
-out.folder <- file.path(FOLDER_OUT, "M")
+out.folder <- file.path(FOLDER_OUT, "DE")
 dir.create(path=out.folder, showWarnings=FALSE, recursive=TRUE)
 
 # load the data
-tmp <- load.m.data()
+tmp <- load.de.data()
 data <- tmp$data
 cols <- tmp$cols
 

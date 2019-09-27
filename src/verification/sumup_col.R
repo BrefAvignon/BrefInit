@@ -3,7 +3,8 @@
 # 
 # 07/2019 Vincent Labatut
 #############################################################################################
-library("stringdist")
+#library("stringdist")
+library("readr")
 
 
 

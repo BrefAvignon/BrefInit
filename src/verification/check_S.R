@@ -1,22 +1,22 @@
 #############################################################################################
-# Checks the mayor tables. 
+# Checks the senator table. 
 # 
 # 07/2019 Vincent Labatut
 #
-# source("src/verification/check_M.R")
+# source("src/verification/check_R.R")
 #############################################################################################
 source("src/common/include.R")
 source("src/verification/sumup_col.R")
 
 # start logging
-start.rec.log(text="M")
+start.rec.log(text="S")
 
 # create output folder
-out.folder <- file.path(FOLDER_OUT, "M")
+out.folder <- file.path(FOLDER_OUT, "S")
 dir.create(path=out.folder, showWarnings=FALSE, recursive=TRUE)
 
 # load the data
-tmp <- load.m.data()
+tmp <- load.s.data()
 data <- tmp$data
 cols <- tmp$cols
 

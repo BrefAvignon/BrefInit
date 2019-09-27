@@ -1,0 +1,17 @@
+#############################################################################################
+# Install all the packages necessary to these scripts.
+# 
+# 09/2019 Vincent Labatut
+#############################################################################################
+
+
+
+
+# comparison of character strings
+install.packages("stringdist")
+
+# solves certain encoding problems when loading tables
+# https://dss.iq.harvard.edu/blog/escaping-character-encoding-hell-r-windows
+#install.packages("readr") 
+# finally, not used
+
