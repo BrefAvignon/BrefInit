@@ -53,7 +53,8 @@ for(filename in filenames)
 
 # TODO
 # - histo sur le nombre de mandats (fréquence de chaque nombre de mandats cumulés possible)
-# - remplacer valeurs " " par NA 
+# - doit on compter ou pas les NA ? >> faire les deux !   
 # - redondance entre maire dans M et dans CM ? (à tester)
 # - exporter toutes les valeurs uniques dans un fichier txt
 # - mettre les stats en ligne sur Gdrive
+# - problème d'année dans certaines dates (apparait dans valeurs uniques, ex.201 probablement au lieu de de 2001)

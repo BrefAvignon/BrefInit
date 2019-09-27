@@ -62,16 +62,18 @@ load.data <- function(filenames, cols)
 	}
 	
 	# setting appropriate encoding of string columns
+	# and replace "" by NAs
 	tlog(0,"Converting string encoding")
 	for(c in 1:ncol(data))
 	{	if(is.character(data[,c]))
 		{	tlog(2,"Col. \"",colnames(data)[c],"\": CONVERTING")
 			data[,c] <- iconv(x=data[,c], from="Latin1", to="UTF8")
+			data[which(data[,c]==""),c] <- NA
 		}
 		else
 			tlog(2,"Col. \"",colnames(data)[c],"\": not a string")
 	}
-
+	
 	return(data)
 }
 

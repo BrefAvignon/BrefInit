@@ -138,8 +138,8 @@ check.col.categorical <- function(data, col, basename, ...)
 	s <- length(tmp)
 	result[COL_STATS_NA] <- s
 	tlog(6, "NAs: ",s,"/",length(vals))
-	if(length(tmp)>0)
-		vals <- vals[-tmp]
+#	if(length(tmp)>0)
+#		vals <- vals[-tmp]
 	
 	# unique (distinct) values
 	uvals <- sort(unique(vals))
