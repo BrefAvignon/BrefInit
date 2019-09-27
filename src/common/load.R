@@ -45,26 +45,7 @@ load.data <- function(filenames, cols)
 			data <- rbind(data,temp)
 		tlog(2,"Now ",nrow(data)," lines and ",ncol(data)," columns in main table")
 	}
-
-#col <- colnames(data)[14]
-#print(col)
-#col0 <- cols[[14]]$name
-#print(col0)
-#print(col==col0)
-#print(Encoding(col))
-#print(Encoding(col0))
-#
-#	# convert headers to unicode
-##	colnames(data) <- iconv(colnames(data), from="latin1", to="UTF-8")
-#	colnames(data) <- enc2utf8(colnames(data))
-#	
-#col <- colnames(data)[14]
-#print(col)
-#print(col0)
-#print(col==col0)
-#print(Encoding(col))
-#print(Encoding(col0))
-
+	
 	# convert date columns to R dates
 	tlog(0,"Converting date columns to actual R dates")
 	for(col in cols)
@@ -75,7 +56,6 @@ load.data <- function(filenames, cols)
 			data <- data[, names(data)!=col$name]
 			data <- cbind(data,vals)
 			names(data)[ncol(data)] <- col$name
-print(class(data[,col$name]))			
 		}
 		else
 			tlog(2,"Col. \"",col$name,"\": not a date")
@@ -132,15 +112,6 @@ load.cd.data <- function()
 		list(name="Date de fin de la fonction", basename="fonction_fin", tp="dat"),
 		list(name="Motif de fin de fonction", basename="fonction_motif", tp="cat")
 	)
-	for(col in cols)
-	{	name <- col$name
-		print(name)
-		print(Encoding(name))
-		name <- enc2utf8(as(name, "character"))
-		print(name)
-		print(Encoding(name))
-	}
-	
 	
 	# load the data
 	data <- load.data(filenames, cols)
