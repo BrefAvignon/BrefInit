@@ -129,18 +129,18 @@ check.col.numerical <- function(data, col, basename, ...)
 # returns: a vector with the main stats.
 #############################################################################################
 check.col.categorical <- function(data, col, basename, ...)
-{	vals0 <- data[,col]
+{	vals <- data[,col]
 	result <- c()
-	tt <- table(vals0, useNA="always")
+	tt <- table(vals, useNA="always")
 	
 	# discard missing values
 	tlog(4, "Look for missing values")
-	tmp <- which(is.na(vals0))
+	tmp <- which(is.na(vals))
 	s <- length(tmp)
 	result[COL_STATS_NA] <- s
-	tlog(6, "NAs: ",s,"/",length(vals0))
+	tlog(6, "NAs: ",s,"/",length(vals))
 	if(length(tmp)>0)
-		vals <- vals0[-tmp]
+		vals <- vals[-tmp]
 	
 	# unique (distinct) values
 	uvals <- sort(unique(vals))
@@ -173,7 +173,7 @@ check.col.categorical <- function(data, col, basename, ...)
 		pdf(file)
 	else if(PLOT_FORMAT=="png")
 		png(file, width=1024, height=1024)
-	barplot(table(vals0), col="Red", xlab=col, ylab="Frequency", las=2, cex.names=min(1,20/length(uvals))) # TODO could switch xlab to main for space purposes
+	barplot(tt, col="Red", xlab=col, ylab="Frequency", las=2, cex.names=min(1,20/length(uvals))) # TODO could switch xlab to main for space purposes
 	dev.off()
 	
 	# plot distribution without NAs
@@ -232,6 +232,26 @@ check.col.nominal <- function(data, col, basename, dist.threhsold=3, ...)
 	for(t in txt)
 		tlog(8, t)
 	
+	# plot distribution with NAs
+	file <- paste0(basename,"_bar_NA.",PLOT_FORMAT)
+	tlog(4, "Plotting barplot (with NAs) in file \"",file,"\"")
+	if(PLOT_FORMAT=="pdf")
+		pdf(file)
+	else if(PLOT_FORMAT=="png")
+		png(file, width=1024, height=1024)
+	barplot(tt, col="Red", xlab=col, ylab="Frequency", las=2, cex.names=min(1,20/length(uvals))) # TODO could switch xlab to main for space purposes
+	dev.off()
+	
+	# plot distribution without NAs
+	file <- paste0(basename,"_bar.",PLOT_FORMAT)
+	tlog(4, "Plotting barplot (without NAs) in file \"",file,"\"")
+	if(PLOT_FORMAT=="pdf")
+		pdf(file)
+	else if(PLOT_FORMAT=="png")
+		png(file, width=1024, height=1024)
+	barplot(table(vals), col="Red", xlab=col, ylab="Frequency", las=2, cex.names=min(1,20/length(uvals))) # TODO could switch xlab to main for space purposes
+	dev.off()
+	
 #	# compare strings
 #	tlog(4, "Computing distances between unique values (may take a while)")
 #	cntr <- 0
@@ -263,18 +283,18 @@ check.col.nominal <- function(data, col, basename, dist.threhsold=3, ...)
 # returns: a vector with the main stats.
 #############################################################################################
 check.col.temporal <- function(data, col, basename, ...)
-{	vals0 <- data[,col]
+{	vals <- data[,col]
 	result <- c()
-	tt <- table(vals0, useNA="always")
+	tt <- table(vals, useNA="always")
 	
 	# discard missing values
 	tlog(4, "Look for missing values")
-	tmp <- which(is.na(vals0))
+	tmp <- which(is.na(vals))
 	s <- length(tmp)
 	result[COL_STATS_NA] <- s
-	tlog(6, "NAs: ",s,"/",length(vals0))
+	tlog(6, "NAs: ",s,"/",length(vals))
 	if(length(tmp)>0)
-		vals <- vals0[-tmp]
+		vals <- vals[-tmp]
 	
 	# unique (distinct) values
 	uvals <- sort(unique(vals))
@@ -333,7 +353,7 @@ check.col.temporal <- function(data, col, basename, ...)
 		pdf(file)
 	else if(PLOT_FORMAT=="png")
 		png(file, width=1024, height=1024)
-	barplot(table(vals0), col="Red", xlab=col, ylab="Frequency", las=2, cex.names=min(1,20/length(uvals))) # TODO could switch xlab to main for space purposes
+	barplot(tt, col="Red", xlab=col, ylab="Frequency", las=2, cex.names=min(1,20/length(uvals))) # TODO could switch xlab to main for space purposes
 	dev.off()
 	# plot histogram without NAs
 	file <- paste0(basename,"_histo.",PLOT_FORMAT) #TODO must fix this date problem
