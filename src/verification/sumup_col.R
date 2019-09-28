@@ -199,7 +199,7 @@ check.col.categorical <- function(data, col, basename, ...)
 		pdf(file)
 	else if(PLOT_FORMAT=="png")
 		png(file, width=1024, height=1024)
-	barplot(ttt, col="Red", xlab=col, ylab="Frequency", las=2, cex.names=min(1,20/length(uvals))) # TODO could switch xlab to main for space purposes
+	barplot(ttt, col="Red", xlab=paste0("Occurrences of ",col), ylab="Frequency", las=2) # TODO could switch xlab to main for space purposes
 	dev.off()
 
 	return(result)
@@ -281,7 +281,7 @@ check.col.nominal <- function(data, col, basename, dist.threhsold=3, ...)
 		pdf(file)
 	else if(PLOT_FORMAT=="png")
 		png(file, width=1024, height=1024)
-	barplot(ttt, col="Red", xlab=col, ylab="Frequency", las=2, cex.names=min(1,20/length(uvals))) # TODO could switch xlab to main for space purposes
+	barplot(ttt, col="Red", xlab=paste0("Occurrences of ",col), ylab="Frequency", las=2) # TODO could switch xlab to main for space purposes
 	dev.off()
 	
 #	# compare strings
@@ -434,7 +434,7 @@ check.col.temporal <- function(data, col, basename, ...)
 		pdf(file)
 	else if(PLOT_FORMAT=="png")
 		png(file, width=1024, height=1024)
-	barplot(ttt, col="Red", xlab=col, ylab="Frequency", las=2, cex.names=min(1,20/length(uvals))) # TODO could switch xlab to main for space purposes
+	barplot(ttt, col="Red", xlab=paste0("Occurrences of ",col), ylab="Frequency", las=2) # TODO could switch xlab to main for space purposes
 	dev.off()
 	
 	return(result)
