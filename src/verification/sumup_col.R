@@ -21,6 +21,7 @@ library("stringdist")
 check.col.numerical <- function(data, col, basename, ...)
 {	vals <- data[,col]
 	result <- c()
+	tt <- table(vals, useNA="always")
 	
 	# discard non-numerical values
 	# note: should handle NaN and Inf too, but the files do not contain any of them
@@ -38,7 +39,6 @@ check.col.numerical <- function(data, col, basename, ...)
 	result[COL_STATS_UNQ] <- s
 	
 	# if not too many unique values, show them all
-	tt <- table(vals)
 	tlog(4, "Distribution:")
 	if(s<100)
 	{	txt <- capture.output(print(tt))
@@ -46,7 +46,7 @@ check.col.numerical <- function(data, col, basename, ...)
 			tlog(6, t)
 	}
 	else
-		tlog(6, "Too many values (",length(uvals),")")
+		tlog(6, "Too many values (",s,")")
 	val.file <- paste0(basename,"_unique_vals.txt")
 	write.table(x=tt,file=val.file,row.names=FALSE,col.names=FALSE,fileEncoding="UTF8")
 	
@@ -129,17 +129,18 @@ check.col.numerical <- function(data, col, basename, ...)
 # returns: a vector with the main stats.
 #############################################################################################
 check.col.categorical <- function(data, col, basename, ...)
-{	vals <- data[,col]
+{	vals0 <- data[,col]
 	result <- c()
+	tt <- table(vals0, useNA="always")
 	
 	# discard missing values
 	tlog(4, "Look for missing values")
-	tmp <- which(is.na(vals))
+	tmp <- which(is.na(vals0))
 	s <- length(tmp)
 	result[COL_STATS_NA] <- s
-	tlog(6, "NAs: ",s,"/",length(vals))
-#	if(length(tmp)>0)
-#		vals <- vals[-tmp]
+	tlog(6, "NAs: ",s,"/",length(vals0))
+	if(length(tmp)>0)
+		vals <- vals0[-tmp]
 	
 	# unique (distinct) values
 	uvals <- sort(unique(vals))
@@ -147,7 +148,6 @@ check.col.categorical <- function(data, col, basename, ...)
 	result[COL_STATS_UNQ] <- s
 	
 	# if not too many unique values, show them all
-	tt <- table(vals)
 	tlog(4, "Distribution:")
 	if(s<100)
 	{	txt <- capture.output(print(tt))
@@ -155,7 +155,7 @@ check.col.categorical <- function(data, col, basename, ...)
 			tlog(6, t)
 	}
 	else
-		tlog(6, "Too many values (",length(uvals),")")
+		tlog(6, "Too many values (",s,")")
 	val.file <- paste0(basename,"_unique_vals.txt")
 	write.table(x=tt,file=val.file,row.names=FALSE,col.names=FALSE,fileEncoding="UTF8")
 	
@@ -166,9 +166,19 @@ check.col.categorical <- function(data, col, basename, ...)
 	result[COL_STATS_MOD] <- s[1]
 	tlog(6, "Mode(s): ", paste(s,collapse=", "))
 	
-	# plot distribution
+	# plot distribution with NAs
+	file <- paste0(basename,"_bar_NA.",PLOT_FORMAT)
+	tlog(4, "Plotting barplot (with NAs) in file \"",file,"\"")
+	if(PLOT_FORMAT=="pdf")
+		pdf(file)
+	else if(PLOT_FORMAT=="png")
+		png(file, width=1024, height=1024)
+	barplot(table(vals0), col="Red", xlab=col, ylab="Frequency", las=2, cex.names=min(1,20/length(uvals))) # TODO could switch xlab to main for space purposes
+	dev.off()
+	
+	# plot distribution without NAs
 	file <- paste0(basename,"_bar.",PLOT_FORMAT)
-	tlog(4, "Plotting barplot in file \"",file,"\"")
+	tlog(4, "Plotting barplot (without NAs) in file \"",file,"\"")
 	if(PLOT_FORMAT=="pdf")
 		pdf(file)
 	else if(PLOT_FORMAT=="png")
@@ -195,6 +205,7 @@ check.col.categorical <- function(data, col, basename, ...)
 check.col.nominal <- function(data, col, basename, dist.threhsold=3, ...)
 {	vals <- data[,col]
 	result <- c()
+	tt <- table(vals, useNA="always")
 	
 	# discard missing values
 	tlog(4, "Look for missing values")
@@ -209,7 +220,6 @@ check.col.nominal <- function(data, col, basename, dist.threhsold=3, ...)
 	uvals <- sort(unique(vals))
 	s <- length(uvals)
 	result[COL_STATS_UNQ] <- s
-	tt <- table(vals)
 	val.file <- paste0(basename,"_unique_vals.txt")
 	write.table(x=tt,file=val.file,row.names=FALSE,col.names=FALSE,fileEncoding="UTF8")
 	
@@ -253,17 +263,18 @@ check.col.nominal <- function(data, col, basename, dist.threhsold=3, ...)
 # returns: a vector with the main stats.
 #############################################################################################
 check.col.temporal <- function(data, col, basename, ...)
-{	vals <- data[,col]
+{	vals0 <- data[,col]
 	result <- c()
+	tt <- table(vals0, useNA="always")
 	
 	# discard missing values
 	tlog(4, "Look for missing values")
-	tmp <- which(is.na(vals))
+	tmp <- which(is.na(vals0))
 	s <- length(tmp)
 	result[COL_STATS_NA] <- s
-	tlog(6, "NAs: ",s,"/",length(vals))
+	tlog(6, "NAs: ",s,"/",length(vals0))
 	if(length(tmp)>0)
-		vals <- vals[-tmp]
+		vals <- vals0[-tmp]
 	
 	# unique (distinct) values
 	uvals <- sort(unique(vals))
@@ -271,7 +282,6 @@ check.col.temporal <- function(data, col, basename, ...)
 	result[COL_STATS_UNQ] <- s
 	
 	# if not too many unique values, show them all
-	tt <- table(vals)
 	tlog(4, "Distribution:")
 	if(s<100)
 	{	txt <- capture.output(print(tt))
@@ -279,7 +289,7 @@ check.col.temporal <- function(data, col, basename, ...)
 			tlog(6, t)
 	}
 	else
-		tlog(6, "Too many values (",length(uvals),")")
+		tlog(6, "Too many values (",s,")")
 	val.file <- paste0(basename,"_unique_vals.txt")
 	write.table(x=tt,file=val.file,row.names=FALSE,col.names=FALSE,fileEncoding="UTF8")
 	
@@ -316,7 +326,16 @@ check.col.temporal <- function(data, col, basename, ...)
 	mxd <- max(secs)
 	ticks <- seq(from=mnd,to=mxd,by=(mxd-mnd)/5)
 	
-	# plot histogram
+	# plot distribution with NAs
+	file <- paste0(basename,"_bar_NA.",PLOT_FORMAT)
+	tlog(4, "Plotting barplot (with NAs) in file \"",file,"\"")
+	if(PLOT_FORMAT=="pdf")
+		pdf(file)
+	else if(PLOT_FORMAT=="png")
+		png(file, width=1024, height=1024)
+	barplot(table(vals0), col="Red", xlab=col, ylab="Frequency", las=2, cex.names=min(1,20/length(uvals))) # TODO could switch xlab to main for space purposes
+	dev.off()
+	# plot histogram without NAs
 	file <- paste0(basename,"_histo.",PLOT_FORMAT) #TODO must fix this date problem
 	tlog(4, "Plotting histogram in file \"",file,"\"")
 	if(PLOT_FORMAT=="pdf")
@@ -326,7 +345,7 @@ check.col.temporal <- function(data, col, basename, ...)
 	ht <- hist(secs, col="Red", main="Distribution", xlab=col, xaxt="n")
 	axis(1, at=ticks, labels=format(as.Date(ticks, origin="1970-01-01"), format="%d/%m/%Y"), cex.axis=.7, las=2)
 	dev.off()
-	# plot density
+	# plot density without NAs
 	file <- paste0(basename,"_dens.",PLOT_FORMAT)
 	tlog(4, "Plotting density in file \"",file,"\"")
 	if(PLOT_FORMAT=="pdf")
@@ -336,7 +355,7 @@ check.col.temporal <- function(data, col, basename, ...)
 	plot(density(secs), col="Red", main="Kernel density", xlab=col, xaxt="n")
 	axis(1, at=ticks, labels=format(as.Date(ticks, origin="1970-01-01"), format="%d/%m/%Y"), cex.axis=.7, las=2)
 	dev.off()
-	# plot log-density
+	# plot log-density without NAs
 	file <- paste0(basename,"_logdens.",PLOT_FORMAT)
 	tlog(4, "Plotting log density (only positive for values) in file \"",file,"\"")
 	if(PLOT_FORMAT=="pdf")
