@@ -156,8 +156,14 @@ check.col.categorical <- function(data, col, basename, ...)
 	}
 	else
 		tlog(6, "Too many values (",s,")")
+	
+	# record unique values and their freq
 	val.file <- paste0(basename,"_unique_vals.txt")
 	write.table(x=tt,file=val.file,row.names=FALSE,col.names=FALSE,fileEncoding="UTF8")
+	# also record double distr (no NAs)
+	val.file <- paste0(basename,"_double_freq.txt")
+	ttt <- table(table(vals))
+	write.table(x=ttt,file=val.file,row.names=FALSE,col.names=FALSE,fileEncoding="UTF8")
 	
 	# show standard statistics
 	tlog(4, "Standard statistics")
@@ -186,6 +192,16 @@ check.col.categorical <- function(data, col, basename, ...)
 	barplot(table(vals), col="Red", xlab=col, ylab="Frequency", las=2, cex.names=min(1,20/length(uvals))) # TODO could switch xlab to main for space purposes
 	dev.off()
 	
+	# plot double distr without NAs
+	file <- paste0(basename,"_double_bar.",PLOT_FORMAT)
+	tlog(4, "Plotting double barplot in file \"",file,"\"")
+	if(PLOT_FORMAT=="pdf")
+		pdf(file)
+	else if(PLOT_FORMAT=="png")
+		png(file, width=1024, height=1024)
+	barplot(ttt, col="Red", xlab=col, ylab="Frequency", las=2, cex.names=min(1,20/length(uvals))) # TODO could switch xlab to main for space purposes
+	dev.off()
+
 	return(result)
 }
 
@@ -220,8 +236,14 @@ check.col.nominal <- function(data, col, basename, dist.threhsold=3, ...)
 	uvals <- sort(unique(vals))
 	s <- length(uvals)
 	result[COL_STATS_UNQ] <- s
+	
+	# record unique values and their freq
 	val.file <- paste0(basename,"_unique_vals.txt")
 	write.table(x=tt,file=val.file,row.names=FALSE,col.names=FALSE,fileEncoding="UTF8")
+	# also record double distr (no NAs)
+	val.file <- paste0(basename,"_double_freq.txt")
+	ttt <- table(table(vals))
+	write.table(x=ttt,file=val.file,row.names=FALSE,col.names=FALSE,fileEncoding="UTF8")
 	
 	# basic stats
 	tlog(4, "Basic stats")
@@ -250,6 +272,16 @@ check.col.nominal <- function(data, col, basename, dist.threhsold=3, ...)
 	else if(PLOT_FORMAT=="png")
 		png(file, width=1024, height=1024)
 	barplot(table(vals), col="Red", xlab=col, ylab="Frequency", las=2, cex.names=min(1,20/length(uvals))) # TODO could switch xlab to main for space purposes
+	dev.off()
+	
+	# plot double distr without NAs
+	file <- paste0(basename,"_double_bar.",PLOT_FORMAT)
+	tlog(4, "Plotting double barplot in file \"",file,"\"")
+	if(PLOT_FORMAT=="pdf")
+		pdf(file)
+	else if(PLOT_FORMAT=="png")
+		png(file, width=1024, height=1024)
+	barplot(ttt, col="Red", xlab=col, ylab="Frequency", las=2, cex.names=min(1,20/length(uvals))) # TODO could switch xlab to main for space purposes
 	dev.off()
 	
 #	# compare strings
@@ -310,8 +342,14 @@ check.col.temporal <- function(data, col, basename, ...)
 	}
 	else
 		tlog(6, "Too many values (",s,")")
+	
+	# record unique values and their freq
 	val.file <- paste0(basename,"_unique_vals.txt")
 	write.table(x=tt,file=val.file,row.names=FALSE,col.names=FALSE,fileEncoding="UTF8")
+	# also record double distr (no NAs)
+	val.file <- paste0(basename,"_double_freq.txt")
+	ttt <- table(table(vals))
+	write.table(x=ttt,file=val.file,row.names=FALSE,col.names=FALSE,fileEncoding="UTF8")
 	
 	# show standard statistics
 	tlog(4, "Standard statistics")
@@ -346,15 +384,6 @@ check.col.temporal <- function(data, col, basename, ...)
 	mxd <- max(secs)
 	ticks <- seq(from=mnd,to=mxd,by=(mxd-mnd)/5)
 	
-	# plot distribution with NAs
-	file <- paste0(basename,"_bar_NA.",PLOT_FORMAT)
-	tlog(4, "Plotting barplot (with NAs) in file \"",file,"\"")
-	if(PLOT_FORMAT=="pdf")
-		pdf(file)
-	else if(PLOT_FORMAT=="png")
-		png(file, width=1024, height=1024)
-	barplot(tt, col="Red", xlab=col, ylab="Frequency", las=2, cex.names=min(1,20/length(uvals))) # TODO could switch xlab to main for space purposes
-	dev.off()
 	# plot histogram without NAs
 	file <- paste0(basename,"_histo.",PLOT_FORMAT) #TODO must fix this date problem
 	tlog(4, "Plotting histogram in file \"",file,"\"")
@@ -386,6 +415,26 @@ check.col.temporal <- function(data, col, basename, ...)
 		plot(density(secs), col="Red", main="Log Kernel density", xlab=col, log="y", xaxt="n");
 		axis(1, at=ticks, labels=format(as.Date(ticks, origin="1970-01-01"), format="%d/%m/%Y"), cex.axis=.7, las=2)
 	})
+	dev.off()
+	
+	# plot distribution with NAs
+	file <- paste0(basename,"_bar_NA.",PLOT_FORMAT)
+	tlog(4, "Plotting barplot (with NAs) in file \"",file,"\"")
+	if(PLOT_FORMAT=="pdf")
+		pdf(file)
+	else if(PLOT_FORMAT=="png")
+		png(file, width=1024, height=1024)
+	barplot(tt, col="Red", xlab=col, ylab="Frequency", las=2, cex.names=min(1,20/length(uvals))) # TODO could switch xlab to main for space purposes
+	dev.off()
+	
+	# plot double distr without NAs
+	file <- paste0(basename,"_double_bar.",PLOT_FORMAT)
+	tlog(4, "Plotting double barplot in file \"",file,"\"")
+	if(PLOT_FORMAT=="pdf")
+		pdf(file)
+	else if(PLOT_FORMAT=="png")
+		png(file, width=1024, height=1024)
+	barplot(ttt, col="Red", xlab=col, ylab="Frequency", las=2, cex.names=min(1,20/length(uvals))) # TODO could switch xlab to main for space purposes
 	dev.off()
 	
 	return(result)
