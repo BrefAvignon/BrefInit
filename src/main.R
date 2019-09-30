@@ -54,3 +54,5 @@ for(filename in filenames)
 # TODO
 # - redondance entre maire dans M et dans CM ? (à tester)
 # - problème d'année dans certaines dates (apparait dans valeurs uniques, ex.201 probablement au lieu de de 2001)
+# - Développer script pour les tests de cohérence
+# - Script de fusion des tables
