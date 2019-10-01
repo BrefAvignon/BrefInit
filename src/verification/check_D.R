@@ -1,5 +1,5 @@
 #############################################################################################
-# Checks the deputee table. 
+# Checks the members of the parliament table. 
 # 
 # 07/2019 Vincent Labatut
 #

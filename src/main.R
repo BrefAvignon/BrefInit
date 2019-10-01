@@ -1,5 +1,5 @@
 #############################################################################################
-# Merges all the RNE files (historical version from 2018/07/17).
+# Main script to process the RNE (historical version from 2018/07/17).
 # 
 # 07/2019 Vincent Labatut
 #
