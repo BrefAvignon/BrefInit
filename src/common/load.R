@@ -33,7 +33,7 @@ load.data <- function(filenames, cols)
 				quote="", 					# don't expect double quotes "..." around text fields
 				skip=1,						# ignore the first line of the file ("Titre du rapport")
 				as.is=TRUE,					# don't convert strings to factors
-				fileEncoding="Latin1"
+				fileEncoding="Latin1"		# original tables seem to be encoded in Latin1 (ANSI)
 		)
 		tlog(2,"Read ",nrow(temp)," lines and ",ncol(temp)," columns")
 		
