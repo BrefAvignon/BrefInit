@@ -190,7 +190,7 @@ load.cr.data <- function()
 		list(name=COL_ATT_REG_CODE, basename="region_code", tp="cat"),
 		list(name=COL_ATT_REG_NOM, basename="region_nom", tp="nom"),
 		list(name=COL_ATT_DPT_CODE, basename="dpt_code", tp="cat"),
-		list(name=COL_ATT_DPT_NOM, basename="dpt_nom", tp="nom"),
+		list(name=COL_ATT_DPT_NOM_CR, basename="dpt_nom", tp="nom"),
 		list(name=COL_ATT_ELU_NOM, basename="patronyme", tp="nom"),
 		list(name=COL_ATT_ELU_PRENOM, basename="prenom", tp="nom"),
 		list(name=COL_ATT_ELU_SEXE, basename="sexe", tp="cat"),

@@ -12,11 +12,13 @@ source("src/verification/sumup_col.R")
 start.rec.log(text="M_vs_CM")
 
 # load the mayoral data
+tlog(0,"Load mayoral data")
 tmp <- load.m.data()
 m.data <- tmp$data
 m.cols <- tmp$cols
 
 # load the municipal data
+tlog(0,"Load municipal data")
 tmp <- load.cm.data()
 cm.data <- tmp$data
 cm.cols <- tmp$cols
@@ -35,14 +37,14 @@ cm.codes <- apply(cm.data[,sel.cols],1,function(r) paste(r,collapse=":"))
 m.codes <- apply(m.data[,sel.cols],1,function(r) paste(r,collapse=":"))
 idx <- match(m.codes,cm.codes)
 unmatched <- which(is.na(idx))
-cat("  Unmatched row:\n")
+tlog(2,"Unmatched row:")
 print(m.codes[unmatched])
 
 # look for unmatched persons
 for(um in unmatched)
-{	cat("  Processing unmatched mayor\n")
+{	tlog(2, "Processing unmatched mayor")
 	print(m.data[um,sel.cols])
-	cat("  Municipal councilors with the same name:\n")
+	tlog(4, "Municipal councilors with the same name:")
 	idx <- which(cm.data[,"Nom de l'élu"]==m.data[um,"Nom de l'élu"])
 	print(cm.data[idx,sel.cols])
 }

@@ -499,7 +499,7 @@ check.cols <- function(data, cols, out.folder, ...)
 		res <- check.col(
 				data=data, 
 				col=col$name, 
-				basename=file.path(out.folder,col$basename), 
+				basename=file.path(out.folder,col$basename),
 				tp=col$tp,
 				...
 			)

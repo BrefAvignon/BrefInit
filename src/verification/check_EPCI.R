@@ -6,6 +6,7 @@
 # source("src/verification/check_EPCI.R")
 #############################################################################################
 source("src/common/include.R")
+source("src/verification/evolution_plot.R")
 source("src/verification/sumup_col.R")
 
 # start logging
@@ -23,6 +24,9 @@ cols <- tmp$cols
 # summarizes each column separately
 tlog(0,"Examining each column separately")
 check.cols(data=data, cols=cols, out.folder=out.folder)
+
+# plots the number of persons over time time
+plot.pers.time(data, out.folder)
 
 # close the log file
 tlog(0,"Done")
