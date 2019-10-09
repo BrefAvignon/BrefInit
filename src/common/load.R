@@ -143,7 +143,7 @@ load.cm.data <- function()
 	# names of the columns
 	cols <- list(
 		list(name=COL_ATT_DPT_CODE_M, basename="dpt_code", tp="cat"),
-		list(name=COL_ATT_DPT_NOM_M, basename="dpt_code", tp="nom"),
+		list(name=COL_ATT_DPT_NOM_M, basename="dpt_nom", tp="nom"),
 		list(name=COL_ATT_COM_CODE, basename="ville_code", tp="cat"),
 		list(name=COL_ATT_COM_NOM, basename="ville_nom", tp="nom"),
 		list(name=COL_ATT_COM_POP, basename="ville_population", tp="num"),
@@ -188,7 +188,7 @@ load.cr.data <- function()
 	# names of the columns
 	cols <- list(
 		list(name=COL_ATT_REG_CODE, basename="region_code", tp="cat"),
-		list(name=COL_ATT_REG_NOM, basename="region_code", tp="nom"),
+		list(name=COL_ATT_REG_NOM, basename="region_nom", tp="nom"),
 		list(name=COL_ATT_DPT_CODE, basename="dpt_code", tp="cat"),
 		list(name=COL_ATT_DPT_NOM, basename="dpt_nom", tp="nom"),
 		list(name=COL_ATT_ELU_NOM, basename="patronyme", tp="nom"),
@@ -233,9 +233,9 @@ load.d.data <- function()
 	# names of the columns
 	cols <- list(
 		list(name=COL_ATT_DPT_CODE, basename="dpt_code", tp="cat"),
-		list(name=COL_ATT_DPT_NOM, basename="dpt_code", tp="nom"),
+		list(name=COL_ATT_DPT_NOM, basename="dpt_nom", tp="nom"),
 		list(name=COL_ATT_CIRC_CODE, basename="circo_code", tp="cat"),
-		list(name=COL_ATT_CIRC_NOM, basename="circo_code", tp="nom"),
+		list(name=COL_ATT_CIRC_NOM, basename="circo_nom", tp="nom"),
 		list(name=COL_ATT_ELU_NOM, basename="patronyme", tp="nom"),
 		list(name=COL_ATT_ELU_PRENOM, basename="prenom", tp="nom"),
 		list(name=COL_ATT_ELU_DDN, basename="naissance_date", tp="dat"),
@@ -278,7 +278,7 @@ load.de.data <- function()
 	# names of the columns
 	cols <- list(
 		list(name=COL_ATT_CIRCE_CODE, basename="circo_code", tp="cat"),
-		list(name=COL_ATT_CIRCE_NOM, basename="circo_code", tp="nom"),
+		list(name=COL_ATT_CIRCE_NOM, basename="circo_nom", tp="nom"),
 		list(name=COL_ATT_ELU_NOM, basename="patronyme", tp="nom"),
 		list(name=COL_ATT_ELU_PRENOM, basename="prenom", tp="nom"),
 		list(name=COL_ATT_ELU_DDN, basename="naissance_date", tp="dat"),
@@ -363,7 +363,7 @@ load.m.data <- function()
 	# names of the columns
 	cols <- list(
 		list(name=COL_ATT_DPT_CODE_M, basename="dpt_code", tp="cat"),
-		list(name=COL_ATT_DPT_NOM_M, basename="dpt_code", tp="nom"),
+		list(name=COL_ATT_DPT_NOM_M, basename="dpt_nom", tp="nom"),
 		list(name=COL_ATT_COM_CODE, basename="ville_code", tp="cat"),
 		list(name=COL_ATT_COM_NOM, basename="ville_nom", tp="nom"),
 		list(name=COL_ATT_COM_POP, basename="ville_population", tp="num"),
@@ -419,7 +419,7 @@ load.s.data <- function()
 # names of the columns
 	cols <- list(
 		list(name=COL_ATT_DPT_CODE, basename="dpt_code", tp="cat"),
-		list(name=COL_ATT_DPT_NOM, basename="dpt_code", tp="nom"),
+		list(name=COL_ATT_DPT_NOM, basename="dpt_nom", tp="nom"),
 		list(name=COL_ATT_ELU_NOM, basename="patronyme", tp="nom"),
 		list(name=COL_ATT_ELU_PRENOM, basename="prenom", tp="nom"),
 		list(name=COL_ATT_ELU_DDN, basename="naissance_date", tp="dat"),
