@@ -52,9 +52,5 @@ for(filename in filenames)
 
 
 # TODO
-# - Problème d'encodage : le fichier produit n'est pas de l'UTF8 (du moins: seulement l'en-tête)
-#   au besoin, voir https://www.i18nqa.com/debug/utf8-debug.html
-# - redondance entre maire dans M et dans CM ? (à tester)
-# - problème d'année dans certaines dates (apparait dans valeurs uniques, ex.201 probablement au lieu de de 2001)
 # - Développer script pour les tests de cohérence
-# - Script de fusion des tables
+# - problème d'année dans certaines dates (apparait dans valeurs uniques, ex.201 probablement au lieu de de 2001)
