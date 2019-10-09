@@ -52,5 +52,7 @@ for(filename in filenames)
 
 
 # TODO
-# - Développer script pour les tests de cohérence
-# - problème d'année dans certaines dates (apparait dans valeurs uniques, ex.201 probablement au lieu de de 2001)
+# - Plots of the evolution of each type of mandate over time
+# - Implement consistancy tests
+# - Data problems:
+#   - Some years are just wront (ex. 201)

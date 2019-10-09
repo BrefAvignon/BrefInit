@@ -94,26 +94,26 @@ load.cd.data <- function()
 	
 	# names of the columns
 	cols <- list(
-		list(name="Code du département", basename="dpt_code", tp="cat"),
-		list(name="Libellé du département", basename="dpt_nom", tp="nom"),
-		list(name="Nom de l'élu", basename="patronyme", tp="nom"),
-		list(name="Prénom de l'élu", basename="prenom", tp="nom"),
-		list(name="Code sexe", basename="sexe", tp="cat"),
-		list(name="Code du canton", basename="canton_code", tp="cat"),
-		list(name="Libellé du canton", basename="canton_nom", tp="nom"),
-		list(name="Nuance politique (C. Gén.)", basename="nuance_pol", tp="cat"),
-		list(name="Libellé de fonction", basename="fonction_nom", tp="cat"),
-		list(name="Code profession", basename="profession_code", tp="cat"),
-		list(name="Libellé de la profession", basename="profession_nom", tp="cat"),
-		list(name="Date de naissance", basename="naissance_date", tp="dat"),
-		list(name="N° Identification d'un élu", basename="elu_id", tp="cat"),
-		list(name="Date de début du mandat", basename="mandat_debut", tp="dat"),
-		list(name="Date de début de la fonction", basename="fonction_debut", tp="dat"),
-		list(name="Libellé de mandat", basename="mandat_nom", tp="cat"),
-		list(name="Date de fin du mandat", basename="mandat_fin", tp="dat"),
-		list(name="Motif de fin de mandat", basename="mandat_motif", tp="cat"),
-		list(name="Date de fin de la fonction", basename="fonction_fin", tp="dat"),
-		list(name="Motif de fin de fonction", basename="fonction_motif", tp="cat")
+		list(name=COL_ATT_DPT_CODE, basename="dpt_code", tp="cat"),
+		list(name=COL_ATT_DPT_NOM, basename="dpt_nom", tp="nom"),
+		list(name=COL_ATT_ELU_NOM, basename="patronyme", tp="nom"),
+		list(name=COL_ATT_ELU_PRENOM, basename="prenom", tp="nom"),
+		list(name=COL_ATT_ELU_SEXE, basename="sexe", tp="cat"),
+		list(name=COL_ATT_CANT_CODE, basename="canton_code", tp="cat"),
+		list(name=COL_ATT_CANT_NOM, basename="canton_nom", tp="nom"),
+		list(name=COL_ATT_ELU_NUANCE_CD, basename="nuance_pol", tp="cat"),
+		list(name=COL_ATT_FCT_NOM, basename="fonction_nom", tp="cat"),
+		list(name=COL_ATT_PRO_CODE, basename="profession_code", tp="cat"),
+		list(name=COL_ATT_PRO_NOM, basename="profession_nom", tp="cat"),
+		list(name=COL_ATT_ELU_DDN, basename="naissance_date", tp="dat"),
+		list(name=COL_ATT_ELU_ID, basename="elu_id", tp="cat"),
+		list(name=COL_ATT_MDT_DBT, basename="mandat_debut", tp="dat"),
+		list(name=COL_ATT_FCT_DBT, basename="fonction_debut", tp="dat"),
+		list(name=COL_ATT_MDT_NOM, basename="mandat_nom", tp="cat"),
+		list(name=COL_ATT_MDT_FIN, basename="mandat_fin", tp="dat"),
+		list(name=COL_ATT_MDT_MOTIF, basename="mandat_motif", tp="cat"),
+		list(name=COL_ATT_FCT_FIN, basename="fonction_fin", tp="dat"),
+		list(name=COL_ATT_FCT_MOTIF, basename="fonction_motif", tp="cat")
 	)
 	
 	# load the data
@@ -142,26 +142,26 @@ load.cm.data <- function()
 	
 	# names of the columns
 	cols <- list(
-		list(name="Code du département (Maire)", basename="dpt_code", tp="cat"),
-		list(name="Libellé de département (Maires)", basename="dpt_code", tp="nom"),
-		list(name="Code Insee de la commune", basename="ville_code", tp="cat"),
-		list(name="Libellé de la commune", basename="ville_nom", tp="nom"),
-		list(name="Population de la commune", basename="ville_population", tp="num"),
-		list(name="Nom de l'élu", basename="patronyme", tp="nom"),
-		list(name="Prénom de l'élu", basename="prenom", tp="nom"),
-		list(name="Code sexe", basename="sexe", tp="cat"),
-		list(name="Date de naissance", basename="naissance_date", tp="dat"),
-		list(name="Code profession", basename="profession_code", tp="cat"),
-		list(name="Libellé de la profession", basename="profession_nom", tp="cat"),
-		list(name="Date de début du mandat", basename="mandat_debut", tp="dat"),
-		list(name="Date de fin du mandat", basename="mandat_fin", tp="dat"),
-		list(name="Motif de fin de mandat", basename="mandat_motif", tp="cat"),
-		list(name="Libellé de fonction", basename="fonction_nom", tp="cat"),
-		list(name="Date de début de la fonction", basename="fonction_debut", tp="dat"),
-		list(name="Date de fin de la fonction", basename="fonction_fin", tp="dat"),
-		list(name="Motif de fin de fonction", basename="fonction_motif", tp="cat"),
-		list(name="Nuance politique (C. Mun.)", basename="nuance_pol", tp="cat"),
-		list(name="N° Identification d'un élu", basename="elu_id", tp="cat")
+		list(name=COL_ATT_DPT_CODE_M, basename="dpt_code", tp="cat"),
+		list(name=COL_ATT_DPT_NOM_M, basename="dpt_code", tp="nom"),
+		list(name=COL_ATT_COM_CODE, basename="ville_code", tp="cat"),
+		list(name=COL_ATT_COM_NOM, basename="ville_nom", tp="nom"),
+		list(name=COL_ATT_COM_POP, basename="ville_population", tp="num"),
+		list(name=COL_ATT_ELU_NOM, basename="patronyme", tp="nom"),
+		list(name=COL_ATT_ELU_PRENOM, basename="prenom", tp="nom"),
+		list(name=COL_ATT_ELU_SEXE, basename="sexe", tp="cat"),
+		list(name=COL_ATT_ELU_DDN, basename="naissance_date", tp="dat"),
+		list(name=COL_ATT_PRO_CODE, basename="profession_code", tp="cat"),
+		list(name=COL_ATT_PRO_NOM, basename="profession_nom", tp="cat"),
+		list(name=COL_ATT_MDT_DBT, basename="mandat_debut", tp="dat"),
+		list(name=COL_ATT_MDT_FIN, basename="mandat_fin", tp="dat"),
+		list(name=COL_ATT_MDT_MOTIF, basename="mandat_motif", tp="cat"),
+		list(name=COL_ATT_FCT_NOM, basename="fonction_nom", tp="cat"),
+		list(name=COL_ATT_FCT_DBT, basename="fonction_debut", tp="dat"),
+		list(name=COL_ATT_FCT_FIN, basename="fonction_fin", tp="dat"),
+		list(name=COL_ATT_FCT_MOTIF, basename="fonction_motif", tp="cat"),
+		list(name=COL_ATT_ELU_NUANCE_CM, basename="nuance_pol", tp="cat"),
+		list(name=COL_ATT_ELU_ID, basename="elu_id", tp="cat")
 	)
 	
 	# load the data
@@ -187,26 +187,26 @@ load.cr.data <- function()
 	
 	# names of the columns
 	cols <- list(
-		list(name="Code région", basename="region_code", tp="cat"),
-		list(name="Libellé de la région", basename="region_code", tp="nom"),
-		list(name="Code du département", basename="dpt_code", tp="cat"),
-		list(name="Libellé de département", basename="dpt_nom", tp="nom"),
-		list(name="Nom de l'élu", basename="patronyme", tp="nom"),
-		list(name="Prénom de l'élu", basename="prenom", tp="nom"),
-		list(name="Code sexe", basename="sexe", tp="cat"),
-		list(name="Date de naissance", basename="naissance_date", tp="dat"),
-		list(name="Code profession", basename="profession_code", tp="cat"),
-		list(name="Libellé de la profession", basename="profession_nom", tp="cat"),
-		list(name="Libellé de mandat", basename="mandat_nom", tp="cat"),
-		list(name="Date de début du mandat", basename="mandat_debut", tp="dat"),
-		list(name="Date de fin du mandat", basename="mandat_fin", tp="dat"),
-		list(name="Motif de fin de mandat", basename="mandat_motif", tp="cat"),
-		list(name="Libellé de fonction", basename="fonction_nom", tp="cat"),
-		list(name="Date de début de la fonction", basename="fonction_debut", tp="dat"),
-		list(name="Date de fin de la fonction", basename="fonction_fin", tp="dat"),
-		list(name="Motif de fin de fonction", basename="fonction_motif", tp="cat"),
-		list(name="Nuance mandat", basename="nuance_pol", tp="cat"),
-		list(name="N° Identification d'un élu", basename="elu_id", tp="cat")
+		list(name=COL_ATT_REG_CODE, basename="region_code", tp="cat"),
+		list(name=COL_ATT_REG_NOM, basename="region_code", tp="nom"),
+		list(name=COL_ATT_DPT_CODE, basename="dpt_code", tp="cat"),
+		list(name=COL_ATT_DPT_NOM, basename="dpt_nom", tp="nom"),
+		list(name=COL_ATT_ELU_NOM, basename="patronyme", tp="nom"),
+		list(name=COL_ATT_ELU_PRENOM, basename="prenom", tp="nom"),
+		list(name=COL_ATT_ELU_SEXE, basename="sexe", tp="cat"),
+		list(name=COL_ATT_ELU_DDN, basename="naissance_date", tp="dat"),
+		list(name=COL_ATT_PRO_CODE, basename="profession_code", tp="cat"),
+		list(name=COL_ATT_PRO_NOM, basename="profession_nom", tp="cat"),
+		list(name=COL_ATT_MDT_NOM, basename="mandat_nom", tp="cat"),
+		list(name=COL_ATT_MDT_DBT, basename="mandat_debut", tp="dat"),
+		list(name=COL_ATT_MDT_FIN, basename="mandat_fin", tp="dat"),
+		list(name=COL_ATT_MDT_MOTIF, basename="mandat_motif", tp="cat"),
+		list(name=COL_ATT_FCT_NOM, basename="fonction_nom", tp="cat"),
+		list(name=COL_ATT_FCT_DBT, basename="fonction_debut", tp="dat"),
+		list(name=COL_ATT_FCT_FIN, basename="fonction_fin", tp="dat"),
+		list(name=COL_ATT_FCT_MOTIF, basename="fonction_motif", tp="cat"),
+		list(name=COL_ATT_ELU_NUANCE_CR, basename="nuance_pol", tp="cat"),
+		list(name=COL_ATT_ELU_ID, basename="elu_id", tp="cat")
 	)
 	
 	# load the data
@@ -232,26 +232,26 @@ load.d.data <- function()
 	
 	# names of the columns
 	cols <- list(
-		list(name="Code du département", basename="dpt_code", tp="cat"),
-		list(name="Libellé du département", basename="dpt_code", tp="nom"),
-		list(name="Code de la cir.législative", basename="circo_code", tp="cat"),
-		list(name="Libellé de la cir.législative", basename="circo_code", tp="nom"),
-		list(name="Nom de l'élu", basename="patronyme", tp="nom"),
-		list(name="Prénom de l'élu", basename="prenom", tp="nom"),
-		list(name="Date de naissance", basename="naissance_date", tp="dat"),
-		list(name="Code sexe", basename="sexe", tp="cat"),
-		list(name="Code profession", basename="profession_code", tp="cat"),
-		list(name="Libellé de la profession", basename="profession_nom", tp="cat"),
-		list(name="Libellé de mandat", basename="mandat_nom", tp="cat"),
-		list(name="Date de début du mandat", basename="mandat_debut", tp="dat"),
-		list(name="Date de fin du mandat", basename="mandat_fin", tp="dat"),
-		list(name="Motif de fin de mandat", basename="mandat_motif", tp="cat"),
-		list(name="Libellé de fonction", basename="fonction_nom", tp="cat"),
-		list(name="Date de début de la fonction", basename="fonction_debut", tp="dat"),
-		list(name="Date de fin de la fonction", basename="fonction_fin", tp="dat"),
-		list(name="Motif de fin de fonction", basename="fonction_motif", tp="cat"),
-		list(name="Nuance politique (Député)", basename="nuance_pol", tp="cat"),
-		list(name="N° Identification d'un élu", basename="elu_id", tp="cat")
+		list(name=COL_ATT_DPT_CODE, basename="dpt_code", tp="cat"),
+		list(name=COL_ATT_DPT_NOM, basename="dpt_code", tp="nom"),
+		list(name=COL_ATT_CIRC_CODE, basename="circo_code", tp="cat"),
+		list(name=COL_ATT_CIRC_NOM, basename="circo_code", tp="nom"),
+		list(name=COL_ATT_ELU_NOM, basename="patronyme", tp="nom"),
+		list(name=COL_ATT_ELU_PRENOM, basename="prenom", tp="nom"),
+		list(name=COL_ATT_ELU_DDN, basename="naissance_date", tp="dat"),
+		list(name=COL_ATT_ELU_SEXE, basename="sexe", tp="cat"),
+		list(name=COL_ATT_PRO_CODE, basename="profession_code", tp="cat"),
+		list(name=COL_ATT_PRO_NOM, basename="profession_nom", tp="cat"),
+		list(name=COL_ATT_MDT_NOM, basename="mandat_nom", tp="cat"),
+		list(name=COL_ATT_MDT_DBT, basename="mandat_debut", tp="dat"),
+		list(name=COL_ATT_MDT_FIN, basename="mandat_fin", tp="dat"),
+		list(name=COL_ATT_MDT_MOTIF, basename="mandat_motif", tp="cat"),
+		list(name=COL_ATT_FCT_NOM, basename="fonction_nom", tp="cat"),
+		list(name=COL_ATT_FCT_DBT, basename="fonction_debut", tp="dat"),
+		list(name=COL_ATT_FCT_FIN, basename="fonction_fin", tp="dat"),
+		list(name=COL_ATT_FCT_MOTIF, basename="fonction_motif", tp="cat"),
+		list(name=COL_ATT_ELU_NUANCE_D, basename="nuance_pol", tp="cat"),
+		list(name=COL_ATT_ELU_ID, basename="elu_id", tp="cat")
 	)
 	
 	# load the data
@@ -277,20 +277,20 @@ load.de.data <- function()
 	
 	# names of the columns
 	cols <- list(
-		list(name="CodeCirER", basename="circo_code", tp="cat"),
-		list(name="LibelléCirER", basename="circo_code", tp="nom"),
-		list(name="Nom de l'élu", basename="patronyme", tp="nom"),
-		list(name="Prénom de l'élu", basename="prenom", tp="nom"),
-		list(name="Date de naissance", basename="naissance_date", tp="dat"),
-		list(name="Code sexe", basename="sexe", tp="cat"),
-		list(name="Code profession", basename="profession_code", tp="cat"),
-		list(name="Libellé de la profession", basename="profession_nom", tp="cat"),
-		list(name="Libellé de mandat", basename="mandat_nom", tp="cat"),
-		list(name="Date de début du mandat", basename="mandat_debut", tp="dat"),
-		list(name="Date de fin du mandat", basename="mandat_fin", tp="dat"),
-		list(name="Motif de fin de mandat", basename="mandat_motif", tp="cat"),
-		list(name="Nuance politique (Rep. P.E.)", basename="nuance_pol", tp="cat"),
-		list(name="N° Identification d'un élu", basename="elu_id", tp="cat")
+		list(name=COL_ATT_CIRCE_CODE, basename="circo_code", tp="cat"),
+		list(name=COL_ATT_CIRCE_NOM, basename="circo_code", tp="nom"),
+		list(name=COL_ATT_ELU_NOM, basename="patronyme", tp="nom"),
+		list(name=COL_ATT_ELU_PRENOM, basename="prenom", tp="nom"),
+		list(name=COL_ATT_ELU_DDN, basename="naissance_date", tp="dat"),
+		list(name=COL_ATT_ELU_SEXE, basename="sexe", tp="cat"),
+		list(name=COL_ATT_PRO_CODE, basename="profession_code", tp="cat"),
+		list(name=COL_ATT_PRO_NOM, basename="profession_nom", tp="cat"),
+		list(name=COL_ATT_MDT_NOM, basename="mandat_nom", tp="cat"),
+		list(name=COL_ATT_MDT_DBT, basename="mandat_debut", tp="dat"),
+		list(name=COL_ATT_MDT_FIN, basename="mandat_fin", tp="dat"),
+		list(name=COL_ATT_MDT_MOTIF, basename="mandat_motif", tp="cat"),
+		list(name=COL_ATT_ELU_NUANCE_DE, basename="nuance_pol", tp="cat"),
+		list(name=COL_ATT_ELU_ID, basename="elu_id", tp="cat")
 	)
 	
 	# load the data
@@ -316,27 +316,27 @@ load.epci.data <- function()
 	
 # names of the columns
 	cols <- list(
-		list(name="Code département EPCI", basename="dpt_code_epci", tp="cat"),
-		list(name="Code département commune rattachée", basename="dpt_code_com", tp="cat"),
-		list(name="Code de la commune", basename="ville_code", tp="cat"),
-		list(name="Libellé commune rattachée", basename="ville_nom", tp="nom"),
-		list(name="N° SIREN", basename="epci_siren", tp="cat"),
-		list(name="Libellé de l'EPCI", basename="epci_nom", tp="nom"),
-		list(name="Nom de l'élu", basename="patronyme", tp="nom"),
-		list(name="Prénom de l'élu", basename="prenom", tp="nom"),
-		list(name="Code sexe", basename="sexe", tp="cat"),
-		list(name="Date de naissance", basename="naissance_date", tp="dat"),
-		list(name="Code profession", basename="profession_code", tp="cat"),
-		list(name="Libellé de la profession", basename="profession_nom", tp="cat"),
-		list(name="Date de début du mandat", basename="mandat_debut", tp="dat"),
-		list(name="Date de fin du mandat", basename="mandat_fin", tp="dat"),
-		list(name="Motif de fin de mandat", basename="mandat_motif", tp="cat"),
-		list(name="Libellé de fonction", basename="fonction_nom", tp="cat"),
-		list(name="Date de début de la fonction", basename="fonction_debut", tp="dat"),
-		list(name="Date de fin de la fonction", basename="fonction_fin", tp="dat"),
-		list(name="Motif de fin de fonction", basename="fonction_motif", tp="cat"),
-		list(name="Nuance mandat", basename="nuance_pol", tp="cat"),
-		list(name="N° Identification d'un élu", basename="elu_id", tp="cat")
+		list(name=COL_ATT_DPT_CODE_EPCI, basename="dpt_code_epci", tp="cat"),
+		list(name=COL_ATT_DPT_CODE_COM, basename="dpt_code_com", tp="cat"),
+		list(name=COL_ATT_COM_CODE_EPCI, basename="ville_code", tp="cat"),
+		list(name=COL_ATT_COM_NOM_EPCI, basename="ville_nom", tp="nom"),
+		list(name=COL_ATT_EPCI_SIREN, basename="epci_siren", tp="cat"),
+		list(name=COL_ATT_EPCI_NOM, basename="epci_nom", tp="nom"),
+		list(name=COL_ATT_ELU_NOM, basename="patronyme", tp="nom"),
+		list(name=COL_ATT_ELU_PRENOM, basename="prenom", tp="nom"),
+		list(name=COL_ATT_ELU_SEXE, basename="sexe", tp="cat"),
+		list(name=COL_ATT_ELU_DDN, basename="naissance_date", tp="dat"),
+		list(name=COL_ATT_PRO_CODE, basename="profession_code", tp="cat"),
+		list(name=COL_ATT_PRO_NOM, basename="profession_nom", tp="cat"),
+		list(name=COL_ATT_MDT_DBT, basename="mandat_debut", tp="dat"),
+		list(name=COL_ATT_MDT_FIN, basename="mandat_fin", tp="dat"),
+		list(name=COL_ATT_MDT_MOTIF, basename="mandat_motif", tp="cat"),
+		list(name=COL_ATT_FCT_NOM, basename="fonction_nom", tp="cat"),
+		list(name=COL_ATT_FCT_DBT, basename="fonction_debut", tp="dat"),
+		list(name=COL_ATT_FCT_FIN, basename="fonction_fin", tp="dat"),
+		list(name=COL_ATT_FCT_MOTIF, basename="fonction_motif", tp="cat"),
+		list(name=COL_ATT_ELU_NUANCE_CR, basename="nuance_pol", tp="cat"),
+		list(name=COL_ATT_ELU_ID, basename="elu_id", tp="cat")
 	)
 	
 	# load the data
@@ -362,34 +362,34 @@ load.m.data <- function()
 	
 	# names of the columns
 	cols <- list(
-		list(name="Code du département (Maire)", basename="dpt_code", tp="cat"),
-		list(name="Libellé de département (Maires)", basename="dpt_code", tp="nom"),
-		list(name="Code Insee de la commune", basename="ville_code", tp="cat"),
-		list(name="Libellé de la commune", basename="ville_nom", tp="nom"),
-		list(name="Population de la commune", basename="ville_population", tp="num"),
-		list(name="Nom de l'élu", basename="patronyme", tp="nom"),
-		list(name="Prénom de l'élu", basename="prenom", tp="nom"),
-		list(name="Date de naissance", basename="naissance_date", tp="dat"),
-		list(name="Code sexe", basename="sexe", tp="cat"),
-		list(name="Code profession", basename="profession_code", tp="cat"),
-		list(name="Libellé de la profession", basename="profession_nom", tp="cat"),
-		list(name="Libellé de mandat", basename="mandat_nom", tp="cat"),
-		list(name="Date de début du mandat", basename="mandat_debut", tp="dat"),
-		list(name="Date de fin du mandat", basename="mandat_fin", tp="dat"),
-		list(name="Motif de fin de mandat", basename="mandat_motif", tp="cat"),
-		list(name="Libellé de fonction", basename="fonction_nom", tp="cat"),
-		list(name="Date de début de la fonction", basename="fonction_debut", tp="dat"),
-		list(name="Date de fin de la fonction", basename="fonction_fin", tp="dat"),
-		list(name="Motif de fin de fonction", basename="fonction_motif", tp="cat"),
-		list(name="Nuance politique (C. Mun.)", basename="nuance_pol", tp="cat"),
-		list(name="N° Identification d'un élu", basename="elu_id", tp="cat")
+		list(name=COL_ATT_DPT_CODE_M, basename="dpt_code", tp="cat"),
+		list(name=COL_ATT_DPT_NOM_M, basename="dpt_code", tp="nom"),
+		list(name=COL_ATT_COM_CODE, basename="ville_code", tp="cat"),
+		list(name=COL_ATT_COM_NOM, basename="ville_nom", tp="nom"),
+		list(name=COL_ATT_COM_POP, basename="ville_population", tp="num"),
+		list(name=COL_ATT_ELU_NOM, basename="patronyme", tp="nom"),
+		list(name=COL_ATT_ELU_PRENOM, basename="prenom", tp="nom"),
+		list(name=COL_ATT_ELU_DDN, basename="naissance_date", tp="dat"),
+		list(name=COL_ATT_ELU_SEXE, basename="sexe", tp="cat"),
+		list(name=COL_ATT_PRO_CODE, basename="profession_code", tp="cat"),
+		list(name=COL_ATT_PRO_NOM, basename="profession_nom", tp="cat"),
+		list(name=COL_ATT_MDT_NOM, basename="mandat_nom", tp="cat"),
+		list(name=COL_ATT_MDT_DBT, basename="mandat_debut", tp="dat"),
+		list(name=COL_ATT_MDT_FIN, basename="mandat_fin", tp="dat"),
+		list(name=COL_ATT_MDT_MOTIF, basename="mandat_motif", tp="cat"),
+		list(name=COL_ATT_FCT_NOM, basename="fonction_nom", tp="cat"),
+		list(name=COL_ATT_FCT_DBT, basename="fonction_debut", tp="dat"),
+		list(name=COL_ATT_FCT_FIN, basename="fonction_fin", tp="dat"),
+		list(name=COL_ATT_FCT_MOTIF, basename="fonction_motif", tp="cat"),
+		list(name=COL_ATT_ELU_NUANCE_CM, basename="nuance_pol", tp="cat"),
+		list(name=COL_ATT_ELU_ID, basename="elu_id", tp="cat")
 	)
 	
 	# load the data
 	data <- load.data(filenames, cols)
 	
 	# convert population numbers to actual integers
-	cn <- "Population de la commune"
+	cn <- COL_ATT_COM_POP
 	vals <- data[,cn]
 	vals <- gsub("\\s", "",  vals)	# \\s matches all whitespaces
 	vals <- gsub(",00", "",  vals)
@@ -418,24 +418,24 @@ load.s.data <- function()
 	
 # names of the columns
 	cols <- list(
-		list(name="Code du département", basename="dpt_code", tp="cat"),
-		list(name="Libellé du département", basename="dpt_code", tp="nom"),
-		list(name="Nom de l'élu", basename="patronyme", tp="nom"),
-		list(name="Prénom de l'élu", basename="prenom", tp="nom"),
-		list(name="Date de naissance", basename="naissance_date", tp="dat"),
-		list(name="Code sexe", basename="sexe", tp="cat"),
-		list(name="Code profession", basename="profession_code", tp="cat"),
-		list(name="Libellé de la profession", basename="profession_nom", tp="cat"),
-		list(name="Libellé de mandat", basename="mandat_nom", tp="cat"),
-		list(name="Date de début du mandat", basename="mandat_debut", tp="dat"),
-		list(name="Date de fin du mandat", basename="mandat_fin", tp="dat"),
-		list(name="Motif de fin de mandat", basename="mandat_motif", tp="cat"),
-		list(name="Libellé de fonction", basename="fonction_nom", tp="cat"),
-		list(name="Date de début de la fonction", basename="fonction_debut", tp="dat"),
-		list(name="Date de fin de la fonction", basename="fonction_fin", tp="dat"),
-		list(name="Motif de fin de fonction", basename="fonction_motif", tp="cat"),
-		list(name="Nuance politique (Sénateur)", basename="nuance_pol", tp="cat"),
-		list(name="N° Identification d'un élu", basename="elu_id", tp="cat")
+		list(name=COL_ATT_DPT_CODE, basename="dpt_code", tp="cat"),
+		list(name=COL_ATT_DPT_NOM, basename="dpt_code", tp="nom"),
+		list(name=COL_ATT_ELU_NOM, basename="patronyme", tp="nom"),
+		list(name=COL_ATT_ELU_PRENOM, basename="prenom", tp="nom"),
+		list(name=COL_ATT_ELU_DDN, basename="naissance_date", tp="dat"),
+		list(name=COL_ATT_ELU_SEXE, basename="sexe", tp="cat"),
+		list(name=COL_ATT_PRO_CODE, basename="profession_code", tp="cat"),
+		list(name=COL_ATT_PRO_NOM, basename="profession_nom", tp="cat"),
+		list(name=COL_ATT_MDT_NOM, basename="mandat_nom", tp="cat"),
+		list(name=COL_ATT_MDT_DBT, basename="mandat_debut", tp="dat"),
+		list(name=COL_ATT_MDT_FIN, basename="mandat_fin", tp="dat"),
+		list(name=COL_ATT_MDT_MOTIF, basename="mandat_motif", tp="cat"),
+		list(name=COL_ATT_FCT_NOM, basename="fonction_nom", tp="cat"),
+		list(name=COL_ATT_FCT_DBT, basename="fonction_debut", tp="dat"),
+		list(name=COL_ATT_FCT_FIN, basename="fonction_fin", tp="dat"),
+		list(name=COL_ATT_FCT_MOTIF, basename="fonction_motif", tp="cat"),
+		list(name=COL_ATT_ELU_NUANCE_S, basename="nuance_pol", tp="cat"),
+		list(name=COL_ATT_ELU_ID, basename="elu_id", tp="cat")
 	)
 	
 	# load the data

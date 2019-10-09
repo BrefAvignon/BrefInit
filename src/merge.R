@@ -84,37 +84,37 @@ tlog(4,"Dimensions of the table: ",paste(dim(s.data),collapse="x"))
 tlog(0,"Start merging the partial tables")
 tlog(2,"Init main table")
 cols <- c(
-	"CodeCirER",
-	"LibelléCirER",
-	"Code région",
-	"Libellé de la région",
-	"Code du département",
-	"Libellé du département",
-	"Code de la cir.législative",
-	"Libellé de la cir.législative",
-	"Code du canton",
-	"Libellé du canton",
-	"Code Insee de la commune",
-	"Libellé de la commune",
-	"Population de la commune",
-	"N° SIREN",
-	"Libellé de l'EPCI",
-	"Nom de l'élu",
-	"Prénom de l'élu",
-	"Date de naissance",
-	"Code sexe",
-	"Code profession",
-	"Libellé de la profession",
-	"Libellé de mandat",
-	"Date de début du mandat",
-	"Date de fin du mandat",
-	"Motif de fin de mandat",
-	"Libellé de fonction",
-	"Date de début de la fonction",
-	"Date de fin de la fonction",
-	"Motif de fin de fonction",
-	"Nuance politique",
-	"N° Identification d'un élu"
+	COL_ATT_CIRCE_CODE,
+	COL_ATT_CIRCE_NOM,
+	COL_ATT_REG_CODE,
+	COL_ATT_REG_NOM,
+	COL_ATT_DPT_CODE,
+	COL_ATT_DPT_NOM,
+	COL_ATT_CIRC_CODE,
+	COL_ATT_CIRC_NOM,
+	COL_ATT_CANT_CODE,
+	COL_ATT_CANT_NOM,
+	COL_ATT_COM_CODE,
+	COL_ATT_COM_NOM,
+	COL_ATT_COM_POP,
+	COL_ATT_EPCI_SIREN,
+	COL_ATT_EPCI_NOM,
+	COL_ATT_ELU_NOM,
+	COL_ATT_ELU_PRENOM,
+	COL_ATT_ELU_DDN,
+	COL_ATT_ELU_SEXE,
+	COL_ATT_PRO_CODE,
+	COL_ATT_PRO_NOM,
+	COL_ATT_MDT_NOM,
+	COL_ATT_MDT_DBT,
+	COL_ATT_MDT_FIN,
+	COL_ATT_MDT_MOTIF,
+	COL_ATT_FCT_NOM,
+	COL_ATT_FCT_DBT,
+	COL_ATT_FCT_FIN,
+	COL_ATT_FCT_MOTIF,
+	COL_ATT_ELU_NUANCE,
+	COL_ATT_ELU_ID
 )
 
 # create empty data frame
@@ -134,7 +134,7 @@ tmp <- data.frame(
 col.inter <- intersect(cols, sapply(cd.cols, get, x="name"))
 tmp[,col.inter] <- cd.data[,col.inter]
 tlog(2,"  Remaining columns: ",paste(setdiff(sapply(cd.cols, get, x="name"), col.inter), collapse=", "))
-tmp[,"Nuance politique"] <- cd.data[,"Nuance politique (C. Gén.)"]
+tmp[,COL_ATT_ELU_NUANCE] <- cd.data[,COL_ATT_ELU_NUANCE_CD]
 data <- rbind(data, tmp)
 
 # add municipal data
@@ -147,9 +147,9 @@ tmp <- data.frame(
 col.inter <- intersect(cols, sapply(cm.cols, get, x="name"))
 tmp[,col.inter] <- cm.data[,col.inter]
 tlog(2,"  Remaining columns: ",paste(setdiff(sapply(cm.cols, get, x="name"), col.inter), collapse=", "))
-tmp[,"Libellé du département"] <- cm.data[,"Libellé de département (Maires)"]
-tmp[,"Code du département"] <- cm.data[,"Code du département (Maire)"]
-tmp[,"Nuance politique"] <- cm.data[,"Nuance politique (C. Mun.)"]
+tmp[,COL_ATT_DPT_NOM] <- cm.data[,COL_ATT_DPT_NOM_M]
+tmp[,COL_ATT_DPT_CODE] <- cm.data[,COL_ATT_DPT_CODE_M]
+tmp[,COL_ATT_ELU_NUANCE] <- cm.data[,COL_ATT_ELU_NUANCE_CM]
 data <- rbind(data, tmp)
 
 # add regional data
@@ -162,8 +162,8 @@ tmp <- data.frame(
 col.inter <- intersect(cols, sapply(cr.cols, get, x="name"))
 tmp[,col.inter] <- cr.data[,col.inter]
 tlog(2,"  Remaining columns: ",paste(setdiff(sapply(cr.cols, get, x="name"), col.inter), collapse=", "))
-tmp[,"Libellé du département"] <- cr.data[,"Libellé de département"]
-tmp[,"Nuance politique"] <- cr.data[,"Nuance mandat"]
+tmp[,COL_ATT_DPT_NOM] <- cr.data[,COL_ATT_DPT_NOM_CR]
+tmp[,COL_ATT_ELU_NUANCE] <- cr.data[,COL_ATT_ELU_CR]
 data <- rbind(data, tmp)
 
 # add parliamentary data
@@ -176,7 +176,7 @@ tmp <- data.frame(
 col.inter <- intersect(cols, sapply(d.cols, get, x="name"))
 tmp[,col.inter] <- d.data[,col.inter]
 tlog(3,"  Remaining columns: ",paste(setdiff(sapply(d.cols, get, x="name"), col.inter), collapse=", "))
-tmp[,"Nuance politique"] <- d.data[,"Nuance politique (Député)"]
+tmp[,COL_ATT_ELU_NUANCE] <- d.data[,COL_ATT_ELU_NUANCE_D]
 data <- rbind(data, tmp)
 
 # add European parliamentary data
@@ -189,7 +189,7 @@ tmp <- data.frame(
 col.inter <- intersect(cols, sapply(de.cols, get, x="name"))
 tmp[,col.inter] <- de.data[,col.inter]
 tlog(4,"  Remaining columns: ",paste(setdiff(sapply(de.cols, get, x="name"), col.inter), collapse=", "))
-tmp[,"Nuance politique"] <- de.data[,"Nuance politique (Rep. P.E.)"]
+tmp[,COL_ATT_ELU_NUANCE] <- de.data[,COL_ATT_ELU_NUANCE_DE]
 data <- rbind(data, tmp)
 
 # add EPCI data
@@ -202,7 +202,10 @@ tmp <- data.frame(
 col.inter <- intersect(cols, sapply(epci.cols, get, x="name"))
 tmp[,col.inter] <- epci.data[,col.inter]
 tlog(4,"  Remaining columns: ",paste(setdiff(sapply(epci.cols, get, x="name"), col.inter), collapse=", "))
-tmp[,"Nuance politique"] <- epci.data[,"Nuance mandat"]
+tmp[,COL_ATT_ELU_NUANCE] <- epci.data[,COL_ATT_ELU_NUANCE_CR]
+tmp[,COL_ATT_DPT_CODE] <- epci.data[,COL_ATT_DPT_CODE_COM]
+tmp[,COL_ATT_COM_NOM] <- epci.data[,COL_ATT_COM_NOM_EPCI]
+tmp[,COL_ATT_COM_CODE] <- epci.data[,COL_ATT_COM_CODE_EPCI]
 data <- rbind(data, tmp)
 
 # add mayoral data
@@ -215,9 +218,9 @@ tmp <- data.frame(
 col.inter <- intersect(cols, sapply(m.cols, get, x="name"))
 tmp[,col.inter] <- m.data[,col.inter]
 tlog(4,"  Remaining columns: ",paste(setdiff(sapply(m.cols, get, x="name"), col.inter), collapse=", "))
-tmp[,"Code du département"] <- m.data[,"Code du département (Maire)"]
-tmp[,"Libellé du département"] <- m.data[,"Libellé de département (Maires)"]
-tmp[,"Nuance politique"] <- m.data[,"Nuance politique (C. Mun.)"]
+tmp[,COL_ATT_DPT_CODE] <- m.data[,COL_ATT_DPT_CODE_M]
+tmp[,COL_ATT_DPT_NOM] <- m.data[,COL_ATT_DPT_NOM_M]
+tmp[,COL_ATT_ELU_NUANCE] <- m.data[,COL_ATT_ELU_NUANCE_CM]
 data <- rbind(data, tmp)
 
 # add senatorial data
@@ -230,7 +233,7 @@ tmp <- data.frame(
 col.inter <- intersect(cols, sapply(s.cols, get, x="name"))
 tmp[,col.inter] <- s.data[,col.inter]
 tlog(4,"  Remaining columns: ",paste(setdiff(sapply(s.cols, get, x="name"), col.inter), collapse=", "))
-tmp[,"Nuance politique"] <- s.data[,"Nuance politique (Sénateur)"]
+tmp[,COL_ATT_ELU_NUANCE] <- s.data[,COL_ATT_ELU_NUANCE_S]
 data <- rbind(data, tmp)
 
 tlog(0,"Merge over")
