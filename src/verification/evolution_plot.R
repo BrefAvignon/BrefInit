@@ -35,11 +35,11 @@ plot.pers.time <- function(data, out.folder, daily=FALSE)
 		while(cur.month <= end.date)
 		{	next.month <- addMonth(cur.month,1)
 			
-			idx <- which(sapply(1:nrow(data), function(r)
-						date.intersect(data[r,COL_ATT_MDT_DBT], data[r,COL_ATT_MDT_FIN], cur.month, next.month)
+			month.idx <- which(sapply(1:nrow(data), function(r)
+						date.intersect(data[r,COL_ATT_MDT_DBT], data[r,COL_ATT_MDT_FIN], cur.month, next.month-1)
 					))
-			month.val <- length(idx)
-			tlog(6,"Processing period ",format(cur.month),"--",format(next.month),": ",month.val," occurrence(s)")
+			month.val <- length(month.idx)
+			tlog(6,"Processing period ",format(cur.month),"--",format(next.month-1),": ",month.val," occurrence(s)")
 			month.vals <- c(month.vals, month.val)
 			
 			# update current date
@@ -59,23 +59,23 @@ plot.pers.time <- function(data, out.folder, daily=FALSE)
 		
 		cur.day <- start.date
 		cur.month <- get.first.day(start.date)
-		month.val <- 0 
+		month.idx <- c() 
 		tlog(4,"Looping over time by 1-day increments")
 		while(cur.day <= end.date)
 		{	day <- as.integer(format(cur.day,format="%d"))
 			next.day <- cur.day + 1
 			
-			idx <- which(sapply(1:nrow(data), function(r)
-						date.intersect(data[r,COL_ATT_MDT_DBT], data[r,COL_ATT_MDT_FIN], cur.day, next.day)
+			day.idx <- which(sapply(1:nrow(data), function(r)
+						date.intersect(data[r,COL_ATT_MDT_DBT], data[r,COL_ATT_MDT_FIN], cur.day, cur.day)
 					))
-			day.val <- length(idx)
-			month.val <- month.val + day.val
-			if(day==1)
-			{	tlog(6,"Processing period ",format(cur.day),"--",format(next.day),": ",day.val," occurrence(s)")
-				month.vals <- c(month.vals, month.val)
+			day.val <- length(day.idx)
+			month.idx <- union(month.idx, day.idx)
+			if(as.integer(format(next.day,format="%d"))==1)
+			{	tlog(6,"Processing day ",format(cur.day),": ",day.val," occurrence(s)")
+				month.vals <- c(month.vals, length(month.idx))
 				month.dates <- c(month.dates, cur.month)
-				month.val <- 0
-				cur.month <- cur.day
+				month.idx <- c()
+				cur.month <- next.day
 			}
 			day.vals <- c(day.vals, day.val)
 			
