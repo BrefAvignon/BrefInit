@@ -14,54 +14,122 @@
 # data: table containing the data.
 # out.folder: output folder.
 #############################################################################################
-plot.pers.time <- function(data, out.folder)
+plot.pers.time <- function(data, out.folder, daily=FALSE)
 {	tlog(2,"Plotting number of mandate occurrences as a function of time")
 	
 	# set up start/end dates
 	start.date <- min(c(data[,COL_ATT_MDT_DBT],data[,COL_ATT_MDT_FIN]),na.rm=TRUE)
-	start.date <- get.first.day(start.date)
-	tlog(4,"Start date: ",format(start.date))
 	end.date <- max(c(data[,COL_ATT_MDT_DBT],data[,COL_ATT_MDT_FIN]),na.rm=TRUE)
-	end.date <- get.first.day(end.date)
-	tlog(4,"End date: ",format(end.date))
-	
+
 	# loop over all months in the period
-	date <- start.date
-	dates <- c()
-	vals <- c()
-	tlog(4,"Looping over time by 1-month increments")
-	while(date <= end.date)
-	{	next.date <- addMonth(date,1)
+	if(!daily)
+	{	start.date <- get.first.day(start.date)
+		tlog(4,"Start date: ",format(start.date))
+		end.date <- get.first.day(end.date)
+		tlog(4,"End date: ",format(end.date))
+		month.dates <- c()
+		month.vals <- c()
 		
-		idx <- which(sapply(1:nrow(data), function(r)
-					date.intersect(data[r,COL_ATT_MDT_DBT], data[r,COL_ATT_MDT_FIN], date, next.date)
-				))
-		val <- length(idx)
-		tlog(6,"Processing period ",format(date),"--",format(next.date),": ",val," occurrence(s)")
-		vals <- c(vals, val)
-		
-		# update current date
-		dates <- c(dates, date)
-		date <- next.date
+		cur.month <- start.date
+		tlog(4,"Looping over time by 1-month increments")
+		while(cur.month <= end.date)
+		{	next.month <- addMonth(cur.month,1)
+			
+			idx <- which(sapply(1:nrow(data), function(r)
+						date.intersect(data[r,COL_ATT_MDT_DBT], data[r,COL_ATT_MDT_FIN], cur.month, next.month)
+					))
+			month.val <- length(idx)
+			tlog(6,"Processing period ",format(cur.month),"--",format(next.month),": ",month.val," occurrence(s)")
+			month.vals <- c(month.vals, month.val)
+			
+			# update current date
+			month.dates <- c(month.dates, cur.month)
+			cur.month <- next.month
+		}
+		month.dates <- as.Date(month.dates,origin="1970-01-01")
 	}
-	dates <- as.Date(dates,origin="1970-01-01")
+	# loop over all days in the period
+	else
+	{	tlog(4,"Start date: ",format(start.date))
+		tlog(4,"End date: ",format(end.date))
+		day.dates <- c()
+		day.vals <- c()
+		month.dates <- c()
+		month.vals <- c()
+		
+		cur.day <- start.date
+		cur.month <- get.first.day(start.date)
+		month.val <- 0 
+		tlog(4,"Looping over time by 1-day increments")
+		while(cur.day <= end.date)
+		{	day <- as.integer(format(cur.day,format="%d"))
+			next.day <- cur.day + 1
+			
+			idx <- which(sapply(1:nrow(data), function(r)
+						date.intersect(data[r,COL_ATT_MDT_DBT], data[r,COL_ATT_MDT_FIN], cur.day, next.day)
+					))
+			day.val <- length(idx)
+			month.val <- month.val + day.val
+			if(day==1)
+			{	tlog(6,"Processing period ",format(cur.day),"--",format(next.day),": ",day.val," occurrence(s)")
+				month.vals <- c(month.vals, month.val)
+				month.dates <- c(month.dates, cur.month)
+				month.val <- 0
+				cur.month <- cur.day
+			}
+			day.vals <- c(day.vals, day.val)
+			
+			# update current date
+			day.dates <- c(day.dates, cur.day)
+			cur.day <- next.day
+		}
+		day.dates <- as.Date(day.dates,origin="1970-01-01")
+		month.dates <- as.Date(month.dates,origin="1970-01-01")
+	}
 	
 	# record data in a text file
-	file <- file.path(out.folder,"persons_vs_time.txt")
-	tab <- data.frame(Date=format(dates,format="%d/%m/%Y"),Count=vals)
+	if(daily)
+	{	file <- file.path(out.folder,"persons_by_day.txt")
+		tab <- data.frame(Date=format(day.dates,format="%d/%m/%Y"),Count=day.vals)
+		write.table(x=tab,file=file,row.names=FALSE,col.names=TRUE,fileEncoding="UTF8")
+	}
+	# same by month
+	file <- file.path(out.folder,"persons_by_month.txt")
+	tab <- data.frame(Date=format(month.dates,format="%d/%m/%Y"),Count=month.vals)
 	write.table(x=tab,file=file,row.names=FALSE,col.names=TRUE,fileEncoding="UTF8")
 	
 	# generate plot only starting from 2000
-	idx <- which(dates>as.Date("2000/1/1"))
-	file <- file.path(out.folder,paste0("persons_vs_time_2001.",PLOT_FORMAT))
+	if(daily)
+	{	idx <- which(day.dates>as.Date("2000/1/1"))
+		file <- file.path(out.folder,paste0("persons_by_day_2001.",PLOT_FORMAT))
+		tlog(4, "Generating plot in file \"",file,"\"")
+		if(PLOT_FORMAT=="pdf")
+			pdf(file)
+		else if(PLOT_FORMAT=="png")
+			png(file, width=1024, height=1024)
+		plot(
+			x=as.Date(day.dates[idx], origin="1970-01-01"),
+			y=day.vals[idx], 
+			col="Red", 
+			xlab="Dates", 
+			ylab="Count",
+			type="l",
+#		las=2, 
+#		cex.names=min(1,20/length(uvals))
+		)
+		dev.off()
+	}
+	# same by month
+	idx <- which(month.dates>as.Date("2000/1/1"))
+	file <- file.path(out.folder,paste0("persons_by_month_2001.",PLOT_FORMAT))
 	tlog(4, "Generating plot in file \"",file,"\"")
 	if(PLOT_FORMAT=="pdf")
 		pdf(file)
 	else if(PLOT_FORMAT=="png")
 		png(file, width=1024, height=1024)
 	plot(
-			x=as.Date(dates[idx], origin="1970-01-01"),
-			y=vals[idx], 
+			x=as.Date(month.dates[idx], origin="1970-01-01"),
+			y=month.vals[idx], 
 			col="Red", 
 			xlab="Dates", 
 			ylab="Count",
@@ -72,15 +140,35 @@ plot.pers.time <- function(data, out.folder)
 	dev.off()
 	
 	# generate plot for all dates
-	file <- file.path(out.folder,paste0("persons_vs_time.",PLOT_FORMAT))
+	if(daily)
+	{	file <- file.path(out.folder,paste0("persons_by_day.",PLOT_FORMAT))
+		tlog(4, "Generating plot in file \"",file,"\"")
+		if(PLOT_FORMAT=="pdf")
+			pdf(file)
+		else if(PLOT_FORMAT=="png")
+			png(file, width=1024, height=1024)
+		plot(
+			x=as.Date(day.dates, origin="1970-01-01"),
+			y=day.vals, 
+			col="Red", 
+			xlab="Dates", 
+			ylab="Count",
+			type="l",
+#		las=2, 
+#		cex.names=min(1,20/length(uvals))
+		)
+		dev.off()
+	}
+	# same for months
+	file <- file.path(out.folder,paste0("persons_by_month.",PLOT_FORMAT))
 	tlog(4, "Generating plot in file \"",file,"\"")
 	if(PLOT_FORMAT=="pdf")
 		pdf(file)
 	else if(PLOT_FORMAT=="png")
 		png(file, width=1024, height=1024)
 	plot(
-		x=as.Date(dates, origin="1970-01-01"),
-		y=vals, 
+		x=as.Date(month.dates, origin="1970-01-01"),
+		y=month.vals, 
 		col="Red", 
 		xlab="Dates", 
 		ylab="Count",

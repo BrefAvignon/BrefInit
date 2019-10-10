@@ -26,7 +26,7 @@ tlog(0,"Examining each column separately")
 check.cols(data=data, cols=cols, out.folder=out.folder)
 
 # plots the number of persons over time time
-plot.pers.time(data, out.folder)
+plot.pers.time(data, out.folder, daily=TRUE)
 
 # close the log file
 tlog(0,"Done")
