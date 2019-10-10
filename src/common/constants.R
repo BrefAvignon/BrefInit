@@ -9,8 +9,29 @@
 
 #############################################################################################
 ## folder and file constants
-# input folder
+# input folders
 FOLDER_IN <- "in"
+FOLDER_TABLES <- file.path(FOLDER_IN,"tables")
+FOLDER_CORRECS <- file.path(FOLDER_IN,"corrections")
+# table files
+FILES_TAB_CD <- c("F Tous CD.txt")
+FILES_TAB_CM <- c("A Tous CM 01 30.txt", "B Tous CM 31 60.txt", "C Tous CM 61 95.txt", "D Tous CM OM.txt")
+FILES_TAB_CR <- c("G Tous CR.txt")
+FILES_TAB_D <- c("H Tous Deputes.txt")
+FILES_TAB_DE <- c("J Tous RPE.txt")
+FILES_TAB_EPCI <- c("E Tous Membres EPCI.txt")
+FILES_TAB_M <- c("K Tous Maires.txt")
+FILES_TAB_S <- c("I Tous Senateurs.txt")
+# correction files
+FILE_CORREC_CD <- "correc_CD.txt"
+FILE_CORREC_CM <- "correc_CM.txt"
+FILE_CORREC_CR <- "correc_CR.txt"
+FILE_CORREC_D <- "correc_D.txt"
+FILE_CORREC_DE <- "correc_DE.txt"
+FILE_CORREC_EPCI <- "correc_EPCI.txt"
+FILE_CORREC_M <- "correc_M.txt"
+FILE_CORREC_S <- "correc_S.txt"
+
 # output folder
 FOLDER_OUT <- "out"
 # folder to store logs
@@ -95,3 +116,12 @@ COL_ATT_PRO_CODE <- "Code profession"
 COL_ATT_PRO_NOM <- "Libellé de la profession"
 COL_ATT_REG_CODE <- "Code région"
 COL_ATT_REG_NOM <- "Libellé de la région"
+
+# correction files
+COL_CORREC_ID <- "Id"
+COL_CORREC_NOM <- "Nom"
+COL_CORREC_PRENOM <- "Prénom"
+COL_CORREC_ATTR <- "Attribut"
+COL_CORREC_VALAVT <- "ValAvt"
+COL_CORREC_VALAPR <- "ValApr"
+COL_CORREC_COMM <- "Commentaire"

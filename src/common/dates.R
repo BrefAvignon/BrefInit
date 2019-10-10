@@ -90,7 +90,9 @@ addMonth <- function(date, n=1)
 # returns: date of the first day of the same month.
 #############################################################################################
 get.first.day <- function(date)
-{	# break down the date
+{	cat("Date: ",format(date),"\n",sep="")
+	
+	# break down the date
 	y = as.numeric(substr(as.character(date),1,4))
 	m = as.numeric(substr(as.character(date),6,7))
 	d = as.numeric(substr(as.character(date),9,10))
@@ -99,7 +101,7 @@ get.first.day <- function(date)
 	d <- 1
 	
 	# put together and return
-	result <- as.Date(paste(y,'-',m,'-',d,sep=''))
+	result <- as.Date(paste(y,"-",m,"-",d,sep=""))
 	return(result)
 }
 
@@ -117,7 +119,17 @@ get.first.day <- function(date)
 # returns: TRUE iff the periods intersect.
 #############################################################################################
 date.intersect <- function(start1, end1, start2, end2)
-{	
+{	#cat(format(start1),"--",format(end1)," vs ",format(start2),"--",format(end2),"\n",sep="")
+	
+	if(is.na(start1))
+		start1 <- min(c(start1,end1,start2,end2), na.rm=TRUE)
+	if(is.na(start2))
+		start2 <- min(c(start1,end1,start2,end2), na.rm=TRUE)
+	if(is.na(end1))
+		end1 <- max(c(start1,end1,start2,end2), na.rm=TRUE)
+	if(is.na(end2))
+		end2 <- max(c(start1,end1,start2,end2), na.rm=TRUE)
+	
 	if(start1<start2)
 	{	if(end1<start2)
 			result <- FALSE

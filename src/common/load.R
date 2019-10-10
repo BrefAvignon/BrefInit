@@ -13,15 +13,31 @@
 #
 # filenames: list of files to read.
 # cols: description of the columns of the loaded tables.
+# correc.file: file containing the corrections.
 #
 # returns: data frame made of the cleaned data contained in the files.
 #############################################################################################
-load.data <- function(filenames, cols)
-{	# load all the tables
+load.data <- function(filenames, cols, correc.file)
+{	# load the corrections
+	fn <- file.path(FOLDER_CORRECS, correc.file)
+	tlog(0,"Loading correction file \"",fn,"\"")
+	correc.table <- read.table(
+			file=fn, 					# name of the data file
+			header=TRUE, 				# look for a header
+			sep="\t", 					# character used to separate columns 
+			check.names=FALSE, 			# don't change the column names from the file
+			comment.char="", 			# ignore possible comments in the content
+			row.names=NULL, 			# don't look for row names in the file
+			quote="", 					# don't expect double quotes "..." around text fields
+			as.is=TRUE,					# don't convert strings to factors
+			fileEncoding="Latin1"		# original tables seem to be encoded in Latin1 (ANSI)
+	)
+	
+	# load all the tables
 	data <- NULL
 	for(filename in filenames)
-	{	fn <- file.path(FOLDER_IN, filename)
-		tlog(0,"Loading file \"",fn,"\"")
+	{	fn <- file.path(FOLDER_TABLES, filename)
+		tlog(0,"Loading table file \"",fn,"\"")
 		# read the partial table
 		temp <- read.table(
 				file=fn, 					# name of the data file
@@ -51,7 +67,40 @@ load.data <- function(filenames, cols)
 	for(col in cols)
 	{	if(col$tp=="dat")
 		{	tlog(2,"Col. \"",col$name,"\": CONVERTING")
+			
+			# possibly apply corrections
+			if(nrow(correc.table)>0)	
+			{	# keep only the relevant corrections
+				cor.tab <- correc.table[correc.table[,COL_CORREC_ATTR]==col$name,]
+				# process each remaining correction
+				if(nrow(cor.tab)>0)
+				{	for(r in 1:nrow(cor.tab))
+					{	# identify the targeted row in the data table
+						idx <- which(data[,COL_ATT_ELU_ID]==cor.tab[r,COL_CORREC_ID]
+							& data[,COL_ATT_ELU_NOM]==cor.tab[r,COL_CORREC_NOM]
+							& data[,COL_ATT_ELU_PRENOM]==cor.tab[r,COL_CORREC_PRENOM]
+							& data[,cor.tab[r,COL_CORREC_ATTR]]==cor.tab[r,COL_CORREC_VALAVT]
+						)
+						# there should be exactly one
+						if(length(idx)<1)
+						{	tlog(4,"Could not find a correction: ",paste(cor.tab[r,],collapse=";"))
+							stop(paste0("Could not find a correction: ",paste(cor.tab[r,],collapse=";")))
+						}
+						else if(length(idx)>1)
+						{	tlog(4,"A correction matches several cases: ",paste(cor.tab[r,],collapse=";"))
+							stop(paste0("A correction matches several cases: ",paste(cor.tab[r,],collapse=";")))
+						}
+						else
+						{	tlog(4,"Correcting entry: ",paste(cor.tab[r,],collapse=";"))
+#							vals[which(vals==as.Date("29/1/0201",format="%d/%m/%Y"))] <- as.Date("20/10/2016",format="%d/%m/%Y")	# manual correction for COCHONNEAU Virginie 1/5/1982 (CM), completely arbitrary
+							data[idx,cor.tab[r,COL_CORREC_ATTR]] <- cor.tab[r,COL_CORREC_VALAPR]
+						}
+					}
+				}
+			}
+			
 			vals <- as.Date(data[,col$name], "%d/%m/%Y")
+			
 			#format(x, format="%Y/%m/%d")
 			data <- data[, names(data)!=col$name]
 			data <- cbind(data,vals)
@@ -87,12 +136,7 @@ load.data <- function(filenames, cols)
 # returns: data frame made of the cleaned data contained in the appropriate files.
 #############################################################################################
 load.cd.data <- function()
-{	# filenames to process
-	filenames <- c(
-		"F Tous CD.txt"
-	)
-	
-	# names of the columns
+{	# names of the columns
 	cols <- list(
 		list(name=COL_ATT_DPT_CODE, basename="dpt_code", tp="cat"),
 		list(name=COL_ATT_DPT_NOM, basename="dpt_nom", tp="nom"),
@@ -117,7 +161,7 @@ load.cd.data <- function()
 	)
 	
 	# load the data
-	data <- load.data(filenames, cols)
+	data <- load.data(filenames=FILES_TAB_CD, cols=cols, corre.file=FILE_CORREC_CD)
 	
 	res <- list(data=data,cols=cols)
 	return(res)
@@ -132,15 +176,7 @@ load.cd.data <- function()
 # returns: data frame made of the cleaned data contained in the appropriate files.
 #############################################################################################
 load.cm.data <- function()
-{	# filenames to process
-	filenames <- c(
-		"A Tous CM 01 30.txt",	# mainland departments #1
-		"B Tous CM 31 60.txt",	# mainland departments #2
-		"C Tous CM 61 95.txt",	# mainland departments #3
-		"D Tous CM OM.txt"		# overseas territories
-	)
-	
-	# names of the columns
+{	# names of the columns
 	cols <- list(
 		list(name=COL_ATT_DPT_CODE_M, basename="dpt_code", tp="cat"),
 		list(name=COL_ATT_DPT_NOM_M, basename="dpt_nom", tp="nom"),
@@ -165,7 +201,7 @@ load.cm.data <- function()
 	)
 	
 	# load the data
-	data <- load.data(filenames, cols)
+	data <- load.data(FILES_TAB_CM, cols, FILE_CORREC_CM)
 	
 	res <- list(data=data,cols=cols)
 	return(res)
@@ -180,12 +216,7 @@ load.cm.data <- function()
 # returns: data frame made of the cleaned data contained in the appropriate files.
 #############################################################################################
 load.cr.data <- function()
-{	# filenames to process
-	filenames <- c(
-		"G Tous CR.txt"
-	)
-	
-	# names of the columns
+{	# names of the columns
 	cols <- list(
 		list(name=COL_ATT_REG_CODE, basename="region_code", tp="cat"),
 		list(name=COL_ATT_REG_NOM, basename="region_nom", tp="nom"),
@@ -210,7 +241,7 @@ load.cr.data <- function()
 	)
 	
 	# load the data
-	data <- load.data(filenames, cols)
+	data <- load.data(FILES_TAB_CR, cols, FILE_CORREC_CR)
 	
 	res <- list(data=data,cols=cols)
 	return(res)
@@ -225,12 +256,7 @@ load.cr.data <- function()
 # returns: data frame made of the cleaned data contained in the appropriate files.
 #############################################################################################
 load.d.data <- function()
-{	# filenames to process
-	filenames <- c(
-		"H Tous Deputes.txt"
-	)
-	
-	# names of the columns
+{	# names of the columns
 	cols <- list(
 		list(name=COL_ATT_DPT_CODE, basename="dpt_code", tp="cat"),
 		list(name=COL_ATT_DPT_NOM, basename="dpt_nom", tp="nom"),
@@ -255,7 +281,7 @@ load.d.data <- function()
 	)
 	
 	# load the data
-	data <- load.data(filenames, cols)
+	data <- load.data(FILES_TAB_D, cols, FILE_CORREC_D)
 	
 	res <- list(data=data,cols=cols)
 	return(res)
@@ -270,12 +296,7 @@ load.d.data <- function()
 # returns: data frame made of the cleaned data contained in the appropriate files.
 #############################################################################################
 load.de.data <- function()
-{	# filenames to process
-	filenames <- c(
-		"J Tous RPE.txt"
-	)
-	
-	# names of the columns
+{	# names of the columns
 	cols <- list(
 		list(name=COL_ATT_CIRCE_CODE, basename="circo_code", tp="cat"),
 		list(name=COL_ATT_CIRCE_NOM, basename="circo_nom", tp="nom"),
@@ -294,7 +315,7 @@ load.de.data <- function()
 	)
 	
 	# load the data
-	data <- load.data(filenames, cols)
+	data <- load.data(FILES_TAB_DE, cols, FILE_CORREC_DE)
 	
 	res <- list(data=data,cols=cols)
 	return(res)
@@ -309,12 +330,7 @@ load.de.data <- function()
 # returns: data frame made of the cleaned data contained in the appropriate files.
 #############################################################################################
 load.epci.data <- function()
-{	# filenames to process
-	filenames <- c(
-		"E Tous Membres EPCI.txt"
-	)
-	
-# names of the columns
+{	# names of the columns
 	cols <- list(
 		list(name=COL_ATT_DPT_CODE_EPCI, basename="dpt_code_epci", tp="cat"),
 		list(name=COL_ATT_DPT_CODE_COM, basename="dpt_code_com", tp="cat"),
@@ -340,7 +356,7 @@ load.epci.data <- function()
 	)
 	
 	# load the data
-	data <- load.data(filenames, cols)
+	data <- load.data(FILES_TAB_EPCI, cols, FILE_CORREC_EPCI)
 	
 	res <- list(data=data,cols=cols)
 	return(res)
@@ -355,12 +371,7 @@ load.epci.data <- function()
 # returns: data frame made of the cleaned data contained in the appropriate files.
 #############################################################################################
 load.m.data <- function()
-{	# filenames to process
-	filenames <- c(
-		"K Tous Maires.txt"
-	)
-	
-	# names of the columns
+{	# names of the columns
 	cols <- list(
 		list(name=COL_ATT_DPT_CODE_M, basename="dpt_code", tp="cat"),
 		list(name=COL_ATT_DPT_NOM_M, basename="dpt_nom", tp="nom"),
@@ -386,7 +397,7 @@ load.m.data <- function()
 	)
 	
 	# load the data
-	data <- load.data(filenames, cols)
+	data <- load.data(FILES_TAB_M, cols, FILE_CORREC_M)
 	
 	# convert population numbers to actual integers
 	cn <- COL_ATT_COM_POP
@@ -411,12 +422,7 @@ load.m.data <- function()
 # returns: data frame made of the cleaned data contained in the appropriate files.
 #############################################################################################
 load.s.data <- function()
-{	# filenames to process
-	filenames <- c(
-		"I Tous Senateurs.txt"
-	)
-	
-# names of the columns
+{	# names of the columns
 	cols <- list(
 		list(name=COL_ATT_DPT_CODE, basename="dpt_code", tp="cat"),
 		list(name=COL_ATT_DPT_NOM, basename="dpt_nom", tp="nom"),
@@ -439,7 +445,7 @@ load.s.data <- function()
 	)
 	
 	# load the data
-	data <- load.data(filenames, cols)
+	data <- load.data(FILES_TAB_S, cols, FILE_CORREC_S)
 	
 	res <- list(data=data,cols=cols)
 	return(res)

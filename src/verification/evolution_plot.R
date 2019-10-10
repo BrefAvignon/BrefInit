@@ -44,8 +44,34 @@ plot.pers.time <- function(data, out.folder)
 		dates <- c(dates, date)
 		date <- next.date
 	}
+	dates <- as.Date(dates,origin="1970-01-01")
 	
-	# generate plot
+	# record data in a text file
+	file <- file.path(out.folder,"persons_vs_time.txt")
+	tab <- data.frame(Date=format(dates,format="%d/%m/%Y"),Count=vals)
+	write.table(x=tab,file=file,row.names=FALSE,col.names=TRUE,fileEncoding="UTF8")
+	
+	# generate plot only starting from 2000
+	idx <- which(dates>as.Date("2000/1/1"))
+	file <- file.path(out.folder,paste0("persons_vs_time_2001.",PLOT_FORMAT))
+	tlog(4, "Generating plot in file \"",file,"\"")
+	if(PLOT_FORMAT=="pdf")
+		pdf(file)
+	else if(PLOT_FORMAT=="png")
+		png(file, width=1024, height=1024)
+	plot(
+			x=as.Date(dates[idx], origin="1970-01-01"),
+			y=vals[idx], 
+			col="Red", 
+			xlab="Dates", 
+			ylab="Count",
+			type="l",
+#		las=2, 
+#		cex.names=min(1,20/length(uvals))
+	)
+	dev.off()
+	
+	# generate plot for all dates
 	file <- file.path(out.folder,paste0("persons_vs_time.",PLOT_FORMAT))
 	tlog(4, "Generating plot in file \"",file,"\"")
 	if(PLOT_FORMAT=="pdf")
