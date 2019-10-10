@@ -161,7 +161,7 @@ load.cd.data <- function()
 	)
 	
 	# load the data
-	data <- load.data(filenames=FILES_TAB_CD, cols=cols, corre.file=FILE_CORREC_CD)
+	data <- load.data(filenames=FILES_TAB_CD, cols=cols, correc.file=FILE_CORREC_CD)
 	
 	res <- list(data=data,cols=cols)
 	return(res)
@@ -201,7 +201,7 @@ load.cm.data <- function()
 	)
 	
 	# load the data
-	data <- load.data(FILES_TAB_CM, cols, FILE_CORREC_CM)
+	data <- load.data(filenames=FILES_TAB_CM, cols=cols, correc.file=FILE_CORREC_CM)
 	
 	res <- list(data=data,cols=cols)
 	return(res)
@@ -241,7 +241,7 @@ load.cr.data <- function()
 	)
 	
 	# load the data
-	data <- load.data(FILES_TAB_CR, cols, FILE_CORREC_CR)
+	data <- load.data(filenames=FILES_TAB_CR, cols=cols, correc.file=FILE_CORREC_CR)
 	
 	res <- list(data=data,cols=cols)
 	return(res)
@@ -281,7 +281,7 @@ load.d.data <- function()
 	)
 	
 	# load the data
-	data <- load.data(FILES_TAB_D, cols, FILE_CORREC_D)
+	data <- load.data(filenames=FILES_TAB_D, cols=cols, correc.file=FILE_CORREC_D)
 	
 	res <- list(data=data,cols=cols)
 	return(res)
@@ -315,7 +315,7 @@ load.de.data <- function()
 	)
 	
 	# load the data
-	data <- load.data(FILES_TAB_DE, cols, FILE_CORREC_DE)
+	data <- load.data(filenames=FILES_TAB_DE, cols=cols, correc.file=FILE_CORREC_DE)
 	
 	res <- list(data=data,cols=cols)
 	return(res)
@@ -356,7 +356,7 @@ load.epci.data <- function()
 	)
 	
 	# load the data
-	data <- load.data(FILES_TAB_EPCI, cols, FILE_CORREC_EPCI)
+	data <- load.data(filenames=FILES_TAB_EPCI, cols=cols, correc.file=FILE_CORREC_EPCI)
 	
 	res <- list(data=data,cols=cols)
 	return(res)
@@ -397,7 +397,7 @@ load.m.data <- function()
 	)
 	
 	# load the data
-	data <- load.data(FILES_TAB_M, cols, FILE_CORREC_M)
+	data <- load.data(filenames=FILES_TAB_M, cols=cols, correc.file=FILE_CORREC_M)
 	
 	# convert population numbers to actual integers
 	cn <- COL_ATT_COM_POP
@@ -445,7 +445,7 @@ load.s.data <- function()
 	)
 	
 	# load the data
-	data <- load.data(FILES_TAB_S, cols, FILE_CORREC_S)
+	data <- load.data(filenames=FILES_TAB_S, cols=cols, correc.file=FILE_CORREC_S)
 	
 	res <- list(data=data,cols=cols)
 	return(res)
