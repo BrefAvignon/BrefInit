@@ -83,6 +83,21 @@ addMonth <- function(date, n=1)
 
 
 #############################################################################################
+# Takes a date and returns its year.
+#
+# date: input date.
+#
+# returns: year of the date.
+#############################################################################################
+get.year <- function(date)
+{	year <- as.numeric(substr(as.character(date),1,4))	
+	return(year)
+}
+
+
+
+
+#############################################################################################
 # Takes a date and returns the date of the first day of the same month.
 #
 # date: input date.

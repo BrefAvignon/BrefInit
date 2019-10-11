@@ -18,7 +18,7 @@ library("stringdist")
 #
 # returns: a vector with the main stats.
 #############################################################################################
-check.col.numerical <- function(data, col, basename, ...)
+sumup.col.numerical <- function(data, col, basename, ...)
 {	vals <- data[,col]
 	result <- c()
 	tt <- table(vals, useNA="always")
@@ -128,7 +128,7 @@ check.col.numerical <- function(data, col, basename, ...)
 #
 # returns: a vector with the main stats.
 #############################################################################################
-check.col.categorical <- function(data, col, basename, ...)
+sumup.col.categorical <- function(data, col, basename, ...)
 {	vals <- data[,col]
 	result <- c()
 	tt <- table(vals, useNA="always")
@@ -218,7 +218,7 @@ check.col.categorical <- function(data, col, basename, ...)
 #
 # returns: a vector with the main stats.
 #############################################################################################
-check.col.nominal <- function(data, col, basename, dist.threhsold=3, ...)
+sumup.col.nominal <- function(data, col, basename, dist.threhsold=3, ...)
 {	vals <- data[,col]
 	result <- c()
 	tt <- table(vals, useNA="always")
@@ -314,7 +314,7 @@ check.col.nominal <- function(data, col, basename, dist.threhsold=3, ...)
 #
 # returns: a vector with the main stats.
 #############################################################################################
-check.col.temporal <- function(data, col, basename, ...)
+sumup.col.temporal <- function(data, col, basename, ...)
 {	vals <- data[,col]
 	result <- c()
 	tt <- table(vals, useNA="always")
@@ -453,7 +453,7 @@ check.col.temporal <- function(data, col, basename, ...)
 #
 # returns: a vector with the main stats.
 #############################################################################################
-check.col <- function(data, col, basename, tp, ...)
+sumup.col <- function(data, col, basename, tp, ...)
 {	# check if the column is empty
 	if(all(is.na(data[,col])))
 	{	tlog(4,"Only NA values: the column is ignored")
@@ -463,13 +463,13 @@ check.col <- function(data, col, basename, tp, ...)
 	# otherwise, call the appropriate function
 	else
 	{	if(tp=="cat")
-			result <- check.col.categorical(data=data, col=col, basename=basename, ...)
+			result <- sumup.col.categorical(data=data, col=col, basename=basename, ...)
 		else if(tp=="nom")
-			result <- check.col.nominal(data=data, col=col, basename=basename, ...)
+			result <- sumup.col.nominal(data=data, col=col, basename=basename, ...)
 		else if(tp=="num")
-			result <- check.col.numerical(data=data, col=col, basename=basename, ...)
+			result <- sumup.col.numerical(data=data, col=col, basename=basename, ...)
 		else if(tp=="dat")
-			result <- check.col.temporal(data=data, col=col, basename=basename, ...)
+			result <- sumup.col.temporal(data=data, col=col, basename=basename, ...)
 	}
 	
 	return(result)
@@ -484,7 +484,7 @@ check.col <- function(data, col, basename, tp, ...)
 # cols: list describing how to handle each column in the table.
 # out.folder: folder where to output the results.
 #############################################################################################
-check.cols <- function(data, cols, out.folder, ...)
+sumup.cols <- function(data, cols, out.folder, ...)
 {	# init stats table
 	stats <- matrix(nrow=length(cols), ncol=length(COL_STATS_NAMES))
 	colnames(stats) <- COL_STATS_NAMES
@@ -496,7 +496,7 @@ check.cols <- function(data, cols, out.folder, ...)
 		tlog(2,"Considering column \"",col$name,"\"")
 		
 		# process the column
-		res <- check.col(
+		res <- sumup.col(
 				data=data, 
 				col=col$name, 
 				basename=file.path(out.folder,col$basename),
