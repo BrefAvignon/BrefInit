@@ -163,7 +163,7 @@ col.inter <- intersect(cols, sapply(cr.cols, get, x="name"))
 tmp[,col.inter] <- cr.data[,col.inter]
 tlog(2,"  Remaining columns: ",paste(setdiff(sapply(cr.cols, get, x="name"), col.inter), collapse=", "))
 tmp[,COL_ATT_DPT_NOM] <- cr.data[,COL_ATT_DPT_NOM_CR]
-tmp[,COL_ATT_ELU_NUANCE] <- cr.data[,COL_ATT_ELU_CR]
+tmp[,COL_ATT_ELU_NUANCE] <- cr.data[,COL_ATT_ELU_NUANCE_CR]
 data <- rbind(data, tmp)
 
 # add parliamentary data

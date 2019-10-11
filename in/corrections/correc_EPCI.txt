@@ -1,6 +1,11 @@
 Id	Nom	Prénom	Attribut	ValAvt	ValApr	Commentaire
 147305	MULLOIS	Dominique	Date de fin de la fonction	20/3/0015	20/3/2015	NA
 147955	BULA	Eric	Date de fin de la fonction	10/4/0008	10/4/2008	NA
+539497	RIBOURG	Patrick	Date de début de la fonction	19/10/1017	23/3/2014	A verifier
+542039	CHEVALIER	Luc	Date de début de la fonction	19/10/1017	23/3/2014	A verifier
+542063	DESCROUET	Philippe	Date de début de la fonction	19/10/1017	23/3/2014	A verifier
 741190	REBY	Franck	Date de début de la fonction	14/4/0201	14/4/2014	Complètement arbitraire, à vérifier
 842417	GBIORCZYK	Anne	Date de début de la fonction	19/10/1017	19/10/2014	Complètement arbitraire, à vérifier
+842425	OUKAS	Vanessa	Date de début de la fonction	19/10/1017	23/3/2014	A verifier
 1178260	PENICHON	Bruno	Date de fin de la fonction	12/9/0009	12/9/2009	NA
+1454255	DANILOFF	Véronique	Date de début de la fonction	19/10/1017	23/3/2014	A verifier

@@ -12,6 +12,7 @@ Id	Nom	Prénom	Attribut	ValAvt	ValApr	Commentaire
 157950	ARRETEAU	Paula	Date de fin de la fonction	15/1/0012	15/1/2012	NA
 163176	MANG	Jean-Jacques	Date de début de la fonction	16/3/0200	16/3/2010	NA
 164229	CHABRIER	Yves	Date de début de la fonction	25/3/0201	25/3/2010	NA
+164780	AUPHAN	Philippe	Date de début de la fonction	1/2/3003	1/2/2003	NA
 167343	DUBOS	René	Date de début de la fonction	16/3/0201	16/3/2010	NA
 167452	DUCROCQ	Christian	Date de début de la fonction	24/3/0201	24/3/2010	NA
 167508	MAILLARD	Philippe	Date de début de la fonction	16/3/0200	16/3/2010	NA
