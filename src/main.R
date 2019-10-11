@@ -15,12 +15,3 @@ source("src/common/include.R")
 
 # TODO
 # - Implement Noemie's consistancy tests
-# - Plot the evolution of each type of mandate over time
-#	>> done, but now do it for each day (in addition to months)
-# - Check redundency between M & CM
-#	>> done: tables only differ by 2 entries (in M, not in CM)
-# - Check that start date <= end date
-#
-# - Date problems:
-#   - Some years are just wrong (patterns /00 for 0010 and /020 for 0201)
-#	- Birthdate set at 1/1/1900 probably means "unknown"
