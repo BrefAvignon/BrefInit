@@ -3,26 +3,43 @@
 # 
 # 10/2019 Vincent Labatut
 #
-# source("src/verification/comparison_M_CM.R")
+# source("src/verification/compare_M_CM.R")
 #############################################################################################
 source("src/common/include.R")
 source("src/verification/sumup_col.R")
 
+
+
+
+#############################################################################################
 # start logging
 start.rec.log(text="M_vs_CM")
+tlog(0,"Comparing the mayoral and municipal data")
 
+
+
+
+#############################################################################################
 # load the mayoral data
 tlog(0,"Load mayoral data")
 tmp <- load.m.data()
 m.data <- tmp$data
 m.cols <- tmp$cols
 
+
+
+
+#############################################################################################
 # load the municipal data
 tlog(0,"Load municipal data")
 tmp <- load.cm.data()
 cm.data <- tmp$data
 cm.cols <- tmp$cols
 
+
+
+
+#############################################################################################
 # look for all mayors in the municipal data
 sel.cols <- c(
 	"N° Identification d'un élu",
@@ -40,6 +57,10 @@ unmatched <- which(is.na(idx))
 tlog(2,"Unmatched row:")
 print(m.codes[unmatched])
 
+
+
+
+#############################################################################################
 # look for unmatched persons
 for(um in unmatched)
 {	tlog(2, "Processing unmatched mayor")
@@ -49,6 +70,10 @@ for(um in unmatched)
 	print(cm.data[idx,sel.cols])
 }
 
+
+
+
+#############################################################################################
 # close the log file
 tlog(0,"Done")
 end.rec.log()
