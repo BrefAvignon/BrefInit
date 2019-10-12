@@ -33,7 +33,7 @@ tlog(0,"Examining each column separately")
 #plot.pers.time(data, out.folder, daily=TRUE)
 
 # check dates
-test.col.dates(data, cols, out.folder)
+test.col.dates.cr(data, cols, out.folder)
 
 # close the log file
 tlog(0,"Done")

@@ -121,6 +121,102 @@ test.col.dates.generic <- function(data, cols, out.folder)
 
 
 #############################################################################################
+# Performs a series of tests on date columns, for the departmental tables, and record the 
+# detected problems in text files.
+#
+# data: table containing the data.
+# cols: list describing how to handle each column in the table.
+# out.folder: folder where to output the results.
+#############################################################################################
+test.col.dates.cd <- function(data, cols, out.folder)
+{	# generic tests
+	test.col.dates.generic(data, cols, out.folder)
+	
+	# specific tests
+	tlog(2,"Checking mandate durations")
+	
+	# mandate duration not in the legal interval
+	durations <- as.numeric(difftime(data[,COL_ATT_MDT_DBT], data[,COL_ATT_MDT_FIN], unit="weeks"))/52.25
+	idx <- which(data[,COL_ATT_MDT_DBT]<as.Date("1985/1/1") & durations>6
+					| data[,COL_ATT_MDT_DBT]>=as.Date("1985/1/1") & data[,COL_ATT_MDT_FIN]<as.Date("1992/1/1") & durations>7
+					| data[,COL_ATT_MDT_DBT]>=as.Date("1992/1/1") & data[,COL_ATT_MDT_FIN]<as.Date("2001/1/1") & durations>6
+					| data[,COL_ATT_MDT_DBT]>=as.Date("2001/1/1") & durations>7)
+	tlog(4,"Found ",length(idx)," mandate(s) longer than expected")
+	if(length(idx)>0)
+	{	tmp <- cbind(idx,data[idx,])
+		colnames(tmp)[1] <- "Ligne"
+		tab.file <- file.path(out.folder,paste0("mandat_dates_problems_duration.txt"))
+		tlog(6,"Recording in file \"",tab.file,"\"")
+		write.table(x=tmp,file=tab.file,row.names=FALSE,col.names=TRUE,fileEncoding="UTF8")
+	}
+}
+
+
+
+
+#############################################################################################
+# Performs a series of tests on date columns, for the municipal tables, and record the 
+# detected problems in text files.
+#
+# data: table containing the data.
+# cols: list describing how to handle each column in the table.
+# out.folder: folder where to output the results.
+#############################################################################################
+test.col.dates.de <- function(data, cols, out.folder)
+{	# generic tests
+	test.col.dates.generic(data, cols, out.folder)
+	
+	# specific tests
+	tlog(2,"Checking mandate durations")
+	
+	# mandate duration not in the legal interval
+	durations <- as.numeric(difftime(data[,COL_ATT_MDT_DBT], data[,COL_ATT_MDT_FIN], unit="weeks"))/52.25
+	idx <- which(durations > 6)
+	tlog(4,"Found ",length(idx)," mandate(s) longer than expected")
+	if(length(idx)>0)
+	{	tmp <- cbind(idx,data[idx,])
+		colnames(tmp)[1] <- "Ligne"
+		tab.file <- file.path(out.folder,paste0("mandat_dates_problems_duration.txt"))
+		tlog(6,"Recording in file \"",tab.file,"\"")
+		write.table(x=tmp,file=tab.file,row.names=FALSE,col.names=TRUE,fileEncoding="UTF8")
+	}
+}
+
+
+
+
+#############################################################################################
+# Performs a series of tests on date columns, for the regional tables, and record the 
+# detected problems in text files.
+#
+# data: table containing the data.
+# cols: list describing how to handle each column in the table.
+# out.folder: folder where to output the results.
+#############################################################################################
+test.col.dates.cr <- function(data, cols, out.folder)
+{	# generic tests
+	test.col.dates.generic(data, cols, out.folder)
+	
+	# specific tests
+	tlog(2,"Checking mandate durations")
+	
+	# mandate duration not in the legal interval
+	durations <- as.numeric(difftime(data[,COL_ATT_MDT_DBT], data[,COL_ATT_MDT_FIN], unit="weeks"))/52.25
+	idx <- which(durations > 6)
+	tlog(4,"Found ",length(idx)," mandate(s) longer than expected")
+	if(length(idx)>0)
+	{	tmp <- cbind(idx,data[idx,])
+		colnames(tmp)[1] <- "Ligne"
+		tab.file <- file.path(out.folder,paste0("mandat_dates_problems_duration.txt"))
+		tlog(6,"Recording in file \"",tab.file,"\"")
+		write.table(x=tmp,file=tab.file,row.names=FALSE,col.names=TRUE,fileEncoding="UTF8")
+	}
+}
+
+
+
+
+#############################################################################################
 # Performs a series of tests on date columns, for the MP tables, and record the 
 # detected problems in text files.
 #
@@ -133,7 +229,7 @@ test.col.dates.d <- function(data, cols, out.folder)
 	test.col.dates.generic(data, cols, out.folder)
 	
 	# specific tests
-	tlog(2,"Comparing start/end dates for mandates")
+	tlog(2,"Checking mandate durations")
 	
 	# mandate duration not in the legal interval
 	durations <- as.numeric(difftime(data[,COL_ATT_MDT_DBT], data[,COL_ATT_MDT_FIN], unit="weeks"))/52.25
@@ -173,11 +269,46 @@ test.col.dates.de <- function(data, cols, out.folder)
 	test.col.dates.generic(data, cols, out.folder)
 	
 	# specific tests
-	tlog(2,"Comparing start/end dates for mandates")
+	tlog(2,"Checking mandate durations")
 	
 	# mandate duration not in the legal interval
 	durations <- as.numeric(difftime(data[,COL_ATT_MDT_DBT], data[,COL_ATT_MDT_FIN], unit="weeks"))/52.25
 	idx <- which(durations > 5)
+	tlog(4,"Found ",length(idx)," mandate(s) longer than expected")
+	if(length(idx)>0)
+	{	tmp <- cbind(idx,data[idx,])
+		colnames(tmp)[1] <- "Ligne"
+		tab.file <- file.path(out.folder,paste0("mandat_dates_problems_duration.txt"))
+		tlog(6,"Recording in file \"",tab.file,"\"")
+		write.table(x=tmp,file=tab.file,row.names=FALSE,col.names=TRUE,fileEncoding="UTF8")
+	}
+}
+
+
+
+
+
+#############################################################################################
+# Performs a series of tests on date columns, for the senatorial tables, and record the 
+# detected problems in text files.
+#
+# data: table containing the data.
+# cols: list describing how to handle each column in the table.
+# out.folder: folder where to output the results.
+#############################################################################################
+test.col.dates.s <- function(data, cols, out.folder)
+{	# generic tests
+	test.col.dates.generic(data, cols, out.folder)
+	
+	# specific tests
+	tlog(2,"Checking mandate durations")
+	
+	# mandate duration not in the legal interval
+	durations <- as.numeric(difftime(data[,COL_ATT_MDT_DBT], data[,COL_ATT_MDT_FIN], unit="weeks"))/52.25
+	idx <- which(data[,COL_ATT_MDT_DBT]<as.Date("1998/1/1") & durations>9
+					| data[,COL_ATT_MDT_DBT]>=as.Date("1998/1/1") & data[,COL_ATT_MDT_FIN]<as.Date("2014/1/1") & durations>10
+					| data[,COL_ATT_MDT_DBT]>=as.Date("2014/1/1") & data[,COL_ATT_MDT_FIN]<as.Date("2017/1/1") & durations>9
+					| data[,COL_ATT_MDT_DBT]>=as.Date("2017/1/1") & durations>6)
 	tlog(4,"Found ",length(idx)," mandate(s) longer than expected")
 	if(length(idx)>0)
 	{	tmp <- cbind(idx,data[idx,])
