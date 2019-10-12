@@ -162,7 +162,7 @@ test.col.dates.cd <- function(data, cols, out.folder)
 # cols: list describing how to handle each column in the table.
 # out.folder: folder where to output the results.
 #############################################################################################
-test.col.dates.de <- function(data, cols, out.folder)
+test.col.dates.cm <- function(data, cols, out.folder)
 {	# generic tests
 	test.col.dates.generic(data, cols, out.folder)
 	
