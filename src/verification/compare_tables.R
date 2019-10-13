@@ -18,7 +18,7 @@ start.rec.log(text="TableComp")
 #############################################################################################
 # set the files to be compared
 tmp.folder <- file.path(FOLDER_TABLES,"temp")
-file0 <- file.path(tmp.folder,"F0 Tous CD.txt")
+file0 <- file.path(tmp.folder,"_F Tous CD.txt")
 file1 <- file.path(FOLDER_TABLES,FILES_TAB_CD2)
 tlog(0,"Comparing table \"",file0,"\" and table \"",file1,"\"")
 
@@ -42,6 +42,7 @@ t0 <- read.table(
 		colClasses="character"		# forces to consider everything column as strings
 )
 
+# read second table
 tlog(0,"Reading v1 (",file1,")")
 t1 <- read.table(
 		file=file1, 				# name of the data file
@@ -56,11 +57,13 @@ t1 <- read.table(
 		fileEncoding="Latin1",		# original tables seem to be encoded in Latin1 (ANSI)
 		colClasses="character"		# forces to consider everything column as strings
 )
+
 # clean empty strings
 for(c in 1:ncol(t0))
 {	t0[which(t0[,c]==""),c] <- NA
 	t1[which(t1[,c]==""),c] <- NA
 }
+
 # display row counts
 tlog(2,"Numbers of rows: ",nrow(t0)," vs ",nrow(t1)," (delta: ",(nrow(t1)-nrow(t0)),")")
 
@@ -72,6 +75,7 @@ tlog(2,"Numbers of rows: ",nrow(t0)," vs ",nrow(t1)," (delta: ",(nrow(t1)-nrow(t
 extract.year <- function(str) substr(str, nchar(str)-3, nchar(str))
 extract.month <- function(str) sapply(strsplit(str, "/"), function(vect) vect[2])
 extract.day <- function(str) sapply(strsplit(str, "/"), function(vect) vect[1])
+
 # function used to compare rows from the two different tables
 lookup.row <- function(tab1, i, tab2, map)
 {	idx <- which((tab2[,COL_ATT_ELU_ID]==tab1[i,COL_ATT_ELU_ID] 									# same person id
@@ -146,6 +150,7 @@ t2d <- t1[FALSE,]	# deleted entries
 t2a <- t1[FALSE,]	# added entries
 mp0 <- rep(NA,nrow(t0))
 mp1 <- rep(NA,nrow(t1))
+
 # scan table 0
 tlog(0,"Parsing the rows of table 0")
 for(i0 in 1:nrow(t0))
@@ -168,6 +173,7 @@ for(i0 in 1:nrow(t0))
 		t2d <- rbind(t2d,t0[i0,])
 	}
 }
+
 # scan table 1
 tlog(0,"Parsing the rows of table 1")
 for(i1 in 1:nrow(t1))
@@ -185,11 +191,12 @@ for(i1 in 1:nrow(t1))
 	}
 }
 tlog(0,"Tables processed")
+
 # record all resulting tables
 tlog(2,"Similar rows: ",nrow(t2k))
 tab <- cbind(which(!is.na(mp0)),mp0[!is.na(mp0)],t2k)
 colnames(tab)[1:2] <- c("Ligne vx", "Ligne nv")
-table.file <- file.path(tmp.folder, "similar_rows.txt")
+table.file <- file.path(tmp.folder, "_similar_rows.txt")
 write.table(x=tab,
 	file=table.file,		# name of file containing the new table
 	quote=TRUE,				# put double quotes around strings
@@ -200,7 +207,7 @@ write.table(x=tab,
 tlog(2,"Added rows: ",nrow(t2a))
 tab <- cbind(setdiff(1:nrow(t1),mp0[!is.na(mp0)]),t2a)
 colnames(tab)[1] <- c("Ligne nv")
-table.file <- file.path(tmp.folder, "added_rows.txt")
+table.file <- file.path(tmp.folder, "_added_rows.txt")
 write.table(x=tab,
 	file=table.file,		# name of file containing the new table
 	quote=TRUE,				# put double quotes around strings
@@ -211,7 +218,7 @@ write.table(x=tab,
 tlog(2,"Removed rows: ",nrow(t2d))
 tab <- cbind(which(is.na(mp0)),t2d)
 colnames(tab)[1] <- c("Ligne vx")
-table.file <- file.path(tmp.folder, "removed_rows.txt")
+table.file <- file.path(tmp.folder, "_removed_rows.txt")
 write.table(x=tab,
 	file=table.file,		# name of file containing the new table
 	quote=TRUE,				# put double quotes around strings
@@ -224,14 +231,58 @@ write.table(x=tab,
 
 
 #############################################################################################
-# compare each field
-tmp <- 1*(t0==t1)
+# compare each field in the lines common to both tables
+tlog(0,"Comparing values in common rows")
+idx0 <- which(!is.na(mp0))
+idx1 <- mp0[!is.na(mp0)]
+comp <- 1*((is.na(t0[idx0,]) & is.na(t1[idx1,])) | 
+			(!is.na(t0[idx0,]) & !is.na(t1[idx1,]) & t0[idx0,]==t1[idx1,]))
+counts <- apply(X=comp, MARGIN=2, FUN=sum)
+mod.nbr <- sum(nrow(comp)-counts)
+tlog(2,"Total number of modified values: ",mod.nbr,"/",(nrow(comp)*ncol(comp))," (",(mod.nbr/nrow(comp)/ncol(comp)),"%)")
+counts <- rbind(counts, nrow(comp)-counts)
+rownames(counts) <- c("Same", "Different")
+# record as a table
+table.file <- file.path(tmp.folder, "_modified_values.txt")
+write.table(x=counts,
+	file=table.file,		# name of file containing the new table
+	quote=TRUE,				# put double quotes around strings
+	se="\t",				# use tabulations as separators
+	row.names=TRUE,			# record row names
+	col.names=TRUE			# record table headers
+)
 
-
-
-
-#############################################################################################
-# record results
+# record each modified value
+tlog(0,"Processing each column separately")
+cols <- load.cd.data()$cols
+for(col in cols)
+{	# process each column
+	c <- col$name
+	tlog(2,"Processing column ",c)
+	if(c %in% colnames(comp))
+	{	# retrieve data
+		idx <- which(comp[,c]==0)
+		tlog(4,"Found ",length(idx)," values")
+		if(length(idx)>0)
+		{	tab <- data.frame(
+					"Ligne vx"=idx0[idx],
+					"Ligne nv"=idx1[idx],
+					"Valeur vx"=t0[idx0[idx],c],
+					"Valeur nv"=t1[idx1[idx],c]
+				)
+			# record in text file
+			table.file <- file.path(tmp.folder, paste0(col$base,"_changes.txt"))
+			tlog(4,"Recording changes in file ",table.file)
+			write.table(x=tab,
+					file=table.file,		# name of file containing the new table
+					quote=TRUE,				# put double quotes around strings
+					se="\t",				# use tabulations as separators
+					row.names=FALSE,		# no names for rows
+					col.names=TRUE			# record table headers
+			)
+		}
+	}
+}
 
 
 

@@ -23,6 +23,7 @@ FILES_TAB_EPCI <- c("E Tous Membres EPCI.txt")
 FILES_TAB_M <- c("K Tous Maires.txt")
 FILES_TAB_S <- c("I Tous Senateurs.txt")
 # correction files
+FILE_CORREC_CD <- "correc_CD.txt"
 FILE_CORREC_CM <- "correc_CM.txt"
 FILE_CORREC_CR <- "correc_CR.txt"
 FILE_CORREC_D <- "correc_D.txt"
