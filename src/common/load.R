@@ -131,7 +131,7 @@ load.data <- function(filenames, cols, correc.file)
 
 
 #############################################################################################
-# Loads the tables for departmental counsilors.
+# Loads the table for departmental counsilors.
 #
 # returns: data frame made of the cleaned data contained in the appropriate files.
 #############################################################################################
@@ -162,6 +162,41 @@ load.cd.data <- function()
 	
 	# load the data
 	data <- load.data(filenames=FILES_TAB_CD, cols=cols, correc.file=FILE_CORREC_CD)
+	
+	res <- list(data=data,cols=cols)
+	return(res)
+}
+#############################################################################################
+# Loads the second version of the table for departmental counsilors.
+#
+# returns: data frame made of the cleaned data contained in the appropriate files.
+#############################################################################################
+load.cd2.data <- function()
+{	# names of the columns
+	cols <- list(
+			list(name=COL_ATT_DPT_CODE, basename="dpt_code", tp="cat"),
+			list(name=COL_ATT_DPT_NOM, basename="dpt_nom", tp="nom"),
+			list(name=COL_ATT_ELU_NOM, basename="patronyme", tp="nom"),
+			list(name=COL_ATT_ELU_PRENOM, basename="prenom", tp="nom"),
+			list(name=COL_ATT_ELU_SEXE, basename="sexe", tp="cat"),
+			list(name=COL_ATT_CANT_CODE, basename="canton_code", tp="cat"),
+			list(name=COL_ATT_CANT_NOM, basename="canton_nom", tp="nom"),
+			list(name=COL_ATT_ELU_NUANCE_CD, basename="nuance_pol", tp="cat"),
+			list(name=COL_ATT_FCT_NOM, basename="fonction_nom", tp="cat"),
+			list(name=COL_ATT_PRO_CODE, basename="profession_code", tp="cat"),
+			list(name=COL_ATT_PRO_NOM, basename="profession_nom", tp="cat"),
+			list(name=COL_ATT_ELU_DDN, basename="naissance_date", tp="dat"),
+			list(name=COL_ATT_ELU_ID, basename="elu_id", tp="cat"),
+			list(name=COL_ATT_MDT_DBT, basename="mandat_debut", tp="dat"),
+			list(name=COL_ATT_FCT_DBT, basename="fonction_debut", tp="dat"),
+			list(name=COL_ATT_MDT_NOM, basename="mandat_nom", tp="cat"),
+			list(name=COL_ATT_MDT_FIN, basename="mandat_fin", tp="dat"),
+			list(name=COL_ATT_MDT_MOTIF, basename="mandat_motif", tp="cat"),
+			list(name=COL_ATT_FCT_FIN, basename="fonction_fin", tp="dat")
+	)
+	
+	# load the data
+	data <- load.data(filenames=FILES_TAB_CD2, cols=cols, correc.file=FILE_CORREC_CD2)
 	
 	res <- list(data=data,cols=cols)
 	return(res)
@@ -211,7 +246,7 @@ load.cm.data <- function()
 
 
 #############################################################################################
-# Loads the tables for regional counsilors.
+# Loads the table for regional counsilors.
 #
 # returns: data frame made of the cleaned data contained in the appropriate files.
 #############################################################################################
@@ -251,7 +286,7 @@ load.cr.data <- function()
 
 
 #############################################################################################
-# Loads the tables for members of the parliament.
+# Loads the table for members of the parliament.
 #
 # returns: data frame made of the cleaned data contained in the appropriate files.
 #############################################################################################
@@ -291,7 +326,7 @@ load.d.data <- function()
 
 
 #############################################################################################
-# Loads the tables for European counsilors.
+# Loads the table for European counsilors.
 #
 # returns: data frame made of the cleaned data contained in the appropriate files.
 #############################################################################################
@@ -325,7 +360,7 @@ load.de.data <- function()
 
 
 #############################################################################################
-# Loads the tables for EPCI counsilors.
+# Loads the table for EPCI counsilors.
 #
 # returns: data frame made of the cleaned data contained in the appropriate files.
 #############################################################################################
@@ -366,7 +401,7 @@ load.epci.data <- function()
 
 
 #############################################################################################
-# Loads the tables for mayors.
+# Loads the table for mayors.
 #
 # returns: data frame made of the cleaned data contained in the appropriate files.
 #############################################################################################
@@ -417,7 +452,7 @@ load.m.data <- function()
 
 
 #############################################################################################
-# Loads the tables for senators.
+# Loads the table for senators.
 #
 # returns: data frame made of the cleaned data contained in the appropriate files.
 #############################################################################################

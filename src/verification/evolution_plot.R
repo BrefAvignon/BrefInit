@@ -89,19 +89,19 @@ plot.pers.time <- function(data, out.folder, daily=FALSE)
 	
 	# record data in a text file
 	if(daily)
-	{	file <- file.path(out.folder,"persons_by_day.txt")
+	{	file <- file.path(out.folder,"persons_by_day_v2.txt")
 		tab <- data.frame(Date=format(day.dates,format="%d/%m/%Y"),Count=day.vals)
 		write.table(x=tab,file=file,row.names=FALSE,col.names=TRUE,fileEncoding="UTF8")
 	}
 	# same by month
-	file <- file.path(out.folder,"persons_by_month.txt")
+	file <- file.path(out.folder,"persons_by_month_v2.txt")
 	tab <- data.frame(Date=format(month.dates,format="%d/%m/%Y"),Count=month.vals)
 	write.table(x=tab,file=file,row.names=FALSE,col.names=TRUE,fileEncoding="UTF8")
 	
 	# generate plot only starting from 2000
 	if(daily)
 	{	idx <- which(day.dates>as.Date("2000/1/1"))
-		file <- file.path(out.folder,paste0("persons_by_day_2001.",PLOT_FORMAT))
+		file <- file.path(out.folder,paste0("persons_by_day_2001_v2.",PLOT_FORMAT))
 		tlog(4, "Generating plot in file \"",file,"\"")
 		if(PLOT_FORMAT=="pdf")
 			pdf(file)
@@ -121,7 +121,7 @@ plot.pers.time <- function(data, out.folder, daily=FALSE)
 	}
 	# same by month
 	idx <- which(month.dates>as.Date("2000/1/1"))
-	file <- file.path(out.folder,paste0("persons_by_month_2001.",PLOT_FORMAT))
+	file <- file.path(out.folder,paste0("persons_by_month_2001_v2.",PLOT_FORMAT))
 	tlog(4, "Generating plot in file \"",file,"\"")
 	if(PLOT_FORMAT=="pdf")
 		pdf(file)
@@ -141,7 +141,7 @@ plot.pers.time <- function(data, out.folder, daily=FALSE)
 	
 	# generate plot for all dates
 	if(daily)
-	{	file <- file.path(out.folder,paste0("persons_by_day.",PLOT_FORMAT))
+	{	file <- file.path(out.folder,paste0("persons_by_day_v2.",PLOT_FORMAT))
 		tlog(4, "Generating plot in file \"",file,"\"")
 		if(PLOT_FORMAT=="pdf")
 			pdf(file)
@@ -160,7 +160,7 @@ plot.pers.time <- function(data, out.folder, daily=FALSE)
 		dev.off()
 	}
 	# same for months
-	file <- file.path(out.folder,paste0("persons_by_month.",PLOT_FORMAT))
+	file <- file.path(out.folder,paste0("persons_by_month_v2.",PLOT_FORMAT))
 	tlog(4, "Generating plot in file \"",file,"\"")
 	if(PLOT_FORMAT=="pdf")
 		pdf(file)

@@ -19,7 +19,7 @@ start.rec.log(text="TableComp")
 # set the files to be compared
 tmp.folder <- file.path(FOLDER_TABLES,"temp")
 file0 <- file.path(tmp.folder,"F0 Tous CD.txt")
-file1 <- file.path(tmp.folder,"2019-10-09 extraction historique CD.txt")
+file1 <- file.path(FOLDER_TABLES,FILES_TAB_CD2)
 tlog(0,"Comparing table \"",file0,"\" and table \"",file1,"\"")
 
 

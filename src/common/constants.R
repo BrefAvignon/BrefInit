@@ -23,7 +23,6 @@ FILES_TAB_EPCI <- c("E Tous Membres EPCI.txt")
 FILES_TAB_M <- c("K Tous Maires.txt")
 FILES_TAB_S <- c("I Tous Senateurs.txt")
 # correction files
-FILE_CORREC_CD <- "correc_CD.txt"
 FILE_CORREC_CM <- "correc_CM.txt"
 FILE_CORREC_CR <- "correc_CR.txt"
 FILE_CORREC_D <- "correc_D.txt"
@@ -31,6 +30,9 @@ FILE_CORREC_DE <- "correc_DE.txt"
 FILE_CORREC_EPCI <- "correc_EPCI.txt"
 FILE_CORREC_M <- "correc_M.txt"
 FILE_CORREC_S <- "correc_S.txt"
+# additional files, for testing
+FILES_TAB_CD2 <- c("2019-10-09 extraction historique CD.txt")
+FILE_CORREC_CD2 <- "correc_CD2.txt"
 
 # output folder
 FOLDER_OUT <- "out"

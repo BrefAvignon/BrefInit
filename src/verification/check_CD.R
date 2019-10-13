@@ -21,7 +21,7 @@ out.folder <- file.path(FOLDER_OUT, "CD")
 dir.create(path=out.folder, showWarnings=FALSE, recursive=TRUE)
 
 # load the data
-tmp <- load.cd.data()
+tmp <- load.cd2.data()
 data <- tmp$data
 cols <- tmp$cols
 
@@ -30,10 +30,10 @@ tlog(0,"Examining each column separately")
 #sumup.cols(data=data, cols=cols, out.folder=out.folder)
 
 # plots the number of persons over time time
-#plot.pers.time(data, out.folder, daily=TRUE)
+plot.pers.time(data, out.folder, daily=TRUE)
 
 # check dates
-test.col.dates.cd(data, cols, out.folder)
+#test.col.dates.cd(data, cols, out.folder)
 
 # close the log file
 tlog(0,"Done")
