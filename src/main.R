@@ -15,3 +15,7 @@ source("src/common/include.R")
 
 # TODO
 # - Implement Noemie's consistancy tests
+# - Distribution of dates of the form 1/1/xxxx
+# - Check functions for mayors
+# - Correct mandate duration check for CR
+# - CD: last period is the current one
