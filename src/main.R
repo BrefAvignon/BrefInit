@@ -19,3 +19,4 @@ source("src/common/include.R")
 # - Check functions for mayors
 # - Correct mandate duration check for CR
 # - CD: last period is the current one
+# - Solve the encoding problem on Windows
