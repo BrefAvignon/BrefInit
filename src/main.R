@@ -18,6 +18,4 @@ source("src/common/include.R")
 # - Implement Noemie's consistancy tests
 #   >> requires additional data
 # - Solve the encoding problem on Windows
-# - Check functions (in addition to mandates) for mayors
-# - Correct mandate duration check for CR (cf. NF's doc)
 # - CD: last period is the current one (cf. NF's doc)

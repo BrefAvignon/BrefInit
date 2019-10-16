@@ -202,7 +202,9 @@ test.col.dates.cr <- function(data, cols, out.folder)
 	
 	# mandate duration not in the legal interval
 	durations <- as.numeric(difftime(data[,COL_ATT_MDT_DBT], data[,COL_ATT_MDT_FIN], unit="weeks"))/52.25
-	idx <- which(durations > 6)
+	idx <- which(data[,COL_ATT_MDT_DBT]<as.Date("2010/1/1") & durations>6
+					| data[,COL_ATT_MDT_DBT]>=as.Date("2010/1/1") & data[,COL_ATT_MDT_FIN]<as.Date("2015/1/1") & durations>5
+					| data[,COL_ATT_MDT_DBT]>=as.Date("2015/1/1") & durations>6)
 	tlog(4,"Found ",length(idx)," mandate(s) longer than expected")
 	if(length(idx)>0)
 	{	tmp <- cbind(idx,data[idx,])
