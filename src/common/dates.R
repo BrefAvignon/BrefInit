@@ -98,6 +98,36 @@ get.year <- function(date)
 
 
 #############################################################################################
+# Takes a date and returns its month.
+#
+# date: input date.
+#
+# returns: month of the date.
+#############################################################################################
+get.month <- function(date)
+{	month <- as.numeric(substr(as.character(date),6,7))	
+	return(month)
+}
+
+
+
+
+#############################################################################################
+# Takes a date and returns its day.
+#
+# date: input date.
+#
+# returns: day of the date.
+#############################################################################################
+get.day <- function(date)
+{	day <- as.numeric(substr(as.character(date),9,10))	
+	return(day)
+}
+
+
+
+
+#############################################################################################
 # Takes a date and returns the date of the first day of the same month.
 #
 # date: input date.

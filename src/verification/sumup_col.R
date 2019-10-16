@@ -351,6 +351,12 @@ sumup.col.temporal <- function(data, col, basename, ...)
 	ttt <- table(table(vals))
 	write.table(x=ttt,file=val.file,row.names=FALSE,col.names=FALSE,fileEncoding="UTF8")
 	
+	# number of 1st January dates (supposedly representing unknown dates)
+	first.jan <- which(get.day(vals)==1 & get.month(vals)==1)
+	s <- length(first.jan)
+	result[COL_STATS_11X] <- s
+	tlog(4, "Numbef of 1st January dates: ",s)
+	
 	# show standard statistics
 	tlog(4, "Standard statistics")
 	tlog(6, "Number of unique values: ", s)

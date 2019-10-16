@@ -18,4 +18,3 @@ source("src/common/include.R")
 # - Implement Noemie's consistancy tests
 #   >> requires additional data
 # - Solve the encoding problem on Windows
-# - CD: last period is the current one (cf. NF's doc)
