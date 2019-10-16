@@ -14,7 +14,6 @@ source("src/common/include.R")
 
 
 # TODO
-# - Distribution of dates of the form 1/1/xxxx
+# - Solve the encoding problem on Windows
 # - Implement Noemie's consistancy tests
 #   >> requires additional data
-# - Solve the encoding problem on Windows
