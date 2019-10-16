@@ -14,9 +14,10 @@ source("src/common/include.R")
 
 
 # TODO
-# - Implement Noemie's consistancy tests
 # - Distribution of dates of the form 1/1/xxxx
-# - Check functions for mayors
-# - Correct mandate duration check for CR
-# - CD: last period is the current one
+# - Implement Noemie's consistancy tests
+#   >> requires additional data
 # - Solve the encoding problem on Windows
+# - Check functions (in addition to mandates) for mayors
+# - Correct mandate duration check for CR (cf. NF's doc)
+# - CD: last period is the current one (cf. NF's doc)

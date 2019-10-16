@@ -247,8 +247,9 @@ test.position.d <- function(data, out.folder)
 #############################################################################################
 test.position.m <- function(data, out.folder)
 {	tlog(0,"Trying to detect problems in parliamentary positions")
-	tab <- data[FALSE,]
 	count <- 0
+	tab.m <- data[FALSE,]
+	tab.f <- data[FALSE,]
 	
 	# identify all unique positions: department + circonscription
 	tlog(2,"Identifying all unique positions")
@@ -267,10 +268,12 @@ test.position.m <- function(data, out.folder)
 		com <- tmp[2]
 		tlog(4,"Processing position ",p,"/",length(unique.pos)," dpt=",dpt," city=",com)
 		
-		# get the corresponding mandates
+		# get the corresponding rows
 		idx <- which(data[,COL_ATT_DPT_CODE_M]==dpt & data[,COL_ATT_COM_CODE]==com)
-		tlog(4,"Found ",length(idx)," mandates")
-		# check if their dates overlap
+		tlog(4,"Found ",length(idx)," rows")
+		
+		# check if their mandate dates overlap
+		tlog(4,"Checking mandate overlaps")
 		if(length(idx)>1)
 		{	ccount <- 0
 			
@@ -287,7 +290,7 @@ test.position.m <- function(data, out.folder)
 					# check if the periods intersect
 					if(date.intersect(start1, end1, start2, end2))
 					{	# add to the table of problematic cases
-						tab <- rbind(tab, data[c(idx[i],idx[j]),], rep(NA,ncol(data)))
+						tab.m <- rbind(tab.m, data[c(idx[i],idx[j]),], rep(NA,ncol(data)))
 						# add a row of NAs in order to separate pairs of cases
 						count <- count + 1
 						ccount <- ccount + 1
@@ -296,18 +299,57 @@ test.position.m <- function(data, out.folder)
 			}
 			
 			# possibly add an empty row to separate cases
-			tlog(4,"Found ",ccount," pairs of overlapping mandates of this specific position")
+			tlog(6,"Found ",ccount," pairs of overlapping mandates of this specific position")
 			if(ccount>0)
-				tab <- rbind(tab, rep(NA,ncol(data)))
+				tab.m <- rbind(tab.m, rep(NA,ncol(data)))
+		}
+		
+		# check if their function dates overlap
+		tlog(4,"Checking function overlaps")
+		if(length(idx)>1)
+		{	ccount <- 0
+			
+			for(i in 1:(length(idx)-1))
+			{	# get the dates of the first compared function
+				start1 <- data[idx[i],COL_ATT_FCT_DBT]
+				end1 <- data[idx[i],COL_ATT_FCT_FIN]
+				
+				for(j in (i+1):length(idx))
+				{	# get the dates of the second compared function
+					start2 <- data[idx[j],COL_ATT_FCT_DBT]
+					end2 <- data[idx[j],COL_ATT_FCT_FIN]
+					
+					# check if the periods intersect
+					if(date.intersect(start1, end1, start2, end2))
+					{	# add to the table of problematic cases
+						tab.f <- rbind(tab.f, data[c(idx[i],idx[j]),], rep(NA,ncol(data)))
+						# add a row of NAs in order to separate pairs of cases
+						count <- count + 1
+						ccount <- ccount + 1
+					}
+				}
+			}
+			
+			# possibly add an empty row to separate cases
+			tlog(6,"Found ",ccount," pairs of overlapping functions of this specific position")
+			if(ccount>0)
+				tab.f <- rbind(tab.f, rep(NA,ncol(data)))
 		}
 	}
 	tlog(2,"Processing over")
 	
-	# possibly record the table of problematic cases
-	if(nrow(tab)>0)
+	# possibly record the tables of problematic mandate cases
+	if(nrow(tab.m)>0)
 	{	tab.file <- file.path(out.folder,"mandat_problems_overlap.txt")
 		tlog(2,"Recording in file \"",tab.file,"\"")
-		write.table(x=tab,file=tab.file,row.names=FALSE,col.names=TRUE,fileEncoding="UTF8")
+		write.table(x=tab.m,file=tab.file,row.names=FALSE,col.names=TRUE,fileEncoding="UTF8")
 		tlog(4,"Found a total of ",count," pairs of overlapping mandates for the whole table")
+	}
+	# possibly record the tables of problematic function cases
+	if(nrow(tab.f)>0)
+	{	tab.file <- file.path(out.folder,"function_problems_overlap.txt")
+		tlog(2,"Recording in file \"",tab.file,"\"")
+		write.table(x=tab.f,file=tab.file,row.names=FALSE,col.names=TRUE,fileEncoding="UTF8")
+		tlog(4,"Found a total of ",count," pairs of overlapping functions for the whole table")
 	}
 }
