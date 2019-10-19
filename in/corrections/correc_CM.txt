@@ -1,42 +1,42 @@
-Id	Nom	Prénom	Attribut	ValAvt	ValApr	Commentaire
-671	TANGUY	Hélène	Date de fin de la fonction	1/7/0012	1/7/2012	NA
+Id	Nom	PrÃ©nom	Attribut	ValAvt	ValApr	Commentaire
+671	TANGUY	HÃ©lÃ¨ne	Date de fin de la fonction	1/7/0012	1/7/2012	NA
 47125	BOYER	Jean-Marc	Date de fin de la fonction	20/10/0017	20/10/2017	NA
 80360	SENECHAULT	Jean-Paul	Date de fin de la fonction	22/3/0013	22/3/2013	NA
-90614	BRIE	Simon	Date de début de la fonction	25/3/0201	25/3/2001	NA
-106532	BOLON	André	Date de fin de la fonction	20/9/0014	20/9/2014	NA
+90614	BRIE	Simon	Date de dÃ©but de la fonction	25/3/0201	25/3/2001	NA
+106532	BOLON	AndrÃ©	Date de fin de la fonction	20/9/0014	20/9/2014	NA
 106573	JANIER	Jacques	Date de fin de la fonction	27/2/0013	27/2/2013	NA
 147305	MULLOIS	Dominique	Date de fin de la fonction	20/3/0015	20/3/2015	NA
-152251	MUSELET	Bernard	Date de début de la fonction	16/3/0020	16/3/2001	NA
-153412	GERARD	Jean-Claude	Date de début de la fonction	13/3/0983	13/03/1983	NA
-154678	JACQUEL	Denis	Date de fin du mandat	14/10/0201	14/10/2010	Ou est-ce plutôt 2014 ?
+152251	MUSELET	Bernard	Date de dÃ©but de la fonction	16/3/0020	16/3/2001	NA
+153412	GERARD	Jean-Claude	Date de dÃ©but de la fonction	13/3/0983	13/03/1983	NA
+154678	JACQUEL	Denis	Date de fin du mandat	14/10/0201	14/10/2010	Ou est-ce plutÃ´t 2014 ?
 157950	ARRETEAU	Paula	Date de fin de la fonction	15/1/0012	15/1/2012	NA
-163176	MANG	Jean-Jacques	Date de début de la fonction	16/3/0200	16/3/2001	NA
-164229	CHABRIER	Yves	Date de début de la fonction	25/3/0201	25/3/2001	NA
-164780	AUPHAN	Philippe	Date de début de la fonction	1/2/3003	1/2/2003	NA
-167343	DUBOS	René	Date de début de la fonction	16/3/0201	16/3/2001	NA
-167452	DUCROCQ	Christian	Date de début de la fonction	24/3/0201	24/3/2001	NA
-167508	MAILLARD	Philippe	Date de début de la fonction	16/3/0200	16/3/2001	NA
-167575	NOEL	François-Mary	Date de début de la fonction	17/3/0201	17/3/2001	NA
-167578	PLAILLY	Christian	Date de début de la fonction	23/3/0201	23/3/2001	NA
+163176	MANG	Jean-Jacques	Date de dÃ©but de la fonction	16/3/0200	16/3/2001	NA
+164229	CHABRIER	Yves	Date de dÃ©but de la fonction	25/3/0201	25/3/2001	NA
+164780	AUPHAN	Philippe	Date de dÃ©but de la fonction	1/2/3003	1/2/2003	NA
+167343	DUBOS	RenÃ©	Date de dÃ©but de la fonction	16/3/0201	16/3/2001	NA
+167452	DUCROCQ	Christian	Date de dÃ©but de la fonction	24/3/0201	24/3/2001	NA
+167508	MAILLARD	Philippe	Date de dÃ©but de la fonction	16/3/0200	16/3/2001	NA
+167575	NOEL	FranÃ§ois-Mary	Date de dÃ©but de la fonction	17/3/0201	17/3/2001	NA
+167578	PLAILLY	Christian	Date de dÃ©but de la fonction	23/3/0201	23/3/2001	NA
 171311	DULHOSTE	Jean-Pierre	Date de fin de la fonction	7/7/0016	7/7/2016	NA
 171319	FARET	Gabriel	Date de fin de la fonction	30/5/0015	30/5/2015	NA
 171548	BRUN	Jean	Date de fin de la fonction	4/12/0017	4/12/2017	NA
 469570	RIHOUAY	Gilles	Date de fin de la fonction	24/2/0013	24/2/2013	NA
-630327	HERNANDEZ	Jean	Date de début de la fonction	6/11/0207	6/11/2017	NA
-630700	TRIBOULET	Guy	Date de début de la fonction	8/1/0018	23/03/2014	Pas sûr, à voir
+630327	HERNANDEZ	Jean	Date de dÃ©but de la fonction	6/11/0207	6/11/2017	NA
+630700	TRIBOULET	Guy	Date de dÃ©but de la fonction	8/1/0018	23/03/2014	Pas sÃ»r, Ã  voir
 738771	LEBOUCHER	Dominique	Date de fin de la fonction	23/5/0014	23/5/2014	NA
-767803	LAFAURIE	Jacky	Date de fin du mandat	3/5/1938	3/5/2008	Pas sûr du tout, à vérifier
+767803	LAFAURIE	Jacky	Date de fin du mandat	3/5/1938	3/5/2008	Pas sÃ»r du tout, Ã  vÃ©rifier
 869169	SASTRE	Serge	Date de fin de la fonction	14/3/0014	14/3/2014	NA
 872810	MACLET	Bernard	Date de fin de la fonction	17/7/0013	17/7/2013	NA
-875576	MABILLARD	René	Date de fin de la fonction	6/6/0013	6/6/2013	NA
+875576	MABILLARD	RenÃ©	Date de fin de la fonction	6/6/0013	6/6/2013	NA
 887794	BORNET	Pierre	Date de fin de la fonction	10/7/0014	10/7/2014	NA
-917437	QUEYREAU	Joël	Date de fin du mandat	20/10/0201	20/10/2010	Arbitraire, à vérifier
-944908	QUENARDEL	Françoise	Date de début de la fonction	8/1/0018	23/03/2014	Pas sûr, à voir
+917437	QUEYREAU	JoÃ«l	Date de fin du mandat	20/10/0201	20/10/2010	Arbitraire, Ã  vÃ©rifier
+944908	QUENARDEL	FranÃ§oise	Date de dÃ©but de la fonction	8/1/0018	23/03/2014	Pas sÃ»r, Ã  voir
 1068960	BRUT	Eric	Date de fin de la fonction	21/11/0017	21/11/2017	NA
 1077631	BOUR	Marguerite	Date de fin de la fonction	23/10/0015	23/10/2015	NA
 1077876	DASTUGUE	Gilbert	Date de fin de la fonction	12/6/0014	12/6/2014	NA
 1079145	BOSC	Marie-Claude	Date de fin de la fonction	20/7/0012	20/7/2012	NA
-1277552	DRAY	Bernadette	Date de début de la fonction	8/1/0018	23/03/2014	Pas sûr, à voir
-1277554	MOULIN	Geneviève	Date de début de la fonction	8/1/0018	23/03/2014	Pas sûr, à voir
-1317870	FAVRE	Aurélie	Date de début de la fonction	28/8/0014	28/8/2014	NA
-1352560	COCHONNEAU	Virginie	Date de fin du mandat	29/1/0201	29/1/2016	Arbitraire, à vérifier
+1277552	DRAY	Bernadette	Date de dÃ©but de la fonction	8/1/0018	23/03/2014	Pas sÃ»r, Ã  voir
+1277554	MOULIN	GeneviÃ¨ve	Date de dÃ©but de la fonction	8/1/0018	23/03/2014	Pas sÃ»r, Ã  voir
+1317870	FAVRE	AurÃ©lie	Date de dÃ©but de la fonction	28/8/0014	28/8/2014	NA
+1352560	COCHONNEAU	Virginie	Date de fin du mandat	29/1/0201	29/1/2016	Arbitraire, Ã  vÃ©rifier

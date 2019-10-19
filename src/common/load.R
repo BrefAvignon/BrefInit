@@ -29,8 +29,8 @@ load.data <- function(filenames, cols, correc.file)
 			comment.char="", 			# ignore possible comments in the content
 			row.names=NULL, 			# don't look for row names in the file
 			quote="", 					# don't expect double quotes "..." around text fields
-			as.is=TRUE,					# don't convert strings to factors
-			fileEncoding="Latin1"		# original tables seem to be encoded in Latin1 (ANSI)
+			as.is=TRUE					# don't convert strings to factors
+#			fileEncoding="Latin1"		# original tables seem to be encoded in Latin1 (ANSI)
 	)
 	
 	# load all the tables
@@ -48,8 +48,8 @@ load.data <- function(filenames, cols, correc.file)
 				row.names=NULL, 			# don't look for row names in the file
 				quote="", 					# don't expect double quotes "..." around text fields
 				skip=1,						# ignore the first line of the file ("Titre du rapport")
-				as.is=TRUE,					# don't convert strings to factors
-				fileEncoding="Latin1"		# original tables seem to be encoded in Latin1 (ANSI)
+				as.is=TRUE					# don't convert strings to factors
+#				fileEncoding="Latin1"		# original tables seem to be encoded in Latin1 (ANSI)
 		)
 		tlog(2,"Read ",nrow(temp)," lines and ",ncol(temp)," columns")
 		
@@ -112,17 +112,17 @@ load.data <- function(filenames, cols, correc.file)
 	
 	# setting appropriate encoding of string columns
 	# and replace "" by NAs
-	tlog(0,"Converting string encoding")
-	for(c in 1:ncol(data))
-	{	if(is.character(data[,c]))
-		{	tlog(2,"Col. \"",colnames(data)[c],"\": CONVERTING")
-#			data[,c] <- iconv(x=data[,c], from="Latin1", to="UTF8")
-			data[,c] <- iconv(x=data[,c], to="UTF8")
-			data[which(data[,c]==""),c] <- NA
-		}
-		else
-			tlog(2,"Col. \"",colnames(data)[c],"\": not a string")
-	}
+#	tlog(0,"Converting string encoding")
+#	for(c in 1:ncol(data))
+#	{	if(is.character(data[,c]))
+#		{	tlog(2,"Col. \"",colnames(data)[c],"\": CONVERTING")
+##			data[,c] <- iconv(x=data[,c], from="Latin1", to="UTF8")
+#			data[,c] <- iconv(x=data[,c], to="UTF8")
+#			data[which(data[,c]==""),c] <- NA
+#		}
+#		else
+#			tlog(2,"Col. \"",colnames(data)[c],"\": not a string")
+#	}
 	
 	return(data)
 }

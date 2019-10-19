@@ -38,7 +38,7 @@ t0 <- read.table(
 		quote="", 					# don't expect double quotes "..." around text fields
 		skip=1,						# ignore the first line of the file ("Titre du rapport")
 		as.is=TRUE,					# don't convert strings to factors
-		fileEncoding="Latin1",		# original tables seem to be encoded in Latin1 (ANSI)
+#		fileEncoding="Latin1",		# original tables seem to be encoded in Latin1 (ANSI)
 		colClasses="character"		# forces to consider everything column as strings
 )
 
@@ -54,7 +54,7 @@ t1 <- read.table(
 		quote="", 					# don't expect double quotes "..." around text fields
 		skip=1,						# ignore the first line of the file ("Titre du rapport")
 		as.is=TRUE,					# don't convert strings to factors
-		fileEncoding="Latin1",		# original tables seem to be encoded in Latin1 (ANSI)
+#		fileEncoding="Latin1",		# original tables seem to be encoded in Latin1 (ANSI)
 		colClasses="character"		# forces to consider everything column as strings
 )
 
