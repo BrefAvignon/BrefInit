@@ -133,3 +133,10 @@ COL_CORREC_ATTR <- "Attribut"
 COL_CORREC_VALAVT <- "ValAvt"
 COL_CORREC_VALAPR <- "ValApr"
 COL_CORREC_COMM <- "Commentaire"
+
+# verification files
+COL_VERIF_DPT_CODE <- "CodeDpt"
+COL_VERIF_DPT_NOM <- "Nom"
+COL_VERIF_MDT_NBR <- "Nombre"
+COL_VERIF_MDT_DBT <- "Début"
+COL_VERIF_MDT_FIN <- "Fin"

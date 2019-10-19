@@ -3,7 +3,7 @@
 # 
 # 07/2019 Vincent Labatut
 #
-# source("src/verification/check_R.R")
+# source("src/verification/check_S.R")
 #############################################################################################
 source("src/common/include.R")
 source("src/verification/evolution_plot.R")
