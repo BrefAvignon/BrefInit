@@ -184,8 +184,9 @@ test.position.cr <- function(data, out.folder)
 			comment.char="", 			# ignore possible comments in the content
 			row.names=NULL, 			# don't look for row names in the file
 			quote="", 					# don't expect double quotes "..." around text fields
-			as.is=TRUE					# don't convert strings to factors
+			as.is=TRUE,					# don't convert strings to factors
 #			fileEncoding="Latin1"		# original tables seem to be encoded in Latin1 (ANSI)
+			colClasses=c("character","character","integer","Date","Date")
 	)
 	# should not use region codes, because they changed over time
 	

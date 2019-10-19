@@ -115,11 +115,62 @@ load.data <- function(filenames, cols, correc.file)
 	tlog(0,"Cleaning/encoding strings")
 	for(c in 1:ncol(data))
 	{	if(is.character(data[,c]))
-		{	tlog(2,"Col. \"",colnames(data)[c],"\": CONVERTING")
+		{	tlog(2,"Processinc column \"",colnames(data)[c],"\"")
+			# convert encoding
 ##			data[,c] <- iconv(x=data[,c], from="Latin1", to="UTF8")
 #			data[,c] <- iconv(x=data[,c], to="UTF8")
+			# trim leading/ending whitespace
 			data[,c] <- trimws(data[,c])
+			# replace empty cells by explicit NAs
 			data[which(data[,c]==""),c] <- NA
+			
+			# possibly apply corrections
+			if(nrow(correc.table)>0)	
+			{	# keep only the relevant corrections
+				cor.tab <- correc.table[correc.table[,COL_CORREC_ATTR]==colnames(data)[c],]
+				# process each remaining correction
+				if(nrow(cor.tab)>0)
+				{	for(r in 1:nrow(cor.tab))
+					{	# general correction
+						if(all(is.na(cor.tab[r,c(COL_CORREC_ID,COL_CORREC_NOM,COL_CORREC_PRENOM)])))
+						{	# identify the targeted rows in the data table
+							idx <- which(data[,cor.tab[r,COL_CORREC_ATTR]]==cor.tab[r,COL_CORREC_VALAVT])
+							# there should be at least one
+							if(length(idx)<1)
+							{	tlog(4,"Could not find a correction: ",paste(cor.tab[r,],collapse=";"))
+								stop(paste0("Could not find a correction: ",paste(cor.tab[r,],collapse=";")))
+							}
+							else 
+							{	tlog(4,"Replacing ",cor.tab[r,COL_CORREC_VALAVT]," by ",cor.tab[r,COL_CORREC_VALAPR])
+								data[idx,cor.tab[r,COL_CORREC_ATTR]] <- cor.tab[r,COL_CORREC_VALAPR]
+							}
+						}
+						# correction of a specific row
+						else
+						{	# identify the targeted row in the data table
+							idx <- which(data[,COL_ATT_ELU_ID]==cor.tab[r,COL_CORREC_ID]
+										& data[,COL_ATT_ELU_NOM]==cor.tab[r,COL_CORREC_NOM]
+										& data[,COL_ATT_ELU_PRENOM]==cor.tab[r,COL_CORREC_PRENOM]
+										& data[,cor.tab[r,COL_CORREC_ATTR]]==cor.tab[r,COL_CORREC_VALAVT]
+							)
+							# there should be exactly one
+							if(length(idx)<1)
+							{	tlog(4,"Could not find a correction: ",paste(cor.tab[r,],collapse=";"))
+								stop(paste0("Could not find a correction: ",paste(cor.tab[r,],collapse=";")))
+							}
+							else if(length(idx)>1)
+							{	tlog(4,"A correction matches several cases: ",paste(cor.tab[r,],collapse=";"))
+								stop(paste0("A correction matches several cases: ",paste(cor.tab[r,],collapse=";")))
+							}
+							else
+							{	tlog(4,"Correcting entry: ",paste(cor.tab[r,],collapse=";"))
+#								vals[which(vals==as.Date("29/1/0201",format="%d/%m/%Y"))] <- as.Date("20/10/2016",format="%d/%m/%Y")	# manual correction for COCHONNEAU Virginie 1/5/1982 (CM), completely arbitrary
+								data[idx,cor.tab[r,COL_CORREC_ATTR]] <- cor.tab[r,COL_CORREC_VALAPR]
+							}
+						}
+					}
+				}
+			}
 		}
 		else
 			tlog(2,"Col. \"",colnames(data)[c],"\": not a string")
