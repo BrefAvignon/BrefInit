@@ -13,6 +13,7 @@
 FOLDER_IN <- "in"
 FOLDER_TABLES <- file.path(FOLDER_IN,"tables")
 FOLDER_CORRECS <- file.path(FOLDER_IN,"corrections")
+FOLDER_VERIFS <- file.path(FOLDER_IN,"verifications")
 # table files
 FILES_TAB_CD <- c("F Tous CD.txt")
 FILES_TAB_CM <- c("A Tous CM 01 30.txt", "B Tous CM 31 60.txt", "C Tous CM 61 95.txt", "D Tous CM OM.txt")
@@ -31,6 +32,9 @@ FILE_CORREC_DE <- "correc_DE.txt"
 FILE_CORREC_EPCI <- "correc_EPCI.txt"
 FILE_CORREC_M <- "correc_M.txt"
 FILE_CORREC_S <- "correc_S.txt"
+# verification files
+FILE_VERIF_CR <- "verif_CR.txt"
+FILE_VERIF_S <- "verif_S.txt"
 # additional files, for testing
 FILES_TAB_CD2 <- c("2019-10-09 extraction historique CD.txt")
 FILE_CORREC_CD2 <- "correc_CD2.txt"

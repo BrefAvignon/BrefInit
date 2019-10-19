@@ -353,3 +353,93 @@ test.position.m <- function(data, out.folder)
 		tlog(4,"Found a total of ",count," pairs of overlapping functions for the whole table")
 	}
 }
+
+
+
+
+#############################################################################################
+# Checks that the number of simultaneous senators for each department is always under the legal limit.
+#
+# data: table containing the parliamentary data.
+# out.folder: folder where to output the results.
+#############################################################################################
+test.position.d <- function(data, out.folder)
+{	tlog(0,"Trying to detect problems in senatorial positions")
+	tab <- data[FALSE,]
+	count <- 0
+	
+	# load the legal limit for the number of senator in each department
+	fn <- file.path(FOLDER_VERIFS, FILE_VERIF_S)
+	tlog(0,"Loading verification file \"",fn,"\"")
+	verif.table <- read.table(
+			file=fn, 					# name of the data file
+			header=TRUE, 				# look for a header
+			sep="\t", 					# character used to separate columns 
+			check.names=FALSE, 			# don't change the column names from the file
+			comment.char="", 			# ignore possible comments in the content
+			row.names=NULL, 			# don't look for row names in the file
+			quote="", 					# don't expect double quotes "..." around text fields
+			as.is=TRUE,					# don't convert strings to factors
+			fileEncoding="Latin1"		# original tables seem to be encoded in Latin1 (ANSI)
+	)
+	# should not use department code, because they changed over time
+	
+	# identify all unique departments
+	tlog(2,"Identifying all unique departments")
+	dpts <- data[,COL_ATT_DPT_CODE]
+	unique.dpts <- sort(unique(dpts))
+	tlog(4,"Found ",length(unique.dpts)," of them")
+	
+	# process each unique position
+	tlog(2,"Processing each unique position")
+	for(p in 1:length(unique.pos))
+	{	# retrieve the department and circonscription codes
+		tmp <- strsplit(unique.pos[p],":")[[1]]
+		dpt <- tmp[1]
+		circo <- as.integer(tmp[2])
+		tlog(4,"Processing position ",p,"/",length(unique.pos)," dpt=",dpt," circo=",circo)
+		
+		# get the corresponding mandates
+		idx <- which(data[,COL_ATT_DPT_CODE]==dpt & data[,COL_ATT_CIRC_CODE]==circo)
+		tlog(4,"Found ",length(idx)," mandates")
+		# check if their dates overlap
+		if(length(idx)>1)
+		{	ccount <- 0
+			
+			for(i in 1:(length(idx)-1))
+			{	# get the dates of the first compared mandate
+				start1 <- data[idx[i],COL_ATT_MDT_DBT]
+				end1 <- data[idx[i],COL_ATT_MDT_FIN]
+				
+				for(j in (i+1):length(idx))
+				{	# get the dates of the second compared mandate
+					start2 <- data[idx[j],COL_ATT_MDT_DBT]
+					end2 <- data[idx[j],COL_ATT_MDT_FIN]
+					
+					# check if the periods intersect
+					if(date.intersect(start1, end1, start2, end2))
+					{	# add to the table of problematic cases
+						tab <- rbind(tab, data[c(idx[i],idx[j]),], rep(NA,ncol(data)))
+						# add a row of NAs in order to separate pairs of cases
+						count <- count + 1
+						ccount <- ccount + 1
+					}
+				}
+			}
+			
+			# possibly add an empty row to separate cases
+			tlog(4,"Found ",ccount," pairs of overlapping mandates of this specific position")
+			if(ccount>0)
+				tab <- rbind(tab, rep(NA,ncol(data)))
+		}
+	}
+	tlog(2,"Processing over")
+	
+	# possibly record the table of problematic cases
+	if(nrow(tab)>0)
+	{	tab.file <- file.path(out.folder,"mandat_problems_overlap.txt")
+		tlog(2,"Recording in file \"",tab.file,"\"")
+		write.table(x=tab,file=tab.file,row.names=FALSE,col.names=TRUE,fileEncoding="UTF8")
+		tlog(4,"Found a total of ",count," pairs of overlapping mandates for the whole table")
+	}
+}
