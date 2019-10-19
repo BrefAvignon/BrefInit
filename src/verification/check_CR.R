@@ -9,6 +9,7 @@ source("src/common/include.R")
 source("src/verification/evolution_plot.R")
 source("src/verification/sumup_col.R")
 source("src/verification/test_dates.R")
+source("src/verification/test_positions.R")
 
 
 
@@ -27,13 +28,16 @@ cols <- tmp$cols
 
 # summarizes each column separately
 tlog(0,"Examining each column separately")
-sumup.cols(data=data, cols=cols, out.folder=out.folder)
+#sumup.cols(data=data, cols=cols, out.folder=out.folder)
 
 # plots the number of persons over time
 #plot.pers.time(data, out.folder, daily=TRUE)
 
 # check dates
 #test.col.dates.cr(data, cols, out.folder)
+
+# check overlapping mandates for the same position
+test.position.cr(data, out.folder)
 
 # close the log file
 tlog(0,"Done")

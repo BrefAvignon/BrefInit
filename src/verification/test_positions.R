@@ -164,6 +164,100 @@ test.position.cm <- function(data, out.folder)
 
 
 #############################################################################################
+# Checks that the number of simultaneous regional counsilors for each regions is always under the legal limit.
+#
+# data: table containing the regional data.
+# out.folder: folder where to output the results.
+#############################################################################################
+test.position.cr <- function(data, out.folder)
+{	tlog(0,"Trying to detect problems in senatorial positions")
+	tab <- data[FALSE,]
+	
+	# load the legal limit for the number of senators in each department
+	fn <- file.path(FOLDER_VERIFS, FILE_VERIF_CR)
+	tlog(0,"Loading verification file \"",fn,"\"")
+	verif.table <- read.table(
+			file=fn, 					# name of the data file
+			header=TRUE, 				# look for a header
+			sep="\t", 					# character used to separate columns 
+			check.names=FALSE, 			# don't change the column names from the file
+			comment.char="", 			# ignore possible comments in the content
+			row.names=NULL, 			# don't look for row names in the file
+			quote="", 					# don't expect double quotes "..." around text fields
+			as.is=TRUE					# don't convert strings to factors
+#			fileEncoding="Latin1"		# original tables seem to be encoded in Latin1 (ANSI)
+	)
+	# should not use region codes, because they changed over time
+	
+	# set up start/end dates
+	start.date <- min(c(data[,COL_ATT_MDT_DBT],data[,COL_ATT_MDT_FIN]),na.rm=TRUE)
+	end.date <- max(c(data[,COL_ATT_MDT_DBT],data[,COL_ATT_MDT_FIN]),na.rm=TRUE)
+	tlog(4,"Start date: ",format(start.date))
+	tlog(4,"End date: ",format(end.date))
+	
+	# loop over each day in the period
+	cur.day <- start.date
+	old.regs <- c()
+	tlog(4,"Looping over time by 1-day increments")
+	while(cur.day <= end.date)
+	{	day <- as.integer(format(cur.day,format="%d"))
+		next.day <- cur.day + 1
+		found <- FALSE
+		
+		# get all mandates containing the current day
+		day.idx <- which(sapply(1:nrow(data), function(r)
+							date.intersect(data[r,COL_ATT_MDT_DBT], data[r,COL_ATT_MDT_FIN], cur.day, cur.day)
+				))
+		if(day==1)
+			tlog(6,"Processing day ",format(cur.day),": ",length(day.idx)," occurrence(s)")
+		if(length(day.idx)>0)
+		{	# count the number of mandates by region
+			tt <- table(data[day.idx,COL_ATT_REG_NOM])
+			# get the verification values (upper bounds) for the current day 
+			per.idx <- which(sapply(1:nrow(verif.table), function(r)
+								date.intersect(verif.table[r,COL_VERIF_MDT_DBT], verif.table[r,COL_VERIF_MDT_FIN], cur.day, cur.day)
+					))
+			# match to the departments names
+			midx <- match(names(tt),verif.table[per.idx, COL_VERIF_REG_NOM])
+			if(any(is.na(midx)))
+			{	print(names(tt)[which(is.na(midx))])
+				stop("problem")
+			}
+			# compare the mandate counts and upper bounds
+			ridx <- which(tt > verif.table[per.idx[midx], COL_VERIF_MDT_NBR])
+			# record the problematic departments
+			for(r in ridx)
+			{	if(!(names(tt)[r] %in% old.regs))
+				{	tlog(8,"Problem with ",names(tt)[r],": ",tt[r],"/",verif.table[per.idx[midx[r]],COL_VERIF_MDT_NBR]," mandates found")
+					zidx <- which(data[day.idx,COL_ATT_REG_NOM]==names(tt)[r])
+					tab <- rbind(tab, data[day.idx[zidx],], rep(NA,ncol(data)))
+					found <- TRUE
+				}
+			}
+			old.regs <- names(tt)
+		}
+		else
+			old.regs <- c()
+		
+		# update current date
+		cur.day <- next.day
+		if(found)
+			tab <- rbind(tab, rep(NA,ncol(data)))
+	}
+	tlog(4,"Looping over")
+	
+	# possibly record the table of problematic cases
+	if(nrow(tab)>0)
+	{	tab.file <- file.path(out.folder,"mandat_problems_overlap.txt")
+		tlog(2,"Recording in file \"",tab.file,"\"")
+		write.table(x=tab,file=tab.file,row.names=FALSE,col.names=TRUE,fileEncoding="UTF8")
+	}
+}
+
+
+
+
+#############################################################################################
 # Checks that two members of the parliament do not hold the exact same position at the same time.
 #
 # data: table containing the parliamentary data.
@@ -360,7 +454,7 @@ test.position.m <- function(data, out.folder)
 #############################################################################################
 # Checks that the number of simultaneous senators for each department is always under the legal limit.
 #
-# data: table containing the parliamentary data.
+# data: table containing the senatorial data.
 # out.folder: folder where to output the results.
 #############################################################################################
 test.position.s <- function(data, out.folder)
@@ -391,6 +485,7 @@ test.position.s <- function(data, out.folder)
 	
 	# loop over each day in the period
 	cur.day <- start.date
+	old.dpts <- c()
 	tlog(4,"Looping over time by 1-day increments")
 	while(cur.day <= end.date)
 	{	day <- as.integer(format(cur.day,format="%d"))
@@ -412,7 +507,6 @@ test.position.s <- function(data, out.folder)
 						))
 			# match to the departments names
 			midx <- match(names(tt),verif.table[per.idx, COL_VERIF_DPT_NOM])
-#			midx <- match(data[day.idx,COL_ATT_DPT_NOM], verif.table[per.idx, COL_VERIF_DPT_NOM])
 if(any(is.na(midx)))
 {	print(names(tt)[which(is.na(midx))])
 	stop("problem")
@@ -421,12 +515,17 @@ if(any(is.na(midx)))
 			didx <- which(tt > verif.table[per.idx[midx], COL_VERIF_MDT_NBR])
 			# record the problematic departments
 			for(d in didx)
-			{	tlog(8,"Problem with ",names(tt)[d],": ",tt[d],"/",verif.table[per.idx[midx[d]],COL_VERIF_MDT_NBR]," mandates found")
-				zidx <- which(data[day.idx,COL_ATT_DPT_NOM]==names(tt)[d])
-				tab <- rbind(tab, data[day.idx[zidx],], rep(NA,ncol(data)))
-				found <- TRUE
+			{	if(!(names(tt)[d] %in% old.dpts))
+				{	tlog(8,"Problem with ",names(tt)[d],": ",tt[d],"/",verif.table[per.idx[midx[d]],COL_VERIF_MDT_NBR]," mandates found")
+					zidx <- which(data[day.idx,COL_ATT_DPT_NOM]==names(tt)[d])
+					tab <- rbind(tab, data[day.idx[zidx],], rep(NA,ncol(data)))
+					found <- TRUE
+				}
 			}
+			old.dpts <- names(tt)
 		}
+		else
+			old.dpts <- c()
 		
 		# update current date
 		cur.day <- next.day
