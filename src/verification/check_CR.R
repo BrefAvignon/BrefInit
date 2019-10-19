@@ -29,7 +29,7 @@ cols <- tmp$cols
 tlog(0,"Examining each column separately")
 sumup.cols(data=data, cols=cols, out.folder=out.folder)
 
-# plots the number of persons over time time
+# plots the number of persons over time
 #plot.pers.time(data, out.folder, daily=TRUE)
 
 # check dates
