@@ -30,14 +30,14 @@ cols <- tmp$cols
 tlog(0,"Examining each column separately")
 #sumup.cols(data=data, cols=cols, out.folder=out.folder)
 
-# plots the number of persons over time time
+# plots the number of persons over time
 #plot.pers.time(data, out.folder, daily=TRUE)
 
 # check dates
-#test.col.dates.s(data, cols, out.folder)
+test.col.dates.s(data, cols, out.folder)
 
 # check overlapping mandates for the same position
-test.position.s(data, out.folder)
+#test.position.s(data, out.folder)
 
 # close the log file
 tlog(0,"Done")
