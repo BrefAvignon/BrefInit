@@ -5,7 +5,7 @@ NA	NA	NA	Libellé de la région	Centre-Val de Loire	CENTRE	Corrige dans toutes l
 NA	NA	NA	Libellé de la région	Grand Est	GRAND EST	Corrige dans toutes les lignes concernées
 NA	NA	NA	Libellé de la région	Guadeloupe	GUADELOUPE	Corrige dans toutes les lignes concernées
 NA	NA	NA	Libellé de la région	Hauts-de-France	HAUTS-DE-FRANCE	Corrige dans toutes les lignes concernées
-NA	NA	NA	Libellé de la région	Île-de-France	ILE-DE-FRANCE	Corrige dans toutes les lignes concernées
+NA	NA	NA	Libellé de la région	Île-de-France	ILE DE FRANCE	Corrige dans toutes les lignes concernées
 NA	NA	NA	Libellé de la région	La Réunion	LA REUNION	Corrige dans toutes les lignes concernées
 NA	NA	NA	Libellé de la région	Normandie	NORMANDIE	Corrige dans toutes les lignes concernées
 NA	NA	NA	Libellé de la région	Nouvelle-Aquitaine	NOUVELLE-AQUITAINE	Corrige dans toutes les lignes concernées
