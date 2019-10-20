@@ -220,10 +220,10 @@ test.position.cr <- function(data, out.folder)
 					))
 			# match to the departments names
 			midx <- match(names(tt),verif.table[per.idx, COL_VERIF_REG_NOM])
-			if(any(is.na(midx)))
-			{	print(names(tt)[which(is.na(midx))])
-				stop("problem")
-			}
+if(any(is.na(midx)))
+{	print(names(tt)[which(is.na(midx))])
+	stop("problem")
+}
 			# compare the mandate counts and upper bounds
 			ridx <- which(tt > verif.table[per.idx[midx], COL_VERIF_MDT_NBR])
 			# record the problematic departments
