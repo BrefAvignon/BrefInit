@@ -6,6 +6,7 @@
 # setwd("C:/Users/Vincent/Eclipse/workspaces/Extraction/Datapol")
 #############################################################################################
 source("src/common/include.R")
+source("src/verification/test_duplicates.R")
 
 
 
@@ -245,7 +246,7 @@ tlog(2,"Actual dimensions of the full table: ",paste(dim(data),collapse="x"))
 
 #############################################################################################
 # record everything in a new single table
-table.file <- file.path(FOLDER_OUT, "all_data.txt")
+table.file <- file.path(FOLDER_OUT_ALL, "merged_data.txt")
 tlog(0,"Recording the full table in file \"",table.file,"\"")
 write.table(x=data,
 	file=table.file,		# name of file containing the new table
@@ -256,6 +257,13 @@ write.table(x=data,
 	fileEncoding="UTF8"		# character encoding
 )
 tlog(0,"Recording over")
+
+
+
+
+#############################################################################################
+# check for ID duplicates (different persons with the same id)
+test.duplicates(data, FOLDER_OUT_ALL)
 
 
 

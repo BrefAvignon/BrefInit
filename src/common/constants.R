@@ -39,8 +39,18 @@ FILE_VERIF_S <- "verif_S.txt"
 FILES_TAB_CD2 <- c("2019-10-09 extraction historique CD.txt")
 FILE_CORREC_CD2 <- "correc_CD2.txt"
 
-# output folder
+# output folders
 FOLDER_OUT <- "out"
+	# table-specific output folders
+	FOLDER_OUT_CD <- file.path(FOLDER_OUT, "CD")
+	FOLDER_OUT_CM <- file.path(FOLDER_OUT, "CM")
+	FOLDER_OUT_CR <- file.path(FOLDER_OUT, "CR")
+	FOLDER_OUT_D <- file.path(FOLDER_OUT, "D")
+	FOLDER_OUT_DE <- file.path(FOLDER_OUT, "DE")
+	FOLDER_OUT_EPCI <- file.path(FOLDER_OUT, "EPCI")
+	FOLDER_OUT_M <- file.path(FOLDER_OUT, "M")
+	FOLDER_OUT_S <- file.path(FOLDER_OUT, "S")
+	FOLDER_OUT_ALL <- file.path(FOLDER_OUT, "All")
 # folder to store logs
 FOLDER_LOG <- "log"
 

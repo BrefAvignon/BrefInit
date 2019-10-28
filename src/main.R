@@ -16,7 +16,3 @@ source("src/common/include.R")
 # install stringdist
 
 
-# TODO
-# - Solve the encoding problem on Windows
-# - Implement Noemie's consistancy tests
-#   >> requires additional data

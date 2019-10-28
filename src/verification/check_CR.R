@@ -10,6 +10,7 @@ source("src/verification/evolution_plot.R")
 source("src/verification/sumup_col.R")
 source("src/verification/test_dates.R")
 source("src/verification/test_positions.R")
+source("src/verification/test_duplicates.R")
 
 
 
@@ -18,7 +19,7 @@ source("src/verification/test_positions.R")
 start.rec.log(text="CR")
 
 # create output folder
-out.folder <- file.path(FOLDER_OUT, "CR")
+out.folder <- FOLDER_OUT_CR
 dir.create(path=out.folder, showWarnings=FALSE, recursive=TRUE)
 
 # load the data
@@ -37,7 +38,11 @@ tlog(0,"Examining each column separately")
 #test.col.dates.cr(data, cols, out.folder)
 
 # check overlapping mandates for the same position
-test.position.cr(data, out.folder)
+#test.position.cr(data, out.folder)
+
+# look for duplicates
+# not really necessary to do that here, better after the merge
+test.duplicates(data, out.folder)
 
 # close the log file
 tlog(0,"Done")
