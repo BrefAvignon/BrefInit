@@ -36,8 +36,7 @@ tlog(0,"Examining each column separately")
 # check dates
 #test.col.dates.de(data, cols, out.folder)
 
-# look for duplicates
-# not really necessary to do that here, better after the merge
+# look for duplicates (not really necessary to do that here, better after the merge)
 test.duplicates(data, out.folder)
 
 # close the log file

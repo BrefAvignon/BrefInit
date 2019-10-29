@@ -18,8 +18,8 @@ start.rec.log(text="TableComp")
 #############################################################################################
 # set the files to be compared
 tmp.folder <- file.path(FOLDER_TABLES,"temp")
-file0 <- file.path(tmp.folder,"_F Tous CD.txt")
-file1 <- file.path(FOLDER_TABLES,FILES_TAB_CD2)
+file0 <- FILES_TAB_CD
+file1 <- FILES_TAB_CD2
 tlog(0,"Comparing table \"",file0,"\" and table \"",file1,"\"")
 
 
@@ -289,5 +289,5 @@ for(col in cols)
 
 #############################################################################################
 # close the log file
-tlog(0,"Done")
+tlog(0,"Comparison done")
 end.rec.log()

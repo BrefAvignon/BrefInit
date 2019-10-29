@@ -19,10 +19,9 @@
 #############################################################################################
 load.data <- function(filenames, cols, correc.file)
 {	# load the corrections
-	fn <- file.path(FOLDER_CORRECS, correc.file)
-	tlog(0,"Loading correction file \"",fn,"\"")
+	tlog(0,"Loading correction file \"",correc.file,"\"")
 	correc.table <- read.table(
-			file=fn, 					# name of the data file
+			file=correc.file,			# name of the data file
 			header=TRUE, 				# look for a header
 			sep="\t", 					# character used to separate columns 
 			check.names=FALSE, 			# don't change the column names from the file
@@ -36,11 +35,10 @@ load.data <- function(filenames, cols, correc.file)
 	# load all the tables
 	data <- NULL
 	for(filename in filenames)
-	{	fn <- file.path(FOLDER_TABLES, filename)
-		tlog(0,"Loading table file \"",fn,"\"")
+	{	tlog(0,"Loading table file \"",filename,"\"")
 		# read the partial table
 		temp <- read.table(
-				file=fn, 					# name of the data file
+				file=filename, 				# name of the data file
 				header=TRUE, 				# look for a header
 				sep="\t", 					# character used to separate columns 
 				check.names=FALSE, 			# don't change the column names from the file
@@ -183,7 +181,7 @@ load.data <- function(filenames, cols, correc.file)
 
 
 #############################################################################################
-# Loads the table for departmental counsilors.
+# Loads the table for departmental counsilors (first extraction).
 #
 # returns: data frame made of the cleaned data contained in the appropriate files.
 #############################################################################################
@@ -219,7 +217,7 @@ load.cd.data <- function()
 	return(res)
 }
 #############################################################################################
-# Loads the second version of the table for departmental counsilors.
+# Loads the table for departmental counsilors (second extraction).
 #
 # returns: data frame made of the cleaned data contained in the appropriate files.
 #############################################################################################
@@ -248,7 +246,7 @@ load.cd2.data <- function()
 	)
 	
 	# load the data
-	data <- load.data(filenames=FILES_TAB_CD2, cols=cols, correc.file=FILE_CORREC_CD2)
+	data <- load.data(filenames=FILES_TAB_CD2, cols=cols, correc.file=FILE_CORREC_CD2) 
 	
 	res <- list(data=data,cols=cols)
 	return(res)
@@ -258,7 +256,7 @@ load.cd2.data <- function()
 
 
 #############################################################################################
-# Loads the tables for municipal counsilors.
+# Loads the tables for municipal counsilors (first extraction).
 #
 # returns: data frame made of the cleaned data contained in the appropriate files.
 #############################################################################################
@@ -289,6 +287,48 @@ load.cm.data <- function()
 	
 	# load the data
 	data <- load.data(filenames=FILES_TAB_CM, cols=cols, correc.file=FILE_CORREC_CM)
+	
+	res <- list(data=data,cols=cols)
+	return(res)
+}
+
+
+
+
+#############################################################################################
+# Loads the tables for municipal counsilors (second extraction).
+#
+# returns: data frame made of the cleaned data contained in the appropriate files.
+#############################################################################################
+load.cm2.data <- function()
+{	# names of the columns
+	cols <- list(
+			list(name=COL_ATT_DPT_CODE_M, basename="dpt_code", tp="cat"),
+			list(name=COL_ATT_DPT_NOM_M, basename="dpt_nom", tp="nom"),
+			list(name=COL_ATT_COM_CODE, basename="ville_code", tp="cat"),
+			list(name=COL_ATT_COM_NOM, basename="ville_nom", tp="nom"),
+#			list(name=COL_ATT_COM_POP, basename="ville_population", tp="num"),
+			list(name=COL_ATT_ELU_NOM, basename="patronyme", tp="nom"),
+			list(name=COL_ATT_ELU_PRENOM, basename="prenom", tp="nom"),
+			list(name=COL_ATT_ELU_SEXE, basename="sexe", tp="cat"),
+			list(name=COL_ATT_ELU_DDN, basename="naissance_date", tp="dat"),
+			list(name=COL_ATT_ELU_NAT, basename="elu_nation", tp="cat"),
+			list(name=COL_ATT_PRO_CODE, basename="profession_code", tp="cat"),
+#			list(name=COL_ATT_PRO_NOM, basename="profession_nom", tp="cat"),
+			list(name=COL_ATT_MDT_NOM, basename="mandat_nom", tp="cat"),
+			list(name=COL_ATT_MDT_DBT, basename="mandat_debut", tp="dat"),
+			list(name=COL_ATT_MDT_FIN, basename="mandat_fin", tp="dat"),
+			list(name=COL_ATT_MDT_MOTIF, basename="mandat_motif", tp="cat"),
+			list(name=COL_ATT_FCT_NOM, basename="fonction_nom", tp="cat"),
+			list(name=COL_ATT_FCT_DBT, basename="fonction_debut", tp="dat"),
+			list(name=COL_ATT_FCT_FIN, basename="fonction_fin", tp="dat"),
+			list(name=COL_ATT_FCT_MOTIF, basename="fonction_motif", tp="cat"),
+			list(name=COL_ATT_ELU_NUANCE_CM, basename="nuance_pol", tp="cat"),
+			list(name=COL_ATT_ELU_ID, basename="elu_id", tp="cat")
+	)
+	
+	# load the data
+	data <- load.data(filenames=FILES_TAB_CM2, cols=cols, correc.file=FILE_CORREC_CM2)
 	
 	res <- list(data=data,cols=cols)
 	return(res)

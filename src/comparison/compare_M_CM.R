@@ -3,7 +3,7 @@
 # 
 # 10/2019 Vincent Labatut
 #
-# source("src/verification/compare_M_CM.R")
+# source("src/comparison/compare_M_CM.R")
 #############################################################################################
 source("src/common/include.R")
 source("src/verification/sumup_col.R")
