@@ -3,7 +3,7 @@
 # 
 # 10/2019 Vincent Labatut
 #
-# source("src/comparison/compare_CD.R")
+# source("src/comparison/compare_CM.R")
 #############################################################################################
 source("src/comparison/compare_tables.R")
 
@@ -11,15 +11,15 @@ source("src/comparison/compare_tables.R")
 
 
 # start logging
-start.rec.log(text="CompareCD")
+start.rec.log(text="CompareCM")
 
 # create output folder
-out.folder <- FOLDER_COMP_CD
+out.folder <- FOLDER_COMP_CM
 dir.create(path=out.folder, showWarnings=FALSE, recursive=TRUE)
 
 # perform the comparison
-tlog(0,"Comparing both extractions of the CD table")
-compare.tables(files0=FILES_TAB_CD, files1=FILES_TAB_CD2, out.folder)
+tlog(0,"Comparing both extractions of the CM table")
+compare.tables(files0=FILES_TAB_CM, files1=FILES_TAB_CM2, out.folder)
 
 # close the log file
 tlog(0,"Comparison done")

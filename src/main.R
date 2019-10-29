@@ -7,6 +7,7 @@
 # 07/2019 Vincent Labatut
 #
 # setwd("C:/Users/Vincent/Eclipse/workspaces/Extraction/Datapol")
+# setwd("eclipse/workspaces/Extraction/Datapol")
 #############################################################################################
 source("src/common/include.R")
 
@@ -16,3 +17,10 @@ source("src/common/include.R")
 # install stringdist
 
 
+# en cours
+# - check_CD : tout
+# - check_CM : tout sauf évolution
+# - compare_CM
+# 
+# à faire
+# - check_CM : évolution 1 & 2

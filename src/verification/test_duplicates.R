@@ -95,7 +95,7 @@ test.id.reuse <- function(data, out.folder)
 # out.folder: folder where to output the results.
 #############################################################################################
 test.multiple.id <- function(data, out.folder)
-{	tlog(0,"Trying to detect ID duplicate")
+{	tlog(0,"Trying to detect ID duplicates")
 	tab <- data[FALSE,]
 	count <- 0
 	
@@ -161,7 +161,7 @@ test.multiple.id <- function(data, out.folder)
 #############################################################################################
 test.duplicates <- function(data, out.folder)
 {	# look for IDs associated to several distinct pieces of personal information
-#	test.id.reuse(data, out.folder)
+	test.id.reuse(data, out.folder)
 	
 	# look for persons seemingly associated to different IDs
 	test.multiple.id(data, out.folder)
