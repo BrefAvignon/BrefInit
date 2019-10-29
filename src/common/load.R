@@ -113,7 +113,7 @@ load.data <- function(filenames, cols, correc.file)
 	tlog(0,"Cleaning/encoding strings")
 	for(c in 1:ncol(data))
 	{	if(is.character(data[,c]))
-		{	tlog(2,"Processinc column \"",colnames(data)[c],"\"")
+		{	tlog(2,"Processing column \"",colnames(data)[c],"\"")
 			# convert encoding
 ##			data[,c] <- iconv(x=data[,c], from="Latin1", to="UTF8")
 #			data[,c] <- iconv(x=data[,c], to="UTF8")
@@ -323,12 +323,16 @@ load.cm2.data <- function()
 			list(name=COL_ATT_FCT_DBT, basename="fonction_debut", tp="dat"),
 			list(name=COL_ATT_FCT_FIN, basename="fonction_fin", tp="dat"),
 			list(name=COL_ATT_FCT_MOTIF, basename="fonction_motif", tp="cat"),
-			list(name=COL_ATT_ELU_NUANCE_CM, basename="nuance_pol", tp="cat"),
+			list(name=COL_ATT_ELU_NUANCE_CR, basename="nuance_pol", tp="cat"),
 			list(name=COL_ATT_ELU_ID, basename="elu_id", tp="cat")
 	)
 	
 	# load the data
 	data <- load.data(filenames=FILES_TAB_CM2, cols=cols, correc.file=FILE_CORREC_CM2)
+	
+	# force column names to be similar to those of the first extraction
+	colnames(data)[which(colnames(data)==COL_ATT_ELU_NUANCE_CR)] <- COL_ATT_ELU_NUANCE_CM
+	cols[[which(sapply(cols,function(l) l$name)==COL_ATT_ELU_NUANCE_CR)]] <- list(name=COL_ATT_ELU_NUANCE_CM, basename="nuance_pol", tp="cat")
 	
 	res <- list(data=data,cols=cols)
 	return(res)

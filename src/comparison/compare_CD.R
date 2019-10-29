@@ -5,47 +5,26 @@
 #
 # source("src/comparison/compare_CD.R")
 #############################################################################################
-source("src/common/include.R")
-source("src/verification/evolution_plot.R")
-source("src/verification/sumup_col.R")
-source("src/verification/test_dates.R")
-source("src/verification/test_positions.R")
-source("src/verification/test_duplicates.R")
+source("src/comparison/compare_tables.R")
 
 
 
-
-# set up the extraction
-extraction <- 1 # 1 or 2
 
 # start logging
-start.rec.log(text=paste0("CD",extraction))
+start.rec.log(text="CompareCD")
 
 # create output folder
-out.folder <- if(extraction==1) FOLDER_OUT_CD else FOLDER_OUT_CD2
+out.folder <- FOLDER_COMP_CD
 dir.create(path=out.folder, showWarnings=FALSE, recursive=TRUE)
 
-# load the data
-tmp <- if(extraction==1) load.cd.data() else load.cd2.data() 
-data <- tmp$data
-cols <- tmp$cols
+# set the files to be compared
+tlog(0,"Comparing both extractions of the CD table")
+file0 <- FILES_TAB_CD
+file1 <- FILES_TAB_CD2
 
-# summarizes each column separately
-tlog(0,"Examining each column separately")
-sumup.cols(data=data, cols=cols, out.folder=out.folder)
-
-# plots the number of persons over time
-plot.pers.time(data, out.folder, daily=TRUE)
-
-# check dates
-test.col.dates.cd(data, cols, out.folder)
-
-# check overlapping mandates for the same position
-test.position.cd(data, out.folder)
-
-# look for duplicates (not really necessary to do that here, better after the merge)
-test.duplicates(data, out.folder)
+# perform the comparison
+compare.tables(files0=file0, files1=file1, out.folder)
 
 # close the log file
-tlog(0,"Done")
+tlog(0,"Comparison done")
 end.rec.log()

@@ -80,15 +80,15 @@ FOLDER_OUT <- "out"
 	# comparison folders
 	FOLDER_COMPARISON <- file.path(FOLDER_OUT,"compare_1vs2")
 		# table-specific output folders
-		FOLDER_OUT_CD <- file.path(FOLDER_COMPARISON, "CD")
-		FOLDER_OUT_CM <- file.path(FOLDER_COMPARISON, "CM")
-		FOLDER_OUT_CR <- file.path(FOLDER_COMPARISON, "CR")
-		FOLDER_OUT_D <- file.path(FOLDER_COMPARISON, "D")
-		FOLDER_OUT_DE <- file.path(FOLDER_COMPARISON, "DE")
-		FOLDER_OUT_EPCI <- file.path(FOLDER_COMPARISON, "EPCI")
-		FOLDER_OUT_M <- file.path(FOLDER_COMPARISON, "M")
-		FOLDER_OUT_S <- file.path(FOLDER_COMPARISON, "S")
-		FOLDER_OUT_ALL <- file.path(FOLDER_COMPARISON, "All")
+		FOLDER_COMP_CD <- file.path(FOLDER_COMPARISON, "CD")
+		FOLDER_COMP_CM <- file.path(FOLDER_COMPARISON, "CM")
+		FOLDER_COMP_CR <- file.path(FOLDER_COMPARISON, "CR")
+		FOLDER_COMP_D <- file.path(FOLDER_COMPARISON, "D")
+		FOLDER_COMP_DE <- file.path(FOLDER_COMPARISON, "DE")
+		FOLDER_COMP_EPCI <- file.path(FOLDER_COMPARISON, "EPCI")
+		FOLDER_COMP_M <- file.path(FOLDER_COMPARISON, "M")
+		FOLDER_COMP_S <- file.path(FOLDER_COMPARISON, "S")
+		FOLDER_COMP_ALL <- file.path(FOLDER_COMPARISON, "All")
 
 
 

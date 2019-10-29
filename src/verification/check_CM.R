@@ -16,7 +16,7 @@ source("src/verification/test_duplicates.R")
 
 
 # set up the extraction
-extraction <- 1 # 1 or 2
+extraction <- 2 # 1 or 2
 
 # start logging
 start.rec.log(text=paste0("CM",extraction))
@@ -35,7 +35,7 @@ tlog(0,"Examining each column separately")
 sumup.cols(data=data, cols=cols, out.folder=out.folder)
 
 # plots the number of persons over time
-plot.pers.time(data, out.folder, daily=TRUE)
+#plot.pers.time(data, out.folder, daily=TRUE)
 
 # check dates
 test.col.dates.cm(data, cols, out.folder)
