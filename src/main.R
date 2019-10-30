@@ -18,9 +18,8 @@ source("src/common/include.R")
 
 
 # en cours
-# - check_CD : tout
-# - check_CM : tout sauf évolution
 # - compare_CM
+# - check_CM2 : tout sauf évolution
 # 
 # à faire
-# - check_CM : évolution 1 & 2
+# - check_CM : évolution 1 + 2

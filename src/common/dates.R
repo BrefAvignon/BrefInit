@@ -90,7 +90,8 @@ addMonth <- function(date, n=1)
 # returns: year of the date.
 #############################################################################################
 get.year <- function(date)
-{	year <- as.numeric(substr(as.character(date),1,4))	
+{	#year <- as.numeric(substr(as.character(date),1,4))	
+	year <- sapply(strsplit(as.character(date), "-"), function(vect) vect[1])
 	return(year)
 }
 
@@ -105,7 +106,8 @@ get.year <- function(date)
 # returns: month of the date.
 #############################################################################################
 get.month <- function(date)
-{	month <- as.numeric(substr(as.character(date),6,7))	
+{	#month <- as.numeric(substr(as.character(date),6,7))
+	month <- sapply(strsplit(as.character(date), "-"), function(vect) vect[2])
 	return(month)
 }
 
@@ -120,7 +122,8 @@ get.month <- function(date)
 # returns: day of the date.
 #############################################################################################
 get.day <- function(date)
-{	day <- as.numeric(substr(as.character(date),9,10))	
+{	#day <- as.numeric(substr(as.character(date),9,10))	
+	day <- sapply(strsplit(as.character(date), "-"), function(vect) vect[3])
 	return(day)
 }
 
