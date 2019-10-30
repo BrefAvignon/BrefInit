@@ -118,10 +118,16 @@ lookup.row <- function(tab1, i, tab2, map)
 						
 						# otherwise
 						if(length(idx)>1)
-						{	tlog(4,"Found several matches: comparison too loose")
+						{	tlog(4,"Found several matches: comparison too loose (",paste(idx,collapse=", "),")")
+							tlog(6,"tab1[",i,",]: ",paste(tab1[i,],collapse=", "))
+							for(idx0 in idx)
+								tlog(6,"tab2[",idx0,",]: ",paste(tab2[idx0,],collapse=", "))
 							print(idx)
 							print(rbind(tab1[i,],tab2[idx,]))
-							stop("Several rows match: the criteria should be revised")
+#							stop("Several rows match: the criteria should be revised")
+							# nope, at this stage this just means the same row is repeated several times, 
+							# so we just take the first one and the others will just be detected as extra rows later
+							idx <- idx[1]
 						}
 					}
 				}
@@ -254,7 +260,7 @@ compare.tables <- function(files0, files1, out.folder)
 		# print(rbind(t0[c(5232),cols],t1[c(5244,5245),cols]))
 		
 		# check whether rows are similar
-		idx <- lookup.row(tab1=t0,i=i0,tab2=t1,map=mp0)
+		idx <- lookup.row(tab1=t0[,ccn],i=i0,tab2=t1[,ccn],map=mp0)
 		if(length(idx)==1)
 		{	tlog(6,"Found in t1: add to map for latter use")
 			mp0[i0] <- idx
