@@ -19,7 +19,7 @@ source("src/common/include.R")
 
 # en cours
 # - compare_CM
-# - check_CM2 : tout sauf évolution
+# - check_CM : évolution 1
 # 
 # à faire
-# - check_CM : évolution 1 + 2
+# - check_CM : évolution 2
