@@ -4,6 +4,7 @@
 # 10/2019 Vincent Labatut
 #
 # source("src/comparison/compare_CM.R")
+# nohup R --vanilla < src/comparison/compare_CM.R > termout.comparison.txt &
 #############################################################################################
 source("src/comparison/compare_tables.R")
 

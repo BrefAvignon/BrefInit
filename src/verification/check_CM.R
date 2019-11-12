@@ -4,6 +4,7 @@
 # 07/2019 Vincent Labatut
 #
 # source("src/verification/check_CM.R")
+# nohup R --vanilla < src/verification/check_CM.R > termout.evol.txt &
 #############################################################################################
 source("src/common/include.R")
 source("src/verification/evolution_plot.R")
