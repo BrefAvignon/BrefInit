@@ -16,6 +16,8 @@
 #############################################################################################
 plot.pers.time <- function(data, out.folder, daily=FALSE)
 {	tlog(2,"Plotting number of mandate occurrences as a function of time")
+	core.nbr <- detectCores(all.tests=TRUE)
+	plan(multiprocess, workers=core.nbr/2) 
 	
 	# set up start/end dates
 	start.date <- min(c(data[,COL_ATT_MDT_DBT],data[,COL_ATT_MDT_FIN]),na.rm=TRUE)
@@ -35,7 +37,7 @@ plot.pers.time <- function(data, out.folder, daily=FALSE)
 		while(cur.month <= end.date)
 		{	next.month <- addMonth(cur.month,1)
 			
-			month.idx <- which(sapply(1:nrow(data), function(r)
+			month.idx <- which(future_sapply(1:nrow(data), function(r)
 						date.intersect(data[r,COL_ATT_MDT_DBT], data[r,COL_ATT_MDT_FIN], cur.month, next.month-1)
 					))
 			month.val <- length(month.idx)
@@ -65,7 +67,7 @@ plot.pers.time <- function(data, out.folder, daily=FALSE)
 		{	day <- as.integer(format(cur.day,format="%d"))
 			next.day <- cur.day + 1
 			
-			day.idx <- which(sapply(1:nrow(data), function(r)
+			day.idx <- which(future_sapply(1:nrow(data), function(r)
 						date.intersect(data[r,COL_ATT_MDT_DBT], data[r,COL_ATT_MDT_FIN], cur.day, cur.day)
 					))
 			day.val <- length(day.idx)

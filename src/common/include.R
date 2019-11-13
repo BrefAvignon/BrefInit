@@ -5,8 +5,31 @@
 #
 # source("src/common/include.R")
 #############################################################################################
+
+
+
+
+#############################################################################################
+# packages
+
+# string comparison
+library("stringdist")
+
+# parallel computing
+library("parallel")
+library("future.apply")
+
+
+
+
+#############################################################################################
+# source code
 source("src/common/constants.R")
 source("src/common/dates.R")
 source("src/common/logging.R")
 source("src/common/stats.R")
 source("src/common/load.R")
+
+
+
+
