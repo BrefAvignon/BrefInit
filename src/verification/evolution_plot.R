@@ -59,7 +59,7 @@ plot.pers.time <- function(data, out.folder, daily=FALSE)
 		
 		cur.day <- start.date
 		cur.month <- get.first.day(start.date)
-		month.idx <- c() 
+		month.idx <- c()
 		tlog(4,"Looping over time by 1-day increments")
 		while(cur.day <= end.date)
 		{	day <- as.integer(format(cur.day,format="%d"))

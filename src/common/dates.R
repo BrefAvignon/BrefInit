@@ -138,7 +138,7 @@ get.day <- function(date)
 # returns: date of the first day of the same month.
 #############################################################################################
 get.first.day <- function(date)
-{	cat("Date: ",format(date),"\n",sep="")
+{	#cat("Date: ",format(date),"\n",sep="")
 	
 	# break down the date
 	y = as.numeric(substr(as.character(date),1,4))
@@ -178,18 +178,20 @@ date.intersect <- function(start1, end1, start2, end2)
 	if(is.na(end2))
 		end2 <- max(c(start1,end1,start2,end2), na.rm=TRUE)
 	
-	if(start1<start2)
-	{	if(end1<start2)
-			result <- FALSE
-		else
-			result <- TRUE
-	}
-	else
-	{	if(start1>end2)
-			result <- FALSE
-		else
-			result <- TRUE
-	}
+	result <- start1<=start2 && end1>=start2 || start1>=start2 && start1<=end2
+	
+#	if(start1<start2)
+#	{	if(end1<start2)
+#			result <- FALSE
+#		else
+#			result <- TRUE
+#	}
+#	else
+#	{	if(start1>end2)
+#			result <- FALSE
+#		else
+#			result <- TRUE
+#	}
 	
 	return(result)
 }
