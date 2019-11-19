@@ -33,14 +33,16 @@ source("src/common/include.R")
 #   >> le mandat qui s'achève est réduit d'une journée pour éviter le recouvrement
 # - vérifier les mandats commençant largement avant 2000
 #   hypothèse : il s'agirait de séries de mandats consécutifs fusionnés, dont le dernier est soit encore en cours, soit s'arrête après 2001
-#   >> couper les mandats de manière à ne commencer qu'au 01/01/2001
+#   >> redécouper les mandats en fonction des dates des élections
 # - implémenter le test de recouvrement de mandat pour les DE, en utilisant le nouveau tableau de NF (fichier répartition des élus, p3) 
 # - utiliser le tableau de NF listant toutes les dates des élections, pour 
 #   - corriger tables de vérification avec nombres de postes (CR, S, DE?)
 #   - trancher les dates de début/fin de mandat qui se chevauchent d'un jour
 #   - découper les mandats consécutifs abusivement fusionnés
-# - tester le recouvrement de mandat pour les CM (en plus de celui de fonction, déjà fait)
 # - tester quand fonction est renseignée mais sans date (même pas début)
+# - certaines fonctions sont à ignorer lors du test de recouvrement :
+#   - maire délégué
+#   - autres responsabilités
 # - tester quand aucune date de mandat n'est renseignée
 # - tester quand, dans une même table, une même personne a un chevauchement de date de fonction
 #   elle ne devrait pas cumuler plusieurs fonctions relatives au même type de position
@@ -50,7 +52,14 @@ source("src/common/include.R")
 # - Dans une même table, détecter les lignes telles que seul un attribut optionnel diffère (ou plusieurs, mais tous optionnels)
 #   (les attributs obligatoires étant de valeurs égales)
 #   >> probablement une entrée qui a été complétée plus tard, garder la ligne la plus complète et supprimer l'autre 
+# - réordonner les colonnes dans les sorties fichiers de manière à ce qu'elles soient plus lisibles
+# - quand la date de fin de fonction manque, on peut la déduire
+#   - de la date de début de fonction suivante
+#   - de la date de fin de mandat
 
+
+# - tester le recouvrement de mandat pour les CM (en plus de celui de fonction, déjà fait)
+#   >> impossible à faire car les mandats ne sont pas uniques (tous sont conseillers municipaux) 
 
 # Noms propres
 # - normaliser les noms propres : 
@@ -59,8 +68,8 @@ source("src/common/include.R")
 # - mettre en place la comparaison flexible des noms propres
 # - problèmes repérés sur les noms de lieux
 #   - VILLE SUD = VILLE-SUD = VILLE - SUD
-#     >> chercher toutes les variantes de la même chaine modulo un séparateur : espace, tiret, apostrophe, slash
-#     >> garder la majoritaire, ou celle qui a le plus de tirets
+#     >> Chercher toutes les variantes de la même chaine modulo un séparateur : espace, tiret, apostrophe, slash
+#     >> Garder la majoritaire, ou celle qui a le plus de tirets
 # - Le même nom apparait parfois avec ou sans le déterminant : LE, LA, L', LES
 # - Saint/St, Sainte/Ste, Saints/Sts, Saintes/Stes 
 #   >> normaliser en prenant le mot complet systématiquement
@@ -106,3 +115,7 @@ source("src/common/include.R")
 # - solution : vérifier si personne d'autre n'occupe la même position sur le reste de la durée de mandat
 #	           >> si oui, on étend la date de fin de mandat à la date de durée légale
 #	           >> si non, on utilise la date de début de la personne suivant
+
+# le mandat s'achève t il quand l'élu déménage et change de liste électorale ?
+# >> question de droit
+# >> pourrait permettre de résoudre de cas où un même id possède simultanément des mandats incompatibles
