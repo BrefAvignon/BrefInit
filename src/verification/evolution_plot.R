@@ -17,7 +17,7 @@
 plot.pers.time <- function(data, out.folder, daily=FALSE)
 {	tlog(2,"Plotting number of mandate occurrences as a function of time")
 	core.nbr <- detectCores(all.tests=TRUE)
-	plan(multiprocess, workers=core.nbr/2) 
+	plan(multiprocess, workers=core.nbr) #core.nbr/2 
 	
 	# set up start/end dates
 	start.date <- min(c(data[,COL_ATT_MDT_DBT],data[,COL_ATT_MDT_FIN]),na.rm=TRUE)
