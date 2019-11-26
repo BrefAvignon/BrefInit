@@ -16,8 +16,7 @@
 #############################################################################################
 plot.pers.time <- function(data, out.folder, daily=FALSE)
 {	tlog(2,"Plotting number of mandate occurrences as a function of time")
-	core.nbr <- detectCores(all.tests=TRUE)
-	plan(multiprocess, workers=core.nbr) #core.nbr/2 
+	plan(multiprocess, workers=CORE.NBR/2) #core.nbr/2 
 	
 	# set up start/end dates
 	start.date <- min(c(data[,COL_ATT_MDT_DBT],data[,COL_ATT_MDT_FIN]),na.rm=TRUE)
@@ -64,12 +63,20 @@ plot.pers.time <- function(data, out.folder, daily=FALSE)
 		month.idx <- c()
 		tlog(4,"Looping over time by 1-day increments")
 		while(cur.day <= end.date)
-		{	day <- as.integer(format(cur.day,format="%d"))
+		{	tlog(6,"Day ",format(cur.day))
+			
+			day <- as.integer(format(cur.day,format="%d"))
 			next.day <- cur.day + 1
 			
-			day.idx <- which(future_sapply(1:nrow(data), function(r)
-						date.intersect(data[r,COL_ATT_MDT_DBT], data[r,COL_ATT_MDT_FIN], cur.day, cur.day)
-					))
+#			day.idx <- which(
+#					future_sapply(1:nrow(data), function(r)
+#						date.intersect(data[r,COL_ATT_MDT_DBT], data[r,COL_ATT_MDT_FIN], cur.day, cur.day)
+#					))
+			day.idx <- c()
+			for(r in 1:nrow(data))
+			{	if(date.intersect(data[r,COL_ATT_MDT_DBT], data[r,COL_ATT_MDT_FIN], cur.day, cur.day))
+					day.idx <- c(day.idx, r)
+			}
 			day.val <- length(day.idx)
 			month.idx <- union(month.idx, day.idx)
 			if(as.integer(format(next.day,format="%d"))==1)

@@ -12,6 +12,9 @@
 #############################################################################################
 # packages
 
+# load data
+#library("readr")	 # not necessary, in the end
+
 # string comparison
 library("stringdist")
 
