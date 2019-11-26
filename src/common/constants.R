@@ -31,6 +31,7 @@ FOLDER_IN <- "in"
 	# second extraction
 	FILES_TAB_CD2 <- file.path(FOLDER_TABLES2, c("RNE_export_CD_20191009.txt"))
 	FILES_TAB_CM2 <- file.path(FOLDER_TABLES2, c("RNE_export_CM_20191023.txt"))
+	FILES_TAB_CR2 <- file.path(FOLDER_TABLES2, c("RNE_export_CR_20191025.txt"))
 # correction files
 	# first extraction
 	FILE_CORREC_CD <- file.path(FOLDER_CORRECS, "correc_CD.txt")
