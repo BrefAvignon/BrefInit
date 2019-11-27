@@ -113,12 +113,16 @@ plot.pers.time <- function(data, out.folder, daily=FALSE)
 	if(daily)
 	{	file <- file.path(out.folder,"persons_by_day.txt")
 		tab <- data.frame(Date=format(day.dates,format="%d/%m/%Y"),Count=day.vals)
-		write.table(x=tab,file=file,row.names=FALSE,col.names=TRUE,fileEncoding="UTF8")
+		write.table(x=tab,file=file,
+#				fileEncoding="UTF-8",
+				row.names=FALSE,col.names=TRUE)
 	}
 	# same by month
 	file <- file.path(out.folder,"persons_by_month.txt")
 	tab <- data.frame(Date=format(month.dates,format="%d/%m/%Y"),Count=month.vals)
-	write.table(x=tab,file=file,row.names=FALSE,col.names=TRUE,fileEncoding="UTF8")
+	write.table(x=tab,file=file,
+#			fileEncoding="UTF-8",
+			row.names=FALSE,col.names=TRUE)
 	
 	# generate plot only starting from 2000
 	if(daily)
@@ -230,16 +234,23 @@ plot.pers.time2 <- function(data, out.folder)
 			tlog(8,r,"/",nrow(data)," rows processed")
 		sdate <- data[r,COL_ATT_MDT_DBT]
 		edate <- data[r,COL_ATT_MDT_FIN]
-		if(is.na(edate))
-			edate <- end.date
-		idx <- match(sdate:edate,day.idx)
-		day.vals[idx] <- day.vals[idx] + rep(1,length(idx))
+		if(!(is.na(sdate) && is.na(edate)))
+		{	if(is.na(sdate))
+				sdate <- start.date
+			if(is.na(edate))
+				edate <- end.date
+		
+			idx <- match(sdate:edate,day.idx)
+			day.vals[idx] <- day.vals[idx] + rep(1,length(idx))
+		}
 	}
 	
 	# record data in a text file
 	file <- file.path(out.folder,"persons_by_day.txt")
 	tab <- data.frame(Date=format(day.dates,format="%d/%m/%Y"),Count=day.vals)
-	write.table(x=tab,file=file,row.names=FALSE,col.names=TRUE,fileEncoding="UTF8")
+	write.table(x=tab,file=file,
+#			fileEncoding="UTF-8",
+			row.names=FALSE,col.names=TRUE)
 	
 	# generate plot only starting from 2000
 	idx <- which(day.dates>as.Date("2000/1/1"))

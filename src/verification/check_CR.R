@@ -15,11 +15,14 @@ source("src/verification/test_duplicates.R")
 
 
 
+# set up the extraction
+extraction <- 1 # 1 or 2
+
 # start logging
-start.rec.log(text="CR")
+start.rec.log(text=paste0("CR",extraction))
 
 # create output folder
-out.folder <- FOLDER_OUT_CR
+out.folder <- if(extraction==1) FOLDER_OUT_CR else FOLDER_OUT_CR2
 dir.create(path=out.folder, showWarnings=FALSE, recursive=TRUE)
 
 # load the data

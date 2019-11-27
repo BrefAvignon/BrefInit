@@ -75,7 +75,9 @@ test.position.cd <- function(data, out.folder)
 	if(nrow(tab)>0)
 	{	tab.file <- file.path(out.folder,"mandat_problems_overlap.txt")
 		tlog(2,"Recording in file \"",tab.file,"\"")
-		write.table(x=tab,file=tab.file,row.names=FALSE,col.names=TRUE,fileEncoding="UTF8")
+		write.table(x=tab,file=tab.file,
+#				fileEncoding="UTF-8",
+				row.names=FALSE,col.names=TRUE)
 		tlog(4,"Found a total of ",count," pairs of overlapping mandates for the whole table")
 	}
 }
@@ -155,7 +157,9 @@ test.position.cm <- function(data, out.folder)
 	if(nrow(tab)>0)
 	{	tab.file <- file.path(out.folder,"fonction_problems_overlap.txt")
 		tlog(2,"Recording in file \"",tab.file,"\"")
-		write.table(x=tab,file=tab.file,row.names=FALSE,col.names=TRUE,fileEncoding="UTF8")
+		write.table(x=tab,file=tab.file,
+#				fileEncoding="UTF-8",
+				row.names=FALSE,col.names=TRUE)
 		tlog(4,"Found a total of ",count," pairs of overlapping mandates for the whole table")
 	}
 }
@@ -170,11 +174,11 @@ test.position.cm <- function(data, out.folder)
 # out.folder: folder where to output the results.
 #############################################################################################
 test.position.cr <- function(data, out.folder)
-{	tlog(0,"Trying to detect problems in senatorial positions")
+{	tlog(0,"Trying to detect problems in regional positions")
 	tab <- data[FALSE,]
 	
 	# load the legal limit for the number of senators in each department
-	fn <- file.path(FOLDER_VERIFS, FILE_VERIF_CR)
+	fn <- FILE_VERIF_CR
 	tlog(0,"Loading verification file \"",fn,"\"")
 	verif.table <- read.table(
 			file=fn, 					# name of the data file
@@ -220,10 +224,6 @@ test.position.cr <- function(data, out.folder)
 					))
 			# match to the departments names
 			midx <- match(names(tt),verif.table[per.idx, COL_VERIF_REG_NOM])
-if(any(is.na(midx)))
-{	print(names(tt)[which(is.na(midx))])
-	stop("problem")
-}
 			# compare the mandate counts and upper bounds
 			ridx <- which(tt > verif.table[per.idx[midx], COL_VERIF_MDT_NBR])
 			# record the problematic departments
@@ -251,7 +251,9 @@ if(any(is.na(midx)))
 	if(nrow(tab)>0)
 	{	tab.file <- file.path(out.folder,"mandat_problems_overlap.txt")
 		tlog(2,"Recording in file \"",tab.file,"\"")
-		write.table(x=tab,file=tab.file,row.names=FALSE,col.names=TRUE,fileEncoding="UTF8")
+		write.table(x=tab,file=tab.file,
+#				fileEncoding="UTF-8",
+				row.names=FALSE,col.names=TRUE)
 	}
 }
 
@@ -265,7 +267,7 @@ if(any(is.na(midx)))
 # out.folder: folder where to output the results.
 #############################################################################################
 test.position.d <- function(data, out.folder)
-{	tlog(0,"Trying to detect problems in parliamentary positions")
+{	tlog(0,"Trying to detect problems in legislative positions")
 	tab <- data[FALSE,]
 	count <- 0
 	
@@ -326,7 +328,9 @@ test.position.d <- function(data, out.folder)
 	if(nrow(tab)>0)
 	{	tab.file <- file.path(out.folder,"mandat_problems_overlap.txt")
 		tlog(2,"Recording in file \"",tab.file,"\"")
-		write.table(x=tab,file=tab.file,row.names=FALSE,col.names=TRUE,fileEncoding="UTF8")
+		write.table(x=tab,file=tab.file,
+#				fileEncoding="UTF-8",
+				row.names=FALSE,col.names=TRUE)
 		tlog(4,"Found a total of ",count," pairs of overlapping mandates for the whole table")
 	}
 }
@@ -341,7 +345,7 @@ test.position.d <- function(data, out.folder)
 # out.folder: folder where to output the results.
 #############################################################################################
 test.position.m <- function(data, out.folder)
-{	tlog(0,"Trying to detect problems in parliamentary positions")
+{	tlog(0,"Trying to detect problems in mayoral positions")
 	count <- 0
 	tab.m <- data[FALSE,]
 	tab.f <- data[FALSE,]
@@ -437,14 +441,18 @@ test.position.m <- function(data, out.folder)
 	if(nrow(tab.m)>0)
 	{	tab.file <- file.path(out.folder,"mandat_problems_overlap.txt")
 		tlog(2,"Recording in file \"",tab.file,"\"")
-		write.table(x=tab.m,file=tab.file,row.names=FALSE,col.names=TRUE,fileEncoding="UTF8")
+		write.table(x=tab.m,file=tab.file,
+#				fileEncoding="UTF-8",
+				row.names=FALSE,col.names=TRUE)
 		tlog(4,"Found a total of ",count," pairs of overlapping mandates for the whole table")
 	}
 	# possibly record the tables of problematic function cases
 	if(nrow(tab.f)>0)
 	{	tab.file <- file.path(out.folder,"function_problems_overlap.txt")
 		tlog(2,"Recording in file \"",tab.file,"\"")
-		write.table(x=tab.f,file=tab.file,row.names=FALSE,col.names=TRUE,fileEncoding="UTF8")
+		write.table(x=tab.f,file=tab.file,
+#				fileEncoding="UTF-8",
+				row.names=FALSE,col.names=TRUE)
 		tlog(4,"Found a total of ",count," pairs of overlapping functions for the whole table")
 	}
 }
@@ -463,7 +471,7 @@ test.position.s <- function(data, out.folder)
 	tab <- data[FALSE,]
 	
 	# load the legal limit for the number of senators in each department
-	fn <- file.path(FOLDER_VERIFS, FILE_VERIF_S)
+	fn <- FILE_VERIF_S
 	tlog(0,"Loading verification file \"",fn,"\"")
 	verif.table <- read.table(
 			file=fn, 					# name of the data file
@@ -540,6 +548,8 @@ if(any(is.na(midx)))
 	if(nrow(tab)>0)
 	{	tab.file <- file.path(out.folder,"mandat_problems_overlap.txt")
 		tlog(2,"Recording in file \"",tab.file,"\"")
-		write.table(x=tab,file=tab.file,row.names=FALSE,col.names=TRUE,fileEncoding="UTF8")
+		write.table(x=tab,file=tab.file,
+#				fileEncoding="UTF-8",
+				row.names=FALSE,col.names=TRUE)
 	}
 }

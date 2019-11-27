@@ -32,7 +32,9 @@ test.col.dates.generic <- function(data, cols, out.folder)
 				colnames(tmp)[1] <- "Ligne"
 				tab.file <- file.path(out.folder,paste0(col$basename,"_problems_too_early.txt"))
 				tlog(6,"Recording in file \"",tab.file,"\"")
-				write.table(x=tmp,file=tab.file,row.names=FALSE,col.names=TRUE,fileEncoding="UTF8")
+				write.table(x=tmp,file=tab.file,
+#						fileEncoding="UTF-8",
+						row.names=FALSE,col.names=TRUE)
 			}
 			
 			# too late
@@ -43,7 +45,9 @@ test.col.dates.generic <- function(data, cols, out.folder)
 				colnames(tmp)[1] <- "Ligne"
 				tab.file <- file.path(out.folder,paste0(col$basename,"_problems_too_late.txt"))
 				tlog(6,"Recording in file \"",tab.file,"\"")
-				write.table(x=tmp,file=tab.file,row.names=FALSE,col.names=TRUE,fileEncoding="UTF8")
+				write.table(x=tmp,file=tab.file,
+#						fileEncoding="UTF-8",
+						row.names=FALSE,col.names=TRUE)
 			}
 		}
 	}
@@ -59,7 +63,9 @@ test.col.dates.generic <- function(data, cols, out.folder)
 			colnames(tmp)[1] <- "Ligne"
 			tab.file <- file.path(out.folder,paste0("mandat_dates_problems_bounds.txt"))
 			tlog(6,"Recording in file \"",tab.file,"\"")
-			write.table(x=tmp,file=tab.file,row.names=FALSE,col.names=TRUE,fileEncoding="UTF8")
+			write.table(x=tmp,file=tab.file,
+#					fileEncoding="UTF-8",
+					row.names=FALSE,col.names=TRUE)
 		}
 		
 		# born after mandate begins
@@ -70,7 +76,9 @@ test.col.dates.generic <- function(data, cols, out.folder)
 			colnames(tmp)[1] <- "Ligne"
 			tab.file <- file.path(out.folder,paste0("mandat_dates_problems_birthdate.txt"))
 			tlog(6,"Recording in file \"",tab.file,"\"")
-			write.table(x=tmp,file=tab.file,row.names=FALSE,col.names=TRUE,fileEncoding="UTF8")
+			write.table(x=tmp,file=tab.file,
+#					fileEncoding="UTF-8",
+					row.names=FALSE,col.names=TRUE)
 		}
 	}
 	
@@ -87,7 +95,9 @@ test.col.dates.generic <- function(data, cols, out.folder)
 			colnames(tmp)[1] <- "Ligne"
 			tab.file <- file.path(out.folder,paste0("fonction_dates_problems_bounds.txt"))
 			tlog(6,"Recording in file \"",tab.file,"\"")
-			write.table(x=tmp,file=tab.file,row.names=FALSE,col.names=TRUE,fileEncoding="UTF8")
+			write.table(x=tmp,file=tab.file,
+#					fileEncoding="UTF-8",
+					row.names=FALSE,col.names=TRUE)
 		}
 		
 		# not included in the mandate period
@@ -98,7 +108,9 @@ test.col.dates.generic <- function(data, cols, out.folder)
 			colnames(tmp)[1] <- "Ligne"
 			tab.file <- file.path(out.folder,paste0("fonction_dates_problems_mandate.txt"))
 			tlog(6,"Recording in file \"",tab.file,"\"")
-			write.table(x=tmp,file=tab.file,row.names=FALSE,col.names=TRUE,fileEncoding="UTF8")
+			write.table(x=tmp,file=tab.file,
+#					fileEncoding="UTF-8",
+					row.names=FALSE,col.names=TRUE)
 		}
 		
 		# born after function begins
@@ -109,7 +121,9 @@ test.col.dates.generic <- function(data, cols, out.folder)
 			colnames(tmp)[1] <- "Ligne"
 			tab.file <- file.path(out.folder,paste0("fonction_dates_problems_birthdate.txt"))
 			tlog(6,"Recording in file \"",tab.file,"\"")
-			write.table(x=tmp,file=tab.file,row.names=FALSE,col.names=TRUE,fileEncoding="UTF8")
+			write.table(x=tmp,file=tab.file,
+#					fileEncoding="UTF-8",
+					row.names=FALSE,col.names=TRUE)
 		}
 	}
 	else
@@ -147,7 +161,9 @@ test.col.dates.cd <- function(data, cols, out.folder)
 		colnames(tmp)[1] <- "Ligne"
 		tab.file <- file.path(out.folder,paste0("mandat_dates_problems_duration.txt"))
 		tlog(6,"Recording in file \"",tab.file,"\"")
-		write.table(x=tmp,file=tab.file,row.names=FALSE,col.names=TRUE,fileEncoding="UTF8")
+		write.table(x=tmp,file=tab.file,
+#				fileEncoding="UTF-8",
+				row.names=FALSE,col.names=TRUE)
 	}
 }
 
@@ -178,7 +194,9 @@ test.col.dates.cm <- function(data, cols, out.folder)
 		colnames(tmp)[1] <- "Ligne"
 		tab.file <- file.path(out.folder,paste0("mandat_dates_problems_duration.txt"))
 		tlog(6,"Recording in file \"",tab.file,"\"")
-		write.table(x=tmp,file=tab.file,row.names=FALSE,col.names=TRUE,fileEncoding="UTF8")
+		write.table(x=tmp,file=tab.file,
+#				fileEncoding="UTF-8",
+				row.names=FALSE,col.names=TRUE)
 	}
 }
 
@@ -211,7 +229,9 @@ test.col.dates.cr <- function(data, cols, out.folder)
 		colnames(tmp)[1] <- "Ligne"
 		tab.file <- file.path(out.folder,paste0("mandat_dates_problems_duration.txt"))
 		tlog(6,"Recording in file \"",tab.file,"\"")
-		write.table(x=tmp,file=tab.file,row.names=FALSE,col.names=TRUE,fileEncoding="UTF8")
+		write.table(x=tmp,file=tab.file,
+#				fileEncoding="UTF-8",
+				row.names=FALSE,col.names=TRUE)
 	}
 }
 
@@ -251,7 +271,9 @@ test.col.dates.d <- function(data, cols, out.folder)
 		colnames(tmp)[1] <- "Ligne"
 		tab.file <- file.path(out.folder,paste0("mandat_dates_problems_duration.txt"))
 		tlog(6,"Recording in file \"",tab.file,"\"")
-		write.table(x=tmp,file=tab.file,row.names=FALSE,col.names=TRUE,fileEncoding="UTF8")
+		write.table(x=tmp,file=tab.file,
+#				fileEncoding="UTF-8",
+				row.names=FALSE,col.names=TRUE)
 	}
 }
 
@@ -282,7 +304,9 @@ test.col.dates.de <- function(data, cols, out.folder)
 		colnames(tmp)[1] <- "Ligne"
 		tab.file <- file.path(out.folder,paste0("mandat_dates_problems_duration.txt"))
 		tlog(6,"Recording in file \"",tab.file,"\"")
-		write.table(x=tmp,file=tab.file,row.names=FALSE,col.names=TRUE,fileEncoding="UTF8")
+		write.table(x=tmp,file=tab.file,
+#				fileEncoding="UTF-8",
+				row.names=FALSE,col.names=TRUE)
 	}
 }
 
@@ -317,6 +341,8 @@ test.col.dates.s <- function(data, cols, out.folder)
 		colnames(tmp)[1] <- "Ligne"
 		tab.file <- file.path(out.folder,paste0("mandat_dates_problems_duration.txt"))
 		tlog(6,"Recording in file \"",tab.file,"\"")
-		write.table(x=tmp,file=tab.file,row.names=FALSE,col.names=TRUE,fileEncoding="UTF8")
+		write.table(x=tmp,file=tab.file,
+#				fileEncoding="UTF-8",
+				row.names=FALSE,col.names=TRUE)
 	}
 }

@@ -38,7 +38,7 @@ sumup.cols(data=data, cols=cols, out.folder=out.folder)
 # plots the number of persons over time
 tlog(0,"Ploting the number of simultaneously hold positions over time")
 #plot.pers.time(data, out.folder, daily=TRUE)
-#plot.pers.time2(data, out.folder)
+plot.pers.time2(data, out.folder)
 
 # check dates
 tlog(0,"Checking dates")

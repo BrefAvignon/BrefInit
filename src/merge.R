@@ -252,9 +252,9 @@ write.table(x=data,
 	file=table.file,		# name of file containing the new table
 	quote=TRUE,				# put double quotes around strings
 	se="\t",				# use tabulations as separators
+#	fileEncoding="UTF-8",	# character encoding
 	row.names=FALSE,		# no names for rows
-	col.names=TRUE,			# record table headers
-	fileEncoding="UTF8"		# character encoding
+	col.names=TRUE			# record table headers
 )
 tlog(0,"Recording over")
 

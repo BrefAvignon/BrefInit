@@ -19,6 +19,8 @@ library("stringdist")
 #############################################################################################
 sumup.col.numerical <- function(data, col, basename, ...)
 {	vals <- data[,col]
+	col <- iconv(col, "UTF-8", "UTF-8")
+	
 	result <- c()
 	tt <- table(vals, useNA="always")
 	
@@ -47,7 +49,9 @@ sumup.col.numerical <- function(data, col, basename, ...)
 	else
 		tlog(6, "Too many values (",s,")")
 	val.file <- paste0(basename,"_unique_vals.txt")
-	write.table(x=tt,file=val.file,row.names=FALSE,col.names=FALSE,fileEncoding="UTF8")
+	write.table(x=tt,file=val.file,
+#			fileEncoding="UTF-8",
+			row.names=FALSE,col.names=FALSE)
 	
 	# show signs
 	tlog(4, "Signs:")
@@ -128,7 +132,8 @@ sumup.col.numerical <- function(data, col, basename, ...)
 # returns: a vector with the main stats.
 #############################################################################################
 sumup.col.categorical <- function(data, col, basename, ...)
-{	vals <- data[,col]
+{	vals <- iconv(data[,col], "UTF-8", "UTF-8")
+	col <- iconv(col, "UTF-8", "UTF-8")
 	result <- c()
 	tt <- table(vals, useNA="always")
 	
@@ -158,11 +163,15 @@ sumup.col.categorical <- function(data, col, basename, ...)
 	
 	# record unique values and their freq
 	val.file <- paste0(basename,"_unique_vals.txt")
-	write.table(x=tt,file=val.file,row.names=FALSE,col.names=FALSE,fileEncoding="UTF8")
+	write.table(x=tt,file=val.file,
+#			fileEncoding="UTF-8",
+			row.names=FALSE,col.names=FALSE)
 	# also record double distr (no NAs)
 	val.file <- paste0(basename,"_double_freq.txt")
 	ttt <- table(table(vals))
-	write.table(x=ttt,file=val.file,row.names=FALSE,col.names=FALSE,fileEncoding="UTF8")
+	write.table(x=ttt,file=val.file,
+#			fileEncoding="UTF-8",
+			row.names=FALSE,col.names=FALSE)
 	
 	# show standard statistics
 	tlog(4, "Standard statistics")
@@ -218,7 +227,9 @@ sumup.col.categorical <- function(data, col, basename, ...)
 # returns: a vector with the main stats.
 #############################################################################################
 sumup.col.nominal <- function(data, col, basename, dist.threhsold=3, ...)
-{	vals <- data[,col]
+{	vals <- iconv(data[,col], "UTF-8", "UTF-8")
+	col <- iconv(col, "UTF-8", "UTF-8")
+	
 	result <- c()
 	tt <- table(vals, useNA="always")
 	
@@ -238,11 +249,15 @@ sumup.col.nominal <- function(data, col, basename, dist.threhsold=3, ...)
 	
 	# record unique values and their freq
 	val.file <- paste0(basename,"_unique_vals.txt")
-	write.table(x=tt,file=val.file,row.names=FALSE,col.names=FALSE,fileEncoding="UTF8")
+	write.table(x=tt,file=val.file,
+#			fileEncoding="UTF-8",
+			row.names=FALSE,col.names=FALSE)
 	# also record double distr (no NAs)
 	val.file <- paste0(basename,"_double_freq.txt")
 	ttt <- table(table(vals))
-	write.table(x=ttt,file=val.file,row.names=FALSE,col.names=FALSE,fileEncoding="UTF8")
+	write.table(x=ttt,file=val.file,
+#			fileEncoding="UTF-8",
+			row.names=FALSE,col.names=FALSE)
 	
 	# basic stats
 	tlog(4, "Basic stats")
@@ -315,6 +330,7 @@ sumup.col.nominal <- function(data, col, basename, dist.threhsold=3, ...)
 #############################################################################################
 sumup.col.temporal <- function(data, col, basename, ...)
 {	vals <- data[,col]
+	col <- iconv(col, "UTF-8", "UTF-8")
 	result <- c()
 	tt <- table(vals, useNA="always")
 	
@@ -344,11 +360,15 @@ sumup.col.temporal <- function(data, col, basename, ...)
 	
 	# record unique values and their freq
 	val.file <- paste0(basename,"_unique_vals.txt")
-	write.table(x=tt,file=val.file,row.names=FALSE,col.names=FALSE,fileEncoding="UTF8")
+	write.table(x=tt,file=val.file,
+#			fileEncoding="UTF-8",
+			row.names=FALSE,col.names=FALSE)
 	# also record double distr (no NAs)
 	val.file <- paste0(basename,"_double_freq.txt")
 	ttt <- table(table(vals))
-	write.table(x=ttt,file=val.file,row.names=FALSE,col.names=FALSE,fileEncoding="UTF8")
+	write.table(x=ttt,file=val.file,
+#			fileEncoding="UTF-8",
+			row.names=FALSE,col.names=FALSE)
 	
 	# number of 1st January dates (supposedly representing unknown dates)
 	first.jan <- which(get.day(vals)==1 & get.month(vals)==1)
@@ -518,5 +538,8 @@ sumup.cols <- function(data, cols, out.folder, ...)
 	
 	# record the stats table
 	file <- file.path(out.folder,"stats.txt")
-	write.table(x=stats, file=file, sep="\t", row.names=TRUE, col.names=TRUE, fileEncoding="UTF8", quote=FALSE)
+	write.table(x=stats, file=file, sep="\t", 
+#			fileEncoding="UTF-8", 
+			row.names=TRUE, col.names=TRUE, 
+			quote=FALSE)
 }

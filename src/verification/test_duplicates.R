@@ -79,7 +79,9 @@ test.id.reuse <- function(data, out.folder)
 	if(nrow(tab)>0)
 	{	tab.file <- file.path(out.folder,"elu_id_problems_reuse.txt")
 		tlog(2,"Recording in file \"",tab.file,"\"")
-		write.table(x=tab,file=tab.file,row.names=FALSE,col.names=TRUE,fileEncoding="UTF8")
+		write.table(x=tab,file=tab.file,
+#				fileEncoding="UTF-8",
+				row.names=FALSE,col.names=TRUE)
 	}
 	tlog(4,"Found a total of ",count," IDs associated with different personal information")
 }
@@ -143,7 +145,9 @@ test.multiple.id <- function(data, out.folder)
 	if(nrow(tab)>0)
 	{	tab.file <- file.path(out.folder,"elu_id_problems_multiple_names.txt")
 		tlog(2,"Recording in file \"",tab.file,"\"")
-		write.table(x=tab,file=tab.file,row.names=FALSE,col.names=TRUE,fileEncoding="UTF8")
+		write.table(x=tab,file=tab.file,
+#				fileEncoding="UTF-8",
+				row.names=FALSE,col.names=TRUE)
 	}
 	tlog(4,"Found a total of ",count," individuals associated to several different IDs")
 }
