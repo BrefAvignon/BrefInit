@@ -28,15 +28,19 @@ cols <- tmp$cols
 
 # summarizes each column separately
 tlog(0,"Examining each column separately")
-#sumup.cols(data=data, cols=cols, out.folder=out.folder)
+sumup.cols(data=data, cols=cols, out.folder=out.folder)
 
 # plots the number of persons over time
+tlog(0,"Ploting the number of simultaneously hold positions over time")
 #plot.pers.time(data, out.folder, daily=TRUE)
+plot.pers.time2(data, out.folder)
 
 # check dates
-#test.col.dates.generic(data, cols, out.folder)
+tlog(0,"Checking dates")
+test.col.dates.generic(data, cols, out.folder)
 
 # look for duplicates (not really necessary to do that here, better after the merge)
+tlog(0,"Looking for duplicates")
 test.duplicates(data, out.folder)
 
 # close the log file
