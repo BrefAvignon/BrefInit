@@ -98,6 +98,17 @@ plot.pers.time <- function(data, out.folder, daily=FALSE)
 		month.dates <- as.Date(month.dates,origin="1970-01-01")
 	}
 	
+	# loop over all rows
+	day.idx <- start.date:end.date
+	day.dates <- as.Date(day.idx,origin="1970-01-01")
+	day.vals <- rep(0, length(day.idx))
+	for(r in 1:nrow(data))
+	{	sdate <- data[r,COL_ATT_MDT_DBT]
+		edate <- data[r,COL_ATT_MDT_FIN]
+		idx <- match(sdate:edate,day.idx)
+		day.vals[idx] <- day.vals[idx] + rep(1,length(idx))
+	}
+	
 	# record data in a text file
 	if(daily)
 	{	file <- file.path(out.folder,"persons_by_day.txt")
@@ -180,6 +191,86 @@ plot.pers.time <- function(data, out.folder, daily=FALSE)
 	plot(
 		x=as.Date(month.dates, origin="1970-01-01"),
 		y=month.vals, 
+		col="Red", 
+		xlab="Dates", 
+		ylab="Count",
+		type="l",
+#		las=2, 
+#		cex.names=min(1,20/length(uvals))
+	)
+	dev.off()
+}
+
+
+
+
+#############################################################################################
+# Plots the evolution of the number of people holding a mandate simultaneously as a function
+# of time. 
+#
+# data: table containing the data.
+# out.folder: output folder.
+#############################################################################################
+plot.pers.time2 <- function(data, out.folder)
+{	tlog(2,"Plotting number of mandate occurrences as a function of time")
+	plan(multiprocess, workers=CORE.NBR/2) #core.nbr/2 
+	
+	# set up start/end dates
+	start.date <- min(c(data[,COL_ATT_MDT_DBT],data[,COL_ATT_MDT_FIN]),na.rm=TRUE)
+	end.date <- max(c(data[,COL_ATT_MDT_DBT],data[,COL_ATT_MDT_FIN]),na.rm=TRUE)
+	tlog(4,"Period: ",format(start.date),"--",format(end.date))
+	
+	# loop over all rows
+	day.idx <- start.date:end.date
+	day.dates <- as.Date(day.idx,origin="1970-01-01")
+	day.vals <- rep(0, length(day.idx))
+	tlog(4,"Looping over the data row by row")
+	for(r in 1:nrow(data))
+	{	if(r %% 10000==0)
+			tlog(8,r,"/",nrow(data)," rows processed")
+		sdate <- data[r,COL_ATT_MDT_DBT]
+		edate <- data[r,COL_ATT_MDT_FIN]
+		if(is.na(edate))
+			edate <- end.date
+		idx <- match(sdate:edate,day.idx)
+		day.vals[idx] <- day.vals[idx] + rep(1,length(idx))
+	}
+	
+	# record data in a text file
+	file <- file.path(out.folder,"persons_by_day.txt")
+	tab <- data.frame(Date=format(day.dates,format="%d/%m/%Y"),Count=day.vals)
+	write.table(x=tab,file=file,row.names=FALSE,col.names=TRUE,fileEncoding="UTF8")
+	
+	# generate plot only starting from 2000
+	idx <- which(day.dates>as.Date("2000/1/1"))
+	file <- file.path(out.folder,paste0("persons_by_day_2001.",PLOT_FORMAT))
+	tlog(4, "Generating plot in file \"",file,"\"")
+	if(PLOT_FORMAT=="pdf")
+		pdf(file)
+	else if(PLOT_FORMAT=="png")
+		png(file, width=1024, height=1024)
+	plot(
+		x=as.Date(day.dates[idx], origin="1970-01-01"),
+		y=day.vals[idx], 
+		col="Red", 
+		xlab="Dates", 
+		ylab="Count",
+		type="l",
+#		las=2, 
+#		cex.names=min(1,20/length(uvals))
+	)
+	dev.off()
+	
+	# generate plot for all dates
+	file <- file.path(out.folder,paste0("persons_by_day.",PLOT_FORMAT))
+	tlog(4, "Generating plot in file \"",file,"\"")
+	if(PLOT_FORMAT=="pdf")
+		pdf(file)
+	else if(PLOT_FORMAT=="png")
+		png(file, width=1024, height=1024)
+	plot(
+		x=as.Date(day.dates, origin="1970-01-01"),
+		y=day.vals, 
 		col="Red", 
 		xlab="Dates", 
 		ylab="Count",

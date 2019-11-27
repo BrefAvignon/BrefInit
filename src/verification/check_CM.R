@@ -36,7 +36,8 @@ tlog(0,"Examining each column separately")
 #sumup.cols(data=data, cols=cols, out.folder=out.folder)
 
 # plots the number of persons over time
-plot.pers.time(data, out.folder, daily=TRUE)
+#plot.pers.time(data, out.folder, daily=TRUE)
+plot.pers.time2(data, out.folder)
 
 # check dates
 #test.col.dates.cm(data, cols, out.folder)
