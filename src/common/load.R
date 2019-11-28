@@ -533,9 +533,10 @@ load.m.data <- function()
 	# convert population numbers to actual integers
 	cn <- COL_ATT_COM_POP
 	vals <- data[,cn]
-	vals <- gsub("\\s", "",  vals)	# \\s matches all whitespaces
+	vals <- gsub(" ", "",  vals)	# \\s matches all whitespaces
 	vals <- gsub(",00", "",  vals)
-	vals <- suppressWarnings(as.integer(vals))
+#	vals <- suppressWarnings(as.integer(vals))
+	vals <- as.integer(vals)
 	data <- data[, names(data)!=cn]
 	data <- cbind(data,vals)
 	names(data)[ncol(data)] <- cn

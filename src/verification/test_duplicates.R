@@ -29,7 +29,7 @@ test.id.reuse <- function(data, out.folder)
 	count <- 0
 	for(i in 1:length(ids))
 	{	id <- ids[i]
-		tlog(4,"Processing id ",i,"/",length(ids))
+		tlog(4,"Processing ID ",i,"/",length(ids))
 		
 		# get the corresponding mandates
 		idx <- which(data[,COL_ATT_ELU_ID]==id)
@@ -106,7 +106,7 @@ test.multiple.id <- function(data, out.folder)
 	tlog(2,"Identifying all unique individuals")
 	lastnames <- data[,COL_ATT_ELU_NOM]
 	firstnames <- data[,COL_ATT_ELU_PRENOM]
-	birthdates <- data[,COL_ATT_ELU_DDN]
+	birthdates <- format(data[,COL_ATT_ELU_DDN])
 	sexes <- data[,COL_ATT_ELU_SEXE]
 	indivs <- apply(cbind(lastnames,firstnames,birthdates,sexes),1,function(r) paste(r,collapse=":"))
 	unique.indivs <- sort(unique(indivs))

@@ -27,13 +27,12 @@ source("src/common/include.R")
 
 
 # Points d'implémentation
-# - résoudre le problème de parsing de population 
-#   (espace de séparation des milliers mal géré)
 # - résoudre le problème des mandats concernant la même position mais qui se chevauchent sur une journée
 #   >> le mandat qui s'achève est réduit d'une journée pour éviter le recouvrement
 # - vérifier les mandats commençant largement avant 2000
 #   hypothèse : il s'agirait de séries de mandats consécutifs fusionnés, dont le dernier est soit encore en cours, soit s'arrête après 2001
 #   >> redécouper les mandats en fonction des dates des élections
+#   >> test concret: sortir tous les mandats commençant avant 2001, et les autres mandats des mêmes personnes
 # - implémenter le test de recouvrement de mandat pour les DE, en utilisant le nouveau tableau de NF (fichier répartition des élus, p3) 
 # - utiliser le tableau de NF listant toutes les dates des élections, pour 
 #   - corriger tables de vérification avec nombres de postes (CR, S, DE?)
