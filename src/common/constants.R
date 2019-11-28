@@ -53,6 +53,7 @@ FOLDER_IN <- "in"
 	FILE_CORREC_CM2 <- file.path(FOLDER_CORRECS2, "correc_CM.txt")
 # verification files
 FILE_VERIF_CR <- file.path(FOLDER_VERIFS, "verif_CR.txt")
+FILE_VERIF_DE <- file.path(FOLDER_VERIFS, "verif_DE.txt")
 FILE_VERIF_S <- file.path(FOLDER_VERIFS, "verif_S.txt")
 
 # output folders
@@ -189,6 +190,8 @@ COL_CORREC_VALAPR <- "ValApr"
 COL_CORREC_COMM <- "Commentaire"
 
 # verification files
+COL_VERIF_CIRCE_CODE <- "CodeCirco"
+COL_VERIF_CIRCE_NOM <- "Nom"
 COL_VERIF_DPT_CODE <- "CodeDpt"
 COL_VERIF_DPT_NOM <- "Nom"
 COL_VERIF_MDT_NBR <- "Nombre"

@@ -77,7 +77,7 @@ test.position.cd <- function(data, out.folder)
 		tlog(2,"Recording in file \"",tab.file,"\"")
 		write.table(x=tab,file=tab.file,
 #				fileEncoding="UTF-8",
-				row.names=FALSE,col.names=TRUE)
+				row.names=FALSE, col.names=TRUE)
 		tlog(4,"Found a total of ",count," pairs of overlapping mandates for the whole table")
 	}
 }
@@ -159,7 +159,7 @@ test.position.cm <- function(data, out.folder)
 		tlog(2,"Recording in file \"",tab.file,"\"")
 		write.table(x=tab,file=tab.file,
 #				fileEncoding="UTF-8",
-				row.names=FALSE,col.names=TRUE)
+				row.names=FALSE, col.names=TRUE)
 		tlog(4,"Found a total of ",count," pairs of overlapping mandates for the whole table")
 	}
 }
@@ -168,7 +168,8 @@ test.position.cm <- function(data, out.folder)
 
 
 #############################################################################################
-# Checks that the number of simultaneous regional counsilors for each regions is always under the legal limit.
+# Checks that the number of simultaneous regional counsilors for each region is always under 
+# the legal limit.
 #
 # data: table containing the regional data.
 # out.folder: folder where to output the results.
@@ -177,7 +178,7 @@ test.position.cr <- function(data, out.folder)
 {	tlog(0,"Trying to detect problems in regional positions")
 	tab <- data[FALSE,]
 	
-	# load the legal limit for the number of senators in each department
+	# load the legal limit for the number of regional counsilors in each subdivision
 	fn <- FILE_VERIF_CR
 	tlog(0,"Loading verification file \"",fn,"\"")
 	verif.table <- read.table(
@@ -253,7 +254,101 @@ test.position.cr <- function(data, out.folder)
 		tlog(2,"Recording in file \"",tab.file,"\"")
 		write.table(x=tab,file=tab.file,
 #				fileEncoding="UTF-8",
-				row.names=FALSE,col.names=TRUE)
+				row.names=FALSE, col.names=TRUE)
+	}
+}
+
+
+
+
+#############################################################################################
+# Checks that the number of simultaneous members of the European Parliament for each circonscription 
+# is always under the legal limit.
+#
+# data: table containing the regional data.
+# out.folder: folder where to output the results.
+#############################################################################################
+test.position.de <- function(data, out.folder)
+{	tlog(0,"Trying to detect problems in European positions")
+	tab <- data[FALSE,]
+	
+	# load the legal limit for the number of members of the European Parliament in each subdivision
+	fn <- FILE_VERIF_DE
+	tlog(0,"Loading verification file \"",fn,"\"")
+	verif.table <- read.table(
+			file=fn, 					# name of the data file
+			header=TRUE, 				# look for a header
+			sep="\t", 					# character used to separate columns 
+			check.names=FALSE, 			# don't change the column names from the file
+			comment.char="", 			# ignore possible comments in the content
+			row.names=NULL, 			# don't look for row names in the file
+			quote="", 					# don't expect double quotes "..." around text fields
+			as.is=TRUE,					# don't convert strings to factors
+#			fileEncoding="Latin1"		# original tables seem to be encoded in Latin1 (ANSI)
+			colClasses=c("character","character","integer","Date","Date")
+	)
+	
+	# set up start/end dates
+	start.date <- min(c(data[,COL_ATT_MDT_DBT],data[,COL_ATT_MDT_FIN]),na.rm=TRUE)
+	end.date <- max(c(data[,COL_ATT_MDT_DBT],data[,COL_ATT_MDT_FIN]),na.rm=TRUE)
+	tlog(4,"Start date: ",format(start.date))
+	tlog(4,"End date: ",format(end.date))
+	
+	# loop over each day in the period
+	cur.day <- start.date
+	old.circo <- c()
+	tlog(4,"Looping over time by 1-day increments")
+	while(cur.day <= end.date)
+	{	day <- as.integer(format(cur.day,format="%d"))
+		next.day <- cur.day + 1
+		found <- FALSE
+		
+		# get all mandates containing the current day
+		day.idx <- which(sapply(1:nrow(data), function(r)
+							date.intersect(data[r,COL_ATT_MDT_DBT], data[r,COL_ATT_MDT_FIN], cur.day, cur.day)
+				))
+		if(day==1)
+			tlog(6,"Processing day ",format(cur.day),": ",length(day.idx)," occurrence(s)")
+		if(length(day.idx)>0)
+		{	# count the number of mandates by subdivision
+			# TODO: no subdivision before 2004, we should use a different approach if we get the data for this period
+			tt <- table(data[day.idx,COL_ATT_CIRCE_NOM])
+			# get the verification values (upper bounds) for the current day 
+			per.idx <- which(sapply(1:nrow(verif.table), function(r)
+								date.intersect(verif.table[r,COL_VERIF_MDT_DBT], verif.table[r,COL_VERIF_MDT_FIN], cur.day, cur.day)
+					))
+			# match to the departments names
+			midx <- match(names(tt),verif.table[per.idx, COL_VERIF_CIRCE_NOM])
+			# compare the mandate counts and upper bounds
+			ridx <- which(tt > verif.table[per.idx[midx], COL_VERIF_MDT_NBR])
+			# record the problematic circonscriptions
+			for(r in ridx)
+			{	if(!(names(tt)[r] %in% old.circo))
+				{	tlog(8,"Problem with ",names(tt)[r],": ",tt[r],"/",verif.table[per.idx[midx[r]],COL_VERIF_MDT_NBR]," mandates found")
+					zidx <- which(data[day.idx,COL_ATT_CIRCE_NOM]==names(tt)[r])
+					tab <- rbind(tab, data[day.idx[zidx],], rep(NA,ncol(data)))
+					found <- TRUE
+				}
+			}
+			old.circo <- names(tt)
+		}
+		else
+			old.circo <- c()
+		
+		# update current date
+		cur.day <- next.day
+		if(found)
+			tab <- rbind(tab, rep(NA,ncol(data)))
+	}
+	tlog(4,"Looping over")
+	
+	# possibly record the table of problematic cases
+	if(nrow(tab)>0)
+	{	tab.file <- file.path(out.folder,"mandat_problems_overlap.txt")
+		tlog(2,"Recording in file \"",tab.file,"\"")
+		write.table(x=tab,file=tab.file,
+#				fileEncoding="UTF-8",
+				row.names=FALSE, col.names=TRUE)
 	}
 }
 
@@ -330,7 +425,7 @@ test.position.d <- function(data, out.folder)
 		tlog(2,"Recording in file \"",tab.file,"\"")
 		write.table(x=tab,file=tab.file,
 #				fileEncoding="UTF-8",
-				row.names=FALSE,col.names=TRUE)
+				row.names=FALSE, col.names=TRUE)
 		tlog(4,"Found a total of ",count," pairs of overlapping mandates for the whole table")
 	}
 }
@@ -452,7 +547,7 @@ test.position.m <- function(data, out.folder)
 		tlog(2,"Recording in file \"",tab.file,"\"")
 		write.table(x=tab.f,file=tab.file,
 #				fileEncoding="UTF-8",
-				row.names=FALSE,col.names=TRUE)
+				row.names=FALSE, col.names=TRUE)
 		tlog(4,"Found a total of ",count," pairs of overlapping functions for the whole table")
 	}
 }
@@ -461,7 +556,8 @@ test.position.m <- function(data, out.folder)
 
 
 #############################################################################################
-# Checks that the number of simultaneous senators for each department is always under the legal limit.
+# Checks that the number of simultaneous senators for each department is always under the legal 
+# limit.
 #
 # data: table containing the senatorial data.
 # out.folder: folder where to output the results.
@@ -517,10 +613,6 @@ test.position.s <- function(data, out.folder)
 						))
 			# match to the departments names
 			midx <- match(names(tt),verif.table[per.idx, COL_VERIF_DPT_NOM])
-if(any(is.na(midx)))
-{	print(names(tt)[which(is.na(midx))])
-	stop("problem")
-}
 			# compare the mandate counts and upper bounds
 			didx <- which(tt > verif.table[per.idx[midx], COL_VERIF_MDT_NBR])
 			# record the problematic departments
@@ -550,6 +642,6 @@ if(any(is.na(midx)))
 		tlog(2,"Recording in file \"",tab.file,"\"")
 		write.table(x=tab,file=tab.file,
 #				fileEncoding="UTF-8",
-				row.names=FALSE,col.names=TRUE)
+				row.names=FALSE, col.names=TRUE)
 	}
 }

@@ -33,7 +33,6 @@ source("src/common/include.R")
 #   hypothèse : il s'agirait de séries de mandats consécutifs fusionnés, dont le dernier est soit encore en cours, soit s'arrête après 2001
 #   >> redécouper les mandats en fonction des dates des élections
 #   >> test concret: sortir tous les mandats commençant avant 2001, et les autres mandats des mêmes personnes
-# - implémenter le test de recouvrement de mandat pour les DE, en utilisant le nouveau tableau de NF (fichier répartition des élus, p3) 
 # - utiliser le tableau de NF listant toutes les dates des élections, pour 
 #   - corriger tables de vérification avec nombres de postes (CR, S, DE?)
 #   - trancher les dates de début/fin de mandat qui se chevauchent d'un jour
