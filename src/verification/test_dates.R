@@ -184,10 +184,10 @@ test.col.dates.pre.rne <- function(data, out.folder)
 # data: table containing the data.
 # out.folder: folder where to output the results.
 #############################################################################################
-test.col.dates.fonction <- function(data, out.folder)
+test.col.dates.absence <- function(data, out.folder)
 {	tlog(2,"Identifying functions without dates")
 	
-	# retrieve all rows with a non-NA function
+	# retrieve all rows with a non-NA function and no dates
 	idx <- which(!is.na(data[,COL_ATT_FCT_NOM]) 
 				& is.na(data[,COL_ATT_FCT_DBT]) & is.na(data[,COL_ATT_FCT_FIN]))
 	tlog(4,"Found ",length(idx)," functions with missing dates")
@@ -219,7 +219,7 @@ test.col.dates.cd <- function(data, cols, out.folder)
 {	# generic tests
 	test.col.dates.generic(data, cols, out.folder)
 	test.col.dates.pre.rne(data, out.folder)
-	test.col.dates.fonction(data, out.folder)
+	test.col.dates.absence(data, out.folder)
 		
 	# specific tests
 	tlog(2,"Checking mandate durations")
@@ -257,7 +257,7 @@ test.col.dates.cm <- function(data, cols, out.folder)
 {	# generic tests
 	test.col.dates.generic(data, cols, out.folder)
 	test.col.dates.pre.rne(data, out.folder)
-	test.col.dates.fonction(data, out.folder)
+	test.col.dates.absence(data, out.folder)
 	
 	# specific tests
 	tlog(2,"Checking mandate durations")
@@ -292,7 +292,7 @@ test.col.dates.cr <- function(data, cols, out.folder)
 {	# generic tests
 	test.col.dates.generic(data, cols, out.folder)
 	test.col.dates.pre.rne(data, out.folder)
-	test.col.dates.fonction(data, out.folder)
+	test.col.dates.absence(data, out.folder)
 	
 	# specific tests
 	tlog(2,"Checking mandate durations")
@@ -329,7 +329,7 @@ test.col.dates.d <- function(data, cols, out.folder)
 {	# generic tests
 	test.col.dates.generic(data, cols, out.folder)
 	test.col.dates.pre.rne(data, out.folder)
-	test.col.dates.fonction(data, out.folder)
+	test.col.dates.absence(data, out.folder)
 	
 	# specific tests
 	tlog(2,"Checking mandate durations")
@@ -407,7 +407,7 @@ test.col.dates.epci <- function(data, cols, out.folder)
 {	# generic tests
 	test.col.dates.generic(data, cols, out.folder)
 	test.col.dates.pre.rne(data, out.folder)
-	test.col.dates.fonction(data, out.folder)
+	test.col.dates.absence(data, out.folder)
 }
 
 
@@ -426,7 +426,7 @@ test.col.dates.s <- function(data, cols, out.folder)
 {	# generic tests
 	test.col.dates.generic(data, cols, out.folder)
 	test.col.dates.pre.rne(data, out.folder)
-	test.col.dates.fonction(data, out.folder)
+	test.col.dates.absence(data, out.folder)
 	
 	# specific tests
 	tlog(2,"Checking mandate durations")

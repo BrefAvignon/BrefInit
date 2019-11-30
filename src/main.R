@@ -20,9 +20,10 @@ source("src/common/include.R")
 # en cours
 # - compare_CM
 
-
-
 # Points d'implémentation
+# - réordonner les colonnes dans les sorties fichiers de manière à ce qu'elles soient plus lisibles
+# - problème avec le code commune, qui inclut parfois le numéro du département, et parfois non.
+#   >> normaliser ça en virant le département, qui a déjà sa propre colonne.
 # - résoudre le problème des mandats concernant la même position mais qui se chevauchent sur une journée
 #   >> le mandat qui s'achève est réduit d'une journée pour éviter le recouvrement
 # - utiliser le tableau de NF listant toutes les dates des élections, pour 
@@ -32,7 +33,6 @@ source("src/common/include.R")
 # - certaines fonctions sont à ignorer lors du test de recouvrement :
 #   - maire délégué
 #   - autres responsabilités
-# - tester quand aucune date de mandat n'est renseignée
 # - tester quand, dans une même table, une même personne a un chevauchement de date de fonction
 #   elle ne devrait pas cumuler plusieurs fonctions relatives au même type de position
 # - CD : après 2015, c'est deux personnes par canton (1 H + 1 F)
@@ -41,16 +41,28 @@ source("src/common/include.R")
 # - Dans une même table, détecter les lignes telles que seul un attribut optionnel diffère (ou plusieurs, mais tous optionnels)
 #   (les attributs obligatoires étant de valeurs égales)
 #   >> probablement une entrée qui a été complétée plus tard, garder la ligne la plus complète et supprimer l'autre 
-# - réordonner les colonnes dans les sorties fichiers de manière à ce qu'elles soient plus lisibles
-# - quand la date de fin de fonction manque, on peut la déduire
-#   - de la date de début de fonction suivante
-#   - de la date de fin de mandat
+# - certaines structures comme la métropole lyonnaise apparaissent parmi les département, et n'ont pas de numéro
+#   >> probablement EPCI, à voir
+#	>> que faire de ça ?
 
-# En attente de vérification par Noémie
+# En attente de vérification par Noémie et/ou Guillaume
 # - vérifier les mandats commençant avant 2001
 #   hypothèse : il s'agirait de séries de mandats consécutifs fusionnés, dont le dernier est soit encore en cours, soit s'arrête après 2001
 #   >> redécouper les mandats en fonction des dates des élections
+# - vérifier pourquoi certaines fonctions sont renseignées mais sans date
+#   >> possiblement compléter avec les dates de mandat, 
+#      voire les dates des autres fonctions occupées avant ou après
+#   - quand la date de fin de fonction manque, on peut la déduire
+#     - de la date de début de fonction suivante
+#     - de la date de fin de mandat
+# - le mandat s'achève t il quand l'élu déménage et change de liste électorale ?
+#   >> question de droit
+#   >> pourrait permettre de résoudre de cas où un même id possède simultanément des mandats incompatibles
+# - Dans EPCI, parfois pas de commune associée (ex : tout début de la table, 3-4 premières lignes)
+#   >> est-ce normal ? 
+#   
 
+# Tests abandonnés
 # - tester le recouvrement de mandat pour les CM (en plus de celui de fonction, déjà fait)
 #   >> impossible à faire car les mandats ne sont pas uniques (tous sont conseillers municipaux) 
 
@@ -69,14 +81,8 @@ source("src/common/include.R")
 # - Présence de chiffres romains dans les noms de cantons (notamment)
 #   >> remplacer par des chiffres indo-arabes
 
-# Points relevés par GM/NF mais déjà traités :
-# - existence de fonction sans date
-
 # Graphiques
 # - intégrer le nombre attendu de mandats dans les graphiques temporels
-
-# Nouvelle extraction
-# - traiter CR2
 
 # Besoins
 # - liste des cas de figure complètement interdits en termes de cumul de mandat = quelles sont les positions impossibles à cumuler ?
@@ -109,6 +115,7 @@ source("src/common/include.R")
 #	           >> si oui, on étend la date de fin de mandat à la date de durée légale
 #	           >> si non, on utilise la date de début de la personne suivant
 
-# le mandat s'achève t il quand l'élu déménage et change de liste électorale ?
-# >> question de droit
-# >> pourrait permettre de résoudre de cas où un même id possède simultanément des mandats incompatibles
+# remarques étudiants BI
+# - Certaines positions sont laissées inoccupées, par ex. commune de Saline n'a pas de maire pdt plusieurs semaines
+#   et en même temps, la commune présente un recouvrement de type: plusieurs maires à la fois
+#   >> détecter ces vacances et les exploiter pour résoudre ce type de recouvrement ?
