@@ -155,7 +155,7 @@ test.col.dates.pre.rne <- function(data, out.folder)
 	tlog(4,"Found ",length(idx)," date(s) earlier than 2001")
 	
 	if(length(idx)>0)
-	{	# get the ids of the concerened persons
+	{	# get the ids of the concerned persons
 		ids <- sort(unique(data[idx,COL_ATT_ELU_ID]))
 		tlog(4,"These dates correspond to ",length(ids)," distinct persons")
 		# get all rows involving these ids
@@ -167,11 +167,40 @@ test.col.dates.pre.rne <- function(data, out.folder)
 		colnames(tmp)[1] <- "Ligne"
 		
 		# record table
-		tab.file <- file.path(out.folder,"mandatfonction_dates_before_2001.txt")
+		tab.file <- file.path(out.folder,"mandatfonction_dates_problems_bef2001.txt")
 		tlog(4,"Recording in file \"",tab.file,"\"")
 		write.table(x=tmp,file=tab.file,
 #				fileEncoding="UTF-8",
 				row.names=FALSE, col.names=TRUE)
+	}
+}
+
+
+
+
+#############################################################################################
+# Detects rows where the function is specified, but without any associated dates.
+#
+# data: table containing the data.
+# out.folder: folder where to output the results.
+#############################################################################################
+test.col.dates.fonction <- function(data, out.folder)
+{	tlog(2,"Identifying functions without dates")
+	
+	# retrieve all rows with a non-NA function
+	idx <- which(!is.na(data[,COL_ATT_FCT_NOM]) 
+				& is.na(data[,COL_ATT_FCT_DBT]) & is.na(data[,COL_ATT_FCT_FIN]))
+	tlog(4,"Found ",length(idx)," functions with missing dates")
+	
+	if(length(idx)>0)
+	{	# build the table and write it
+		tmp <- cbind(idx, data[idx,])
+		colnames(tmp)[1] <- "Ligne"
+		tab.file <- file.path(out.folder,"fonction_dates_problems_missing.txt")
+		tlog(4,"Recording in file \"",tab.file,"\"")
+		write.table(x=tmp,file=tab.file,
+#			fileEncoding="UTF-8",
+			row.names=FALSE, col.names=TRUE)
 	}
 }
 
@@ -190,7 +219,8 @@ test.col.dates.cd <- function(data, cols, out.folder)
 {	# generic tests
 	test.col.dates.generic(data, cols, out.folder)
 	test.col.dates.pre.rne(data, out.folder)
-	
+	test.col.dates.fonction(data, out.folder)
+		
 	# specific tests
 	tlog(2,"Checking mandate durations")
 	
@@ -227,6 +257,7 @@ test.col.dates.cm <- function(data, cols, out.folder)
 {	# generic tests
 	test.col.dates.generic(data, cols, out.folder)
 	test.col.dates.pre.rne(data, out.folder)
+	test.col.dates.fonction(data, out.folder)
 	
 	# specific tests
 	tlog(2,"Checking mandate durations")
@@ -261,6 +292,7 @@ test.col.dates.cr <- function(data, cols, out.folder)
 {	# generic tests
 	test.col.dates.generic(data, cols, out.folder)
 	test.col.dates.pre.rne(data, out.folder)
+	test.col.dates.fonction(data, out.folder)
 	
 	# specific tests
 	tlog(2,"Checking mandate durations")
@@ -297,6 +329,7 @@ test.col.dates.d <- function(data, cols, out.folder)
 {	# generic tests
 	test.col.dates.generic(data, cols, out.folder)
 	test.col.dates.pre.rne(data, out.folder)
+	test.col.dates.fonction(data, out.folder)
 	
 	# specific tests
 	tlog(2,"Checking mandate durations")
@@ -374,6 +407,7 @@ test.col.dates.epci <- function(data, cols, out.folder)
 {	# generic tests
 	test.col.dates.generic(data, cols, out.folder)
 	test.col.dates.pre.rne(data, out.folder)
+	test.col.dates.fonction(data, out.folder)
 }
 
 
@@ -392,6 +426,7 @@ test.col.dates.s <- function(data, cols, out.folder)
 {	# generic tests
 	test.col.dates.generic(data, cols, out.folder)
 	test.col.dates.pre.rne(data, out.folder)
+	test.col.dates.fonction(data, out.folder)
 	
 	# specific tests
 	tlog(2,"Checking mandate durations")

@@ -25,14 +25,10 @@ source("src/common/include.R")
 # Points d'implémentation
 # - résoudre le problème des mandats concernant la même position mais qui se chevauchent sur une journée
 #   >> le mandat qui s'achève est réduit d'une journée pour éviter le recouvrement
-# - vérifier les mandats commençant largement avant 2000
-#   hypothèse : il s'agirait de séries de mandats consécutifs fusionnés, dont le dernier est soit encore en cours, soit s'arrête après 2001
-#   >> redécouper les mandats en fonction des dates des élections
 # - utiliser le tableau de NF listant toutes les dates des élections, pour 
 #   - corriger tables de vérification avec nombres de postes (CR, S, DE?)
 #   - trancher les dates de début/fin de mandat qui se chevauchent d'un jour
 #   - découper les mandats consécutifs abusivement fusionnés
-# - tester quand fonction est renseignée mais sans date (même pas début)
 # - certaines fonctions sont à ignorer lors du test de recouvrement :
 #   - maire délégué
 #   - autres responsabilités
@@ -50,6 +46,10 @@ source("src/common/include.R")
 #   - de la date de début de fonction suivante
 #   - de la date de fin de mandat
 
+# En attente de vérification par Noémie
+# - vérifier les mandats commençant avant 2001
+#   hypothèse : il s'agirait de séries de mandats consécutifs fusionnés, dont le dernier est soit encore en cours, soit s'arrête après 2001
+#   >> redécouper les mandats en fonction des dates des élections
 
 # - tester le recouvrement de mandat pour les CM (en plus de celui de fonction, déjà fait)
 #   >> impossible à faire car les mandats ne sont pas uniques (tous sont conseillers municipaux) 
