@@ -19,10 +19,6 @@ source("src/common/include.R")
 
 # en cours
 # - compare_CM
-# - check_CM : évolution 1
-# 
-# à faire
-# - check_CM : évolution 2
 
 
 
@@ -32,7 +28,6 @@ source("src/common/include.R")
 # - vérifier les mandats commençant largement avant 2000
 #   hypothèse : il s'agirait de séries de mandats consécutifs fusionnés, dont le dernier est soit encore en cours, soit s'arrête après 2001
 #   >> redécouper les mandats en fonction des dates des élections
-#   >> test concret: sortir tous les mandats commençant avant 2001, et les autres mandats des mêmes personnes
 # - utiliser le tableau de NF listant toutes les dates des élections, pour 
 #   - corriger tables de vérification avec nombres de postes (CR, S, DE?)
 #   - trancher les dates de début/fin de mandat qui se chevauchent d'un jour

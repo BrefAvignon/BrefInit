@@ -135,6 +135,49 @@ test.col.dates.generic <- function(data, cols, out.folder)
 
 
 #############################################################################################
+# Tests whether some mandate or function started/ended before 2001, which should not happen.
+#
+# data: table containing the data.
+# out.folder: folder where to output the results.
+#############################################################################################
+test.col.dates.pre.rne <- function(data, out.folder)
+{	tlog(0,"Identifying pre-2001 mandates and functions")
+	limit <- as.Date("2001/01/01")
+	
+	# retrieve all rows with a date earlier than 2001
+	date.cols <- c(COL_ATT_MDT_DBT, COL_ATT_MDT_FIN, COL_ATT_FCT_DBT, COL_ATT_FCT_FIN)
+	idx <- which(!is.na(data[,COL_ATT_MDT_DBT]) & data[,COL_ATT_MDT_DBT]<limit
+		|| !is.na(data[,COL_ATT_MDT_FIN]) & data[,COL_ATT_MDT_FIN]<limit
+		|| !is.na(data[,COL_ATT_FCT_DBT]) & data[,COL_ATT_FCT_DBT]<limit
+		|| !is.na(data[,COL_ATT_FCT_FIN]) & data[,COL_ATT_FCT_FIN]<limit
+	)
+	tlog(2,"Found ",length(idx)," date(s) earlier than 2001")
+	
+	if(length(idx)>0)
+	{	# get the ids of the concerened persons
+		ids <- sort(unique(data[idx,COL_ATT_ELU_ID]))
+		tlog(2,"These dates correspond to ",length(ids)," distinct persons")
+		# get all rows involving these ids
+		idx <- which(data[,COL_ATT_ELU_ID] %in% ids)
+		tlog(2,"These persons appear in ",length(idx)," different rows")
+		# order these rows by id
+		idx <- idx[order(data[idx,COL_ATT_ELU_ID])]
+		tmp <- cbind(idx, data[idx,])
+		colnames(tmp)[1] <- "Ligne"
+		
+		# record table
+		tab.file <- file.path(out.folder,paste0(col$basename,"mandatfonction_dates_before_2001.txt"))
+		tlog(6,"Recording in file \"",tab.file,"\"")
+		write.table(x=tmp,file=tab.file,
+#				fileEncoding="UTF-8",
+				row.names=FALSE, col.names=TRUE)
+	}
+}
+
+
+
+
+#############################################################################################
 # Performs a series of tests on date columns, for the departmental tables, and record the 
 # detected problems in text files.
 #
@@ -145,6 +188,7 @@ test.col.dates.generic <- function(data, cols, out.folder)
 test.col.dates.cd <- function(data, cols, out.folder)
 {	# generic tests
 	test.col.dates.generic(data, cols, out.folder)
+	test.col.dates.pre.rne(data, out.folder)
 	
 	# specific tests
 	tlog(2,"Checking mandate durations")
@@ -181,6 +225,7 @@ test.col.dates.cd <- function(data, cols, out.folder)
 test.col.dates.cm <- function(data, cols, out.folder)
 {	# generic tests
 	test.col.dates.generic(data, cols, out.folder)
+	test.col.dates.pre.rne(data, out.folder)
 	
 	# specific tests
 	tlog(2,"Checking mandate durations")
@@ -214,6 +259,7 @@ test.col.dates.cm <- function(data, cols, out.folder)
 test.col.dates.cr <- function(data, cols, out.folder)
 {	# generic tests
 	test.col.dates.generic(data, cols, out.folder)
+	test.col.dates.pre.rne(data, out.folder)
 	
 	# specific tests
 	tlog(2,"Checking mandate durations")
@@ -249,6 +295,7 @@ test.col.dates.cr <- function(data, cols, out.folder)
 test.col.dates.d <- function(data, cols, out.folder)
 {	# generic tests
 	test.col.dates.generic(data, cols, out.folder)
+	test.col.dates.pre.rne(data, out.folder)
 	
 	# specific tests
 	tlog(2,"Checking mandate durations")
@@ -291,6 +338,7 @@ test.col.dates.d <- function(data, cols, out.folder)
 test.col.dates.de <- function(data, cols, out.folder)
 {	# generic tests
 	test.col.dates.generic(data, cols, out.folder)
+	test.col.dates.pre.rne(data, out.folder)
 	
 	# specific tests
 	tlog(2,"Checking mandate durations")
@@ -325,6 +373,7 @@ test.col.dates.de <- function(data, cols, out.folder)
 test.col.dates.s <- function(data, cols, out.folder)
 {	# generic tests
 	test.col.dates.generic(data, cols, out.folder)
+	test.col.dates.pre.rne(data, out.folder)
 	
 	# specific tests
 	tlog(2,"Checking mandate durations")
