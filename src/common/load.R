@@ -46,7 +46,8 @@ load.data <- function(filenames, cols, correc.file)
 				row.names=NULL, 			# don't look for row names in the file
 				quote="", 					# don't expect double quotes "..." around text fields
 				skip=1,						# ignore the first line of the file ("Titre du rapport")
-				as.is=TRUE					# don't convert strings to factors
+				as.is=TRUE,					# don't convert strings to factors
+				colClasses="character"		# all column originally read as characters, then converted later if needed
 #				fileEncoding="Latin1"		# original tables seem to be encoded in Latin1 (ANSI)
 		)
 		tlog(2,"Read ",nrow(temp)," lines and ",ncol(temp)," columns")
@@ -60,11 +61,12 @@ load.data <- function(filenames, cols, correc.file)
 		tlog(2,"Now ",nrow(data)," lines and ",ncol(data)," columns in main table")
 	}
 	
-	# convert date columns to R dates
-	tlog(0,"Converting date columns to actual R dates")
+	# convert date and numeric columns
+	tlog(0,"Converting date and numeric columns")
 	for(col in cols)
-	{	if(col$tp=="dat")
-		{	tlog(2,"Col. \"",col$name,"\": CONVERTING")
+	{	# dealing with dates
+		if(col$tp=="dat")
+		{	tlog(2,"Col. \"",col$name,"\": converting to date")
 			
 			# possibly apply corrections
 			if(nrow(correc.table)>0)	
@@ -104,8 +106,21 @@ load.data <- function(filenames, cols, correc.file)
 			data <- cbind(data,vals)
 			names(data)[ncol(data)] <- col$name
 		}
+		
+		# dealing with numbers
+# actually, this is done later if needed 
+# (as there's only one such column which requires more specific processing)
+#		else if(col$tp=="num")
+#		{	tlog(2,"Col. \"",col$name,"\": converting to number")
+#			vals <- suppressWarnings(as.numeric(data[,col$name]))
+#			data <- data[, names(data)!=col$name]
+#			data <- cbind(data,vals)
+#			names(data)[ncol(data)] <- col$name
+#		}
+		
+		# the other columns stay strings
 		else
-			tlog(2,"Col. \"",col$name,"\": not a date")
+			tlog(2,"Col. \"",col$name,"\": simple string, no conversion")
 	}
 	
 	# setting appropriate encoding of string columns
@@ -342,7 +357,7 @@ load.cm2.data <- function()
 
 
 #############################################################################################
-# Loads the table for regional counsilors.
+# Loads the table for regional counsilors (first extraction).
 #
 # returns: data frame made of the cleaned data contained in the appropriate files.
 #############################################################################################
@@ -373,6 +388,46 @@ load.cr.data <- function()
 	
 	# load the data
 	data <- load.data(filenames=FILES_TAB_CR, cols=cols, correc.file=FILE_CORREC_CR)
+	
+	res <- list(data=data,cols=cols)
+	return(res)
+}
+
+
+
+
+#############################################################################################
+# Loads the table for regional counsilors (first extraction).
+#
+# returns: data frame made of the cleaned data contained in the appropriate files.
+#############################################################################################
+load.cr2.data <- function()
+{	# names of the columns
+	cols <- list(
+		list(name=COL_ATT_REG_CODE, basename="region_code", tp="cat"),
+		list(name=COL_ATT_REG_NOM, basename="region_nom", tp="nom"),
+		list(name=COL_ATT_DPT_CODE, basename="dpt_code", tp="cat"),
+		list(name=COL_ATT_DPT_NOM_CR, basename="dpt_nom", tp="nom"),
+		list(name=COL_ATT_ELU_NOM, basename="patronyme", tp="nom"),
+		list(name=COL_ATT_ELU_PRENOM, basename="prenom", tp="nom"),
+		list(name=COL_ATT_ELU_SEXE, basename="sexe", tp="cat"),
+		list(name=COL_ATT_ELU_DDN, basename="naissance_date", tp="dat"),
+		list(name=COL_ATT_PRO_CODE, basename="profession_code", tp="cat"),
+		list(name=COL_ATT_PRO_NOM, basename="profession_nom", tp="cat"),
+		list(name=COL_ATT_MDT_NOM, basename="mandat_nom", tp="cat"),
+		list(name=COL_ATT_MDT_DBT, basename="mandat_debut", tp="dat"),
+		list(name=COL_ATT_MDT_FIN, basename="mandat_fin", tp="dat"),
+		list(name=COL_ATT_MDT_MOTIF, basename="mandat_motif", tp="cat"),
+		list(name=COL_ATT_FCT_NOM, basename="fonction_nom", tp="cat"),
+		list(name=COL_ATT_FCT_DBT, basename="fonction_debut", tp="dat"),
+		list(name=COL_ATT_FCT_FIN, basename="fonction_fin", tp="dat"),
+		list(name=COL_ATT_FCT_MOTIF, basename="fonction_motif", tp="cat"),
+		list(name=COL_ATT_ELU_NUANCE_CR, basename="nuance_pol", tp="cat"),
+		list(name=COL_ATT_ELU_ID, basename="elu_id", tp="cat")
+	)
+	
+	# load the data
+	data <- load.data(filenames=FILES_TAB_CR2, cols=cols, correc.file=FILE_CORREC_CR)
 	
 	res <- list(data=data,cols=cols)
 	return(res)
@@ -531,12 +586,12 @@ load.m.data <- function()
 	data <- load.data(filenames=FILES_TAB_M, cols=cols, correc.file=FILE_CORREC_M)
 	
 	# convert population numbers to actual integers
+	tlog(0,"Converting population to integer values")
 	cn <- COL_ATT_COM_POP
 	vals <- data[,cn]
 	vals <- gsub(" ", "",  vals)	# \\s matches all whitespaces
 	vals <- gsub(",00", "",  vals)
-#	vals <- suppressWarnings(as.integer(vals))
-	vals <- as.integer(vals)
+	vals <- suppressWarnings(as.integer(vals))
 	data <- data[, names(data)!=cn]
 	data <- cbind(data,vals)
 	names(data)[ncol(data)] <- cn

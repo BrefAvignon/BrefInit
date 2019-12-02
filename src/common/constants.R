@@ -51,6 +51,7 @@ FOLDER_IN <- "in"
 	# second extraction
 	FILE_CORREC_CD2 <- file.path(FOLDER_CORRECS2, "correc_CD.txt")
 	FILE_CORREC_CM2 <- file.path(FOLDER_CORRECS2, "correc_CM.txt")
+	FILE_CORREC_CR2 <- file.path(FOLDER_CORRECS2, "correc_CR.txt")
 # verification files
 FILE_VERIF_CR <- file.path(FOLDER_VERIFS, "verif_CR.txt")
 FILE_VERIF_DE <- file.path(FOLDER_VERIFS, "verif_DE.txt")

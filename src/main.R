@@ -21,9 +21,12 @@ source("src/common/include.R")
 # - compare_CM
 
 # Points d'implémentation
+# - utiliser des noms de colonnes normalisés en interne
+#   >> faire la conversion dès le chargement
+#   >> permet de réordonner correctement les colonnes en même temps
+#      (utiliser une intersection avec liste des cols dans ordre correct)
+# - écrire la fonction de chargement de CR2 : pas du tout les mêmes noms de colonnes ni la même organisation...
 # - réordonner les colonnes dans les sorties fichiers de manière à ce qu'elles soient plus lisibles
-# - problème avec le code commune, qui inclut parfois le numéro du département, et parfois non.
-#   >> normaliser ça en virant le département, qui a déjà sa propre colonne.
 # - résoudre le problème des mandats concernant la même position mais qui se chevauchent sur une journée
 #   >> le mandat qui s'achève est réduit d'une journée pour éviter le recouvrement
 # - utiliser le tableau de NF listant toutes les dates des élections, pour 
@@ -58,8 +61,12 @@ source("src/common/include.R")
 # - le mandat s'achève t il quand l'élu déménage et change de liste électorale ?
 #   >> question de droit
 #   >> pourrait permettre de résoudre de cas où un même id possède simultanément des mandats incompatibles
-# - Dans EPCI, parfois pas de commune associée (ex : tout début de la table, 3-4 premières lignes)
-#   >> est-ce normal ? 
+# - Dans EPCI: 
+#	- parfois pas de commune (ex : tout début de la table, 3-4 premières lignes)
+#	- parfois un code commune mais pas de libellé.
+#   - même chose pour la commune de *rattachement*
+#   >> est-ce normal ? acceptable ? 
+# - Codes commune : faut il conserver ou pas les valeurs du type 013SN03, ou les tronquer ?
 #   
 
 # Tests abandonnés

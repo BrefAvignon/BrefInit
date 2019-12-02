@@ -26,7 +26,7 @@ out.folder <- if(extraction==1) FOLDER_OUT_CR else FOLDER_OUT_CR2
 dir.create(path=out.folder, showWarnings=FALSE, recursive=TRUE)
 
 # load the data
-tmp <- load.cr.data()
+tmp <- if(extraction==1) load.cr.data() else load.cr2.data() 
 data <- tmp$data
 cols <- tmp$cols
 
