@@ -72,6 +72,9 @@ load.data <- function(filenames, col.map, correc.file)
 	
 	# normalize column names
 	norm.names <- col.map[colnames(data)]
+print(cbind(colnames(data),norm.names))
+print(length(norm.names))
+print(ncol(data))	# TODO bug here
 	if(any(is.na(norm.names)) || length(norm.names)!=ncol(data))
 		stop("Problem with the number of columns (or their names) when loading the table, after normalization")
 	else
@@ -322,6 +325,23 @@ load.cm.data <- function()
 	
 	# load the data
 	data <- load.data(filenames=FILES_TAB_CM, col.map=col.map, correc.file=FILE_CORREC_CM)
+	
+	# convert population numbers to actual integers
+	tlog(0,"Converting population to integer values")
+	cn <- COL_ATT_COM_POP
+	vals <- data[,cn]
+#	vals <- suppressWarnings(as.integer(vals))
+	vals <- as.integer(vals)
+	data <- data[, names(data)!=cn]
+	data <- cbind(data,vals)
+	names(data)[ncol(data)] <- cn
+	
+	# normalize columns order
+	norm.cols <- intersect(COLS_ATT_NORMALIZED, colnames(data))
+	if(length(norm.cols)!=ncol(data))
+		stop("Problem with the number of columns when reordering table CM columns")
+	else
+		data <- data[,norm.cols]
 	
 	return(data)
 }
@@ -610,7 +630,7 @@ load.m.data <- function()
 	# normalize columns order
 	norm.cols <- intersect(COLS_ATT_NORMALIZED, colnames(data))
 	if(length(norm.cols)!=ncol(data))
-		stop("Problem with the number of columns when reordering table CR2 columns")
+		stop("Problem with the number of columns when reordering table M columns")
 	else
 		data <- data[,norm.cols]
 	

@@ -508,7 +508,7 @@ sumup.col <- function(data, col, basename, tp, ...)
 # data: table containing the data.
 # out.folder: folder where to output the results.
 #############################################################################################
-sumup.cols <- function(data, cols, out.folder, ...)
+sumup.cols <- function(data, out.folder, ...)
 {	# init stats table
 	stats <- matrix(nrow=ncol(data), ncol=length(COL_STATS_NAMES))
 	colnames(stats) <- COL_STATS_NAMES
