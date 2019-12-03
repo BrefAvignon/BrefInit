@@ -23,58 +23,42 @@ tlog(0,"Loading all the data tables")
 
 # load the departmental councilor table
 tlog(2,"Loading departmental data")
-tmp <- load.cd.data()
-cd.data <- tmp$data
-cd.cols <- tmp$cols
+cd.data <- load.cd.data()
 tlog(4,"Dimensions of the table: ",paste(dim(cd.data),collapse="x"))
 
 # load the municipal councilor tables
 tlog(2,"Loading municipal data")
-tmp <- load.cm.data()
-cm.data <- tmp$data
-cm.cols <- tmp$cols
+cm.data <- load.cm.data()
 tlog(4,"Dimensions of the table: ",paste(dim(cm.data),collapse="x"))
 
 # load the regional councilor table
 tlog(2,"Loading regional data")
-tmp <- load.cr.data()
-cr.data <- tmp$data
-cr.cols <- tmp$cols
+cr.data <- load.cr.data()
 tlog(4,"Dimensions of the table: ",paste(dim(cr.data),collapse="x"))
 
 # load the parliamentary table
 tlog(2,"Loading parliamentary data")
-tmp <- load.d.data()
-d.data <- tmp$data
-d.cols <- tmp$cols
+d.data <- load.d.data()
 tlog(4,"Dimensions of the table: ",paste(dim(d.data),collapse="x"))
 
 # load the European parliamentary table
 tlog(2,"Loading European parliamentary data")
-tmp <- load.de.data()
-de.data <- tmp$data
-de.cols <- tmp$cols
+de.data <- load.de.data()
 tlog(4,"Dimensions of the table: ",paste(dim(de.data),collapse="x"))
 
 # load the EPCI councilor table
 tlog(2,"Loading EPCI data")
-tmp <- load.epci.data()
-epci.data <- tmp$data
-epci.cols <- tmp$cols
+epci.data <- load.epci.data()
 tlog(4,"Dimensions of the table: ",paste(dim(epci.data),collapse="x"))
 
 # load the mayor table
 tlog(2,"Loading mayoral data")
-tmp <- load.m.data()
-m.data <- tmp$data
-m.cols <- tmp$cols
+m.data <- load.m.data()
 tlog(4,"Dimensions of the table: ",paste(dim(m.data),collapse="x"))
 
 # load the senator table
 tlog(2,"Loading senatorial data")
-tmp <- load.s.data()
-s.data <- tmp$data
-s.cols <- tmp$cols
+s.data <- load.s.data()
 tlog(4,"Dimensions of the table: ",paste(dim(s.data),collapse="x"))
 
 
@@ -100,6 +84,7 @@ cols <- c(
 	COL_ATT_COM_POP,
 	COL_ATT_EPCI_SIREN,
 	COL_ATT_EPCI_NOM,
+	COL_ATT_ELU_ID,
 	COL_ATT_ELU_NOM,
 	COL_ATT_ELU_PRENOM,
 	COL_ATT_ELU_DDN,
@@ -114,8 +99,7 @@ cols <- c(
 	COL_ATT_FCT_DBT,
 	COL_ATT_FCT_FIN,
 	COL_ATT_FCT_MOTIF,
-	COL_ATT_ELU_NUANCE,
-	COL_ATT_ELU_ID
+	COL_ATT_ELU_NUANCE
 )
 
 # create empty data frame
@@ -132,10 +116,9 @@ tmp <- data.frame(
 		check.names=FALSE,
 		stringsAsFactors=FALSE
 	)
-col.inter <- intersect(cols, sapply(cd.cols, get, x="name"))
+col.inter <- intersect(cols, colnames(tmp))
 tmp[,col.inter] <- cd.data[,col.inter]
-tlog(2,"  Remaining columns: ",paste(setdiff(sapply(cd.cols, get, x="name"), col.inter), collapse=", "))
-tmp[,COL_ATT_ELU_NUANCE] <- cd.data[,COL_ATT_ELU_NUANCE_CD]
+tlog(2,"  Remaining columns: ",paste(setdiff(colnames(tmp), col.inter), collapse=", "))
 data <- rbind(data, tmp)
 
 # add municipal data
@@ -145,12 +128,9 @@ tmp <- data.frame(
 		check.names=FALSE,
 		stringsAsFactors=FALSE
 	)
-col.inter <- intersect(cols, sapply(cm.cols, get, x="name"))
+col.inter <- intersect(cols, colnames(tmp))
 tmp[,col.inter] <- cm.data[,col.inter]
-tlog(2,"  Remaining columns: ",paste(setdiff(sapply(cm.cols, get, x="name"), col.inter), collapse=", "))
-tmp[,COL_ATT_DPT_NOM] <- cm.data[,COL_ATT_DPT_NOM_M]
-tmp[,COL_ATT_DPT_CODE] <- cm.data[,COL_ATT_DPT_CODE_M]
-tmp[,COL_ATT_ELU_NUANCE] <- cm.data[,COL_ATT_ELU_NUANCE_CM]
+tlog(2,"  Remaining columns: ",paste(setdiff(colnames(tmp), col.inter), collapse=", "))
 data <- rbind(data, tmp)
 
 # add regional data
@@ -160,11 +140,9 @@ tmp <- data.frame(
 		check.names=FALSE,
 		stringsAsFactors=FALSE
 	)
-col.inter <- intersect(cols, sapply(cr.cols, get, x="name"))
+col.inter <- intersect(cols, colnames(tmp))
 tmp[,col.inter] <- cr.data[,col.inter]
-tlog(2,"  Remaining columns: ",paste(setdiff(sapply(cr.cols, get, x="name"), col.inter), collapse=", "))
-tmp[,COL_ATT_DPT_NOM] <- cr.data[,COL_ATT_DPT_NOM_CR]
-tmp[,COL_ATT_ELU_NUANCE] <- cr.data[,COL_ATT_ELU_NUANCE_CR]
+tlog(2,"  Remaining columns: ",paste(setdiff(colnames(tmp), col.inter), collapse=", "))
 data <- rbind(data, tmp)
 
 # add parliamentary data
@@ -174,10 +152,9 @@ tmp <- data.frame(
 		check.names=FALSE,
 		stringsAsFactors=FALSE
 	)
-col.inter <- intersect(cols, sapply(d.cols, get, x="name"))
+col.inter <- intersect(cols, colnames(tmp))
 tmp[,col.inter] <- d.data[,col.inter]
-tlog(3,"  Remaining columns: ",paste(setdiff(sapply(d.cols, get, x="name"), col.inter), collapse=", "))
-tmp[,COL_ATT_ELU_NUANCE] <- d.data[,COL_ATT_ELU_NUANCE_D]
+tlog(3,"  Remaining columns: ",paste(setdiff(colnames(tmp), col.inter), collapse=", "))
 data <- rbind(data, tmp)
 
 # add European parliamentary data
@@ -187,10 +164,9 @@ tmp <- data.frame(
 		check.names=FALSE,
 		stringsAsFactors=FALSE
 	)
-col.inter <- intersect(cols, sapply(de.cols, get, x="name"))
+col.inter <- intersect(cols, colnames(tmp))
 tmp[,col.inter] <- de.data[,col.inter]
-tlog(4,"  Remaining columns: ",paste(setdiff(sapply(de.cols, get, x="name"), col.inter), collapse=", "))
-tmp[,COL_ATT_ELU_NUANCE] <- de.data[,COL_ATT_ELU_NUANCE_DE]
+tlog(4,"  Remaining columns: ",paste(setdiff(colnames(tmp), col.inter), collapse=", "))
 data <- rbind(data, tmp)
 
 # add EPCI data
@@ -200,13 +176,9 @@ tmp <- data.frame(
 		check.names=FALSE,
 		stringsAsFactors=FALSE
 	)
-col.inter <- intersect(cols, sapply(epci.cols, get, x="name"))
+col.inter <- intersect(cols, colnames(tmp))
 tmp[,col.inter] <- epci.data[,col.inter]
-tlog(4,"  Remaining columns: ",paste(setdiff(sapply(epci.cols, get, x="name"), col.inter), collapse=", "))
-tmp[,COL_ATT_ELU_NUANCE] <- epci.data[,COL_ATT_ELU_NUANCE_CR]
-tmp[,COL_ATT_DPT_CODE] <- epci.data[,COL_ATT_DPT_CODE_COM]
-tmp[,COL_ATT_COM_NOM] <- epci.data[,COL_ATT_COM_NOM_EPCI]
-tmp[,COL_ATT_COM_CODE] <- epci.data[,COL_ATT_COM_CODE_EPCI]
+tlog(4,"  Remaining columns: ",paste(setdiff(colnames(tmp), col.inter), collapse=", "))
 data <- rbind(data, tmp)
 
 # add mayoral data
@@ -216,12 +188,9 @@ tmp <- data.frame(
 		check.names=FALSE,
 		stringsAsFactors=FALSE
 	)
-col.inter <- intersect(cols, sapply(m.cols, get, x="name"))
+col.inter <- intersect(cols, colnames(tmp))
 tmp[,col.inter] <- m.data[,col.inter]
-tlog(4,"  Remaining columns: ",paste(setdiff(sapply(m.cols, get, x="name"), col.inter), collapse=", "))
-tmp[,COL_ATT_DPT_CODE] <- m.data[,COL_ATT_DPT_CODE_M]
-tmp[,COL_ATT_DPT_NOM] <- m.data[,COL_ATT_DPT_NOM_M]
-tmp[,COL_ATT_ELU_NUANCE] <- m.data[,COL_ATT_ELU_NUANCE_CM]
+tlog(4,"  Remaining columns: ",paste(setdiff(colnames(tmp), col.inter), collapse=", "))
 data <- rbind(data, tmp)
 
 # add senatorial data
@@ -231,10 +200,9 @@ tmp <- data.frame(
 		check.names=FALSE,
 		stringsAsFactors=FALSE
 	)
-col.inter <- intersect(cols, sapply(s.cols, get, x="name"))
+col.inter <- intersect(cols, colnames(tmp))
 tmp[,col.inter] <- s.data[,col.inter]
-tlog(4,"  Remaining columns: ",paste(setdiff(sapply(s.cols, get, x="name"), col.inter), collapse=", "))
-tmp[,COL_ATT_ELU_NUANCE] <- s.data[,COL_ATT_ELU_NUANCE_S]
+tlog(4,"  Remaining columns: ",paste(setdiff(colnames(tmp), col.inter), collapse=", "))
 data <- rbind(data, tmp)
 
 tlog(0,"Merge over")

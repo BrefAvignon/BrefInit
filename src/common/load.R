@@ -12,12 +12,12 @@
 # to appropriate types (dates, integers), and returns the resulting data frame.
 #
 # filenames: list of files to read.
-# cols: description of the columns of the loaded tables.
+# col.map: how to convert column names.
 # correc.file: file containing the corrections.
 #
 # returns: data frame made of the cleaned data contained in the files.
 #############################################################################################
-load.data <- function(filenames, cols, correc.file)
+load.data <- function(filenames, col.map, correc.file)
 {	# load the corrections
 	tlog(0,"Loading correction file \"",correc.file,"\"")
 	correc.table <- read.table(
@@ -31,6 +31,15 @@ load.data <- function(filenames, cols, correc.file)
 			as.is=TRUE					# don't convert strings to factors
 #			fileEncoding="Latin1"		# original tables seem to be encoded in Latin1 (ANSI)
 	)
+	# possibly normalize column names
+	if(nrow(correc.table)>0)
+	{	for(r in 1:nrow(correc.table))
+		{	att.name <- correc.table[r,COL_CORREC_ATTR]
+			norm.name <- col.maps[att.name]
+			if(!is.na(norm.name))
+				correc.table[r,COL_CORREC_ATTR] <- norm.name
+		}
+	}
 	
 	# load all the tables
 	data <- NULL
@@ -61,17 +70,26 @@ load.data <- function(filenames, cols, correc.file)
 		tlog(2,"Now ",nrow(data)," lines and ",ncol(data)," columns in main table")
 	}
 	
+	# normalize column names
+	norm.names <- col.map[colnames(data)]
+	if(any(is.na(norm.names)) || length(norm.names)!=ncol(data))
+		stop("Problem with the number of columns (or their names) when loading the table, after normalization")
+	else
+		colnames(data) <- norm.names
+	
 	# convert date and numeric columns
 	tlog(0,"Converting date and numeric columns")
-	for(col in cols)
-	{	# dealing with dates
-		if(col$tp=="dat")
-		{	tlog(2,"Col. \"",col$name,"\": converting to date")
+	for(c in 1:ncol(data))
+	{	col.name <- colnames(data)[c]
+		col.type <- COL_TYPES[col.name]
+		# dealing with dates
+		if(col.type=="dat")
+		{	tlog(2,"Col. \"",col.name,"\": converting to date")
 			
 			# possibly apply corrections
 			if(nrow(correc.table)>0)	
 			{	# keep only the relevant corrections
-				cor.tab <- correc.table[correc.table[,COL_CORREC_ATTR]==col$name,]
+				cor.tab <- correc.table[correc.table[,COL_CORREC_ATTR]==col.name,]
 				# process each remaining correction
 				if(nrow(cor.tab)>0)
 				{	for(r in 1:nrow(cor.tab))
@@ -99,12 +117,12 @@ load.data <- function(filenames, cols, correc.file)
 				}
 			}
 			
-			vals <- as.Date(data[,col$name], "%d/%m/%Y")
+			vals <- as.Date(data[,col.name], "%d/%m/%Y")
 			
 			#format(x, format="%Y/%m/%d")
-			data <- data[, names(data)!=col$name]
+			data <- data[, names(data)!=col.name]
 			data <- cbind(data,vals)
-			names(data)[ncol(data)] <- col$name
+			names(data)[ncol(data)] <- col.name
 		}
 		
 		# dealing with numbers
@@ -120,7 +138,7 @@ load.data <- function(filenames, cols, correc.file)
 		
 		# the other columns stay strings
 		else
-			tlog(2,"Col. \"",col$name,"\": simple string, no conversion")
+			tlog(2,"Col. \"",col.name,"\": simple string, no conversion")
 	}
 	
 	# setting appropriate encoding of string columns
@@ -189,6 +207,13 @@ load.data <- function(filenames, cols, correc.file)
 			tlog(2,"Col. \"",colnames(data)[c],"\": not a string")
 	}
 	
+	# normalize columns order
+	norm.cols <- intersect(COLS_ATT_NORMALIZED, colnames(data))
+	if(length(norm.cols)!=ncol(data))
+		stop("Problem with the number of columns when loading the table, after reordering")
+	else
+		data <- data[,norm.cols]
+	
 	return(data)
 }
 
@@ -202,34 +227,32 @@ load.data <- function(filenames, cols, correc.file)
 #############################################################################################
 load.cd.data <- function()
 {	# names of the columns
-	cols <- list(
-		list(name=COL_ATT_DPT_CODE, basename="dpt_code", tp="cat"),
-		list(name=COL_ATT_DPT_NOM, basename="dpt_nom", tp="nom"),
-		list(name=COL_ATT_ELU_NOM, basename="patronyme", tp="nom"),
-		list(name=COL_ATT_ELU_PRENOM, basename="prenom", tp="nom"),
-		list(name=COL_ATT_ELU_SEXE, basename="sexe", tp="cat"),
-		list(name=COL_ATT_CANT_CODE, basename="canton_code", tp="cat"),
-		list(name=COL_ATT_CANT_NOM, basename="canton_nom", tp="nom"),
-		list(name=COL_ATT_ELU_NUANCE_CD, basename="nuance_pol", tp="cat"),
-		list(name=COL_ATT_FCT_NOM, basename="fonction_nom", tp="cat"),
-		list(name=COL_ATT_PRO_CODE, basename="profession_code", tp="cat"),
-		list(name=COL_ATT_PRO_NOM, basename="profession_nom", tp="cat"),
-		list(name=COL_ATT_ELU_DDN, basename="naissance_date", tp="dat"),
-		list(name=COL_ATT_ELU_ID, basename="elu_id", tp="cat"),
-		list(name=COL_ATT_MDT_DBT, basename="mandat_debut", tp="dat"),
-		list(name=COL_ATT_FCT_DBT, basename="fonction_debut", tp="dat"),
-		list(name=COL_ATT_MDT_NOM, basename="mandat_nom", tp="cat"),
-		list(name=COL_ATT_MDT_FIN, basename="mandat_fin", tp="dat"),
-		list(name=COL_ATT_MDT_MOTIF, basename="mandat_motif", tp="cat"),
-		list(name=COL_ATT_FCT_FIN, basename="fonction_fin", tp="dat"),
-		list(name=COL_ATT_FCT_MOTIF, basename="fonction_motif", tp="cat")
-	)
+	col.map <- c()
+	col.map["Code du département"] <- COL_ATT_DPT_CODE
+	col.map["Libellé du département"] <- COL_ATT_DPT_NOM
+	col.map["Nom de l'élu"] <- COL_ATT_ELU_NOM
+	col.map["Prénom de l'élu"] <- COL_ATT_ELU_PRENOM
+	col.map["Code sexe"] <- COL_ATT_ELU_SEXE
+	col.map["Code du canton"] <- COL_ATT_CANT_CODE
+	col.map["Libellé du canton"] <- COL_ATT_CANT_NOM
+	col.map["Nuance politique (C. Gén.)"] <- COL_ATT_ELU_NUANCE
+	col.map["Libellé de fonction"] <- COL_ATT_FCT_NOM
+	col.map["Code profession"] <- COL_ATT_PRO_CODE
+	col.map["Libellé de la profession"] <- COL_ATT_PRO_NOM
+	col.map["Date de naissance"] <- COL_ATT_ELU_DDN
+	col.map["N° Identification d'un élu"] <- COL_ATT_ELU_ID
+	col.map["Date de début du mandat"] <- COL_ATT_MDT_DBT
+	col.map["Date de début de la fonction"] <- COL_ATT_FCT_DBT
+	col.map["Libellé de mandat"] <- COL_ATT_MDT_NOM
+	col.map["Date de fin du mandat"] <- COL_ATT_MDT_FIN
+	col.map["Motif de fin de mandat"] <- COL_ATT_MDT_MOTIF
+	col.map["Date de fin de la fonction"] <- COL_ATT_FCT_FIN
+	col.map["Motif de fin de fonction"] <- COL_ATT_FCT_MOTIF
 	
 	# load the data
-	data <- load.data(filenames=FILES_TAB_CD, cols=cols, correc.file=FILE_CORREC_CD)
+	data <- load.data(filenames=FILES_TAB_CD, col.map=col.map, correc.file=FILE_CORREC_CD)
 	
-	res <- list(data=data,cols=cols)
-	return(res)
+	return(data)
 }
 #############################################################################################
 # Loads the table for departmental counsilors (second extraction).
@@ -238,33 +261,31 @@ load.cd.data <- function()
 #############################################################################################
 load.cd2.data <- function()
 {	# names of the columns
-	cols <- list(
-			list(name=COL_ATT_DPT_CODE, basename="dpt_code", tp="cat"),
-			list(name=COL_ATT_DPT_NOM, basename="dpt_nom", tp="nom"),
-			list(name=COL_ATT_ELU_NOM, basename="patronyme", tp="nom"),
-			list(name=COL_ATT_ELU_PRENOM, basename="prenom", tp="nom"),
-			list(name=COL_ATT_ELU_SEXE, basename="sexe", tp="cat"),
-			list(name=COL_ATT_CANT_CODE, basename="canton_code", tp="cat"),
-			list(name=COL_ATT_CANT_NOM, basename="canton_nom", tp="nom"),
-			list(name=COL_ATT_ELU_NUANCE_CD, basename="nuance_pol", tp="cat"),
-			list(name=COL_ATT_FCT_NOM, basename="fonction_nom", tp="cat"),
-			list(name=COL_ATT_PRO_CODE, basename="profession_code", tp="cat"),
-			list(name=COL_ATT_PRO_NOM, basename="profession_nom", tp="cat"),
-			list(name=COL_ATT_ELU_DDN, basename="naissance_date", tp="dat"),
-			list(name=COL_ATT_ELU_ID, basename="elu_id", tp="cat"),
-			list(name=COL_ATT_MDT_DBT, basename="mandat_debut", tp="dat"),
-			list(name=COL_ATT_FCT_DBT, basename="fonction_debut", tp="dat"),
-			list(name=COL_ATT_MDT_NOM, basename="mandat_nom", tp="cat"),
-			list(name=COL_ATT_MDT_FIN, basename="mandat_fin", tp="dat"),
-			list(name=COL_ATT_MDT_MOTIF, basename="mandat_motif", tp="cat"),
-			list(name=COL_ATT_FCT_FIN, basename="fonction_fin", tp="dat")
-	)
+	col.map <- c()
+	col.map["Code du département"] <- COL_ATT_DPT_CODE
+	col.map["Libellé du département"] <- COL_ATT_DPT_NOM
+	col.map["Nom de l'élu"] <- COL_ATT_ELU_NOM
+	col.map["Prénom de l'élu"] <- COL_ATT_ELU_PRENOM
+	col.map["Code sexe"] <- COL_ATT_ELU_SEXE
+	col.map["Code du canton"] <- COL_ATT_CANT_CODE
+	col.map["Libellé du canton"] <- COL_ATT_CANT_NOM
+	col.map["Nuance politique (C. Gén.)"] <- COL_ATT_ELU_NUANCE
+	col.map["Libellé de fonction"] <- COL_ATT_FCT_NOM
+	col.map["Code profession"] <- COL_ATT_PRO_CODE
+	col.map["Libellé de la profession"] <- COL_ATT_PRO_NOM
+	col.map["Date de naissance"] <- COL_ATT_ELU_DDN
+	col.map["N° Identification d'un élu"] <- COL_ATT_ELU_ID
+	col.map["Date de début du mandat"] <- COL_ATT_MDT_DBT
+	col.map["Date de début de la fonction"] <- COL_ATT_FCT_DBT
+	col.map["Libellé de mandat"] <- COL_ATT_MDT_NOM
+	col.map["Date de fin du mandat"] <- COL_ATT_MDT_FIN
+	col.map["Motif de fin de mandat"] <- COL_ATT_MDT_MOTIF
+	col.map["Date de fin de la fonction"] <- COL_ATT_FCT_FIN
 	
 	# load the data
-	data <- load.data(filenames=FILES_TAB_CD2, cols=cols, correc.file=FILE_CORREC_CD2) 
+	data <- load.data(filenames=FILES_TAB_CD2, col.map=col.map, correc.file=FILE_CORREC_CD2) 
 	
-	res <- list(data=data,cols=cols)
-	return(res)
+	return(data)
 }
 
 
@@ -277,34 +298,32 @@ load.cd2.data <- function()
 #############################################################################################
 load.cm.data <- function()
 {	# names of the columns
-	cols <- list(
-		list(name=COL_ATT_DPT_CODE_M, basename="dpt_code", tp="cat"),
-		list(name=COL_ATT_DPT_NOM_M, basename="dpt_nom", tp="nom"),
-		list(name=COL_ATT_COM_CODE, basename="ville_code", tp="cat"),
-		list(name=COL_ATT_COM_NOM, basename="ville_nom", tp="nom"),
-		list(name=COL_ATT_COM_POP, basename="ville_population", tp="num"),
-		list(name=COL_ATT_ELU_NOM, basename="patronyme", tp="nom"),
-		list(name=COL_ATT_ELU_PRENOM, basename="prenom", tp="nom"),
-		list(name=COL_ATT_ELU_SEXE, basename="sexe", tp="cat"),
-		list(name=COL_ATT_ELU_DDN, basename="naissance_date", tp="dat"),
-		list(name=COL_ATT_PRO_CODE, basename="profession_code", tp="cat"),
-		list(name=COL_ATT_PRO_NOM, basename="profession_nom", tp="cat"),
-		list(name=COL_ATT_MDT_DBT, basename="mandat_debut", tp="dat"),
-		list(name=COL_ATT_MDT_FIN, basename="mandat_fin", tp="dat"),
-		list(name=COL_ATT_MDT_MOTIF, basename="mandat_motif", tp="cat"),
-		list(name=COL_ATT_FCT_NOM, basename="fonction_nom", tp="cat"),
-		list(name=COL_ATT_FCT_DBT, basename="fonction_debut", tp="dat"),
-		list(name=COL_ATT_FCT_FIN, basename="fonction_fin", tp="dat"),
-		list(name=COL_ATT_FCT_MOTIF, basename="fonction_motif", tp="cat"),
-		list(name=COL_ATT_ELU_NUANCE_CM, basename="nuance_pol", tp="cat"),
-		list(name=COL_ATT_ELU_ID, basename="elu_id", tp="cat")
-	)
+	col.map <- c()
+	col.map["Code du département (Maire)"] <- COL_ATT_DPT_CODE
+	col.map["Libellé de département (Maires)"] <- COL_ATT_DPT_NOM
+	col.map["Code Insee de la commune"] <- COL_ATT_COM_CODE
+	col.map["Libellé de la commune"] <- COL_ATT_COM_NOM
+	col.map["Population de la commune"] <- COL_ATT_COM_POP
+	col.map["Nom de l'élu"] <- COL_ATT_ELU_NOM
+	col.map["Prénom de l'élu"] <- COL_ATT_ELU_PRENOM
+	col.map["Code sexe"] <- COL_ATT_ELU_SEXE
+	col.map["Date de naissance"] <- COL_ATT_ELU_DDN
+	col.map["Code profession"] <- COL_ATT_PRO_CODE
+	col.map["Libellé de la profession"] <- COL_ATT_PRO_NOM
+	col.map["Date de début du mandat"] <- COL_ATT_MDT_DBT
+	col.map["Date de fin du mandat"] <- COL_ATT_MDT_FIN
+	col.map["Motif de fin de mandat"] <- COL_ATT_MDT_MOTIF
+	col.map["Libellé de fonction"] <- COL_ATT_FCT_NOM
+	col.map["Date de début de la fonction"] <- COL_ATT_FCT_DBT
+	col.map["Date de fin de la fonction"] <- COL_ATT_FCT_FIN
+	col.map["Motif de fin de fonction"] <- COL_ATT_FCT_MOTIF
+	col.map["Nuance politique (C. Mun.)"] <- COL_ATT_ELU_NUANCE
+	col.map["N° Identification d'un élu"] <- COL_ATT_ELU_ID
 	
 	# load the data
-	data <- load.data(filenames=FILES_TAB_CM, cols=cols, correc.file=FILE_CORREC_CM)
+	data <- load.data(filenames=FILES_TAB_CM, col.map=col.map, correc.file=FILE_CORREC_CM)
 	
-	res <- list(data=data,cols=cols)
-	return(res)
+	return(data)
 }
 
 
@@ -317,40 +336,31 @@ load.cm.data <- function()
 #############################################################################################
 load.cm2.data <- function()
 {	# names of the columns
-	cols <- list(
-			list(name=COL_ATT_DPT_CODE_M, basename="dpt_code", tp="cat"),
-			list(name=COL_ATT_DPT_NOM_M, basename="dpt_nom", tp="nom"),
-			list(name=COL_ATT_COM_CODE, basename="ville_code", tp="cat"),
-			list(name=COL_ATT_COM_NOM, basename="ville_nom", tp="nom"),
-#			list(name=COL_ATT_COM_POP, basename="ville_population", tp="num"),
-			list(name=COL_ATT_ELU_NOM, basename="patronyme", tp="nom"),
-			list(name=COL_ATT_ELU_PRENOM, basename="prenom", tp="nom"),
-			list(name=COL_ATT_ELU_SEXE, basename="sexe", tp="cat"),
-			list(name=COL_ATT_ELU_DDN, basename="naissance_date", tp="dat"),
-			list(name=COL_ATT_ELU_NAT, basename="elu_nation", tp="cat"),
-			list(name=COL_ATT_PRO_CODE, basename="profession_code", tp="cat"),
-#			list(name=COL_ATT_PRO_NOM, basename="profession_nom", tp="cat"),
-			list(name=COL_ATT_MDT_NOM, basename="mandat_nom", tp="cat"),
-			list(name=COL_ATT_MDT_DBT, basename="mandat_debut", tp="dat"),
-			list(name=COL_ATT_MDT_FIN, basename="mandat_fin", tp="dat"),
-			list(name=COL_ATT_MDT_MOTIF, basename="mandat_motif", tp="cat"),
-			list(name=COL_ATT_FCT_NOM, basename="fonction_nom", tp="cat"),
-			list(name=COL_ATT_FCT_DBT, basename="fonction_debut", tp="dat"),
-			list(name=COL_ATT_FCT_FIN, basename="fonction_fin", tp="dat"),
-			list(name=COL_ATT_FCT_MOTIF, basename="fonction_motif", tp="cat"),
-			list(name=COL_ATT_ELU_NUANCE_CR, basename="nuance_pol", tp="cat"),
-			list(name=COL_ATT_ELU_ID, basename="elu_id", tp="cat")
-	)
+	col.map <- c()
+	col.map["N° Identification d'un élu"] <- COL_ATT_ELU_ID
+	col.map["Nom de l'élu"] <- COL_ATT_ELU_NOM
+	col.map["Prénom de l'élu"] <- COL_ATT_ELU_PRENOM
+	col.map["Date de naissance"] <- COL_ATT_ELU_DDN
+	col.map["Code sexe"] <- COL_ATT_ELU_SEXE
+	col.map["Code profession"] <- COL_ATT_PRO_CODE
+	col.map["Nationalité de l'élu"] <- COL_ATT_ELU_NAT
+	col.map["Libellé de mandat"] <- COL_ATT_MDT_NOM
+	col.map["Date de début du mandat"] <- COL_ATT_MDT_DBT
+	col.map["Date de fin du mandat"] <- COL_ATT_MDT_FIN
+	col.map["Motif de fin de mandat"] <- COL_ATT_MDT_MOTIF
+	col.map["Libellé de fonction"] <- COL_ATT_FCT_NOM
+	col.map["Date de début de la fonction"] <- COL_ATT_FCT_DBT
+	col.map["Date de fin de la fonction"] <- COL_ATT_FCT_FIN
+	col.map["Motif de fin de fonction"] <- COL_ATT_FCT_MOTIF
+	col.map["Nuance mandat"] <- COL_ATT_ELU_NUANCE
+	col.map["Code Insee de la commune"] <- COL_ATT_COM_CODE
+	col.map["Code du département (Maire)"] <- COL_ATT_DPT_CODE
+	col.map["Libellé de département (Maires)"] <- COL_ATT_DPT_NOM
 	
 	# load the data
-	data <- load.data(filenames=FILES_TAB_CM2, cols=cols, correc.file=FILE_CORREC_CM2)
+	data <- load.data(filenames=FILES_TAB_CM2, col.map=col.map, correc.file=FILE_CORREC_CM2)
 	
-	# force column names to be similar to those of the first extraction
-	colnames(data)[which(colnames(data)==COL_ATT_ELU_NUANCE_CR)] <- COL_ATT_ELU_NUANCE_CM
-	cols[[which(sapply(cols,function(l) l$name)==COL_ATT_ELU_NUANCE_CR)]] <- list(name=COL_ATT_ELU_NUANCE_CM, basename="nuance_pol", tp="cat")
-	
-	res <- list(data=data,cols=cols)
-	return(res)
+	return(data)
 }
 
 
@@ -363,34 +373,32 @@ load.cm2.data <- function()
 #############################################################################################
 load.cr.data <- function()
 {	# names of the columns
-	cols <- list(
-		list(name=COL_ATT_REG_CODE, basename="region_code", tp="cat"),
-		list(name=COL_ATT_REG_NOM, basename="region_nom", tp="nom"),
-		list(name=COL_ATT_DPT_CODE, basename="dpt_code", tp="cat"),
-		list(name=COL_ATT_DPT_NOM_CR, basename="dpt_nom", tp="nom"),
-		list(name=COL_ATT_ELU_NOM, basename="patronyme", tp="nom"),
-		list(name=COL_ATT_ELU_PRENOM, basename="prenom", tp="nom"),
-		list(name=COL_ATT_ELU_SEXE, basename="sexe", tp="cat"),
-		list(name=COL_ATT_ELU_DDN, basename="naissance_date", tp="dat"),
-		list(name=COL_ATT_PRO_CODE, basename="profession_code", tp="cat"),
-		list(name=COL_ATT_PRO_NOM, basename="profession_nom", tp="cat"),
-		list(name=COL_ATT_MDT_NOM, basename="mandat_nom", tp="cat"),
-		list(name=COL_ATT_MDT_DBT, basename="mandat_debut", tp="dat"),
-		list(name=COL_ATT_MDT_FIN, basename="mandat_fin", tp="dat"),
-		list(name=COL_ATT_MDT_MOTIF, basename="mandat_motif", tp="cat"),
-		list(name=COL_ATT_FCT_NOM, basename="fonction_nom", tp="cat"),
-		list(name=COL_ATT_FCT_DBT, basename="fonction_debut", tp="dat"),
-		list(name=COL_ATT_FCT_FIN, basename="fonction_fin", tp="dat"),
-		list(name=COL_ATT_FCT_MOTIF, basename="fonction_motif", tp="cat"),
-		list(name=COL_ATT_ELU_NUANCE_CR, basename="nuance_pol", tp="cat"),
-		list(name=COL_ATT_ELU_ID, basename="elu_id", tp="cat")
-	)
+	col.map <- c()
+	col.map["Code région"] <- COL_ATT_REG_CODE
+	col.map["Libellé de la région"] <- COL_ATT_REG_NOM
+	col.map["Code du département"] <- COL_ATT_DPT_CODE
+	col.map["Libellé de département"] <- COL_ATT_DPT_NOM
+	col.map["Nom de l'élu"] <- COL_ATT_ELU_NOM
+	col.map["Prénom de l'élu"] <- COL_ATT_ELU_PRENOM
+	col.map["Code sexe"] <- COL_ATT_ELU_SEXE
+	col.map["Date de naissance"] <- COL_ATT_ELU_DDN
+	col.map["Code profession"] <- COL_ATT_PRO_CODE
+	col.map["Libellé de la profession"] <- COL_ATT_PRO_NOM
+	col.map["Libellé de mandat"] <- COL_ATT_MDT_NOM
+	col.map["Date de début du mandat"] <- COL_ATT_MDT_DBT
+	col.map["Date de fin du mandat"] <- COL_ATT_MDT_FIN
+	col.map["Motif de fin de mandat"] <- COL_ATT_MDT_MOTIF
+	col.map["Libellé de fonction"] <- COL_ATT_FCT_NOM
+	col.map["Date de début de la fonction"] <- COL_ATT_FCT_DBT
+	col.map["Date de fin de la fonction"] <- COL_ATT_FCT_FIN
+	col.map["Motif de fin de fonction"] <- COL_ATT_FCT_MOTIF
+	col.map["Nuance mandat"] <- COL_ATT_ELU_NUANCE
+	col.map["N° Identification d'un élu"] <- COL_ATT_ELU_ID
 	
 	# load the data
-	data <- load.data(filenames=FILES_TAB_CR, cols=cols, correc.file=FILE_CORREC_CR)
+	data <- load.data(filenames=FILES_TAB_CR, col.map=col.map, correc.file=FILE_CORREC_CR)
 	
-	res <- list(data=data,cols=cols)
-	return(res)
+	return(data)
 }
 
 
@@ -403,34 +411,44 @@ load.cr.data <- function()
 #############################################################################################
 load.cr2.data <- function()
 {	# names of the columns
-	cols <- list(
-		list(name=COL_ATT_REG_CODE, basename="region_code", tp="cat"),
-		list(name=COL_ATT_REG_NOM, basename="region_nom", tp="nom"),
-		list(name=COL_ATT_DPT_CODE, basename="dpt_code", tp="cat"),
-		list(name=COL_ATT_DPT_NOM_CR, basename="dpt_nom", tp="nom"),
-		list(name=COL_ATT_ELU_NOM, basename="patronyme", tp="nom"),
-		list(name=COL_ATT_ELU_PRENOM, basename="prenom", tp="nom"),
-		list(name=COL_ATT_ELU_SEXE, basename="sexe", tp="cat"),
-		list(name=COL_ATT_ELU_DDN, basename="naissance_date", tp="dat"),
-		list(name=COL_ATT_PRO_CODE, basename="profession_code", tp="cat"),
-		list(name=COL_ATT_PRO_NOM, basename="profession_nom", tp="cat"),
-		list(name=COL_ATT_MDT_NOM, basename="mandat_nom", tp="cat"),
-		list(name=COL_ATT_MDT_DBT, basename="mandat_debut", tp="dat"),
-		list(name=COL_ATT_MDT_FIN, basename="mandat_fin", tp="dat"),
-		list(name=COL_ATT_MDT_MOTIF, basename="mandat_motif", tp="cat"),
-		list(name=COL_ATT_FCT_NOM, basename="fonction_nom", tp="cat"),
-		list(name=COL_ATT_FCT_DBT, basename="fonction_debut", tp="dat"),
-		list(name=COL_ATT_FCT_FIN, basename="fonction_fin", tp="dat"),
-		list(name=COL_ATT_FCT_MOTIF, basename="fonction_motif", tp="cat"),
-		list(name=COL_ATT_ELU_NUANCE_CR, basename="nuance_pol", tp="cat"),
-		list(name=COL_ATT_ELU_ID, basename="elu_id", tp="cat")
-	)
+	col.map <- c()
+	col.map["Région"] <- COL_ATT_REG_NOM
+	col.map["Circonscription électorale"] <- COL_ATT_DPT_CODE
+	col.map["N° Identification d'un élu"] <- COL_ATT_ELU_ID
+	col.map["Nom de l'élu"] <- COL_ATT_ELU_NOM
+	col.map["Prénom de l'élu"] <- COL_ATT_ELU_PRENOM
+	col.map["Date de naissance"] <- COL_ATT_ELU_DDN
+	col.map["Code sexe"] <- COL_ATT_ELU_SEXE
+	col.map["Code profession"] <- COL_ATT_PRO_CODE
+	col.map["Nationalité de l'élu"] <- COL_ATT_ELU_NAT
+	col.map["Libellé de mandat"] <- COL_ATT_MDT_NOM
+	col.map["Date de début du mandat"] <- COL_ATT_MDT_DBT
+	col.map["Date de fin du mandat"] <- COL_ATT_MDT_FIN
+	col.map["Motif de fin de mandat"] <- COL_ATT_MDT_MOTIF
+	col.map["Libellé de fonction"] <- COL_ATT_FCT_NOM
+	col.map["Fonction pour un mandat (Code)"] <- COL_ATT_FCT_CODE
+	col.map["Date de début de la fonction"] <- COL_ATT_FCT_DBT
+	col.map["Date de fin de la fonction"] <- COL_ATT_FCT_FIN
+	col.map["Motif de fin de fonction"] <- COL_ATT_FCT_MOTIF
+	col.map["Nuance mandat"] <- COL_ATT_ELU_NUANCE
 	
 	# load the data
-	data <- load.data(filenames=FILES_TAB_CR2, cols=cols, correc.file=FILE_CORREC_CR)
+	data <- load.data(filenames=FILES_TAB_CR2, col.map=col.map, correc.file=FILE_CORREC_CR)
 	
-	res <- list(data=data,cols=cols)
-	return(res)
+	# split region name column
+	reg.code <- sapply(data[,COL_ATT_REG_NOM], function(x) substr(x,1,2))
+	reg.name <- sapply(data[,COL_ATT_REG_NOM], function(x) substr(x,3,nchar(x)))
+	data[,COL_ATT_REG_NOM] <- reg.name
+	data[,COL_ATT_REG_CODE] <- reg.code
+	
+	# normalize columns order
+	norm.cols <- intersect(COLS_ATT_NORMALIZED, colnames(data))
+	if(length(norm.cols)!=ncol(data))
+		stop("Problem with the number of columns when reordering table CR2 columns")
+	else
+		data <- data[,norm.cols]
+	
+	return(data)
 }
 
 
@@ -443,34 +461,32 @@ load.cr2.data <- function()
 #############################################################################################
 load.d.data <- function()
 {	# names of the columns
-	cols <- list(
-		list(name=COL_ATT_DPT_CODE, basename="dpt_code", tp="cat"),
-		list(name=COL_ATT_DPT_NOM, basename="dpt_nom", tp="nom"),
-		list(name=COL_ATT_CIRC_CODE, basename="circo_code", tp="cat"),
-		list(name=COL_ATT_CIRC_NOM, basename="circo_nom", tp="nom"),
-		list(name=COL_ATT_ELU_NOM, basename="patronyme", tp="nom"),
-		list(name=COL_ATT_ELU_PRENOM, basename="prenom", tp="nom"),
-		list(name=COL_ATT_ELU_DDN, basename="naissance_date", tp="dat"),
-		list(name=COL_ATT_ELU_SEXE, basename="sexe", tp="cat"),
-		list(name=COL_ATT_PRO_CODE, basename="profession_code", tp="cat"),
-		list(name=COL_ATT_PRO_NOM, basename="profession_nom", tp="cat"),
-		list(name=COL_ATT_MDT_NOM, basename="mandat_nom", tp="cat"),
-		list(name=COL_ATT_MDT_DBT, basename="mandat_debut", tp="dat"),
-		list(name=COL_ATT_MDT_FIN, basename="mandat_fin", tp="dat"),
-		list(name=COL_ATT_MDT_MOTIF, basename="mandat_motif", tp="cat"),
-		list(name=COL_ATT_FCT_NOM, basename="fonction_nom", tp="cat"),
-		list(name=COL_ATT_FCT_DBT, basename="fonction_debut", tp="dat"),
-		list(name=COL_ATT_FCT_FIN, basename="fonction_fin", tp="dat"),
-		list(name=COL_ATT_FCT_MOTIF, basename="fonction_motif", tp="cat"),
-		list(name=COL_ATT_ELU_NUANCE_D, basename="nuance_pol", tp="cat"),
-		list(name=COL_ATT_ELU_ID, basename="elu_id", tp="cat")
-	)
+	col.map <- c()
+	col.map["Code du département"] <- COL_ATT_DPT_CODE
+	col.map["Libellé du département"] <- COL_ATT_DPT_NOM
+	col.map["Code de la cir.législative"] <- COL_ATT_CIRC_CODE
+	col.map["Libellé de la cir.législative"] <- COL_ATT_CIRC_NOM
+	col.map["Nom de l'élu"] <- COL_ATT_ELU_NOM
+	col.map["Prénom de l'élu"] <- COL_ATT_ELU_PRENOM
+	col.map["Date de naissance"] <- COL_ATT_ELU_DDN
+	col.map["Code sexe"] <- COL_ATT_ELU_SEXE
+	col.map["Code profession"] <- COL_ATT_PRO_CODE
+	col.map["Libellé de la profession"] <- COL_ATT_PRO_NOM
+	col.map["Libellé de mandat"] <- COL_ATT_MDT_NOM
+	col.map["Date de début du mandat"] <- COL_ATT_MDT_DBT
+	col.map["Date de fin du mandat"] <- COL_ATT_MDT_FIN
+	col.map["Motif de fin de mandat"] <- COL_ATT_MDT_MOTIF
+	col.map["Libellé de fonction"] <- COL_ATT_FCT_NOM
+	col.map["Date de début de la fonction"] <- COL_ATT_FCT_DBT
+	col.map["Date de fin de la fonction"] <- COL_ATT_FCT_FIN
+	col.map["Motif de fin de fonction"] <- COL_ATT_FCT_MOTIF
+	col.map["Nuance politique (Député)"] <- COL_ATT_ELU_NUANCE
+	col.map["N° Identification d'un élu"] <- COL_ATT_ELU_ID
 	
 	# load the data
-	data <- load.data(filenames=FILES_TAB_D, cols=cols, correc.file=FILE_CORREC_D)
+	data <- load.data(filenames=FILES_TAB_D, col.map=col.map, correc.file=FILE_CORREC_D)
 	
-	res <- list(data=data,cols=cols)
-	return(res)
+	return(data)
 }
 
 
@@ -483,28 +499,26 @@ load.d.data <- function()
 #############################################################################################
 load.de.data <- function()
 {	# names of the columns
-	cols <- list(
-		list(name=COL_ATT_CIRCE_CODE, basename="circo_code", tp="cat"),
-		list(name=COL_ATT_CIRCE_NOM, basename="circo_nom", tp="nom"),
-		list(name=COL_ATT_ELU_NOM, basename="patronyme", tp="nom"),
-		list(name=COL_ATT_ELU_PRENOM, basename="prenom", tp="nom"),
-		list(name=COL_ATT_ELU_DDN, basename="naissance_date", tp="dat"),
-		list(name=COL_ATT_ELU_SEXE, basename="sexe", tp="cat"),
-		list(name=COL_ATT_PRO_CODE, basename="profession_code", tp="cat"),
-		list(name=COL_ATT_PRO_NOM, basename="profession_nom", tp="cat"),
-		list(name=COL_ATT_MDT_NOM, basename="mandat_nom", tp="cat"),
-		list(name=COL_ATT_MDT_DBT, basename="mandat_debut", tp="dat"),
-		list(name=COL_ATT_MDT_FIN, basename="mandat_fin", tp="dat"),
-		list(name=COL_ATT_MDT_MOTIF, basename="mandat_motif", tp="cat"),
-		list(name=COL_ATT_ELU_NUANCE_DE, basename="nuance_pol", tp="cat"),
-		list(name=COL_ATT_ELU_ID, basename="elu_id", tp="cat")
-	)
+	col.map <- c()
+	col.map["CodeCirER"] <- COL_ATT_CIRCE_CODE
+	col.map["LibelléCirER"] <- COL_ATT_CIRCE_NOM
+	col.map["Nom de l'élu"] <- COL_ATT_ELU_NOM
+	col.map["Prénom de l'élu"] <- COL_ATT_ELU_PRENOM
+	col.map["Date de naissance"] <- COL_ATT_ELU_DDN
+	col.map["Code sexe"] <- COL_ATT_ELU_SEXE
+	col.map["Code profession"] <- COL_ATT_PRO_CODE
+	col.map["Libellé de la profession"] <- COL_ATT_PRO_NOM
+	col.map["Libellé de mandat"] <- COL_ATT_MDT_NOM
+	col.map["Date de début du mandat"] <- COL_ATT_MDT_DBT
+	col.map["Date de fin du mandat"] <- COL_ATT_MDT_FIN
+	col.map["Motif de fin de mandat"] <- COL_ATT_MDT_MOTIF
+	col.map["Nuance politique (Rep. P.E.)"] <- COL_ATT_ELU_NUANCE
+	col.map["N° Identification d'un élu"] <- COL_ATT_ELU_ID
 	
 	# load the data
-	data <- load.data(filenames=FILES_TAB_DE, cols=cols, correc.file=FILE_CORREC_DE)
+	data <- load.data(filenames=FILES_TAB_DE, col.map=col.map, correc.file=FILE_CORREC_DE)
 	
-	res <- list(data=data,cols=cols)
-	return(res)
+	return(data)
 }
 
 
@@ -517,35 +531,33 @@ load.de.data <- function()
 #############################################################################################
 load.epci.data <- function()
 {	# names of the columns
-	cols <- list(
-		list(name=COL_ATT_DPT_CODE_EPCI, basename="dpt_code_epci", tp="cat"),
-		list(name=COL_ATT_DPT_CODE_COM, basename="dpt_code_com", tp="cat"),
-		list(name=COL_ATT_COM_CODE_EPCI, basename="ville_code", tp="cat"),
-		list(name=COL_ATT_COM_NOM_EPCI, basename="ville_nom", tp="nom"),
-		list(name=COL_ATT_EPCI_SIREN, basename="epci_siren", tp="cat"),
-		list(name=COL_ATT_EPCI_NOM, basename="epci_nom", tp="nom"),
-		list(name=COL_ATT_ELU_NOM, basename="patronyme", tp="nom"),
-		list(name=COL_ATT_ELU_PRENOM, basename="prenom", tp="nom"),
-		list(name=COL_ATT_ELU_SEXE, basename="sexe", tp="cat"),
-		list(name=COL_ATT_ELU_DDN, basename="naissance_date", tp="dat"),
-		list(name=COL_ATT_PRO_CODE, basename="profession_code", tp="cat"),
-		list(name=COL_ATT_PRO_NOM, basename="profession_nom", tp="cat"),
-		list(name=COL_ATT_MDT_DBT, basename="mandat_debut", tp="dat"),
-		list(name=COL_ATT_MDT_FIN, basename="mandat_fin", tp="dat"),
-		list(name=COL_ATT_MDT_MOTIF, basename="mandat_motif", tp="cat"),
-		list(name=COL_ATT_FCT_NOM, basename="fonction_nom", tp="cat"),
-		list(name=COL_ATT_FCT_DBT, basename="fonction_debut", tp="dat"),
-		list(name=COL_ATT_FCT_FIN, basename="fonction_fin", tp="dat"),
-		list(name=COL_ATT_FCT_MOTIF, basename="fonction_motif", tp="cat"),
-		list(name=COL_ATT_ELU_NUANCE_CR, basename="nuance_pol", tp="cat"),
-		list(name=COL_ATT_ELU_ID, basename="elu_id", tp="cat")
-	)
+	col.map <- c()
+	col.map["Code département EPCI"] <- COL_ATT_EPCI_DPT
+	col.map["Code département commune rattachée"] <- COL_ATT_DPT_CODE
+	col.map["Code de la commune"] <- COL_ATT_COM_CODE
+	col.map["Libellé commune rattachée"] <- COL_ATT_COM_NOM
+	col.map["N° SIREN"] <- COL_ATT_EPCI_SIREN
+	col.map["Libellé de l'EPCI"] <- COL_ATT_EPCI_NOM
+	col.map["Nom de l'élu"] <- COL_ATT_ELU_NOM
+	col.map["Prénom de l'élu"] <- COL_ATT_ELU_PRENOM
+	col.map["Code sexe"] <- COL_ATT_ELU_SEXE
+	col.map["Date de naissance"] <- COL_ATT_ELU_DDN
+	col.map["Code profession"] <- COL_ATT_PRO_CODE
+	col.map["Libellé de la profession"] <- COL_ATT_PRO_NOM
+	col.map["Date de début du mandat"] <- COL_ATT_MDT_DBT
+	col.map["Date de fin du mandat"] <- COL_ATT_MDT_FIN
+	col.map["Motif de fin de mandat"] <- COL_ATT_MDT_MOTIF
+	col.map["Libellé de fonction"] <- COL_ATT_FCT_NOM
+	col.map["Date de début de la fonction"] <- COL_ATT_FCT_DBT
+	col.map["Date de fin de la fonction"] <- COL_ATT_FCT_FIN
+	col.map["Motif de fin de fonction"] <- COL_ATT_FCT_MOTIF
+	col.map["Nuance mandat"] <- COL_ATT_ELU_NUANCE
+	col.map["N° Identification d'un élu"] <- COL_ATT_ELU_ID
 	
 	# load the data
-	data <- load.data(filenames=FILES_TAB_EPCI, cols=cols, correc.file=FILE_CORREC_EPCI)
+	data <- load.data(filenames=FILES_TAB_EPCI, col.map=col.map, correc.file=FILE_CORREC_EPCI)
 	
-	res <- list(data=data,cols=cols)
-	return(res)
+	return(data)
 }
 
 
@@ -558,32 +570,31 @@ load.epci.data <- function()
 #############################################################################################
 load.m.data <- function()
 {	# names of the columns
-	cols <- list(
-		list(name=COL_ATT_DPT_CODE_M, basename="dpt_code", tp="cat"),
-		list(name=COL_ATT_DPT_NOM_M, basename="dpt_nom", tp="nom"),
-		list(name=COL_ATT_COM_CODE, basename="ville_code", tp="cat"),
-		list(name=COL_ATT_COM_NOM, basename="ville_nom", tp="nom"),
-		list(name=COL_ATT_COM_POP, basename="ville_population", tp="num"),
-		list(name=COL_ATT_ELU_NOM, basename="patronyme", tp="nom"),
-		list(name=COL_ATT_ELU_PRENOM, basename="prenom", tp="nom"),
-		list(name=COL_ATT_ELU_DDN, basename="naissance_date", tp="dat"),
-		list(name=COL_ATT_ELU_SEXE, basename="sexe", tp="cat"),
-		list(name=COL_ATT_PRO_CODE, basename="profession_code", tp="cat"),
-		list(name=COL_ATT_PRO_NOM, basename="profession_nom", tp="cat"),
-		list(name=COL_ATT_MDT_NOM, basename="mandat_nom", tp="cat"),
-		list(name=COL_ATT_MDT_DBT, basename="mandat_debut", tp="dat"),
-		list(name=COL_ATT_MDT_FIN, basename="mandat_fin", tp="dat"),
-		list(name=COL_ATT_MDT_MOTIF, basename="mandat_motif", tp="cat"),
-		list(name=COL_ATT_FCT_NOM, basename="fonction_nom", tp="cat"),
-		list(name=COL_ATT_FCT_DBT, basename="fonction_debut", tp="dat"),
-		list(name=COL_ATT_FCT_FIN, basename="fonction_fin", tp="dat"),
-		list(name=COL_ATT_FCT_MOTIF, basename="fonction_motif", tp="cat"),
-		list(name=COL_ATT_ELU_NUANCE_CM, basename="nuance_pol", tp="cat"),
-		list(name=COL_ATT_ELU_ID, basename="elu_id", tp="cat")
-	)
+	col.map <- c()
+	col.map["Code du département (Maire)"] <- COL_ATT_DPT_CODE
+	col.map["Libellé de département (Maires)"] <- COL_ATT_DPT_NOM
+	col.map["Code Insee de la commune"] <- COL_ATT_COM_CODE
+	col.map["Libellé de la commune"] <- COL_ATT_COM_NOM
+	col.map["Population de la commune"] <- COL_ATT_COM_POP
+	col.map["Nom de l'élu"] <- COL_ATT_ELU_NOM
+	col.map["Prénom de l'élu"] <- COL_ATT_ELU_PRENOM
+	col.map["Date de naissance"] <- COL_ATT_ELU_DDN
+	col.map["Code sexe"] <- COL_ATT_ELU_SEXE
+	col.map["Code profession"] <- COL_ATT_PRO_CODE
+	col.map["Libellé de la profession"] <- COL_ATT_PRO_NOM
+	col.map["Libellé de mandat"] <- COL_ATT_MDT_NOM
+	col.map["Date de début du mandat"] <- COL_ATT_MDT_DBT
+	col.map["Date de fin du mandat"] <- COL_ATT_MDT_FIN
+	col.map["Motif de fin de mandat"] <- COL_ATT_MDT_MOTIF
+	col.map["Libellé de fonction"] <- COL_ATT_FCT_NOM
+	col.map["Date de début de la fonction"] <- COL_ATT_FCT_DBT
+	col.map["Date de fin de la fonction"] <- COL_ATT_FCT_FIN
+	col.map["Motif de fin de fonction"] <- COL_ATT_FCT_MOTIF
+	col.map["Nuance politique (C. Mun.)"] <- COL_ATT_ELU_NUANCE
+	col.map["N° Identification d'un élu"] <- COL_ATT_ELU_ID
 	
 	# load the data
-	data <- load.data(filenames=FILES_TAB_M, cols=cols, correc.file=FILE_CORREC_M)
+	data <- load.data(filenames=FILES_TAB_M, col.map=col.map, correc.file=FILE_CORREC_M)
 	
 	# convert population numbers to actual integers
 	tlog(0,"Converting population to integer values")
@@ -596,8 +607,14 @@ load.m.data <- function()
 	data <- cbind(data,vals)
 	names(data)[ncol(data)] <- cn
 	
-	res <- list(data=data,cols=cols)
-	return(res)
+	# normalize columns order
+	norm.cols <- intersect(COLS_ATT_NORMALIZED, colnames(data))
+	if(length(norm.cols)!=ncol(data))
+		stop("Problem with the number of columns when reordering table CR2 columns")
+	else
+		data <- data[,norm.cols]
+	
+	return(data)
 }
 
 
@@ -610,30 +627,28 @@ load.m.data <- function()
 #############################################################################################
 load.s.data <- function()
 {	# names of the columns
-	cols <- list(
-		list(name=COL_ATT_DPT_CODE, basename="dpt_code", tp="cat"),
-		list(name=COL_ATT_DPT_NOM, basename="dpt_nom", tp="nom"),
-		list(name=COL_ATT_ELU_NOM, basename="patronyme", tp="nom"),
-		list(name=COL_ATT_ELU_PRENOM, basename="prenom", tp="nom"),
-		list(name=COL_ATT_ELU_DDN, basename="naissance_date", tp="dat"),
-		list(name=COL_ATT_ELU_SEXE, basename="sexe", tp="cat"),
-		list(name=COL_ATT_PRO_CODE, basename="profession_code", tp="cat"),
-		list(name=COL_ATT_PRO_NOM, basename="profession_nom", tp="cat"),
-		list(name=COL_ATT_MDT_NOM, basename="mandat_nom", tp="cat"),
-		list(name=COL_ATT_MDT_DBT, basename="mandat_debut", tp="dat"),
-		list(name=COL_ATT_MDT_FIN, basename="mandat_fin", tp="dat"),
-		list(name=COL_ATT_MDT_MOTIF, basename="mandat_motif", tp="cat"),
-		list(name=COL_ATT_FCT_NOM, basename="fonction_nom", tp="cat"),
-		list(name=COL_ATT_FCT_DBT, basename="fonction_debut", tp="dat"),
-		list(name=COL_ATT_FCT_FIN, basename="fonction_fin", tp="dat"),
-		list(name=COL_ATT_FCT_MOTIF, basename="fonction_motif", tp="cat"),
-		list(name=COL_ATT_ELU_NUANCE_S, basename="nuance_pol", tp="cat"),
-		list(name=COL_ATT_ELU_ID, basename="elu_id", tp="cat")
-	)
+	col.map <- c()
+	col.map["Code du département"] <- COL_ATT_DPT_CODE
+	col.map["Libellé du département"] <- COL_ATT_DPT_NOM
+	col.map["Nom de l'élu"] <- COL_ATT_ELU_NOM
+	col.map["Prénom de l'élu"] <- COL_ATT_ELU_PRENOM
+	col.map["Date de naissance"] <- COL_ATT_ELU_DDN
+	col.map["Code sexe"] <- COL_ATT_ELU_SEXE
+	col.map["Code profession"] <- COL_ATT_PRO_CODE
+	col.map["Libellé de la profession"] <- COL_ATT_PRO_NOM
+	col.map["Libellé de mandat"] <- COL_ATT_MDT_NOM
+	col.map["Date de début du mandat"] <- COL_ATT_MDT_DBT
+	col.map["Date de fin du mandat"] <- COL_ATT_MDT_FIN
+	col.map["Motif de fin de mandat"] <- COL_ATT_MDT_MOTIF
+	col.map["Libellé de fonction"] <- COL_ATT_FCT_NOM
+	col.map["Date de début de la fonction"] <- COL_ATT_FCT_DBT
+	col.map["Date de fin de la fonction"] <- COL_ATT_FCT_FIN
+	col.map["Motif de fin de fonction"] <- COL_ATT_FCT_MOTIF
+	col.map["Nuance politique (Sénateur)"] <- COL_ATT_ELU_NUANCE
+	col.map["N° Identification d'un élu"] <- COL_ATT_ELU_ID
 	
 	# load the data
-	data <- load.data(filenames=FILES_TAB_S, cols=cols, correc.file=FILE_CORREC_S)
+	data <- load.data(filenames=FILES_TAB_S, col.map=col.map, correc.file=FILE_CORREC_S)
 	
-	res <- list(data=data,cols=cols)
-	return(res)
+	return(data)
 }

@@ -98,7 +98,7 @@ test.position.cm <- function(data, out.folder)
 	
 	# identify all unique functions: city + function
 	tlog(2,"Identifying all unique functions")
-	dpts <- data[,COL_ATT_DPT_CODE_M]
+	dpts <- data[,COL_ATT_DPT_CODE]
 	coms <- data[,COL_ATT_COM_CODE]
 	functs <- data[,COL_ATT_FCT_NOM]
 	pos <- apply(cbind(dpts,coms,functs),1,function(r) paste(r,collapse=":"))
@@ -118,7 +118,7 @@ test.position.cm <- function(data, out.folder)
 		tlog(4,"Processing function ",p,"/",length(unique.pos)," dpt=",dpt," city=",com," function=",funct)
 		
 		# get the corresponding mandates
-		idx <- which(data[,COL_ATT_DPT_CODE_M]==dpt & data[,COL_ATT_COM_CODE]==com & data[,COL_ATT_FCT_NOM]==funct)
+		idx <- which(data[,COL_ATT_DPT_CODE]==dpt & data[,COL_ATT_COM_CODE]==com & data[,COL_ATT_FCT_NOM]==funct)
 		tlog(4,"Found ",length(idx)," function mandates")
 		# check if their dates overlap
 		if(length(idx)>1)
@@ -447,7 +447,7 @@ test.position.m <- function(data, out.folder)
 	
 	# identify all unique positions: department + circonscription
 	tlog(2,"Identifying all unique positions")
-	dpts <- data[,COL_ATT_DPT_CODE_M]
+	dpts <- data[,COL_ATT_DPT_CODE]
 	coms <- data[,COL_ATT_COM_CODE]
 	pos <- apply(cbind(dpts,coms),1,function(r) paste(r,collapse=":"))
 	unique.pos <- sort(unique(pos))
@@ -463,7 +463,7 @@ test.position.m <- function(data, out.folder)
 		tlog(4,"Processing position ",p,"/",length(unique.pos)," dpt=",dpt," city=",com)
 		
 		# get the corresponding rows
-		idx <- which(data[,COL_ATT_DPT_CODE_M]==dpt & data[,COL_ATT_COM_CODE]==com)
+		idx <- which(data[,COL_ATT_DPT_CODE]==dpt & data[,COL_ATT_COM_CODE]==com)
 		tlog(4,"Found ",length(idx)," rows")
 		
 		# check if their mandate dates overlap

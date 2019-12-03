@@ -22,9 +22,7 @@ tlog(0,"Comparing the mayoral and municipal data")
 #############################################################################################
 # load the mayoral data
 tlog(0,"Load mayoral data")
-tmp <- load.m.data()
-m.data <- tmp$data
-m.cols <- tmp$cols
+m.data <- load.m.data()
 
 
 
@@ -32,9 +30,7 @@ m.cols <- tmp$cols
 #############################################################################################
 # load the municipal data
 tlog(0,"Load municipal data")
-tmp <- load.cm.data()
-cm.data <- tmp$data
-cm.cols <- tmp$cols
+cm.data <- load.cm.data()
 
 
 
@@ -42,13 +38,13 @@ cm.cols <- tmp$cols
 #############################################################################################
 # look for all mayors in the municipal data
 sel.cols <- c(
-	"N° Identification d'un élu",
-	"Nom de l'élu",
-	"Prénom de l'élu",
-	"Date de naissance",
-	"Code sexe",
-	"Date de début du mandat",
-	"Date de fin du mandat"
+	COL_ATT_ELU_ID,
+	COL_ATT_ELU_NOM,
+	COL_ATT_ELU_PRENOM,
+	COL_ATT_ELU_DDN,
+	COL_ATT_ELU_SEXE,
+	COL_ATT_MDT_DBT,
+	COL_ATT_MDT_FIN
 )
 cm.codes <- apply(cm.data[,sel.cols],1,function(r) paste(r,collapse=":"))
 m.codes <- apply(m.data[,sel.cols],1,function(r) paste(r,collapse=":"))
@@ -66,7 +62,7 @@ for(um in unmatched)
 {	tlog(2, "Processing unmatched mayor")
 	print(m.data[um,sel.cols])
 	tlog(4, "Municipal councilors with the same name:")
-	idx <- which(cm.data[,"Nom de l'élu"]==m.data[um,"Nom de l'élu"])
+	idx <- which(cm.data[,COL_ATT_ELU_NOM]==m.data[um,COL_ATT_ELU_NOM])
 	print(cm.data[idx,sel.cols])
 }
 

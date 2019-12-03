@@ -12,7 +12,6 @@
 # text files.
 #
 # data: table containing the data.
-# cols: list describing how to handle each column in the table.
 # out.folder: folder where to output the results.
 #############################################################################################
 test.col.dates.generic <- function(data, cols, out.folder)
@@ -20,17 +19,20 @@ test.col.dates.generic <- function(data, cols, out.folder)
 	
 	# checking whether each individual date is too early or too late
 	tlog(4,"Detecting early/late dates")
-	for(col in cols)
-	{	if(col$tp=="dat")
-		{	tlog(6,"Processing column \"",col$name,"\"")
+	for(c in 1:ncol(data))
+	{	col.name <- colnames(data)[c]
+		col.type <- COL_TYPES[col.name]
+		col.basename <- BASENAMES[col.name]
+		if(col.type=="dat")
+		{	tlog(6,"Processing column \"",col.name,"\"")
 			
 			# too early
-			idx <- which(data[,col$name]<as.Date("1900/01/01"))
+			idx <- which(data[,col.name]<as.Date("1900/01/01"))
 			tlog(8,"Found ",length(idx)," date(s) that seem too early")
 			if(length(idx)>0)
 			{	tmp <- cbind(idx,data[idx,])
 				colnames(tmp)[1] <- "Ligne"
-				tab.file <- file.path(out.folder,paste0(col$basename,"_problems_too_early.txt"))
+				tab.file <- file.path(out.folder,paste0(col.basename,"_problems_too_early.txt"))
 				tlog(8,"Recording in file \"",tab.file,"\"")
 				write.table(x=tmp,file=tab.file,
 #						fileEncoding="UTF-8",
@@ -38,12 +40,12 @@ test.col.dates.generic <- function(data, cols, out.folder)
 			}
 			
 			# too late
-			idx <- which(data[,col$name]>=as.Date("2020/01/01"))			
+			idx <- which(data[,col.name]>=as.Date("2020/01/01"))			
 			tlog(8,"Found ",length(idx)," date(s) that seem too late")
 			if(length(idx)>0)
 			{	tmp <- cbind(idx,data[idx,])
 				colnames(tmp)[1] <- "Ligne"
-				tab.file <- file.path(out.folder,paste0(col$basename,"_problems_too_late.txt"))
+				tab.file <- file.path(out.folder,paste0(col.basename,"_problems_too_late.txt"))
 				tlog(8,"Recording in file \"",tab.file,"\"")
 				write.table(x=tmp,file=tab.file,
 #						fileEncoding="UTF-8",
@@ -212,12 +214,11 @@ test.col.dates.absence <- function(data, out.folder)
 # detected problems in text files.
 #
 # data: table containing the data.
-# cols: list describing how to handle each column in the table.
 # out.folder: folder where to output the results.
 #############################################################################################
-test.col.dates.cd <- function(data, cols, out.folder)
+test.col.dates.cd <- function(data, out.folder)
 {	# generic tests
-	test.col.dates.generic(data, cols, out.folder)
+	test.col.dates.generic(data, out.folder)
 	test.col.dates.pre.rne(data, out.folder)
 	test.col.dates.absence(data, out.folder)
 		
@@ -250,12 +251,11 @@ test.col.dates.cd <- function(data, cols, out.folder)
 # detected problems in text files.
 #
 # data: table containing the data.
-# cols: list describing how to handle each column in the table.
 # out.folder: folder where to output the results.
 #############################################################################################
-test.col.dates.cm <- function(data, cols, out.folder)
+test.col.dates.cm <- function(data, out.folder)
 {	# generic tests
-	test.col.dates.generic(data, cols, out.folder)
+	test.col.dates.generic(data, out.folder)
 	test.col.dates.pre.rne(data, out.folder)
 	test.col.dates.absence(data, out.folder)
 	
@@ -285,12 +285,11 @@ test.col.dates.cm <- function(data, cols, out.folder)
 # detected problems in text files.
 #
 # data: table containing the data.
-# cols: list describing how to handle each column in the table.
 # out.folder: folder where to output the results.
 #############################################################################################
-test.col.dates.cr <- function(data, cols, out.folder)
+test.col.dates.cr <- function(data, out.folder)
 {	# generic tests
-	test.col.dates.generic(data, cols, out.folder)
+	test.col.dates.generic(data, out.folder)
 	test.col.dates.pre.rne(data, out.folder)
 	test.col.dates.absence(data, out.folder)
 	
@@ -322,12 +321,11 @@ test.col.dates.cr <- function(data, cols, out.folder)
 # detected problems in text files.
 #
 # data: table containing the data.
-# cols: list describing how to handle each column in the table.
 # out.folder: folder where to output the results.
 #############################################################################################
-test.col.dates.d <- function(data, cols, out.folder)
+test.col.dates.d <- function(data, out.folder)
 {	# generic tests
-	test.col.dates.generic(data, cols, out.folder)
+	test.col.dates.generic(data, out.folder)
 	test.col.dates.pre.rne(data, out.folder)
 	test.col.dates.absence(data, out.folder)
 	
@@ -366,12 +364,11 @@ test.col.dates.d <- function(data, cols, out.folder)
 # detected problems in text files.
 #
 # data: table containing the data.
-# cols: list describing how to handle each column in the table.
 # out.folder: folder where to output the results.
 #############################################################################################
-test.col.dates.de <- function(data, cols, out.folder)
+test.col.dates.de <- function(data, out.folder)
 {	# generic tests
-	test.col.dates.generic(data, cols, out.folder)
+	test.col.dates.generic(data, out.folder)
 	test.col.dates.pre.rne(data, out.folder)
 	
 	# specific tests
@@ -400,12 +397,11 @@ test.col.dates.de <- function(data, cols, out.folder)
 # detected problems in text files.
 #
 # data: table containing the data.
-# cols: list describing how to handle each column in the table.
 # out.folder: folder where to output the results.
 #############################################################################################
-test.col.dates.epci <- function(data, cols, out.folder)
+test.col.dates.epci <- function(data, out.folder)
 {	# generic tests
-	test.col.dates.generic(data, cols, out.folder)
+	test.col.dates.generic(data, out.folder)
 	test.col.dates.pre.rne(data, out.folder)
 	test.col.dates.absence(data, out.folder)
 }
@@ -419,12 +415,11 @@ test.col.dates.epci <- function(data, cols, out.folder)
 # detected problems in text files.
 #
 # data: table containing the data.
-# cols: list describing how to handle each column in the table.
 # out.folder: folder where to output the results.
 #############################################################################################
-test.col.dates.s <- function(data, cols, out.folder)
+test.col.dates.s <- function(data, out.folder)
 {	# generic tests
-	test.col.dates.generic(data, cols, out.folder)
+	test.col.dates.generic(data, out.folder)
 	test.col.dates.pre.rne(data, out.folder)
 	test.col.dates.absence(data, out.folder)
 	

@@ -352,34 +352,29 @@ compare.tables <- function(files0, files1, out.folder)
 	
 	# record each modified value
 	tlog(2,"Processing each column separately")
-	cols <- load.cd.data()$cols
-	for(col in cols)
-	{	# process each common column
-		c <- col$name
-		if(c %in% ccn)
-		{	tlog(4,"Processing column ",c)
-			if(c %in% colnames(comp))
-			{	# retrieve data
-				idx <- which(comp[,c]==0)
-				tlog(6,"Found ",length(idx)," values")
-				if(length(idx)>0)
-				{	tab <- data.frame(
-							"Ligne vx"=idx0[idx],
-							"Ligne nv"=idx1[idx],
-							"Valeur vx"=t0[idx0[idx],c],
-							"Valeur nv"=t1[idx1[idx],c]
-						)
-					# record in text file
-					table.file <- file.path(out.folder, paste0(col$base,"_changes.txt"))
-					tlog(6,"Recording changes in file ",table.file)
-					write.table(x=tab,
-							file=table.file,		# name of file containing the new table
-							quote=TRUE,				# put double quotes around strings
-							se="\t",				# use tabulations as separators
-							row.names=FALSE,		# no names for rows
-							col.names=TRUE			# record table headers
+	for(c in ccn)
+	{	tlog(4,"Processing column ",c)
+		if(c %in% colnames(comp))
+		{	# retrieve data
+			idx <- which(comp[,c]==0)
+			tlog(6,"Found ",length(idx)," values")
+			if(length(idx)>0)
+			{	tab <- data.frame(
+						"Ligne vx"=idx0[idx],
+						"Ligne nv"=idx1[idx],
+						"Valeur vx"=t0[idx0[idx],c],
+						"Valeur nv"=t1[idx1[idx],c]
 					)
-				}
+				# record in text file
+				table.file <- file.path(out.folder, paste0(BASENAMES[c],"_changes.txt"))
+				tlog(6,"Recording changes in file ",table.file)
+				write.table(x=tab,
+						file=table.file,		# name of file containing the new table
+						quote=TRUE,				# put double quotes around strings
+						se="\t",				# use tabulations as separators
+						row.names=FALSE,		# no names for rows
+						col.names=TRUE			# record table headers
+				)
 			}
 		}
 	}

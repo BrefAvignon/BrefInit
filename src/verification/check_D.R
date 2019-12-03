@@ -23,30 +23,28 @@ out.folder <- FOLDER_OUT_D
 dir.create(path=out.folder, showWarnings=FALSE, recursive=TRUE)
 
 # load the data
-tmp <- load.d.data()
-data <- tmp$data
-cols <- tmp$cols
+data <- load.d.data()
 
 # summarizes each column separately
 tlog(0,"Examining each column separately")
-sumup.cols(data=data, cols=cols, out.folder=out.folder)
+sumup.cols(data=data, out.folder=out.folder)
 
 # plots the number of persons over time
 tlog(0,"Ploting the number of simultaneously hold positions over time")
-#plot.pers.time(data, out.folder, daily=TRUE)
-plot.pers.time2(data, out.folder)
+#plot.pers.time(data=data, out.folder=out.folder, daily=TRUE)
+plot.pers.time2(data=data, out.folder=out.folder)
 
 # check dates
 tlog(0,"Checking dates")
-test.col.dates.d(data, cols, out.folder)
+test.col.dates.d(data=data, out.folder=out.folder)
 
 # check overlapping mandates for the same position
 tlog(0,"Checking overlapping mandates for the same position")
-test.position.d(data, out.folder)
+test.position.d(data=data, out.folder=out.folder)
 
 # look for duplicates (not really necessary to do that here, better after the merge)
 tlog(0,"Looking for duplicates")
-test.duplicates(data, out.folder)
+test.duplicates(data=data, out.folder=out.folder)
 
 # close the log file
 tlog(0,"Done")

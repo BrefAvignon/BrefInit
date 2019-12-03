@@ -506,26 +506,25 @@ sumup.col <- function(data, col, basename, tp, ...)
 # Displays the main properties of the specified columns, for the specified data.
 #
 # data: table containing the data.
-# cols: list describing how to handle each column in the table.
 # out.folder: folder where to output the results.
 #############################################################################################
 sumup.cols <- function(data, cols, out.folder, ...)
 {	# init stats table
-	stats <- matrix(nrow=length(cols), ncol=length(COL_STATS_NAMES))
+	stats <- matrix(nrow=ncol(data), ncol=length(COL_STATS_NAMES))
 	colnames(stats) <- COL_STATS_NAMES
-	rownames(stats) <- sapply(cols, function(col) col$name)
+	rownames(stats) <- colnames(data)
 	
 	# process each column separately
-	for(c in 1:length(cols))
-	{	col <- cols[[c]]
-		tlog(2,"Considering column \"",col$name,"\"")
+	for(c in 1:ncol(data))
+	{	col <- colnames(data)[c]
+		tlog(2,"Considering column \"",col,"\"")
 		
 		# process the column
 		res <- sumup.col(
 				data=data, 
-				col=col$name, 
-				basename=file.path(out.folder,col$basename),
-				tp=col$tp,
+				col=col, 
+				basename=file.path(out.folder,BASENAMES[col]),
+				tp=COL_TYPES[col],
 				...
 			)
 		

@@ -21,12 +21,7 @@ source("src/common/include.R")
 # - compare_CM
 
 # Points d'implémentation
-# - utiliser des noms de colonnes normalisés en interne
-#   >> faire la conversion dès le chargement
-#   >> permet de réordonner correctement les colonnes en même temps
-#      (utiliser une intersection avec liste des cols dans ordre correct)
-# - écrire la fonction de chargement de CR2 : pas du tout les mêmes noms de colonnes ni la même organisation...
-# - réordonner les colonnes dans les sorties fichiers de manière à ce qu'elles soient plus lisibles
+# - rajouter dans la table fusionnée le type de mandat, qui manque dans la plupart des tables séparées
 # - résoudre le problème des mandats concernant la même position mais qui se chevauchent sur une journée
 #   >> le mandat qui s'achève est réduit d'une journée pour éviter le recouvrement
 # - utiliser le tableau de NF listant toutes les dates des élections, pour 
