@@ -35,7 +35,7 @@ load.data <- function(filenames, col.map, correc.file)
 	if(nrow(correc.table)>0)
 	{	for(r in 1:nrow(correc.table))
 		{	att.name <- correc.table[r,COL_CORREC_ATTR]
-			norm.name <- col.maps[att.name]
+			norm.name <- col.map[att.name]
 			if(!is.na(norm.name))
 				correc.table[r,COL_CORREC_ATTR] <- norm.name
 		}
@@ -80,7 +80,7 @@ load.data <- function(filenames, col.map, correc.file)
 	# convert date and numeric columns
 	tlog(0,"Converting date and numeric columns")
 	for(c in 1:ncol(data))
-	{	col.name <- colnames(data)[c]
+	{	col.name <- norm.names[c]
 		col.type <- COL_TYPES[col.name]
 		# dealing with dates
 		if(col.type=="dat")

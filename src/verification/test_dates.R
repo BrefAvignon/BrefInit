@@ -14,7 +14,7 @@
 # data: table containing the data.
 # out.folder: folder where to output the results.
 #############################################################################################
-test.col.dates.generic <- function(data, cols, out.folder)
+test.col.dates.generic <- function(data, out.folder)
 {	tlog(2,"Trying to detect problems in date columns")
 	
 	# checking whether each individual date is too early or too late
