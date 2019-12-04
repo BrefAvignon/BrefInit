@@ -69,12 +69,10 @@ load.data <- function(filenames, col.map, correc.file)
 			data <- rbind(data,temp)
 		tlog(2,"Now ",nrow(data)," lines and ",ncol(data)," columns in main table")
 	}
-	
+	tlog(2,"Columns: ",paste(colnames(data),collapse=","))
+
 	# normalize column names
 	norm.names <- col.map[colnames(data)]
-print(cbind(colnames(data),norm.names))
-print(length(norm.names))
-print(ncol(data))	# TODO bug here
 	if(any(is.na(norm.names)) || length(norm.names)!=ncol(data))
 		stop("Problem with the number of columns (or their names) when loading the table, after normalization")
 	else
@@ -374,6 +372,7 @@ load.cm2.data <- function()
 	col.map["Motif de fin de fonction"] <- COL_ATT_FCT_MOTIF
 	col.map["Nuance mandat"] <- COL_ATT_ELU_NUANCE
 	col.map["Code Insee de la commune"] <- COL_ATT_COM_CODE
+	col.map["Libellé de la commune"] <- COL_ATT_COM_NOM
 	col.map["Code du département (Maire)"] <- COL_ATT_DPT_CODE
 	col.map["Libellé de département (Maires)"] <- COL_ATT_DPT_NOM
 	
@@ -453,7 +452,7 @@ load.cr2.data <- function()
 	col.map["Nuance mandat"] <- COL_ATT_ELU_NUANCE
 	
 	# load the data
-	data <- load.data(filenames=FILES_TAB_CR2, col.map=col.map, correc.file=FILE_CORREC_CR)
+	data <- load.data(filenames=FILES_TAB_CR2, col.map=col.map, correc.file=FILE_CORREC_CR2)
 	
 	# split region name column
 	reg.code <- sapply(data[,COL_ATT_REG_NOM], function(x) substr(x,1,2))
