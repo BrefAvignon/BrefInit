@@ -1,5 +1,6 @@
 #############################################################################################
-# Compares the mayoral and municipal tables. 
+# Compares the mayoral and municipal tables, trying to check whether the former is included
+# in the latter, as we suppose (spoiler: we were right). 
 # 
 # 10/2019 Vincent Labatut
 #
