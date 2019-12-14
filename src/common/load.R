@@ -335,7 +335,7 @@ load.cm.data <- function()
 	names(data)[ncol(data)] <- cn
 	
 	# add mandate name
-	vals <- rep(nrow(data), "Conseiller Municipal")
+	vals <- rep("Conseiller Municipal",nrow(data))
 	data <- cbind(data, vals)
 	colnames(data)[ncol(data)] <- COL_ATT_MDT_NOM
 	
@@ -582,7 +582,7 @@ load.epci.data <- function()
 	data <- load.data(filenames=FILES_TAB_EPCI, col.map=col.map, correc.file=FILE_CORREC_EPCI)
 	
 	# add mandate name
-	vals <- rep(nrow(data), "Conseiller EPCI")
+	vals <- rep("Conseiller EPCI",nrow(data))
 	data <- cbind(data, vals)
 	colnames(data)[ncol(data)] <- COL_ATT_MDT_NOM
 	
