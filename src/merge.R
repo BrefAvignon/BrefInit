@@ -84,6 +84,7 @@ cols <- c(
 	COL_ATT_COM_POP,
 	COL_ATT_EPCI_SIREN,
 	COL_ATT_EPCI_NOM,
+	COL_ATT_EPCI_DPT,
 	COL_ATT_ELU_ID,
 	COL_ATT_ELU_NOM,
 	COL_ATT_ELU_PRENOM,
@@ -116,9 +117,9 @@ tmp <- data.frame(
 		check.names=FALSE,
 		stringsAsFactors=FALSE
 	)
-col.inter <- intersect(cols, colnames(tmp))
+col.inter <- intersect(cols, colnames(cd.data))
 tmp[,col.inter] <- cd.data[,col.inter]
-tlog(2,"  Remaining columns: ",paste(setdiff(colnames(tmp), col.inter), collapse=", "))
+tlog(2,"  Remaining columns: ",paste(setdiff(colnames(cd.data), col.inter), collapse=", "))
 data <- rbind(data, tmp)
 
 # add municipal data
@@ -128,9 +129,9 @@ tmp <- data.frame(
 		check.names=FALSE,
 		stringsAsFactors=FALSE
 	)
-col.inter <- intersect(cols, colnames(tmp))
+col.inter <- intersect(cols, colnames(cm.data))
 tmp[,col.inter] <- cm.data[,col.inter]
-tlog(2,"  Remaining columns: ",paste(setdiff(colnames(tmp), col.inter), collapse=", "))
+tlog(2,"  Remaining columns: ",paste(setdiff(colnames(cm.data), col.inter), collapse=", "))
 data <- rbind(data, tmp)
 
 # add regional data
@@ -140,9 +141,9 @@ tmp <- data.frame(
 		check.names=FALSE,
 		stringsAsFactors=FALSE
 	)
-col.inter <- intersect(cols, colnames(tmp))
+col.inter <- intersect(cols, colnames(cr.data))
 tmp[,col.inter] <- cr.data[,col.inter]
-tlog(2,"  Remaining columns: ",paste(setdiff(colnames(tmp), col.inter), collapse=", "))
+tlog(2,"  Remaining columns: ",paste(setdiff(colnames(cr.data), col.inter), collapse=", "))
 data <- rbind(data, tmp)
 
 # add parliamentary data
@@ -152,9 +153,9 @@ tmp <- data.frame(
 		check.names=FALSE,
 		stringsAsFactors=FALSE
 	)
-col.inter <- intersect(cols, colnames(tmp))
+col.inter <- intersect(cols, colnames(d.data))
 tmp[,col.inter] <- d.data[,col.inter]
-tlog(3,"  Remaining columns: ",paste(setdiff(colnames(tmp), col.inter), collapse=", "))
+tlog(3,"  Remaining columns: ",paste(setdiff(colnames(d.data), col.inter), collapse=", "))
 data <- rbind(data, tmp)
 
 # add European parliamentary data
@@ -164,9 +165,9 @@ tmp <- data.frame(
 		check.names=FALSE,
 		stringsAsFactors=FALSE
 	)
-col.inter <- intersect(cols, colnames(tmp))
+col.inter <- intersect(cols, colnames(de.data))
 tmp[,col.inter] <- de.data[,col.inter]
-tlog(4,"  Remaining columns: ",paste(setdiff(colnames(tmp), col.inter), collapse=", "))
+tlog(4,"  Remaining columns: ",paste(setdiff(colnames(de.data), col.inter), collapse=", "))
 data <- rbind(data, tmp)
 
 # add EPCI data
@@ -176,9 +177,9 @@ tmp <- data.frame(
 		check.names=FALSE,
 		stringsAsFactors=FALSE
 	)
-col.inter <- intersect(cols, colnames(tmp))
+col.inter <- intersect(cols, colnames(epci.data))
 tmp[,col.inter] <- epci.data[,col.inter]
-tlog(4,"  Remaining columns: ",paste(setdiff(colnames(tmp), col.inter), collapse=", "))
+tlog(4,"  Remaining columns: ",paste(setdiff(colnames(epci.data), col.inter), collapse=", "))
 data <- rbind(data, tmp)
 
 # add mayoral data
@@ -188,9 +189,9 @@ tmp <- data.frame(
 		check.names=FALSE,
 		stringsAsFactors=FALSE
 	)
-col.inter <- intersect(cols, colnames(tmp))
+col.inter <- intersect(cols, colnames(m.data))
 tmp[,col.inter] <- m.data[,col.inter]
-tlog(4,"  Remaining columns: ",paste(setdiff(colnames(tmp), col.inter), collapse=", "))
+tlog(4,"  Remaining columns: ",paste(setdiff(colnames(m.data), col.inter), collapse=", "))
 data <- rbind(data, tmp)
 
 # add senatorial data
@@ -200,9 +201,9 @@ tmp <- data.frame(
 		check.names=FALSE,
 		stringsAsFactors=FALSE
 	)
-col.inter <- intersect(cols, colnames(tmp))
+col.inter <- intersect(cols, colnames(s.data))
 tmp[,col.inter] <- s.data[,col.inter]
-tlog(4,"  Remaining columns: ",paste(setdiff(colnames(tmp), col.inter), collapse=", "))
+tlog(4,"  Remaining columns: ",paste(setdiff(colnames(s.data), col.inter), collapse=", "))
 data <- rbind(data, tmp)
 
 tlog(0,"Merge over")
@@ -214,6 +215,7 @@ tlog(2,"Actual dimensions of the full table: ",paste(dim(data),collapse="x"))
 
 #############################################################################################
 # record everything in a new single table
+dir.create(path=FOLDER_OUT_ALL, showWarnings=FALSE, recursive=TRUE)
 table.file <- file.path(FOLDER_OUT_ALL, "merged_data.txt")
 tlog(0,"Recording the full table in file \"",table.file,"\"")
 write.table(x=data,
