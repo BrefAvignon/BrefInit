@@ -334,6 +334,11 @@ load.cm.data <- function()
 	data <- cbind(data,vals)
 	names(data)[ncol(data)] <- cn
 	
+	# add mandate name
+	vals <- rep(nrow(data), "Conseiller Municipal")
+	data <- cbind(data, vals)
+	colnames(data)[ncol(data)] <- COL_ATT_MDT_NOM
+	
 	# normalize columns order
 	norm.cols <- intersect(COLS_ATT_NORMALIZED, colnames(data))
 	if(length(norm.cols)!=ncol(data))
@@ -575,6 +580,18 @@ load.epci.data <- function()
 	
 	# load the data
 	data <- load.data(filenames=FILES_TAB_EPCI, col.map=col.map, correc.file=FILE_CORREC_EPCI)
+	
+	# add mandate name
+	vals <- rep(nrow(data), "Conseiller EPCI")
+	data <- cbind(data, vals)
+	colnames(data)[ncol(data)] <- COL_ATT_MDT_NOM
+	
+	# normalize columns order
+	norm.cols <- intersect(COLS_ATT_NORMALIZED, colnames(data))
+	if(length(norm.cols)!=ncol(data))
+		stop("Problem with the number of columns when reordering table EPCI columns")
+	else
+		data <- data[,norm.cols]
 	
 	return(data)
 }
