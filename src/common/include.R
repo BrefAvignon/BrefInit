@@ -21,11 +21,11 @@ options(warn=2)				# as errors
 # packages
 
 # load data
-#library("readr")	 # not necessary, in the end
+#library("readr")		# not necessary, in the end
 
 # string manipulation
 library("stringdist")
-library("stringi")
+#library("stringi")		# not used, in the end
 
 # parallel computing
 library("parallel")

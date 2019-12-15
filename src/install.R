@@ -8,12 +8,12 @@
 
 
 # comparison of character strings
-install.packages("stringdist")
+#install.packages("stringdist")	# not used, in the end...
 
 # parallel computation
 install.packages("future.apply")
 
 # solves certain encoding problems when loading tables
 # https://dss.iq.harvard.edu/blog/escaping-character-encoding-hell-r-windows
-#install.packages("readr") # not used, in the end_
+#install.packages("readr") # not used, in the end...
 
