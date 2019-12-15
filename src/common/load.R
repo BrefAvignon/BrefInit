@@ -31,7 +31,8 @@ load.data <- function(filenames, col.map, correc.file)
 			as.is=TRUE					# don't convert strings to factors
 #			fileEncoding="Latin1"		# original tables seem to be encoded in Latin1 (ANSI)
 	)
-	# normalize the table
+	
+	# normalize the correction table
 	if(nrow(correc.table)>0)
 	{	for(r in 1:nrow(correc.table))
 		{	# normalize name of corrected column
@@ -39,16 +40,24 @@ load.data <- function(filenames, col.map, correc.file)
 			norm.name <- col.map[att.name]
 			if(!is.na(norm.name))
 				correc.table[r,COL_CORREC_ATTR] <- norm.name
+			
 			# remove diacritics
-			correc.table[r,] <- remove.diacritics(correc.table[r,])
+			correc.table[r,colnames(correc.table)!=COL_CORREC_COMM] <- remove.diacritics(correc.table[r,colnames(correc.table)!=COL_CORREC_COMM])
+			
+			# normalize proper nouns
+			correc.table[r,c(COL_CORREC_NOM,COL_CORREC_PRENOM)] <- normalize.proper.nouns(correc.table[r,c(COL_CORREC_NOM,COL_CORREC_PRENOM)])
+			if(correc.table[r,COL_CORREC_ATTR] %in% COLS_ATT_PROPER_NOUNS)
+				correc.table[r,c(COL_CORREC_VALAVT,COL_CORREC_VALAPR)] <- normalize.proper.nouns(correc.table[r,c(COL_CORREC_VALAVT,COL_CORREC_VALAPR)])
+			
 			# trim ending/starting whitespace
 			correc.table[r,] <- trimws(correc.table[r,])
-			# convert to upper case
-			correc.table[r,] <- toupper(correc.table[r,])
+			
+			# replace "NA"s by actual NAs
+			correc.table[r,which(correc.table[r,]=="NA")] <- NA	
 		}
 	}
 	
-	# load the table(s)
+	# load the data table(s)
 	data <- NULL
 	for(filename in filenames)
 	{	tlog(0,"Loading table file \"",filename,"\"")
@@ -78,148 +87,138 @@ load.data <- function(filenames, col.map, correc.file)
 	}
 	tlog(2,"Columns: ",paste(colnames(data),collapse=","))
 
-	# normalize column names
+	# normalize data table column names
 	norm.names <- col.map[colnames(data)]
 	if(any(is.na(norm.names)) || length(norm.names)!=ncol(data))
 		stop("Problem with the number of columns (or their names) when loading the table, after normalization")
 	else
 		colnames(data) <- norm.names
 	
-	# convert date and numeric columns
-	tlog(0,"Converting date and numeric columns")
+	# setting appropriate encoding of string columns,
+	# replace "" by NAs, and normalize proper nouns
+	tlog(0,"Cleaning/encoding/normalizing strings")
 	for(c in 1:ncol(data))
-	{	col.name <- norm.names[c]
+	{	col.name <- colnames(data)[c]
 		col.type <- COL_TYPES[col.name]
-		# dealing with dates
-		if(col.type=="dat")
-		{	tlog(2,"Col. \"",col.name,"\": converting to date")
-			
-			# possibly apply corrections
-			if(nrow(correc.table)>0)	
-			{	# keep only the relevant corrections
-				cor.tab <- correc.table[correc.table[,COL_CORREC_ATTR]==col.name,]
-				# process each remaining correction
-				if(nrow(cor.tab)>0)
-				{	for(r in 1:nrow(cor.tab))
-					{	# identify the targeted row in the data table
-						idx <- which(data[,COL_ATT_ELU_ID]==cor.tab[r,COL_CORREC_ID]
-							& data[,COL_ATT_ELU_NOM]==cor.tab[r,COL_CORREC_NOM]
-							& data[,COL_ATT_ELU_PRENOM]==cor.tab[r,COL_CORREC_PRENOM]
-							& data[,cor.tab[r,COL_CORREC_ATTR]]==cor.tab[r,COL_CORREC_VALAVT]
-						)
-						# there should be exactly one
-						if(length(idx)<1)
-						{	tlog(4,"Could not find a correction: ",paste(cor.tab[r,],collapse=";"))
-							stop(paste0("Could not find a correction: ",paste(cor.tab[r,],collapse=";")))
-						}
-						else if(length(idx)>1)
-						{	tlog(4,"A correction matches several cases: ",paste(cor.tab[r,],collapse=";"))
-							stop(paste0("A correction matches several cases: ",paste(cor.tab[r,],collapse=";")))
-						}
-						else
-						{	tlog(4,"Correcting entry: ",paste(cor.tab[r,],collapse=";"))
-#							vals[which(vals==as.Date("29/1/0201",format="%d/%m/%Y"))] <- as.Date("20/10/2016",format="%d/%m/%Y")	# manual correction for COCHONNEAU Virginie 1/5/1982 (CM), completely arbitrary
-							data[idx,cor.tab[r,COL_CORREC_ATTR]] <- cor.tab[r,COL_CORREC_VALAPR]
-						}
-					}
-				}
-			}
-			
-			vals <- as.Date(data[,col.name], "%d/%m/%Y")
-			
-			#format(x, format="%Y/%m/%d")
-			data <- data[, names(data)!=col.name]
-			data <- cbind(data,vals)
-			names(data)[ncol(data)] <- col.name
-		}
 		
-		# dealing with numbers
-# actually, this is done later if needed 
-# (as there's only one such column which requires more specific processing)
-#		else if(col$tp=="num")
-#		{	tlog(2,"Col. \"",col$name,"\": converting to number")
-#			vals <- suppressWarnings(as.numeric(data[,col$name]))
-#			data <- data[, names(data)!=col$name]
-#			data <- cbind(data,vals)
-#			names(data)[ncol(data)] <- col$name
-#		}
-		
-		# the other columns stay strings
-		else
-			tlog(2,"Col. \"",col.name,"\": simple string, no conversion")
-	}
-	
-	# setting appropriate encoding of string columns
-	# and replace "" by NAs
-	tlog(0,"Cleaning/encoding strings")
-	for(c in 1:ncol(data))
-	{	if(is.character(data[,c]))
-		{	tlog(2,"Processing column \"",colnames(data)[c],"\"")
+		# the column is an actual string
+		if(col.type %in% c("cat","nom"))
+		{	tlog(2,"Processing column \"",col.name,"\"")
 			# convert encoding
 ##			data[,c] <- iconv(x=data[,c], from="Latin1", to="UTF8")
 #			data[,c] <- iconv(x=data[,c], to="UTF8")
 			
 			# remove diacritics
 			data[,c] <- remove.diacritics(data[,c])
-			# trim leading/ending whitespace
-			data[,c] <- trimws(data[,c])
-			# convert to uppercase
-			data[,c] <- toupper(data[,c])
-			# replace empty cells by explicit NAs
-			data[which(data[,c]==""),c] <- NA
 			
-			# possibly apply corrections
-			if(nrow(correc.table)>0)	
-			{	# keep only the relevant corrections
-				cor.tab <- correc.table[correc.table[,COL_CORREC_ATTR]==colnames(data)[c],]
-				# process each remaining correction
-				if(nrow(cor.tab)>0)
-				{	for(r in 1:nrow(cor.tab))
-					{	# general correction
-						if(all(is.na(cor.tab[r,c(COL_CORREC_ID,COL_CORREC_NOM,COL_CORREC_PRENOM)])))
-						{	# identify the targeted rows in the data table
-							idx <- which(data[,cor.tab[r,COL_CORREC_ATTR]]==cor.tab[r,COL_CORREC_VALAVT])
-							# there should be at least one
-							if(length(idx)<1)
-							{	tlog(4,"Could not find a correction: ",paste(cor.tab[r,],collapse=";"))
-								stop(paste0("Could not find a correction: ",paste(cor.tab[r,],collapse=";")))
-							}
-							else 
-							{	tlog(4,"Replacing ",cor.tab[r,COL_CORREC_VALAVT]," by ",cor.tab[r,COL_CORREC_VALAPR])
-								data[idx,cor.tab[r,COL_CORREC_ATTR]] <- cor.tab[r,COL_CORREC_VALAPR]
-							}
-						}
-						# correction of a specific row
-						else
-						{	# identify the targeted row in the data table
-							idx <- which(data[,COL_ATT_ELU_ID]==cor.tab[r,COL_CORREC_ID]
-										& data[,COL_ATT_ELU_NOM]==cor.tab[r,COL_CORREC_NOM]
-										& data[,COL_ATT_ELU_PRENOM]==cor.tab[r,COL_CORREC_PRENOM]
-										& data[,cor.tab[r,COL_CORREC_ATTR]]==cor.tab[r,COL_CORREC_VALAVT]
-							)
-							# there should be exactly one
-							if(length(idx)<1)
-							{	tlog(4,"Could not find a correction: ",paste(cor.tab[r,],collapse=";"))
-								stop(paste0("Could not find a correction: ",paste(cor.tab[r,],collapse=";")))
-							}
-							else if(length(idx)>1)
-							{	tlog(4,"A correction matches several cases: ",paste(cor.tab[r,],collapse=";"))
-								stop(paste0("A correction matches several cases: ",paste(cor.tab[r,],collapse=";")))
-							}
-							else
-							{	tlog(4,"Correcting entry: ",paste(cor.tab[r,],collapse=";"))
-#								vals[which(vals==as.Date("29/1/0201",format="%d/%m/%Y"))] <- as.Date("20/10/2016",format="%d/%m/%Y")	# manual correction for COCHONNEAU Virginie 1/5/1982 (CM), completely arbitrary
-								data[idx,cor.tab[r,COL_CORREC_ATTR]] <- cor.tab[r,COL_CORREC_VALAPR]
-							}
-						}
-					}
+			# normalize proper nouns
+			if(colnames(data)[c] %in% COLS_ATT_PROPER_NOUNS)
+				data[,c] <- normalize.proper.nouns(data[,c])
+		}
+		
+		# the column is not a string
+		else
+			tlog(2,"Col. \"",colnames(data)[c],"\": not a string")
+		
+		# trim leading/ending whitespace
+		data[,c] <- trimws(data[,c])
+		
+		# replace empty cells by explicit NAs
+		data[which(data[,c]==""),c] <- NA
+		
+		# replace "NA"s by actual NAs
+		data[which(data[,c]=="NA"),c] <- NA	
+	}
+	
+	# possibly apply corrections
+	if(nrow(correc.table)>0)	
+	{	# apply each correction one after the other
+		for(r in 1:nrow(correc.table))
+		{	correc.attr <- correc.table[r,COL_CORREC_ATTR]
+			
+			# general correction
+			if(all(is.na(correc.table[r,c(COL_CORREC_ID,COL_CORREC_NOM,COL_CORREC_PRENOM)])))
+			{	# identify the targeted rows in the data table
+				idx <- which(data[,correc.table[r,COL_CORREC_ATTR]]==correc.table[r,COL_CORREC_VALAVT])
+				
+				# there should be at least one
+				if(length(idx)<1)
+				{	tlog(4,"Could not find a correction: ",paste(correc.table[r,],collapse=";"))
+					stop(paste0("Could not find a correction: ",paste(correc.table[r,],collapse=";")))
+				}
+				else 
+				{	tlog(4,"Replacing ",correc.table[r,COL_CORREC_VALAVT]," by ",correc.table[r,COL_CORREC_VALAPR])
+					data[idx,correc.table[r,COL_CORREC_ATTR]] <- correc.table[r,COL_CORREC_VALAPR]
+				}
+			}
+			
+			# correction of a specific row
+			else
+			{	# identify the targeted row in the data table
+				idx <- which(data[,COL_ATT_ELU_ID]==correc.table[r,COL_CORREC_ID]
+								& data[,COL_ATT_ELU_NOM]==correc.table[r,COL_CORREC_NOM]
+								& data[,COL_ATT_ELU_PRENOM]==correc.table[r,COL_CORREC_PRENOM]
+								& data[,correc.table[r,COL_CORREC_ATTR]]==correc.table[r,COL_CORREC_VALAVT]
+				)
+				
+				# there should be exactly one
+				if(length(idx)<1)
+				{	tlog(4,"Could not find a correction: ",paste(correc.table[r,],collapse=";"))
+					stop(paste0("Could not find a correction: ",paste(correc.table[r,],collapse=";")))
+				}
+				else if(length(idx)>1)
+				{	tlog(4,"A correction matches several cases: ",paste(correc.table[r,],collapse=";"))
+					stop(paste0("A correction matches several cases: ",paste(correc.table[r,],collapse=";")))
+				}
+				else
+				{	tlog(4,"Correcting entry: ",paste(correc.table[r,],collapse=";"))
+					data[idx,correc.table[r,COL_CORREC_ATTR]] <- correc.table[r,COL_CORREC_VALAPR]
 				}
 			}
 		}
-		else
-			tlog(2,"Col. \"",colnames(data)[c],"\": not a string")
 	}
 	
+	# convert date and numeric columns
+	tlog(0,"Converting date and numeric columns")
+	for(c in 1:ncol(data))
+	{	col.name <- colnames(data)[c]
+		col.type <- COL_TYPES[col.name]
+		
+		# dealing with dates
+		if(col.type=="dat")
+		{	tlog(2,"Col. \"",col.name,"\": converting to date")
+			vals <- as.Date(data[,col.name], "%d/%m/%Y")
+			
+			#format(x, format="%Y/%m/%d")
+			if(c==1)
+				data <- cbind(vals,data[,2:ncol(data),drop=FALSE])
+			else if(c<ncol(data))
+				data <- cbind(data[,1:(c-1),drop=FALSE],vals,data[,(c+1):ncol(data),drop=FALSE])
+			else
+				data <- cbind(data[,1:(c-1),drop=FALSE],vals)
+			colnames(data)[c] <- col.name
+		}
+		
+		# dealing with numbers
+# actually, this is done later if needed 
+# (as there's only one such column which requires more specific processing)
+#		else if(col$tp=="num")
+#		{	tlog(2,"Col. \"",col$name,"\": converting to numbers")
+#			vals <- suppressWarnings(as.numeric(data[,col$name]))
+#			if(c==1)
+#				data <- cbind(vals,data[,2:ncol(data),drop=FALSE])
+#			else if(c<ncol(data))
+#				data <- cbind(data[,1:(c-1),drop=FALSE],vals,data[,(c+1):ncol(data),drop=FALSE])
+#			else
+#				data <- cbind(data[,1:(c-1),drop=FALSE],vals)
+#			colnames(data)[c] <- col.name
+#		}
+		
+		# the other columns stay strings
+		else
+			tlog(2,"Col. \"",col.name,"\": simple string, no conversion")
+	}
+		
 	# normalize columns order
 	norm.cols <- intersect(COLS_ATT_NORMALIZED, colnames(data))
 	if(length(norm.cols)!=ncol(data))

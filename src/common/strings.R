@@ -211,3 +211,28 @@ remove.diacritics<- function(strings)
 	
 	return(result)
 }
+
+
+
+
+#############################################################################################
+# Takes a string representing a proper noun (place or person) and normalizes it so that it
+# is easier to compare. Basically, we remove all non-letter and non-digit characters, consecutive
+# whitespaces, and switch to uppercase. Diacritics are supposed to have been removed before.
+#
+# strings: vector of original strings.
+#
+# returns: normalized strings.
+#############################################################################################
+normalize.proper.nouns <- function(strings)
+{	result <- strings
+	
+	# remove punctuation
+	result <- gsub(x=result, pattern="[^a-zA-Z1-9]", replacement=" ")
+	# remove consecutive whitespaces
+	result <- gsub(x=result, pattern=" +", replacement=" ")
+	# convert to uppercase
+	result <- toupper(result)
+	
+	return(result)
+}

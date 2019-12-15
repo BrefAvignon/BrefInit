@@ -330,6 +330,7 @@ sumup.col.nominal <- function(data, col, basename, dist.threhsold=3, ...)
 #############################################################################################
 sumup.col.temporal <- function(data, col, basename, ...)
 {	vals <- data[,col]
+	tlog(4, "Data type: ",class(vals))
 	col <- iconv(col, "UTF-8", "UTF-8")
 	result <- c()
 	tt <- table(vals, useNA="always")

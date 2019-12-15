@@ -140,3 +140,7 @@ source("src/common/include.R")
 # - Date de naissance postérieure au début de la fonction/mandat
 # - Date de début de la fonction/mandat postérieure à sa date de fin, ou bien pas de date de début alors qu’il y a une date de fin
 # - Dates antérieures à 01/01/1900 ou postérieures à 01/01/2020
+
+
+# la normalisation des noms propres rend certaines corrections inutiles
+# >> à enlever
