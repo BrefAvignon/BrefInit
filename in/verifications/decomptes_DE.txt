@@ -1,4 +1,4 @@
-CodeCirco	Nom	Nombre	Début	Fin
+CodeCirco	Nom	Nombre	Debut	Fin
 00	NA	81	1979/06/07	1994/06/11
 00	NA	87	1994/06/12	2004/06/12
 03	EST	10	2004/06/13	2009/06/06

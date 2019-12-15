@@ -31,17 +31,24 @@ load.data <- function(filenames, col.map, correc.file)
 			as.is=TRUE					# don't convert strings to factors
 #			fileEncoding="Latin1"		# original tables seem to be encoded in Latin1 (ANSI)
 	)
-	# possibly normalize column names
+	# normalize the table
 	if(nrow(correc.table)>0)
 	{	for(r in 1:nrow(correc.table))
-		{	att.name <- correc.table[r,COL_CORREC_ATTR]
+		{	# normalize name of corrected column
+			att.name <- correc.table[r,COL_CORREC_ATTR]
 			norm.name <- col.map[att.name]
 			if(!is.na(norm.name))
 				correc.table[r,COL_CORREC_ATTR] <- norm.name
+			# remove diacritics
+			correc.table[r,] <- remove.diacritics(correc.table[r,])
+			# trim ending/starting whitespace
+			correc.table[r,] <- trimws(correc.table[r,])
+			# convert to upper case
+			correc.table[r,] <- toupper(correc.table[r,])
 		}
 	}
 	
-	# load all the tables
+	# load the table(s)
 	data <- NULL
 	for(filename in filenames)
 	{	tlog(0,"Loading table file \"",filename,"\"")
@@ -151,8 +158,13 @@ load.data <- function(filenames, col.map, correc.file)
 			# convert encoding
 ##			data[,c] <- iconv(x=data[,c], from="Latin1", to="UTF8")
 #			data[,c] <- iconv(x=data[,c], to="UTF8")
+			
+			# remove diacritics
+			data[,c] <- remove.diacritics(data[,c])
 			# trim leading/ending whitespace
 			data[,c] <- trimws(data[,c])
+			# convert to uppercase
+			data[,c] <- toupper(data[,c])
 			# replace empty cells by explicit NAs
 			data[which(data[,c]==""),c] <- NA
 			

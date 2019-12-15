@@ -1,4 +1,4 @@
-Id	Nom	Prénom	Attribut	ValAvt	ValApr	Commentaire
+Id	Nom	Prenom	Attribut	ValAvt	ValApr	Commentaire
 671	TANGUY	Hélène	Date de fin de la fonction	1/7/0012	1/7/2012	NA
 47125	BOYER	Jean-Marc	Date de fin de la fonction	20/10/0017	20/10/2017	NA
 80360	SENECHAULT	Jean-Paul	Date de fin de la fonction	22/3/0013	22/3/2013	NA

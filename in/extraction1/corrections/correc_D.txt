@@ -1,1 +1,1 @@
-Id	Nom	Prénom	Attribut	ValAvt	ValApr	Commentaire
+Id	Nom	Prenom	Attribut	ValAvt	ValApr	Commentaire

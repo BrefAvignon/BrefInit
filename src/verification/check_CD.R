@@ -43,7 +43,7 @@ tlog(0,"Checking dates")
 
 # check overlapping mandates for the same position
 tlog(0,"Checking overlapping mandates for the same position")
-test.position.cd(data=data, out.folder=out.folder)
+#test.position.cd(data=data, out.folder=out.folder)
 
 # look for duplicates (not really necessary to do that here, better after the merge)
 tlog(0,"Looking for duplicates")

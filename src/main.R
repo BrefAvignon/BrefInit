@@ -21,37 +21,39 @@ source("src/common/include.R")
 # - compare_CM
 
 # Points d'implémentation
+#
 # - vérifier qu'un mandat ne traverse pas plusieurs élections :
 #   - si date de début de mandat correspond à une élection (premier tour), la date de fin ne doit pas être après l'élection suivante (T1)
 #   - forcer les dates de fin/début à coincider avec un tour d'élection ?
-# - inverse : certains mandats durent seulement quelques jours, et s'enchainent avec un "vrai" mandat
+# - inverse : certains mandats durent seulement quelques jours, et s'enchaînent avec un "vrai" mandat
 #   ex : CD
 #   "Code département" "Libellé département" "Code canton" "Libellé canton" "ID élu" "Nom élu" "Prénom élu" "Date naissance" "Code sexe" "Nuance politique" "Code profession" "Libellé profession" "Libellé mandat" "Date début mandat" "Date fin mandat" "Motif fin mandat" "Libellé fonction" "Date début fonction" "Date fin fonction" "Motif fin fonction"
 #   "01" "AIN" "36" "VIRIEU-LE-GRAND" "106518" "GUILLON" "Pascale" 1961-11-10 "F" "DVG" "02" "Salariés agricoles" "Conseiller Départemental" 2011-03-27 2011-03-30 NA NA NA NA NA
 #   "01" "AIN" "36" "VIRIEU-LE-GRAND" "537590" "LAMAISON" "André" 1934-04-12 "M" "SOC" "65" "Autres retraités" "Conseiller Départemental" 2004-03-28 2011-03-30 "FM" NA NA NA NA
 #   >> détecter les mandats de moins d'une semaine ?
+#
 # - résoudre le problème des mandats concernant la même position mais qui se chevauchent sur une journée
 #   >> le mandat qui s'achève est réduit d'une journée pour éviter le recouvrement
 # - utiliser le tableau de NF listant toutes les dates des élections, pour 
-#   - corriger tables de vérification avec nombres de postes (CR, S, DE?)
 #   - trancher les dates de début/fin de mandat qui se chevauchent d'un jour
 #   - découper les mandats consécutifs abusivement fusionnés
+#
 # - certaines fonctions sont à ignorer lors du test de recouvrement :
 #   - maire délégué
 #   - autres responsabilités
+#
 # - tester quand, dans une même table, une même personne a un chevauchement de date de fonction
 #   elle ne devrait pas cumuler plusieurs fonctions relatives au même type de position
-# - CD : après 2015, c'est deux personnes par canton (1 H + 1 F)
-#   >> plus possible de faire la vérification de recouvrement de mandat
-#   >> par contre vérification possible sur le sexe des conseillers
+#
 # - Dans une même table, détecter les lignes telles que seul un attribut optionnel diffère (ou plusieurs, mais tous optionnels)
 #   (les attributs obligatoires étant de valeurs égales)
-#   >> probablement une entrée qui a été complétée plus tard, garder la ligne la plus complète et supprimer l'autre 
+#   >> probablement une entrée qui a été complétée plus tard, garder la ligne la plus complète et supprimer l'autre
+#
 # - certaines structures comme la métropole lyonnaise apparaissent parmi les département, et n'ont pas de numéro
 #   >> probablement EPCI, à voir
 #	>> que faire de ça ?
 #   >> signalé par les étudiants, mais pas vraiment confirmé expérimentalement
-
+#
 # - parfois une ligne = une fonction ?
 #   >> un même mandat peut être décomposé en plusieurs lignes en cas de prise de fonction en cours de mandat
 
@@ -66,7 +68,7 @@ source("src/common/include.R")
 #   - quand la date de fin de fonction manque, on peut la déduire
 #     - de la date de début de fonction suivante
 #     - de la date de fin de mandat
-# - le mandat s'achève t il quand l'élu déménage et change de liste électorale ?
+# - le mandat s'achève-t-il quand l'élu déménage et change de liste électorale ?
 #   >> question de droit
 #   >> pourrait permettre de résoudre de cas où un même id possède simultanément des mandats incompatibles
 # - Dans EPCI: 
@@ -74,18 +76,14 @@ source("src/common/include.R")
 #	- parfois un code commune mais pas de libellé.
 #   - même chose pour la commune de *rattachement*
 #   >> est-ce normal ? acceptable ? 
-# - Codes commune : faut il conserver ou pas les valeurs du type 013SN03, ou les tronquer ?
+# - Codes commune : faut-il conserver ou pas les valeurs du type 013SN03, ou les tronquer ?
 #   
 
 # Tests abandonnés
 # - tester le recouvrement de mandat pour les CM (en plus de celui de fonction, déjà fait)
 #   >> impossible à faire car les mandats ne sont pas uniques (tous sont conseillers municipaux) 
 
-# Noms propres
-# - normaliser les noms propres : 
-#   - majuscules non-accentuées
-#   - trim
-# - mettre en place la comparaison flexible des noms propres
+# NOMS PROPRES
 # - problèmes repérés sur les noms de lieux
 #   - VILLE SUD = VILLE-SUD = VILLE - SUD
 #     >> Chercher toutes les variantes de la même chaine modulo un séparateur : espace, tiret, apostrophe, slash
@@ -95,6 +93,7 @@ source("src/common/include.R")
 #   >> normaliser en prenant le mot complet systématiquement
 # - Présence de chiffres romains dans les noms de cantons (notamment)
 #   >> remplacer par des chiffres indo-arabes
+# - mettre en place la comparaison flexible des noms propres
 
 # Graphiques
 # - intégrer le nombre attendu de mandats dans les graphiques temporels
@@ -109,8 +108,8 @@ source("src/common/include.R")
 #   >> vrais ou faux homonymes ? se référer au territoire et faire une vérification manuelle
 # - Personne occupant des positions incompatibles
 #   >> hypothèse : homonymes complets (ou pas) victimes d'une erreur manuelle et rattachés au même ID
-# - maire délégué : doublons ou le même mandat apparait 2 fois, une fois en tant que maire délégué ET adjoint
-# - Dates pré 2001 sont réparties dans l'année de façon hétérogène : pq ? remplacements ?
+# - maire délégué : doublons ou le même mandat apparait 2 fois, une fois en tant que maire délégué ET une fois en tant qu'adjoint
+# - Dates pré-2001 sont réparties dans l'année de façon hétérogène : pq ? remplacements ?
 # - CD : pq on n'est pas à 4000 dès 2001 ?
 #   >> il manque des conseillers
 #   >> chaque pic sur le graphique semble correspondre à un renouvellement de la moitié des CD (mais pas tout à fait)
@@ -141,4 +140,3 @@ source("src/common/include.R")
 # - Date de naissance postérieure au début de la fonction/mandat
 # - Date de début de la fonction/mandat postérieure à sa date de fin, ou bien pas de date de début alors qu’il y a une date de fin
 # - Dates antérieures à 01/01/1900 ou postérieures à 01/01/2020
-# - 
