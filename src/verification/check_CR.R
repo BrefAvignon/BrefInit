@@ -34,20 +34,20 @@ sumup.cols(data=data, out.folder=out.folder)
 
 # check dates
 tlog(0,"Checking dates")
-#test.col.dates.cr(data=data, out.folder=out.folder)
+test.col.dates.cr(data=data, out.folder=out.folder)
 
 # check overlapping mandates for the same position
 tlog(0,"Checking overlapping mandates for the same position")
-#test.position.cr(data=data, out.folder=out.folder)
+test.position.cr(data=data, out.folder=out.folder)
 
 # look for duplicates (not really necessary to do that here, better after the merge)
 tlog(0,"Looking for duplicates")
-#test.duplicates(data=data, out.folder=out.folder)
+test.duplicates(data=data, out.folder=out.folder)
 
 # plots the number of persons over time
 tlog(0,"Ploting the number of simultaneously hold positions over time")
 #plot.pers.time(data=data, out.folder=out.folder, daily=TRUE)
-#plot.pers.time2(data=data, out.folder=out.folder)
+plot.pers.time2(data=data, out.folder=out.folder)
 
 # close the log file
 tlog(0,"Done")
