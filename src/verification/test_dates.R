@@ -8,8 +8,10 @@
 
 
 #############################################################################################
-# Performs a series of generic tests on date columns, and record the detected problems in 
-# text files.
+# Performs a series of generic tests on date columns, and records the detected problems in 
+# text files: date too early or too late compared to the studied period, starting dates later
+# than ending date, person born after his mandate/function, function not included in the 
+# mandate period.
 #
 # data: table containing the data.
 # out.folder: folder where to output the results.

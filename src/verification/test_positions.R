@@ -41,30 +41,38 @@ test.position.cd <- function(data, out.folder)
 		# check if their dates overlap
 		if(length(idx)>1)
 		{	ccount <- 0
-			
 			for(i in 1:(length(idx)-1))
 			{	# get the dates of the first compared mandate
 				start1 <- data[idx[i],COL_ATT_MDT_DBT]
 				end1 <- data[idx[i],COL_ATT_MDT_FIN]
+				sex1 <- data[idx[i],COL_ATT_ELU_SEXE]
 				
 				for(j in (i+1):length(idx))
 				{	# get the dates of the second compared mandate
 					start2 <- data[idx[j],COL_ATT_MDT_DBT]
 					end2 <- data[idx[j],COL_ATT_MDT_FIN]
+					sex2 <- data[idx[j],COL_ATT_ELU_SEXE]
 					
 					# check if the periods intersect
 					if(date.intersect(start1, end1, start2, end2))
-					{	# add to the table of problematic cases
-						tab <- rbind(tab, data[c(idx[i],idx[j]),], rep(NA,ncol(data)))
-						# add a row of NAs in order to separate pairs of cases
-						count <- count + 1
-						ccount <- ccount + 1
+					{	# problem only if before 2015 or persons of the same sex
+						if(get.year(start1)<2015  || sex1==sex2)
+						{	if(get.year(start1)<2015)
+								tlog(6,"Date before 2015")
+							if(sex1==sex2)
+								tlog(6,"Persons of the same sex")
+							# add to the table of problematic cases
+							tab <- rbind(tab, data[c(idx[i],idx[j]),], rep(NA,ncol(data)))
+							# add a row of NAs in order to separate pairs of cases
+							count <- count + 1
+							ccount <- ccount + 1
+						}
 					}
 				}
 			}
 			
 			# possibly add an empty row to separate cases
-			tlog(4,"Found ",ccount," pairs of overlapping mandates of this specific position")
+			tlog(4,"Found ",ccount," pair(s) of overlapping mandates of this specific position")
 			if(ccount>0)
 				tab <- rbind(tab, rep(NA,ncol(data)))
 		}
@@ -179,7 +187,7 @@ test.position.cr <- function(data, out.folder)
 	tab <- data[FALSE,]
 	
 	# load the legal limit for the number of regional counsilors in each subdivision
-	fn <- FILE_VERIF_CR
+	fn <- FILE_VERIF_NBR_CR
 	tlog(0,"Loading verification file \"",fn,"\"")
 	verif.table <- read.table(
 			file=fn, 					# name of the data file
@@ -273,7 +281,7 @@ test.position.de <- function(data, out.folder)
 	tab <- data[FALSE,]
 	
 	# load the legal limit for the number of members of the European Parliament in each subdivision
-	fn <- FILE_VERIF_DE
+	fn <- FILE_VERIF_NBR_DE
 	tlog(0,"Loading verification file \"",fn,"\"")
 	verif.table <- read.table(
 			file=fn, 					# name of the data file
@@ -567,7 +575,7 @@ test.position.s <- function(data, out.folder)
 	tab <- data[FALSE,]
 	
 	# load the legal limit for the number of senators in each department
-	fn <- FILE_VERIF_S
+	fn <- FILE_VERIF_NBR_S
 	tlog(0,"Loading verification file \"",fn,"\"")
 	verif.table <- read.table(
 			file=fn, 					# name of the data file

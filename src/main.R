@@ -41,6 +41,7 @@ source("src/common/include.R")
 # - certaines structures comme la métropole lyonnaise apparaissent parmi les département, et n'ont pas de numéro
 #   >> probablement EPCI, à voir
 #	>> que faire de ça ?
+#   >> signalé par les étudiants, mais pas vraiment confirmé expérimentalement
 
 # En attente de vérification par Noémie et/ou Guillaume
 # - vérifier les mandats commençant avant 2001
