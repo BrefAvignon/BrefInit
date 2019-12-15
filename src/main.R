@@ -21,6 +21,9 @@ source("src/common/include.R")
 # - compare_CM
 
 # Points d'implémentation
+# - vérifier qu'un mandat ne traverse pas plusieurs élections :
+#   - si date de début de mandat correspond à une élection (premier tour), la date de fin ne doit pas être après l'élection suivante (T1)
+#   - forcer les dates de fin/début à coincider avec un tour d'élection ?
 # - résoudre le problème des mandats concernant la même position mais qui se chevauchent sur une journée
 #   >> le mandat qui s'achève est réduit d'une journée pour éviter le recouvrement
 # - utiliser le tableau de NF listant toutes les dates des élections, pour 
