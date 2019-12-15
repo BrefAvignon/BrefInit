@@ -24,6 +24,12 @@ source("src/common/include.R")
 # - vérifier qu'un mandat ne traverse pas plusieurs élections :
 #   - si date de début de mandat correspond à une élection (premier tour), la date de fin ne doit pas être après l'élection suivante (T1)
 #   - forcer les dates de fin/début à coincider avec un tour d'élection ?
+# - inverse : certains mandats durent seulement quelques jours, et s'enchainent avec un "vrai" mandat
+#   ex : CD
+#   "Code département" "Libellé département" "Code canton" "Libellé canton" "ID élu" "Nom élu" "Prénom élu" "Date naissance" "Code sexe" "Nuance politique" "Code profession" "Libellé profession" "Libellé mandat" "Date début mandat" "Date fin mandat" "Motif fin mandat" "Libellé fonction" "Date début fonction" "Date fin fonction" "Motif fin fonction"
+#   "01" "AIN" "36" "VIRIEU-LE-GRAND" "106518" "GUILLON" "Pascale" 1961-11-10 "F" "DVG" "02" "Salariés agricoles" "Conseiller Départemental" 2011-03-27 2011-03-30 NA NA NA NA NA
+#   "01" "AIN" "36" "VIRIEU-LE-GRAND" "537590" "LAMAISON" "André" 1934-04-12 "M" "SOC" "65" "Autres retraités" "Conseiller Départemental" 2004-03-28 2011-03-30 "FM" NA NA NA NA
+#   >> détecter les mandats de moins d'une semaine ?
 # - résoudre le problème des mandats concernant la même position mais qui se chevauchent sur une journée
 #   >> le mandat qui s'achève est réduit d'une journée pour éviter le recouvrement
 # - utiliser le tableau de NF listant toutes les dates des élections, pour 
@@ -45,6 +51,10 @@ source("src/common/include.R")
 #   >> probablement EPCI, à voir
 #	>> que faire de ça ?
 #   >> signalé par les étudiants, mais pas vraiment confirmé expérimentalement
+
+# - parfois une ligne = une fonction ?
+#   >> un même mandat peut être décomposé en plusieurs lignes en cas de prise de fonction en cours de mandat
+
 
 # En attente de vérification par Noémie et/ou Guillaume
 # - vérifier les mandats commençant avant 2001
@@ -124,3 +134,11 @@ source("src/common/include.R")
 # - Certaines positions sont laissées inoccupées, par ex. commune de Saline n'a pas de maire pdt plusieurs semaines
 #   et en même temps, la commune présente un recouvrement de type: plusieurs maires à la fois
 #   >> détecter ces vacances et les exploiter pour résoudre ce type de recouvrement ?
+
+# Problèmes détectés
+# - Dates de la forme 01/01/xxxx représentant apparemment une absence d'information plus précise
+# - Période de fonction pas incluse dans la date de mandat
+# - Date de naissance postérieure au début de la fonction/mandat
+# - Date de début de la fonction/mandat postérieure à sa date de fin, ou bien pas de date de début alors qu’il y a une date de fin
+# - Dates antérieures à 01/01/1900 ou postérieures à 01/01/2020
+# - 
