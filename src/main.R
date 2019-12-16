@@ -84,15 +84,6 @@ source("src/common/include.R")
 #   >> impossible à faire car les mandats ne sont pas uniques (tous sont conseillers municipaux) 
 
 # NOMS PROPRES
-# - problèmes repérés sur les noms de lieux
-#   - VILLE SUD = VILLE-SUD = VILLE - SUD
-#     >> Chercher toutes les variantes de la même chaine modulo un séparateur : espace, tiret, apostrophe, slash
-#     >> Garder la majoritaire, ou celle qui a le plus de tirets
-# - Le même nom apparait parfois avec ou sans le déterminant : LE, LA, L', LES
-# - Saint/St, Sainte/Ste, Saints/Sts, Saintes/Stes 
-#   >> normaliser en prenant le mot complet systématiquement
-# - Présence de chiffres romains dans les noms de cantons (notamment)
-#   >> remplacer par des chiffres indo-arabes
 # - mettre en place la comparaison flexible des noms propres
 
 # Graphiques
@@ -144,3 +135,18 @@ source("src/common/include.R")
 
 # la normalisation des noms propres rend certaines corrections inutiles
 # >> à enlever
+
+
+# divers
+# sortir la chronologie de toutes les positions électives
+# >> identifier les trous et superpositions
+# pareil pour les fonctions 
+# taux de renouvellement sur une période donnée
+
+# analyse de séquences
+# - gestion temps/evts
+#   - évt sans accumulation (pas de distinction entre mandats consécutifs)
+#   - evt avec accu (on distingue mandats consécutifs)
+#   - on considère la durée du mandat
+# - mettre le focus sur un poste donné plutot que sur un individu donné
+#   (séquence des personnes ou classes de personnes ayant occupé un poste donné)

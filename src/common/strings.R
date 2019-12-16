@@ -236,3 +236,28 @@ normalize.proper.nouns <- function(strings)
 	
 	return(result)
 }
+
+
+
+
+#############################################################################################
+# Takes a string representing the proper noun of a place and normalizes it by performing modifications
+# specific to French place names : replace abreviations by full words (ex. ST => SAINT).
+#
+# strings: vector of original strings.
+#
+# returns: normalized strings.
+#############################################################################################
+normalize.location.nouns <- function(strings)
+{	result <- strings
+	
+	# "st" for "saint" and variants
+	result <- gsub(x=result, pattern="( |^)ST(E*S*) ",replacement="SAINT\\2 ")
+	
+	# replace roman numerals by indo-arab ones
+	map <- c("I","II","III","IV","V","VI","VII","VIII","IX","X","XI","XII","XIII","XIV","XV","XVI","XVII","XVIII","XIX","XX")
+	for(m in 1:length(map))
+		result <- gsub(x=result, pattern=paste0(" ",map[m],"$"),replacement=paste0(" ",m))
+	
+	return(result)
+}

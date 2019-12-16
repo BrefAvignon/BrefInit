@@ -48,7 +48,9 @@ load.data <- function(filenames, col.map, correc.file)
 			correc.table[r,c(COL_CORREC_NOM,COL_CORREC_PRENOM)] <- normalize.proper.nouns(correc.table[r,c(COL_CORREC_NOM,COL_CORREC_PRENOM)])
 			if(correc.table[r,COL_CORREC_ATTR] %in% COLS_ATT_PROPER_NOUNS)
 				correc.table[r,c(COL_CORREC_VALAVT,COL_CORREC_VALAPR)] <- normalize.proper.nouns(correc.table[r,c(COL_CORREC_VALAVT,COL_CORREC_VALAPR)])
-			
+			if(correc.table[r,COL_CORREC_ATTR] %in% COLS_ATT_LOCATION_NOUNS)
+				correc.table[r,c(COL_CORREC_VALAVT,COL_CORREC_VALAPR)] <- normalize.location.nouns(correc.table[r,c(COL_CORREC_VALAVT,COL_CORREC_VALAPR)])
+				
 			# trim ending/starting whitespace
 			correc.table[r,] <- trimws(correc.table[r,])
 			
@@ -114,6 +116,8 @@ load.data <- function(filenames, col.map, correc.file)
 			# normalize proper nouns
 			if(colnames(data)[c] %in% COLS_ATT_PROPER_NOUNS)
 				data[,c] <- normalize.proper.nouns(data[,c])
+			if(colnames(data)[c] %in% COLS_ATT_LOCATION_NOUNS)
+				data[,c] <- normalize.location.nouns(data[,c])
 		}
 		
 		# the column is not a string
