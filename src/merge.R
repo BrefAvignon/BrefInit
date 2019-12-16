@@ -3,6 +3,7 @@
 # 
 # 10/2019 Vincent Labatut
 #
+# source("src/merge.R")
 # setwd("C:/Users/Vincent/Eclipse/workspaces/Extraction/Datapol")
 #############################################################################################
 source("src/common/include.R")
