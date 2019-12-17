@@ -201,7 +201,7 @@ test.position.cr <- function(data, out.folder)
 #			fileEncoding="Latin1"		# original tables seem to be encoded in Latin1 (ANSI)
 			colClasses=c("character","character","integer","Date","Date")
 	)
-	# should not use region codes, because they changed over time
+	# TODO should not use region codes, because they changed over time
 	
 	# set up start/end dates
 	start.date <- min(c(data[,COL_ATT_MDT_DBT],data[,COL_ATT_MDT_FIN]),na.rm=TRUE)
