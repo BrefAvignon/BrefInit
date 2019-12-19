@@ -316,15 +316,20 @@ FOLDER_IN <- "in"
 	FILE_CORREC_CM2 <- file.path(FOLDER_CORRECS2, "correc_CM.txt")
 	FILE_CORREC_CR2 <- file.path(FOLDER_CORRECS2, "correc_CR.txt")
 # verification files
-FILE_VERIF_NBR_CR <- file.path(FOLDER_VERIFS, "decomptes_CR.txt")
-FILE_VERIF_NBR_DE <- file.path(FOLDER_VERIFS, "decomptes_DE.txt")
-FILE_VERIF_NBR_S <- file.path(FOLDER_VERIFS, "decomptes_S.txt")
-FILE_VERIF_DATES_CD <- file.path(FOLDER_VERIFS, "elections_CD.txt")
-FILE_VERIF_DATES_CM <- file.path(FOLDER_VERIFS, "elections_CM.txt")
-FILE_VERIF_DATES_CR <- file.path(FOLDER_VERIFS, "elections_CR.txt")
-FILE_VERIF_DATES_D <- file.path(FOLDER_VERIFS, "elections_D.txt")
-FILE_VERIF_DATES_DE <- file.path(FOLDER_VERIFS, "elections_DE.txt")
-FILE_VERIF_DATES_S <- file.path(FOLDER_VERIFS, "elections_S.txt")
+	# position counts
+	FILE_VERIF_NBR_CR <- file.path(FOLDER_VERIFS, "decomptes_CR.txt")
+	FILE_VERIF_NBR_DE <- file.path(FOLDER_VERIFS, "decomptes_DE.txt")
+	FILE_VERIF_NBR_S <- file.path(FOLDER_VERIFS, "decomptes_S.txt")
+	# election dates
+	FILE_VERIF_DATES_CD <- c(file.path(FOLDER_VERIFS, "elections_CD1.txt"),
+								file.path(FOLDER_VERIFS, "elections_CD2.txt"))
+	FILE_VERIF_DATES_CM <- file.path(FOLDER_VERIFS, "elections_CM.txt")
+	FILE_VERIF_DATES_CR <- file.path(FOLDER_VERIFS, "elections_CR.txt")
+	FILE_VERIF_DATES_D <- file.path(FOLDER_VERIFS, "elections_D.txt")
+	FILE_VERIF_DATES_DE <- file.path(FOLDER_VERIFS, "elections_DE.txt")
+	FILE_VERIF_DATES_S <- c(file.path(FOLDER_VERIFS, "elections_S1.txt"),
+								file.path(FOLDER_VERIFS, "elections_S2.txt"),
+								file.path(FOLDER_VERIFS, "elections_S3.txt"))
 
 # output folders
 # folder to store logs

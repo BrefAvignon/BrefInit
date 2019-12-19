@@ -217,14 +217,18 @@ test.col.dates.absence <- function(data, out.folder)
 #
 # data: table containing the data.
 # out.folder: folder where to output the results.
-# election.file: name of the file containing the election dates.
+# election.files: name of the files containing the election dates.
 #############################################################################################
-test.col.dates.election <- function(data, out.folder, election.file)
+test.col.dates.election <- function(data, out.folder, election.files)
 {	tlog(2,"Identifying mandates whose bounds are incompatible with election dates")
 	
-	# load election dates
-	tlog(2,"Loading the table containing election dates: \"",election.file,"\"")
-	election.table <- read.table(
+	for(ef in 1:length(election.files))
+	{	election.file <- election.files[ef]
+		tlog(2,"Processing file ",ef,"/",length(election.files))		
+		
+		# load election dates
+		tlog(4,"Loading the table containing election dates: \"",election.file,"\"")
+		election.table <- read.table(
 			file=election.file,		# name of the data file
 			header=TRUE, 				# look for a header
 			sep="\t", 					# character used to separate columns 
@@ -235,40 +239,42 @@ test.col.dates.election <- function(data, out.folder, election.file)
 			as.is=TRUE,					# don't convert strings to factors
 #			fileEncoding="Latin1"		# original tables seem to be encoded in Latin1 (ANSI)
 			colClasses=c("Date","Date")
-	)
-	
-	# possibly complete second round dates
-	tlog(2,"Complete missing dates in the table")
-	idx <- which(is.na(election.table[,COL_VERIF_DATE_TOUR2]))
-	if(length(idx)>0)
-		election.table[idx,COL_VERIF_DATE_TOUR2] <- election.table[idx,COL_VERIF_DATE_TOUR1]
-	
-	# compare mandate and election dates
-	tlog(2,"Check mandate dates against election dates")
-	idx <- which(apply(data, 1, function(data.row)
-		{	any(apply(election.table, 1, function(election.row)
-				{	(data.row[COL_ATT_MDT_DBT]<election.row[COL_VERIF_DATE_TOUR1] 
-						&& (is.na(data.row[COL_ATT_MDT_FIN]) || data.row[COL_ATT_MDT_FIN]>=election.row[COL_VERIF_DATE_TOUR2])) #TODO
-					#date.intersect(
-					#		start1=election.row[COL_VERIF_DATE_TOUR1], 
-					#		end1=election.row[COL_VERIF_DATE_TOUR2], 
-					#		start2=data.row[COL_ATT_MDT_DBT], 
-					#		end2=data.row[COL_ATT_MDT_FIN]
-					#)
-				}
-			))
-		}))
-	tlog(4,"Found ",length(idx)," rows with election-related issues")
-	
-	if(length(idx)>0)
-	{	# build the table and write it
-		tmp <- cbind(idx, data[idx,])
-		colnames(tmp)[1] <- "Ligne"
-		tab.file <- file.path(out.folder,"mandat_dates_problems_election.txt")
-		tlog(4,"Recording in file \"",tab.file,"\"")
-		write.table(x=tmp,file=tab.file,
-#			fileEncoding="UTF-8",
+		)
+		
+		# possibly complete second round dates
+		tlog(4,"Complete missing dates in the table")
+		idx <- which(is.na(election.table[,COL_VERIF_DATE_TOUR2]))
+		if(length(idx)>0)
+			election.table[idx,COL_VERIF_DATE_TOUR2] <- election.table[idx,COL_VERIF_DATE_TOUR1]
+		
+		# compare mandate and election dates
+		tlog(4,"Check mandate dates against election dates")
+		idx <- which(apply(data, 1, function(data.row)
+			{	any(apply(election.table, 1, function(election.row)
+					{	(data.row[COL_ATT_MDT_DBT]<election.row[COL_VERIF_DATE_TOUR1] 
+							&& (is.na(data.row[COL_ATT_MDT_FIN]) || data.row[COL_ATT_MDT_FIN]>=election.row[COL_VERIF_DATE_TOUR2])) #TODO
+						#date.intersect(
+						#		start1=election.row[COL_VERIF_DATE_TOUR1], 
+						#		end1=election.row[COL_VERIF_DATE_TOUR2], 
+						#		start2=data.row[COL_ATT_MDT_DBT], 
+						#		end2=data.row[COL_ATT_MDT_FIN]
+						#)
+					}
+				))
+			}))
+		tlog(6,"Found ",length(idx)," rows with election-related issues")
+		
+		if(length(idx)>0)
+		{	# build the table and write it
+			tmp <- cbind(idx, data[idx,])
+			colnames(tmp)[1] <- "Ligne"
+			sufx <- if(length(election.files)==1) "" else ef
+			tab.file <- file.path(out.folder,paste0("mandat_dates_problems_election",sufx,".txt"))
+			tlog(6,"Recording in file \"",tab.file,"\"")
+			write.table(x=tmp,file=tab.file,
+#				fileEncoding="UTF-8",
 				row.names=FALSE, col.names=TRUE)
+		}
 	}
 }
 
@@ -289,7 +295,7 @@ test.col.dates.cd <- function(data, out.folder)
 	test.col.dates.absence(data, out.folder)
 	
 	# election dates
-	test.col.dates.election(data, out.folder, election.file=FILE_VERIF_DATES_CD) # TODO several possible election dates
+	test.col.dates.election(data, out.folder, election.files=FILE_VERIF_DATES_CD) # TODO dates multiples
 	
 	# specific tests
 	tlog(2,"Checking mandate durations")
@@ -329,7 +335,7 @@ test.col.dates.cm <- function(data, out.folder)
 	test.col.dates.absence(data, out.folder)
 	
 	# election dates
-	test.col.dates.election(data, out.folder, election.file=FILE_VERIF_DATES_CM)
+	test.col.dates.election(data, out.folder, election.files=FILE_VERIF_DATES_CM)
 	
 	# specific tests
 	tlog(2,"Checking mandate durations")
@@ -366,7 +372,7 @@ test.col.dates.cr <- function(data, out.folder)
 	test.col.dates.absence(data, out.folder)
 	
 	# election dates
-	test.col.dates.election(data, out.folder, election.file=FILE_VERIF_DATES_CR)
+	test.col.dates.election(data, out.folder, election.files=FILE_VERIF_DATES_CR)
 	
 	# specific tests
 	tlog(2,"Checking mandate durations")
@@ -405,7 +411,7 @@ test.col.dates.d <- function(data, out.folder)
 	test.col.dates.absence(data, out.folder)
 	
 	# election dates
-	test.col.dates.election(data, out.folder, election.file=FILE_VERIF_DATES_D)
+	test.col.dates.election(data, out.folder, election.files=FILE_VERIF_DATES_D)
 	
 	# specific tests
 	tlog(2,"Checking mandate durations")
@@ -450,7 +456,7 @@ test.col.dates.de <- function(data, out.folder)
 	test.col.dates.pre.rne(data, out.folder)
 	
 	# election dates
-	test.col.dates.election(data, out.folder, election.file=FILE_VERIF_DATES_DE)
+	test.col.dates.election(data, out.folder, election.files=FILE_VERIF_DATES_DE)
 	
 	# specific tests
 	tlog(2,"Checking mandate durations")
@@ -505,7 +511,7 @@ test.col.dates.s <- function(data, out.folder)
 	test.col.dates.absence(data, out.folder)
 	
 	# election dates
-	test.col.dates.election(data, out.folder, election.file=FILE_VERIF_DATES_S) # TODO several possible election dates
+	test.col.dates.election(data, out.folder, election.files=FILE_VERIF_DATES_S) # TODO dates multiples
 	
 	# specific tests
 	tlog(2,"Checking mandate durations")
