@@ -217,64 +217,58 @@ test.col.dates.absence <- function(data, out.folder)
 #
 # data: table containing the data.
 # out.folder: folder where to output the results.
-# election.files: name of the files containing the election dates.
+# election.file: name of the file containing the election dates.
 #############################################################################################
-test.col.dates.election <- function(data, out.folder, election.files)
+test.col.dates.election <- function(data, out.folder, election.file)
 {	tlog(2,"Identifying mandates whose bounds are incompatible with election dates")
 	
-	for(ef in 1:length(election.files))
-	{	election.file <- election.files[ef]
-		tlog(2,"Processing file ",ef,"/",length(election.files))		
-		
-		# load election dates
-		tlog(4,"Loading the table containing election dates: \"",election.file,"\"")
-		election.table <- read.table(
-			file=election.file,		# name of the data file
-			header=TRUE, 				# look for a header
-			sep="\t", 					# character used to separate columns 
-			check.names=FALSE, 			# don't change the column names from the file
-			comment.char="", 			# ignore possible comments in the content
-			row.names=NULL, 			# don't look for row names in the file
-			quote="", 					# don't expect double quotes "..." around text fields
-			as.is=TRUE,					# don't convert strings to factors
+	# load election dates
+	tlog(4,"Loading the table containing election dates: \"",election.file,"\"")
+	election.table <- read.table(
+		file=election.file,		# name of the data file
+		header=TRUE, 				# look for a header
+		sep="\t", 					# character used to separate columns 
+		check.names=FALSE, 			# don't change the column names from the file
+		comment.char="", 			# ignore possible comments in the content
+		row.names=NULL, 			# don't look for row names in the file
+		quote="", 					# don't expect double quotes "..." around text fields
+		as.is=TRUE,					# don't convert strings to factors
 #			fileEncoding="Latin1"		# original tables seem to be encoded in Latin1 (ANSI)
-			colClasses=c("Date","Date")
-		)
-		
-		# possibly complete second round dates
-		tlog(4,"Complete missing dates in the table")
-		idx <- which(is.na(election.table[,COL_VERIF_DATE_TOUR2]))
-		if(length(idx)>0)
-			election.table[idx,COL_VERIF_DATE_TOUR2] <- election.table[idx,COL_VERIF_DATE_TOUR1]
-		
-		# compare mandate and election dates
-		tlog(4,"Check mandate dates against election dates")
-		idx <- which(apply(data, 1, function(data.row)
-			{	any(apply(election.table, 1, function(election.row)
-					{	(data.row[COL_ATT_MDT_DBT]<election.row[COL_VERIF_DATE_TOUR1] 
-							&& (is.na(data.row[COL_ATT_MDT_FIN]) || data.row[COL_ATT_MDT_FIN]>=election.row[COL_VERIF_DATE_TOUR2])) #TODO
-						#date.intersect(
-						#		start1=election.row[COL_VERIF_DATE_TOUR1], 
-						#		end1=election.row[COL_VERIF_DATE_TOUR2], 
-						#		start2=data.row[COL_ATT_MDT_DBT], 
-						#		end2=data.row[COL_ATT_MDT_FIN]
-						#)
-					}
-				))
-			}))
-		tlog(6,"Found ",length(idx)," rows with election-related issues")
-		
-		if(length(idx)>0)
-		{	# build the table and write it
-			tmp <- cbind(idx, data[idx,])
-			colnames(tmp)[1] <- "Ligne"
-			sufx <- if(length(election.files)==1) "" else ef
-			tab.file <- file.path(out.folder,paste0("mandat_dates_problems_election",sufx,".txt"))
-			tlog(6,"Recording in file \"",tab.file,"\"")
-			write.table(x=tmp,file=tab.file,
+		colClasses=c("Date","Date")
+	)
+	
+	# possibly complete second round dates
+	tlog(4,"Complete missing dates in the table")
+	idx <- which(is.na(election.table[,COL_VERIF_DATE_TOUR2]))
+	if(length(idx)>0)
+		election.table[idx,COL_VERIF_DATE_TOUR2] <- election.table[idx,COL_VERIF_DATE_TOUR1]
+	
+	# compare mandate and election dates
+	tlog(4,"Check mandate dates against election dates")
+	idx <- which(apply(data, 1, function(data.row)
+		{	any(apply(election.table, 1, function(election.row)
+				{	(data.row[COL_ATT_MDT_DBT]<election.row[COL_VERIF_DATE_TOUR1] 
+						&& (is.na(data.row[COL_ATT_MDT_FIN]) || data.row[COL_ATT_MDT_FIN]>=election.row[COL_VERIF_DATE_TOUR2])) #TODO
+					#date.intersect(
+					#		start1=election.row[COL_VERIF_DATE_TOUR1], 
+					#		end1=election.row[COL_VERIF_DATE_TOUR2], 
+					#		start2=data.row[COL_ATT_MDT_DBT], 
+					#		end2=data.row[COL_ATT_MDT_FIN]
+					#)
+				}
+			))
+		}))
+	tlog(6,"Found ",length(idx)," rows with election-related issues")
+	
+	if(length(idx)>0)
+	{	# build the table and write it
+		tmp <- cbind(idx, data[idx,])
+		colnames(tmp)[1] <- "Ligne"
+		tab.file <- file.path(out.folder,paste0("mandat_dates_problems_election.txt"))
+		tlog(6,"Recording in file \"",tab.file,"\"")
+		write.table(x=tmp,file=tab.file,
 #				fileEncoding="UTF-8",
-				row.names=FALSE, col.names=TRUE)
-		}
+			row.names=FALSE, col.names=TRUE)
 	}
 }
 
@@ -295,7 +289,10 @@ test.col.dates.cd <- function(data, out.folder)
 	test.col.dates.absence(data, out.folder)
 	
 	# election dates
-	test.col.dates.election(data, out.folder, election.files=FILE_VERIF_DATES_CD) # TODO dates multiples
+#	test.col.dates.election(data, out.folder, election.file=FILE_VERIF_DATES_CD)
+	# TODO multiple coexisting election dates due to the existence of several distinct cohorts: 
+	# performing this test requires identifying each unique position, in order to determine 
+	# which cohort it belongs to. This is possible for departmental counsilors.
 	
 	# specific tests
 	tlog(2,"Checking mandate durations")
@@ -335,7 +332,7 @@ test.col.dates.cm <- function(data, out.folder)
 	test.col.dates.absence(data, out.folder)
 	
 	# election dates
-	test.col.dates.election(data, out.folder, election.files=FILE_VERIF_DATES_CM)
+	test.col.dates.election(data, out.folder, election.file=FILE_VERIF_DATES_CM)
 	
 	# specific tests
 	tlog(2,"Checking mandate durations")
@@ -372,7 +369,7 @@ test.col.dates.cr <- function(data, out.folder)
 	test.col.dates.absence(data, out.folder)
 	
 	# election dates
-	test.col.dates.election(data, out.folder, election.files=FILE_VERIF_DATES_CR)
+	test.col.dates.election(data, out.folder, election.file=FILE_VERIF_DATES_CR)
 	
 	# specific tests
 	tlog(2,"Checking mandate durations")
@@ -411,7 +408,7 @@ test.col.dates.d <- function(data, out.folder)
 	test.col.dates.absence(data, out.folder)
 	
 	# election dates
-	test.col.dates.election(data, out.folder, election.files=FILE_VERIF_DATES_D)
+	test.col.dates.election(data, out.folder, election.file=FILE_VERIF_DATES_D)
 	
 	# specific tests
 	tlog(2,"Checking mandate durations")
@@ -456,7 +453,7 @@ test.col.dates.de <- function(data, out.folder)
 	test.col.dates.pre.rne(data, out.folder)
 	
 	# election dates
-	test.col.dates.election(data, out.folder, election.files=FILE_VERIF_DATES_DE)
+	test.col.dates.election(data, out.folder, election.file=FILE_VERIF_DATES_DE)
 	
 	# specific tests
 	tlog(2,"Checking mandate durations")
@@ -496,7 +493,6 @@ test.col.dates.epci <- function(data, out.folder)
 
 
 
-
 #############################################################################################
 # Performs a series of tests on date columns, for the senatorial tables, and records the 
 # detected problems in text files.
@@ -511,7 +507,10 @@ test.col.dates.s <- function(data, out.folder)
 	test.col.dates.absence(data, out.folder)
 	
 	# election dates
-	test.col.dates.election(data, out.folder, election.files=FILE_VERIF_DATES_S) # TODO dates multiples
+#	test.col.dates.election(data, out.folder, election.file=FILE_VERIF_DATES_S)
+	# TODO multiple coexisting election dates due to the existence of several distinct cohorts: 
+	# performing this test requires identifying each unique position, in order to determine 
+	# which cohort it belongs to. But that is not possible for senators...
 	
 	# specific tests
 	tlog(2,"Checking mandate durations")
