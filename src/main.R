@@ -16,10 +16,6 @@ source("src/common/include.R")
 
 # install stringdist
 
-
-# en cours
-# - compare_CM
-
 # Points d'implémentation
 #
 # - vérifier qu'un mandat ne traverse pas plusieurs élections :
@@ -86,10 +82,10 @@ source("src/common/include.R")
 # NOMS PROPRES
 # - mettre en place la comparaison flexible des noms propres
 
-# Graphiques
+# GRAPHIQUES
 # - intégrer le nombre attendu de mandats dans les graphiques temporels
 
-# Besoins
+# BESOINS
 # - liste des cas de figure complètement interdits en termes de cumul de mandat = quelles sont les positions impossibles à cumuler ?
 #   - on ne peut pas occuper deux positions de même type en même temps (>> semble testable)
 #   - cumul de fonctions : on ne peut pas être président ou maire dans deux conseils différents (>> test reporté à plus tard)
