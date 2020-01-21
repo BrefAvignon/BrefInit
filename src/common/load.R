@@ -159,18 +159,18 @@ load.data <- function(filenames, col.map, correc.file, equiv.ids.file)
 		}
 	}
 	
-	# possibly fix dupplicate ids
-	tlog(0,"Fixing duplicate ids")
-	ids <- data[,COL_ATT_ELU_ID]
-	ids <- sapply(ids, function(id)
-			{	idx <- sapply(conv.map, function(v) id %in% v)
-				if(any(idx))
-					res <- as.character(min(as.integer(conv.map[[which(idx)]])))
-				else
-					res <- id
-				return(res)
-			})
-	data[,COL_ATT_ELU_ID] <- ids
+#	# possibly fix dupplicate ids
+#	tlog(0,"Fixing duplicate ids")
+#	ids <- data[,COL_ATT_ELU_ID]
+#	ids <- sapply(ids, function(id)
+#			{	idx <- sapply(conv.map, function(v) id %in% v)
+#				if(any(idx))
+#					res <- as.character(min(as.integer(conv.map[[which(idx)]])))
+#				else
+#					res <- id
+#				return(res)
+#			})
+#	data[,COL_ATT_ELU_ID] <- ids
 	
 	# possibly apply corrections
 	if(nrow(correc.table)>0)	

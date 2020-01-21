@@ -35,15 +35,15 @@ tlog(0,"Examining each column separately")
 
 # check dates
 tlog(0,"Checking dates")
-test.col.dates.d(data=data, out.folder=out.folder)
+#test.col.dates.d(data=data, out.folder=out.folder)
 
 # check locations
 tlog(0,"Checking locations")
-test.col.locations(data=data, out.folder=out.folder)
+#test.col.locations(data=data, out.folder=out.folder)
 
 # check overlapping mandates for the same position
 tlog(0,"Checking overlapping mandates for the same position")
-test.position.d(data=data, out.folder=out.folder)
+#test.position.d(data=data, out.folder=out.folder)
 
 # look for duplicates (not really necessary to do that here, better after the merge)
 tlog(0,"Looking for duplicates")
