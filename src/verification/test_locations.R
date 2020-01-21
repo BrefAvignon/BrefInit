@@ -149,9 +149,9 @@ test.col.locations.canton <- function(data, out.folder)
 		names <- data[,COL_ATT_CANT_NOM]
 		codes <- paste(data[,COL_ATT_DPT_CODE],data[,COL_ATT_CANT_CODE],sep=":")
 		
-		# init result table
-		tab <- matrix(NA,ncol=3,nrow=0)
-		colnames(tab) <- c(COL_ATT_DPT_CODE, COL_ATT_CANT_CODE, "Noms du canton")
+		# init first result table
+		tab1 <- matrix(NA,ncol=3,nrow=0)
+		colnames(tab1) <- c(COL_ATT_DPT_CODE, COL_ATT_CANT_CODE, "Noms du canton")
 		
 		# check that each code is associated to a unique name
 		unique.codes <- sort(unique(codes[!is.na(names)]))
@@ -163,24 +163,77 @@ test.col.locations.canton <- function(data, out.folder)
 			ns <- names[idx]
 			if(any(ns!=ns[1]))
 			{	row <- c(
-						strsplit(x=unique.code, split=":", fixed=TRUE)[[1]],
-						paste(sort(unique(ns)),collapse=",")
+					strsplit(x=unique.code, split=":", fixed=TRUE)[[1]],
+					paste(sort(unique(ns)),collapse=",")
 				)
 #				print(row)
-				tab <- rbind(tab, row)
+				tab1 <- rbind(tab1, row)
 			}
 		}
 		
-		# possibly record the table
-		if(nrow(tab)>0)
-		{	tab.file <- file.path(out.folder,paste0(BASENAMES[COL_ATT_CANT_NOM],"_problems_id.txt"))
+		# init second result table
+		tab2 <- matrix(NA,ncol=2,nrow=0)
+		colnames(tab2) <- c(COL_ATT_CANT_NOM, "Codes du canton")
+		
+		# check that each name is associated to a unique code
+		unique.names <- sort(unique(names[!is.na(codes)]))
+		for(i in 1:length(unique.names))
+		{	unique.name <- unique.names[i]
+			tlog(2,"Processing canton ",unique.name," (",i,"/",length(unique.names),")")
+			
+			idx <- which(names==unique.name)
+			cs <- codes[idx]
+			if(any(cs!=cs[1]))
+			{	row <- c(
+					unique.name,
+					paste(sort(unique(cs)),collapse=",")
+				)
+#				print(row)
+				tab2 <- rbind(tab2, row)
+			}
+		}
+		
+		# found ids associated to multiple names
+		if(nrow(tab1)>0)
+		{	# record the table listing them
+			tab.file <- file.path(out.folder,paste0(BASENAMES[COL_ATT_CANT_NOM],"_problems_id_multinames.txt"))
 			tlog(2,"Recording in file \"",tab.file,"\"")
-			write.table(x=tab,file=tab.file,
+			write.table(x=tab1,file=tab.file,
 #					fileEncoding="UTF-8",
 					row.names=FALSE, col.names=TRUE)
 		}
+		tlog(4,"Found a total of ",nrow(tab1)," ids with distinct names")
 		
-		tlog(4,"Found a total of ",nrow(tab)," problematic canton names")
+		# found names associated to multiple ids
+		if(nrow(tab2)>0)
+		{	# record the table listing them
+			tab.file <- file.path(out.folder,paste0(BASENAMES[COL_ATT_CANT_NOM],"_problems_name_multiids.txt"))
+			tlog(2,"Recording in file \"",tab.file,"\"")
+			write.table(x=tab2,file=tab.file,
+#					fileEncoding="UTF-8",
+					row.names=FALSE, col.names=TRUE)
+		}
+		tlog(4,"Found a total of ",nrow(tab2)," names with distinct ids")
+		
+		# build conversion table with unique ids
+		tab3 <- matrix(NA,ncol=3,nrow=0)
+		colnames(tab3) <- c("Code unique", COL_ATT_DPT_CODE, COL_ATT_CANT_NOM)
+		unique.dpts <- sort(unique(data[,COL_ATT_DPT_CODE]))
+		for(unique.dpt in unique.dpts)
+		{	idx <- which(data[,COL_ATT_DPT_CODE]==unique.dpt)
+			unique.names <- sort(unique(data[idx, COL_ATT_CANT_NOM]))
+			unique.codes <- paste(unique.dpt,"_",1:length(unique.names),sep="")
+			tmp <- cbind(unique.codes, rep(unique.dpt,length(unique.names)), unique.names)
+			tab3 <- rbind(tab3, tmp)
+		}
+		# record the table
+		tab.file <- file.path(out.folder,paste0(BASENAMES[COL_ATT_CANT_NOM],"_unique_ids.txt"))
+		tlog(2,"Recording in file \"",tab.file,"\"")
+		write.table(x=tab3,file=tab.file,
+#				fileEncoding="UTF-8",
+				row.names=FALSE, col.names=TRUE,
+				quote=FALSE, sep="\t"
+		)
 	}
 }
 

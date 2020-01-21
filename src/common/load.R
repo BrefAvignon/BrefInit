@@ -159,22 +159,24 @@ load.data <- function(filenames, col.map, correc.file, equiv.ids.file)
 		}
 	}
 	
-#	# possibly fix dupplicate ids
-#	tlog(0,"Fixing duplicate ids")
-#	ids <- data[,COL_ATT_ELU_ID]
-#	ids <- sapply(ids, function(id)
-#			{	idx <- sapply(conv.map, function(v) id %in% v)
-#				if(any(idx))
-#					res <- as.character(min(as.integer(conv.map[[which(idx)]])))
-#				else
-#					res <- id
-#				return(res)
-#			})
-#	data[,COL_ATT_ELU_ID] <- ids
+	# possibly fix dupplicate ids
+	tlog(0,"Fixing duplicate ids")
+	ids <- data[,COL_ATT_ELU_ID]
+	ids <- sapply(ids, function(id)
+			{	idx <- sapply(conv.map, function(v) id %in% v)
+				if(any(idx))
+					res <- as.character(min(as.integer(conv.map[[which(idx)]])))
+				else
+					res <- id
+				return(res)
+			})
+	data[,COL_ATT_ELU_ID] <- ids
 	
 	# possibly apply corrections
 	if(nrow(correc.table)>0)	
-	{	# apply each correction one after the other
+	{	tlog(0,"Applying corrections")
+		
+		# apply each correction one after the other
 		for(r in 1:nrow(correc.table))
 		{	correc.attr <- correc.table[r,COL_CORREC_ATTR]
 			
@@ -308,6 +310,11 @@ load.cd.data <- function()
 	
 	# load the data
 	data <- load.data(filenames=FILES_TAB_CD, col.map=col.map, correc.file=FILE_CORREC_CD, equiv.ids.file=FILE_EQUIV_IDS)
+	
+	# add unique ids for cantons
+	coln <- colnames(data)
+	idx <- which(coln==COL_ATT_CANT_CODE)
+	vals <- #TODO
 	
 	return(data)
 }
