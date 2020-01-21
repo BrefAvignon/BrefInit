@@ -13,58 +13,58 @@
 # data: table containing the data.
 # out.folder: folder where to output the results.
 #############################################################################################
-#test.locations.articles <- function(data, out.folder)
-#{	tlog(0,"Trying to detect problems in location names")
-#	
-#	# identify location columns in the table
-#	cols <- colnames(data)
-#	cols <- intersect(cols,COLS_ATT_LOCATION_NOUNS)
-#	tlog(2,"Identifying location columns: ",paste(cols,collapse=", "))
-#	
-#	# process each location column in the table
-#	for(col in cols)
-#	{	tlog(2,"Processing column \"",col,"\"")
-#		count <- 0
-#		
-#		# retrieve unique values
-#		vals <- sort(unique(data[,col]))
-#		
-#		# look for names starting with an article
-#		idx <- which(startsWith(x=vals, prefix="L ")
-#						| startsWith(x=vals, prefix="LA ")
-#						| startsWith(x=vals, prefix="LE ")
-#						| startsWith(x=vals, prefix="LES "))
-#		
-#		# for each of them, lookup an article-less version
-#		if(length(idx)>0)
-#		{	# get the article-less versions of the name
-#			vals1 <- vals[idx]
-#			vals2 <- gsub(x=vals1, pattern="^(L|LA|LE|LES) ",replacement="")
-#			
-#			# look them up in the name list 
-#			idx <- which(!is.na(match(vals2,vals)))
-#			
-#			if(length(idx)>0)
-#			{	# init result table
-#				tab <- cbind(vals1[idx],vals2[idx])
-#				colnames(tab) <- c("AvecArticle","SansArticle")
-#				#idx1 <- match(vals1[idx],data[,"Libelle commune"])
-#				#idx2 <- match(vals2[idx],data[,"Libelle commune"])
-#				#tab <- cbind(vals1[idx],data[idx1,c("Code departement","Code Insee commune")],vals2[idx],data[idx2,c("Code departement","Code Insee commune")])
-#				count <- nrow(tab)
-#				
-#				# record the table of problematic cases
-#				tab.file <- file.path(out.folder,paste0(BASENAMES[col],"_problems_article.txt"))
-#				tlog(2,"Recording in file \"",tab.file,"\"")
-#				write.table(x=tab,file=tab.file,
-##					fileEncoding="UTF-8",
-#					row.names=FALSE, col.names=TRUE)
-#			}
-#		}
-#
-#		tlog(4,"Found a total of ",count," pairs of problematic location names in column \"",col,"\"")
-#	}
-#}
+test.locations.articles <- function(data, out.folder)
+{	tlog(0,"Trying to detect problems in location names")
+	
+	# identify location columns in the table
+	cols <- colnames(data)
+	cols <- intersect(cols,COLS_ATT_LOCATION_NOUNS)
+	tlog(2,"Identifying location columns: ",paste(cols,collapse=", "))
+	
+	# process each location column in the table
+	for(col in cols)
+	{	tlog(2,"Processing column \"",col,"\"")
+		count <- 0
+		
+		# retrieve unique values
+		vals <- sort(unique(data[,col]))
+		
+		# look for names starting with an article
+		idx <- which(startsWith(x=vals, prefix="L ")
+						| startsWith(x=vals, prefix="LA ")
+						| startsWith(x=vals, prefix="LE ")
+						| startsWith(x=vals, prefix="LES "))
+		
+		# for each of them, lookup an article-less version
+		if(length(idx)>0)
+		{	# get the article-less versions of the name
+			vals1 <- vals[idx]
+			vals2 <- gsub(x=vals1, pattern="^(L|LA|LE|LES) ",replacement="")
+			
+			# look them up in the name list 
+			idx <- which(!is.na(match(vals2,vals)))
+			
+			if(length(idx)>0)
+			{	# init result table
+				tab <- cbind(vals1[idx],vals2[idx])
+				colnames(tab) <- c("AvecArticle","SansArticle")
+				#idx1 <- match(vals1[idx],data[,"Libelle commune"])
+				#idx2 <- match(vals2[idx],data[,"Libelle commune"])
+				#tab <- cbind(vals1[idx],data[idx1,c("Code departement","Code Insee commune")],vals2[idx],data[idx2,c("Code departement","Code Insee commune")])
+				count <- nrow(tab)
+				
+				# record the table of problematic cases
+				tab.file <- file.path(out.folder,paste0(BASENAMES[col],"_problems_article.txt"))
+				tlog(2,"Recording in file \"",tab.file,"\"")
+				write.table(x=tab,file=tab.file,
+#					fileEncoding="UTF-8",
+					row.names=FALSE, col.names=TRUE)
+			}
+		}
+
+		tlog(4,"Found a total of ",count," pairs of problematic location names in column \"",col,"\"")
+	}
+}
 
 
 
@@ -483,7 +483,7 @@ test.col.locations <- function(data, out.folder)
 {	tlog(0,"Trying to detect problems in location names")
 	
 	# checks whether the same name appears with and without article
-#	test.locations.articles(data, out.folder)
+	#test.locations.articles(data, out.folder)	# not necessary anymore
 	
 	# check municipality names
 	test.col.locations.municipality(data, out.folder)
