@@ -1,9 +1,9 @@
 Id	Nom	Prenom	Attribut	ValAvt	ValApr	Commentaire
-NA	NA	NA	Libellé du canton	LA COTE VERMEILLE	COTE VERMEILLE	NA
-NA	NA	NA	Libellé du canton	LE GOND PONTOUVRE	GOND PONTOUVRE	NA
-NA	NA	NA	Libellé du canton	LE GRAND BOURG	GRAND BOURG	NA
-NA	NA	NA	Libellé du canton	LE TAMPON 1	TAMPON 1	NA
-NA	NA	NA	Libellé du canton	LE TAMPON 2	TAMPON 2	NA
-NA	NA	NA	Libellé du canton	LES ABYMES 1	ABYMES 1	NA
-NA	NA	NA	Libellé du canton	LES ABYMES 2	ABYMES 2	NA
-NA	NA	NA	Libellé du canton	LES ABYMES 3	ABYMES 3	NA
+NA	NA	NA	Libellé du canton	LA COTE VERMEILLE	COTE VERMEILLE	Article superflu
+NA	NA	NA	Libellé du canton	LE GOND PONTOUVRE	GOND PONTOUVRE	Article superflu
+NA	NA	NA	Libellé du canton	LE GRAND BOURG	GRAND BOURG	Article superflu
+NA	NA	NA	Libellé du canton	LE TAMPON 1	TAMPON 1	Article superflu
+NA	NA	NA	Libellé du canton	LE TAMPON 2	TAMPON 2	Article superflu
+NA	NA	NA	Libellé du canton	LES ABYMES 1	ABYMES 1	Article superflu
+NA	NA	NA	Libellé du canton	LES ABYMES 2	ABYMES 2	Article superflu
+NA	NA	NA	Libellé du canton	LES ABYMES 3	ABYMES 3	Article superflu

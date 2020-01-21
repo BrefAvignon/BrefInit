@@ -15,6 +15,9 @@ source("src/verification/test_duplicates.R")
 
 
 
+# set up the extraction
+extraction <- 1 # 1 or 2
+
 # start logging
 start.rec.log(text="EPCI")
 
@@ -31,15 +34,15 @@ tlog(0,"Examining each column separately")
 
 # check dates
 tlog(0,"Checking dates")
-test.col.dates.epci(data=data, out.folder=out.folder)
+#test.col.dates.epci(data=data, out.folder=out.folder)
 
 # check locations
 tlog(0,"Checking locations")
-test.col.locations(data=data, out.folder=out.folder)
+#test.col.locations(data=data, out.folder=out.folder)
 
 # look for duplicates (not really necessary to do that here, better after the merge)
 tlog(0,"Looking for duplicates")
-test.duplicates(data=data, out.folder=out.folder)
+test.duplicates(data=data, loc.col=COL_ATT_DPT_CODE, out.folder=out.folder)
 
 # plots the number of persons over time
 tlog(0,"Ploting the number of simultaneously hold positions over time")

@@ -311,10 +311,12 @@ FOLDER_IN <- "in"
 	FILE_CORREC_EPCI <- file.path(FOLDER_CORRECS, "correc_EPCI.txt")
 	FILE_CORREC_M <- file.path(FOLDER_CORRECS, "correc_M.txt")
 	FILE_CORREC_S <- file.path(FOLDER_CORRECS, "correc_S.txt")
+	FILE_EQUIV_IDS <- file.path(FOLDER_CORRECS, "equiv_ids.txt")
 	# second extraction
 	FILE_CORREC_CD2 <- file.path(FOLDER_CORRECS2, "correc_CD.txt")
 	FILE_CORREC_CM2 <- file.path(FOLDER_CORRECS2, "correc_CM.txt")
 	FILE_CORREC_CR2 <- file.path(FOLDER_CORRECS2, "correc_CR.txt")
+	FILE_EQUIV_IDS2 <- file.path(FOLDER_CORRECS2, "equiv_ids.txt")
 # verification files
 	# position counts
 	FILE_VERIF_NBR_CR <- file.path(FOLDER_VERIFS, "decomptes_CR.txt")

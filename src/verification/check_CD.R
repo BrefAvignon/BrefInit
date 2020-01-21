@@ -47,7 +47,7 @@ test.position.cd(data=data, out.folder=out.folder)
 
 # look for duplicates (not really necessary to do that here, better after the merge)
 tlog(0,"Looking for duplicates")
-test.duplicates(data=data, out.folder=out.folder)
+test.duplicates(data=data, loc.col=COL_ATT_DPT_CODE, out.folder=out.folder)
 
 # plots the number of persons over time
 tlog(0,"Ploting the number of simultaneously hold positions over time")

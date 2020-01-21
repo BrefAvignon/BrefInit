@@ -212,8 +212,8 @@ test.col.dates.absence <- function(data, out.folder)
 
 
 #############################################################################################
-# Detects rows where the mandate dates do not match election dates. In other words, the mandate
-# dates span two distinct mandates according to the official election dates.
+# Detects rows where the mandate dates do not match election dates. In other words, the dates 
+# of a given period span two distinct mandates according to the official election dates.
 #
 # data: table containing the data.
 # out.folder: folder where to output the results.

@@ -14,10 +14,11 @@
 # filenames: list of files to read.
 # col.map: how to convert column names.
 # correc.file: file containing the corrections.
+# equiv.ids.file: file containing the map of equivalent ids.
 #
 # returns: data frame made of the cleaned data contained in the files.
 #############################################################################################
-load.data <- function(filenames, col.map, correc.file)
+load.data <- function(filenames, col.map, correc.file, equiv.ids.file)
 {	# load the corrections
 	tlog(0,"Loading correction file \"",correc.file,"\"")
 	correc.table <- read.table(
@@ -134,6 +135,43 @@ load.data <- function(filenames, col.map, correc.file)
 		data[which(data[,c]=="NA"),c] <- NA	
 	}
 	
+	# load table of equivalent ids
+	tlog(0,"Loading the table of equivalent ids (",equiv.ids.file,")")
+	equiv.table <- read.table(
+			file=equiv.ids.file,		# name of the equivalence file
+			header=TRUE, 				# look for a header
+			sep="\t", 					# character used to separate columns 
+			check.names=FALSE, 			# don't change the column names from the file
+			comment.char="", 			# ignore possible comments in the content
+			row.names=NULL, 			# don't look for row names in the file
+			quote="", 					# don't expect double quotes "..." around text fields
+			as.is=TRUE,					# don't convert strings to factors
+			colClasses="character"		# all column originally read as characters
+#			fileEncoding="Latin1"		# original tables seem to be encoded in Latin1 (ANSI)
+	)
+	# convert to map
+	conv.map <- list()
+	if(nrow(equiv.table)>0)
+	{	for(r in 1:nrow(equiv.table))
+		{	main.id <- equiv.table[r,1]
+			other.ids <- strsplit(x=equiv.table[r,2], split=",", fixed=TRUE)[[1]]
+			conv.map[[length(conv.map)+1]] <- c(main.id,other.ids)
+		}
+	}
+	
+	# possibly fix dupplicate ids
+	tlog(0,"Fixing duplicate ids")
+	ids <- data[,COL_ATT_ELU_ID]
+	ids <- sapply(ids, function(id)
+			{	idx <- sapply(conv.map, function(v) id %in% v)
+				if(any(idx))
+					res <- as.character(min(as.integer(conv.map[[which(idx)]])))
+				else
+					res <- id
+				return(res)
+			})
+	data[,COL_ATT_ELU_ID] <- ids
+	
 	# possibly apply corrections
 	if(nrow(correc.table)>0)	
 	{	# apply each correction one after the other
@@ -171,8 +209,11 @@ load.data <- function(filenames, col.map, correc.file)
 					stop(paste0("Could not find a correction: ",paste(correc.table[r,],collapse=";")))
 				}
 				else if(length(idx)>1)
-				{	tlog(4,"A correction matches several cases: ",paste(correc.table[r,],collapse=";"))
-					stop(paste0("A correction matches several cases: ",paste(correc.table[r,],collapse=";")))
+				{	
+#					tlog(4,"A correction matches several cases: ",paste(correc.table[r,],collapse=";"))
+#					stop(paste0("A correction matches several cases: ",paste(correc.table[r,],collapse=";")))
+					tlog(4,"WARNING: A correction matches several cases: ",paste(correc.table[r,],collapse=";"))
+					data[idx,correc.table[r,COL_CORREC_ATTR]] <- correc.table[r,COL_CORREC_VALAPR]
 				}
 				else
 				{	tlog(4,"Correcting entry: ",paste(correc.table[r,],collapse=";"))
@@ -266,7 +307,7 @@ load.cd.data <- function()
 	col.map["Motif de fin de fonction"] <- COL_ATT_FCT_MOTIF
 	
 	# load the data
-	data <- load.data(filenames=FILES_TAB_CD, col.map=col.map, correc.file=FILE_CORREC_CD)
+	data <- load.data(filenames=FILES_TAB_CD, col.map=col.map, correc.file=FILE_CORREC_CD, equiv.ids.file=FILE_EQUIV_IDS)
 	
 	return(data)
 }
@@ -299,7 +340,7 @@ load.cd2.data <- function()
 	col.map["Date de fin de la fonction"] <- COL_ATT_FCT_FIN
 	
 	# load the data
-	data <- load.data(filenames=FILES_TAB_CD2, col.map=col.map, correc.file=FILE_CORREC_CD2) 
+	data <- load.data(filenames=FILES_TAB_CD2, col.map=col.map, correc.file=FILE_CORREC_CD2, equiv.ids.file=FILE_EQUIV_IDS2) 
 	
 	return(data)
 }
@@ -337,7 +378,7 @@ load.cm.data <- function()
 	col.map["N° Identification d'un élu"] <- COL_ATT_ELU_ID
 	
 	# load the data
-	data <- load.data(filenames=FILES_TAB_CM, col.map=col.map, correc.file=FILE_CORREC_CM)
+	data <- load.data(filenames=FILES_TAB_CM, col.map=col.map, correc.file=FILE_CORREC_CM, equiv.ids.file=FILE_EQUIV_IDS)
 	
 	# convert population numbers to actual integers
 	tlog(0,"Converting population to integer values")
@@ -350,7 +391,7 @@ load.cm.data <- function()
 	names(data)[ncol(data)] <- cn
 	
 	# add mandate name
-	vals <- rep("Conseiller Municipal",nrow(data))
+	vals <- rep("CONSEILLER MUNICIPAL",nrow(data))
 	data <- cbind(data, vals)
 	colnames(data)[ncol(data)] <- COL_ATT_MDT_NOM
 	
@@ -397,7 +438,7 @@ load.cm2.data <- function()
 	col.map["Libellé de département (Maires)"] <- COL_ATT_DPT_NOM
 	
 	# load the data
-	data <- load.data(filenames=FILES_TAB_CM2, col.map=col.map, correc.file=FILE_CORREC_CM2)
+	data <- load.data(filenames=FILES_TAB_CM2, col.map=col.map, correc.file=FILE_CORREC_CM2, equiv.ids.file=FILE_EQUIV_IDS2)
 	
 	return(data)
 }
@@ -435,7 +476,7 @@ load.cr.data <- function()
 	col.map["N° Identification d'un élu"] <- COL_ATT_ELU_ID
 	
 	# load the data
-	data <- load.data(filenames=FILES_TAB_CR, col.map=col.map, correc.file=FILE_CORREC_CR)
+	data <- load.data(filenames=FILES_TAB_CR, col.map=col.map, correc.file=FILE_CORREC_CR, equiv.ids.file=FILE_EQUIV_IDS)
 	
 	return(data)
 }
@@ -472,7 +513,7 @@ load.cr2.data <- function()
 	col.map["Nuance mandat"] <- COL_ATT_ELU_NUANCE
 	
 	# load the data
-	data <- load.data(filenames=FILES_TAB_CR2, col.map=col.map, correc.file=FILE_CORREC_CR2)
+	data <- load.data(filenames=FILES_TAB_CR2, col.map=col.map, correc.file=FILE_CORREC_CR2, equiv.ids.file=FILE_EQUIV_IDS2)
 	
 	# split region name column
 	reg.code <- sapply(data[,COL_ATT_REG_NOM], function(x) substr(x,1,2))
@@ -523,7 +564,7 @@ load.d.data <- function()
 	col.map["N° Identification d'un élu"] <- COL_ATT_ELU_ID
 	
 	# load the data
-	data <- load.data(filenames=FILES_TAB_D, col.map=col.map, correc.file=FILE_CORREC_D)
+	data <- load.data(filenames=FILES_TAB_D, col.map=col.map, correc.file=FILE_CORREC_D, equiv.ids.file=FILE_EQUIV_IDS)
 	
 	return(data)
 }
@@ -555,7 +596,7 @@ load.de.data <- function()
 	col.map["N° Identification d'un élu"] <- COL_ATT_ELU_ID
 	
 	# load the data
-	data <- load.data(filenames=FILES_TAB_DE, col.map=col.map, correc.file=FILE_CORREC_DE)
+	data <- load.data(filenames=FILES_TAB_DE, col.map=col.map, correc.file=FILE_CORREC_DE, equiv.ids.file=FILE_EQUIV_IDS)
 	
 	return(data)
 }
@@ -594,10 +635,10 @@ load.epci.data <- function()
 	col.map["N° Identification d'un élu"] <- COL_ATT_ELU_ID
 	
 	# load the data
-	data <- load.data(filenames=FILES_TAB_EPCI, col.map=col.map, correc.file=FILE_CORREC_EPCI)
+	data <- load.data(filenames=FILES_TAB_EPCI, col.map=col.map, correc.file=FILE_CORREC_EPCI, equiv.ids.file=FILE_EQUIV_IDS)
 	
 	# add mandate name
-	vals <- rep("Conseiller EPCI",nrow(data))
+	vals <- rep("CONSEILLER EPCI",nrow(data))
 	data <- cbind(data, vals)
 	colnames(data)[ncol(data)] <- COL_ATT_MDT_NOM
 	
@@ -645,7 +686,7 @@ load.m.data <- function()
 	col.map["N° Identification d'un élu"] <- COL_ATT_ELU_ID
 	
 	# load the data
-	data <- load.data(filenames=FILES_TAB_M, col.map=col.map, correc.file=FILE_CORREC_M)
+	data <- load.data(filenames=FILES_TAB_M, col.map=col.map, correc.file=FILE_CORREC_M, equiv.ids.file=FILE_EQUIV_IDS)
 	
 	# convert population numbers to actual integers
 	tlog(0,"Converting population to integer values")
@@ -699,7 +740,7 @@ load.s.data <- function()
 	col.map["N° Identification d'un élu"] <- COL_ATT_ELU_ID
 	
 	# load the data
-	data <- load.data(filenames=FILES_TAB_S, col.map=col.map, correc.file=FILE_CORREC_S)
+	data <- load.data(filenames=FILES_TAB_S, col.map=col.map, correc.file=FILE_CORREC_S, equiv.ids.file=FILE_EQUIV_IDS)
 	
 	return(data)
 }

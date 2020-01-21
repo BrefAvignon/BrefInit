@@ -94,21 +94,56 @@ test.id.reuse <- function(data, out.folder)
 # his/her lastname, firstname, birthdate, and sex.
 #
 # data: table containing the merged data.
+# loc.col: name of the column containing the location (optional).
 # out.folder: folder where to output the results.
 #############################################################################################
-test.multiple.id <- function(data, out.folder)
+test.multiple.id <- function(data, loc.col, out.folder)
 {	tlog(0,"Trying to detect ID duplicates")
 	tab <- data[FALSE,]
 	count <- 0
 	
-	# identify all unique individual
-	# under the form of a (lastname, firstname, birthdate, sex) tuple
+	# load table of equivalent ids
+	if(extraction==1)
+		tab.file <- FILE_EQUIV_IDS
+	else if(extraction==2)
+		tab.file <- FILE_EQUIV_IDS2
+	tlog(2,"Loading the table of equivalent ids (",tab.file,")")
+	equiv.table <- read.table(
+			file=tab.file,				# name of the equivalence file
+			header=TRUE, 				# look for a header
+			sep="\t", 					# character used to separate columns 
+			check.names=FALSE, 			# don't change the column names from the file
+			comment.char="", 			# ignore possible comments in the content
+			row.names=NULL, 			# don't look for row names in the file
+			quote="", 					# don't expect double quotes "..." around text fields
+			as.is=TRUE,					# don't convert strings to factors
+			colClasses="character"		# all column originally read as characters
+#			fileEncoding="Latin1"		# original tables seem to be encoded in Latin1 (ANSI)
+	)
+	# convert to map
+	conv.map <- list()
+	if(nrow(equiv.table)>0)
+	{	for(r in 1:nrow(equiv.table))
+		{	main.id <- equiv.table[r,1]
+			other.ids <- strsplit(x=equiv.table[r,2], split=",", fixed=TRUE)[[1]]
+			conv.map[[length(conv.map)+1]] <- c(main.id,other.ids)
+		}
+	}
+	tlog(4,"Done: ",length(conv.map)," id(s) read")
+	
+	# identify all unique individuals
+	# under the form of a (lastname, firstname, birthdate, sex, territory) tuple
 	tlog(2,"Identifying all unique individuals")
 	lastnames <- data[,COL_ATT_ELU_NOM]
 	firstnames <- data[,COL_ATT_ELU_PRENOM]
 	birthdates <- format(data[,COL_ATT_ELU_DDN])
 	sexes <- data[,COL_ATT_ELU_SEXE]
-	indivs <- apply(cbind(lastnames,firstnames,birthdates,sexes),1,function(r) paste(r,collapse=":"))
+	if(hasArg(loc.col))
+	{	locations <- data[,loc.col]
+		indivs <- apply(cbind(lastnames,firstnames,birthdates,sexes,locations),1,function(r) paste(r,collapse=":"))
+	}		
+	else
+		indivs <- apply(cbind(lastnames,firstnames,birthdates,sexes),1,function(r) paste(r,collapse=":"))
 	unique.indivs <- sort(unique(indivs))
 	tlog(4,"Found ",length(unique.indivs)," of them")
 	
@@ -124,31 +159,56 @@ test.multiple.id <- function(data, out.folder)
 		tlog(6,"Found ",length(idx)," mandate(s)")
 		# check if the individual ID is always the same
 		if(length(idx)>1)
-		{	differs <- FALSE
+		{	ids <- sort(unique(data[idx,COL_ATT_ELU_ID]))
 			
-			ids <- sort(unique(data[idx,COL_ATT_ELU_ID]))
+			# if there are several distinct ids
 			if(length(ids)>1)
 			{	tlog(8,"Found ",length(ids)," different ids: ",paste(ids,collapse=", "))
-				differs <- TRUE
-			}
 			
-			# add to the table of problematic cases
-			if(differs)
-			{	tab <- rbind(tab, data[idx,], rep(NA,ncol(data)))
+				# add to the table of problematic cases
+				tab <- rbind(tab, data[idx,], rep(NA,ncol(data)))
 				count <- count + 1
+				
+				# add to the conversion map
+				ids <- as.character(ids)
+				if(length(conv.map)==0) 
+					ridx <- c()
+				else
+					ridx <- which(sapply(conv.map, function(v) length(intersect(v,ids))>0))	
+				if(length(ridx)>1)
+					stop("Problem with the map of equivalent ids: several groups of ids would be equivalent (",paste(ids,collapse=","),")")
+				else if(length(ridx)==1)
+					conv.map[[ridx]] <- as.character(sort(as.integer(unique(c(conv.map[[ridx]],ids)))))
+				else if(length(ridx)==0)
+					conv.map[[length(conv.map)+1]] <- as.character(sort(as.integer(unique(ids))))
 			}
 		}
 	}
 	tlog(2,"Processing of unique individuals over")
 	
-	# possibly record the table of problematic cases
+	# only if some duplicates were found:
 	if(nrow(tab)>0)
-	{	tab.file <- file.path(out.folder,"elu_id_problems_multiple_names.txt")
+	{	# record the table of problematic cases
+		tab.file <- file.path(out.folder,"elu_id_problems_multiple_names.txt")
 		tlog(2,"Recording in file \"",tab.file,"\"")
-		write.table(x=tab,file=tab.file,
+		write.table(x=tab, file=tab.file,
 #				fileEncoding="UTF-8",
-				row.names=FALSE,col.names=TRUE)
+				row.names=FALSE, col.names=TRUE)
+		
+		# update the table of equivalent ids (but in the output folder)
+		tab.file <- file.path(out.folder,"equiv_ids_updated.txt")
+		main.ids <- sapply(conv.map, function(v) v[1])
+		other.ids <- sapply(conv.map, function(v) paste(v[2:length(v)],collapse=","))
+		tab <- cbind(main.ids, other.ids)
+		colnames(tab) <- c("Main Id","Other ids")
+		idx <- order(as.integer(main.ids))
+		write.table(x=tab[idx,], file=tab.file,
+#				fileEncoding="UTF-8",
+				row.names=FALSE, col.names=TRUE,
+				quote=FALSE, sep="\t"
+		)
 	}
+	
 	tlog(4,"Found a total of ",count," individuals associated to several different IDs")
 }
 
@@ -161,12 +221,13 @@ test.multiple.id <- function(data, out.folder)
 # different IDs, etc.
 #
 # data: table containing the data.
+# loc.col: name of the column containing the location (optional).
 # out.folder: folder where to output the results.
 #############################################################################################
-test.duplicates <- function(data, out.folder)
+test.duplicates <- function(data, loc.col, out.folder)
 {	# look for IDs associated to several distinct pieces of personal information
-	test.id.reuse(data, out.folder)
+#	test.id.reuse(data, out.folder) 
 	
 	# look for persons seemingly associated to different IDs
-	test.multiple.id(data, out.folder)
+	test.multiple.id(data, loc.col, out.folder)
 }
