@@ -70,7 +70,7 @@
 
 
 #############################################################################################
-# Performs a series of test on the names of municipalities.
+# Performs a series of tests on the names of municipalities.
 #
 # data: table containing the data.
 # out.folder: folder where to output the results.
@@ -129,7 +129,7 @@ test.col.locations.municipality <- function(data, out.folder)
 
 
 #############################################################################################
-# Performs a series of test on the names of cantons.
+# Performs a series of tests on the names of cantons.
 #
 # data: table containing the data.
 # out.folder: folder where to output the results.
@@ -188,7 +188,7 @@ test.col.locations.canton <- function(data, out.folder)
 
 
 #############################################################################################
-# Performs a series of test on the names of legislative circonscriptions.
+# Performs a series of tests on the names of legislative circonscriptions.
 #
 # data: table containing the data.
 # out.folder: folder where to output the results.
@@ -247,7 +247,7 @@ test.col.locations.legcirco <- function(data, out.folder)
 
 
 #############################################################################################
-# Performs a series of test on the names of European circonscriptions.
+# Performs a series of tests on the names of European circonscriptions.
 #
 # data: table containing the data.
 # out.folder: folder where to output the results.
@@ -303,7 +303,7 @@ test.col.locations.eurocirco <- function(data, out.folder)
 
 
 #############################################################################################
-# Performs a series of test on the names of EPCIs.
+# Performs a series of tests on the names of EPCIs.
 #
 # data: table containing the data.
 # out.folder: folder where to output the results.
@@ -360,7 +360,7 @@ test.col.locations.epci <- function(data, out.folder)
 
 
 #############################################################################################
-# Performs a series of test on the names of EPCIs.
+# Performs a series of tests on the names of EPCIs.
 #
 # data: table containing the data.
 # out.folder: folder where to output the results.
@@ -417,7 +417,7 @@ test.col.locations.department <- function(data, out.folder)
 
 
 #############################################################################################
-# Performs a series of test on the names of EPCIs.
+# Performs a series of tests on the names of EPCIs.
 #
 # data: table containing the data.
 # out.folder: folder where to output the results.

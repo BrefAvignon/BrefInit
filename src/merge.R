@@ -13,6 +13,8 @@ source("src/verification/test_duplicates.R")
 
 
 #############################################################################################
+# set up the extraction
+extraction <- 1 # 1 or 2
 # start logging
 start.rec.log(text="MERGE")
 
