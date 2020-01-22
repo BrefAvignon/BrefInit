@@ -161,7 +161,9 @@ load.data <- function(filenames, col.map, correc.file, equiv.ids.file, correct.d
 			for(r in 1:nrow(equiv.table))
 			{	main.id <- equiv.table[r,1]
 				other.ids <- strsplit(x=equiv.table[r,2], split=",", fixed=TRUE)[[1]]
-				c[other.ids] <- rep(main.id, length(other.ids))
+				other.ids <- intersect(other.ids,unique.ids)
+				if(length(other.ids)>0)
+					conv.map[other.ids] <- rep(main.id, length(other.ids))
 			}
 			# substitute correct ids
 			tlog(0,"Fixing duplicate ids")

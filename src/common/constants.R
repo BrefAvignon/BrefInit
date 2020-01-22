@@ -92,6 +92,7 @@ COLS_ATT_NORMALIZED <- c(
 	COL_ATT_DPT_NOM,
 	COL_ATT_CIRC_CODE,
 	COL_ATT_CIRC_NOM,
+	COL_ATT_CANT_ID,
 	COL_ATT_CANT_CODE,
 	COL_ATT_CANT_NOM,
 	COL_ATT_COM_CODE,
@@ -144,6 +145,7 @@ COLS_ATT_PROPER_NOUNS <- c(
 # column long names
 LONGNAMES <- c()
 LONGNAMES[COL_ATT_CANT_CODE] <- "Code du canton"
+LONGNAMES[COL_ATT_CANT_ID] <- "Id unique du canton"
 LONGNAMES[COL_ATT_CANT_NOM] <- "Libellé du canton"
 LONGNAMES[COL_ATT_CIRC_CODE] <- "Code de la circonscription législative"
 LONGNAMES[COL_ATT_CIRC_NOM] <- "Libellé de la circonscription législative"
@@ -181,6 +183,7 @@ LONGNAMES[COL_ATT_REG_NOM] <- "Libellé de la région"
 # column short names
 BASENAMES <- c()
 BASENAMES[COL_ATT_CANT_CODE] <- "canton_code"
+BASENAMES[COL_ATT_CANT_ID] <- "canton_id"
 BASENAMES[COL_ATT_CANT_NOM] <- "canton_lib"
 BASENAMES[COL_ATT_CIRC_CODE] <- "circo_code"
 BASENAMES[COL_ATT_CIRC_NOM] <- "circo_lib"
@@ -218,6 +221,7 @@ BASENAMES[COL_ATT_REG_NOM] <- "region_lib"
 # column data types
 COL_TYPES <- c()
 COL_TYPES[COL_ATT_CANT_CODE] <- "cat"
+COL_TYPES[COL_ATT_CANT_ID] <- "cat"
 COL_TYPES[COL_ATT_CANT_NOM] <- "nom"
 COL_TYPES[COL_ATT_COM_CODE] <- "cat"
 COL_TYPES[COL_ATT_COM_NOM] <- "nom"
