@@ -285,6 +285,48 @@ load.data <- function(filenames, col.map, correc.file, equiv.ids.file, correct.d
 
 
 #############################################################################################
+# Inserts a new column in the table, that contains the unique id associated to each canton.
+# Otherwise, their code is not unique, there is no match between codes and names.
+#
+# data: the data table.
+# file.canton.ids: file containing the unique ids.
+#
+# returns: the table with the extra column.
+#############################################################################################
+insert.unique.canton.id <- function(data, file.canton.ids)
+{	# load table of canton ids
+	tlog(0,"Loading the table of canton ids (",file.canton.ids,")")
+	equiv.table <- read.table(
+			file=FILE_CANTON_IDS,		# name of the id file
+			header=TRUE, 				# look for a header
+			sep="\t", 					# character used to separate columns 
+			check.names=FALSE, 			# don't change the column names from the file
+			comment.char="", 			# ignore possible comments in the content
+			row.names=NULL, 			# don't look for row names in the file
+			quote="", 					# don't expect double quotes "..." around text fields
+			as.is=TRUE,					# don't convert strings to factors
+			colClasses="character"		# all column originally read as characters
+#			fileEncoding="Latin1"		# original tables seem to be encoded in Latin1 (ANSI)
+	)
+	
+	# get the appropriate unique ids
+	data.code <- paste(data[,COL_ATT_DPT_CODE],data[,COL_ATT_CANT_NOM],sep=":")
+	conv.code <- paste(equiv.table[,COL_ATT_DPT_CODE],equiv.table[,COL_ATT_CANT_NOM],sep=":")
+	idx <- match(data.code, conv.code)
+	if(any(is.na(idx)))
+	{	idx0 <- which(is.na(idx))
+		print(cbind(data.code[idx0]))
+		stop("Problem when inserting canton ids: cound not find some cantons")
+	}
+	
+	# insert in the table, at the correct place
+	col <- which(colnames(data)==COL_ATT_CANT_CODE)
+	data <- cbind(data[,1:(col-1)], equiv.table[idx,COL_ATT_CANT_ID], data[,col:ncol(data)])
+	colnames(data)[col] <- COL_ATT_CANT_ID
+	
+	return(data)
+}
+#############################################################################################
 # Loads the table for departmental counsilors (first extraction).
 #
 # correct.data: whether or not to apply the correction on the data read.
@@ -318,26 +360,8 @@ load.cd.data <- function(correct.data)
 	# load the data
 	data <- load.data(filenames=FILES_TAB_CD, col.map=col.map, correc.file=FILE_CORREC_CD, equiv.ids.file=FILE_EQUIV_IDS, correct.data)
 	
-	# load table of canton ids
-	tlog(0,"Loading the table of canton ids (",FILE_CANTON_IDS,")")
-	equiv.table <- read.table(
-			file=FILE_CANTON_IDS,		# name of the id file
-			header=TRUE, 				# look for a header
-			sep="\t", 					# character used to separate columns 
-			check.names=FALSE, 			# don't change the column names from the file
-			comment.char="", 			# ignore possible comments in the content
-			row.names=NULL, 			# don't look for row names in the file
-			quote="", 					# don't expect double quotes "..." around text fields
-			as.is=TRUE,					# don't convert strings to factors
-			colClasses="character"		# all column originally read as characters
-#			fileEncoding="Latin1"		# original tables seem to be encoded in Latin1 (ANSI)
-	)
-	data.code <- paste(data[,COL_ATT_DPT_CODE],data[,COL_ATT_CANT_NOM],sep=":")
-	conv.code <- paste(equiv.table[,COL_ATT_DPT_CODE],equiv.table[,COL_ATT_CANT_NOM],sep=":")
-	idx <- match(data.code, conv.code)
-	col <- which(colnames(data)==COL_ATT_CANT_CODE)
-	data <- cbind(data[,1:(col-1)], equiv.table[idx,COL_ATT_CANT_ID], data[,col:ncol(data)])
-	colnames(data)[col] <- COL_ATT_CANT_ID
+	# add a unique id for cantons
+	data <- insert.unique.canton.id(data=data, file.canton.ids=FILE_CANTON_IDS)
 	
 	return(data)
 }
@@ -373,6 +397,9 @@ load.cd2.data <- function(correct.data)
 	
 	# load the data
 	data <- load.data(filenames=FILES_TAB_CD2, col.map=col.map, correc.file=FILE_CORREC_CD2, equiv.ids.file=FILE_EQUIV_IDS2, correct.data) 
+	
+	# add a unique id for cantons
+	data <- insert.unique.canton.id(data=data, file.canton.ids=FILE_CANTON_IDS)
 	
 	return(data)
 }
