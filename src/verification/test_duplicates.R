@@ -97,7 +97,7 @@ test.id.reuse <- function(data, out.folder)
 # loc.col: name of the column containing the location (optional).
 # out.folder: folder where to output the results.
 #############################################################################################
-test.multiple.id <- function(data, loc.col, out.folder)
+test.multiple.id <- function(data, loc.col=NA, out.folder)
 {	tlog(0,"Trying to detect ID duplicates")
 	tab <- data[FALSE,]
 	count <- 0
@@ -138,7 +138,7 @@ test.multiple.id <- function(data, loc.col, out.folder)
 	firstnames <- data[,COL_ATT_ELU_PRENOM]
 	birthdates <- format(data[,COL_ATT_ELU_DDN])
 	sexes <- data[,COL_ATT_ELU_SEXE]
-	if(hasArg(loc.col))
+	if(hasArg(loc.col) && !is.na(loc.col))
 	{	locations <- data[,loc.col]
 		indivs <- apply(cbind(lastnames,firstnames,birthdates,sexes,locations),1,function(r) paste(r,collapse=":"))
 	}		
@@ -224,7 +224,7 @@ test.multiple.id <- function(data, loc.col, out.folder)
 # loc.col: name of the column containing the location (optional).
 # out.folder: folder where to output the results.
 #############################################################################################
-test.duplicates <- function(data, loc.col, out.folder)
+test.duplicates <- function(data, loc.col=NA, out.folder)
 {	# look for IDs associated to several distinct pieces of personal information
 #	test.id.reuse(data, out.folder) 
 	

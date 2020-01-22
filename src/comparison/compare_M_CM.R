@@ -16,14 +16,14 @@ source("src/verification/sumup_col.R")
 # start logging
 start.rec.log(text="M_vs_CM")
 tlog(0,"Comparing the mayoral and municipal data")
-
+correct.data <- TRUE
 
 
 
 #############################################################################################
 # load the mayoral data
 tlog(0,"Load mayoral data")
-m.data <- load.m.data()
+m.data <- load.m.data(correct.data)
 
 
 
@@ -31,7 +31,7 @@ m.data <- load.m.data()
 #############################################################################################
 # load the municipal data
 tlog(0,"Load municipal data")
-cm.data <- load.cm.data()
+cm.data <- load.cm.data(correct.data)
 
 
 

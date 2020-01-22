@@ -27,7 +27,8 @@ out.folder <- FOLDER_OUT_DE
 dir.create(path=out.folder, showWarnings=FALSE, recursive=TRUE)
 
 # load the data
-data <- load.de.data()
+correct.data <- TRUE
+data <- load.de.data(correct.data)
 
 # summarizes each column separately
 tlog(0,"Examining each column separately")

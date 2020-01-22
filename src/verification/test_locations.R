@@ -91,8 +91,8 @@ test.col.locations.municipality <- function(data, out.folder)
 		codes <- paste(data[,COL_ATT_DPT_CODE],data[,COL_ATT_COM_CODE],sep=":")
 		
 		# init result table
-		tab <- matrix(NA,ncol=3,nrow=0)
-		colnames(tab) <- c(COL_ATT_DPT_CODE, COL_ATT_COM_CODE, "Noms de la commune")
+		tab1 <- matrix(NA,ncol=3,nrow=0)
+		colnames(tab1) <- c(COL_ATT_DPT_CODE, COL_ATT_COM_CODE, "Noms de la commune")
 		
 		# check that each code is associated to a unique name
 		unique.codes <- sort(unique(codes[!is.na(names)]))
@@ -108,20 +108,37 @@ test.col.locations.municipality <- function(data, out.folder)
 					paste(sort(unique(ns)),collapse=",")
 				)
 #				print(row)
-				tab <- rbind(tab, row)
+				tab1 <- rbind(tab1, row)
 			}
 		}
 			
 		# possibly record the table
-		if(nrow(tab)>0)
+		if(nrow(tab1)>0)
 		{	tab.file <- file.path(out.folder,paste0(BASENAMES[COL_ATT_COM_NOM],"_problems_id.txt"))
 			tlog(2,"Recording in file \"",tab.file,"\"")
-			write.table(x=tab,file=tab.file,
-#					fileEncoding="UTF-8",
-					row.names=FALSE, col.names=TRUE)
+			write.table(x=tab1, file=tab.file,
+#				fileEncoding="UTF-8",
+				row.names=FALSE, col.names=TRUE)
 		}
+		tlog(4,"Found a total of ",nrow(tab1)," problematic municipality names")
 		
-		tlog(4,"Found a total of ",nrow(tab)," problematic municipality names")
+		# look for weird codes, and record the list
+		tlog(2,"Looking for non-standard municipality codes")
+		tab2 <- matrix(NA,ncol=3,nrow=0)
+		colnames(tab2) <- c(COL_ATT_DPT_CODE, COL_ATT_COM_CODE, COL_ATT_COM_NOM)
+		idx <- which(nchar(data[,COL_ATT_COM_CODE])>3)
+		if(length(idx>0))
+		{	weird.codes <- sort(unique(codes[idx]))
+			tmp <- t(sapply(weird.codes, function(weird.code) strsplit(weird.code, ":", fixed=TRUE)[[1]]))
+			tmp <- cbind(tmp, sapply(weird.codes, function(weird.code) names[which(codes==weird.code)[1]]))
+			tab2 <- rbind(tab2,tmp)
+			tab.file <- file.path(out.folder,paste0(BASENAMES[COL_ATT_COM_NOM],"_problems_id.txt"))
+			tlog(2,"Recording in file \"",tab.file,"\"")
+			write.table(x=tab2, file=tab.file,
+#				fileEncoding="UTF-8",
+				row.names=FALSE, col.names=TRUE)
+		}
+		tlog(4,"Found a total of ",nrow(tab2)," long municipality codes")
 	}
 }
 
@@ -196,7 +213,7 @@ test.col.locations.canton <- function(data, out.folder)
 		# found ids associated to multiple names
 		if(nrow(tab1)>0)
 		{	# record the table listing them
-			tab.file <- file.path(out.folder,paste0(BASENAMES[COL_ATT_CANT_NOM],"_problems_id_multinames.txt"))
+			tab.file <- file.path(out.folder,paste0(BASENAMES[COL_ATT_CANT_NOM],"_problems_id_multiple_names.txt"))
 			tlog(2,"Recording in file \"",tab.file,"\"")
 			write.table(x=tab1,file=tab.file,
 #					fileEncoding="UTF-8",
@@ -207,7 +224,7 @@ test.col.locations.canton <- function(data, out.folder)
 		# found names associated to multiple ids
 		if(nrow(tab2)>0)
 		{	# record the table listing them
-			tab.file <- file.path(out.folder,paste0(BASENAMES[COL_ATT_CANT_NOM],"_problems_name_multiids.txt"))
+			tab.file <- file.path(out.folder,paste0(BASENAMES[COL_ATT_CANT_CODE],"_problems_multiple_ids.txt"))
 			tlog(2,"Recording in file \"",tab.file,"\"")
 			write.table(x=tab2,file=tab.file,
 #					fileEncoding="UTF-8",
@@ -217,7 +234,7 @@ test.col.locations.canton <- function(data, out.folder)
 		
 		# build conversion table with unique ids
 		tab3 <- matrix(NA,ncol=3,nrow=0)
-		colnames(tab3) <- c("Code unique", COL_ATT_DPT_CODE, COL_ATT_CANT_NOM)
+		colnames(tab3) <- c(COL_ATT_CANT_ID, COL_ATT_DPT_CODE, COL_ATT_CANT_NOM)
 		unique.dpts <- sort(unique(data[,COL_ATT_DPT_CODE]))
 		for(unique.dpt in unique.dpts)
 		{	idx <- which(data[,COL_ATT_DPT_CODE]==unique.dpt)
@@ -542,20 +559,20 @@ test.col.locations <- function(data, out.folder)
 	test.col.locations.municipality(data, out.folder)
 	
 	# check canton names
-	test.col.locations.canton(data, out.folder)
-	
-	# check legislative circonscription names
-	test.col.locations.legcirco(data, out.folder)
-	
-	# check european circonscription names
-	test.col.locations.eurocirco(data, out.folder)
-	
-	# check EPCI names
-	test.col.locations.epci(data, out.folder)
-	
-	# check department names
-	test.col.locations.department(data, out.folder)
-	
-	# check region names
-	test.col.locations.region(data, out.folder)
+#	test.col.locations.canton(data, out.folder)
+#	
+#	# check legislative circonscription names
+#	test.col.locations.legcirco(data, out.folder)
+#	
+#	# check european circonscription names
+#	test.col.locations.eurocirco(data, out.folder)
+#	
+#	# check EPCI names
+#	test.col.locations.epci(data, out.folder)
+#	
+#	# check department names
+#	test.col.locations.department(data, out.folder)
+#	
+#	# check region names
+#	test.col.locations.region(data, out.folder)
 }

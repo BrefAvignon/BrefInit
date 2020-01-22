@@ -27,7 +27,8 @@ out.folder <- FOLDER_OUT_M
 dir.create(path=out.folder, showWarnings=FALSE, recursive=TRUE)
 
 # load the data
-data <- load.m.data()
+correct.data <- TRUE
+data <- load.m.data(correct.data)
 
 # summarizes each column separately
 tlog(0,"Examining each column separately")
@@ -47,7 +48,7 @@ tlog(0,"Checking overlapping mandates for the same position")
 
 # look for duplicates (not really necessary to do that here, better after the merge)
 tlog(0,"Looking for duplicates")
-test.duplicates(data=data, loc.col=COL_ATT_DPT_CODE, out.folder=out.folder)
+#test.duplicates(data=data, loc.col=COL_ATT_DPT_CODE, out.folder=out.folder)
 
 # plots the number of persons over time
 tlog(0,"Ploting the number of simultaneously hold positions over time")

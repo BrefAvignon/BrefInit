@@ -1,4 +1,4 @@
-Code unique	Code departement	Libelle canton
+Id canton	Code departement	Libelle canton
 01_1	01	AMBERIEU EN BUGEY
 01_2	01	ATTIGNAT
 01_3	01	BAGE LE CHATEL

@@ -47,6 +47,7 @@ COL_STATS_NAMES <- c(
 
 # attribute names
 COL_ATT_CANT_CODE <- "Code canton"
+COL_ATT_CANT_ID <- "Id canton"
 COL_ATT_CANT_NOM <- "Libelle canton"
 COL_ATT_CIRC_CODE <- "Code circo legislative"
 COL_ATT_CIRC_NOM <- "Libelle circo legislative"

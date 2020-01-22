@@ -27,7 +27,8 @@ out.folder <- if(extraction==1) FOLDER_OUT_CR else FOLDER_OUT_CR2
 dir.create(path=out.folder, showWarnings=FALSE, recursive=TRUE)
 
 # load the data
-data <- if(extraction==1) load.cr.data() else load.cr2.data() 
+correct.data <- TRUE
+data <- if(extraction==1) load.cr.data(correct.data) else load.cr2.data(correct.data) 
 
 # summarizes each column separately
 tlog(0,"Examining each column separately")

@@ -1,14 +1,5 @@
 Id	Nom	Prenom	Attribut	ValAvt	ValApr	Commentaire
-NA	NA	NA	Libellé de la région	Auvergne-Rhône-Alpes	AUVERGNE-RHONE-ALPES	Corrige dans toutes les lignes concernées
-NA	NA	NA	Libellé de la région	Bourgogne-Franche-Comté	BOURGOGNE-FRANCHE-COMTE	Corrige dans toutes les lignes concernées
-NA	NA	NA	Libellé de la région	Centre-Val de Loire	CENTRE	Corrige dans toutes les lignes concernées
-NA	NA	NA	Libellé de la région	Grand Est	GRAND EST	Corrige dans toutes les lignes concernées
-NA	NA	NA	Libellé de la région	Guadeloupe	GUADELOUPE	Corrige dans toutes les lignes concernées
-NA	NA	NA	Libellé de la région	Hauts-de-France	HAUTS-DE-FRANCE	Corrige dans toutes les lignes concernées
-NA	NA	NA	Libellé de la région	Île-de-France	ILE DE FRANCE	Corrige dans toutes les lignes concernées
-NA	NA	NA	Libellé de la région	La Réunion	LA REUNION	Corrige dans toutes les lignes concernées
-NA	NA	NA	Libellé de la région	Normandie	NORMANDIE	Corrige dans toutes les lignes concernées
-NA	NA	NA	Libellé de la région	Nouvelle-Aquitaine	NOUVELLE-AQUITAINE	Corrige dans toutes les lignes concernées
-NA	NA	NA	Libellé de la région	Occitanie	OCCITANIE	Corrige dans toutes les lignes concernées
-NA	NA	NA	Libellé de la région	Pays de la Loire	PAYS DE LOIRE	Corrige dans toutes les lignes concernées
-NA	NA	NA	Libellé de la région	Provence-Alpes-Côte d'Azur	PROVENCE-ALPES-COTE D'AZUR	Corrige dans toutes les lignes concernées
+NA	NA	NA	Code departement	69D	69	Pas besoin de distinguer Lyon du reste du Rhone
+NA	NA	NA	Code departement	69M	69	Pas besoin de distinguer Lyon du reste du Rhone
+NA	NA	NA	Libelle departement	RHONE HORS METROPOLE DE LYON	RHONE	Pas besoin de distinguer Lyon du reste du Rhone
+NA	NA	NA	Libelle departement	METROPOLE DE LYON	RHONE	Pas besoin de distinguer Lyon du reste du Rhone

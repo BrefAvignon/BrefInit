@@ -28,7 +28,8 @@ out.folder <- if(extraction==1) FOLDER_OUT_CM else FOLDER_OUT_CM2
 dir.create(path=out.folder, showWarnings=FALSE, recursive=TRUE)
 
 # load the data
-data <- if(extraction==1) load.cm.data() else load.cm2.data() 
+correct.data <- TRUE
+data <- if(extraction==1) load.cm.data(correct.data) else load.cm2.data(correct.data) 
 
 # summarizes each column separately
 tlog(0,"Examining each column separately")
@@ -40,7 +41,7 @@ tlog(0,"Checking dates")
 
 # check locations
 tlog(0,"Checking locations")
-#test.col.locations(data=data, out.folder=out.folder)
+test.col.locations(data=data, out.folder=out.folder)
 
 # check overlapping mandates for the same position
 tlog(0,"Checking overlapping mandates for the same position")
@@ -48,7 +49,7 @@ tlog(0,"Checking overlapping mandates for the same position")
 
 # look for duplicates (not really necessary to do that here, better after the merge)
 tlog(0,"Looking for duplicates")
-test.duplicates(data=data, loc.col=COL_ATT_DPT_CODE, out.folder=out.folder)
+#test.duplicates(data=data, loc.col=COL_ATT_DPT_CODE, out.folder=out.folder)
 
 # plots the number of persons over time
 tlog(0,"Ploting the number of simultaneously hold positions over time")
