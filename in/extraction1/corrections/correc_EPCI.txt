@@ -9,3 +9,61 @@ Id	Nom	Prenom	Attribut	ValAvt	ValApr	Commentaire
 842425	OUKAS	Vanessa	Date de début de la fonction	19/10/1017	23/3/2014	A verifier
 1178260	PENICHON	Bruno	Date de fin de la fonction	12/9/0009	12/9/2009	Typo dans la date
 1454255	DANILOFF	Véronique	Date de début de la fonction	19/10/1017	23/3/2014	A verifier
+NA	NA	NA	Libelle commune	MARSEILLE ARRVILL 2	MARSEILLE	On ignore les subdivisions de Marseille
+NA	NA	NA	Libelle commune	MARSEILLE SECTEUR 1	MARSEILLE	On ignore les subdivisions de Marseille
+NA	NA	NA	Libelle commune	MARSEILLE SECTEUR 2	MARSEILLE	On ignore les subdivisions de Marseille
+NA	NA	NA	Libelle commune	MARSEILLE SECTEUR 3	MARSEILLE	On ignore les subdivisions de Marseille
+NA	NA	NA	Libelle commune	MARSEILLE SECTEUR 4	MARSEILLE	On ignore les subdivisions de Marseille
+NA	NA	NA	Libelle commune	MARSEILLE SECTEUR 5	MARSEILLE	On ignore les subdivisions de Marseille
+NA	NA	NA	Libelle commune	MARSEILLE SECTEUR 6	MARSEILLE	On ignore les subdivisions de Marseille
+NA	NA	NA	Libelle commune	MARSEILLE SECTEUR 7	MARSEILLE	On ignore les subdivisions de Marseille
+NA	NA	NA	Libelle commune	MARSEILLE SECTEUR 8	MARSEILLE	On ignore les subdivisions de Marseille
+NA	NA	NA	Libelle commune	LYON 1ER SECTEUR	LYON	On ignore les subdivisions de Lyon
+NA	NA	NA	Libelle commune	LYON 2EME SECTEUR	LYON	On ignore les subdivisions de Lyon
+NA	NA	NA	Libelle commune	LYON 3EME SECTEUR	LYON	On ignore les subdivisions de Lyon
+NA	NA	NA	Libelle commune	LYON 4EME SECTEUR	LYON	On ignore les subdivisions de Lyon
+NA	NA	NA	Libelle commune	LYON 5EME SECTEUR	LYON	On ignore les subdivisions de Lyon
+NA	NA	NA	Libelle commune	LYON 6EME SECTEUR	LYON	On ignore les subdivisions de Lyon
+NA	NA	NA	Libelle commune	LYON 7EME SECTEUR	LYON	On ignore les subdivisions de Lyon
+NA	NA	NA	Libelle commune	LYON 8EME SECTEUR	LYON	On ignore les subdivisions de Lyon
+NA	NA	NA	Libelle commune	LYON 9EME SECTEUR	LYON	On ignore les subdivisions de Lyon
+NA	NA	NA	Libelle commune	LYON ARRVILL 9	LYON	On ignore les subdivisions de Lyon
+NA	NA	NA	Libelle commune	FAYET SECTION 1	FAYET	On ignore les subdivisions de la commune
+NA	NA	NA	Libelle commune	BOULAY MOSELLE SECTION BOULAY	BOULAY MOSELLE	On ignore les subdivisions de la commune
+NA	NA	NA	Libelle commune	BOULAY MOSELLE SECTION HALLING	BOULAY MOSELLE	On ignore les subdivisions de la commune
+NA	NA	NA	Libelle commune	PIBLANGE SECTION SAINT BERNARD	PIBLANGE	On ignore les subdivisions de la commune
+NA	NA	NA	Libelle commune	BRETTEVILLE L ORGUEILLEUSE	THUE ET MUE	Fusion de communes, on utilise le nouveau nom pour le chef-lieu
+NA	NA	NA	Libelle commune	MEZIDON CANON	MEZIDON VALLEE D AUGE	Fusion de communes, on utilise le nouveau nom pour le chef-lieu
+NA	NA	NA	Libelle commune	CHERBOURG OCTEVILLE	CHERBOURG EN COTENTIN	Fusion de communes, on utilise le nouveau nom pour le chef-lieu
+1323107	JOBERT	Raymonde	Code Insee commune	378CD02	023	Mauvais numero INSEE
+156605	LAUNEY	Jean-Paul	Code Insee commune	236CD02	035	Mauvais numero INSEE
+156126	BROCHARD	Michele	Code Insee commune	236CD07	544	Mauvais numero INSEE
+1018806	DE CONIAC	Loïc	Code Insee commune	487CD02	018	Mauvais numero INSEE
+1514738	PENSEE	Nicolle	Code Insee commune	031SN02	278	Mauvais numero INSEE
+15170	HENRY	Isabelle	Libelle EPCI	C ARCHIVE	CC DE L ASFELDOIS	Nom d'EPCI incorrect par rapport au SIREN
+148311	REBELLE	Christian	Libelle EPCI	C ARCHIVE	CC DE LA MALEPERE	Nom d'EPCI incorrect par rapport au SIREN
+5578	DURAND	Jacques	Libelle EPCI	C ARCHIVE	CC DES RAZES MALEPERE	Nom d'EPCI incorrect par rapport au SIREN
+5536	MARTINEZ	Marcel	Libelle EPCI	CC ARCHIVE	CC DU CANTON D'AXA	Nom d'EPCI incorrect par rapport au SIREN
+4500	BROUSSE	Michel	Libelle EPCI	CC ARCHIVE	CC HERS ET GANGUIS	Nom d'EPCI incorrect par rapport au SIREN
+148342	SAVY	Francis	Libelle EPCI	CC ARCHIVE	CC PAYS DE SAULT	Nom d'EPCI incorrect par rapport au SIREN
+153612	HERVE	Louis	Libelle EPCI	CC ARCHIVE	CC DE LA RIA DETEL	Nom d'EPCI incorrect par rapport au SIREN
+153566	JALU	Michel	Libelle EPCI	CC ARCHIVE	AURAY COMMUNAUTE	Nom d'EPCI incorrect par rapport au SIREN
+143764	LEBLANC	Francis	Libelle EPCI	CC DES VILLAGES DU HAUT PERIGORD ARCHIVE	CC DU PERIGORD VERT	Nom d'EPCI incorrect par rapport au SIREN
+808610	FAURE	Jean-Michel	Libelle EPCI	CC DES VILLAGES DU HAUT PERIGORD ARCHIVE	CC DU PERIGORD VERT	Nom d'EPCI incorrect par rapport au SIREN
+NA	NA	NA	Numero SIREN	200044618	245901228	EPCI avec plusieurs SIREN successifs, on garde le dernier
+NA	NA	NA	Numero SIREN	200001519	200030385	EPCI avec plusieurs SIREN successifs, on garde le dernier
+NA	NA	NA	Numero SIREN	242320026	245100854	EPCI avec plusieurs SIREN successifs, on garde le dernier
+NA	NA	NA	Numero SIREN	241400795	247600679	EPCI avec plusieurs SIREN successifs, on garde le dernier
+NA	NA	NA	Numero SIREN	242200830	247600679	EPCI avec plusieurs SIREN successifs, on garde le dernier
+NA	NA	NA	Numero SIREN	242852424	247600679	EPCI avec plusieurs SIREN successifs, on garde le dernier
+NA	NA	NA	Numero SIREN	241600451	243100609	EPCI avec plusieurs SIREN successifs, on garde le dernier
+NA	NA	NA	Numero SIREN	200036069	246100515	EPCI avec plusieurs SIREN successifs, on garde le dernier
+NA	NA	NA	Numero SIREN	200030609	200043263	EPCI avec plusieurs SIREN successifs, on garde le dernier
+NA	NA	NA	Numero SIREN	241200880	247200595	EPCI avec plusieurs SIREN successifs, on garde le dernier
+NA	NA	NA	Numero SIREN	246100465	247700024	EPCI avec plusieurs SIREN successifs, on garde le dernier
+NA	NA	NA	Numero SIREN	200040772	244100715	EPCI avec plusieurs SIREN successifs, on garde le dernier
+NA	NA	NA	Numero SIREN	200070787	246500797	EPCI avec plusieurs SIREN successifs, on garde le dernier
+NA	NA	NA	Numero SIREN	20006393	200006393	numéro SIREN incorrect (syntaxiquement), on remplace par le bon
+NA	NA	NA	Numero SIREN	241200633	248100703	EPCI avec plusieurs SIREN successifs, on garde le dernier
+NA	NA	NA	Numero SIREN	200006880	244900627	EPCI avec plusieurs SIREN successifs, on garde le dernier
+NA	NA	NA	Numero SIREN	241100643	248400145	EPCI avec plusieurs SIREN successifs, on garde le dernier

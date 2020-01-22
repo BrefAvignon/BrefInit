@@ -1,4 +1,6 @@
 Id	Nom	Prenom	Attribut	ValAvt	ValApr	Commentaire
+NA	NA	NA	Libelle region	CENTRE VAL DE LOIRE	CENTRE	Nom de région incorrect
+NA	NA	NA	Libelle region	PAYS DE LA LOIRE	PAYS DE LOIRE	Nom de région incorrect
 NA	NA	NA	Code departement	69D	69	Pas besoin de distinguer Lyon du reste du Rhone
 NA	NA	NA	Code departement	69M	69	Pas besoin de distinguer Lyon du reste du Rhone
 NA	NA	NA	Libelle departement	RHONE HORS METROPOLE DE LYON	RHONE	Pas besoin de distinguer Lyon du reste du Rhone
