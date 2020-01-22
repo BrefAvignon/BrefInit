@@ -112,9 +112,9 @@ test.col.locations.municipality <- function(data, out.folder)
 			}
 		}
 			
-		# possibly record the table
+		# found codes associated to multiple names
 		if(nrow(tab1)>0)
-		{	tab.file <- file.path(out.folder,paste0(BASENAMES[COL_ATT_COM_NOM],"_problems_id.txt"))
+		{	tab.file <- file.path(out.folder,paste0(BASENAMES[COL_ATT_COM_CODE],"_problems_multiple_names.txt"))
 			tlog(2,"Recording in file \"",tab.file,"\"")
 			write.table(x=tab1, file=tab.file,
 #				fileEncoding="UTF-8",
@@ -122,7 +122,40 @@ test.col.locations.municipality <- function(data, out.folder)
 		}
 		tlog(4,"Found a total of ",nrow(tab1)," problematic municipality names")
 		
-		# look for weird codes, and record the list
+		# init second result table
+		tab2 <- matrix(NA,ncol=2,nrow=0)
+		colnames(tab2) <- c(COL_ATT_COM_NOM, "Codes de la commune")
+		
+		# check that each name is associated to a unique code
+		unique.names <- sort(unique(names[!is.na(codes)]))
+		for(i in 1:length(unique.names))
+		{	unique.name <- unique.names[i]
+			tlog(2,"Processing municipality ",unique.name," (",i,"/",length(unique.names),")")
+			
+			idx <- which(names==unique.name)
+			cs <- codes[idx]
+			if(any(cs!=cs[1]))
+			{	row <- c(
+					unique.name,
+					paste(sort(unique(cs)),collapse=",")
+				)
+#				print(row)
+				tab2 <- rbind(tab2, row)
+			}
+		}
+		
+		# found names associated to multiple codes
+		if(nrow(tab2)>0)
+		{	# record the table listing them
+			tab.file <- file.path(out.folder,paste0(BASENAMES[COL_ATT_COM_NOM],"_problems_multiple_codes.txt"))
+			tlog(2,"Recording in file \"",tab.file,"\"")
+			write.table(x=tab2,file=tab.file,
+#					fileEncoding="UTF-8",
+					row.names=FALSE, col.names=TRUE)
+		}
+		tlog(4,"Found a total of ",nrow(tab2)," names with distinct codes")
+		
+		# look for long codes, and record the list
 		tlog(2,"Looking for non-standard municipality codes")
 		tab2 <- matrix(NA,ncol=3,nrow=0)
 		colnames(tab2) <- c(COL_ATT_DPT_CODE, COL_ATT_COM_CODE, COL_ATT_COM_NOM)
@@ -132,7 +165,7 @@ test.col.locations.municipality <- function(data, out.folder)
 			tmp <- t(sapply(weird.codes, function(weird.code) strsplit(weird.code, ":", fixed=TRUE)[[1]]))
 			tmp <- cbind(tmp, sapply(weird.codes, function(weird.code) names[which(codes==weird.code)[1]]))
 			tab2 <- rbind(tab2,tmp)
-			tab.file <- file.path(out.folder,paste0(BASENAMES[COL_ATT_COM_NOM],"_problems_id.txt"))
+			tab.file <- file.path(out.folder,paste0(BASENAMES[COL_ATT_COM_CODE],"_problems_long.txt"))
 			tlog(2,"Recording in file \"",tab.file,"\"")
 			write.table(x=tab2, file=tab.file,
 #				fileEncoding="UTF-8",
@@ -188,6 +221,17 @@ test.col.locations.canton <- function(data, out.folder)
 			}
 		}
 		
+		# found codes associated to multiple names
+		if(nrow(tab1)>0)
+		{	# record the table listing them
+			tab.file <- file.path(out.folder,paste0(BASENAMES[COL_ATT_CANT_CODE],"_problems_multiple_names.txt"))
+			tlog(2,"Recording in file \"",tab.file,"\"")
+			write.table(x=tab1,file=tab.file,
+#					fileEncoding="UTF-8",
+					row.names=FALSE, col.names=TRUE)
+		}
+		tlog(4,"Found a total of ",nrow(tab1)," codes with distinct names")
+		
 		# init second result table
 		tab2 <- matrix(NA,ncol=2,nrow=0)
 		colnames(tab2) <- c(COL_ATT_CANT_NOM, "Codes du canton")
@@ -210,27 +254,16 @@ test.col.locations.canton <- function(data, out.folder)
 			}
 		}
 		
-		# found ids associated to multiple names
-		if(nrow(tab1)>0)
-		{	# record the table listing them
-			tab.file <- file.path(out.folder,paste0(BASENAMES[COL_ATT_CANT_NOM],"_problems_id_multiple_names.txt"))
-			tlog(2,"Recording in file \"",tab.file,"\"")
-			write.table(x=tab1,file=tab.file,
-#					fileEncoding="UTF-8",
-					row.names=FALSE, col.names=TRUE)
-		}
-		tlog(4,"Found a total of ",nrow(tab1)," ids with distinct names")
-		
-		# found names associated to multiple ids
+		# found names associated to multiple codes
 		if(nrow(tab2)>0)
 		{	# record the table listing them
-			tab.file <- file.path(out.folder,paste0(BASENAMES[COL_ATT_CANT_CODE],"_problems_multiple_ids.txt"))
+			tab.file <- file.path(out.folder,paste0(BASENAMES[COL_ATT_CANT_NOM],"_problems_multiple_codes.txt"))
 			tlog(2,"Recording in file \"",tab.file,"\"")
 			write.table(x=tab2,file=tab.file,
 #					fileEncoding="UTF-8",
 					row.names=FALSE, col.names=TRUE)
 		}
-		tlog(4,"Found a total of ",nrow(tab2)," names with distinct ids")
+		tlog(4,"Found a total of ",nrow(tab2)," names with distinct codes")
 		
 		# build conversion table with unique ids
 		tab3 <- matrix(NA,ncol=3,nrow=0)
@@ -278,9 +311,9 @@ test.col.locations.legcirco <- function(data, out.folder)
 		names <- data[,COL_ATT_CIRC_NOM]
 		codes <- paste(data[,COL_ATT_DPT_CODE],data[,COL_ATT_CIRC_CODE],sep=":")
 		
-		# init result table
-		tab <- matrix(NA,ncol=3,nrow=0)
-		colnames(tab) <- c(COL_ATT_DPT_CODE, COL_ATT_CIRC_CODE, "Noms de la circonscription")
+		# init first result table
+		tab1 <- matrix(NA,ncol=3,nrow=0)
+		colnames(tab1) <- c(COL_ATT_DPT_CODE, COL_ATT_CIRC_CODE, "Noms de la circonscription")
 		
 		# check that each code is associated to a unique name
 		unique.codes <- sort(unique(codes[!is.na(names)]))
@@ -296,20 +329,52 @@ test.col.locations.legcirco <- function(data, out.folder)
 						paste(sort(unique(ns)),collapse=",")
 				)
 #				print(row)
-				tab <- rbind(tab, row)
+				tab1 <- rbind(tab1, row)
 			}
 		}
 		
-		# possibly record the table
-		if(nrow(tab)>0)
-		{	tab.file <- file.path(out.folder,paste0(BASENAMES[COL_ATT_CIRC_NOM],"_problems_id.txt"))
+		# found codes associated to multiple names
+		if(nrow(tab1)>0)
+		{	tab.file <- file.path(out.folder,paste0(BASENAMES[COL_ATT_CIRC_CODE],"_problems_multiple_names.txt"))
 			tlog(2,"Recording in file \"",tab.file,"\"")
-			write.table(x=tab,file=tab.file,
+			write.table(x=tab1,file=tab.file,
 #					fileEncoding="UTF-8",
 					row.names=FALSE, col.names=TRUE)
 		}
+		tlog(4,"Found a total of ",nrow(tab1)," codes with distinct names")
+
+		# init second result table
+		tab2 <- matrix(NA,ncol=2,nrow=0)
+		colnames(tab2) <- c(COL_ATT_CIRC_NOM, "Codes de la circonscription")
 		
-		tlog(4,"Found a total of ",nrow(tab)," problematic legislative circonscription names")
+		# check that each name is associated to a unique code
+		unique.names <- sort(unique(names[!is.na(codes)]))
+		for(i in 1:length(unique.names))
+		{	unique.name <- unique.names[i]
+			tlog(2,"Processing circonscription ",unique.name," (",i,"/",length(unique.names),")")
+			
+			idx <- which(names==unique.name)
+			cs <- codes[idx]
+			if(any(cs!=cs[1]))
+			{	row <- c(
+					unique.name,
+					paste(sort(unique(cs)),collapse=",")
+				)
+#				print(row)
+				tab2 <- rbind(tab2, row)
+			}
+		}
+		
+		# found names associated to multiple codes
+		if(nrow(tab2)>0)
+		{	# record the table listing them
+			tab.file <- file.path(out.folder,paste0(BASENAMES[COL_ATT_CIRC_NOM],"_problems_multiple_codes.txt"))
+			tlog(2,"Recording in file \"",tab.file,"\"")
+			write.table(x=tab2,file=tab.file,
+#					fileEncoding="UTF-8",
+					row.names=FALSE, col.names=TRUE)
+		}
+		tlog(4,"Found a total of ",nrow(tab2)," names with distinct codes")
 	}
 }
 
@@ -559,20 +624,20 @@ test.col.locations <- function(data, out.folder)
 	test.col.locations.municipality(data, out.folder)
 	
 	# check canton names
-#	test.col.locations.canton(data, out.folder)
-#	
-#	# check legislative circonscription names
-#	test.col.locations.legcirco(data, out.folder)
-#	
-#	# check european circonscription names
-#	test.col.locations.eurocirco(data, out.folder)
-#	
-#	# check EPCI names
-#	test.col.locations.epci(data, out.folder)
-#	
-#	# check department names
-#	test.col.locations.department(data, out.folder)
-#	
-#	# check region names
-#	test.col.locations.region(data, out.folder)
+	test.col.locations.canton(data, out.folder)
+	
+	# check legislative circonscription names
+	test.col.locations.legcirco(data, out.folder)
+	
+	# check european circonscription names
+	test.col.locations.eurocirco(data, out.folder)
+	
+	# check EPCI names
+	test.col.locations.epci(data, out.folder)
+	
+	# check department names
+	test.col.locations.department(data, out.folder)
+	
+	# check region names
+	test.col.locations.region(data, out.folder)
 }
