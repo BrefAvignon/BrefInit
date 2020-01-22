@@ -314,7 +314,7 @@ load.cd.data <- function()
 	# add unique ids for cantons
 	coln <- colnames(data)
 	idx <- which(coln==COL_ATT_CANT_CODE)
-	vals <- #TODO
+	vals <- # TODO
 	
 	return(data)
 }
