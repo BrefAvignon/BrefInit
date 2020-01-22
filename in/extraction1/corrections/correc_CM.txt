@@ -40,3 +40,30 @@ Id	Nom	Prenom	Attribut	ValAvt	ValApr	Commentaire
 1277554	MOULIN	Geneviève	Date de début de la fonction	8/1/0018	23/03/2014	Pas sûr, à voir
 1317870	FAVRE	Aurélie	Date de début de la fonction	28/8/0014	28/8/2014	Typo dans la date
 1352560	COCHONNEAU	Virginie	Date de fin du mandat	29/1/0201	29/1/2016	Arbitraire, à vérifier
+NA	NA	NA	Libelle commune	LANTOSQUE PELASQUE SECTION 2	LANTOSQUE	On ignore les subdivisions de la commune
+NA	NA	NA	Libelle commune	CHAUVINCOURT PROVEMONT SECTION 2	CHAUVINCOURT PROVEMONT	On ignore les subdivisions de la commune
+NA	NA	NA	Libelle commune	CHAUVINCOURT PROVEMONT SECTION 1	CHAUVINCOURT PROVEMONT	On ignore les subdivisions de la commune
+NA	NA	NA	Libelle commune	ROSPORDEN SECTION 1	ROSPORDEN	On ignore les subdivisions de la commune
+NA	NA	NA	Libelle commune	GIEN SECTION 2	GIEN	On ignore les subdivisions de la commune
+NA	NA	NA	Libelle commune	PITHIVIERS LE VIEIL SECTION 2 BOUZONVILLE	PITHIVIERS LE VIEIL	On ignore les subdivisions de la commune
+NA	NA	NA	Libelle commune	BEAUMONT HAGUE	LA HAGUE	On ignore les subdivisions de la commune
+NA	NA	NA	Libelle commune	ISIGNY LE BUAT SECTION 1	ISIGNY LE BUAT	On ignore les subdivisions de la commune
+NA	NA	NA	Libelle commune	ISIGNY LE BUAT SECTION 3	ISIGNY LE BUAT	On ignore les subdivisions de la commune
+NA	NA	NA	Libelle commune	SAINT AMAND SECTION 1	SAINT AMAND VILLAGES	On ignore les subdivisions de la commune
+NA	NA	NA	Libelle commune	SAINT JEAN DES CHAMPS SECTION 1	SAINT JEAN DES CHAMPS	On ignore les subdivisions de la commune
+NA	NA	NA	Libelle commune	BRUGES CAPBIS MIFAGET	BRUGES	On ignore les subdivisions de la commune
+NA	NA	NA	Libelle commune	PUYVALADOR SECTION 2	PUYVALADOR	On ignore les subdivisions de la commune
+NA	NA	NA	Libelle commune	GUNDERSHOFFEN SECTION 2 EBERBACH WOERTH	GUNDERSHOFFEN	On ignore les subdivisions de la commune
+NA	NA	NA	Libelle commune	GUNDERSHOFFEN SECTION 3 GRIESBACH	GUNDERSHOFFEN	On ignore les subdivisions de la commune
+NA	NA	NA	Libelle commune	BROYE AUBIGNEY MONTSEUGNY SECTION 3	BROYE AUBIGNEY MONTSEUGNY	On ignore les subdivisions de la commune
+NA	NA	NA	Libelle commune	LE CORMENIER	BEAUVOIR SUR NIORT	On ignore les subdivisions de la commune
+NA	NA	NA	Libelle commune	MARVAL SECTION 1	MARVAL	On ignore les subdivisions de la commune
+NA	NA	NA	Libelle commune	ARUTUA SECTION 3 KAUKURA	ARUTUA	On ignore les subdivisions de la commune
+NA	NA	NA	Libelle commune	TAHAA SECTION 2 HAAMENE	TAHAA	On ignore les subdivisions de la commune
+NA	NA	NA	Libelle commune	TAIARAPU OUEST SECTION 2 TOAHOTU	TAIARAPU OUEST	On ignore les subdivisions de la commune
+NA	NA	NA	Libelle commune	TEVA I UTA SECTION 1 MATAIEA	TEVA I UTA	On ignore les subdivisions de la commune
+1191040	CREVISY	Anne-François	Code Insee commune	332SN10	465	Mauvais numero INSEE
+1191041	CREVISY	Anne-Françoise	Code Insee commune	332SN10	465	Mauvais numero INSEE
+1190912	SCHERTENLEIB	David	Code Insee commune	332SN10	465	Mauvais numero INSEE
+1121690	BERNARD	Didier	Code Insee commune	031SN02	097	Mauvais numero INSEE
+1121760	FOLWELL	Ginette	Code Insee commune	171SN02	228	Mauvais numero INSEE

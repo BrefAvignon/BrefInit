@@ -146,3 +146,6 @@ source("src/common/include.R")
 #   - on considère la durée du mandat
 # - mettre le focus sur un poste donné plutot que sur un individu donné
 #   (séquence des personnes ou classes de personnes ayant occupé un poste donné)
+
+# même personne
+# 1191040 vs 1191041
