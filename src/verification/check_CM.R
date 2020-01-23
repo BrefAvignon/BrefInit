@@ -33,7 +33,7 @@ data <- if(extraction==1) load.cm.data(correct.data) else load.cm2.data(correct.
 
 # summarizes each column separately
 tlog(0,"Examining each column separately")
-#sumup.cols(data=data, out.folder=out.folder)
+sumup.cols(data=data, out.folder=out.folder)
 
 # check dates
 tlog(0,"Checking dates")
@@ -41,7 +41,7 @@ tlog(0,"Checking dates")
 
 # check locations
 tlog(0,"Checking locations")
-test.col.locations(data=data, out.folder=out.folder)
+#test.col.locations(data=data, out.folder=out.folder)
 
 # check overlapping mandates for the same position
 tlog(0,"Checking overlapping mandates for the same position")

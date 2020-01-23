@@ -31,7 +31,7 @@ data <- load.epci.data(correct.data)
 
 # summarizes each column separately
 tlog(0,"Examining each column separately")
-#sumup.cols(data=data, out.folder=out.folder)
+sumup.cols(data=data, out.folder=out.folder)
 
 # check dates
 tlog(0,"Checking dates")
@@ -39,7 +39,7 @@ tlog(0,"Checking dates")
 
 # check locations
 tlog(0,"Checking locations")
-test.col.locations(data=data, out.folder=out.folder)
+#test.col.locations(data=data, out.folder=out.folder)
 
 # look for duplicates (not really necessary to do that here, better after the merge)
 tlog(0,"Looking for duplicates")
