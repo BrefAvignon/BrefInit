@@ -147,5 +147,17 @@ source("src/common/include.R")
 # - mettre le focus sur un poste donné plutot que sur un individu donné
 #   (séquence des personnes ou classes de personnes ayant occupé un poste donné)
 
-# même personne
+# même personne, prénom légèrement différent
 # 1191040 vs 1191041
+
+# vérifier si les triple-homonymes le sont vraiment
+# pour les incompatibilités de mandats (plusieurs mandats incompatibles en même temps)
+# >> vérifier si ce ne sont pas simplement plusieurs homonymes réels 
+#    qui auraient été pris pour la même personne et incorrectement fusionnés
+
+# dans la table fusionnée, quand deux lignes sont pareilles à quelques champs non renseignés prés
+# il faut les fusionner
+# ex: mandat CM + mandat M équivalent (issus des deux tables)
+
+# lors de la recherche de personnes ayant plusieurs id, il ne faut pas fusionner
+# ceux qui ont des mandats incompatibles

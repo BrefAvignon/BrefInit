@@ -153,6 +153,7 @@ load.data <- function(filenames, col.map, correc.file, equiv.ids.file, correct.d
 		)
 		
 		# fix dupplicate ids
+# TODO : parallel ?	
 		if(nrow(equiv.table)>0)
 		{	# convert to map
 			unique.ids <- unique(data[,COL_ATT_ELU_ID])
@@ -361,7 +362,8 @@ load.cd.data <- function(correct.data)
 	data <- load.data(filenames=FILES_TAB_CD, col.map=col.map, correc.file=FILE_CORREC_CD, equiv.ids.file=FILE_EQUIV_IDS, correct.data)
 	
 	# add a unique id for cantons
-	data <- insert.unique.canton.id(data=data, file.canton.ids=FILE_CANTON_IDS)
+	if(correct.data)
+		data <- insert.unique.canton.id(data=data, file.canton.ids=FILE_CANTON_IDS)
 	
 	return(data)
 }
@@ -399,7 +401,8 @@ load.cd2.data <- function(correct.data)
 	data <- load.data(filenames=FILES_TAB_CD2, col.map=col.map, correc.file=FILE_CORREC_CD2, equiv.ids.file=FILE_EQUIV_IDS2, correct.data) 
 	
 	# add a unique id for cantons
-	data <- insert.unique.canton.id(data=data, file.canton.ids=FILE_CANTON_IDS)
+	if(correct.data)
+		data <- insert.unique.canton.id(data=data, file.canton.ids=FILE_CANTON_IDS)
 	
 	return(data)
 }
