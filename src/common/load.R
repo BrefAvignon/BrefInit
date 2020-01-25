@@ -172,7 +172,7 @@ load.data <- function(filenames, col.map, correc.file, equiv.ids.file, correct.d
 		
 		# apply ad hoc corrections
 		if(nrow(correc.table)>0)	
-		{	tlog(0,"Applying corrections")
+		{	tlog(0,"Applying ad hoc corrections")
 			
 			# apply each correction one after the other
 			for(r in 1:nrow(correc.table))
