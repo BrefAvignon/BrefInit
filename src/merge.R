@@ -247,3 +247,15 @@ test.duplicates(data=data, out.folder=FOLDER_OUT_ALL)
 # close the log file
 tlog(0,"Done")
 end.rec.log()
+
+data <- read.table(
+		file=table.file,			# name of the data file
+		header=TRUE, 				# look for a header
+		sep="\t", 					# character used to separate columns 
+		check.names=FALSE, 			# don't change the column names from the file
+		comment.char="", 			# ignore possible comments in the content
+		row.names=NULL, 			# don't look for row names in the file
+#		quote="", 					# don't expect double quotes "..." around text fields
+		as.is=TRUE,					# don't convert strings to factors
+		colClasses="character"		# all column originally read as characters, then converted later if needed
+)
