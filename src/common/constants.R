@@ -317,12 +317,14 @@ FOLDER_IN <- "in"
 	FILE_CORREC_M <- file.path(FOLDER_CORRECS, "correc_M.txt")
 	FILE_CORREC_S <- file.path(FOLDER_CORRECS, "correc_S.txt")
 	FILE_EQUIV_IDS <- file.path(FOLDER_CORRECS, "elu_equiv_ids.txt")
+	FILE_HOMON_IDS <- file.path(FOLDER_CORRECS, "elu_homonyms.txt")
 	FILE_CANTON_IDS <- file.path(FOLDER_CORRECS, "canton_unique_ids.txt")
 	# second extraction
 	FILE_CORREC_CD2 <- file.path(FOLDER_CORRECS2, "correc_CD.txt")
 	FILE_CORREC_CM2 <- file.path(FOLDER_CORRECS2, "correc_CM.txt")
 	FILE_CORREC_CR2 <- file.path(FOLDER_CORRECS2, "correc_CR.txt")
 	FILE_EQUIV_IDS2 <- file.path(FOLDER_CORRECS2, "elu_equiv_ids.txt")
+	FILE_HOMON_IDS2 <- file.path(FOLDER_CORRECS2, "elu_homonyms.txt")
 	FILE_CANTON_IDS2 <- file.path(FOLDER_CORRECS2, "canton_unique_ids.txt")
 # verification files
 	# position counts

@@ -129,7 +129,28 @@ test.multiple.id <- function(data, loc.col=NA, out.folder)
 			conv.map[[length(conv.map)+1]] <- c(main.id,other.ids)
 		}
 	}
-	tlog(4,"Done: ",length(conv.map)," id(s) read")
+	tlog(4,"Done: ",length(conv.map)," lines read")
+	
+	# load table of confirmed homonyms
+	if(extraction==1)
+		tab.file <- FILE_HOMON_IDS
+	else if(extraction==2)
+		tab.file <- FILE_HOMON_IDS2
+	tlog(2,"Loading the table of confirmed homonyms (",tab.file,")")
+	homon.table <- read.table(
+			file=tab.file,				# name of the tab file
+			header=TRUE, 				# look for a header
+			sep="\t", 					# character used to separate columns 
+			check.names=FALSE, 			# don't change the column names from the file
+			comment.char="", 			# ignore possible comments in the content
+			row.names=NULL, 			# don't look for row names in the file
+			quote="", 					# don't expect double quotes "..." around text fields
+			as.is=TRUE,					# don't convert strings to factors
+			colClasses="character"		# all column originally read as characters
+#			fileEncoding="Latin1"		# original tables seem to be encoded in Latin1 (ANSI)
+	)
+	homon.list <- c(as.matrix(homon.table))
+	tlog(4,"Done: ",length(homon.list)," id(s) read")
 	
 	# identify all unique individuals
 	# under the form of a (lastname, firstname, birthdate, sex, territory) tuple
@@ -164,23 +185,29 @@ test.multiple.id <- function(data, loc.col=NA, out.folder)
 			# if there are several distinct ids
 			if(length(ids)>1)
 			{	tlog(8,"Found ",length(ids)," different ids: ",paste(ids,collapse=", "))
-			
-				# add to the table of problematic cases
-				tab <- rbind(tab, data[idx,], rep(NA,ncol(data)))
-				count <- count + 1
 				
-				# add to the conversion map
-				ids <- as.character(ids)
-				if(length(conv.map)==0) 
-					ridx <- c()
+				# check if not a confirmed homonym
+				if(all(ids %in% homon.list))
+					tlog(8,"But they are already confirmed true homonyms (manually)")
+				
 				else
-					ridx <- which(sapply(conv.map, function(v) length(intersect(v,ids))>0))	
-				if(length(ridx)>1)
-					stop("Problem with the map of equivalent ids: several groups of ids would be equivalent (",paste(ids,collapse=","),")")
-				else if(length(ridx)==1)
-					conv.map[[ridx]] <- as.character(sort(as.integer(unique(c(conv.map[[ridx]],ids)))))
-				else if(length(ridx)==0)
-					conv.map[[length(conv.map)+1]] <- as.character(sort(as.integer(unique(ids))))
+				{	# add to the table of problematic cases
+					tab <- rbind(tab, data[idx,], rep(NA,ncol(data)))
+					count <- count + 1
+					
+					# add to the conversion map
+					ids <- as.character(ids)
+					if(length(conv.map)==0) 
+						ridx <- c()
+					else
+						ridx <- which(sapply(conv.map, function(v) length(intersect(v,ids))>0))	
+					if(length(ridx)>1)
+						stop("Problem with the map of equivalent ids: several groups of ids would be equivalent (",paste(ids,collapse=","),")")
+					else if(length(ridx)==1)
+						conv.map[[ridx]] <- as.character(sort(as.integer(unique(c(conv.map[[ridx]],ids)))))
+					else if(length(ridx)==0)
+						conv.map[[length(conv.map)+1]] <- as.character(sort(as.integer(unique(ids))))
+				}
 			}
 		}
 	}

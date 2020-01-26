@@ -160,4 +160,4 @@ source("src/common/include.R")
 # ex: mandat CM + mandat M équivalent (issus des deux tables)
 
 # lors de la recherche de personnes ayant plusieurs id, il ne faut pas fusionner
-# ceux qui ont des mandats incompatibles
+# ceux qui ont des mandats incompatibles >> faire un test ad hoc pour vérifier ça, puis intégrer au test qui fait la fusion
