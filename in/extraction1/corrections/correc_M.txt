@@ -33,3 +33,5 @@ Id	Nom	Prenom	Attribut	ValAvt	ValApr	Commentaire
 1077876	DASTUGUE	Gilbert	Date de fin de la fonction	12/6/0014	12/6/2014	Typo dans la date
 1079145	BOSC	Marie-Claude	Date de fin de la fonction	20/7/0012	20/7/2012	Typo dans la date
 1144788	TROUY	Noël	Date de naissance	1/1/1900	27/2/1949	Typo dans la date, et il est en double, cf id 1486017
+151263	ROZE	Eric	Date de fin de la fonction	28/3/2020	NA	Date incorrecte, située dans le futur
+871717	JACARIA	Véronique	Date de fin de la fonction	28/3/2020	NA	Date incorrecte, située dans le futur

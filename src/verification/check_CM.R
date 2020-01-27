@@ -19,6 +19,7 @@ source("src/verification/test_duplicates.R")
 
 # set up the extraction
 extraction <- 1 # 1 or 2
+correct.data <- TRUE
 
 # start logging
 start.rec.log(text=paste0("CM",extraction))
@@ -28,7 +29,6 @@ out.folder <- if(extraction==1) FOLDER_OUT_CM else FOLDER_OUT_CM2
 dir.create(path=out.folder, showWarnings=FALSE, recursive=TRUE)
 
 # load the data
-correct.data <- TRUE
 data <- if(extraction==1) load.cm.data(correct.data) else load.cm2.data(correct.data) 
 
 # summarizes each column separately

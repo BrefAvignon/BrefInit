@@ -18,6 +18,7 @@ source("src/verification/test_duplicates.R")
 
 # set up the extraction
 extraction <- 1 # 1 or 2
+correct.data <- TRUE
 
 # start logging
 start.rec.log(text=paste0("CR",extraction))
@@ -27,7 +28,6 @@ out.folder <- if(extraction==1) FOLDER_OUT_CR else FOLDER_OUT_CR2
 dir.create(path=out.folder, showWarnings=FALSE, recursive=TRUE)
 
 # load the data
-correct.data <- TRUE
 data <- if(extraction==1) load.cr.data(correct.data) else load.cr2.data(correct.data) 
 
 # summarizes each column separately
@@ -36,11 +36,11 @@ tlog(0,"Examining each column separately")
 
 # check dates
 tlog(0,"Checking dates")
-#test.col.dates.cr(data=data, out.folder=out.folder)
+test.col.dates.cr(data=data, out.folder=out.folder)
 
 # check locations
 tlog(0,"Checking locations")
-test.col.locations(data=data, out.folder=out.folder)
+#test.col.locations(data=data, out.folder=out.folder)
 
 # check overlapping mandates for the same position
 tlog(0,"Checking overlapping mandates for the same position")

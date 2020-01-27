@@ -286,6 +286,26 @@ load.data <- function(filenames, col.map, correc.file, equiv.ids.file, correct.d
 
 
 #############################################################################################
+# Detect the rows that are considered as similar in the table, and merge them. Generally 
+# speaking, two rows are similar if they have the same values for certain columns of interest,
+# and compatible values for the rest (eg. one cell empty in a row whereas it has a proper
+# value in the other). The merging is performed by keeping the most complete row and setting
+# its missing values with those found in the other row.
+#
+# data: the data table.
+#
+# returns: the table with the merged similar rows.
+#############################################################################################
+merge.similar.rows <- function(data)
+{	
+	
+	return(data)
+}
+
+
+
+
+#############################################################################################
 # Inserts a new column in the table, that contains the unique id associated to each canton.
 # Otherwise, their code is not unique, there is no match between codes and names.
 #
@@ -361,9 +381,14 @@ load.cd.data <- function(correct.data)
 	# load the data
 	data <- load.data(filenames=FILES_TAB_CD, col.map=col.map, correc.file=FILE_CORREC_CD, equiv.ids.file=FILE_EQUIV_IDS, correct.data)
 	
-	# add a unique id for cantons
+	# perform additional corrections
 	if(correct.data)
+	{	# add a unique id for cantons
 		data <- insert.unique.canton.id(data=data, file.canton.ids=FILE_CANTON_IDS)
+		
+		# merge similar rows
+		data <- merge.similar.rows(data=data)
+	}
 	
 	return(data)
 }
@@ -400,9 +425,14 @@ load.cd2.data <- function(correct.data)
 	# load the data
 	data <- load.data(filenames=FILES_TAB_CD2, col.map=col.map, correc.file=FILE_CORREC_CD2, equiv.ids.file=FILE_EQUIV_IDS2, correct.data) 
 	
-	# add a unique id for cantons
+	# perform additional corrections
 	if(correct.data)
+	{	# add a unique id for cantons
 		data <- insert.unique.canton.id(data=data, file.canton.ids=FILE_CANTON_IDS)
+		
+		# merge similar rows
+		data <- merge.similar.rows(data=data)
+	}
 	
 	return(data)
 }
@@ -466,6 +496,12 @@ load.cm.data <- function(correct.data)
 	else
 		data <- data[,norm.cols]
 	
+	# perform additional corrections
+	if(correct.data)
+	{	# merge similar rows
+		data <- merge.similar.rows(data=data)
+	}
+	
 	return(data)
 }
 
@@ -506,6 +542,12 @@ load.cm2.data <- function(correct.data)
 	# load the data
 	data <- load.data(filenames=FILES_TAB_CM2, col.map=col.map, correc.file=FILE_CORREC_CM2, equiv.ids.file=FILE_EQUIV_IDS2, correct.data)
 	
+	# perform additional corrections
+	if(correct.data)
+	{	# merge similar rows
+		data <- merge.similar.rows(data=data)
+	}
+	
 	return(data)
 }
 
@@ -545,6 +587,12 @@ load.cr.data <- function(correct.data)
 	
 	# load the data
 	data <- load.data(filenames=FILES_TAB_CR, col.map=col.map, correc.file=FILE_CORREC_CR, equiv.ids.file=FILE_EQUIV_IDS, correct.data)
+	
+	# perform additional corrections
+	if(correct.data)
+	{	# merge similar rows
+		data <- merge.similar.rows(data=data)
+	}
 	
 	return(data)
 }
@@ -598,6 +646,12 @@ load.cr2.data <- function(correct.data)
 	else
 		data <- data[,norm.cols]
 	
+	# perform additional corrections
+	if(correct.data)
+	{	# merge similar rows
+		data <- merge.similar.rows(data=data)
+	}
+	
 	return(data)
 }
 
@@ -638,6 +692,12 @@ load.d.data <- function(correct.data)
 	# load the data
 	data <- load.data(filenames=FILES_TAB_D, col.map=col.map, correc.file=FILE_CORREC_D, equiv.ids.file=FILE_EQUIV_IDS, correct.data)
 	
+	# perform additional corrections
+	if(correct.data)
+	{	# merge similar rows
+		data <- merge.similar.rows(data=data)
+	}
+	
 	return(data)
 }
 
@@ -671,6 +731,12 @@ load.de.data <- function(correct.data)
 	
 	# load the data
 	data <- load.data(filenames=FILES_TAB_DE, col.map=col.map, correc.file=FILE_CORREC_DE, equiv.ids.file=FILE_EQUIV_IDS, correct.data)
+	
+	# perform additional corrections
+	if(correct.data)
+	{	# merge similar rows
+		data <- merge.similar.rows(data=data)
+	}
 	
 	return(data)
 }
@@ -724,6 +790,12 @@ load.epci.data <- function(correct.data)
 		stop("Problem with the number of columns when reordering table EPCI columns")
 	else
 		data <- data[,norm.cols]
+	
+	# perform additional corrections
+	if(correct.data)
+	{	# merge similar rows
+		data <- merge.similar.rows(data=data)
+	}
 	
 	return(data)
 }
@@ -784,6 +856,12 @@ load.m.data <- function(correct.data)
 	else
 		data <- data[,norm.cols]
 	
+	# perform additional corrections
+	if(correct.data)
+	{	# merge similar rows
+		data <- merge.similar.rows(data=data)
+	}
+	
 	return(data)
 }
 
@@ -821,6 +899,12 @@ load.s.data <- function(correct.data)
 	
 	# load the data
 	data <- load.data(filenames=FILES_TAB_S, col.map=col.map, correc.file=FILE_CORREC_S, equiv.ids.file=FILE_EQUIV_IDS, correct.data)
+	
+	# perform additional corrections
+	if(correct.data)
+	{	# merge similar rows
+		data <- merge.similar.rows(data=data)
+	}
 	
 	return(data)
 }

@@ -40,6 +40,8 @@ Id	Nom	Prenom	Attribut	ValAvt	ValApr	Commentaire
 1277554	MOULIN	Geneviève	Date de début de la fonction	8/1/0018	23/03/2014	Pas sûr, à voir
 1317870	FAVRE	Aurélie	Date de début de la fonction	28/8/0014	28/8/2014	Typo dans la date
 1352560	COCHONNEAU	Virginie	Date de fin du mandat	29/1/0201	29/1/2016	Arbitraire, à vérifier
+151263	ROZE	Eric	Date de fin de la fonction	28/3/2020	NA	Date incorrecte, située dans le futur
+871717	JACARIA	Véronique	Date de fin de la fonction	28/3/2020	NA	Date incorrecte, située dans le futur
 NA	NA	NA	Libelle commune	LANTOSQUE PELASQUE SECTION 2	LANTOSQUE	On ignore les subdivisions de la commune
 NA	NA	NA	Libelle commune	CHAUVINCOURT PROVEMONT SECTION 2	CHAUVINCOURT PROVEMONT	On ignore les subdivisions de la commune
 NA	NA	NA	Libelle commune	CHAUVINCOURT PROVEMONT SECTION 1	CHAUVINCOURT PROVEMONT	On ignore les subdivisions de la commune

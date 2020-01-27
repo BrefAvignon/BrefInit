@@ -59,8 +59,21 @@ test.col.dates.generic <- function(data, out.folder)
 	# comparing mandate boundaries
 	{	tlog(4,"Comparing start/end dates for mandates")
 		
+		# no mandate dates at all
+		idx <- which(is.na(data[,COL_ATT_MDT_DBT]) & is.na(data[,COL_ATT_MDT_FIN]))
+		if(length(idx)>0)
+		{	tmp <- cbind(idx,data[idx,])
+			colnames(tmp)[1] <- "Ligne"
+			tab.file <- file.path(out.folder,paste0("mandat_dates_problems_missing.txt"))
+			tlog(8,"Recording in file \"",tab.file,"\"")
+			write.table(x=tmp,file=tab.file,
+#					fileEncoding="UTF-8",
+					row.names=FALSE,col.names=TRUE)
+		}
+		
 		# start after end, or no start at all (=NA)
-		idx <- which(data[,COL_ATT_MDT_DBT]>data[,COL_ATT_MDT_FIN] | is.na(data[,COL_ATT_MDT_DBT]))
+		idx <- which(data[,COL_ATT_MDT_DBT]>data[,COL_ATT_MDT_FIN] 
+						| is.na(data[,COL_ATT_MDT_DBT]) & !is.na(data[,COL_ATT_MDT_FIN]))
 		tlog(6,"Found ",length(idx)," mandate(s) starting after they end")
 		if(length(idx)>0)
 		{	tmp <- cbind(idx,data[idx,])
@@ -188,7 +201,7 @@ test.col.dates.pre.rne <- function(data, out.folder)
 # data: table containing the data.
 # out.folder: folder where to output the results.
 #############################################################################################
-test.col.dates.absence <- function(data, out.folder)
+test.col.dates.nofun <- function(data, out.folder)
 {	tlog(2,"Identifying functions without dates")
 	
 	# retrieve all rows with a non-NA function and no dates
@@ -200,7 +213,7 @@ test.col.dates.absence <- function(data, out.folder)
 	{	# build the table and write it
 		tmp <- cbind(idx, data[idx,])
 		colnames(tmp)[1] <- "Ligne"
-		tab.file <- file.path(out.folder,"fonction_dates_problems_missing.txt")
+		tab.file <- file.path(out.folder,"fonction_lib_problems_missing.txt")
 		tlog(4,"Recording in file \"",tab.file,"\"")
 		write.table(x=tmp,file=tab.file,
 #			fileEncoding="UTF-8",
@@ -286,7 +299,7 @@ test.col.dates.cd <- function(data, out.folder)
 {	# generic tests
 	test.col.dates.generic(data, out.folder)
 	test.col.dates.pre.rne(data, out.folder)
-	test.col.dates.absence(data, out.folder)
+	test.col.dates.nofun(data, out.folder)
 	
 	# election dates
 #	test.col.dates.election(data, out.folder, election.file=FILE_VERIF_DATES_CD)
@@ -329,7 +342,7 @@ test.col.dates.cm <- function(data, out.folder)
 {	# generic tests
 	test.col.dates.generic(data, out.folder)
 	test.col.dates.pre.rne(data, out.folder)
-	test.col.dates.absence(data, out.folder)
+	test.col.dates.nofun(data, out.folder)
 	
 	# election dates
 	test.col.dates.election(data, out.folder, election.file=FILE_VERIF_DATES_CM)
@@ -366,7 +379,7 @@ test.col.dates.cr <- function(data, out.folder)
 {	# generic tests
 	test.col.dates.generic(data, out.folder)
 	test.col.dates.pre.rne(data, out.folder)
-	test.col.dates.absence(data, out.folder)
+	test.col.dates.nofun(data, out.folder)
 	
 	# election dates
 	test.col.dates.election(data, out.folder, election.file=FILE_VERIF_DATES_CR)
@@ -405,7 +418,7 @@ test.col.dates.d <- function(data, out.folder)
 {	# generic tests
 	test.col.dates.generic(data, out.folder)
 	test.col.dates.pre.rne(data, out.folder)
-	test.col.dates.absence(data, out.folder)
+	test.col.dates.nofun(data, out.folder)
 	
 	# election dates
 	test.col.dates.election(data, out.folder, election.file=FILE_VERIF_DATES_D)
@@ -487,7 +500,7 @@ test.col.dates.epci <- function(data, out.folder)
 {	# generic tests
 	test.col.dates.generic(data, out.folder)
 	test.col.dates.pre.rne(data, out.folder)
-	test.col.dates.absence(data, out.folder)
+	test.col.dates.nofun(data, out.folder)
 }
 
 
@@ -504,7 +517,7 @@ test.col.dates.s <- function(data, out.folder)
 {	# generic tests
 	test.col.dates.generic(data, out.folder)
 	test.col.dates.pre.rne(data, out.folder)
-	test.col.dates.absence(data, out.folder)
+	test.col.dates.nofun(data, out.folder)
 	
 	# election dates
 #	test.col.dates.election(data, out.folder, election.file=FILE_VERIF_DATES_S)

@@ -18,6 +18,7 @@ source("src/verification/test_duplicates.R")
 
 # set up the extraction
 extraction <- 1 # 1 or 2
+correct.data <- TRUE
 
 # start logging
 start.rec.log(text="M")
@@ -27,16 +28,15 @@ out.folder <- FOLDER_OUT_M
 dir.create(path=out.folder, showWarnings=FALSE, recursive=TRUE)
 
 # load the data
-correct.data <- TRUE
 data <- load.m.data(correct.data)
 
 # summarizes each column separately
 tlog(0,"Examining each column separately")
-sumup.cols(data=data, out.folder=out.folder)
+#sumup.cols(data=data, out.folder=out.folder)
 
 # check dates
 tlog(0,"Checking dates")
-#test.col.dates.cm(data=data, out.folder=out.folder)
+test.col.dates.cm(data=data, out.folder=out.folder)
 
 # check locations
 tlog(0,"Checking locations")

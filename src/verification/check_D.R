@@ -18,6 +18,7 @@ source("src/verification/test_duplicates.R")
 
 # set up the extraction
 extraction <- 1 # 1 or 2
+correct.data <- TRUE
 
 # start logging
 start.rec.log(text="D")
@@ -27,7 +28,6 @@ out.folder <- FOLDER_OUT_D
 dir.create(path=out.folder, showWarnings=FALSE, recursive=TRUE)
 
 # load the data
-correct.data <- TRUE
 data <- load.d.data(correct.data)
 
 # summarizes each column separately
@@ -36,11 +36,11 @@ tlog(0,"Examining each column separately")
 
 # check dates
 tlog(0,"Checking dates")
-#test.col.dates.d(data=data, out.folder=out.folder)
+test.col.dates.d(data=data, out.folder=out.folder)
 
 # check locations
 tlog(0,"Checking locations")
-test.col.locations(data=data, out.folder=out.folder)
+#test.col.locations(data=data, out.folder=out.folder)
 
 # check overlapping mandates for the same position
 tlog(0,"Checking overlapping mandates for the same position")
@@ -48,7 +48,7 @@ tlog(0,"Checking overlapping mandates for the same position")
 
 # look for duplicates (not really necessary to do that here, better after the merge)
 tlog(0,"Looking for duplicates")
-test.duplicates(data=data, loc.col=COL_ATT_DPT_CODE, out.folder=out.folder)
+#test.duplicates(data=data, loc.col=COL_ATT_DPT_CODE, out.folder=out.folder)
 
 # plots the number of persons over time
 tlog(0,"Ploting the number of simultaneously hold positions over time")
