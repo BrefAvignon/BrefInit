@@ -23,7 +23,7 @@ start.rec.log(text="MERGE")
 
 #############################################################################################
 tlog(0,"Loading all the data tables")
-correct.data <- FALSE
+correct.data <- TRUE
 
 # load the departmental councilor table
 tlog(2,"Loading departmental data")

@@ -216,7 +216,7 @@ test.multiple.id <- function(data, loc.col=NA, out.folder)
 	# only if some duplicates were found:
 	if(nrow(tab)>0)
 	{	# record the table of problematic cases
-		tab.file <- file.path(out.folder,"elu_id_problems_multiple_names.txt")
+		tab.file <- file.path(out.folder,"elu_name_problems_multiple_ids.txt")
 		tlog(2,"Recording in file \"",tab.file,"\"")
 		write.table(x=tab, file=tab.file,
 #				fileEncoding="UTF-8",
