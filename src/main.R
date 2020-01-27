@@ -16,6 +16,19 @@ source("src/common/include.R")
 
 # install stringdist
 
+
+# TODO
+# 1) fusionner dans les tables individuelles les lignes pareilles à un epsilon près (à définir)
+# 2) étudier la façon dont certaines lignes incluent plusieurs mandats, ou le contraire
+#    éprouver l'hypothèse voulant que 1 ligne = 1 fonction (ou absence de)
+# 3) forcer le découpage des lignes recouvrant plusieurs mandats
+#    >> va requérir de tracer les positions pour CD et S.
+#    >> créer un nouveau champ pour stocker l'information ?
+# 4) arrondir les bornes de mandats pour éviter les problèmes (recouvrement, mandats de 1 jour, etc.)
+#    certains de ces problèmes peuvent être issus du découpage forcé des lignes 
+
+
+
 # Points d'implémentation
 #
 # - vérifier qu'un mandat ne traverse pas plusieurs élections :
