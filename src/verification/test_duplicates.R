@@ -186,12 +186,19 @@ test.multiple.id <- function(data, loc.col=NA, out.folder)
 			if(length(ids)>1)
 			{	tlog(8,"Found ",length(ids)," different ids: ",paste(ids,collapse=", "))
 				
-				# check if not a confirmed homonym
+				# check whether they are confirmed homonyms
 				if(all(ids %in% homon.list))
-					tlog(8,"But they are already confirmed true homonyms (manually)")
+					# NOTE: this is a bit of a simplification: should actually check if all pairs
+					# of ids are in the table of actual homonyms, and keep the pairs that
+					# are not to put them in the generated file of possibly equivalent ids
+					tlog(8,"But they are already (manually) confirmed true homonyms")
 				
 				else
-				{	# add to the table of problematic cases
+				{	# check whether these ids have incompatible mandates
+					# >> actually even a single id may have incompatible mandates due to the
+					# way the data are structured, so we eventually did not perform this test 
+					
+					# add to the table of problematic cases
 					tab <- rbind(tab, data[idx,], rep(NA,ncol(data)))
 					count <- count + 1
 					

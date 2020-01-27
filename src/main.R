@@ -81,19 +81,19 @@ source("src/common/include.R")
 
 # NOMS PROPRES
 # - mettre en place la comparaison flexible des noms propres
+# 	>> même personne, prénom légèrement différent
+#	   1191040 vs 1191041
 
 # GRAPHIQUES
 # - intégrer le nombre attendu de mandats dans les graphiques temporels
 
 # BESOINS
 # - liste des cas de figure complètement interdits en termes de cumul de mandat = quelles sont les positions impossibles à cumuler ?
-#   - on ne peut pas occuper deux positions de même type en même temps (>> semble testable)
-#   - cumul de fonctions : on ne peut pas être président ou maire dans deux conseils différents (>> test reporté à plus tard)
+#   >> on ne peut pas occuper deux positions de même type en même temps (>> semble testable)
+#   >> cumul de fonctions : on ne peut pas être président ou maire dans deux conseils différents (>> test reporté à plus tard)
 
 # Cas problématiques détectés
-# - Mêmes nom, prénom, ddn mais ids différents
-#   >> vrais ou faux homonymes ? se référer au territoire et faire une vérification manuelle
-# - Personne occupant des positions incompatibles
+# - Personne (même id) occupant des positions incompatibles
 #   >> hypothèse : homonymes complets (ou pas) victimes d'une erreur manuelle et rattachés au même ID
 # - maire délégué : doublons ou le même mandat apparait 2 fois, une fois en tant que maire délégué ET une fois en tant qu'adjoint
 # - Dates pré-2001 sont réparties dans l'année de façon hétérogène : pq ? remplacements ?
@@ -104,7 +104,7 @@ source("src/common/include.R")
 # fonction_dates_problems_mandate
 # 1. >> fonction se prolonge au delà de la fin du mandat
 #       hypothèse : il y a un mandat suivant, et la fonction devrait y etre aussi
-#                   l'ont il indiquée dans ce second mandat ?
+#                   l'ont-il indiquée dans ce second mandat ?
 #		solution : découper la fonction sur les deux mandats
 # 2. erreur marginale
 # 3. mandat prend fin avant la fin normale, et la fonction va au bout
@@ -118,7 +118,7 @@ source("src/common/include.R")
 
 # remarques étudiants BI
 # - Certaines positions sont laissées inoccupées, par ex. commune de Saline n'a pas de maire pdt plusieurs semaines
-#   et en même temps, la commune présente un recouvrement de type: plusieurs maires à la fois
+#   et en même temps, la commune présente un recouvrement du type: plusieurs maires à la fois
 #   >> détecter ces vacances et les exploiter pour résoudre ce type de recouvrement ?
 
 # Problèmes détectés
@@ -134,7 +134,7 @@ source("src/common/include.R")
 
 
 # divers
-# sortir la chronologie de toutes les positions électives
+# sortir la chronologie de toutes les positions électives pour chaque élu
 # >> identifier les trous et superpositions
 # pareil pour les fonctions 
 # taux de renouvellement sur une période donnée
@@ -147,9 +147,6 @@ source("src/common/include.R")
 # - mettre le focus sur un poste donné plutot que sur un individu donné
 #   (séquence des personnes ou classes de personnes ayant occupé un poste donné)
 
-# même personne, prénom légèrement différent
-# 1191040 vs 1191041
-
 # vérifier si les triple-homonymes le sont vraiment
 # pour les incompatibilités de mandats (plusieurs mandats incompatibles en même temps)
 # >> vérifier si ce ne sont pas simplement plusieurs homonymes réels 
@@ -159,5 +156,7 @@ source("src/common/include.R")
 # il faut les fusionner
 # ex: mandat CM + mandat M équivalent (issus des deux tables)
 
-# lors de la recherche de personnes ayant plusieurs id, il ne faut pas fusionner
-# ceux qui ont des mandats incompatibles >> faire un test ad hoc pour vérifier ça, puis intégrer au test qui fait la fusion
+# lors de la recherche de personnes ayant plusieurs ids, il ne faut pas fusionner ceux qui ont des mandats incompatibles
+# >> faire un test ad hoc pour vérifier ça, puis intégrer au test qui fait la fusion
+# mais même une id donnée peut avoir plusieurs mandats incompatibles, à cause des erreurs présentes dans la BD
+# >> corriger d'abord ces erreurs ? 
