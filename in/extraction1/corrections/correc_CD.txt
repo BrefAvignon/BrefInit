@@ -7,3 +7,5 @@ NA	NA	NA	Libellé du canton	LE TAMPON 2	TAMPON 2	Article superflu
 NA	NA	NA	Libellé du canton	LES ABYMES 1	ABYMES 1	Article superflu
 NA	NA	NA	Libellé du canton	LES ABYMES 2	ABYMES 2	Article superflu
 NA	NA	NA	Libellé du canton	LES ABYMES 3	ABYMES 3	Article superflu
+5748	DUROVRAY	François	Date fin mandat	1/4/2015	NA	Date incorrecte remplacée par NA pour fusion ultérieure
+5748	DUROVRAY	François	Date fin fonction	1/4/2015	NA	Date incorrecte remplacée par NA pour fusion ultérieure

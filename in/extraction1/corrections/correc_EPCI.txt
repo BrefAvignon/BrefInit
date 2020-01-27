@@ -9,6 +9,7 @@ Id	Nom	Prenom	Attribut	ValAvt	ValApr	Commentaire
 842425	OUKAS	Vanessa	Date de début de la fonction	19/10/1017	23/3/2014	A verifier
 1178260	PENICHON	Bruno	Date de fin de la fonction	12/9/0009	12/9/2009	Typo dans la date
 1454255	DANILOFF	Véronique	Date de début de la fonction	19/10/1017	23/3/2014	A verifier
+28252	PERAZIO	Bernard	Date de début de la fonction	1/3/2016	9/4/2014	Date incorrecte, estimation
 NA	NA	NA	Libelle commune	MARSEILLE ARRVILL 2	MARSEILLE	On ignore les subdivisions de Marseille
 NA	NA	NA	Libelle commune	MARSEILLE SECTEUR 1	MARSEILLE	On ignore les subdivisions de Marseille
 NA	NA	NA	Libelle commune	MARSEILLE SECTEUR 2	MARSEILLE	On ignore les subdivisions de Marseille

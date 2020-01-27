@@ -35,3 +35,5 @@ Id	Nom	Prenom	Attribut	ValAvt	ValApr	Commentaire
 1144788	TROUY	Noël	Date de naissance	1/1/1900	27/2/1949	Typo dans la date, et il est en double, cf id 1486017
 151263	ROZE	Eric	Date de fin de la fonction	28/3/2020	NA	Date incorrecte, située dans le futur
 871717	JACARIA	Véronique	Date de fin de la fonction	28/3/2020	NA	Date incorrecte, située dans le futur
+1198393	LE BAS	Christian	Date fin mandat	8/4/2018	NA	Date incorrecte remplacée par NA pour fusion ultérieure
+1518337	GABAUDAN	Jean-Pierre	Date fin mandat	19/2/2017	NA	Date incorrecte remplacée par NA pour fusion ultérieure
