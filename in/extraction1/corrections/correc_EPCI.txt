@@ -68,3 +68,103 @@ NA	NA	NA	NA	Numero SIREN	20006393	200006393	numéro SIREN incorrect (syntaxiquem
 NA	NA	NA	NA	Numero SIREN	241200633	248100703	EPCI avec plusieurs SIREN successifs, on garde le dernier
 NA	NA	NA	NA	Numero SIREN	200006880	244900627	EPCI avec plusieurs SIREN successifs, on garde le dernier
 NA	NA	NA	NA	Numero SIREN	241100643	248400145	EPCI avec plusieurs SIREN successifs, on garde le dernier
+7943	1219300	CHABAL	JEAN PAUL	Date fin mandat	31/12/2016	NA	Corrigé pour mandat en cours
+8183	1219747	COIRATON	EMMANUEL	Date fin mandat	31/12/2016	NA	Corrigé pour mandat en cours
+8781	891142	FOUGEIROL	JULIEN	Date fin mandat	31/12/2016	NA	Corrigé pour mandat en cours
+13783	642736	BETEILLE	ERIC	Date fin mandat	31/12/2016	NA	Corrigé pour mandat en cours
+14783	1233602	PAULAT	JEAN LUC	Date fin mandat	5/11/2015	NA	Corrigé pour mandat en cours
+14918	1233774	CAMPREDON	GENEVIEVE	Date fin mandat	5/11/2015	NA	Corrigé pour mandat en cours
+14926	1233775	COLIN	LAURE	Date fin mandat	5/11/2015	NA	Corrigé pour mandat en cours
+17005	737948	GAUTIER	LAURENT	Date fin mandat	31/12/2016	NA	Corrigé pour mandat en cours
+30744	1271966	NEVERS EPOUSE CHOULET	DANIELE	Date fin mandat	1/1/2017	NA	Corrigé pour mandat en cours
+31940	630098	BARBE	MARC ANDRE	Date fin mandat	31/12/2013	NA	Corrigé pour mandat en cours
+31942	944178	BERNARD	SOPHIE	Date fin mandat	31/12/2013	NA	Corrigé pour mandat en cours
+31944	1275257	BOUVIER	ERIC	Date fin mandat	31/12/2013	NA	Corrigé pour mandat en cours
+31946	630116	CUER	GERARD	Date fin mandat	31/12/2013	NA	Corrigé pour mandat en cours
+31948	1169945	MOULIN	CORINNE	Date fin mandat	31/12/2013	NA	Corrigé pour mandat en cours
+31961	1275313	CHALAMET	PATRICK	Date fin mandat	31/12/2013	NA	Corrigé pour mandat en cours
+32119	944579	BERNON	JEAN PIERRE	Date fin mandat	31/12/2013	NA	Corrigé pour mandat en cours
+32121	944577	BLANC	NICOLE	Date fin mandat	31/12/2013	NA	Corrigé pour mandat en cours
+32123	944481	CADIER	OLIVIER	Date fin mandat	31/12/2013	NA	Corrigé pour mandat en cours
+32125	630277	GRESSE	FRANCIS	Date fin mandat	31/12/2013	NA	Corrigé pour mandat en cours
+32129	1275788	LACHENS	ANNE	Date fin mandat	31/12/2013	NA	Corrigé pour mandat en cours
+32131	1275789	MASSON	LAURENT	Date fin mandat	31/12/2013	NA	Corrigé pour mandat en cours
+32132	1275800	MORENAS	GENEVIEVE	Date fin mandat	31/12/2013	NA	Corrigé pour mandat en cours
+32134	1275787	NELSON	NADIA	Date fin mandat	31/12/2013	NA	Corrigé pour mandat en cours
+32136	630276	PRIOTTO	CHRISTINE	Date fin mandat	31/12/2013	NA	Corrigé pour mandat en cours
+32140	1275799	VALENTIN	MICHEL	Date fin mandat	31/12/2013	NA	Corrigé pour mandat en cours
+32174	943582	SIMIAN	FABIENNE	Date fin mandat	31/12/2013	NA	Corrigé pour mandat en cours
+32318	945437	BERRARD	PHILIPPE	Date fin mandat	31/12/2013	NA	Corrigé pour mandat en cours
+32421	142654	PALLUEL	ROBERT	Date fin mandat	31/12/2013	NA	Corrigé pour mandat en cours
+32619	1169252	BOFFARD	HENRI	Date fin mandat	31/12/2013	NA	Corrigé pour mandat en cours
+44336	656203	TOURET	PATRICK	Date fin mandat	17/9/2002	NA	Corrigé pour mandat en cours
+49690	498671	SAILLET	NADINE	Date fin mandat	31/3/2014	NA	Corrigé pour mandat en cours
+63392	273506	ROUXEL	JEAN CHRISTOPHE	Date fin mandat	7/4/2014	NA	Corrigé pour mandat en cours
+68311	383558	OLIVIER	JEAN PIERRE	Date fin mandat	30/3/2014	NA	Corrigé pour mandat en cours
+68339	383878	BOUCHET	HERVE	Date fin mandat	24/3/2014	NA	Corrigé pour mandat en cours
+68352	1028296	GERMERIE	PATRICE	Date fin mandat	24/3/2014	NA	Corrigé pour mandat en cours
+68668	436007	RUAULT	BRIGITTE	Date fin mandat	24/3/2014	NA	Corrigé pour mandat en cours
+68772	1029719	COGET	FERNAND	Date fin mandat	24/3/2014	NA	Corrigé pour mandat en cours
+68822	1028965	CHAUVIN	CHRISTOPHE	Date fin mandat	24/3/2014	NA	Corrigé pour mandat en cours
+68841	1029206	MOCHER	FREDERIC	Date fin mandat	24/3/2014	NA	Corrigé pour mandat en cours
+68881	52200	DABO	STEPHANE	Date fin mandat	24/3/2014	NA	Corrigé pour mandat en cours
+83457	1402668	DEWAELE	MONIQUE	Date fin mandat	23/3/2014	NA	Corrigé pour mandat en cours
+90724	1417598	SURJUS	ETIENNE	Date fin mandat	31/12/2014	NA	Corrigé pour mandat en cours
+90749	171191	TAURINYA	JACQUES	Date fin mandat	31/12/2014	NA	Corrigé pour mandat en cours
+90898	1418188	PAILLES	ROGER	Date fin mandat	31/12/2014	NA	Corrigé pour mandat en cours
+90904	1418206	QUES	LOUIS	Date fin mandat	31/12/2014	NA	Corrigé pour mandat en cours
+90906	820762	DORANDEU	PHILIPPE	Date fin mandat	31/12/2014	NA	Corrigé pour mandat en cours
+90914	1418235	PAULO	JEAN MICHEL	Date fin mandat	31/12/2014	NA	Corrigé pour mandat en cours
+90937	171127	VILLELONGUE	JEAN PIERRE	Date fin mandat	31/12/2014	NA	Corrigé pour mandat en cours
+90968	1418403	CANAL	ANNE MARIE	Date fin mandat	31/12/2014	NA	Corrigé pour mandat en cours
+91205	171062	JOSSE	ANDRE	Date fin mandat	31/12/2014	NA	Corrigé pour mandat en cours
+91316	283	BLANC	PAUL	Date fin mandat	31/12/2014	NA	Corrigé pour mandat en cours
+91319	1419298	SALIES	JEAN LOUIS	Date fin mandat	31/12/2014	NA	Corrigé pour mandat en cours
+91356	1081130	PIGNOL	MARIE THERESE	Date fin mandat	31/12/2014	NA	Corrigé pour mandat en cours
+91369	171011	MONSERRAT	JEAN MARC	Date fin mandat	31/12/2014	NA	Corrigé pour mandat en cours
+91389	1180305	CASENOVE	MARIE THERESE	Date fin mandat	31/12/2014	NA	Corrigé pour mandat en cours
+91390	1081403	DRAGUE	RENE	Date fin mandat	31/12/2014	NA	Corrigé pour mandat en cours
+91391	1419558	MARTIN	MARIE FRANCE	Date fin mandat	31/12/2014	NA	Corrigé pour mandat en cours
+91392	1081447	MENDOZA	JEAN PIERRE	Date fin mandat	31/12/2014	NA	Corrigé pour mandat en cours
+91393	170992	PAILLES	PIERRE	Date fin mandat	31/12/2014	NA	Corrigé pour mandat en cours
+96421	106577	PAGNEUX	JEAN PIERRE	Date fin mandat	1/1/2017	NA	Corrigé pour mandat en cours
+99691	44035	LETELLIER CANU	MICHEL	Date fin mandat	21/3/2014	NA	Corrigé pour mandat en cours
+107513	56019	JOLY	ALEXANDRE	Date fin mandat	31/12/2015	NA	Corrigé pour mandat en cours
+108160	1120074	AUBRUN	EMMANUELLE	Date fin mandat	31/12/2015	NA	Corrigé pour mandat en cours
+108162	1460983	BARDOT VINET	MARTINE	Date fin mandat	31/12/2015	NA	Corrigé pour mandat en cours
+108164	1460986	CARMIER	DAVID	Date fin mandat	31/12/2015	NA	Corrigé pour mandat en cours
+108166	185335	DE LACOSTE LAREYMONDIE	ANTOINE	Date fin mandat	31/12/2015	NA	Corrigé pour mandat en cours
+108168	1460984	DUBLANCHE	ALEXANDRA	Date fin mandat	31/12/2015	NA	Corrigé pour mandat en cours
+108170	54515	FOND	PIERRE	Date fin mandat	31/12/2015	NA	Corrigé pour mandat en cours
+108172	185337	GODART	RAYNALD	Date fin mandat	31/12/2015	NA	Corrigé pour mandat en cours
+108174	185325	GRANIE	FRANCINE	Date fin mandat	31/12/2015	NA	Corrigé pour mandat en cours
+108176	1460982	HASMAN	FREDERIC	Date fin mandat	31/12/2015	NA	Corrigé pour mandat en cours
+108178	1195499	LIM	LINA	Date fin mandat	31/12/2015	NA	Corrigé pour mandat en cours
+108180	185329	PRIGENT	PIERRE	Date fin mandat	31/12/2015	NA	Corrigé pour mandat en cours
+108182	1460985	SEVIN	FRANCIS	Date fin mandat	31/12/2015	NA	Corrigé pour mandat en cours
+108184	1118606	VITRAC POUZOULET	MICHELE	Date fin mandat	31/12/2015	NA	Corrigé pour mandat en cours
+121678	163234	MOUILLESEAUX	GUY	Date fin mandat	18/1/2017	NA	Corrigé pour mandat en cours
+32345	1276658	BELHADJ	MARIANNE	Date debut mandat	NA	13/2/2018	Corrigé pour cohérence
+32575	1277337	MERCIER	MICHEL	Date debut mandat	NA	12/5/2018	Corrigé pour cohérence
+81063	1059762	BARBE	BERTRAND	Date debut mandat	NA	1/1/2017	Corrigé pour cohérence
+81484	1061476	BOUDIN	MARCEL	Date debut mandat	NA	1/1/2017	Corrigé pour cohérence
+81485	443818	ROULLEAUX	ERIC	Date debut mandat	NA	1/1/2017	Corrigé pour cohérence
+81616	173585	LECHERBONNIER	CLAUDE	Date debut mandat	NA	1/1/2017	Corrigé pour cohérence
+81617	1062138	MOREL	ROLAND	Date debut mandat	NA	1/1/2017	Corrigé pour cohérence
+81738	1398194	CICHY	CHRISTOPHE	Date debut mandat	NA	1/1/2017	Corrigé pour cohérence
+81814	448878	LERIVRAIN	BERNARD	Date debut mandat	NA	1/1/2017	Corrigé pour cohérence
+81815	828846	PELOUIN	CLAIRE	Date debut mandat	NA	1/1/2017	Corrigé pour cohérence
+81866	450465	COUPEL	CHRISTIAN	Date debut mandat	NA	1/1/2017	Corrigé pour cohérence
+82012	1398822	ROGER	JOEL	Date debut mandat	NA	1/1/2017	Corrigé pour cohérence
+32345	1276658	BELHADJ	MARIANNE	Date fin mandat	13/2/2018	NA	Corrigé pour mandat en cours
+32575	1277337	MERCIER	MICHEL	Date fin mandat	12/5/2018	NA	Corrigé pour mandat en cours
+81063	1059762	BARBE	BERTRAND	Date fin mandat	31/12/2016	NA	Corrigé pour mandat en cours
+81484	1061476	BOUDIN	MARCEL	Date fin mandat	31/12/2016	NA	Corrigé pour mandat en cours
+81485	443818	ROULLEAUX	ERIC	Date fin mandat	31/12/2016	NA	Corrigé pour mandat en cours
+81616	173585	LECHERBONNIER	CLAUDE	Date fin mandat	31/12/2016	NA	Corrigé pour mandat en cours
+81617	1062138	MOREL	ROLAND	Date fin mandat	31/12/2016	NA	Corrigé pour mandat en cours
+81738	1398194	CICHY	CHRISTOPHE	Date fin mandat	31/12/2016	NA	Corrigé pour mandat en cours
+81814	448878	LERIVRAIN	BERNARD	Date fin mandat	31/12/2016	NA	Corrigé pour mandat en cours
+81815	828846	PELOUIN	CLAIRE	Date fin mandat	31/12/2016	NA	Corrigé pour mandat en cours
+81866	450465	COUPEL	CHRISTIAN	Date fin mandat	31/12/2016	NA	Corrigé pour mandat en cours
+82012	1398822	ROGER	JOEL	Date fin mandat	31/12/2016	NA	Corrigé pour mandat en cours

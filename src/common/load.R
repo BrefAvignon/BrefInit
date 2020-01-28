@@ -20,7 +20,9 @@
 # returns: data frame made of the cleaned data contained in the files.
 #############################################################################################
 load.data <- function(filenames, col.map, correc.file, equiv.ids.file, correct.data)
-{	# load the corrections
+{	plan(multiprocess, workers=CORE.NBR/2)
+	
+	# load the corrections
 	tlog(0,"Loading correction file \"",correc.file,"\"")
 	correc.table <- read.table(
 			file=correc.file,			# name of the data file
@@ -153,12 +155,11 @@ load.data <- function(filenames, col.map, correc.file, equiv.ids.file, correct.d
 		)
 		
 		# fix dupplicate ids
-# TODO: parallelize ?	
 		if(nrow(equiv.table)>0)
 		{	# convert to map
+			tlog(0,"Convert table of equivalent ids to map")
 			unique.ids <- unique(data[,COL_ATT_ELU_ID])
 			conv.map <- c()
-			conv.map[unique.ids] <- unique.ids
 			for(r in 1:nrow(equiv.table))
 			{	main.id <- equiv.table[r,1]
 				other.ids <- strsplit(x=equiv.table[r,2], split=",", fixed=TRUE)[[1]]
@@ -168,7 +169,13 @@ load.data <- function(filenames, col.map, correc.file, equiv.ids.file, correct.d
 			}
 			# substitute correct ids
 			tlog(0,"Fixing duplicate ids")
-			data[,COL_ATT_ELU_ID] <- conv.map[data[,COL_ATT_ELU_ID]]
+			data[,COL_ATT_ELU_ID] <- future_sapply(data[,COL_ATT_ELU_ID], function(id)
+					{	new.id <- conv.map[id]
+						if(is.na(new.id))
+							return(id)
+						else
+							return(new.id)
+					})
 		}
 		
 		# apply ad hoc corrections
@@ -183,7 +190,8 @@ load.data <- function(filenames, col.map, correc.file, equiv.ids.file, correct.d
 				# general correction
 				if(all(is.na(correc.table[r,c(COL_CORREC_ID,COL_CORREC_NOM,COL_CORREC_PRENOM)])))
 				{	# identify the targeted rows in the data table
-					idx <- which(data[,correc.table[r,COL_CORREC_ATTR]]==correc.table[r,COL_CORREC_VALAVT])
+					idx <- which(data[,correc.table[r,COL_CORREC_ATTR]]==correc.table[r,COL_CORREC_VALAVT]
+							| is.na(data[,correc.table[r,COL_CORREC_ATTR]]) & is.na(correc.table[r,COL_CORREC_VALAVT]))
 					
 					# there should be at least one
 					if(length(idx)<1)
@@ -213,7 +221,8 @@ load.data <- function(filenames, col.map, correc.file, equiv.ids.file, correct.d
 					idx <- which(data[,COL_ATT_ELU_ID]==correc.table[r,COL_CORREC_ID]
 									& data[,COL_ATT_ELU_NOM]==correc.table[r,COL_CORREC_NOM]
 									& data[,COL_ATT_ELU_PRENOM]==correc.table[r,COL_CORREC_PRENOM]
-									& data[,correc.table[r,COL_CORREC_ATTR]]==correc.table[r,COL_CORREC_VALAVT]
+									& (data[,correc.table[r,COL_CORREC_ATTR]]==correc.table[r,COL_CORREC_VALAVT]
+										| is.na(data[,correc.table[r,COL_CORREC_ATTR]]) & is.na(correc.table[r,COL_CORREC_VALAVT]))
 					)
 					
 					# there should be exactly one
@@ -237,14 +246,14 @@ load.data <- function(filenames, col.map, correc.file, equiv.ids.file, correct.d
 					}
 					else
 					{	if(!is.na(row) && row!=idx)
-						{	tlog(4,"The specified row (",row,")does not match the one matching the criteria (",idx,")")
-							stop(paste0("The specified row (",row,")does not match the one matching the criteria (",idx,")"))
+						{	tlog(4,"The specified row (",row,") does not correspond to the one matching the criteria (",idx,")")
+							stop(paste0("The specified row (",row,") does not correspond to the one matching the criteria (",idx,")"))
 						}
 						else
 						{	if(is.na(row))
 								tlog(4,"Correcting entry (",idx,"): ",paste(correc.table[r,],collapse=";"))
 							else
-								tlog(6,"Correcting entry: ",paste(correc.table[r,],collapse=";"))
+								tlog(4,"Correcting entry: ",paste(correc.table[r,],collapse=";"))
 							data[idx,correc.table[r,COL_CORREC_ATTR]] <- correc.table[r,COL_CORREC_VALAPR]
 						}
 					}

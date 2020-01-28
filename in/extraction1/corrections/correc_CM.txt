@@ -1,47 +1,47 @@
 Row	Id	Nom	Prenom	Attribut	ValAvt	ValApr	Commentaire
-NA	671	TANGUY	Hélène	Date de fin de la fonction	1/7/0012	1/7/2012	Typo dans la date
-NA	47125	BOYER	Jean-Marc	Date de fin de la fonction	20/10/0017	20/10/2017	Typo dans la date
-NA	80360	SENECHAULT	Jean-Paul	Date de fin de la fonction	22/3/0013	22/3/2013	Typo dans la date
-NA	90614	BRIE	Simon	Date de début de la fonction	25/3/0201	25/3/2001	Typo dans la date
-NA	106532	BOLON	André	Date de fin de la fonction	20/9/0014	20/9/2014	Typo dans la date
-NA	106573	JANIER	Jacques	Date de fin de la fonction	27/2/0013	27/2/2013	Typo dans la date
-NA	147305	MULLOIS	Dominique	Date de fin de la fonction	20/3/0015	20/3/2015	Typo dans la date
-NA	152251	MUSELET	Bernard	Date de début de la fonction	16/3/0020	16/3/2001	Typo dans la date
-NA	153412	GERARD	Jean-Claude	Date de début de la fonction	13/3/0983	13/03/1983	Typo dans la date
-NA	154678	JACQUEL	Denis	Date de fin du mandat	14/10/0201	14/10/2010	Ou est-ce plutôt 2014 ?
-NA	157950	ARRETEAU	Paula	Date de fin de la fonction	15/1/0012	15/1/2012	Typo dans la date
-NA	163176	MANG	Jean-Jacques	Date de début de la fonction	16/3/0200	16/3/2001	Typo dans la date
-NA	164229	CHABRIER	Yves	Date de début de la fonction	25/3/0201	25/3/2001	Typo dans la date
-NA	164780	AUPHAN	Philippe	Date de début de la fonction	1/2/3003	1/2/2003	Typo dans la date
-NA	167343	DUBOS	René	Date de début de la fonction	16/3/0201	16/3/2001	Typo dans la date
-NA	167452	DUCROCQ	Christian	Date de début de la fonction	24/3/0201	24/3/2001	Typo dans la date
-NA	167508	MAILLARD	Philippe	Date de début de la fonction	16/3/0200	16/3/2001	Typo dans la date
-NA	167575	NOEL	François-Mary	Date de début de la fonction	17/3/0201	17/3/2001	Typo dans la date
-NA	167578	PLAILLY	Christian	Date de début de la fonction	23/3/0201	23/3/2001	Typo dans la date
-NA	171311	DULHOSTE	Jean-Pierre	Date de fin de la fonction	7/7/0016	7/7/2016	Typo dans la date
-NA	171319	FARET	Gabriel	Date de fin de la fonction	30/5/0015	30/5/2015	Typo dans la date
-NA	171548	BRUN	Jean	Date de fin de la fonction	4/12/0017	4/12/2017	Typo dans la date
-NA	469570	RIHOUAY	Gilles	Date de fin de la fonction	24/2/0013	24/2/2013	Typo dans la date
-NA	630327	HERNANDEZ	Jean	Date de début de la fonction	6/11/0207	6/11/2017	Typo dans la date
-NA	630700	TRIBOULET	Guy	Date de début de la fonction	8/1/0018	23/03/2014	Pas sûr, à voir
-NA	738771	LEBOUCHER	Dominique	Date de fin de la fonction	23/5/0014	23/5/2014	Typo dans la date
-NA	767803	LAFAURIE	Jacky	Date de fin du mandat	3/5/1938	3/5/2008	Pas sûr du tout, à vérifier
-NA	869169	SASTRE	Serge	Date de fin de la fonction	14/3/0014	14/3/2014	Typo dans la date
-NA	872810	MACLET	Bernard	Date de fin de la fonction	17/7/0013	17/7/2013	Typo dans la date
-NA	875576	MABILLARD	René	Date de fin de la fonction	6/6/0013	6/6/2013	Typo dans la date
-NA	887794	BORNET	Pierre	Date de fin de la fonction	10/7/0014	10/7/2014	Typo dans la date
-NA	917437	QUEYREAU	Joël	Date de fin du mandat	20/10/0201	20/10/2010	Arbitraire, à vérifier
-NA	944908	QUENARDEL	Françoise	Date de début de la fonction	8/1/0018	23/03/2014	Pas sûr, à voir
-NA	1068960	BRUT	Eric	Date de fin de la fonction	21/11/0017	21/11/2017	Typo dans la date
-NA	1077631	BOUR	Marguerite	Date de fin de la fonction	23/10/0015	23/10/2015	Typo dans la date
-NA	1077876	DASTUGUE	Gilbert	Date de fin de la fonction	12/6/0014	12/6/2014	Typo dans la date
-NA	1079145	BOSC	Marie-Claude	Date de fin de la fonction	20/7/0012	20/7/2012	Typo dans la date
-NA	1277552	DRAY	Bernadette	Date de début de la fonction	8/1/0018	23/03/2014	Pas sûr, à voir
-NA	1277554	MOULIN	Geneviève	Date de début de la fonction	8/1/0018	23/03/2014	Pas sûr, à voir
-NA	1317870	FAVRE	Aurélie	Date de début de la fonction	28/8/0014	28/8/2014	Typo dans la date
-NA	1352560	COCHONNEAU	Virginie	Date de fin du mandat	29/1/0201	29/1/2016	Arbitraire, à vérifier
-NA	151263	ROZE	Eric	Date de fin de la fonction	28/3/2020	NA	Date incorrecte, située dans le futur
-NA	871717	JACARIA	Véronique	Date de fin de la fonction	28/3/2020	NA	Date incorrecte, située dans le futur
+333441	671	TANGUY	Hélène	Date de fin de la fonction	1/7/0012	1/7/2012	Typo dans la date
+844385	47125	BOYER	Jean-Marc	Date de fin de la fonction	20/10/0017	20/10/2017	Typo dans la date
+1143147	80360	SENECHAULT	Jean-Paul	Date de fin de la fonction	22/3/0013	22/3/2013	Typo dans la date
+1143919	90614	BRIE	Simon	Date de début de la fonction	25/3/0201	25/3/2001	Typo dans la date
+14239	106532	BOLON	André	Date de fin de la fonction	20/9/0014	20/9/2014	Typo dans la date
+12819	106573	JANIER	Jacques	Date de fin de la fonction	27/2/0013	27/2/2013	Typo dans la date
+152847	147305	MULLOIS	Dominique	Date de fin de la fonction	20/3/0015	20/3/2015	Typo dans la date
+750418	152251	MUSELET	Bernard	Date de début de la fonction	16/3/0020	16/3/2001	Typo dans la date
+708523	153412	GERARD	Jean-Claude	Date de début de la fonction	13/3/0983	13/03/1983	Typo dans la date
+665930	154678	JACQUEL	Denis	Date de fin du mandat	14/10/0201	14/10/2010	Ou est-ce plutôt 2014 ?
+560462	157950	ARRETEAU	Paula	Date de fin de la fonction	15/1/0012	15/1/2012	Typo dans la date
+1186786	163176	MANG	Jean-Jacques	Date de début de la fonction	16/3/0200	16/3/2001	Typo dans la date
+1154380	164229	CHABRIER	Yves	Date de début de la fonction	25/3/0201	25/3/2001	Typo dans la date
+1127341	164780	AUPHAN	Philippe	Date de début de la fonction	1/2/3003	1/2/2003	Typo dans la date
+1022319	167343	DUBOS	René	Date de début de la fonction	16/3/0201	16/3/2001	Typo dans la date
+1018420	167452	DUCROCQ	Christian	Date de début de la fonction	24/3/0201	24/3/2001	Typo dans la date
+1016279	167508	MAILLARD	Philippe	Date de début de la fonction	16/3/0200	16/3/2001	Typo dans la date
+1013500	167575	NOEL	François-Mary	Date de début de la fonction	17/3/0201	17/3/2001	Typo dans la date
+1013579	167578	PLAILLY	Christian	Date de début de la fonction	23/3/0201	23/3/2001	Typo dans la date
+877798	171311	DULHOSTE	Jean-Pierre	Date de fin de la fonction	7/7/0016	7/7/2016	Typo dans la date
+877376	171319	FARET	Gabriel	Date de fin de la fonction	30/5/0015	30/5/2015	Typo dans la date
+872105	171548	BRUN	Jean	Date de fin de la fonction	4/12/0017	4/12/2017	Typo dans la date
+557028	469570	RIHOUAY	Gilles	Date de fin de la fonction	24/2/0013	24/2/2013	Typo dans la date
+294634	630327	HERNANDEZ	Jean	Date de début de la fonction	6/11/0207	6/11/2017	Typo dans la date
+294400	630700	TRIBOULET	Guy	Date de début de la fonction	8/1/0018	23/03/2014	Pas sûr, à voir
+140601	738771	LEBOUCHER	Dominique	Date de fin de la fonction	23/5/0014	23/5/2014	Typo dans la date
+188569	767803	LAFAURIE	Jacky	Date de fin du mandat	3/5/1938	3/5/2008	Pas sûr du tout, à vérifier
+878202	869169	SASTRE	Serge	Date de fin de la fonction	14/3/0014	14/3/2014	Typo dans la date
+5891	872810	MACLET	Bernard	Date de fin de la fonction	17/7/0013	17/7/2013	Typo dans la date
+9935	875576	MABILLARD	René	Date de fin de la fonction	6/6/0013	6/6/2013	Typo dans la date
+57247	887794	BORNET	Pierre	Date de fin de la fonction	10/7/0014	10/7/2014	Typo dans la date
+188576	917437	QUEYREAU	Joël	Date de fin du mandat	20/10/0201	20/10/2010	Arbitraire, à vérifier
+294393	944908	QUENARDEL	Françoise	Date de début de la fonction	8/1/0018	23/03/2014	Pas sûr, à voir
+839819	1068960	BRUT	Eric	Date de fin de la fonction	21/11/0017	21/11/2017	Typo dans la date
+873112	1077631	BOUR	Marguerite	Date de fin de la fonction	23/10/0015	23/10/2015	Typo dans la date
+872327	1077876	DASTUGUE	Gilbert	Date de fin de la fonction	12/6/0014	12/6/2014	Typo dans la date
+879616	1079145	BOSC	Marie-Claude	Date de fin de la fonction	20/7/0012	20/7/2012	Typo dans la date
+294373	1277552	DRAY	Bernadette	Date de début de la fonction	8/1/0018	23/03/2014	Pas sûr, à voir
+294386	1277554	MOULIN	Geneviève	Date de début de la fonction	8/1/0018	23/03/2014	Pas sûr, à voir
+467611	1317870	FAVRE	Aurélie	Date de début de la fonction	28/8/0014	28/8/2014	Typo dans la date
+592851	1352560	COCHONNEAU	Virginie	Date de fin du mandat	29/1/0201	29/1/2016	Arbitraire, à vérifier
+1230602	151263	ROZE	Eric	Date de fin de la fonction	28/3/2020	NA	Date incorrecte, située dans le futur
+1230811	871717	JACARIA	Véronique	Date de fin de la fonction	28/3/2020	NA	Date incorrecte, située dans le futur
 NA	NA	NA	NA	Libelle commune	LANTOSQUE PELASQUE SECTION 2	LANTOSQUE	On ignore les subdivisions de la commune
 NA	NA	NA	NA	Libelle commune	CHAUVINCOURT PROVEMONT SECTION 2	CHAUVINCOURT PROVEMONT	On ignore les subdivisions de la commune
 NA	NA	NA	NA	Libelle commune	CHAUVINCOURT PROVEMONT SECTION 1	CHAUVINCOURT PROVEMONT	On ignore les subdivisions de la commune
@@ -93,10 +93,87 @@ NA	NA	NA	NA	Libelle commune	TEVA I UTA SECTION 1 MATAIEA	TEVA I UTA	On ignore le
 1106766	25126	BONHOMME	François	Date debut fonction	21/3/2008	21/3/2001	Date incorrecte
 1134847	1136214	PINEAU	Florence	Date debut fonction	29/6/2017	21/3/2014	Date incorrecte
 1134847	1136214	PINEAU	Florence	Date fin fonction	20/6/2017	21/8/2015	Date incorrecte
-1134848	1136214	PINEAU	Florence	Date fin fonction	20/6/2017	21/8/2015	Date incorrecte
+1134848	1136214	PINEAU	Florence	Date debut fonction	29/6/2017	21/3/2014	Date incorrecte
 1172586	1503809	SABARD	Sandrine	Date debut fonction	16/3/2018	27/2/2015	Date incorrecte
 1185679	7695	FORCINAL	Anne-Marie	Date debut fonction	20/3/2008	21/3/2001	Date incorrecte
 1187569	17523	FOURNIER	Pascal	Date debut fonction	15/3/2008	25/3/2001	Date incorrecte
 1187769	5565	DESSENNE	Brigitte	Date debut fonction	14/3/2008	23/3/2001	Date incorrecte
 1188021	17532	BERNARD	Jacques	Date debut fonction	14/3/2008	24/3/2001	Date incorrecte
 1231848	33812	FRUTEAU	Eric	Date debut fonction	16/3/2008	18/3/2001	Date incorrecte
+158954	1198393	LE BAS	Christian	Date fin mandat	8/4/2018	NA	Date incorrecte remplacée par NA pour fusion ultérieure
+428016	973328	GABAUDAN	Jean-Pierre	Date fin mandat	19/2/2017	NA	Date incorrecte remplacée par NA pour fusion ultérieure
+158908	1526417	DENUAULT	SOPHIE	Date fin mandat	8/4/2018	NA	Corrigé pour mandat en cours
+158913	1194540	DUBOIS	CHRISTOPHE	Date fin mandat	8/4/2018	NA	Corrigé pour mandat en cours
+158919	906439	GACHET	PHILIPPE	Date fin mandat	8/4/2018	NA	Corrigé pour mandat en cours
+159009	1526420	OLIVIER	LAURE	Date fin mandat	8/4/2018	NA	Corrigé pour mandat en cours
+159020	1526419	RAVENEL	CHRISTIAN	Date fin mandat	8/4/2018	NA	Corrigé pour mandat en cours
+159034	1526418	TERRIOUX	JEAN LUC	Date fin mandat	8/4/2018	NA	Corrigé pour mandat en cours
+159040	1526416	THURMEAU	CRISTELE	Date fin mandat	8/4/2018	NA	Corrigé pour mandat en cours
+168516	1242973	ARLIN	JEROME	Date fin mandat	31/12/2016	NA	Corrigé pour mandat en cours
+168518	69295	BAHUET	JEAN PASCAL	Date fin mandat	31/12/2016	NA	Corrigé pour mandat en cours
+168520	638721	BARDIN	GENEVIEVE	Date fin mandat	31/12/2016	NA	Corrigé pour mandat en cours
+168542	913013	COUTURIER	YVES	Date fin mandat	31/12/2016	NA	Corrigé pour mandat en cours
+168544	914272	DECHANT	JEANNIE	Date fin mandat	31/12/2016	NA	Corrigé pour mandat en cours
+168546	1243451	DEGORCE	CHRISTIAN	Date fin mandat	31/12/2016	NA	Corrigé pour mandat en cours
+168548	913014	DEROBINSON	MARIE CHRISTINE	Date fin mandat	31/12/2016	NA	Corrigé pour mandat en cours
+168550	1243452	ESTEBAN	PHILIPPE	Date fin mandat	31/12/2016	NA	Corrigé pour mandat en cours
+168557	914274	GROLLEAU	JEAN CLAUDE	Date fin mandat	31/12/2016	NA	Corrigé pour mandat en cours
+168559	69242	GROLLEAU	LAURENT	Date fin mandat	31/12/2016	NA	Corrigé pour mandat en cours
+168561	1242975	HAMON	YVES	Date fin mandat	31/12/2016	NA	Corrigé pour mandat en cours
+168565	69268	LEBOURG	ALAIN	Date fin mandat	31/12/2016	NA	Corrigé pour mandat en cours
+168577	825969	RAYNAUD	PATRICK	Date fin mandat	31/12/2016	NA	Corrigé pour mandat en cours
+168581	824926	SOULET	MARILYS	Date fin mandat	31/12/2016	NA	Corrigé pour mandat en cours
+183809	1246793	FARGEOT	MICHELLE	Date fin mandat	9/2/2014	NA	Corrigé pour mandat en cours
+187049	1247601	DROMEL	YVES	Date fin mandat	25/3/2014	NA	Corrigé pour mandat en cours
+187070	1247602	MARCHIVE	ANGELIQUE	Date fin mandat	25/3/2014	NA	Corrigé pour mandat en cours
+193081	1249111	COULON	HERVE JEAN NOEL	Date fin mandat	20/3/2014	NA	Corrigé pour mandat en cours
+227912	1514656	SIMONEL	RACHEL	Date fin mandat	28/6/2015	NA	Corrigé pour mandat en cours
+240369	930246	GUILLOU	YANNICK	Date fin mandat	31/12/2015	NA	Corrigé pour mandat en cours
+339077	404029	LE BRAS	ANNE MARIE	Date fin mandat	2/10/2015	NA	Corrigé pour mandat en cours
+341101	1512205	COCHENNEC	CLAUDE	Date fin mandat	21/4/2016	NA	Corrigé pour mandat en cours
+341106	405487	COSSEC	YVES	Date fin mandat	21/4/2016	NA	Corrigé pour mandat en cours
+341109	1512219	DREO	JULIEN	Date fin mandat	21/4/2016	NA	Corrigé pour mandat en cours
+341117	954428	FRENAY	BERNARD	Date fin mandat	21/4/2016	NA	Corrigé pour mandat en cours
+341120	405490	GEORGES	MICHEL	Date fin mandat	21/4/2016	NA	Corrigé pour mandat en cours
+341181	1512218	MOREAU PETIT	VERONIQUE	Date fin mandat	21/4/2016	NA	Corrigé pour mandat en cours
+341193	1512210	POULIQUEN	HELDA	Date fin mandat	21/4/2016	NA	Corrigé pour mandat en cours
+341219	1512222	VICART	MARINE	Date fin mandat	21/4/2016	NA	Corrigé pour mandat en cours
+428596	1307749	FARENQ	JEAN PIERRE	Date fin mandat	24/10/2010	NA	Corrigé pour mandat en cours
+473666	39524	CARRIER	GERARD	Date fin mandat	11/3/2017	NA	Corrigé pour mandat en cours
+483121	1518641	MAZEAU	SONIA	Date fin mandat	3/3/2017	NA	Corrigé pour mandat en cours
+487539	786727	CALLAND	JACQUES	Date fin mandat	31/12/2017	NA	Corrigé pour mandat en cours
+487581	990858	PICOD	MARIE CLAUDE	Date fin mandat	31/12/2017	NA	Corrigé pour mandat en cours
+543376	1003336	GALLON	ISABELLE	Date fin mandat	9/11/2015	NA	Corrigé pour mandat en cours
+543383	1500672	GUERY	KAREN	Date fin mandat	1/10/2014	NA	Corrigé pour mandat en cours
+543386	1336797	HEMERY	ESTELLE	Date fin mandat	1/4/2014	NA	Corrigé pour mandat en cours
+544834	1337119	FERRANDES	FRANCOISE	Date fin mandat	14/11/2002	NA	Corrigé pour mandat en cours
+546765	1337606	DEHODENCQ	PHILIPPE	Date fin mandat	24/7/2015	NA	Corrigé pour mandat en cours
+551097	1336430	CARDINAL	HERVE	Date fin mandat	7/10/2015	NA	Corrigé pour mandat en cours
+595958	1350390	BRACHET	OLIVIER	Date fin mandat	23/3/2014	NA	Corrigé pour mandat en cours
+625892	909311	MARTINS	GHISLAINE	Date fin mandat	31/12/2017	NA	Corrigé pour mandat en cours
+660735	436819	CARLIER	ANDRE	Date fin mandat	1/12/2014	NA	Corrigé pour mandat en cours
+660738	1028724	CHEVALLIER	JEROME	Date fin mandat	22/12/2015	NA	Corrigé pour mandat en cours
+796716	1197938	BOUVIER	CAROLINE	Date fin mandat	11/1/2016	NA	Corrigé pour mandat en cours
+796718	1514392	CHESNEL	MATHIEU	Date fin mandat	11/1/2016	NA	Corrigé pour mandat en cours
+796743	1060192	FLANDRIN	MARCEL	Date fin mandat	11/1/2016	NA	Corrigé pour mandat en cours
+796745	1060194	FOEZON	YVON	Date fin mandat	11/1/2016	NA	Corrigé pour mandat en cours
+796764	1060193	KRONNEBERG	ODILE	Date fin mandat	11/1/2016	NA	Corrigé pour mandat en cours
+800677	1396527	CLARENC	OLIVIER	Date fin mandat	12/1/2013	NA	Corrigé pour mandat en cours
+813984	1065035	MORASSUTTI	CHRISTIANE	Date fin mandat	28/9/2013	NA	Corrigé pour mandat en cours
+832899	1405517	BLASCZYK	VERONIQUE	Date fin mandat	21/8/2014	NA	Corrigé pour mandat en cours
+832975	1405145	LIBESSART CACHERA	CAROLE	Date fin mandat	22/5/2015	NA	Corrigé pour mandat en cours
+832983	185146	MERLIN	GILLES	Date fin mandat	26/10/2015	NA	Corrigé pour mandat en cours
+838985	840861	HAMON	DOMINIQUE	Date fin mandat	8/3/2014	NA	Corrigé pour mandat en cours
+933407	1429788	COILLARD	JEANNINE	Date fin mandat	24/3/2014	NA	Corrigé pour mandat en cours
+1165948	1486857	PETRY	CATHERINE MARIE MARGUERITE	Date fin mandat	26/11/2015	NA	Corrigé pour mandat en cours
+1219065	1161322	MIOTTO	FABRICE	Date fin mandat	12/1/2014	NA	Corrigé pour mandat en cours
+791871	829038	DENIAUD	BERTRAND	Date fin mandat	3/2/2013	NA	Corrigé pour mandat en cours
+591428	15951	CARRE	HERVE	Date fin mandat	26/10/2007	22/3/2014	Corrigé pour mandat complet
+61363	845248	FETTUCIARI	Karine	Date fin mandat	31/3/2009	22/3/2014	Corrigé pour mandat complet
+61364	845248	FETTUCIARI	Karine	Date fin mandat	8/3/2008	31/3/2009	Corrigé pour mandat complet
+61395	1178593	NASO	Régine	Date fin mandat	31/3/2009	22/3/2014	Corrigé pour mandat complet
+595190	1016208	DEPOUTOT	Danielle	Date fin mandat	28/1/2000	22/3/2014	Corrigé pour mandat complet
+605734	271629	LUSSEAU	Louis	Date fin mandat	1/3/2008	22/3/2014	Corrigé pour mandat complet
+798569	1061053	MARIETTE	Yannick	Date fin mandat	12/12/2003	22/3/2014	Corrigé pour mandat complet
+1136346	1138212	PASSCHIER	Nicolas	Date debut mandat	1/12/2008	18/3/2001	Corrigé pour mandat complet
+1136346	1138212	PASSCHIER	Nicolas	Date fin mandat	16/3/2008	8/3/2008	Corrigé pour mandat complet
