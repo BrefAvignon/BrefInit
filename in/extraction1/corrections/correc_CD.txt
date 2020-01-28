@@ -1,11 +1,11 @@
-Id	Nom	Prenom	Attribut	ValAvt	ValApr	Commentaire
-NA	NA	NA	Libellé du canton	LA COTE VERMEILLE	COTE VERMEILLE	Article superflu
-NA	NA	NA	Libellé du canton	LE GOND PONTOUVRE	GOND PONTOUVRE	Article superflu
-NA	NA	NA	Libellé du canton	LE GRAND BOURG	GRAND BOURG	Article superflu
-NA	NA	NA	Libellé du canton	LE TAMPON 1	TAMPON 1	Article superflu
-NA	NA	NA	Libellé du canton	LE TAMPON 2	TAMPON 2	Article superflu
-NA	NA	NA	Libellé du canton	LES ABYMES 1	ABYMES 1	Article superflu
-NA	NA	NA	Libellé du canton	LES ABYMES 2	ABYMES 2	Article superflu
-NA	NA	NA	Libellé du canton	LES ABYMES 3	ABYMES 3	Article superflu
-5748	DUROVRAY	François	Date fin mandat	1/4/2015	NA	Date incorrecte remplacée par NA pour fusion ultérieure
-5748	DUROVRAY	François	Date fin fonction	1/4/2015	NA	Date incorrecte remplacée par NA pour fusion ultérieure
+Row	Id	Nom	Prenom	Attribut	ValAvt	ValApr	Commentaire
+NA	NA	NA	NA	Libellé du canton	LA COTE VERMEILLE	COTE VERMEILLE	Article superflu
+NA	NA	NA	NA	Libellé du canton	LE GOND PONTOUVRE	GOND PONTOUVRE	Article superflu
+NA	NA	NA	NA	Libellé du canton	LE GRAND BOURG	GRAND BOURG	Article superflu
+NA	NA	NA	NA	Libellé du canton	LE TAMPON 1	TAMPON 1	Article superflu
+NA	NA	NA	NA	Libellé du canton	LE TAMPON 2	TAMPON 2	Article superflu
+NA	NA	NA	NA	Libellé du canton	LES ABYMES 1	ABYMES 1	Article superflu
+NA	NA	NA	NA	Libellé du canton	LES ABYMES 2	ABYMES 2	Article superflu
+NA	NA	NA	NA	Libellé du canton	LES ABYMES 3	ABYMES 3	Article superflu
+11557	5748	DUROVRAY	François	Date fin mandat	1/4/2015	NA	Date incorrecte remplacée par NA pour fusion ultérieure
+11557	5748	DUROVRAY	François	Date fin fonction	1/4/2015	NA	Date incorrecte remplacée par NA pour fusion ultérieure

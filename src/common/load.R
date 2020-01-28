@@ -153,7 +153,7 @@ load.data <- function(filenames, col.map, correc.file, equiv.ids.file, correct.d
 		)
 		
 		# fix dupplicate ids
-# TODO : parallel ?	
+# TODO: parallelize ?	
 		if(nrow(equiv.table)>0)
 		{	# convert to map
 			unique.ids <- unique(data[,COL_ATT_ELU_ID])
@@ -178,6 +178,7 @@ load.data <- function(filenames, col.map, correc.file, equiv.ids.file, correct.d
 			# apply each correction one after the other
 			for(r in 1:nrow(correc.table))
 			{	correc.attr <- correc.table[r,COL_CORREC_ATTR]
+				row <- as.integer(correc.table[r,COL_CORREC_ROW])
 				
 				# general correction
 				if(all(is.na(correc.table[r,c(COL_CORREC_ID,COL_CORREC_NOM,COL_CORREC_PRENOM)])))
@@ -189,8 +190,19 @@ load.data <- function(filenames, col.map, correc.file, equiv.ids.file, correct.d
 					{	tlog(4,"Could not find a correction: ",paste(correc.table[r,],collapse=";"))
 						stop(paste0("Could not find a correction: ",paste(correc.table[r,],collapse=";")))
 					}
+					# if several, try to check the specified row
 					else 
-					{	tlog(4,"Replacing ",correc.table[r,COL_CORREC_VALAVT]," by ",correc.table[r,COL_CORREC_VALAPR])
+					{	if(!is.na(row))
+						{	if(length(idx)==1 && idx!=row)
+							{	tlog(4,"Row ",idx," matches the criteria but not the specified row (",row,")")
+								stop(paste0("Row ",idx," matches the criteria but not the specified row (",row,")"))
+							}
+							else if(length(idx)>1)
+							{	tlog(4,"Found several rows matching the criteria when there's only one specified row: ",row," vs. ",paste(idx,collapse=","))
+								stop(paste0("Found several rows matching the criteria when there's only one specified row: ",row," vs. ",paste(idx,collapse=",")))
+							}
+						}
+						tlog(4,"Replacing ",correc.table[r,COL_CORREC_VALAVT]," by ",correc.table[r,COL_CORREC_VALAPR])
 						data[idx,correc.table[r,COL_CORREC_ATTR]] <- correc.table[r,COL_CORREC_VALAPR]
 					}
 				}
@@ -210,15 +222,31 @@ load.data <- function(filenames, col.map, correc.file, equiv.ids.file, correct.d
 						stop(paste0("Could not find a correction: ",paste(correc.table[r,],collapse=";")))
 					}
 					else if(length(idx)>1)
-					{	
-#						tlog(4,"A correction matches several cases: ",paste(correc.table[r,],collapse=";"))
-#						stop(paste0("A correction matches several cases: ",paste(correc.table[r,],collapse=";")))
-						tlog(4,"WARNING: A correction matches several cases: ",paste(correc.table[r,],collapse=";"))
-						data[idx,correc.table[r,COL_CORREC_ATTR]] <- correc.table[r,COL_CORREC_VALAPR]
+					{	if(is.na(row))
+						{	tlog(4,"A correction matches several cases (",paste(idx,collapse=","),"), but no row is specified: ",paste(correc.table[r,],collapse=";"))
+							stop(paste0("A correction matches several cases (",paste(idx,collapse=","),"), but no row is specified: ",paste(correc.table[r,],collapse=";")))
+						}
+#						tlog(4,"WARNING: A correction matches several cases: ",paste(correc.table[r,],collapse=";"))
+#						data[idx,correc.table[r,COL_CORREC_ATTR]] <- correc.table[r,COL_CORREC_VALAPR]
+						else
+						{	if(row %in% idx)
+							{	tlog(4,"Correcting entry: ",paste(correc.table[r,],collapse=";"))
+								data[row,correc.table[r,COL_CORREC_ATTR]] <- correc.table[r,COL_CORREC_VALAPR]
+							}
+						}
 					}
 					else
-					{	tlog(4,"Correcting entry: ",paste(correc.table[r,],collapse=";"))
-						data[idx,correc.table[r,COL_CORREC_ATTR]] <- correc.table[r,COL_CORREC_VALAPR]
+					{	if(!is.na(row) && row!=idx)
+						{	tlog(4,"The specified row (",row,")does not match the one matching the criteria (",idx,")")
+							stop(paste0("The specified row (",row,")does not match the one matching the criteria (",idx,")"))
+						}
+						else
+						{	if(is.na(row))
+								tlog(4,"Correcting entry (",idx,"): ",paste(correc.table[r,],collapse=";"))
+							else
+								tlog(6,"Correcting entry: ",paste(correc.table[r,],collapse=";"))
+							data[idx,correc.table[r,COL_CORREC_ATTR]] <- correc.table[r,COL_CORREC_VALAPR]
+						}
 					}
 				}
 			}

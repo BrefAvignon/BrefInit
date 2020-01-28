@@ -33,11 +33,11 @@ data <- if(extraction==1) load.cm.data(correct.data) else load.cm2.data(correct.
 
 # summarizes each column separately
 tlog(0,"Examining each column separately")
-sumup.cols(data=data, out.folder=out.folder)
+#sumup.cols(data=data, out.folder=out.folder)
 
 # check dates
 tlog(0,"Checking dates")
-#test.col.dates.cm(data=data, out.folder=out.folder)
+test.col.dates.cm(data=data, out.folder=out.folder)
 
 # check locations
 tlog(0,"Checking locations")

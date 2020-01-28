@@ -1,5 +1,5 @@
-Id	Nom	Prenom	Attribut	ValAvt	ValApr	Commentaire
-912	LENOIR	Jean-Claude	Date fin mandat	24/9/2011	NA	Date incorrecte remplacée par NA pour fusion ultérieure
-833176	ESPAGNAC	Frédérique	Date fin mandat	24/9/2011	NA	Date incorrecte remplacée par NA pour fusion ultérieure
-335393	LABAZEE	Georges	Date fin mandat	24/9/2011	NA	Date incorrecte remplacée par NA pour fusion ultérieure
-335394	LASSERRE	Jean-Jacques	Date fin mandat	24/9/2011	NA	Date incorrecte remplacée par NA pour fusion ultérieure
+Row	Id	Nom	Prenom	Attribut	ValAvt	ValApr	Commentaire
+581	912	LENOIR	Jean-Claude	Date fin mandat	24/9/2011	NA	Date incorrecte remplacée par NA pour fusion ultérieure
+621	833176	ESPAGNAC	Frédérique	Date fin mandat	24/9/2011	NA	Date incorrecte remplacée par NA pour fusion ultérieure
+625	335393	LABAZEE	Georges	Date fin mandat	24/9/2011	NA	Date incorrecte remplacée par NA pour fusion ultérieure
+627	335394	LASSERRE	Jean-Jacques	Date fin mandat	24/9/2011	NA	Date incorrecte remplacée par NA pour fusion ultérieure
