@@ -37,7 +37,7 @@ tlog(0,"Examining each column separately")
 
 # check personal information
 tlog(0,"Checking personal information consistency")
-test.personal.info(data=data, out.folder=out.folder)
+#test.personal.info(data=data, out.folder=out.folder)
 
 # check dates
 tlog(0,"Checking dates")

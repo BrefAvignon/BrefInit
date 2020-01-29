@@ -1,0 +1,119 @@
+Label	Signification
+AGR	Liste Agir
+ALLI	Alliance centriste
+ANM	Liste Animalistes
+AUT	Autres
+BC-COM	Binôme du Parti communiste français
+BC-DIV	Binôme Divers
+BC-DLF	Binôme Debout la France
+BC-DVD	Binôme Divers droite
+BC-DVG	Binôme Divers gauche
+BC-EXD	Binôme Extrême droite
+BC-EXG	Binôme Extrême gauche
+BC-FG	Binôme du Front de Gauche
+BC-FN	Binôme Front National
+BC-MDM	Binôme du Modem
+BC-PG	Binôme du Parti de Gauche
+BC-RDG	Binôme du Parti radical de gauche
+BC-SOC	Binôme du Parti Socialiste
+BC-UC	Binôme Union du Centre
+BC-UD	Binôme Union de la Droite
+BC-UDI	Binôme Union Démocrates et Indépendants
+BC-UG	Binôme Union de la Gauche
+BC-UMP	Binôme Union pour un Mouvement Populaire
+BC-VEC	Binôme d'Europe-Ecologie-Les Verts
+CEN	Le Centre pour la France
+COM	Parti communiste français
+CPNT	Chasse, Pêche, Nature et Traditions
+DIV	Divers
+DLF	Debout la France
+DLR	Debout la République
+DVC	Divers centre
+DVD	Divers droite
+DVG	Divers gauche
+ECO	Autre écologiste
+EXD	Extrême droite
+EXG	Extrême gauche
+FG	Front de gauche
+FI	La France insoumise
+FN	Front national
+GEN	Liste Génération.s
+GJ	Liste Gilets jaunes
+LAUT	Autre liste
+LCEN	Liste d'union du centre
+LCMD	Listes Centre-MoDem
+LCOM	Liste du Parti communiste français
+LCOP	Listes du Parti Communiste et du Parti Gauche
+LCOP	Liste Front de gauche
+LCP	Liste Chasse, pêche, nature et traditions
+LDD	RPF-DVD
+LDD	Liste divers droite
+LDG	Liste divers gauche
+LDIV	Liste Divers
+LDLF	Liste Debout la France
+LDLR	Liste Debout la République
+LDR	Liste de droite
+LDSV	Liste souverainiste de droite
+LDTE	Liste d'union UMP-UDF
+LDV	Liste Divers
+LDVD	Liste Divers droite
+LDVG	Liste Divers gauche
+LEC	Liste écologiste
+LECO	Liste Ecologiste
+LEXD	Liste d'extrême droite
+LEXG	Liste d'extrême gauche
+LFG	Liste du Front de Gauche
+LFI	Liste de la France insoumise
+LFN	Liste du Front National
+LGA	Listes de gauche
+LGAU	Liste d'union de la gauche
+LGC	Liste gauche-centristes
+LGMD	Listes Gauche-MoDem
+LLR	Les Républicains
+LMAJ	Liste de la majorité
+LMC	Liste Majorité-centristes
+LMDM	Liste Modem
+LMMD	Liste Majorité-MoDem
+LMN	MNR
+LMP	Majorité présidentielle
+LPC	Liste du Parti communiste
+LPG	Liste du Parti de Gauche
+LPS	Liste du Parti Socialiste
+LR	Liste Les Républicains
+LRDG	Liste du Parti radical de gauche
+LREG	Liste Régionaliste
+LREM	La République en marche
+LRG	Listes régionaliste
+LSOC	Liste du Parti Socialiste
+LUC	Liste Union du Centre
+LUD	Liste Union de la Droite
+LUDF	Liste Union pour la démocratie française
+LUDI	Liste Union Démocrates et Indépendants
+LUG	Liste Union de la Gauche
+LUMP	Liste Union pour un Mouvement Populaire
+LVE	Liste des Verts
+LVEC	Liste Europe Ecologie Les Verts
+LVEG	Liste EELV et gauche
+LXD	Liste d'extrême droite
+LXG	Liste d'extrême gauche
+M	Autres candidats majorité présidentielle
+MAJ	Majorité présidentielle
+MDM	Mouvement démocrate
+MDM	Mouvement démocrate
+M-NC	Majorité présidentielle
+MODM	MODEM
+MODM	MODEM
+MR	Liste Mouvement radical
+NCE	Nouveau Centre
+PG	Parti de Gauche
+PRV	Parti radical
+RDG	Parti Radical de Gauche
+REG	Régionaliste
+REM	La République en marche !
+RN	 Rassemblement national
+SOC	Parti socialiste
+UDF	Union pour la démocratie française
+UDFD	UDF - Mouvement démocrate
+UDI	Union des Démocrates et Indépendants
+UMP	Union pour un Mouvement Populaire
+VEC	Europe Ecologie Les Verts
