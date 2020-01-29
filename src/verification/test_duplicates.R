@@ -149,8 +149,7 @@ test.multiple.id <- function(data, loc.col=NA, out.folder)
 			colClasses="character"		# all column originally read as characters
 #			fileEncoding="Latin1"		# original tables seem to be encoded in Latin1 (ANSI)
 	)
-	homon.list <- c(as.matrix(homon.table))
-	tlog(4,"Done: ",length(homon.list)," id(s) read")
+	tlog(4,"Done: ",nrow(homon.table)," rows read")
 	
 	# identify all unique individuals
 	# under the form of a (lastname, firstname, birthdate, sex, territory) tuple
@@ -187,14 +186,15 @@ test.multiple.id <- function(data, loc.col=NA, out.folder)
 			{	tlog(8,"Found ",length(ids)," different ids: ",paste(ids,collapse=", "))
 				
 				# check whether they are confirmed homonyms
-				if(all(ids %in% homon.list))
-					# NOTE: this is a bit of a simplification: should actually check if all pairs
-					# of ids are in the table of actual homonyms, and keep the pairs that
-					# are not to put them in the generated file of possibly equivalent ids
-					tlog(8,"But they are already (manually) confirmed true homonyms")
+# TODO not tested yet
+				if(ids[1] %in% homon.table[,1])
+				{	rem <- homon.table[which(homon.table[,1]==ids[1]),2]
+					ids <- setdiff(ids, rem)
+				}
 				
-				else
-				{	# check whether these ids have incompatible mandates
+				tlog(8,"After filtering out the manually confirmed true homonyms, ",length(ids)," ids remain")
+				if(length(ids)>1)
+				{	# TODO: check whether these ids have incompatible mandates
 					# >> actually even a single id may have incompatible mandates due to the
 					# way the data are structured, so we eventually did not perform this test 
 					
