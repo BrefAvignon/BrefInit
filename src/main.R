@@ -33,6 +33,9 @@ source("src/common/include.R")
 #   >> et corriger tout ça ad hoc
 
 
+# vérifier l'unicité des noms de profession
+# (par rapport aux ids)
+
 # Points d'implémentation
 #
 # - vérifier qu'un mandat ne traverse pas plusieurs élections :
@@ -166,7 +169,3 @@ source("src/common/include.R")
 # >> faire un test ad hoc pour vérifier ça, puis intégrer au test qui fait la fusion
 # mais même une id donnée peut avoir plusieurs mandats incompatibles, à cause des erreurs présentes dans la BD
 # >> corriger d'abord ces erreurs ? 
-
-# y a des ddn incohérentes, par ex 
-# 61363	1178596	FETTUCIARI	Karine	Date naissance	4/5/1968	14/5/1968	Date incohérente
-# dans CM

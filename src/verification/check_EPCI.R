@@ -10,6 +10,7 @@ source("src/verification/evolution_plot.R")
 source("src/verification/sumup_col.R")
 source("src/verification/test_dates.R")
 source("src/verification/test_locations.R")
+source("src/verification/test_persoinf.R")
 source("src/verification/test_duplicates.R")
 
 
@@ -33,9 +34,13 @@ data <- load.epci.data(correct.data)
 tlog(0,"Examining each column separately")
 #sumup.cols(data=data, out.folder=out.folder)
 
+# check personal information
+tlog(0,"Checking personal information consistency")
+test.personal.info(data=data, out.folder=out.folder)
+
 # check dates
 tlog(0,"Checking dates")
-test.col.dates.epci(data=data, out.folder=out.folder)
+#test.col.dates.epci(data=data, out.folder=out.folder)
 
 # check locations
 tlog(0,"Checking locations")
