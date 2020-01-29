@@ -27,6 +27,10 @@ source("src/common/include.R")
 # 4) arrondir les bornes de mandats pour éviter les problèmes (recouvrement, mandats de 1 jour, etc.)
 #    certains de ces problèmes peuvent être issus du découpage forcé des lignes 
 
+# faire la fusion des lignes similaires au niveau des tables indiv puis de la table fusionnée
+#   - faire une sortie des lignes fusionnées
+# comparer les valeurs de chaque champ indiv pour chaque id, faire une sortie des divergences observées
+#   >> et corriger tout ça ad hoc
 
 
 # Points d'implémentation
