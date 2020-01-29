@@ -167,15 +167,19 @@ load.data <- function(filenames, col.map, correc.file, equiv.ids.file, correct.d
 				if(length(other.ids)>0)
 					conv.map[other.ids] <- rep(main.id, length(other.ids))
 			}
-			# substitute correct ids
-			tlog(0,"Fixing duplicate ids")
-			data[,COL_ATT_ELU_ID] <- future_sapply(data[,COL_ATT_ELU_ID], function(id)
-					{	new.id <- conv.map[id]
-						if(is.na(new.id))
-							return(id)
-						else
-							return(new.id)
-					})
+			if(length(conv.map)>0)
+			{	# substitute correct ids
+				tlog(0,"Fixing duplicate ids")
+				data[,COL_ATT_ELU_ID] <- future_sapply(data[,COL_ATT_ELU_ID], function(id)
+						{	print(id)
+							new.id <- conv.map[id]
+							print(new.id)
+							if(is.na(new.id))
+								return(id)
+							else
+								return(new.id)
+						})
+			}
 		}
 		
 		# apply ad hoc corrections
