@@ -257,6 +257,7 @@ COL_TYPES[COL_ATT_REG_CODE] <- "cat"
 COL_TYPES[COL_ATT_REG_NOM] <- "nom"
 
 # colunms for correction files
+COL_CORREC_ROW <- "Row"
 COL_CORREC_ID <- "Id"
 COL_CORREC_NOM <- "Nom"
 COL_CORREC_PRENOM <- "Prenom"

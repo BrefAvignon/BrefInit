@@ -62,11 +62,6 @@ source("src/common/include.R")
 #   (les attributs obligatoires étant de valeurs égales)
 #   >> probablement une entrée qui a été complétée plus tard, garder la ligne la plus complète et supprimer l'autre
 #
-# - certaines structures comme la métropole lyonnaise apparaissent parmi les département, et n'ont pas de numéro
-#   >> probablement EPCI, à voir
-#	>> que faire de ça ?
-#   >> signalé par les étudiants, mais pas vraiment confirmé expérimentalement
-#
 # - parfois une ligne = une fonction ?
 #   >> un même mandat peut être décomposé en plusieurs lignes en cas de prise de fonction en cours de mandat
 
@@ -123,16 +118,10 @@ source("src/common/include.R")
 #       hypothèse : il y a un mandat suivant, et la fonction devrait y etre aussi
 #                   l'ont-il indiquée dans ce second mandat ?
 #		solution : découper la fonction sur les deux mandats
-# 2. erreur marginale
+# 2. erreur marginale ponctuelle
 # 3. mandat prend fin avant la fin normale, et la fonction va au bout
 #    >> à vérifier manuellement
 		
-# mandat_dates_problems_bounds
-# - hypothèse: visiblement la date de fin de mandat entrée correspond à la date fin de mandat du prédécesseur
-# - solution : vérifier si personne d'autre n'occupe la même position sur le reste de la durée de mandat
-#	           >> si oui, on étend la date de fin de mandat à la date de durée légale
-#	           >> si non, on utilise la date de début de la personne suivant
-
 # remarques étudiants BI
 # - Certaines positions sont laissées inoccupées, par ex. commune de Saline n'a pas de maire pdt plusieurs semaines
 #   et en même temps, la commune présente un recouvrement du type: plusieurs maires à la fois
@@ -146,7 +135,7 @@ source("src/common/include.R")
 # - Dates antérieures à 01/01/1900 ou postérieures à 01/01/2020
 
 
-# la normalisation des noms propres rend certaines corrections inutiles
+# la normalisation des noms propres rend certaines corrections inutiles (surtout pour les lieux)
 # >> à enlever
 
 
@@ -177,3 +166,7 @@ source("src/common/include.R")
 # >> faire un test ad hoc pour vérifier ça, puis intégrer au test qui fait la fusion
 # mais même une id donnée peut avoir plusieurs mandats incompatibles, à cause des erreurs présentes dans la BD
 # >> corriger d'abord ces erreurs ? 
+
+# y a des ddn incohérentes, par ex 
+# 61363	1178596	FETTUCIARI	Karine	Date naissance	4/5/1968	14/5/1968	Date incohérente
+# dans CM

@@ -1,9 +1,9 @@
-Id	Nom	Prenom	Attribut	ValAvt	ValApr	Commentaire
-NA	NA	NA	Libelle region	CENTRE VAL DE LOIRE	CENTRE	Nom de région incorrect
-NA	NA	NA	Libelle region	PAYS DE LA LOIRE	PAYS DE LOIRE	Nom de région incorrect
-NA	NA	NA	Code departement	69D	69	Pas besoin de distinguer Lyon du reste du Rhone
-NA	NA	NA	Code departement	69M	69	Pas besoin de distinguer Lyon du reste du Rhone
-NA	NA	NA	Libelle departement	RHONE HORS METROPOLE DE LYON	RHONE	Pas besoin de distinguer Lyon du reste du Rhone
-NA	NA	NA	Libelle departement	METROPOLE DE LYON	RHONE	Pas besoin de distinguer Lyon du reste du Rhone
-1509834	FERRER	Thérèse	Date fin mandat	30/12/2015	NA	Date incorrecte remplacée par NA (sans fusion ultérieure)
-1509912	VILCOQ	Marie	Date fin mandat	24/12/2015	NA	Date incorrecte remplacée par NA (sans fusion ultérieure)
+Row	Id	Nom	Prenom	Attribut	ValAvt	ValApr	Commentaire
+NA	NA	NA	NA	Libelle region	CENTRE VAL DE LOIRE	CENTRE	Nom de région incorrect
+NA	NA	NA	NA	Libelle region	PAYS DE LA LOIRE	PAYS DE LOIRE	Nom de région incorrect
+NA	NA	NA	NA	Code departement	69D	69	Pas besoin de distinguer Lyon du reste du Rhone
+NA	NA	NA	NA	Code departement	69M	69	Pas besoin de distinguer Lyon du reste du Rhone
+NA	NA	NA	NA	Libelle departement	RHONE HORS METROPOLE DE LYON	RHONE	Pas besoin de distinguer Lyon du reste du Rhone
+NA	NA	NA	NA	Libelle departement	METROPOLE DE LYON	RHONE	Pas besoin de distinguer Lyon du reste du Rhone
+4434	1509834	FERRER	Thérèse	Date fin mandat	30/12/2015	NA	Date incorrecte remplacée par NA (sans fusion ultérieure)
+5180	1509912	VILCOQ	Marie	Date fin mandat	24/12/2015	NA	Date incorrecte remplacée par NA (sans fusion ultérieure)

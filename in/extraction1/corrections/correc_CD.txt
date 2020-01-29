@@ -1,11 +1,90 @@
-Id	Nom	Prenom	Attribut	ValAvt	ValApr	Commentaire
-NA	NA	NA	Libellé du canton	LA COTE VERMEILLE	COTE VERMEILLE	Article superflu
-NA	NA	NA	Libellé du canton	LE GOND PONTOUVRE	GOND PONTOUVRE	Article superflu
-NA	NA	NA	Libellé du canton	LE GRAND BOURG	GRAND BOURG	Article superflu
-NA	NA	NA	Libellé du canton	LE TAMPON 1	TAMPON 1	Article superflu
-NA	NA	NA	Libellé du canton	LE TAMPON 2	TAMPON 2	Article superflu
-NA	NA	NA	Libellé du canton	LES ABYMES 1	ABYMES 1	Article superflu
-NA	NA	NA	Libellé du canton	LES ABYMES 2	ABYMES 2	Article superflu
-NA	NA	NA	Libellé du canton	LES ABYMES 3	ABYMES 3	Article superflu
-5748	DUROVRAY	François	Date fin mandat	1/4/2015	NA	Date incorrecte remplacée par NA pour fusion ultérieure
-5748	DUROVRAY	François	Date fin fonction	1/4/2015	NA	Date incorrecte remplacée par NA pour fusion ultérieure
+Row	Id	Nom	Prenom	Attribut	ValAvt	ValApr	Commentaire
+NA	NA	NA	NA	Libellé du canton	LA COTE VERMEILLE	COTE VERMEILLE	Article superflu
+NA	NA	NA	NA	Libellé du canton	LE GOND PONTOUVRE	GOND PONTOUVRE	Article superflu
+NA	NA	NA	NA	Libellé du canton	LE GRAND BOURG	GRAND BOURG	Article superflu
+NA	NA	NA	NA	Libellé du canton	LE TAMPON 1	TAMPON 1	Article superflu
+NA	NA	NA	NA	Libellé du canton	LE TAMPON 2	TAMPON 2	Article superflu
+NA	NA	NA	NA	Libellé du canton	LES ABYMES 1	ABYMES 1	Article superflu
+NA	NA	NA	NA	Libellé du canton	LES ABYMES 2	ABYMES 2	Article superflu
+NA	NA	NA	NA	Libellé du canton	LES ABYMES 3	ABYMES 3	Article superflu
+11557	5748	DUROVRAY	François	Date fin mandat	1/4/2015	NA	Date incorrecte remplacée par NA pour fusion ultérieure
+11557	5748	DUROVRAY	François	Date fin fonction	1/4/2015	NA	Date incorrecte remplacée par NA pour fusion ultérieure
+4765	62511	ARIAS VILLANUEVA BENET	JOSE	Date fin mandat	8/3/2008	21/03/2015	Corrigé pour mandat complet
+4768	28275	BACHASSON	MARCEL	Date fin mandat	8/3/2008	21/03/2015	Corrigé pour mandat complet
+4770	28128	BAIETTO	MARC	Date fin mandat	8/3/2008	21/03/2015	Corrigé pour mandat complet
+4773	855722	BARBIER	JEAN PIERRE	Date fin mandat	8/3/2008	21/03/2015	Corrigé pour mandat complet
+4782	28461	BESCHER	GEORGES	Date fin mandat	8/3/2008	21/03/2015	Corrigé pour mandat complet
+4785	28131	BICH	CHARLES	Date fin mandat	8/3/2008	21/03/2015	Corrigé pour mandat complet
+4788	869915	BINET	ERWANN	Date fin mandat	8/3/2008	21/03/2015	Corrigé pour mandat complet
+4791	22893	BRETTE	CATHERINE	Date fin mandat	8/3/2008	21/03/2015	Corrigé pour mandat complet
+4801	23100	CHIRON	JACQUES	Date fin mandat	8/3/2008	21/03/2015	Corrigé pour mandat complet
+4805	867216	COLOMB BOUVARD	ANDRE	Date fin mandat	8/3/2008	21/03/2015	Corrigé pour mandat complet
+4812	160090	COTTAZ	BERNARD	Date fin mandat	8/3/2008	21/03/2015	Corrigé pour mandat complet
+4817	23663	CRIFO	CHRISTINE	Date fin mandat	8/3/2008	21/03/2015	Corrigé pour mandat complet
+4824	160401	DEZEMPTE	GERARD	Date fin mandat	8/3/2008	21/03/2015	Corrigé pour mandat complet
+4828	160276	EYMERY	ANDRE	Date fin mandat	8/3/2008	21/03/2015	Corrigé pour mandat complet
+4853	160487	LANGENIEUX VILLARD	PHILIPPE	Date fin mandat	8/3/2008	21/03/2015	Corrigé pour mandat complet
+4871	160461	NUCCI	CHRISTIAN	Date fin mandat	8/3/2008	21/03/2015	Corrigé pour mandat complet
+4873	276609	PAYEN	PASCAL	Date fin mandat	8/3/2008	21/03/2015	Corrigé pour mandat complet
+4878	28252	PERAZIO	BERNARD	Date fin mandat	8/3/2008	21/03/2015	Corrigé pour mandat complet
+4883	28493	PERILLIE	BRIGITTE	Date fin mandat	8/3/2008	21/03/2015	Corrigé pour mandat complet
+4886	24774	PEYRIN	JEAN CLAUDE	Date fin mandat	8/3/2008	21/03/2015	Corrigé pour mandat complet
+4888	28308	PICHON MARTIN	JACQUES	Date fin mandat	8/3/2008	21/03/2015	Corrigé pour mandat complet
+4892	23247	PILAUD	ALAIN	Date fin mandat	8/3/2008	21/03/2015	Corrigé pour mandat complet
+4910	28238	REVEL	SERGE	Date fin mandat	8/3/2008	21/03/2015	Corrigé pour mandat complet
+4923	16911	ROUVEYRE	GUY	Date fin mandat	8/3/2008	21/03/2015	Corrigé pour mandat complet
+4927	28123	SAVIN	MICHEL	Date fin mandat	8/3/2008	21/03/2015	Corrigé pour mandat complet
+4931	160171	STRAPPAZZON	GILLES	Date fin mandat	8/3/2008	21/03/2015	Corrigé pour mandat complet
+4942	28280	VETTE	RENE	Date fin mandat	8/3/2008	21/03/2015	Corrigé pour mandat complet
+4944	869917	VEYRET	ROBERT	Date fin mandat	8/3/2008	21/03/2015	Corrigé pour mandat complet
+4946	28506	VITTE	DANIEL	Date fin mandat	8/3/2008	21/03/2015	Corrigé pour mandat complet
+8502	171368	DUBERTRAND	ROLAND	Date fin mandat	8/3/2008	21/03/2015	Corrigé pour mandat complet
+8504	869920	DUBIE	JEANINE	Date fin mandat	8/3/2008	21/03/2015	Corrigé pour mandat complet
+8560	869919	SIANI WEMBOU	VIRGINIE	Date fin mandat	8/3/2008	21/03/2015	Corrigé pour mandat complet
+8677	30871	BECKER	ALFRED	Date fin mandat	8/3/2008	21/03/2015	Corrigé pour mandat complet
+8679	30901	BECKER	LOUIS	Date fin mandat	8/3/2008	21/03/2015	Corrigé pour mandat complet
+8693	869923	BITZ	OLIVIER	Date fin mandat	8/3/2008	21/03/2015	Corrigé pour mandat complet
+8695	30884	BRENDLE	ROLAND	Date fin mandat	8/3/2008	21/03/2015	Corrigé pour mandat complet
+8705	170859	DANN	GASTON	Date fin mandat	8/3/2008	21/03/2015	Corrigé pour mandat complet
+8711	31243	DREYFUS	HENRI	Date fin mandat	8/3/2008	21/03/2015	Corrigé pour mandat complet
+8719	170743	FETSCH	JEAN MICHEL	Date fin mandat	8/3/2008	21/03/2015	Corrigé pour mandat complet
+8725	31074	FURST	LAURENT	Date fin mandat	8/3/2008	21/03/2015	Corrigé pour mandat complet
+8729	284	GRIGNON	FRANCIS	Date fin mandat	8/3/2008	21/03/2015	Corrigé pour mandat complet
+8736	584036	HERRMANN	ROBERT	Date fin mandat	8/3/2008	21/03/2015	Corrigé pour mandat complet
+8741	31025	INGWILLER	BERNARD	Date fin mandat	8/3/2008	21/03/2015	Corrigé pour mandat complet
+8755	31289	KLEIN MOSSER	ANDRE	Date fin mandat	8/3/2008	21/03/2015	Corrigé pour mandat complet
+8761	31269	LE TALLEC	YVES	Date fin mandat	8/3/2008	21/03/2015	Corrigé pour mandat complet
+8767	170655	MARMILLOD	PIERRE	Date fin mandat	8/3/2008	21/03/2015	Corrigé pour mandat complet
+8769	30947	MATHIA	JEAN	Date fin mandat	8/3/2008	21/03/2015	Corrigé pour mandat complet
+8775	170934	MEYER	PHILIPPE	Date fin mandat	8/3/2008	21/03/2015	Corrigé pour mandat complet
+8796	31057	SIMLER	GERARD	Date fin mandat	8/3/2008	21/03/2015	Corrigé pour mandat complet
+8798	170705	STOLTZ	RICHARD	Date fin mandat	8/3/2008	21/03/2015	Corrigé pour mandat complet
+8803	582489	VONAU	JEAN LAURENT	Date fin mandat	8/3/2008	21/03/2015	Corrigé pour mandat complet
+8808	31018	WIRTH	JEAN PAUL	Date fin mandat	8/3/2008	21/03/2015	Corrigé pour mandat complet
+8811	170933	WOLF	ETIENNE	Date fin mandat	8/3/2008	21/03/2015	Corrigé pour mandat complet
+12488	1200713	ANNETTE	GILBERT	Date fin mandat	8/3/2008	21/03/2015	Corrigé pour mandat complet
+12493	14797	BASSIRE	NATHALIE MARIE ANDREE	Date fin mandat	8/3/2008	21/03/2015	Corrigé pour mandat complet
+12520	275756	ERUDEL	PATRICK HENRI CLAUDE	Date fin mandat	8/3/2008	21/03/2015	Corrigé pour mandat complet
+12521	36	FIDJI	JEAN CLAUDE	Date fin mandat	8/3/2008	21/03/2015	Corrigé pour mandat complet
+12543	842329	HOARAU	EMMANUEL	Date fin mandat	8/3/2008	21/03/2015	Corrigé pour mandat complet
+12550	872198	HUET	DANIEL SYLVAIN	Date fin mandat	8/3/2008	21/03/2015	Corrigé pour mandat complet
+12596	151234	POUDROUX	MARIE ISABELLE	Date fin mandat	8/3/2008	21/03/2015	Corrigé pour mandat complet
+12601	87901	RAMOUNE	GUITO	Date fin mandat	8/3/2008	21/03/2015	Corrigé pour mandat complet
+12605	449746	RIFOSTA	JEAN HERMANN	Date fin mandat	8/3/2008	21/03/2015	Corrigé pour mandat complet
+12612	1192026	ROBERT	THIERRY	Date fin mandat	8/3/2008	21/03/2015	Corrigé pour mandat complet
+12633	151247	VALY	BACHIL MOUSSA	Date fin mandat	8/3/2008	21/03/2015	Corrigé pour mandat complet
+11509	1492493	ALLOUCH	DAMIEN	Date fin mandat	1/4/2015	NA	Corrigé pour mandat courant
+11512	336831	BECHTER	JEAN PIERRE	Date fin mandat	1/4/2015	NA	Corrigé pour mandat courant
+11514	1174521	BERENGER	JEROME	Date fin mandat	1/4/2015	NA	Corrigé pour mandat courant
+11519	1155243	BOUGRAUD	DOMINIQUE	Date fin mandat	1/4/2015	NA	Corrigé pour mandat courant
+11532	1155949	CHAMBARET	MARIE CLAIRE	Date fin mandat	1/4/2015	NA	Corrigé pour mandat courant
+11539	1494676	CLODONG	OLIVIER	Date fin mandat	1/4/2015	NA	Corrigé pour mandat courant
+11553	1155108	DISCHBEIN	ANNICK	Date fin mandat	1/4/2015	NA	Corrigé pour mandat courant
+11567	1154823	FLEURY	RONAN	Date fin mandat	1/4/2015	NA	Corrigé pour mandat courant
+11577	1493473	GELOT	SANDRINE	Date fin mandat	1/4/2015	NA	Corrigé pour mandat courant
+11579	1493282	GIBERT	SYLVIE	Date fin mandat	1/4/2015	NA	Corrigé pour mandat courant
+11601	3233	MARHUENDA	FRANCOISE	Date fin mandat	1/4/2015	NA	Corrigé pour mandat courant
+11603	1492540	MEARY	NICOLAS	Date fin mandat	1/4/2015	NA	Corrigé pour mandat courant
+11633	1156223	RIGAULT	SOPHIE	Date fin mandat	1/4/2015	NA	Corrigé pour mandat courant
+11646	34161	TOUZET	ALEXANDRE	Date fin mandat	1/4/2015	NA	Corrigé pour mandat courant
+11652	1493742	VERMILLET	BRIGITTE	Date fin mandat	1/4/2015	NA	Corrigé pour mandat courant

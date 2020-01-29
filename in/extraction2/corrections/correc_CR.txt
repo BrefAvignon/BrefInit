@@ -1,5 +1,5 @@
-Id	Nom	Prenom	Attribut	ValAvt	ValApr	Commentaire
-NA	NA	NA	Code departement	69D	69	Pas besoin de distinguer Lyon du reste du Rhone
-NA	NA	NA	Code departement	69M	69	Pas besoin de distinguer Lyon du reste du Rhone
-NA	NA	NA	Libelle departement	RHONE HORS METROPOLE DE LYON	RHONE	Pas besoin de distinguer Lyon du reste du Rhone
-NA	NA	NA	Libelle departement	METROPOLE DE LYON	RHONE	Pas besoin de distinguer Lyon du reste du Rhone
+Row	Id	Nom	Prenom	Attribut	ValAvt	ValApr	Commentaire
+NA	NA	NA	NA	Code departement	69D	69	Pas besoin de distinguer Lyon du reste du Rhone
+NA	NA	NA	NA	Code departement	69M	69	Pas besoin de distinguer Lyon du reste du Rhone
+NA	NA	NA	NA	Libelle departement	RHONE HORS METROPOLE DE LYON	RHONE	Pas besoin de distinguer Lyon du reste du Rhone
+NA	NA	NA	NA	Libelle departement	METROPOLE DE LYON	RHONE	Pas besoin de distinguer Lyon du reste du Rhone
