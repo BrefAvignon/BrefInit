@@ -551,7 +551,7 @@ test.position.m <- function(data, out.folder)
 	}
 	# possibly record the tables of problematic function cases
 	if(nrow(tab.f)>0)
-	{	tab.file <- file.path(out.folder,"function_problems_overlap.txt")
+	{	tab.file <- file.path(out.folder,"fonction_problems_overlap.txt")
 		tlog(2,"Recording in file \"",tab.file,"\"")
 		write.table(x=tab.f,file=tab.file,
 #				fileEncoding="UTF-8",

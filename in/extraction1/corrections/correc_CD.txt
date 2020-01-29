@@ -77,6 +77,7 @@ NA	NA	NA	NA	Libellé du canton	LES ABYMES 3	ABYMES 3	Article superflu
 11512	336831	BECHTER	JEAN PIERRE	Date fin mandat	1/4/2015	NA	Corrigé pour mandat courant
 11514	1174521	BERENGER	JEROME	Date fin mandat	1/4/2015	NA	Corrigé pour mandat courant
 11519	1155243	BOUGRAUD	DOMINIQUE	Date fin mandat	1/4/2015	NA	Corrigé pour mandat courant
+11526	1492259	BOYER	DANY	Date fin mandat	1/4/2015	NA	Corrigé pour mandat courant
 11532	1155949	CHAMBARET	MARIE CLAIRE	Date fin mandat	1/4/2015	NA	Corrigé pour mandat courant
 11539	1494676	CLODONG	OLIVIER	Date fin mandat	1/4/2015	NA	Corrigé pour mandat courant
 11553	1155108	DISCHBEIN	ANNICK	Date fin mandat	1/4/2015	NA	Corrigé pour mandat courant
