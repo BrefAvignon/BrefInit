@@ -280,12 +280,14 @@ load.data <- function(filenames, col.map, correc.file, equiv.ids.file, correct.d
 		
 		# remove rows without mandate and function dates
 		tlog(0,"Removing rows with no mandate and no function date")
-		idx <- which(is.na(data[,COL_ATT_MDT_DBT]) & is.na(data[,COL_ATT_MDT_FIN]) 
+		if(COL_ATT_FCT_DBT %in% colnames(data))
+		{	idx <- which(is.na(data[,COL_ATT_MDT_DBT]) & is.na(data[,COL_ATT_MDT_FIN]) 
 					& is.na(data[,COL_ATT_FCT_DBT]) & is.na(data[,COL_ATT_FCT_FIN]))
-		data <- data[-idx, ]
-		tlog(2,"Removed ",length(idx)," incomplete rows")
+			data <- data[-idx, ]
+			tlog(2,"Removed ",length(idx)," incomplete rows")
+		}
 	}
-	
+		
 	# convert date and numeric columns
 	tlog(0,"Converting date and numeric columns")
 	for(c in 1:ncol(data))
