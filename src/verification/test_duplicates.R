@@ -8,6 +8,67 @@
 
 
 #############################################################################################
+# Detect the rows that are considered as similar in the table. Generally speaking, two rows 
+# are similar if they have the same values for certain columns of interest, and compatible 
+# values for the rest (i.e. one cell empty in a row whereas it has a proper value in the other). 
+#
+# data: the data table.
+# out.folder: folder where to output the results.
+#############################################################################################
+test.duplicate.rows <- function(data, out.folder=NA)
+{	comp.cols <- c(COL_ATT_ELU_ID, COL_ATT_ELU_NOM, COL_ATT_ELU_PRENOM, COL_ATT_ELU_SEXE, COL_ATT_ELU_DDN)
+	tlog(0,"Looking for compatible rows, using compulsory columns \"",paste(comp.cols,collapse="\",\""),"\"")
+	plan(multiprocess, workers=CORE.NBR/2)
+	rm.col <- which(colnames(data) %in% comp.cols)
+	
+	# identify redundant rows
+	concat <- apply(data[,comp.cols], 1, function(row) paste(row, collapse=":"))
+	tt <- table(concat)
+	codes <- names(tt)[which(tt>1)]
+	tlog(2,"Looking for redundant rows: found ",length(codes))
+	
+	# identify compatible rows amongst redundant ones
+	tlog(2,"Looking for compatible rows among them")
+	mats <- lapply(codes, function(code)
+			{	res <- matrix(nrow=0,ncol=ncol(data)+1)
+				rs <- which(concat==code)
+				for(r1 in 1:(length(rs)-1))
+				{	row1 <- data[rs[r1], -rm.col]
+					for(r2 in (r1+1):length(rs))
+					{	row2 <- data[rs[r2], -rm.col]
+						if(all(is.na(row1) | is.na(row2) | row1==row2))
+						{	tmp <- rbind(data[rs[r1],], data[rs[r2],])
+							tmp <- cbind(rs[c(r1,r2)], tmp)
+							res <- rbind(res, tmp)
+						}
+					}
+				}
+				if(nrow(res)>0)
+					res <- rbind(res, rep(NA,ncol(res)))
+				return(res)
+			})
+	
+	# merge the list of tables and record them
+	tlog(2,"Merging the ",length(mats)," result tables")
+	tab <- cbind(rep(NA,nrow(data)),data)[-(1:nrow(data)),]
+	colnames(tab)[1]<- "Ligne"
+	for(m in 1:length(mats))
+		tab <- rbind(tab, mats[[m]])
+	if(!is.na(out.folder) && nrow(tab)>0)
+	{	tab.file <- file.path(out.folder,"compatible_rows.txt")
+		tlog(2,"Recording in file \"",tab.file,"\"")
+		write.table(x=tab, file=tab.file,
+#			fileEncoding="UTF-8",
+			row.names=FALSE, col.names=TRUE)
+	}
+	
+	tlog(2,"Done searching for compatible rows")
+}
+
+
+
+
+#############################################################################################
 # Checks that each ID is always associated to the same person. The person is identified through
 # his/her lastname, firstname, birthdate, and sex.
 #

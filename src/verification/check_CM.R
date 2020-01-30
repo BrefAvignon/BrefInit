@@ -36,9 +36,13 @@ data <- if(extraction==1) load.cm.data(correct.data) else load.cm2.data(correct.
 tlog(0,"Examining each column separately")
 #sumup.cols(data=data, out.folder=out.folder)
 
+# look for duplicate rows
+tlog(0,"Looking for duplicate rows")
+test.duplicate.rows(data=data, out.folder=out.folder)
+
 # check personal information
 tlog(0,"Checking personal information consistency")
-test.personal.info(data=data, out.folder=out.folder)
+#test.personal.info(data=data, out.folder=out.folder)
 
 # check dates
 tlog(0,"Checking dates")

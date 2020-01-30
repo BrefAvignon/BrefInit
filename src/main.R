@@ -21,20 +21,26 @@ source("src/common/include.R")
 # 1) fusionner dans les tables individuelles les lignes pareilles à un epsilon près (à définir)
 # 2) étudier la façon dont certaines lignes incluent plusieurs mandats, ou le contraire
 #    éprouver l'hypothèse voulant que 1 ligne = 1 fonction (ou absence de)
+#    >> pout ça: sortir la liste de lignes pour une position bien identifiés
 # 3) forcer le découpage des lignes recouvrant plusieurs mandats
 #    >> va requérir de tracer les positions pour CD et S.
 #    >> créer un nouveau champ pour stocker l'information ?
 # 4) arrondir les bornes de mandats pour éviter les problèmes (recouvrement, mandats de 1 jour, etc.)
 #    certains de ces problèmes peuvent être issus du découpage forcé des lignes 
 
-# faire la fusion des lignes similaires au niveau des tables indiv puis de la table fusionnée
-#   - faire une sortie des lignes fusionnées
-# comparer les valeurs de chaque champ indiv pour chaque id, faire une sortie des divergences observées
-#   >> et corriger tout ça ad hoc
+# période avec la la même date de début et de fin (mandat et fonctions)
+# voire quelques jours d'écart ?
 
+# mandat se termine mais pas fonctoi
+# fonction se termine mais pas mandat (possible ?)
+
+# motif de fin de mandat/fonction sans la date qui va avec
 
 # vérifier l'unicité des noms de profession
 # (par rapport aux ids)
+
+# refaire certains tests sur la table fusionnée, une fois que les tables individuelles sont propres
+
 
 # Points d'implémentation
 #

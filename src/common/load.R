@@ -265,13 +265,15 @@ load.data <- function(filenames, col.map, correc.file, equiv.ids.file, correct.d
 		
 		# possibly normalize municipality ids
 		if(COL_ATT_COM_CODE %in% colnames(data))
-		{	# we simply keep the first three characters of the id
+		{	tlog(0,"Normalizing municipality ids")
+			# we simply keep the first three characters of the id
 			data[,COL_ATT_COM_CODE] <- substr(x=data[,COL_ATT_COM_CODE], start=1, stop=3)
 		}
 		
 		# replace the NC political nuance by proper NAs
 		if(COL_ATT_ELU_NUANCE %in% colnames(data))
-		{	idx <- which(data[,COL_ATT_ELU_NUANCE]=="NC")
+		{	tlog(0,"Normalizing political nuance labels")
+			idx <- which(data[,COL_ATT_ELU_NUANCE]=="NC")
 			data[idx,COL_ATT_ELU_NUANCE] <- NA
 		}
 	}
@@ -338,14 +340,12 @@ load.data <- function(filenames, col.map, correc.file, equiv.ids.file, correct.d
 # its missing values with those found in the other row.
 #
 # data: the data table.
-# comp.cols: columns whose values must be identical.
-# out.folder: where to write the procuded file (if NA, no file is produced).
 #
 # returns: the table with the merged similar rows.
 #############################################################################################
-merge.similar.rows <- function(data, comp.cols, out.folder=NA)
-{	tlog(0,"Merging compatible rows for compulsory columns \"",paste(comp.cols,collapse="\",\""),"\"")
-	plan(multiprocess, workers=CORE.NBR/2)
+merge.similar.rows <- function(data)
+{	comp.cols <- c(COL_ATT_ELU_ID, COL_ATT_ELU_NOM, COL_ATT_ELU_PRENOM, COL_ATT_ELU_SEXE, COL_ATT_ELU_DDN)
+	tlog(0,"Merging compatible rows for compulsory columns \"",paste(comp.cols,collapse="\",\""),"\"")
 	rm.col <- which(colnames(data) %in% comp.cols)
 	
 	# identify redundant rows
@@ -356,36 +356,39 @@ merge.similar.rows <- function(data, comp.cols, out.folder=NA)
 	
 	# identify compatible rows amongst redundant ones
 	tlog(2,"Looking for compatible rows among them")
-	mats <- future_lapply(codes, function(code)
-			{	res <- matrix(nrow=0,ncol=ncol(data))
+	tmp <- lapply(codes, function(code)
+			{	res <- c()
 				rs <- which(concat==code)
-				for(r1 in 1:(length(rs)-1))
-				{	row1 <- data[r1, -rm.col]
-					for(r2 in (r1+1):length(rs))
-					{	row2 <- data[r2, -rm.col]
-						if(all(is.na(row1) | is.na(row2) | row1==row2))
-							res <- rbind(res, data[r1,], data[r2,], rep(NA,ncol(data)))
+				while(length(rs)>=2)
+				{	r1 <- rs[1]
+					rs <- rs[-1]
+					r2 <- 1
+					while(r2<=length(rs))
+					{	if(all(is.na(data[r1,-rm.col]) | is.na(data[rs[r2],-rm.col]) | data[r1,-rm.col]==data[rs[r2],-rm.col]))
+						{	idx <- which(is.na(data[r1,]))
+							if(length(idx)>0)
+								data[r1,idx] <<- data[rs[r2],idx]
+							res <- c(res, rs[r2])
+							rs <- rs[-r2]
+						}
+						else
+							r2 <- r2 + 1
 					}
 				}
-				if(nrow(res)>0)
-					res <- rbind(res, rep(NA,ncol(data)))
 				return(res)
 			})
 	
-	# merge the list of tables and record them
-	tlog(2,"Merging the ",length(mats)," tables")
-	tab <- data[-(1:nrow(data)),]
-	for(mat in mats)
-		tab <- rbind(tab,mat)
-	if(is.na(out.folder) && nrow(tab)>0)
-	{	tab.file <- file.path(out.folder,"compatible_rows.txt")
-		tlog(2,"Recording in file \"",tab.file,"\"")
-		write.table(x=tab,file=tab.file,
-#			fileEncoding="UTF-8",
-			row.names=FALSE, col.names=TRUE)
+	# actually remove deleted rows
+	removed.nbr <- 0
+	if(length(tmp)>0)
+	{	idx <- unlist(tmp)
+		if(length(idx)>0)
+		{	removed.nbr <- length(idx)
+			data <- data[-idx,]
+		}
 	}
 	
-	tlog(2,"Done merging compatible rows")
+	tlog(2,"Done merging compatible rows, removed ",removed.nbr," rows")
 	return(data)
 }
 
@@ -474,8 +477,7 @@ load.cd.data <- function(correct.data)
 		data <- insert.unique.canton.id(data=data, file.canton.ids=FILE_CANTON_IDS)
 		
 		# merge similar rows
-		comp.cols <- c(COL_ATT_ELU_ID, COL_ATT_ELU_NOM, COL_ATT_ELU_PRENOM, COL_ATT_ELU_SEXE, COL_ATT_ELU_DDN)
-		data <- merge.similar.rows(data=data, comp.cols=comp.cols, out.folder=FOLDER_OUT_CD)
+		data <- merge.similar.rows(data=data)
 	}
 	
 	return(data)
@@ -519,8 +521,7 @@ load.cd2.data <- function(correct.data)
 		data <- insert.unique.canton.id(data=data, file.canton.ids=FILE_CANTON_IDS)
 		
 		# merge similar rows
-		comp.cols <- c(COL_ATT_ELU_ID, COL_ATT_ELU_NOM, COL_ATT_ELU_PRENOM, COL_ATT_ELU_SEXE, COL_ATT_ELU_DDN)
-		data <- merge.similar.rows(data=data, comp.cols=comp.cols, out.folder=FOLDER_OUT_CD2)
+		data <- merge.similar.rows(data=data)
 	}
 	
 	return(data)
@@ -588,8 +589,7 @@ load.cm.data <- function(correct.data)
 	# perform additional corrections
 	if(correct.data)
 	{	# merge similar rows
-		comp.cols <- c(COL_ATT_ELU_ID, COL_ATT_ELU_NOM, COL_ATT_ELU_PRENOM, COL_ATT_ELU_SEXE, COL_ATT_ELU_DDN)
-		data <- merge.similar.rows(data=data, comp.cols=comp.cols, out.folder=FOLDER_OUT_CM)
+		data <- merge.similar.rows(data=data)
 	}
 	
 	return(data)
@@ -635,8 +635,7 @@ load.cm2.data <- function(correct.data)
 	# perform additional corrections
 	if(correct.data)
 	{	# merge similar rows
-		comp.cols <- c(COL_ATT_ELU_ID, COL_ATT_ELU_NOM, COL_ATT_ELU_PRENOM, COL_ATT_ELU_SEXE, COL_ATT_ELU_DDN)
-		data <- merge.similar.rows(data=data, comp.cols=comp.cols, out.folder=FOLDER_OUT_CM2)
+		data <- merge.similar.rows(data=data)
 	}
 	
 	return(data)
@@ -682,8 +681,7 @@ load.cr.data <- function(correct.data)
 	# perform additional corrections
 	if(correct.data)
 	{	# merge similar rows
-		comp.cols <- c(COL_ATT_ELU_ID, COL_ATT_ELU_NOM, COL_ATT_ELU_PRENOM, COL_ATT_ELU_SEXE, COL_ATT_ELU_DDN)
-		data <- merge.similar.rows(data=data, comp.cols=comp.cols, out.folder=FOLDER_OUT_CR)
+		data <- merge.similar.rows(data=data)
 	}
 	
 	return(data)
@@ -741,8 +739,7 @@ load.cr2.data <- function(correct.data)
 	# perform additional corrections
 	if(correct.data)
 	{	# merge similar rows
-		comp.cols <- c(COL_ATT_ELU_ID, COL_ATT_ELU_NOM, COL_ATT_ELU_PRENOM, COL_ATT_ELU_SEXE, COL_ATT_ELU_DDN)
-		data <- merge.similar.rows(data=data, comp.cols=comp.cols, out.folder=FOLDER_OUT_CR2)
+		data <- merge.similar.rows(data=data)
 	}
 	
 	return(data)
@@ -788,8 +785,7 @@ load.d.data <- function(correct.data)
 	# perform additional corrections
 	if(correct.data)
 	{	# merge similar rows
-		comp.cols <- c(COL_ATT_ELU_ID, COL_ATT_ELU_NOM, COL_ATT_ELU_PRENOM, COL_ATT_ELU_SEXE, COL_ATT_ELU_DDN)
-		data <- merge.similar.rows(data=data, comp.cols=comp.cols, out.folder=FOLDER_OUT_D)
+		data <- merge.similar.rows(data=data)
 	}
 	
 	return(data)
@@ -829,8 +825,7 @@ load.de.data <- function(correct.data)
 	# perform additional corrections
 	if(correct.data)
 	{	# merge similar rows
-		comp.cols <- c(COL_ATT_ELU_ID, COL_ATT_ELU_NOM, COL_ATT_ELU_PRENOM, COL_ATT_ELU_SEXE, COL_ATT_ELU_DDN)
-		data <- merge.similar.rows(data=data, comp.cols=comp.cols, out.folder=FOLDER_OUT_DE)
+		data <- merge.similar.rows(data=data)
 	}
 	
 	return(data)
@@ -889,8 +884,7 @@ load.epci.data <- function(correct.data)
 	# perform additional corrections
 	if(correct.data)
 	{	# merge similar rows
-		comp.cols <- c(COL_ATT_ELU_ID, COL_ATT_ELU_NOM, COL_ATT_ELU_PRENOM, COL_ATT_ELU_SEXE, COL_ATT_ELU_DDN)
-		data <- merge.similar.rows(data=data, comp.cols=comp.cols, out.folder=FOLDER_OUT_EPCI)
+		data <- merge.similar.rows(data=data)
 	}
 	
 	return(data)
@@ -955,8 +949,7 @@ load.m.data <- function(correct.data)
 	# perform additional corrections
 	if(correct.data)
 	{	# merge similar rows
-		comp.cols <- c(COL_ATT_ELU_ID, COL_ATT_ELU_NOM, COL_ATT_ELU_PRENOM, COL_ATT_ELU_SEXE, COL_ATT_ELU_DDN)
-		data <- merge.similar.rows(data=data, comp.cols=comp.cols, out.folder=FOLDER_OUT_M)
+		data <- merge.similar.rows(data=data)
 	}
 	
 	return(data)
@@ -1000,8 +993,7 @@ load.s.data <- function(correct.data)
 	# perform additional corrections
 	if(correct.data)
 	{	# merge similar rows
-		comp.cols <- c(COL_ATT_ELU_ID, COL_ATT_ELU_NOM, COL_ATT_ELU_PRENOM, COL_ATT_ELU_SEXE, COL_ATT_ELU_DDN)
-		data <- merge.similar.rows(data=data, comp.cols=comp.cols, out.folder=FOLDER_OUT_S)
+		data <- merge.similar.rows(data=data)
 	}
 	
 	return(data)
