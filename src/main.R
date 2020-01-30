@@ -31,8 +31,8 @@ source("src/common/include.R")
 # période avec la la même date de début et de fin (mandat et fonctions)
 # voire quelques jours d'écart ?
 
-# mandat se termine mais pas fonctoi
-# fonction se termine mais pas mandat (possible ?)
+# le mandat se termine (date de fin) mais pas la fonction (NA)
+#   fonction se termine mais pas mandat (possible ?)
 
 # motif de fin de mandat/fonction sans la date qui va avec
 

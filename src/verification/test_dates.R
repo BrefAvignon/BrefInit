@@ -213,7 +213,7 @@ test.col.dates.nofun <- function(data, out.folder)
 	{	# build the table and write it
 		tmp <- cbind(idx, data[idx,])
 		colnames(tmp)[1] <- "Ligne"
-		tab.file <- file.path(out.folder,"fonction_lib_problems_missing.txt")
+		tab.file <- file.path(out.folder,"fonction_dates_problems_missing.txt")
 		tlog(4,"Recording in file \"",tab.file,"\"")
 		write.table(x=tmp,file=tab.file,
 #			fileEncoding="UTF-8",

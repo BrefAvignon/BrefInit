@@ -168,3 +168,32 @@ NA	NA	NA	NA	Numero SIREN	241100643	248400145	EPCI avec plusieurs SIREN successif
 81815	828846	PELOUIN	CLAIRE	Date fin mandat	31/12/2016	NA	Corrigé pour mandat en cours
 81866	450465	COUPEL	CHRISTIAN	Date fin mandat	31/12/2016	NA	Corrigé pour mandat en cours
 82012	1398822	ROGER	JOEL	Date fin mandat	31/12/2016	NA	Corrigé pour mandat en cours
+24115	1252266	AOÛT	Jean-Pierre	Date debut mandat	NA	11/12/2017	Mise en cohérence avec fonction
+24447	145714	ROUHAUD	France	Date debut mandat	NA	15/5/2017	Mise en cohérence avec fonction
+39973	331285	BAYONI	Pascal	Date debut mandat	NA	27/1/2017	Mise en cohérence avec fonction
+40000	961930	BLANC	Paul-Marie	Date debut mandat	NA	27/1/2017	Mise en cohérence avec fonction
+40087	140833	SANS	Christian	Date debut mandat	NA	27/1/2017	Mise en cohérence avec fonction
+40230	681008	CAZALOT	Christian	Date debut mandat	NA	27/1/2017	Mise en cohérence avec fonction
+40253	532293	CHENIN	Jean	Date debut mandat	NA	27/1/2017	Mise en cohérence avec fonction
+40287	771651	OLIVA	MICHEL	Date debut mandat	NA	27/1/2017	Mise en cohérence avec fonction
+40324	962721	VINCINI	SEBASTIEN	Date debut mandat	NA	27/1/2017	Mise en cohérence avec fonction
+40465	1293769	LAGARRIGUE	PIERRE	Date debut mandat	NA	27/1/2017	Mise en cohérence avec fonction
+40574	685179	MUL	CECILE	Date debut mandat	NA	27/1/2017	Mise en cohérence avec fonction
+40576	486903	ZDAN	MICHEL	Date debut mandat	NA	27/1/2017	Mise en cohérence avec fonction
+40604	1294051	GABRIEL	CELINE	Date debut mandat	NA	27/1/2017	Mise en cohérence avec fonction
+40665	831412	DINTILHAC	PIERRE ALAIN	Date debut mandat	NA	27/1/2017	Mise en cohérence avec fonction
+40700	1294283	MUNOZ	FLOREAL	Date debut mandat	NA	27/1/2017	Mise en cohérence avec fonction
+40709	334765	CAZAJUS	JOEL	Date debut mandat	NA	27/1/2017	Mise en cohérence avec fonction
+40803	162867	AYCAGUER	JEAN	Date debut mandat	NA	27/1/2017	Mise en cohérence avec fonction
+40807	590111	HERNANDEZ	CATHERINE	Date debut mandat	NA	27/1/2017	Mise en cohérence avec fonction
+40907	963706	TARRAUBE	GILBERT	Date debut mandat	NA	27/1/2017	Mise en cohérence avec fonction
+40918	1294729	PASQUET	WILFRID	Date debut mandat	NA	27/1/2017	Mise en cohérence avec fonction
+41299	675559	DUZERT	ROGER	Date debut mandat	NA	27/1/2017	Mise en cohérence avec fonction
+41371	1185709	COURTOIS PERISSE	JENNIFER	Date debut mandat	NA	27/1/2017	Mise en cohérence avec fonction
+41477	964975	VIVES	FRANCOIS	Date debut mandat	NA	27/1/2017	Mise en cohérence avec fonction
+41669	162658	ROQUABERT	PIERRETTE	Date debut mandat	NA	27/1/2017	Mise en cohérence avec fonction
+41687	965103	TOFFOLON	JOSEPH	Date debut mandat	NA	27/1/2017	Mise en cohérence avec fonction
+41852	1296636	ESTANG	NADIA	Date debut mandat	NA	27/1/2017	Mise en cohérence avec fonction
+41871	964897	DEMANGE	SERGE	Date debut mandat	NA	27/1/2017	Mise en cohérence avec fonction
+41874	333475	TISSEIRE	BERNARD	Date debut mandat	NA	27/1/2017	Mise en cohérence avec fonction
+63038	156972	BOISMORIN	GINO	Date debut mandat	NA	16/4/2018	Mise en cohérence avec fonction
