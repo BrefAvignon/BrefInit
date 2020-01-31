@@ -284,6 +284,12 @@ load.data <- function(filenames, col.map, correc.file, equiv.ids.file, correct.d
 					& is.na(data[,COL_ATT_FCT_DBT]) & is.na(data[,COL_ATT_FCT_FIN]))
 		data <- data[-idx, ]
 		tlog(2,"Removed ",length(idx)," incomplete rows")
+		
+		# use mandate date when function date is missing
+		tlog(0,"Completing missing function dates using mandate dates")
+		idx <- which(!is.na(data[,COL_ATT_FCT_NOM]) & is.na(data[,COL_ATT_FCT_DBT]) & is.na(data[,COL_ATT_FCT_FIN]))
+		if(length(idx)>0)
+			data[idx,c(COL_ATT_FCT_DBT,COL_ATT_FCT_FIN)] <- data[idx,c(COL_ATT_MDT_DBT,COL_ATT_MDT_FIN)]
 	}
 	
 	# convert date and numeric columns
