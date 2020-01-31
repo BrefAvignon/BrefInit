@@ -109,7 +109,7 @@ load.data <- function(filenames, col.map, correc.file, equiv.ids.file, correct.d
 		
 		# the column is an actual string
 		if(col.type %in% c("cat","nom"))
-		{	tlog(2,"Processing column \"",col.name,"\"")
+		{	tlog(2,"Processing column \"",col.name,"\" (",c,"/",ncol(data),")")
 			# convert encoding
 ##			data[,c] <- iconv(x=data[,c], from="Latin1", to="UTF8")
 #			data[,c] <- iconv(x=data[,c], to="UTF8")
@@ -276,9 +276,10 @@ load.data <- function(filenames, col.map, correc.file, equiv.ids.file, correct.d
 			idx <- which(data[,COL_ATT_ELU_NUANCE]=="NC")
 			if(length(idx)>0)
 				data[idx,COL_ATT_ELU_NUANCE] <- NA
+			tlog(2,"Fixed ",length(idx)," rows")
 		}
 		
-		# remove rows without mandate and function dates
+		# remove rows without mandate and without function dates
 		tlog(0,"Removing rows with no mandate and no function date")
 		if(COL_ATT_FCT_DBT %in% colnames(data))
 		{	idx <- which(is.na(data[,COL_ATT_MDT_DBT]) & is.na(data[,COL_ATT_MDT_FIN]) 
@@ -287,13 +288,25 @@ load.data <- function(filenames, col.map, correc.file, equiv.ids.file, correct.d
 			tlog(2,"Removed ",length(idx)," incomplete rows")
 		}
 		
-		# use mandate date when function date is missing
-		tlog(0,"Completing missing function dates using mandate dates")
-		idx <- which(!is.na(data[,COL_ATT_FCT_NOM]) & is.na(data[,COL_ATT_FCT_DBT]) & is.na(data[,COL_ATT_FCT_FIN]))
-		if(length(idx)>0)
-			data[idx,c(COL_ATT_FCT_DBT,COL_ATT_FCT_FIN)] <- data[idx,c(COL_ATT_MDT_DBT,COL_ATT_MDT_FIN)]
-	}
+		# use mandate start date when function start date is missing 
+		if(COL_ATT_FCT_NOM %in% colnames(data))
+		{	tlog(0,"Completing missing function start dates using mandate start dates")
+			idx <- which(!is.na(data[,COL_ATT_FCT_NOM]) & is.na(data[,COL_ATT_FCT_DBT]))
+			if(length(idx)>0)
+				data[idx,COL_ATT_FCT_DBT] <- data[idx,COL_ATT_MDT_DBT]
+			tlog(2,"Fixed ",length(idx)," rows")
+		}
 		
+		# use mandate end date when function end date is missing 
+		if(COL_ATT_FCT_NOM %in% colnames(data))
+		{	tlog(0,"Completing missing function end dates using mandate end dates")
+			idx <- which(!is.na(data[,COL_ATT_FCT_NOM]) & is.na(data[,COL_ATT_FCT_FIN]) & !is.na(data[,COL_ATT_MDT_FIN]))
+			if(length(idx)>0)
+				data[idx,COL_ATT_FCT_FIN] <- data[idx,COL_ATT_MDT_FIN]
+			tlog(2,"Fixed ",length(idx)," rows")
+		}
+	}
+	
 	# convert date and numeric columns
 	tlog(0,"Converting date and numeric columns")
 	for(c in 1:ncol(data))

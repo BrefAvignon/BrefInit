@@ -196,7 +196,8 @@ test.col.dates.pre.rne <- function(data, out.folder)
 
 
 #############################################################################################
-# Detects rows where the function is specified, but without any associated dates.
+# Detects rows where the function is specified, but without any associated dates, or the mandate
+# has an end date but not the function.
 #
 # data: table containing the data.
 # out.folder: folder where to output the results.
@@ -204,16 +205,30 @@ test.col.dates.pre.rne <- function(data, out.folder)
 test.col.dates.nofun <- function(data, out.folder)
 {	tlog(2,"Identifying functions without dates")
 	
-	# retrieve all rows with a non-NA function and no dates
-	idx <- which(!is.na(data[,COL_ATT_FCT_NOM]) 
-				& is.na(data[,COL_ATT_FCT_DBT]) & is.na(data[,COL_ATT_FCT_FIN]))
-	tlog(4,"Found ",length(idx)," functions with missing dates")
-	
+	# retrieve all rows with a function name but no start date
+	idx <- which(!is.na(data[,COL_ATT_FCT_NOM])
+					& is.na(data[,COL_ATT_FCT_DBT]))
+	tlog(4,"Found ",length(idx)," rows with a function name but no start date")
+	# build the table and write it
 	if(length(idx)>0)
-	{	# build the table and write it
-		tmp <- cbind(idx, data[idx,])
+	{	tmp <- cbind(idx, data[idx,])
 		colnames(tmp)[1] <- "Ligne"
-		tab.file <- file.path(out.folder,"fonction_dates_problems_missing.txt")
+		tab.file <- file.path(out.folder,"fonction_debut_problems_missing.txt")
+		tlog(4,"Recording in file \"",tab.file,"\"")
+		write.table(x=tmp,file=tab.file,
+#			fileEncoding="UTF-8",
+			row.names=FALSE, col.names=TRUE)
+	}
+	
+	# retrieve all rows with a function name and a mandate end, but no function end
+	idx <- which(!is.na(data[,COL_ATT_FCT_NOM])
+					& is.na(data[,COL_ATT_FCT_FIN]) & !is.na(data[,COL_ATT_MDT_FIN]))
+	tlog(4,"Found ",length(idx)," rows with a function name and mandate end, but no function end")
+	# build the table and write it
+	if(length(idx)>0)
+	{	tmp <- cbind(idx, data[idx,])
+		colnames(tmp)[1] <- "Ligne"
+		tab.file <- file.path(out.folder,"fonction_fin_problems_missing.txt")
 		tlog(4,"Recording in file \"",tab.file,"\"")
 		write.table(x=tmp,file=tab.file,
 #			fileEncoding="UTF-8",

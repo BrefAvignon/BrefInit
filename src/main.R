@@ -18,7 +18,6 @@ source("src/common/include.R")
 
 
 # TODO
-# 1) fusionner dans les tables individuelles les lignes pareilles à un epsilon près (à définir)
 # 2) étudier la façon dont certaines lignes incluent plusieurs mandats, ou le contraire
 #    éprouver l'hypothèse voulant que 1 ligne = 1 fonction (ou absence de)
 #    >> pout ça: sortir la liste de lignes pour une position bien identifiés
@@ -31,15 +30,12 @@ source("src/common/include.R")
 # période avec la la même date de début et de fin (mandat et fonctions)
 # voire quelques jours d'écart ?
 
-# le mandat se termine (date de fin) mais pas la fonction (NA)
-#   fonction se termine mais pas mandat (possible ?)
-
 # motif de fin de mandat/fonction sans la date qui va avec
 
 # vérifier l'unicité des noms de profession
 # (par rapport aux ids)
 
-# refaire certains tests sur la table fusionnée, une fois que les tables individuelles sont propres
+# refaire certains (tous ?) tests sur la table fusionnée, une fois que les tables individuelles sont propres
 
 
 # Points d'implémentation
