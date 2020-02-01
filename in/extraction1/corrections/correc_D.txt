@@ -1,3 +1,64 @@
 Row	Id	Nom	Prenom	Attribut	ValAvt	ValApr	Commentaire
 2448	1154458	GIRARDIN	Annick	Libellé de la cir.législative	1ère circonscription	Saint-Pierre-et-Miquelon	Nom changé au cours du temps
 2449	790	GRIGNON	Gérard	Libellé de la cir.législative	1ère circonscription	Saint-Pierre-et-Miquelon	Nom changé au cours du temps
+805	1325550	GALASSO	Virginie	Date debut mandat	23/3/2014	NA	Mandat de 1 jour, corrigé par suppression
+805	1325550	GALASSO	Virginie	Date fin mandat	23/3/2014	NA	Mandat de 1 jour, corrigé par suppression
+1605	1166801	DUBOIS	Françoise	Date fin mandat	20/6/2012	NA	Corrigé pour fusion ultérieure
+1642	168242	MIGNOLA	Patrick	Date debut mandat	19/6/2017	18/6/2017	Corrigé pour fusion ultérieure
+1642	168242	MIGNOLA	Patrick	Date fin mandat	20/6/2017	NA	Correction coquille
+1642	168242	MIGNOLA	Patrick	Motif fin mandat	AU	NA	Correction coquille
+614	1191972	DOUCET	Sandrine	Date fin mandat	19/6/2012	NA	Corrigé pour fusion ultérieure
+615	1191972	DOUCET	Sandrine	Date debut mandat	20/6/2012	17/6/2012	Corrigé pour fusion ultérieure
+635	870071	RECALDE	Marie	Date fin mandat	19/6/2012	NA	Corrigé pour fusion ultérieure
+636	870071	RECALDE	Marie	Date debut mandat	20/6/2012	17/6/2012	Corrigé pour fusion ultérieure
+645	162105	FOULON	Yves	Date fin mandat	19/6/2012	NA	Corrigé pour fusion ultérieure
+646	162105	FOULON	Yves	Date debut mandat	20/6/2012	17/6/2012	Corrigé pour fusion ultérieure
+651	77	SAVARY	Gilles	Date fin mandat	19/6/2012	NA	Corrigé pour fusion ultérieure
+652	77	SAVARY	Gilles	Date debut mandat	20/6/2012	17/6/2012	Corrigé pour fusion ultérieure
+653	967790	BOUDIE	Florent	Date fin mandat	19/6/2012	NA	Corrigé pour fusion ultérieure
+654	967790	BOUDIE	Florent	Date debut mandat	20/6/2012	17/6/2012	Corrigé pour fusion ultérieure
+787	855722	BARBIER	Jean-Pierre	Date fin mandat	19/6/2012	NA	Corrigé pour fusion ultérieure
+788	855722	BARBIER	Jean-Pierre	Date debut mandat	20/6/2012	17/6/2012	Corrigé pour fusion ultérieure
+793	869915	BINET	Erwann	Date fin mandat	19/6/2012	NA	Corrigé pour fusion ultérieure
+794	869915	BINET	Erwann	Date debut mandat	20/6/2012	17/6/2012	Corrigé pour fusion ultérieure
+797	25038	BONNETON	Michèle	Date fin mandat	19/6/2012	NA	Corrigé pour fusion ultérieure
+798	25038	BONNETON	Michèle	Date debut mandat	20/6/2012	17/6/2012	Corrigé pour fusion ultérieure
+1133	352769	FILIPPETTI	Aurélie	Date fin mandat	19/6/2012	NA	Corrigé pour fusion ultérieure
+1134	352769	FILIPPETTI	Aurélie	Date debut mandat	20/6/2012	17/6/2012	Corrigé pour fusion ultérieure
+1140	833	JACQUAT	Denis	Date fin mandat	19/6/2012	NA	Corrigé pour fusion ultérieure
+1141	833	JACQUAT	Denis	Date debut mandat	20/6/2012	17/6/2012	Corrigé pour fusion ultérieure
+1145	834	ZIMMERMANN	Marie-Jo	Date fin mandat	19/6/2012	NA	Corrigé pour fusion ultérieure
+1146	834	ZIMMERMANN	Marie-Jo	Date debut mandat	20/6/2012	17/6/2012	Corrigé pour fusion ultérieure
+1149	835	MARTY	Alain	Date fin mandat	19/6/2012	NA	Corrigé pour fusion ultérieure
+1150	835	MARTY	Alain	Date debut mandat	20/6/2012	17/6/2012	Corrigé pour fusion ultérieure
+1153	836	LETT	Céleste	Date fin mandat	19/6/2012	NA	Corrigé pour fusion ultérieure
+1154	836	LETT	Céleste	Date debut mandat	20/6/2012	17/6/2012	Corrigé pour fusion ultérieure
+1156	833742	KALINOWSKI	Laurent	Date fin mandat	19/6/2012	NA	Corrigé pour fusion ultérieure
+1157	833742	KALINOWSKI	Laurent	Date debut mandat	20/6/2012	17/6/2012	Corrigé pour fusion ultérieure
+1162	392902	ZANETTI	Paola	Date fin mandat	19/6/2012	NA	Corrigé pour fusion ultérieure
+1163	392902	ZANETTI	Paola	Date debut mandat	20/6/2012	17/6/2012	Corrigé pour fusion ultérieure
+1167	842	LIEBGOTT	Michel	Date fin mandat	19/6/2012	NA	Corrigé pour fusion ultérieure
+1168	842	LIEBGOTT	Michel	Date debut mandat	20/6/2012	17/6/2012	Corrigé pour fusion ultérieure
+1169	1044466	GROMMERCH-BRANDENBURGER	Anne	Date fin mandat	19/6/2012	NA	Corrigé pour fusion ultérieure
+1170	1044466	GROMMERCH-BRANDENBURGER	Anne	Date debut mandat	20/6/2012	17/6/2012	Corrigé pour fusion ultérieure
+2068	1093	HEINRICH	Michel	Date fin mandat	19/6/2012	NA	Corrigé pour fusion ultérieure
+2069	1093	HEINRICH	Michel	Date debut mandat	20/6/2012	17/6/2012	Corrigé pour fusion ultérieure
+2078	1505518	VANNSON	François	Date fin mandat	19/6/2012	NA	Corrigé pour fusion ultérieure
+2079	1505518	VANNSON	François	Date debut mandat	20/6/2012	17/6/2012	Corrigé pour fusion ultérieure
+2080	15719	FRANQUEVILLE	Christian	Date fin mandat	19/6/2012	NA	Corrigé pour fusion ultérieure
+2081	15719	FRANQUEVILLE	Christian	Date debut mandat	20/6/2012	17/6/2012	Corrigé pour fusion ultérieure
+2085	1148568	LARRIVE	Guillaume	Date fin mandat	19/6/2012	NA	Corrigé pour fusion ultérieure
+2086	1148568	LARRIVE	Guillaume	Date debut mandat	20/6/2012	17/6/2012	Corrigé pour fusion ultérieure
+2090	163672	CAULLET	Jean-Yves	Date fin mandat	19/6/2012	NA	Corrigé pour fusion ultérieure
+2091	163672	CAULLET	Jean-Yves	Date debut mandat	20/6/2012	17/6/2012	Corrigé pour fusion ultérieure
+2370	823713	MARIE-JEANNE	Alfred	Date fin mandat	19/6/2012	NA	Corrigé pour fusion ultérieure
+2371	823713	MARIE-JEANNE	Alfred	Date debut mandat	20/6/2012	16/6/2012	Corrigé pour fusion ultérieure
+2374	833628	AZEROT	Bruno Nestor	Date fin mandat	19/6/2012	NA	Corrigé pour fusion ultérieure
+2375	833628	AZEROT	Bruno Nestor	Date debut mandat	20/6/2012	16/6/2012	Corrigé pour fusion ultérieure
+2380	140651	LETCHIMY	Serge	Date fin mandat	19/6/2012	NA	Corrigé pour fusion ultérieure
+2381	140651	LETCHIMY	Serge	Date debut mandat	20/6/2012	16/6/2012	Corrigé pour fusion ultérieure
+2385	571799	NILOR	Jean-Philippe	Date fin mandat	19/6/2012	NA	Corrigé pour fusion ultérieure
+2386	571799	NILOR	Jean-Philippe	Date debut mandat	20/6/2012	16/6/2012	Corrigé pour fusion ultérieure
+892	596	AYRAULT	Jean-Marc	Date fin mandat	19/7/2012	11/3/2016	Corrigé pour fusion ultérieure
+891	596	AYRAULT	Jean-Marc	Date debut mandat	10/5/2012	20/6/2012	Corrigé pour fusion ultérieure
+817	831521	DARRIEUSSECQ	Geneviève	Date fin mandat	22/6/2017	21/7/2017	Coquille dans la date de fin

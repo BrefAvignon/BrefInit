@@ -35,7 +35,10 @@ source("src/common/include.R")
 # vérifier l'unicité des noms de profession
 # (par rapport aux ids)
 
+# TODO liste des députés ordonnés par cause de fin de mandat
+
 # refaire certains (tous ?) tests sur la table fusionnée, une fois que les tables individuelles sont propres
+
 
 
 # Points d'implémentation

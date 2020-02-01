@@ -137,6 +137,7 @@ load.data <- function(filenames, col.map, correc.file, equiv.ids.file, correct.d
 		# replace "NA"s by actual NAs
 		data[which(data[,c]=="NA"),c] <- NA	
 	}
+	tlog(2,"Now ",nrow(data)," lines and ",ncol(data)," columns in main table")
 	
 	if(correct.data)
 	{	# load table of equivalent ids
@@ -178,6 +179,7 @@ load.data <- function(filenames, col.map, correc.file, equiv.ids.file, correct.d
 								return(new.id)
 						})
 			}
+			tlog(2,"Now ",nrow(data)," lines and ",ncol(data)," columns in main table")
 		}
 		
 		# apply ad hoc corrections
@@ -261,6 +263,8 @@ load.data <- function(filenames, col.map, correc.file, equiv.ids.file, correct.d
 					}
 				}
 			}
+			
+			tlog(2,"Now ",nrow(data)," lines and ",ncol(data)," columns in main table")
 		}
 		
 		# possibly normalize municipality ids
@@ -268,6 +272,7 @@ load.data <- function(filenames, col.map, correc.file, equiv.ids.file, correct.d
 		{	tlog(0,"Normalizing municipality ids")
 			# we simply keep the first three characters of the id
 			data[,COL_ATT_COM_CODE] <- substr(x=data[,COL_ATT_COM_CODE], start=1, stop=3)
+			tlog(2,"Now ",nrow(data)," lines and ",ncol(data)," columns in main table")
 		}
 		
 		# replace the NC political nuance by proper NAs
@@ -277,6 +282,7 @@ load.data <- function(filenames, col.map, correc.file, equiv.ids.file, correct.d
 			if(length(idx)>0)
 				data[idx,COL_ATT_ELU_NUANCE] <- NA
 			tlog(2,"Fixed ",length(idx)," rows")
+			tlog(2,"Now ",nrow(data)," lines and ",ncol(data)," columns in main table")
 		}
 		
 		# remove rows without mandate and without function dates
@@ -284,8 +290,10 @@ load.data <- function(filenames, col.map, correc.file, equiv.ids.file, correct.d
 		if(COL_ATT_FCT_DBT %in% colnames(data))
 		{	idx <- which(is.na(data[,COL_ATT_MDT_DBT]) & is.na(data[,COL_ATT_MDT_FIN]) 
 					& is.na(data[,COL_ATT_FCT_DBT]) & is.na(data[,COL_ATT_FCT_FIN]))
-			data <- data[-idx, ]
+			if(length(idx)>0)
+				data <- data[-idx, ]
 			tlog(2,"Removed ",length(idx)," incomplete rows")
+			tlog(2,"Now ",nrow(data)," lines and ",ncol(data)," columns in main table")
 		}
 		
 		# use mandate start date when function start date is missing 
@@ -295,6 +303,7 @@ load.data <- function(filenames, col.map, correc.file, equiv.ids.file, correct.d
 			if(length(idx)>0)
 				data[idx,COL_ATT_FCT_DBT] <- data[idx,COL_ATT_MDT_DBT]
 			tlog(2,"Fixed ",length(idx)," rows")
+			tlog(2,"Now ",nrow(data)," lines and ",ncol(data)," columns in main table")
 		}
 		
 		# use mandate end date when function end date is missing 
@@ -304,6 +313,7 @@ load.data <- function(filenames, col.map, correc.file, equiv.ids.file, correct.d
 			if(length(idx)>0)
 				data[idx,COL_ATT_FCT_FIN] <- data[idx,COL_ATT_MDT_FIN]
 			tlog(2,"Fixed ",length(idx)," rows")
+			tlog(2,"Now ",nrow(data)," lines and ",ncol(data)," columns in main table")
 		}
 	}
 	
@@ -347,13 +357,15 @@ load.data <- function(filenames, col.map, correc.file, equiv.ids.file, correct.d
 		else
 			tlog(2,"Col. \"",col.name,"\": simple string, no conversion")
 	}
-		
+	tlog(2,"Now ",nrow(data)," lines and ",ncol(data)," columns in main table")
+	
 	# normalize columns order
 	norm.cols <- intersect(COLS_ATT_NORMALIZED, colnames(data))
 	if(length(norm.cols)!=ncol(data))
 		stop("Problem with the number of columns when loading the table, after reordering")
 	else
 		data <- data[,norm.cols]
+	tlog(2,"Now ",nrow(data)," lines and ",ncol(data)," columns in main table")
 	
 	return(data)
 }
@@ -418,6 +430,7 @@ merge.similar.rows <- function(data)
 	}
 	
 	tlog(2,"Done merging compatible rows, removed ",removed.nbr," rows")
+	tlog(2,"Now ",nrow(data)," lines and ",ncol(data)," columns in main table")
 	return(data)
 }
 
