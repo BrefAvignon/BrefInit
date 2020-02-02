@@ -154,7 +154,7 @@ test.col.locations.municipality <- function(data, out.folder)
 ##					fileEncoding="UTF-8",
 #					row.names=FALSE, col.names=TRUE)
 #		}
-#		tlog(4,"Found a total of ",nrow(tab2)," names with distinct codes")
+#		tlog(4,"Found a total of ",nrow(tab2)," names with several distinct codes")
 		
 		# look for long codes, and record the list
 		tlog(2,"Looking for non-standard municipality codes")
@@ -231,7 +231,7 @@ test.col.locations.canton <- function(data, out.folder)
 #					fileEncoding="UTF-8",
 					row.names=FALSE, col.names=TRUE)
 		}
-		tlog(4,"Found a total of ",nrow(tab1)," codes with distinct names")
+		tlog(4,"Found a total of ",nrow(tab1)," codes with several distinct names")
 		
 		# init second result table
 		tab2 <- matrix(NA,ncol=2,nrow=0)
@@ -264,7 +264,7 @@ test.col.locations.canton <- function(data, out.folder)
 #					fileEncoding="UTF-8",
 					row.names=FALSE, col.names=TRUE)
 		}
-		tlog(4,"Found a total of ",nrow(tab2)," names with distinct codes")
+		tlog(4,"Found a total of ",nrow(tab2)," names with several distinct codes")
 		
 		# build conversion table with unique ids
 		tab3 <- matrix(NA,ncol=3,nrow=0)
@@ -342,7 +342,7 @@ test.col.locations.legcirco <- function(data, out.folder)
 #					fileEncoding="UTF-8",
 					row.names=FALSE, col.names=TRUE)
 		}
-		tlog(4,"Found a total of ",nrow(tab1)," codes with distinct names")
+		tlog(4,"Found a total of ",nrow(tab1)," codes with several distinct names")
 
 # not necessary here, because many circonsciptions have the same generic name (ex. 1ere cironscription)
 #		# init second result table
@@ -376,7 +376,7 @@ test.col.locations.legcirco <- function(data, out.folder)
 ##					fileEncoding="UTF-8",
 #					row.names=FALSE, col.names=TRUE)
 #		}
-#		tlog(4,"Found a total of ",nrow(tab2)," names with distinct codes")
+#		tlog(4,"Found a total of ",nrow(tab2)," names with several distinct codes")
 	}
 }
 
@@ -431,7 +431,7 @@ test.col.locations.eurocirco <- function(data, out.folder)
 #					fileEncoding="UTF-8",
 					row.names=FALSE, col.names=TRUE)
 		}
-		tlog(4,"Found a total of ",nrow(tab1)," codes with distinct names")
+		tlog(4,"Found a total of ",nrow(tab1)," codes with several distinct names")
 		
 		# init second result table
 		tab2 <- matrix(NA,ncol=2,nrow=0)
@@ -464,7 +464,7 @@ test.col.locations.eurocirco <- function(data, out.folder)
 #					fileEncoding="UTF-8",
 					row.names=FALSE, col.names=TRUE)
 		}
-		tlog(4,"Found a total of ",nrow(tab2)," names with distinct codes")
+		tlog(4,"Found a total of ",nrow(tab2)," names with several distinct codes")
 	}
 }
 
@@ -520,7 +520,7 @@ test.col.locations.epci <- function(data, out.folder)
 #					fileEncoding="UTF-8",
 					row.names=FALSE, col.names=TRUE)
 		}
-		tlog(4,"Found a total of ",nrow(tab1)," codes with distinct names")
+		tlog(4,"Found a total of ",nrow(tab1)," codes with several distinct names")
 		
 		# init second result table
 		tab2 <- matrix(NA,ncol=2,nrow=0)
@@ -553,7 +553,7 @@ test.col.locations.epci <- function(data, out.folder)
 #					fileEncoding="UTF-8",
 					row.names=FALSE, col.names=TRUE)
 		}
-		tlog(4,"Found a total of ",nrow(tab2)," names with distinct codes")
+		tlog(4,"Found a total of ",nrow(tab2)," names with several distinct codes")
 	}
 }
 
@@ -609,7 +609,7 @@ test.col.locations.department <- function(data, out.folder)
 #					fileEncoding="UTF-8",
 					row.names=FALSE, col.names=TRUE)
 		}
-		tlog(4,"Found a total of ",nrow(tab1)," codes with distinct names")
+		tlog(4,"Found a total of ",nrow(tab1)," codes with several distinct names")
 		
 		# init second result table
 		tab2 <- matrix(NA,ncol=2,nrow=0)
@@ -642,7 +642,7 @@ test.col.locations.department <- function(data, out.folder)
 #					fileEncoding="UTF-8",
 					row.names=FALSE, col.names=TRUE)
 		}
-		tlog(4,"Found a total of ",nrow(tab2)," names with distinct codes")
+		tlog(4,"Found a total of ",nrow(tab2)," names with several distinct codes")
 	}
 }
 
@@ -698,7 +698,7 @@ test.col.locations.region <- function(data, out.folder)
 #					fileEncoding="UTF-8",
 					row.names=FALSE, col.names=TRUE)
 		}
-		tlog(4,"Found a total of ",nrow(tab1)," codes with distinct names")
+		tlog(4,"Found a total of ",nrow(tab1)," codes with several distinct names")
 		
 		# init second result table
 		tab2 <- matrix(NA,ncol=2,nrow=0)
@@ -731,7 +731,7 @@ test.col.locations.region <- function(data, out.folder)
 #					fileEncoding="UTF-8",
 					row.names=FALSE, col.names=TRUE)
 		}
-		tlog(4,"Found a total of ",nrow(tab2)," names with distinct codes")
+		tlog(4,"Found a total of ",nrow(tab2)," names with several distinct codes")
 	}
 }
 
