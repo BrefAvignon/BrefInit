@@ -344,6 +344,46 @@ test.col.dates.election <- function(data, out.folder, election.file)
 
 
 #############################################################################################
+# Tests whether some mandate or function have an end motive but no end date, or the opposite.
+#
+# data: table containing the data.
+# out.folder: folder where to output the results.
+#############################################################################################
+test.col.end.motive <- function(data, out.folder)
+{	end.cols <- c(COL_ATT_MDT_FIN, COL_ATT_FCT_FIN)
+	motive.cols <- c(COL_ATT_MDT_MOTIF, COL_ATT_FCT_MOTIF)
+	
+	for(i in 1:length(end.cols))
+	{	end.col <- end.cols[i]
+		motive.col <- motive.cols[i]
+		tlog(2,"Identifying \"",motive.col,"\" motives without end date (",i,"/",length(end.cols),")")
+		
+		if(end.col %in% colnames(data) && motive.col %in% colnames(data))
+		{	# retrieve all rows with an end motive but no end date
+			idx <- which(!is.na(data[,motive.col])
+							& is.na(data[,end.col]))
+			tlog(4,"Found ",length(idx)," rows with a motive name but no end date (",motive.col,")")
+			# build the table and write it
+			if(length(idx)>0)
+			{	tmp <- cbind(idx, data[idx,])
+				colnames(tmp)[1] <- "Ligne"
+				tab.file <- file.path(out.folder,paste0(BASENAMES[motive.col],"_problems_missing_date.txt"))
+				tlog(4,"Recording in file \"",tab.file,"\"")
+				write.table(x=tmp,file=tab.file,
+#				fileEncoding="UTF-8",
+						row.names=FALSE, col.names=TRUE)
+			}
+		}
+		
+		else
+			tlog(4,"No test because the required columns are missing from this table")
+	}
+}
+
+
+
+
+#############################################################################################
 # Performs a series of tests on date columns, for the departmental tables, and records the 
 # detected problems in text files.
 #
@@ -355,6 +395,7 @@ test.col.dates.cd <- function(data, out.folder)
 	test.col.dates.generic(data, out.folder)
 	test.col.dates.pre.rne(data, out.folder)
 	test.col.dates.nofun(data, out.folder)
+	test.col.end.motive(data, out.folder)
 	
 	# election dates
 #	test.col.dates.election(data, out.folder, election.file=FILE_VERIF_DATES_CD)
@@ -398,6 +439,7 @@ test.col.dates.cm <- function(data, out.folder)
 	test.col.dates.generic(data, out.folder)
 	test.col.dates.pre.rne(data, out.folder)
 	test.col.dates.nofun(data, out.folder)
+	test.col.end.motive(data, out.folder)
 	
 	# election dates
 	test.col.dates.election(data, out.folder, election.file=FILE_VERIF_DATES_CM)
@@ -435,6 +477,7 @@ test.col.dates.cr <- function(data, out.folder)
 	test.col.dates.generic(data, out.folder)
 	test.col.dates.pre.rne(data, out.folder)
 	test.col.dates.nofun(data, out.folder)
+	test.col.end.motive(data, out.folder)
 	
 	# election dates
 	test.col.dates.election(data, out.folder, election.file=FILE_VERIF_DATES_CR)
@@ -474,6 +517,7 @@ test.col.dates.d <- function(data, out.folder)
 	test.col.dates.generic(data, out.folder)
 	test.col.dates.pre.rne(data, out.folder)
 	test.col.dates.nofun(data, out.folder)
+	test.col.end.motive(data, out.folder)
 	
 	# election dates
 	test.col.dates.election(data, out.folder, election.file=FILE_VERIF_DATES_D)
@@ -519,6 +563,7 @@ test.col.dates.de <- function(data, out.folder)
 {	# generic tests
 	test.col.dates.generic(data, out.folder)
 	test.col.dates.pre.rne(data, out.folder)
+	test.col.end.motive(data, out.folder)
 	
 	# election dates
 	test.col.dates.election(data, out.folder, election.file=FILE_VERIF_DATES_DE)
@@ -556,6 +601,7 @@ test.col.dates.epci <- function(data, out.folder)
 	test.col.dates.generic(data, out.folder)
 	test.col.dates.pre.rne(data, out.folder)
 	test.col.dates.nofun(data, out.folder)
+	test.col.end.motive(data, out.folder)
 }
 
 
@@ -573,7 +619,8 @@ test.col.dates.s <- function(data, out.folder)
 	test.col.dates.generic(data, out.folder)
 	test.col.dates.pre.rne(data, out.folder)
 	test.col.dates.nofun(data, out.folder)
-	
+	test.col.end.motive(data, out.folder)
+		
 	# election dates
 #	test.col.dates.election(data, out.folder, election.file=FILE_VERIF_DATES_S)
 	# TODO multiple coexisting election dates due to the existence of several distinct cohorts: 

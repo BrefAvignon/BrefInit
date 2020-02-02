@@ -27,13 +27,7 @@ source("src/common/include.R")
 # 4) arrondir les bornes de mandats pour éviter les problèmes (recouvrement, mandats de 1 jour, etc.)
 #    certains de ces problèmes peuvent être issus du découpage forcé des lignes 
 
-# période avec la la même date de début et de fin (mandat et fonctions)
-# voire quelques jours d'écart ?
-
 # motif de fin de mandat/fonction sans la date qui va avec
-
-# vérifier l'unicité des noms de profession
-# (par rapport aux ids)
 
 # TODO liste des députés ordonnés par cause de fin de mandat
 

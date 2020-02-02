@@ -46,7 +46,7 @@ tlog(0,"Checking personal information consistency")
 
 # check dates
 tlog(0,"Checking dates")
-#test.col.dates.cm(data=data, out.folder=out.folder)
+test.col.dates.cm(data=data, out.folder=out.folder)
 
 # check locations
 tlog(0,"Checking locations")
