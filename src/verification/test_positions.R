@@ -412,11 +412,12 @@ test.position.de <- function(data, out.folder)
 		tlog(4,"Found ",length(idx)," rows")
 		
 		if(length(idx)>1)
-		{	# record the sequence of mandates for this position
+		{	reg.name <- chartr(old=" ",new="_",	x=unique.pos[p]) # replace spaces by underscores
+			# record the sequence of mandates for this position
 			idx2 <- idx[order(data[idx,COL_ATT_MDT_DBT], data[idx,COL_ATT_MDT_FIN])]
 			tab2 <- cbind(idx2, data[idx2,])
 			colnames(tab2) <- "Ligne"
-			tab.file <- file.path(folder,paste0(unique.pos[p],"_details.txt"))
+			tab.file <- file.path(folder,paste0(reg.name,"_details.txt"))
 			tlog(4,"Recording in file \"",tab.file,"\"")
 			write.table(x=tab2,file=tab.file,
 #				fileEncoding="UTF-8",
@@ -426,7 +427,7 @@ test.position.de <- function(data, out.folder)
 				se="\t"
 			)
 			tab2 <- data[idx2,c(COL_ATT_MDT_DBT,COL_ATT_MDT_FIN,COL_ATT_ELU_NOM,COL_ATT_ELU_PRENOM,COL_ATT_ELU_ID)]
-			tab.file <- file.path(folder,paste0(unique.pos[p],".txt"))
+			tab.file <- file.path(folder,paste0(reg.name,".txt"))
 			tlog(4,"Recording in file \"",tab.file,"\"")
 			write.table(x=tab2,file=tab.file,
 #				fileEncoding="UTF-8",
