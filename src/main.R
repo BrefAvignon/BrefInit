@@ -27,10 +27,6 @@ source("src/common/include.R")
 # 4) arrondir les bornes de mandats pour éviter les problèmes (recouvrement, mandats de 1 jour, etc.)
 #    certains de ces problèmes peuvent être issus du découpage forcé des lignes 
 
-# motif de fin de mandat/fonction sans la date qui va avec
-
-# TODO liste des députés ordonnés par cause de fin de mandat
-
 # refaire certains (tous ?) tests sur la table fusionnée, une fois que les tables individuelles sont propres
 
 
