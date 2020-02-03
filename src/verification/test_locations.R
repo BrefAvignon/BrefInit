@@ -58,7 +58,11 @@ test.locations.articles <- function(data, out.folder)
 				tlog(2,"Recording in file \"",tab.file,"\"")
 				write.table(x=tab,file=tab.file,
 #					fileEncoding="UTF-8",
-					row.names=FALSE, col.names=TRUE)
+					row.names=FALSE, 
+					col.names=TRUE,
+#					quote=TRUE,
+					se="\t"
+				)
 			}
 		}
 
@@ -118,7 +122,11 @@ test.col.locations.municipality <- function(data, out.folder)
 			tlog(2,"Recording in file \"",tab.file,"\"")
 			write.table(x=tab1, file=tab.file,
 #				fileEncoding="UTF-8",
-				row.names=FALSE, col.names=TRUE)
+				row.names=FALSE, 
+				col.names=TRUE,
+#				quote=TRUE,
+				se="\t"
+			)
 		}
 		tlog(4,"Found a total of ",nrow(tab1)," problematic municipality names")
 		
@@ -152,7 +160,11 @@ test.col.locations.municipality <- function(data, out.folder)
 #			tlog(2,"Recording in file \"",tab.file,"\"")
 #			write.table(x=tab2,file=tab.file,
 ##					fileEncoding="UTF-8",
-#					row.names=FALSE, col.names=TRUE)
+#					row.names=FALSE, 
+#					col.names=TRUE,
+#					quote=TRUE,
+#					se="\t"
+#			)
 #		}
 #		tlog(4,"Found a total of ",nrow(tab2)," names with several distinct codes")
 		
@@ -170,7 +182,11 @@ test.col.locations.municipality <- function(data, out.folder)
 			tlog(2,"Recording in file \"",tab.file,"\"")
 			write.table(x=tab3, file=tab.file,
 #				fileEncoding="UTF-8",
-				row.names=FALSE, col.names=TRUE)
+				row.names=FALSE, 
+				col.names=TRUE,
+#				quote=TRUE,
+				se="\t"
+			)
 		}
 		tlog(4,"Found a total of ",nrow(tab3)," long municipality codes")
 	}
@@ -229,7 +245,11 @@ test.col.locations.canton <- function(data, out.folder)
 			tlog(2,"Recording in file \"",tab.file,"\"")
 			write.table(x=tab1,file=tab.file,
 #					fileEncoding="UTF-8",
-					row.names=FALSE, col.names=TRUE)
+					row.names=FALSE, 
+					col.names=TRUE,
+#					quote=TRUE,
+					se="\t"
+			)
 		}
 		tlog(4,"Found a total of ",nrow(tab1)," codes with several distinct names")
 		
@@ -262,7 +282,11 @@ test.col.locations.canton <- function(data, out.folder)
 			tlog(2,"Recording in file \"",tab.file,"\"")
 			write.table(x=tab2,file=tab.file,
 #					fileEncoding="UTF-8",
-					row.names=FALSE, col.names=TRUE)
+					row.names=FALSE, 
+					col.names=TRUE,
+#					quote=TRUE,
+					se="\t"
+			)
 		}
 		tlog(4,"Found a total of ",nrow(tab2)," names with several distinct codes")
 		
@@ -282,8 +306,10 @@ test.col.locations.canton <- function(data, out.folder)
 		tlog(2,"Recording in file \"",tab.file,"\"")
 		write.table(x=tab3,file=tab.file,
 #				fileEncoding="UTF-8",
-				row.names=FALSE, col.names=TRUE,
-				quote=FALSE, sep="\t"
+				row.names=FALSE, 
+				col.names=TRUE,
+				quote=FALSE, 
+				sep="\t"
 		)
 	}
 }
@@ -340,7 +366,11 @@ test.col.locations.legcirco <- function(data, out.folder)
 			tlog(2,"Recording in file \"",tab.file,"\"")
 			write.table(x=tab1,file=tab.file,
 #					fileEncoding="UTF-8",
-					row.names=FALSE, col.names=TRUE)
+					row.names=FALSE, 
+					col.names=TRUE,
+#					quote=TRUE,
+					se="\t"
+			)
 		}
 		tlog(4,"Found a total of ",nrow(tab1)," codes with several distinct names")
 
@@ -374,7 +404,11 @@ test.col.locations.legcirco <- function(data, out.folder)
 #			tlog(2,"Recording in file \"",tab.file,"\"")
 #			write.table(x=tab2,file=tab.file,
 ##					fileEncoding="UTF-8",
-#					row.names=FALSE, col.names=TRUE)
+#					row.names=FALSE, 
+#					col.names=TRUE,
+#					quote=TRUE,
+#					se="\t"
+#			)
 #		}
 #		tlog(4,"Found a total of ",nrow(tab2)," names with several distinct codes")
 	}
@@ -429,7 +463,11 @@ test.col.locations.eurocirco <- function(data, out.folder)
 			tlog(2,"Recording in file \"",tab.file,"\"")
 			write.table(x=tab1,file=tab.file,
 #					fileEncoding="UTF-8",
-					row.names=FALSE, col.names=TRUE)
+					row.names=FALSE, 
+					col.names=TRUE,
+#					quote=TRUE,
+					se="\t"
+			)
 		}
 		tlog(4,"Found a total of ",nrow(tab1)," codes with several distinct names")
 		
@@ -462,7 +500,11 @@ test.col.locations.eurocirco <- function(data, out.folder)
 			tlog(2,"Recording in file \"",tab.file,"\"")
 			write.table(x=tab2,file=tab.file,
 #					fileEncoding="UTF-8",
-					row.names=FALSE, col.names=TRUE)
+					row.names=FALSE, 
+					col.names=TRUE,
+#					quote=TRUE,
+					se="\t"
+			)
 		}
 		tlog(4,"Found a total of ",nrow(tab2)," names with several distinct codes")
 	}
@@ -518,7 +560,11 @@ test.col.locations.epci <- function(data, out.folder)
 			tlog(2,"Recording in file \"",tab.file,"\"")
 			write.table(x=tab1,file=tab.file,
 #					fileEncoding="UTF-8",
-					row.names=FALSE, col.names=TRUE)
+					row.names=FALSE, 
+					col.names=TRUE,
+#					quote=TRUE,
+					se="\t"
+			)
 		}
 		tlog(4,"Found a total of ",nrow(tab1)," codes with several distinct names")
 		
@@ -551,7 +597,11 @@ test.col.locations.epci <- function(data, out.folder)
 			tlog(2,"Recording in file \"",tab.file,"\"")
 			write.table(x=tab2,file=tab.file,
 #					fileEncoding="UTF-8",
-					row.names=FALSE, col.names=TRUE)
+					row.names=FALSE, 
+					col.names=TRUE,
+#					quote=TRUE,
+					se="\t"
+			)
 		}
 		tlog(4,"Found a total of ",nrow(tab2)," names with several distinct codes")
 	}
@@ -607,7 +657,11 @@ test.col.locations.department <- function(data, out.folder)
 			tlog(2,"Recording in file \"",tab.file,"\"")
 			write.table(x=tab1,file=tab.file,
 #					fileEncoding="UTF-8",
-					row.names=FALSE, col.names=TRUE)
+					row.names=FALSE, 
+					col.names=TRUE,
+#					quote=TRUE,
+					se="\t"
+			)
 		}
 		tlog(4,"Found a total of ",nrow(tab1)," codes with several distinct names")
 		
@@ -640,7 +694,11 @@ test.col.locations.department <- function(data, out.folder)
 			tlog(2,"Recording in file \"",tab.file,"\"")
 			write.table(x=tab2,file=tab.file,
 #					fileEncoding="UTF-8",
-					row.names=FALSE, col.names=TRUE)
+					row.names=FALSE, 
+					col.names=TRUE,
+#					quote=TRUE,
+					se="\t"
+			)
 		}
 		tlog(4,"Found a total of ",nrow(tab2)," names with several distinct codes")
 	}
@@ -696,7 +754,11 @@ test.col.locations.region <- function(data, out.folder)
 			tlog(2,"Recording in file \"",tab.file,"\"")
 			write.table(x=tab1,file=tab.file,
 #					fileEncoding="UTF-8",
-					row.names=FALSE, col.names=TRUE)
+					row.names=FALSE,
+					col.names=TRUE,
+#					quote=TRUE,
+					se="\t"
+			)
 		}
 		tlog(4,"Found a total of ",nrow(tab1)," codes with several distinct names")
 		
@@ -729,7 +791,11 @@ test.col.locations.region <- function(data, out.folder)
 			tlog(2,"Recording in file \"",tab.file,"\"")
 			write.table(x=tab2,file=tab.file,
 #					fileEncoding="UTF-8",
-					row.names=FALSE, col.names=TRUE)
+					row.names=FALSE,
+					col.names=TRUE,
+#					quote=TRUE,
+					se="\t"
+			)
 		}
 		tlog(4,"Found a total of ",nrow(tab2)," names with several distinct codes")
 	}

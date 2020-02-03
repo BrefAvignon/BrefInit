@@ -113,16 +113,24 @@ plot.pers.time <- function(data, out.folder, daily=FALSE)
 	if(daily)
 	{	file <- file.path(out.folder,"persons_by_day.txt")
 		tab <- data.frame(Date=format(day.dates,format="%d/%m/%Y"),Count=day.vals)
-		write.table(x=tab,file=file,
+		write.table(x=tab, file=file,
 #				fileEncoding="UTF-8",
-				row.names=FALSE,col.names=TRUE)
+				row.names=FALSE, 
+				col.names=TRUE,
+#				quote=TRUE,
+				se="\t"
+		)
 	}
 	# same by month
 	file <- file.path(out.folder,"persons_by_month.txt")
 	tab <- data.frame(Date=format(month.dates,format="%d/%m/%Y"),Count=month.vals)
 	write.table(x=tab,file=file,
 #			fileEncoding="UTF-8",
-			row.names=FALSE,col.names=TRUE)
+			row.names=FALSE,
+			col.names=TRUE,
+#			quote=TRUE,
+			se="\t"
+	)
 	
 	# generate plot only starting from 2000
 	if(daily)
@@ -250,7 +258,11 @@ plot.pers.time2 <- function(data, out.folder)
 	tab <- data.frame(Date=format(day.dates,format="%d/%m/%Y"),Count=day.vals)
 	write.table(x=tab,file=file,
 #			fileEncoding="UTF-8",
-			row.names=FALSE,col.names=TRUE)
+			row.names=FALSE,
+			col.names=TRUE,
+#			quote=TRUE,
+			se="\t"
+	)
 	
 	# generate plot only starting from 2000
 	idx <- which(day.dates>as.Date("2000/1/1"))

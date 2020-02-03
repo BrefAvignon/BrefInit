@@ -59,7 +59,11 @@ test.duplicate.rows <- function(data, out.folder=NA)
 		tlog(2,"Recording in file \"",tab.file,"\"")
 		write.table(x=tab, file=tab.file,
 #			fileEncoding="UTF-8",
-			row.names=FALSE, col.names=TRUE)
+			row.names=FALSE, 
+			col.names=TRUE,
+#			quote=TRUE,
+			se="\t"
+		)
 	}
 	
 	tlog(2,"Done searching for compatible rows")
@@ -142,7 +146,11 @@ test.id.reuse <- function(data, out.folder)
 		tlog(2,"Recording in file \"",tab.file,"\"")
 		write.table(x=tab,file=tab.file,
 #				fileEncoding="UTF-8",
-				row.names=FALSE,col.names=TRUE)
+				row.names=FALSE,
+				col.names=TRUE,
+#				quote=TRUE,
+				se="\t"
+		)
 	}
 	tlog(4,"Found a total of ",count," IDs associated with different personal information")
 }
@@ -288,7 +296,11 @@ test.multiple.id <- function(data, loc.col=NA, out.folder)
 		tlog(2,"Recording in file \"",tab.file,"\"")
 		write.table(x=tab, file=tab.file,
 #				fileEncoding="UTF-8",
-				row.names=FALSE, col.names=TRUE)
+				row.names=FALSE, 
+				col.names=TRUE,
+#				quote=TRUE,
+				se="\t"
+		)
 		
 		# update the table of equivalent ids (but in the output folder)
 		tab.file <- file.path(out.folder,"equiv_ids_updated.txt")
@@ -299,8 +311,10 @@ test.multiple.id <- function(data, loc.col=NA, out.folder)
 		idx <- order(as.integer(main.ids))
 		write.table(x=tab[idx,], file=tab.file,
 #				fileEncoding="UTF-8",
-				row.names=FALSE, col.names=TRUE,
-				quote=FALSE, sep="\t"
+				row.names=FALSE, 
+				col.names=TRUE,
+				quote=FALSE, 
+				sep="\t"
 		)
 	}
 	

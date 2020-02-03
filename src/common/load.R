@@ -474,7 +474,8 @@ insert.unique.canton.id <- function(data, file.canton.ids)
 	
 	# insert in the table, at the correct place
 	col <- which(colnames(data)==COL_ATT_CANT_CODE)
-	data <- cbind(data[,1:(col-1)], equiv.table[idx,COL_ATT_CANT_ID], data[,col:ncol(data)])
+	df <- as.data.frame(x=equiv.table[idx,COL_ATT_CANT_ID], stringsAsFactors=FALSE)
+	data <- cbind(data[,1:(col-1)], df, data[,col:ncol(data)])
 	colnames(data)[col] <- COL_ATT_CANT_ID
 	
 	return(data)

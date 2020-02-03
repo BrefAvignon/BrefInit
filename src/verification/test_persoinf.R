@@ -64,7 +64,11 @@ test.personal.details <- function(data, out.folder)
 			tlog(8,"Recording in file \"",tab.file,"\"")
 			write.table(x=tmp, file=tab.file,
 #					fileEncoding="UTF-8",
-					row.names=FALSE, col.names=TRUE)
+					row.names=FALSE, 
+					col.names=TRUE,
+#					quote=TRUE,
+					se="\t"
+			)
 		}
 	}
 	
@@ -120,7 +124,11 @@ test.occupation.col <- function(data, out.folder)
 			tlog(2,"Recording in file \"",tab.file,"\"")
 			write.table(x=tab1, file=tab.file,
 #				fileEncoding="UTF-8",
-				row.names=FALSE, col.names=TRUE)
+				row.names=FALSE, 
+				col.names=TRUE,
+#				quote=TRUE,
+				se="\t"
+			)
 		}
 		tlog(4,"Found a total of ",nrow(tab1)," problematic occupation names")
 		
@@ -136,7 +144,11 @@ test.occupation.col <- function(data, out.folder)
 			tlog(2,"Recording in file \"",tab.file,"\"")
 			write.table(x=tab1, file=tab.file,
 #				fileEncoding="UTF-8",
-				row.names=FALSE, col.names=TRUE)
+				row.names=FALSE, 
+				col.names=TRUE,
+#				quote=TRUE,
+				se="\t"
+			)
 		}
 		
 		# init second result table
@@ -168,7 +180,11 @@ test.occupation.col <- function(data, out.folder)
 			tlog(2,"Recording in file \"",tab.file,"\"")
 			write.table(x=tab2,file=tab.file,
 #				fileEncoding="UTF-8",
-				row.names=FALSE, col.names=TRUE)
+				row.names=FALSE, 
+				col.names=TRUE,
+#				quote=TRUE,
+				se="\t"
+			)
 		}
 		tlog(4,"Found a total of ",nrow(tab2)," names with several distinct codes")
 		
@@ -184,7 +200,11 @@ test.occupation.col <- function(data, out.folder)
 			tlog(2,"Recording in file \"",tab.file,"\"")
 			write.table(x=tab1, file=tab.file,
 #				fileEncoding="UTF-8",
-				row.names=FALSE, col.names=TRUE)
+				row.names=FALSE, 
+				col.names=TRUE,
+#				quote=TRUE,
+				se="\t"
+			)
 		}
 	}
 }
