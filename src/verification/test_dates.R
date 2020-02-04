@@ -118,7 +118,21 @@ test.col.dates.generic <- function(data, out.folder)
 		limit <- NA			# minimal duration to consider a mandate is correct
 		idx <- which(!is.na(data[,COL_ATT_MDT_DBT]) & !is.na(data[,COL_ATT_MDT_FIN]))
 		if(length(idx)>0)
-		{	durations <- as.integer(data[idx,COL_ATT_MDT_FIN] - data[idx,COL_ATT_MDT_DBT])
+		{	# compute mandate duration
+			durations <- as.integer(data[idx,COL_ATT_MDT_FIN] - data[idx,COL_ATT_MDT_DBT])
+			
+			# record duration distribution, for information
+			val.file <- file.path(out.folder,paste0("mandat_duration_unique_vals.txt"))
+			tt <- table(durations, useNA="always")
+			write.table(x=tt, file=val.file,
+#				fileEncoding="UTF-8",
+				row.names=FALSE,
+				col.names=FALSE,
+#				quote=TRUE,
+				se="\t"
+			)
+			
+			# compare to limit
 			if(!is.na(limit))
 				idx <- idx[duration<limit]
 			tlog(6,"Found ",length(idx)," mandate(s) which are too short (<",limit," days)")

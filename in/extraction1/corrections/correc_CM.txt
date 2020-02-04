@@ -179,3 +179,23 @@ NA	NA	NA	NA	Libelle commune	TEVA I UTA SECTION 1 MATAIEA	TEVA I UTA	On ignore le
 1136346	1138212	PASSCHIER	Nicolas	Date fin mandat	16/3/2008	8/3/2008	Corrigé pour mandat complet
 61364	845248	FETTUCIARI	Karine	Date naissance	14/5/1968	4/5/1968	Date incohérente
 1162579	1144788	TROUY	Noël	Date naissance	1/1/1900	27/2/1949	Date incohérente
+9143	1522165	DELAGE	LAURY	Date debut mandat	8/24/1987	20/10/2017	Date de naissance pour mandat
+39087	1506637	COLLINET	DOMINIQUE	Date debut mandat	16/6/1961	12/6/2015	Date de naissance pour mandat
+92900	1193725	MIGOTTO	XAVIER	Date debut mandat	14/3/1970	21/3/2010	Date de naissance pour mandat
+188762	812832	RICHARD	CHRISTIAN	Date debut mandat	28/11/1955	9/3/2008	Date de naissance pour mandat
+418050	1194179	GUICHENEY	XAVIER	Date debut mandat	30/10/1971	24/1/2013	Date de naissance pour mandat
+428250	1183151	CANTIE	JOEL	Date debut mandat	13/12/1950	17/7/2007	Date de naissance pour mandat
+428250	1183151	CANTIE	JOEL	Date fin mandat	12/9/2010	8/3/2008	Alignement date fin de mandat
+434555	978296	LANGOUET	FLORENCE	Date debut mandat	5/8/1969	9/1/2008	Date de naissance pour mandat
+445050	1197650	MARE	THIERRY	Date debut mandat	24/4/1963	7/7/2012	Date de naissance pour mandat
+497056	1193510	PERRON	SYLVAIN	Date debut mandat	15/3/1974	6/7/2013	Date de naissance pour mandat
+527315	1181339	ARNAUD	XAVIER	Date debut mandat	21/10/1953	9/4/2009	Date de naissance pour mandat
+528534	1000103	BELLET	JEAN MARC	Date debut mandat	15/8/1972	11/3/2001	Date de naissance pour mandat
+528534	1000103	BELLET	JEAN MARC	Date fin mandat	22/3/2014	8/3/2008	Alignement date fin de mandat
+665456	1514716	NITTING	SAMUEL	Date debut mandat	7/7/1986	30/9/2016	Date de naissance pour mandat
+690409	1522715	RICHL	LOREN	Date debut mandat	18/8/1992	6/7/2016	Date de naissance pour mandat
+928736	1195729	PONVIENNE	CHRISTINE	Date debut mandat	30/4/1956	10/3/2013	Date de naissance pour mandat
+959696	1161841	REVERET	JEAN LUC	Date debut mandat	9/3/1966	9/3/2008	Date de naissance pour mandat
+1032066	1453956	CASTANER	ALICE	Date debut mandat	16/12/1977	23/3/2014	Date de naissance pour mandat
+1114435	494274	BRUNEAU	DOMINIQUE	Date debut mandat	3/9/1956	9/3/2008	Date de naissance pour mandat
+1214486	1507607	TAYLOR	CATHERINE	Date debut mandat	28/1/1969	15/1/2015	Date de naissance pour mandat
