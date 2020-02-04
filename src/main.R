@@ -16,6 +16,7 @@ source("src/common/include.R")
 
 # install stringdist
 
+# TODO fusionner merge.R de Zenbook3 ! 
 
 # TODO
 # 2) étudier la façon dont certaines lignes incluent plusieurs mandats, ou le contraire
@@ -55,10 +56,6 @@ source("src/common/include.R")
 #
 # - tester quand, dans une même table, une même personne a un chevauchement de date de fonction
 #   elle ne devrait pas cumuler plusieurs fonctions relatives au même type de position
-#
-# - Dans une même table, détecter les lignes telles que seul un attribut optionnel diffère (ou plusieurs, mais tous optionnels)
-#   (les attributs obligatoires étant de valeurs égales)
-#   >> probablement une entrée qui a été complétée plus tard, garder la ligne la plus complète et supprimer l'autre
 #
 # - parfois une ligne = une fonction ?
 #   >> un même mandat peut être décomposé en plusieurs lignes en cas de prise de fonction en cours de mandat
@@ -136,7 +133,7 @@ source("src/common/include.R")
 # >> à enlever
 
 # divers
-# TODO sortir la chronologie de toutes les positions électives pour chaque élu
+# TODO sortir la chronologie de toutes les positions électives pour chaque élu (> à partir de la table fusionnée)
 # >> identifier les trous et superpositions
 # taux de renouvellement sur une période donnée
 

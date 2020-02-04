@@ -233,6 +233,21 @@ write.table(x=data,
 )
 tlog(0,"Recording over")
 
+# record the table sorted by id then mandate date
+table.file <- file.path(FOLDER_OUT_ALL, "merged_data_byperson.txt")
+tlog(0,"Sorting full table by person, then recording in file \"",table.file,"\"")
+idx <- order(data[,COL_ATT_ELU_NOM], data[,COL_ATT_ELU_PRENOM], data[,COL_ATT_ELU_ID],
+		data[,COL_ATT_MDT_DBT], data[,COL_ATT_MDT_FIN], data[,COL_ATT_FCT_DBT], data[,COL_ATT_FCT_FIN])
+table.file <- file.path(FOLDER_OUT_ALL, "merged_data.txt")
+write.table(x=data[idx,],		# sorted data
+	file=table.file,		# name of file containing the new table
+	quote=TRUE,				# put double quotes around strings
+	se="\t",				# use tabulations as separators
+#	fileEncoding="UTF-8",	# character encoding
+	row.names=FALSE,		# no names for rows
+	col.names=TRUE			# record table headers
+)
+tlog(0,"Recording over")
 
 
 
@@ -248,14 +263,14 @@ test.duplicates(data=data, out.folder=FOLDER_OUT_ALL)
 tlog(0,"Done")
 end.rec.log()
 
-data <- read.table(
-		file=table.file,			# name of the data file
-		header=TRUE, 				# look for a header
-		sep="\t", 					# character used to separate columns 
-		check.names=FALSE, 			# don't change the column names from the file
-		comment.char="", 			# ignore possible comments in the content
-		row.names=NULL, 			# don't look for row names in the file
-#		quote="", 					# don't expect double quotes "..." around text fields
-		as.is=TRUE,					# don't convert strings to factors
-		colClasses="character"		# all column originally read as characters, then converted later if needed
-)
+#data <- read.table(
+#		file=table.file,			# name of the data file
+#		header=TRUE, 				# look for a header
+#		sep="\t", 					# character used to separate columns 
+#		check.names=FALSE, 			# don't change the column names from the file
+#		comment.char="", 			# ignore possible comments in the content
+#		row.names=NULL, 			# don't look for row names in the file
+##		quote="", 					# don't expect double quotes "..." around text fields
+#		as.is=TRUE,					# don't convert strings to factors
+#		colClasses="character"		# all column originally read as characters, then converted later if needed
+#)
