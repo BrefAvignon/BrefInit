@@ -49,7 +49,7 @@ test.col.dates.de(data=data, out.folder=out.folder)
 
 # check locations
 tlog(0,"Checking locations")
-#test.col.locations(data=data, out.folder=out.folder)
+#test.col.locations(data=data, out.folder=out.folder, merged=FALSE)
 
 # check overlapping mandates for the same position
 tlog(0,"Checking overlapping mandates for the same position")

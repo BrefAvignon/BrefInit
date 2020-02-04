@@ -743,8 +743,9 @@ test.col.locations.region <- function(data, out.folder)
 #
 # data: table containing the senatorial data.
 # out.folder: folder where to output the results.
+# merged: whether data is the merged table or not.
 #############################################################################################
-test.col.locations <- function(data, out.folder)
+test.col.locations <- function(data, out.folder, merged=FALSE)
 {	tlog(0,"Trying to detect problems in location names")
 	
 	# checks whether the same name appears with and without article
@@ -754,7 +755,8 @@ test.col.locations <- function(data, out.folder)
 	test.col.locations.municipality(data, out.folder)
 	
 	# check canton names
-	test.col.locations.canton(data, out.folder)
+	if(!merged)
+		test.col.locations.canton(data, out.folder)
 	
 	# check legislative circonscription names
 	test.col.locations.legcirco(data, out.folder)
