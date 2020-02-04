@@ -8,14 +8,14 @@
 
 
 #############################################################################################
-# Detect the rows that are considered as similar in the table. Generally speaking, two rows 
-# are similar if they have the same values for certain columns of interest, and compatible 
+# Detect the rows that are considered as compatible in the table. Generally speaking, two rows 
+# are compatible if they have the same values for certain columns of interest, and compatible 
 # values for the rest (i.e. one cell empty in a row whereas it has a proper value in the other). 
 #
 # data: the data table.
 # out.folder: folder where to output the results.
 #############################################################################################
-test.duplicate.rows <- function(data, out.folder=NA)
+test.compatible.rows <- function(data, out.folder=NA)
 {	comp.cols <- c(COL_ATT_ELU_ID, COL_ATT_ELU_NOM, COL_ATT_ELU_PRENOM, COL_ATT_ELU_SEXE, COL_ATT_ELU_DDN)
 	tlog(0,"Looking for compatible rows, using compulsory columns \"",paste(comp.cols,collapse="\",\""),"\"")
 	plan(multiprocess, workers=CORE.NBR/2)
@@ -255,7 +255,6 @@ test.multiple.id <- function(data, loc.col=NA, out.folder)
 			{	tlog(8,"Found ",length(ids)," different ids: ",paste(ids,collapse=", "))
 				
 				# check whether they are confirmed homonyms
-# TODO not tested yet
 				if(ids[1] %in% homon.table[,1])
 				{	rem <- homon.table[which(homon.table[,1]==ids[1]),2]
 					ids <- setdiff(ids, rem)
@@ -263,7 +262,7 @@ test.multiple.id <- function(data, loc.col=NA, out.folder)
 				
 				tlog(8,"After filtering out the manually confirmed true homonyms, ",length(ids)," ids remain")
 				if(length(ids)>1)
-				{	# TODO: check whether these ids have incompatible mandates
+				{	# NOTE: check whether these ids have incompatible mandates
 					# >> actually even a single id may have incompatible mandates due to the
 					# way the data are structured, so we eventually did not perform this test 
 					

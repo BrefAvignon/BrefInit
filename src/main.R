@@ -132,11 +132,6 @@ source("src/common/include.R")
 # la normalisation des noms propres rend certaines corrections inutiles (surtout pour les lieux)
 # >> à enlever
 
-# divers
-# TODO sortir la chronologie de toutes les positions électives pour chaque élu (> à partir de la table fusionnée)
-# >> identifier les trous et superpositions
-# taux de renouvellement sur une période donnée
-
 # analyse de séquences
 # - gestion temps/evts
 #   - évt sans accumulation (pas de distinction entre mandats consécutifs)
