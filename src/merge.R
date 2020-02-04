@@ -7,6 +7,12 @@
 # setwd("C:/Users/Vincent/Eclipse/workspaces/Extraction/Datapol")
 #############################################################################################
 source("src/common/include.R")
+source("src/verification/evolution_plot.R")
+source("src/verification/sumup_col.R")
+source("src/verification/test_dates.R")
+source("src/verification/test_locations.R")
+source("src/verification/test_persoinf.R")
+source("src/verification/test_positions.R")
 source("src/verification/test_duplicates.R")
 
 
@@ -252,8 +258,25 @@ tlog(0,"Recording over")
 
 
 #############################################################################################
+out.folder <- FOLDER_OUT_ALL
+
+# look for duplicate rows
+test.duplicate.rows(data=data, out.folder=out.folder)
+
+# check personal information
+test.personal.info(data=data, out.folder=out.folder)
+
+# check dates
+test.col.dates.cm(data=data, out.folder=out.folder)
+
+# check locations
+test.col.locations(data=data, out.folder=out.folder, merged=TRUE)
+
+# check overlapping mandates for the same position
+###test.position.cm(data=data, out.folder=out.folder)
+
 # check for ID duplicates (different persons with the same id)
-test.duplicates(data=data, out.folder=FOLDER_OUT_ALL)
+test.duplicates(data=data, out.folder=out.folder)
 
 
 

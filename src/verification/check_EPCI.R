@@ -48,7 +48,7 @@ tlog(0,"Checking dates")
 
 # check locations
 tlog(0,"Checking locations")
-#test.col.locations(data=data, out.folder=out.folder)
+#test.col.locations(data=data, out.folder=out.folder, merged=FALSE)
 
 # look for duplicates (not really necessary to do that here, better after the merge)
 tlog(0,"Looking for duplicates")
