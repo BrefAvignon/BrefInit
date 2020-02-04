@@ -36,9 +36,13 @@ test.col.dates.generic <- function(data, out.folder)
 				colnames(tmp)[1] <- "Ligne"
 				tab.file <- file.path(out.folder,paste0(col.basename,"_problems_too_early.txt"))
 				tlog(8,"Recording in file \"",tab.file,"\"")
-				write.table(x=tmp,file=tab.file,
+				write.table(x=tmp, file=tab.file,
 #						fileEncoding="UTF-8",
-						row.names=FALSE,col.names=TRUE)
+						row.names=FALSE,
+						col.names=TRUE,
+#						quote=TRUE,
+						se="\t"
+				)
 			}
 			
 			# too late
@@ -49,9 +53,13 @@ test.col.dates.generic <- function(data, out.folder)
 				colnames(tmp)[1] <- "Ligne"
 				tab.file <- file.path(out.folder,paste0(col.basename,"_problems_too_late.txt"))
 				tlog(8,"Recording in file \"",tab.file,"\"")
-				write.table(x=tmp,file=tab.file,
+				write.table(x=tmp, file=tab.file,
 #						fileEncoding="UTF-8",
-						row.names=FALSE,col.names=TRUE)
+						row.names=FALSE,
+						col.names=TRUE,
+#						quote=TRUE,
+						se="\t"
+				)
 			}
 		}
 	}
@@ -66,7 +74,7 @@ test.col.dates.generic <- function(data, out.folder)
 			colnames(tmp)[1] <- "Ligne"
 			tab.file <- file.path(out.folder,paste0("mandat_dates_problems_missing.txt"))
 			tlog(8,"Recording in file \"",tab.file,"\"")
-			write.table(x=tmp,file=tab.file,
+			write.table(x=tmp, file=tab.file,
 #					fileEncoding="UTF-8",
 					row.names=FALSE,col.names=TRUE)
 		}
@@ -80,22 +88,54 @@ test.col.dates.generic <- function(data, out.folder)
 			colnames(tmp)[1] <- "Ligne"
 			tab.file <- file.path(out.folder,paste0("mandat_dates_problems_bounds.txt"))
 			tlog(8,"Recording in file \"",tab.file,"\"")
-			write.table(x=tmp,file=tab.file,
+			write.table(x=tmp, file=tab.file,
 #					fileEncoding="UTF-8",
-					row.names=FALSE,col.names=TRUE)
+					row.names=FALSE,
+					col.names=TRUE,
+#					quote=TRUE,
+					se="\t"
+			)
 		}
 		
 		# born after mandate begins
 		idx <- which(data[,COL_ATT_ELU_DDN]>=data[,COL_ATT_MDT_DBT])			
 		tlog(6,"Found ",length(idx)," mandate(s) starting before birthdate")
 		if(length(idx)>0)
-		{	tmp <- cbind(idx,data[idx,])
+		{	tmp <- cbind(idx, data[idx,])
 			colnames(tmp)[1] <- "Ligne"
 			tab.file <- file.path(out.folder,paste0("mandat_dates_problems_birthdate.txt"))
 			tlog(8,"Recording in file \"",tab.file,"\"")
-			write.table(x=tmp,file=tab.file,
+			write.table(x=tmp, file=tab.file,
 #					fileEncoding="UTF-8",
-					row.names=FALSE,col.names=TRUE)
+					row.names=FALSE,
+					col.names=TRUE,
+#					quote=TRUE,
+					se="\t"
+			)
+		}
+		
+		# duration in number of days
+		limit <- NA			# minimal duration to consider a mandate is correct
+		idx <- which(!is.na(data[,COL_ATT_MDT_DBT]) & !is.na(data[,COL_ATT_MDT_FIN]))
+		if(length(idx)>0)
+		{	durations <- as.integer(data[idx,COL_ATT_MDT_FIN] - data[idx,COL_ATT_MDT_DBT])
+			if(!is.na(limit))
+				idx <- idx[duration<limit]
+			tlog(6,"Found ",length(idx)," mandate(s) which are too short (<",limit," days)")
+			if(length(idx)>0)
+			{	tmp <- cbind(1:length(idx),durations,data[idx,])
+				colnames(tmp)[1:2] <- c("Ligne","Duree mandat")
+				tmp <- tmp[order(durations),]
+				tab.file <- file.path(out.folder,paste0("mandat_dates_problems_short.txt"))
+				tlog(8,"Recording in file \"",tab.file,"\"")
+				write.table(x=tmp, file=tab.file,
+#					fileEncoding="UTF-8",
+					row.names=FALSE,
+					col.names=TRUE,
+#					quote=TRUE,
+					se="\t"
+				)
+			}
 		}
 	}
 	
@@ -114,7 +154,11 @@ test.col.dates.generic <- function(data, out.folder)
 			tlog(8,"Recording in file \"",tab.file,"\"")
 			write.table(x=tmp,file=tab.file,
 #					fileEncoding="UTF-8",
-					row.names=FALSE,col.names=TRUE)
+					row.names=FALSE,
+					col.names=TRUE,
+#					quote=TRUE,
+					se="\t"
+			)
 		}
 		
 		# not included in the mandate period
@@ -127,7 +171,11 @@ test.col.dates.generic <- function(data, out.folder)
 			tlog(8,"Recording in file \"",tab.file,"\"")
 			write.table(x=tmp,file=tab.file,
 #					fileEncoding="UTF-8",
-					row.names=FALSE,col.names=TRUE)
+					row.names=FALSE,
+					col.names=TRUE,
+#					quote=TRUE,
+					se="\t"
+			)
 		}
 		
 		# born after function begins
@@ -140,7 +188,35 @@ test.col.dates.generic <- function(data, out.folder)
 			tlog(8,"Recording in file \"",tab.file,"\"")
 			write.table(x=tmp,file=tab.file,
 #					fileEncoding="UTF-8",
-					row.names=FALSE,col.names=TRUE)
+					row.names=FALSE,
+					col.names=TRUE,
+#					quote=TRUE,
+					se="\t"
+			)
+		}
+		
+		# duration in number of days
+		limit <- NA			# minimal duration to consider a function is correct
+		idx <- which(!is.na(data[,COL_ATT_FCT_DBT]) & !is.na(data[,COL_ATT_FCT_FIN]))
+		if(length(idx)>0)
+		{	durations <- as.integer(data[idx,COL_ATT_FCT_FIN] - data[idx,COL_ATT_FCT_DBT])
+			if(!is.na(limit))
+				idx <- idx[duration<limit]
+			tlog(6,"Found ",length(idx)," function(s) which are too short (<",limit," days)")
+			if(length(idx)>0)
+			{	tmp <- cbind(1:length(idx),durations,data[idx,])
+				colnames(tmp)[1:2] <- c("Ligne","Duree fonction")
+				tmp <- tmp[order(durations),]
+				tab.file <- file.path(out.folder,paste0("fonction_dates_problems_short.txt"))
+				tlog(8,"Recording in file \"",tab.file,"\"")
+				write.table(x=tmp, file=tab.file,
+#					fileEncoding="UTF-8",
+					row.names=FALSE,
+					col.names=TRUE,
+#					quote=TRUE,
+					se="\t"
+				)
+			}
 		}
 	}
 	else
@@ -188,7 +264,11 @@ test.col.dates.pre.rne <- function(data, out.folder)
 		tlog(4,"Recording in file \"",tab.file,"\"")
 		write.table(x=tmp,file=tab.file,
 #				fileEncoding="UTF-8",
-				row.names=FALSE, col.names=TRUE)
+				row.names=FALSE,
+				col.names=TRUE,
+#				quote=TRUE,
+				se="\t"
+		)
 	}
 }
 
@@ -217,7 +297,11 @@ test.col.dates.nofun <- function(data, out.folder)
 		tlog(4,"Recording in file \"",tab.file,"\"")
 		write.table(x=tmp,file=tab.file,
 #			fileEncoding="UTF-8",
-			row.names=FALSE, col.names=TRUE)
+			row.names=FALSE, 
+			col.names=TRUE,
+#			quote=TRUE,
+			se="\t"
+		)
 	}
 	
 	# retrieve all rows with a function name and a mandate end, but no function end
@@ -232,7 +316,11 @@ test.col.dates.nofun <- function(data, out.folder)
 		tlog(4,"Recording in file \"",tab.file,"\"")
 		write.table(x=tmp,file=tab.file,
 #			fileEncoding="UTF-8",
-			row.names=FALSE, col.names=TRUE)
+			row.names=FALSE, 
+			col.names=TRUE,
+#			quote=TRUE,
+			se="\t"
+		)
 	}
 }
 
@@ -296,7 +384,55 @@ test.col.dates.election <- function(data, out.folder, election.file)
 		tlog(6,"Recording in file \"",tab.file,"\"")
 		write.table(x=tmp,file=tab.file,
 #				fileEncoding="UTF-8",
-			row.names=FALSE, col.names=TRUE)
+			row.names=FALSE, 
+			col.names=TRUE,
+#			quote=TRUE,
+			se="\t"
+		)
+	}
+}
+
+
+
+
+#############################################################################################
+# Tests whether some mandate or function have an end motive but no end date, or the opposite.
+#
+# data: table containing the data.
+# out.folder: folder where to output the results.
+#############################################################################################
+test.col.end.motive <- function(data, out.folder)
+{	end.cols <- c(COL_ATT_MDT_FIN, COL_ATT_FCT_FIN)
+	motive.cols <- c(COL_ATT_MDT_MOTIF, COL_ATT_FCT_MOTIF)
+	
+	for(i in 1:length(end.cols))
+	{	end.col <- end.cols[i]
+		motive.col <- motive.cols[i]
+		tlog(2,"Identifying \"",motive.col,"\" motives without end date (",i,"/",length(end.cols),")")
+		
+		if(end.col %in% colnames(data) && motive.col %in% colnames(data))
+		{	# retrieve all rows with an end motive but no end date
+			idx <- which(!is.na(data[,motive.col])
+							& is.na(data[,end.col]))
+			tlog(4,"Found ",length(idx)," rows with a motive name but no end date (",motive.col,")")
+			# build the table and write it
+			if(length(idx)>0)
+			{	tmp <- cbind(idx, data[idx,])
+				colnames(tmp)[1] <- "Ligne"
+				tab.file <- file.path(out.folder,paste0(BASENAMES[motive.col],"_problems_missing_date.txt"))
+				tlog(4,"Recording in file \"",tab.file,"\"")
+				write.table(x=tmp,file=tab.file,
+#					fileEncoding="UTF-8",
+					row.names=FALSE, 
+					col.names=TRUE,
+#					quote=TRUE,
+					se="\t"
+				)
+			}
+		}
+		
+		else
+			tlog(4,"No test because the required columns are missing from this table")
 	}
 }
 
@@ -315,6 +451,7 @@ test.col.dates.cd <- function(data, out.folder)
 	test.col.dates.generic(data, out.folder)
 	test.col.dates.pre.rne(data, out.folder)
 	test.col.dates.nofun(data, out.folder)
+	test.col.end.motive(data, out.folder)
 	
 	# election dates
 #	test.col.dates.election(data, out.folder, election.file=FILE_VERIF_DATES_CD)
@@ -339,7 +476,11 @@ test.col.dates.cd <- function(data, out.folder)
 		tlog(6,"Recording in file \"",tab.file,"\"")
 		write.table(x=tmp,file=tab.file,
 #				fileEncoding="UTF-8",
-				row.names=FALSE,col.names=TRUE)
+				row.names=FALSE,
+				col.names=TRUE,
+#				quote=TRUE,
+				se="\t"
+		)
 	}
 }
 
@@ -358,6 +499,7 @@ test.col.dates.cm <- function(data, out.folder)
 	test.col.dates.generic(data, out.folder)
 	test.col.dates.pre.rne(data, out.folder)
 	test.col.dates.nofun(data, out.folder)
+	test.col.end.motive(data, out.folder)
 	
 	# election dates
 	test.col.dates.election(data, out.folder, election.file=FILE_VERIF_DATES_CM)
@@ -376,7 +518,11 @@ test.col.dates.cm <- function(data, out.folder)
 		tlog(6,"Recording in file \"",tab.file,"\"")
 		write.table(x=tmp,file=tab.file,
 #				fileEncoding="UTF-8",
-				row.names=FALSE,col.names=TRUE)
+				row.names=FALSE,
+				col.names=TRUE,
+#				quote=TRUE,
+				se="\t"
+		)
 	}
 }
 
@@ -395,6 +541,7 @@ test.col.dates.cr <- function(data, out.folder)
 	test.col.dates.generic(data, out.folder)
 	test.col.dates.pre.rne(data, out.folder)
 	test.col.dates.nofun(data, out.folder)
+	test.col.end.motive(data, out.folder)
 	
 	# election dates
 	test.col.dates.election(data, out.folder, election.file=FILE_VERIF_DATES_CR)
@@ -415,7 +562,11 @@ test.col.dates.cr <- function(data, out.folder)
 		tlog(6,"Recording in file \"",tab.file,"\"")
 		write.table(x=tmp,file=tab.file,
 #				fileEncoding="UTF-8",
-				row.names=FALSE,col.names=TRUE)
+				row.names=FALSE,
+				col.names=TRUE,
+#				quote=TRUE,
+				se="\t"
+		)
 	}
 }
 
@@ -434,6 +585,7 @@ test.col.dates.d <- function(data, out.folder)
 	test.col.dates.generic(data, out.folder)
 	test.col.dates.pre.rne(data, out.folder)
 	test.col.dates.nofun(data, out.folder)
+	test.col.end.motive(data, out.folder)
 	
 	# election dates
 	test.col.dates.election(data, out.folder, election.file=FILE_VERIF_DATES_D)
@@ -461,7 +613,11 @@ test.col.dates.d <- function(data, out.folder)
 		tlog(6,"Recording in file \"",tab.file,"\"")
 		write.table(x=tmp,file=tab.file,
 #				fileEncoding="UTF-8",
-				row.names=FALSE,col.names=TRUE)
+				row.names=FALSE,
+				col.names=TRUE,
+#				quote=TRUE,
+				se="\t"
+		)
 	}
 }
 
@@ -479,6 +635,7 @@ test.col.dates.de <- function(data, out.folder)
 {	# generic tests
 	test.col.dates.generic(data, out.folder)
 	test.col.dates.pre.rne(data, out.folder)
+	test.col.end.motive(data, out.folder)
 	
 	# election dates
 	test.col.dates.election(data, out.folder, election.file=FILE_VERIF_DATES_DE)
@@ -497,7 +654,11 @@ test.col.dates.de <- function(data, out.folder)
 		tlog(6,"Recording in file \"",tab.file,"\"")
 		write.table(x=tmp,file=tab.file,
 #				fileEncoding="UTF-8",
-				row.names=FALSE,col.names=TRUE)
+				row.names=FALSE,
+				col.names=TRUE,
+#				quote=TRUE,
+				se="\t"
+		)
 	}
 }
 
@@ -516,6 +677,7 @@ test.col.dates.epci <- function(data, out.folder)
 	test.col.dates.generic(data, out.folder)
 	test.col.dates.pre.rne(data, out.folder)
 	test.col.dates.nofun(data, out.folder)
+	test.col.end.motive(data, out.folder)
 }
 
 
@@ -533,7 +695,8 @@ test.col.dates.s <- function(data, out.folder)
 	test.col.dates.generic(data, out.folder)
 	test.col.dates.pre.rne(data, out.folder)
 	test.col.dates.nofun(data, out.folder)
-	
+	test.col.end.motive(data, out.folder)
+		
 	# election dates
 #	test.col.dates.election(data, out.folder, election.file=FILE_VERIF_DATES_S)
 	# TODO multiple coexisting election dates due to the existence of several distinct cohorts: 
@@ -557,6 +720,10 @@ test.col.dates.s <- function(data, out.folder)
 		tlog(6,"Recording in file \"",tab.file,"\"")
 		write.table(x=tmp,file=tab.file,
 #				fileEncoding="UTF-8",
-				row.names=FALSE,col.names=TRUE)
+				row.names=FALSE,
+				col.names=TRUE,
+#				quote=TRUE,
+				se="\t"
+		)
 	}
 }

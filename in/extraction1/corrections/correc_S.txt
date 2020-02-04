@@ -3,3 +3,7 @@ Row	Id	Nom	Prenom	Attribut	ValAvt	ValApr	Commentaire
 621	833176	ESPAGNAC	Frédérique	Date fin mandat	24/9/2011	NA	Date incorrecte remplacée par NA pour fusion ultérieure
 625	335393	LABAZEE	Georges	Date fin mandat	24/9/2011	NA	Date incorrecte remplacée par NA pour fusion ultérieure
 627	335394	LASSERRE	Jean-Jacques	Date fin mandat	24/9/2011	NA	Date incorrecte remplacée par NA pour fusion ultérieure
+714	1105676	HERVE	Loïc	Date fin mandat	30/9/2014	NA	Correction pour fusion ultérieure
+715	1105676	HERVE	Loïc	Date debut mandat	1/10/2014	28/9/2014	Correction pour fusion ultérieure
+2	876374	CHAIZE	Patrick	Date fin mandat	30/9/2014	NA	Correction pour fusion ultérieure
+3	876374	CHAIZE	Patrick	Date debut mandat	1/10/2014	28/9/2014	Correction pour fusion ultérieure

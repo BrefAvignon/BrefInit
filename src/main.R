@@ -16,6 +16,7 @@ source("src/common/include.R")
 
 # install stringdist
 
+# TODO fusionner merge.R de Zenbook3 ! 
 
 # TODO
 # 2) étudier la façon dont certaines lignes incluent plusieurs mandats, ou le contraire
@@ -27,15 +28,8 @@ source("src/common/include.R")
 # 4) arrondir les bornes de mandats pour éviter les problèmes (recouvrement, mandats de 1 jour, etc.)
 #    certains de ces problèmes peuvent être issus du découpage forcé des lignes 
 
-# période avec la la même date de début et de fin (mandat et fonctions)
-# voire quelques jours d'écart ?
-
-# motif de fin de mandat/fonction sans la date qui va avec
-
-# vérifier l'unicité des noms de profession
-# (par rapport aux ids)
-
 # refaire certains (tous ?) tests sur la table fusionnée, une fois que les tables individuelles sont propres
+
 
 
 # Points d'implémentation
@@ -62,10 +56,6 @@ source("src/common/include.R")
 #
 # - tester quand, dans une même table, une même personne a un chevauchement de date de fonction
 #   elle ne devrait pas cumuler plusieurs fonctions relatives au même type de position
-#
-# - Dans une même table, détecter les lignes telles que seul un attribut optionnel diffère (ou plusieurs, mais tous optionnels)
-#   (les attributs obligatoires étant de valeurs égales)
-#   >> probablement une entrée qui a été complétée plus tard, garder la ligne la plus complète et supprimer l'autre
 #
 # - parfois une ligne = une fonction ?
 #   >> un même mandat peut être décomposé en plusieurs lignes en cas de prise de fonction en cours de mandat
@@ -139,16 +129,8 @@ source("src/common/include.R")
 # - Date de début de la fonction/mandat postérieure à sa date de fin, ou bien pas de date de début alors qu’il y a une date de fin
 # - Dates antérieures à 01/01/1900 ou postérieures à 01/01/2020
 
-
 # la normalisation des noms propres rend certaines corrections inutiles (surtout pour les lieux)
 # >> à enlever
-
-
-# divers
-# sortir la chronologie de toutes les positions électives pour chaque élu
-# >> identifier les trous et superpositions
-# pareil pour les fonctions 
-# taux de renouvellement sur une période donnée
 
 # analyse de séquences
 # - gestion temps/evts
@@ -158,14 +140,9 @@ source("src/common/include.R")
 # - mettre le focus sur un poste donné plutot que sur un individu donné
 #   (séquence des personnes ou classes de personnes ayant occupé un poste donné)
 
-# vérifier si les triple-homonymes le sont vraiment
 # pour les incompatibilités de mandats (plusieurs mandats incompatibles en même temps)
-# >> vérifier si ce ne sont pas simplement plusieurs homonymes réels 
+# >> vérifier manuellement (web ?) si ce ne sont pas simplement plusieurs homonymes réels 
 #    qui auraient été pris pour la même personne et incorrectement fusionnés
-
-# dans la table fusionnée, quand deux lignes sont pareilles à quelques champs non renseignés prés
-# il faut les fusionner
-# ex: mandat CM + mandat M équivalent (issus des deux tables)
 
 # lors de la recherche de personnes ayant plusieurs ids, il ne faut pas fusionner ceux qui ont des mandats incompatibles
 # >> faire un test ad hoc pour vérifier ça, puis intégrer au test qui fait la fusion

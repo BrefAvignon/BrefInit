@@ -1,1 +1,7 @@
 Row	Id	Nom	Prenom	Attribut	ValAvt	ValApr	Commentaire
+47	989	JOULAUD	Marc	Date fin mandat	30/6/2014	NA	Correction pour fusion
+88	850	MORANO	Nadine	Date fin mandat	30/6/2014	NA	Correction pour fusion
+97	833186	ALLIOT-MARIE	Michèle	Date fin mandat	30/6/2014	NA	Correction pour fusion
+145	22359	D'ORNANO	Mireille	Date fin mandat	30/6/2014	NA	Correction pour fusion
+NA	NA	NA	NA	Date debut mandat	1/7/2014	25/5/2014	Rectifié pour date election
+NA	NA	NA	NA	Date fin mandat	30/6/2014	24/5/2014	Rectifié pour date election

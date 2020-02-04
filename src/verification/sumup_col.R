@@ -51,7 +51,11 @@ sumup.col.numerical <- function(data, col, basename, ...)
 	val.file <- paste0(basename,"_unique_vals.txt")
 	write.table(x=tt,file=val.file,
 #			fileEncoding="UTF-8",
-			row.names=FALSE,col.names=FALSE)
+			row.names=FALSE,
+			col.names=FALSE,
+#			quote=TRUE,
+			se="\t"
+	)
 	
 	# show signs
 	tlog(4, "Signs:")
@@ -165,13 +169,21 @@ sumup.col.categorical <- function(data, col, basename, ...)
 	val.file <- paste0(basename,"_unique_vals.txt")
 	write.table(x=tt,file=val.file,
 #			fileEncoding="UTF-8",
-			row.names=FALSE,col.names=FALSE)
+			row.names=FALSE,
+			col.names=FALSE,
+#			quote=TRUE,
+			se="\t"
+	)
 	# also record double distr (no NAs)
 	val.file <- paste0(basename,"_double_freq.txt")
 	ttt <- table(table(vals))
 	write.table(x=ttt,file=val.file,
 #			fileEncoding="UTF-8",
-			row.names=FALSE,col.names=FALSE)
+			row.names=FALSE,
+			col.names=FALSE,
+#			quote=TRUE,
+			se="\t"
+	)
 	
 	# show standard statistics
 	tlog(4, "Standard statistics")
@@ -251,13 +263,21 @@ sumup.col.nominal <- function(data, col, basename, dist.threhsold=3, ...)
 	val.file <- paste0(basename,"_unique_vals.txt")
 	write.table(x=tt,file=val.file,
 #			fileEncoding="UTF-8",
-			row.names=FALSE,col.names=FALSE)
+			row.names=FALSE,
+			col.names=FALSE,
+#			quote=TRUE,
+			se="\t"
+	)
 	# also record double distr (no NAs)
 	val.file <- paste0(basename,"_double_freq.txt")
 	ttt <- table(table(vals))
 	write.table(x=ttt,file=val.file,
 #			fileEncoding="UTF-8",
-			row.names=FALSE,col.names=FALSE)
+			row.names=FALSE,
+			col.names=FALSE,
+#			quote=TRUE,
+			se="\t"
+	)
 	
 	# basic stats
 	tlog(4, "Basic stats")
@@ -363,13 +383,21 @@ sumup.col.temporal <- function(data, col, basename, ...)
 	val.file <- paste0(basename,"_unique_vals.txt")
 	write.table(x=tt,file=val.file,
 #			fileEncoding="UTF-8",
-			row.names=FALSE,col.names=FALSE)
+			row.names=FALSE,
+			col.names=FALSE,
+#			quote=TRUE,
+			se="\t"
+	)
 	# also record double distr (no NAs)
 	val.file <- paste0(basename,"_double_freq.txt")
 	ttt <- table(table(vals))
 	write.table(x=ttt,file=val.file,
 #			fileEncoding="UTF-8",
-			row.names=FALSE,col.names=FALSE)
+			row.names=FALSE,
+			col.names=FALSE,
+#			quote=TRUE,
+			se="\t"
+	)
 	
 	# number of 1st January dates (supposedly representing unknown dates)
 	first.jan <- which(get.day(vals)==1 & get.month(vals)==1)
@@ -540,6 +568,9 @@ sumup.cols <- function(data, out.folder, ...)
 	file <- file.path(out.folder,"stats.txt")
 	write.table(x=stats, file=file, sep="\t", 
 #			fileEncoding="UTF-8", 
-			row.names=TRUE, col.names=TRUE, 
-			quote=FALSE)
+			row.names=TRUE, 
+			col.names=TRUE, 
+			quote=TRUE,
+			se="\t"
+	)
 }

@@ -37,7 +37,7 @@ tlog(0,"Examining each column separately")
 
 # look for duplicate rows
 tlog(0,"Looking for duplicate rows")
-#test.duplicate.rows(data=data, out.folder=out.folder)
+#test.compatible.rows(data=data, out.folder=out.folder)
 
 # check personal information
 tlog(0,"Checking personal information consistency")
@@ -45,7 +45,7 @@ tlog(0,"Checking personal information consistency")
 
 # check dates
 tlog(0,"Checking dates")
-test.col.dates.cd(data=data, out.folder=out.folder)
+#test.col.dates.cd(data=data, out.folder=out.folder)
 
 # check locations
 tlog(0,"Checking locations")
