@@ -1,0 +1,57 @@
+Matricule	Qualité	Nom usuel	Prénom usuel	État Sénateur	Identifiant mandat	Date de début de mandat	Date de fin de mandat	Article métropole	Métropole	Identifiant fonction	Date de début de fonction	Date de fin de fonction	Fonction
+14239U	M.	Amiel	Michel	ACTIF	15301	01/01/2016		de la 	Métropole d'Aix-Marseille-Provence	13898	01/01/2016		Conseiller
+08025T	M.	Anziani	Alain	ANCIEN	15306	01/01/2016		de 	Bordeaux Métropole	13903	01/01/2016		Vice-Président
+19515S	M.	Babary	Serge	ACTIF	51524	20/03/2017		de 	Tours Métropole Val de Loire	50862	20/03/2017		Conseiller
+19651A	M.	Bargeton	Julien	ACTIF	51424	02/01/2015		de la 	Métropole du Grand Paris	50622	02/01/2015		Conseiller
+14065Q	M.	Bigot	Jacques	ACTIF	15325	01/01/2016		de l'	Eurométropole de Strasbourg	13923	01/01/2016		Conseiller
+11040E	M.	Bocquet	Éric	ACTIF	15308	01/01/2016		de la 	Métropole européenne de Lille	13905	01/01/2016		Conseiller
+19643A	Mme	Boulay-Espéronnier	Céline	ACTIF	51389	14/12/2015		de la 	Métropole du Grand Paris	50569	14/12/2015		Conseiller
+04047H	M.	Buffet	François-Noël	ACTIF	14406	01/01/2015		de la 	Métropole de Lyon	13707	01/01/2015		Conseiller
+04042C	M.	Cambon	Christian	ACTIF	15313	01/01/2016		de la 	Métropole du Grand Paris	13910	01/01/2016		Conseiller
+11053K	M.	Capo-Canellas	Vincent	ACTIF	15312	01/01/2016		de la 	Métropole du Grand Paris	13909	01/01/2016		Conseiller
+11032E	M.	Carvounas	Luc	ANCIEN	15311	01/01/2016		de la 	Métropole du Grand Paris	13908	01/01/2016		Vice-Président
+19721W	M.	Cazabonne	Alain	ACTIF	51461	01/01/2015		de 	Bordeaux Métropole	50671	01/01/2015	01/10/2017	Vice-Président
+19721W	M.	Cazabonne	Alain	ACTIF	51461	01/01/2015		de 	Bordeaux Métropole	50855	02/10/2017		Conseiller
+99002P	M.	Collomb	Gérard	ANCIEN	14405	01/01/2015		de la 	Métropole de Lyon	13706	01/01/2015	09/07/2017	Président
+99002P	M.	Collomb	Gérard	ANCIEN	14405	01/01/2015		de la 	Métropole de Lyon	51133	10/07/2017		Conseiller
+04086Q	M.	Dallier	Philippe	ACTIF	15314	01/01/2016		de la 	Métropole du Grand Paris	13911	01/01/2016		Conseiller
+11065P	M.	Dantec	Ronan	ACTIF	15319	01/01/2016	10/02/2017	de 	Nantes Métropole	13916	01/01/2016	10/02/2017	Conseiller
+04008A	M.	Daubresse	Marc-Philippe	ACTIF	50991	07/04/2014		de la 	Métropole européenne de Lille	50300	07/04/2014	29/12/2017	Vice-Président
+04008A	M.	Daubresse	Marc-Philippe	ACTIF	50991	07/04/2014		de la 	Métropole européenne de Lille	51002	30/12/2017		Conseiller
+19719D	Mme	Delattre	Nathalie	ACTIF	51490	01/01/2015		de 	Bordeaux Métropole	50692	01/01/2015		Conseiller
+19251M	M.	Devinaz	Gilbert-Luc	ACTIF	51619	01/01/2015		de la 	Métropole de Lyon	51089	01/01/2015		Conseiller
+14187A	Mme	Estrosi Sassone	Dominique	ACTIF	15320	01/01/2016		de la 	Métropole Nice Côte d'Azur	13917	01/01/2016		Conseiller
+14087W	M.	Forissier	Michel	ACTIF	14409	01/01/2015		de la 	Métropole de Lyon	13710	01/01/2015		Conseiller
+98053W	M.	Foucaud	Thierry	ANCIEN	15323	01/01/2016		de la 	Métropole Rouen Normandie	13920	01/01/2016		Conseiller
+89029V	M.	Gaudin	Jean-Claude	ANCIEN	15300	09/11/2015		de la 	Métropole d'Aix-Marseille-Provence	13897	09/11/2015		Président
+07024N	M.	Gautier	Jacques	ANCIEN	15316	01/01/2016		de la 	Métropole du Grand Paris	13913	01/01/2016		Conseiller
+08035V	Mme	Ghali	Samia	ACTIF	15302	01/01/2016		de la 	Métropole d'Aix-Marseille-Provence	13899	01/01/2016		Conseiller
+08048B	M.	Gilles	Bruno	ACTIF	15303	21/01/2016		de la 	Métropole d'Aix-Marseille-Provence	13900	21/01/2016		Conseiller
+14211G	M.	Grand	Jean-Pierre	ACTIF	15318	01/01/2016		de 	Montpellier Méditerranée Métropole	13915	01/01/2016		Conseiller
+11064N	M.	Guerriau	Joël	ACTIF	15329	01/01/2016		de 	Nantes Métropole	13927	01/01/2016		Conseiller
+14081Q	Mme	Guillemot	Annie	ACTIF	14408	01/01/2015		de la 	Métropole de Lyon	13709	01/01/2015	10/07/2017	Vice-Président
+14081Q	Mme	Guillemot	Annie	ACTIF	14408	01/01/2015		de la 	Métropole de Lyon	42265	11/07/2017		Conseiller
+19569H	M.	Henno	Olivier	ACTIF	50981	02/01/2015	30/12/2017	de la 	Métropole européenne de Lille	50290	02/01/2015	30/12/2017	Vice-Président
+11048N	M.	Husson	Jean-François	ACTIF	15309	01/07/2016		de la 	Métropole du Grand Nancy	13906	01/07/2016	25/10/2017	Vice-Président
+11048N	M.	Husson	Jean-François	ACTIF	15309	01/07/2016		de la 	Métropole du Grand Nancy	51112	25/10/2017		Conseiller
+14241N	Mme	Jouve	Mireille	ACTIF	15304	01/01/2016		de la 	Métropole d'Aix-Marseille-Provence	13901	01/01/2016		Conseiller
+04061F	Mme	Keller	Fabienne	ANCIEN	15326	01/01/2016		de l'	Eurométropole de Strasbourg	13924	01/01/2016		Conseiller
+19611R	M.	Lafon	Laurent	ACTIF	51433	22/01/2016	23/10/2017	de la 	Métropole du Grand Paris	50633	22/01/2016	23/10/2017	Vice-Président
+19711U	Mme	Lavarde	Christine	ACTIF	51444	01/01/2016		de la 	Métropole du Grand Paris	50648	01/01/2016		Conseiller
+19581D	Mme	Lherbier	Brigitte	ACTIF	51001			de la 	Métropole européenne de Lille	50310			Conseiller
+19637C	M.	Marchand	Frédéric	ACTIF	51044			de la 	Métropole européenne de Lille	50353			Conseiller
+11085T	M.	Marseille	Hervé	ACTIF	15317	01/01/2016		de la 	Métropole du Grand Paris	13914	01/01/2016		Conseiller
+14223L	Mme	Micouleau	Brigitte	ACTIF	15328	01/01/2016		de 	Toulouse Métropole	13926	01/01/2016		Conseiller
+04070G	Mme	Morin-Desailly	Catherine	ACTIF	15324	01/01/2016	31/08/2016	de la 	Métropole Rouen Normandie	13922	01/01/2016	31/08/2016	Conseiller
+08042U	M.	Nègre	Louis	ANCIEN	15321	01/01/2016		de la 	Métropole Nice Côte d'Azur	13918	01/01/2016		Conseiller
+17637T	M.	Pemezec	Philippe	ACTIF	51497	01/01/2016		de la 	Métropole du Grand Paris	50713	01/01/2016		Conseiller
+14055N	M.	Ravier	Stéphane	ACTIF	15305	01/01/2016		de la 	Métropole d'Aix-Marseille-Provence	13902	01/01/2016		Conseiller
+14225N	M.	Raynal	Claude	ACTIF	51623	01/01/2016	29/09/2017	de 	Toulouse Métropole	51091	01/01/2016	29/09/2017	Vice-Président
+14229S	Mme	Robert	Sylvie	ACTIF	15310	01/01/2016		de 	Rennes Métropole	13907	01/01/2016		Conseiller
+11043H	M.	Savin	Michel	ACTIF	15307	01/01/2016		de 	Grenoble-Alpes Métropole	13904	01/01/2016		Conseiller
+14051J	Mme	Tocqueville	Nelly	ACTIF	15322	01/01/2016		de la 	Métropole Rouen Normandie	13919	01/01/2016	31/12/2017	Vice-Président
+14051J	Mme	Tocqueville	Nelly	ACTIF	15322	01/01/2016		de la 	Métropole Rouen Normandie	51285	01/01/2018		Conseiller
+19737F	Mme	Vullien	Michèle	ACTIF	51540	01/01/2015		de la 	Métropole de Lyon	50901	01/01/2015	09/10/2017	Vice-Président
+19737F	Mme	Vullien	Michèle	ACTIF	51540	01/01/2015		de la 	Métropole de Lyon	50902	10/10/2017		Conseiller
+19585H	M.	Wattebled	Dany	ACTIF	51004		15/04/2018	de la 	Métropole européenne de Lille	50313		22/10/2017	Vice-Président
+19585H	M.	Wattebled	Dany	ACTIF	51004		15/04/2018	de la 	Métropole européenne de Lille	50973	23/10/2017	15/04/2018	Conseiller

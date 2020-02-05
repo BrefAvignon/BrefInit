@@ -1,0 +1,422 @@
+Matricule	Qualité	Nom usuel	Prénom usuel	État Sénateur	Identifiant mandat	Date d'élection	Date de début de mandat	Année de début de mandat	Date de fin de mandat	Année de fin de mandat	Région	Identifiant fonction	Date de début de fonction	Année de début de fonction	Date de fin de fonction	Année de fin de fonction	Fonction
+14263U	M.	Abate	Patrick	ANCIEN	14393		15/03/1998		22/12/2014	Indetermine(e)/Indefini(e)	Lorraine	13698	15/03/1998		30/03/2004		Conseiller régional
+14263U	M.	Abate	Patrick	ANCIEN	14393		15/03/1998		22/12/2014	Indetermine(e)/Indefini(e)	Lorraine	13699	01/04/2004		22/12/2014		Conseiller régional
+95004Y	M.	About	Nicolas	ANCIEN	10607		28/03/2004	2004		Indetermine(e)/Indefini(e)	Ile-de-France	10610	28/03/2004	2004			Conseiller régional
+01065W	M.	Alfonsi	Nicolas	ANCIEN	6658		01/08/1982	1982	01/12/2001	2001	Corse	3105	01/08/1982	1982	22/03/1992	1992	Conseiller régional
+01065W	M.	Alfonsi	Nicolas	ANCIEN	6658		01/08/1982	1982	01/12/2001	2001	Corse	10604	22/03/1992	1992	18/03/1998	1998	Premier Vice-Président du conseil régional
+01065W	M.	Alfonsi	Nicolas	ANCIEN	6658		01/08/1982	1982	01/12/2001	2001	Corse	11410	22/03/1998	1998	01/12/2001	2001	Conseiller régional
+01065W	M.	Alfonsi	Nicolas	ANCIEN	10608		28/03/2004	2004	28/03/2004	2004	Corse	10611	28/03/2004	2004	28/03/2004	2004	Conseiller régional
+04087R	Mme	Alquier	Jacqueline	ANCIEN	10990			1998	21/03/2010	2010	Midi-Pyrénées	10992		1998	21/03/2010	2010	Conseiller régional
+01031L	Mme	André	Michèle	ANCIEN	6516		22/03/1992	1992	15/03/1998	1998	Auvergne	2985	22/03/1992	1992	15/03/1998	1998	Conseiller régional
+98036V	M.	André	Pierre	ANCIEN	5144		16/03/1986	1986	05/10/1998	Indetermine(e)/Indefini(e)	Picardie	2068	16/03/1986	1986	21/03/1992	1992	Conseiller régional
+98036V	M.	André	Pierre	ANCIEN	5144		16/03/1986	1986	05/10/1998	Indetermine(e)/Indefini(e)	Picardie	10703	22/03/1992	1992	15/03/1998	1998	Vice-Président du conseil régional
+98036V	M.	André	Pierre	ANCIEN	5144		16/03/1986	1986	05/10/1998	Indetermine(e)/Indefini(e)	Picardie	10704	16/03/1998	1998	05/10/1998	1998	Conseiller régional
+08040S	M.	Andreoni	Serge	ANCIEN	11651		01/04/1992	1992	31/03/2004	2004	Provence-Alpes-Côte d'Azur	11525	01/04/1992	1992	31/03/2004	2004	Conseiller régional
+11109J	M.	Antiste	Maurice	ACTIF	12838		01/03/2010		01/10/2011	Indetermine(e)/Indefini(e)	Martinique	13027	01/03/2010		01/10/2011		Vice-Président du conseil régional
+08072B	M.	Antoinette	Jean-Étienne	ANCIEN	11792		01/03/2004	2004		2008	Guyane	11638	01/03/2004	2004		2008	Conseiller régional
+08025T	M.	Anziani	Alain	ANCIEN	11578			1992		2008	Aquitaine	11470		1992		1998	Conseiller régional
+08025T	M.	Anziani	Alain	ANCIEN	11578			1992		2008	Aquitaine	11471		1998		2008	Vice-Président du conseil régional
+19760E	Mme	Apourceau-Poly	Cathy	ACTIF	51609		28/03/2004		13/12/2015	Indetermine(e)/Indefini(e)	Nord-Pas-de-Calais	51076	28/03/2004		13/12/2015		Conseiller régional
+19631V	Mme	Artigalas	Viviane	ACTIF	51419		21/03/2010		13/12/2015	Indetermine(e)/Indefini(e)	Midi-Pyrénées	50613	21/03/2010		13/12/2015		Vice-Président du conseil régional
+83012K	M.	Autain	François	ANCIEN	10671			1983	16/03/1986	1986	Pays de la Loire	10717		1983	16/03/1986	1986	Conseiller régional
+00001A	M.	Autexier	Jean-Yves	ANCIEN	5852		16/03/1986	1986	22/03/1992	1992	Ile-de-France	2200	16/03/1986	1986	22/03/1992	1992	Conseiller régional
+95007C	M.	Badré	Denis	ANCIEN	10678		22/03/1992	1992		1996	Ile-de-France	10729	22/03/1992	1992		1996	Conseiller régional
+11039M	M.	Bailly	Dominique	ANCIEN	12381		15/03/1998			2011	Nord-Pas-de-Calais	12453	15/03/1998			2011	Conseiller régional
+01008M	M.	Bailly	Gérard	ANCIEN	6582		16/03/1986	1986		2001	Franche-Comté	3046	16/03/1986	1986		1988	Conseiller régional
+01008M	M.	Bailly	Gérard	ANCIEN	6582		16/03/1986	1986		2001	Franche-Comté	10730		1988		2001	Vice-Président du conseil régional
+01046T	M.	Barbier	Gilbert	ANCIEN	6563			1983		1986	Franche-Comté	3024		1983		1986	Vice-Président du conseil régional
+92007P	M.	Baudot	Jacques	ANCIEN	10684		16/03/1986	1986	22/06/1992	1992	Lorraine	10738	16/03/1986	1986		1988	Conseiller régional
+92007P	M.	Baudot	Jacques	ANCIEN	10684		16/03/1986	1986	22/06/1992	1992	Lorraine	10739		1988	22/06/1992	1992	Vice-Président du conseil régional
+95009E	M.	Bécot	Michel	ANCIEN	1499			1995	28/03/2004	2004	Poitou-Charentes	1499		1995		1998	Conseiller régional
+95009E	M.	Bécot	Michel	ANCIEN	1499			1995	28/03/2004	2004	Poitou-Charentes	10750		1998		1999	Vice-Président du conseil régional
+95009E	M.	Bécot	Michel	ANCIEN	1499			1995	28/03/2004	2004	Poitou-Charentes	10751		1999	28/03/2004	2004	Conseiller régional
+98006P	M.	Bel	Jean-Pierre	ANCIEN	10691			1992	15/03/1998	1998	Midi-Pyrénées	10752		1992	15/03/1998	1998	Conseiller régional
+89013M	M.	Belot	Claude	ANCIEN	10693			1985		1989	Poitou-Charentes	10755		1985		1989	Vice-Président du conseil régional
+74011H	M.	Berchet	Georges	ANCIEN	1490				23/09/1973	1973	Champagne-Ardenne	1490			23/09/1973	1973	Conseiller régional
+89019T	Mme	Bergé-Lavigne	Maryse	ANCIEN	10694		16/03/1986	1986	22/03/1992	1992	Midi-Pyrénées	10758	16/03/1986	1986	22/03/1992	1992	Conseiller régional
+89020L	M.	Bernardet	Daniel	ANCIEN	5870			1983	21/11/2007	2007	Centre	2221		1983	21/11/2007	2007	Président du conseil régional
+07003H	M.	Bernard-Reymond	Pierre	ANCIEN	11230		01/10/2002	2002		2010	Provence-Alpes-Côte d'Azur	11165	01/10/2002	2002		2010	Conseiller régional
+11081P	M.	Bertrand	Alain	ACTIF	12853		15/03/1998			2013	Languedoc-Roussillon	13044	15/03/1998		31/03/2004	2013	Conseiller régional
+11081P	M.	Bertrand	Alain	ACTIF	12853		15/03/1998			2013	Languedoc-Roussillon	13045	01/04/2004			2013	Vice-Président du conseil régional
+89015P	M.	Besson	Jean	ANCIEN	10609		28/03/2004	2004	21/03/2010	2010	Rhône-Alpes	10612	28/03/2004	2004	21/03/2010	2010	Vice-Président du conseil régional
+89015P	M.	Besson	Jean	ANCIEN	10709			1986		1989	Rhône-Alpes	10777		1986		1989	Conseiller régional
+14093U	M.	Bignon	Jérôme	ACTIF	13926		17/03/1986		13/04/2004	Indetermine(e)/Indefini(e)	Picardie	13366	23/03/1992		17/04/1993		Vice-Président du conseil régional
+14093U	M.	Bignon	Jérôme	ACTIF	13926		17/03/1986		13/04/2004	Indetermine(e)/Indefini(e)	Picardie	13381	17/03/1986		22/03/1992		Conseiller régional
+14093U	M.	Bignon	Jérôme	ACTIF	13926		17/03/1986		13/04/2004	Indetermine(e)/Indefini(e)	Picardie	13383	29/03/2004		13/04/2004		Conseiller régional
+14065Q	M.	Bigot	Jacques	ACTIF	13858		15/03/1998		06/10/2010	Indetermine(e)/Indefini(e)	Alsace	13287	15/03/1998		06/10/2010		Conseiller régional
+01005J	M.	Blanc	Jacques	ANCIEN	6357				02/04/2004	2004	Languedoc-Roussillon	2914			02/04/2004	2004	Président du conseil régional
+01005J	M.	Blanc	Jacques	ANCIEN	10636		02/04/2004	2004	21/03/2010	2010	Languedoc-Roussillon	10663	02/04/2004	2004	21/03/2010	2010	Conseiller régional
+01044R	Mme	Blandin	Marie-Christine	ANCIEN	6476			1992	22/10/2001	2001	Nord-Pas-de-Calais	2965		1998	22/10/2001	2001	Conseiller régional
+01044R	Mme	Blandin	Marie-Christine	ANCIEN	6476			1992	22/10/2001	2001	Nord-Pas-de-Calais	3017		1992		1998	Président du conseil régional
+71003U	M.	Blin	Maurice	ANCIEN	10710			1992		1998	Champagne-Ardenne	10778		1992		1998	Premier Vice-Président du conseil régional
+04040A	M.	Bockel	Jean-Marie	ACTIF	11044			1981		1984	Alsace	11035		1981		1984	Conseiller régional
+04052E	M.	Bodin	Yannick	ANCIEN	10851		15/03/1998	1998	21/03/2004	2004	Ile-de-France	11037	15/03/1998	1998	21/03/2004	2004	Vice-Président du conseil régional
+19367Y	Mme	Bonfanti-Dossat	Christine	ACTIF	51429		21/03/2010		13/12/2015	Indetermine(e)/Indefini(e)	Aquitaine	50628	21/03/2010		13/12/2015		Conseiller régional
+14089Y	M.	Bonnecarrère	Philippe	ACTIF	13897			1986		1993	Midi-Pyrénées	13329		1986		1993	Premier Vice-Président du conseil régional
+08060W	Mme	Bonnefoy	Nicole	ACTIF	11727			1998		2008	Poitou-Charentes	11591		1998		2004	Conseiller régional
+08060W	Mme	Bonnefoy	Nicole	ACTIF	11727			1998		2008	Poitou-Charentes	11592		2004		2008	Vice-Président du conseil régional
+14167V	M.	Boulard	Jean-Claude	ANCIEN	14362			1986	31/05/2018	1988	Pays de la Loire	13660		1986		1988	Conseiller régional
+89022N	M.	Bourdin	Joël	ANCIEN	11901			1986		1989	Haute-Normandie	11712		1986		1989	Conseiller régional
+11018G	M.	Bourquin	Christian	ANCIEN	12435		28/03/2004	2004	26/08/2014	Indetermine(e)/Indefini(e)	Languedoc-Roussillon	12648		2004	10/04/2010		Premier Vice-Président du conseil régional
+11018G	M.	Bourquin	Christian	ANCIEN	12435		28/03/2004	2004	26/08/2014	Indetermine(e)/Indefini(e)	Languedoc-Roussillon	12930	10/11/2010		26/08/2014		Président du conseil régional
+08068F	M.	Bourquin	Martial	ACTIF	11774			1992		2008	Franche-Comté	11627	01/03/1992	1992		2004	Conseiller régional
+08068F	M.	Bourquin	Martial	ACTIF	11774			1992		2008	Franche-Comté	11628	01/03/2004	2004		2008	Vice-Président du conseil régional
+08050U	Mme	Bourzai	Bernadette	ANCIEN	11686			1986		2001	Limousin	11557	01/03/1986	1986	01/03/1992	2001	Conseiller régional
+08050U	Mme	Bourzai	Bernadette	ANCIEN	11686			1986		2001	Limousin	11645	01/03/1992	1992	01/06/2001		Vice-Président du conseil régional
+88004G	M.	Boyer	André	ANCIEN	11350			1985	24/09/2008	2008	Midi-Pyrénées	11319		1985	24/09/2008	2008	Conseiller régional
+01052R	M.	Boyer	Jean	ANCIEN	6543			1983		1988	Auvergne	3003		1983		1988	Conseiller régional
+98049B	Mme	Boyer	Yolande	ANCIEN	5199			1998		1998	Bretagne	2097				1998	Conseiller régional
+95012Y	M.	Braun	Gérard	ANCIEN	1501				28/03/2004	2004	Lorraine	1501			28/03/2004	2004	Vice-Président du conseil régional
+04053F	Mme	Bricq	Nicole	ANCIEN	10854		16/03/1986	1986	22/03/1992	1992	Ile-de-France	10906	16/03/1986	1986	22/03/1992		Conseiller régional
+19621T	M.	Brisson	Max	ACTIF	51136		15/03/1998		01/05/2001	Indetermine(e)/Indefini(e)	Aquitaine	50395	15/03/1998		01/05/2001		Conseiller régional
+08020N	Mme	Bruguière	Marie-Thérèse	ACTIF	11552		02/04/2004	2004		2008	Languedoc-Roussillon	11457	02/04/2004	2004		2008	Conseiller régional
+19758L	Mme	Brulin	Céline	ACTIF	51595		13/12/2015			Indetermine(e)/Indefini(e)	Normandie	51061	13/12/2015				Conseiller régional
+08007R	M.	Brun	Elie	ANCIEN	12018		21/03/2010	2010		2010	Provence-Alpes-Côte d'Azur	11779	21/03/2010	2010		2010	Conseiller régional
+11101A	M.	Calvet	François	ACTIF	12563		23/03/1992		24/02/2003	Indetermine(e)/Indefini(e)	Languedoc-Roussillon	12829	23/03/1992		15/03/1998		Conseiller régional
+11101A	M.	Calvet	François	ACTIF	12563		23/03/1992		24/02/2003	Indetermine(e)/Indefini(e)	Languedoc-Roussillon	12830	16/03/1998		31/07/2002		Vice-Président du conseil régional
+11101A	M.	Calvet	François	ACTIF	12563		23/03/1992		24/02/2003	Indetermine(e)/Indefini(e)	Languedoc-Roussillon	12831	01/08/2002		24/02/2003		Conseiller régional
+04042C	M.	Cambon	Christian	ACTIF	10810		16/03/1986	1986		2004	Ile-de-France	10878	15/03/1998	1998		2004	Conseiller régional
+04042C	M.	Cambon	Christian	ACTIF	10810		16/03/1986	1986		2004	Ile-de-France	10879	16/03/1986	1986	15/03/1998	1998	Vice-Président du conseil régional
+95015C	M.	Carle	Jean-Claude	ANCIEN	1498				03/06/2013	Indetermine(e)/Indefini(e)	Rhône-Alpes	1498			03/06/2013		Conseiller régional
+92015P	M.	Carrère	Jean-Louis	ANCIEN	1488				21/03/2010	2010	Aquitaine	1488			21/03/2010	2010	Vice-Président du conseil régional
+08024S	Mme	Cartron	Françoise	ACTIF	11574		01/03/1998	1998		2008	Aquitaine	11469	01/03/1998	1998		2008	Vice-Président du conseil régional
+11044J	Mme	Cayeux	Caroline	ANCIEN	12861		01/03/2002		30/09/2011	Indetermine(e)/Indefini(e)	Picardie	13058	01/03/2002		30/09/2011		Conseiller régional
+19721W	M.	Cazabonne	Alain	ACTIF	51460		17/03/1985		29/09/1993	Indetermine(e)/Indefini(e)	Aquitaine	50670	17/03/1985		29/09/1993		Conseiller régional
+83021L	M.	Cazalet	Auguste	ANCIEN	11899			1992		1998	Aquitaine	11709		1992		1998	Vice-Président du conseil régional
+14329V	Mme	Chain-Larché	Anne	ACTIF	15271		14/12/2015			Indetermine(e)/Indefini(e)	Ile-de-France	13870	14/12/2015		30/09/2017		Vice-Président du conseil régional
+14329V	Mme	Chain-Larché	Anne	ACTIF	15271		14/12/2015			Indetermine(e)/Indefini(e)	Ile-de-France	51169	01/10/2017				Conseiller régional
+92016Q	M.	Charmant	Marcel	ANCIEN	6278			1984		1993	Bourgogne	2766		1984		1983	Conseiller régional
+08028W	M.	Chatillon	Alain	ACTIF	11587			1992	06/10/2008	2008	Midi-Pyrénées	11477		1998	06/10/2008	2008	Conseiller régional
+08028W	M.	Chatillon	Alain	ACTIF	11587			1992	06/10/2008	2008	Midi-Pyrénées	11478		1992		1998	Vice-Président du conseil régional
+08013P	Mme	Chevé	Jacqueline	ANCIEN	11518		28/03/2004		15/03/2010	2010	Bretagne	11434	28/03/2004		15/03/2010	2010	Conseiller régional
+02053W	M.	Chevènement	Jean-Pierre	ANCIEN	11635			1981		1982	Franche-Comté	11514		1981		1982	Président du conseil régional
+11031D	Mme	Cohen	Laurence	ACTIF	12406		28/03/2004		13/12/2015	Indetermine(e)/Indefini(e)	Ile-de-France	12552	28/03/2004		13/12/2015		Conseiller régional
+99002P	M.	Collomb	Gérard	ANCIEN	6335		15/03/1998	1992		1999	Rhône-Alpes	2894		1992		1999	Conseiller régional
+98023Q	M.	Cornu	Gérard	ANCIEN	15266		14/12/2015		30/09/2017	Indetermine(e)/Indefini(e)	Centre-Val de Loire	13863	14/12/2015		30/09/2017		Conseiller régional
+07030L	M.	Couderc	Raymond	ANCIEN	11275			1998		2008	Languedoc-Roussillon	11190		1992		1993	Vice-Président du conseil régional
+07030L	M.	Couderc	Raymond	ANCIEN	11275			1998		2008	Languedoc-Roussillon	11191		1986		1992	Conseiller régional
+07030L	M.	Couderc	Raymond	ANCIEN	11275			1998		2008	Languedoc-Roussillon	11193		1998		2008	Conseiller régional
+07030L	M.	Couderc	Raymond	ANCIEN	12016		21/03/2010	2010		2013	Languedoc-Roussillon	11777	21/03/2010	2010		2013	Conseiller régional
+11001K	Mme	Cros	Roselle	ANCIEN	12066			2004		2010	Ile-de-France	11812		2004		2010	Conseiller régional
+11056N	Mme	Cukierman	Cécile	ACTIF	15262		14/12/2015			Indetermine(e)/Indefini(e)	Auvergne-Rhône-Alpes	13859	14/12/2015				Conseiller régional
+14079W	M.	Danesi	René	ACTIF	13870		21/03/2010		01/11/2014	Indetermine(e)/Indefini(e)	Alsace	13301	21/03/2010		01/11/2014		Vice-Président du conseil régional
+07001F	M.	Danglot	Jean-Claude	ANCIEN	11220			2003	21/03/2010	2010	Nord-Pas-de-Calais	11160		2003	21/03/2010	2010	Conseiller régional
+04055H	M.	Dassault	Serge	ANCIEN	10868			1986	28/05/2018	1995	Ile-de-France	10912		1986		1995	Conseiller régional
+98020M	M.	d'Attilio	Henri	ANCIEN	10670			1982	16/03/1986	1986	Provence-Alpes-Côte d'Azur	10714		1982	16/03/1986	1986	Conseiller régional
+01012H	M.	Dauge	Yves	ANCIEN	6612			1985		1997	Centre	3078		1985		1997	Conseiller régional
+08038Y	M.	Daunis	Marc	ACTIF	11622			1998		2008	Provence-Alpes-Côte d'Azur	11501		1998		2008	Conseiller régional
+19649G	Mme	de la Gontrie	Marie-Pierre	ACTIF	51052		15/03/1998		13/12/2015	Indetermine(e)/Indefini(e)	Ile-de-France	50361	15/03/1998		13/12/2015		Premier Vice-Président du conseil régional
+08034U	M.	de Legge	Dominique	ACTIF	11611			1998	13/12/2015	Indetermine(e)/Indefini(e)	Bretagne	11493		1998	13/12/2015		Conseiller régional
+14169X	M.	de Nicolaÿ	Louis-Jean	ACTIF	14015			2010	01/10/2014	Indetermine(e)/Indefini(e)	Pays de la Loire	13479		2010	01/10/2014		Conseiller régional
+98039Y	M.	de Richemont	Henri	ANCIEN	5157			1986		Indetermine(e)/Indefini(e)	Poitou-Charentes	2077		1986		2004	Vice-Président du conseil régional
+98039Y	M.	de Richemont	Henri	ANCIEN	5157			1986		Indetermine(e)/Indefini(e)	Poitou-Charentes	10627					Conseiller régional
+83050R	M.	de Rohan	Josselin	ANCIEN	1491				30/03/2004	2004	Bretagne	1491			30/03/2004	2004	Président du conseil régional
+04081K	Mme	Debré	Isabelle	ANCIEN	11040			2004		2005	Ile-de-France	11031		2004		2005	Conseiller régional
+19719D	Mme	Delattre	Nathalie	ACTIF	51455		13/12/2015		31/10/2017	Indetermine(e)/Indefini(e)	Aquitaine	50665	13/12/2015		31/10/2017		Conseiller régional
+11035H	M.	Delebarre	Michel	ANCIEN	12791		16/03/1998		25/01/2001	Indetermine(e)/Indefini(e)	Nord-Pas-de-Calais	12939	16/03/1998		25/01/2001		Président du conseil régional
+95023C	M.	Demilly	Fernand	ANCIEN	10715			1976		1979	Picardie	10785		1976		1979	Conseiller régional
+04046G	Mme	Demontès	Christiane	ANCIEN	10829			1992		2009	Rhône-Alpes	10887		1992		2004	Conseiller régional
+04046G	Mme	Demontès	Christiane	ANCIEN	10829			1992		2009	Rhône-Alpes	10888		2004		2007	Vice-Président du conseil régional
+04046G	Mme	Demontès	Christiane	ANCIEN	10829			1992		2009	Rhône-Alpes	11201		2007	15/05/2009	2009	Conseiller régional
+19659J	M.	Dennemont	Michel	ACTIF	51091		13/12/2015			Indetermine(e)/Indefini(e)	La Réunion	50378	13/12/2015				Conseiller régional
+10006L	Mme	Deroche	Catherine	ACTIF	12041		28/03/2004	2004		Indetermine(e)/Indefini(e)	Pays de la Loire	11792	28/03/2004	2004			Conseiller régional
+08022Q	Mme	Des Esgaulx	Marie-Hélène	ANCIEN	11569			1986		2004	Aquitaine	11467		1986		2002	Conseiller régional
+11113E	M.	Desplan	Félix	ANCIEN	12766		15/03/1998			2004	Guadeloupe	12876	15/03/1998			2004	Conseiller régional
+19577H	Mme	Dindar	Nassimah	ACTIF	50998		15/03/1998		18/12/2017	Indetermine(e)/Indefini(e)	La Réunion	50307	13/12/2015		18/12/2017		Vice-Président du conseil régional
+19577H	Mme	Dindar	Nassimah	ACTIF	50998		15/03/1998		18/12/2017	Indetermine(e)/Indefini(e)	La Réunion	50661	15/03/1998		12/12/2015		Conseiller régional
+14042U	Mme	Doineau	Élisabeth	ACTIF	13835			2008	01/01/2015	Indetermine(e)/Indefini(e)	Pays de la Loire	13263		2008	01/01/2015		Conseiller régional
+98030P	M.	Domeizel	Claude	ANCIEN	5223			1988		1992	Provence-Alpes-Côte d'Azur	2110		1988		1992	Vice-Président du conseil régional
+98030P	M.	Domeizel	Claude	ANCIEN	5224			1973		1986	Provence-Alpes-Côte d'Azur	2111		1973		1986	Conseiller régional
+04071H	M.	Dominati	Philippe	ACTIF	10920		22/03/1992	1992	21/03/2004	2004	Ile-de-France	10945	22/03/1992	1992	21/03/2004	2004	Conseiller régional
+99001N	M.	Donnay	Jacques	ANCIEN	5820			1998		Indetermine(e)/Indefini(e)	Nord-Pas-de-Calais	2172		1998			Conseiller régional
+99001N	M.	Donnay	Jacques	ANCIEN	5827			1986		1992	Nord-Pas-de-Calais	2180		1986		1992	Conseiller régional
+87003B	M.	Dufaut	Alain	ACTIF	11381		16/03/1986	1986		1988	Provence-Alpes-Côte d'Azur	11350	16/03/1986	1986		1988	Conseiller régional
+87003B	M.	Dufaut	Alain	ACTIF	11382		12/03/1992	1992		1992	Provence-Alpes-Côte d'Azur	11352	12/03/1992	1992		1992	Conseiller régional
+07033P	Mme	Dumas	Catherine	ACTIF	11303		15/03/1998		21/03/2004	2004	Ile-de-France	11214	15/03/1998		21/03/2004	2004	Conseiller régional
+07033P	Mme	Dumas	Catherine	ACTIF	51057		13/12/2015		18/10/2017	Indetermine(e)/Indefini(e)	Ile-de-France	50367	13/12/2015		18/10/2017		Conseiller régional
+14151M	M.	Durain	Jérôme	ACTIF	13986	21/03/2010 00:00:00	21/03/2010		13/12/2015	Indetermine(e)/Indefini(e)	Bourgogne	13443	21/03/2010		30/08/2012		Conseiller régional
+14151M	M.	Durain	Jérôme	ACTIF	13986	21/03/2010 00:00:00	21/03/2010		13/12/2015	Indetermine(e)/Indefini(e)	Bourgogne	13602	01/09/2012		01/01/2015		Vice-Président du conseil régional
+14151M	M.	Durain	Jérôme	ACTIF	13986	21/03/2010 00:00:00	21/03/2010		13/12/2015	Indetermine(e)/Indefini(e)	Bourgogne	13702	02/01/2015		13/12/2015		Conseiller régional
+14151M	M.	Durain	Jérôme	ACTIF	15264		14/12/2015			Indetermine(e)/Indefini(e)	Bourgogne-Franche-Comté	13861	14/12/2015				Conseiller régional
+14249W	Mme	Duranton	Nicole	ACTIF	14255		28/09/2011		01/10/2014	Indetermine(e)/Indefini(e)	Haute-Normandie	13576	28/09/2011	2011	01/10/2014		Conseiller régional
+11110B	Mme	Espagnac	Frédérique	ACTIF	12584		28/03/2004		14/03/2010	Indetermine(e)/Indefini(e)	Aquitaine	12865	28/03/2004		14/03/2010		Conseiller régional
+11110B	Mme	Espagnac	Frédérique	ACTIF	15258		14/12/2015			Indetermine(e)/Indefini(e)	Nouvelle Aquitaine	13855	14/12/2015				Conseiller régional
+14187A	Mme	Estrosi Sassone	Dominique	ACTIF	14248			2004		2010	Provence-Alpes-Côte d'Azur	13572		2004		2010	Conseiller régional
+01026P	M.	Etienne	Jean-Claude	ANCIEN	6418			1998	02/04/2004	2004	Champagne-Ardenne	2943		1998	02/04/2004	2004	Président du conseil régional
+01026P	M.	Etienne	Jean-Claude	ANCIEN	10639		02/04/2004	2004	21/03/2010	2010	Champagne-Ardenne	10666	02/04/2004	2004	21/03/2010	2010	Conseiller régional
+19673G	Mme	Eustache-Brinio	Jacqueline	ACTIF	51166		28/03/2004		30/09/2017	Indetermine(e)/Indefini(e)	Ile-de-France	50418	28/03/2004		30/09/2017		Conseiller régional
+08066D	M.	Fauconnier	Alain	ANCIEN	11756			1998	15/10/2008	2008	Midi-Pyrénées	11617		1998		2004	Conseiller régional
+08066D	M.	Fauconnier	Alain	ANCIEN	11756			1998	15/10/2008	2008	Midi-Pyrénées	11618		2004	15/10/2008	2008	Vice-Président du conseil régional
+11034G	M.	Favier	Christian	ANCIEN	12493		28/03/2004		31/03/2004	2004	Ile-de-France	12700	28/03/2004		31/03/2004	2004	Conseiller régional
+11107G	M.	Filleul	Jean-Jacques	ANCIEN	12810		01/06/1992		30/09/1995	Indetermine(e)/Indefini(e)	Centre	12969	01/06/1992		30/09/1995		Conseiller régional
+02009S	M.	Fillon	François	ANCIEN	10772			1998		Indetermine(e)/Indefini(e)	Pays de la Loire	10856		1998		2002	Président du conseil régional
+02009S	M.	Fillon	François	ANCIEN	10772			1998		Indetermine(e)/Indefini(e)	Pays de la Loire	10862		2004		2004	Conseiller régional
+95032D	M.	Fischer	Guy	ANCIEN	11884			1986		1988	Rhône-Alpes	11695		1986		1988	Conseiller régional
+96005E	M.	Flandre	Hilaire	ANCIEN	5830				18/10/2004	2004	Champagne-Ardenne	2184			18/10/2004	2004	Conseiller régional
+08023R	M.	Fleming	Louis-Constant	ANCIEN	11849			1986		1992	Guadeloupe	11668		1986		1992	Conseiller régional
+11020A	M.	Fontaine	Michel	ANCIEN	15253		13/12/2015		30/06/2016	Indetermine(e)/Indefini(e)	La Réunion	13849	13/12/2015		30/06/2016		Conseiller régional
+01003G	M.	Fortassin	François	ANCIEN	6195			1982	11/03/2001	2001	Midi-Pyrénées	2534		1982	11/03/2001	2001	Conseiller régional
+98053W	M.	Foucaud	Thierry	ANCIEN	5232			1992	28/03/2004	2004	Haute-Normandie	2117		1992	28/03/2004	2004	Conseiller régional
+02002K	M.	Fouché	Alain	ACTIF	6753			1986		1998	Poitou-Charentes	3130		1995		1988	Conseiller régional
+77019E	M.	Fourcade	Jean-Pierre	ANCIEN	11882			1976		1995	Ile-de-France	11693		1986		1995	Premier Vice-Président du conseil régional
+77019E	M.	Fourcade	Jean-Pierre	ANCIEN	11882			1976		1995	Ile-de-France	11694		1982		1986	Vice-Président du conseil régional
+19521Q	Mme	Fournier	Catherine	ACTIF	51407		13/12/2015			Indetermine(e)/Indefini(e)	Hauts-de-France	50598	13/12/2015				Conseiller régional
+08065C	M.	Fournier	Jean-Paul	ANCIEN	11751			1986		2002	Languedoc-Roussillon	11613		1986		2002	Conseiller régional
+83033Q	M.	François-Poncet	Jean	ANCIEN	11881					1992	Aquitaine	11689				1985	Premier Vice-Président du conseil régional
+83033Q	M.	François-Poncet	Jean	ANCIEN	11881					1992	Aquitaine	11690				1992	Conseiller régional
+02001J	M.	Frimat	Bernard	ANCIEN	6666			1977	28/03/2004	2004	Nord-Pas-de-Calais	3108		1977		1998	Conseiller régional
+02001J	M.	Frimat	Bernard	ANCIEN	6666			1977	28/03/2004	2004	Nord-Pas-de-Calais	3109		1998	28/03/2004	2004	Vice-Président du conseil régional
+94003T	M.	Gaillard	Yann	ANCIEN	10736			1983		1992	Champagne-Ardenne	10828		1983		1992	Conseiller régional
+98041S	M.	Garrec	René	ANCIEN	5166			1986	02/04/2004	2004	Basse-Normandie	2081			02/04/2004	2004	Président du conseil régional
+98041S	M.	Garrec	René	ANCIEN	10638		02/04/2004	2004	07/04/2004	2004	Basse-Normandie	10665	02/04/2004	2004	07/04/2004	2004	Conseiller régional
+89029V	M.	Gaudin	Jean-Claude	ANCIEN	5266			1979		1998	Provence-Alpes-Côte d'Azur	2154		1986		1998	Président du conseil régional
+89029V	M.	Gaudin	Jean-Claude	ANCIEN	5266			1979		1998	Provence-Alpes-Côte d'Azur	10793		1979		1982	Vice-Président du conseil régional
+01055U	Mme	Gautier	Gisèle	ANCIEN	6623			1992	22/11/2001	2001	Pays de la Loire	3084		1992	22/11/2001	2001	Vice-Président du conseil régional
+14199E	M.	Genest	Jacques	ACTIF	14081			2004		2008	Rhône-Alpes	13522		2004		2008	Conseiller régional
+11108H	M.	Germain	Jean	ANCIEN	12803		01/03/1998		30/09/2011	Indetermine(e)/Indefini(e)	Centre	12960	01/03/1998		30/09/2011		Premier Vice-Président du conseil régional
+08035V	Mme	Ghali	Samia	ACTIF	11620		28/03/2004	2004	21/03/2010	2010	Provence-Alpes-Côte d'Azur	11499	28/03/2004	2004	21/03/2010	2010	Vice-Président du conseil régional
+04095R	M.	Gillot	Jacques	ANCIEN	11032			1998		2001	Guadeloupe	11023		1998		2001	Conseiller régional
+14014Q	Mme	Giraud	Éliane	ANCIEN	15261		14/12/2015			Indetermine(e)/Indefini(e)	Auvergne-Rhône-Alpes	13858	14/12/2015				Conseiller régional
+78003A	M.	Girod	Paul	ANCIEN	11152			1985		1988	Picardie	11113		1985		1988	Vice-Président du conseil régional
+08041T	Mme	Giudicelli	Colette	ACTIF	11647			1998		2001	Provence-Alpes-Côte d'Azur	11520		1998		2001	Conseiller régional
+01011G	M.	Godefroy	Jean-Pierre	ANCIEN	6584			1986	28/03/2004	2004	Basse-Normandie	3049		1992	28/03/2004	2004	Conseiller régional
+01011G	M.	Godefroy	Jean-Pierre	ANCIEN	6584			1986	28/03/2004	2004	Basse-Normandie	11687		1986		1992	Vice-Président du conseil régional
+01011G	M.	Godefroy	Jean-Pierre	ANCIEN	12014		22/03/2010		13/12/2015	Indetermine(e)/Indefini(e)	Basse-Normandie	11775	22/03/2010	2010	13/12/2015		Conseiller régional
+04072J	M.	Goujon	Philippe	ANCIEN	10927			1998		2004	Ile-de-France	10949		1998		2004	Conseiller régional
+92024Q	M.	Goulet	Daniel	ANCIEN	1495				28/03/2004	2004	Basse-Normandie	1495			25/02/2007	2007	Vice-Président du conseil régional
+01007L	Mme	Gourault	Jacqueline	ANCIEN	6663			1992		2001	Centre	3106		1992		2001	Conseiller régional
+01007L	Mme	Gourault	Jacqueline	ANCIEN	10611		28/03/2004	2004		2004	Centre	10614	28/03/2004	2004		2004	Conseiller régional
+08056B	Mme	Goy-Chavent	Sylvie	ACTIF	15259		14/12/2015			Indetermine(e)/Indefini(e)	Auvergne-Rhône-Alpes	13856	14/12/2015				Conseiller régional
+14033T	M.	Gremillet	Daniel	ACTIF	15276		14/12/2015			Indetermine(e)/Indefini(e)	Grand Est	13875	14/12/2015				Conseiller régional
+11049P	M.	Grosdidier	François	ACTIF	12506			1992		2002	Lorraine	12721		1992		2002	Conseiller régional
+14123H	M.	Grosperrin	Jacques	ACTIF	13987			2004		2014	Franche-Comté	13444		2004		2014	Conseiller régional
+98022P	M.	Guérini	Jean-Noël	ACTIF	5090			1992	22/10/1998	1998	Provence-Alpes-Côte d'Azur	2040		1992		1998	Conseiller régional
+98022P	M.	Guérini	Jean-Noël	ACTIF	5090			1992	22/10/1998	1998	Provence-Alpes-Côte d'Azur	2156		1998	22/10/1998	1998	Vice-Président du conseil régional
+01002F	M.	Guichard	Pierre	ANCIEN	5898			1992		1998	Franche-Comté	2244		1992		1998	Conseiller régional
+08016S	M.	Guillaume	Didier	ANCIEN	11532			1992		1998	Rhône-Alpes	11448		1992		1998	Conseiller régional
+19553Y	Mme	Guillotin	Véronique	ACTIF	50896		13/12/2015			Indetermine(e)/Indefini(e)	Grand Est	50198	04/01/2016		15/11/2017		Vice-Président du conseil régional
+19553Y	Mme	Guillotin	Véronique	ACTIF	50896		13/12/2015			Indetermine(e)/Indefini(e)	Grand Est	50440	13/12/2015		04/01/2016		Conseiller régional
+19553Y	Mme	Guillotin	Véronique	ACTIF	50896		13/12/2015			Indetermine(e)/Indefini(e)	Grand Est	50972	16/11/2017				Conseiller régional
+86030A	M.	Haenel	Hubert	ANCIEN	1497			1992	10/08/2015	2015	Alsace	1497		1992		2004	Premier Vice-Président du conseil régional
+86030A	M.	Haenel	Hubert	ANCIEN	1497			1992	10/08/2015	2015	Alsace	10797		2004	10/08/2015	2015	Vice-Président du conseil régional
+19725B	Mme	Harribey	Laurence	ACTIF	51466		13/12/2015			Indetermine(e)/Indefini(e)	Aquitaine	50674	13/12/2015				Conseiller régional
+19569H	M.	Henno	Olivier	ACTIF	51356		22/03/1992		29/03/2001	Indetermine(e)/Indefini(e)	Nord-Pas-de-Calais	50540	22/03/1992		29/03/2001		Conseiller régional
+95038K	M.	Hérisson	Pierre	ANCIEN	5890			1992		1998	Rhône-Alpes	2238		1992		1998	Vice-Président du conseil régional
+95038K	M.	Hérisson	Pierre	ANCIEN	5890			1992		1998	Rhône-Alpes	2239		1992		1992	Conseiller régional
+04075M	Mme	Hermange	Marie-Thérèse	ANCIEN	10943		22/03/1992	1992	15/03/1998	1998	Ile-de-France	10964	22/03/1992	1992	15/03/1998	1998	Conseiller régional
+08027V	M.	Hervé	Edmond	ANCIEN	11592			1986		1988	Bretagne	11480		1986		1988	Conseiller régional
+01022K	Mme	Herviaux	Odette	ANCIEN	6496			1998		2010	Bretagne	2975		1998	02/04/2004	2004	Conseiller régional
+01022K	Mme	Herviaux	Odette	ANCIEN	6496			1998		2010	Bretagne	10702	02/04/2004	2004		2010	Vice-Président du conseil régional
+00004D	M.	Hethener	Alain	ANCIEN	5877					1998	Lorraine	2229				1998	Conseiller régional
+83035S	M.	Huchon	Jean	ANCIEN	1489				08/12/2009	2009	Pays de la Loire	1489			08/12/2009	2009	Vice-Président du conseil régional
+04078Q	M.	Hue	Robert	ANCIEN	10954			1983		1988	Ile-de-France	10966		1983		1988	Conseiller régional
+04078Q	M.	Hue	Robert	ANCIEN	10957			1992		1994	Ile-de-France	10968		1992		1994	Conseiller régional
+19399H	M.	Hugonet	Jean-Raymond	ACTIF	50963		13/12/2015		18/10/2017	Indetermine(e)/Indefini(e)	Ile-de-France	50272	13/12/2015		18/10/2017		Conseiller régional
+98028V	M.	Humbert	Jean-François	ANCIEN	5115			1986	02/04/2004	2004	Franche-Comté	2052			02/04/2004	2004	Président du conseil régional
+98028V	M.	Humbert	Jean-François	ANCIEN	10637		02/04/2004	2004	21/03/2010	2010	Franche-Comté	10664	02/04/2004	2004	21/03/2010	2010	Conseiller régional
+04068N	Mme	Hurel	Sandrine	ANCIEN	10908		28/03/2004	2004		2005	Haute-Normandie	10933	28/03/2004	2004		2005	Vice-Président du conseil régional
+95039L	M.	Hyest	Jean-Jacques	ANCIEN	11905			1983		1986	Ile-de-France	11716		1983		1986	Conseiller régional
+06006G	M.	Josselin	Charles	ANCIEN	11213			1973		1986	Bretagne	11154		1973		1986	Conseiller régional
+09001P	Mme	Jouanno	Chantal	ANCIEN	12835		01/03/2010		14/12/2015	Indetermine(e)/Indefini(e)	Ile-de-France	13023	01/03/2010		14/12/2015		Conseiller régional
+09001P	Mme	Jouanno	Chantal	ANCIEN	15274		15/12/2015			Indetermine(e)/Indefini(e)	Ile-de-France	13873	15/12/2015				Vice-Président du conseil régional
+98034T	M.	Journet	Alain	ANCIEN	10719			1981		1986	Languedoc-Roussillon	10801		1981		1982	Conseiller régional
+98034T	M.	Journet	Alain	ANCIEN	10719			1981		1986	Languedoc-Roussillon	10802		1982		1982	Vice-Président du conseil régional
+98034T	M.	Journet	Alain	ANCIEN	10719			1981		1986	Languedoc-Roussillon	10803		1982		1986	Conseiller régional
+95041E	M.	Joyandet	Alain	ACTIF	13891		22/03/2010		13/07/2010	Indetermine(e)/Indefini(e)	Franche-Comté	13322	22/03/2010		13/07/2010		Conseiller régional
+95041E	M.	Joyandet	Alain	ACTIF	15263		14/12/2015			Indetermine(e)/Indefini(e)	Bourgogne-Franche-Comté	13860	14/12/2015				Conseiller régional
+14039A	M.	Karam	Antoine	ACTIF	13829			1983		2010	Guyane	13259		1983		1986	Conseiller régional
+14039A	M.	Karam	Antoine	ACTIF	13829			1983		2010	Guyane	13260		1992		2010	Président du conseil régional
+99004R	M.	Karoutchi	Roger	ACTIF	5844			1992		1998	Ile-de-France	2194		1992	11/02/1994	1994	Conseiller régional
+99004R	M.	Karoutchi	Roger	ACTIF	5844			1992		1998	Ile-de-France	12283	12/02/1994	1994	17/03/1998	1998	Vice-Président du conseil régional
+04061F	Mme	Keller	Fabienne	ANCIEN	10888		15/03/1998	1998	21/03/2004	2004	Alsace	10925		2002	21/03/2004	2004	Conseiller régional
+04061F	Mme	Keller	Fabienne	ANCIEN	10888		15/03/1998	1998	21/03/2004	2004	Alsace	11048	15/03/1998	1998		2002	Vice-Président du conseil régional
+01021J	M.	Kergueris	Joseph	ANCIEN	6542			1984		2001	Bretagne	3002		1984		2001	Conseiller régional
+19489J	M.	Kerrouche	Éric	ACTIF	51326		13/12/2015		15/10/2017	Indetermine(e)/Indefini(e)	Nouvelle Aquitaine	50505	13/12/2015		15/10/2017		Conseiller régional
+03001N	M.	Krattinger	Yves	ANCIEN	6792			1998		2001	Franche-Comté	3148		1998		2001	Conseiller régional
+01032M	M.	Labarrère	André	ANCIEN	6628			1979	16/05/2006	2006	Aquitaine	3089		1979	16/05/2006	2006	Président du conseil régional
+11112D	M.	Labazée	Georges	ANCIEN	12578			1981		2010	Aquitaine	12851	24/07/1981	1982	01/03/1986	1986	Vice-Président du conseil régional
+11112D	M.	Labazée	Georges	ANCIEN	12578			1981		2010	Aquitaine	12852	01/03/1986		01/03/1998		Conseiller régional
+11112D	M.	Labazée	Georges	ANCIEN	12578			1981		2010	Aquitaine	12853	01/03/1998		01/03/2010		Vice-Président du conseil régional
+19611R	M.	Lafon	Laurent	ACTIF	51265		28/03/2004		23/10/2017	Indetermine(e)/Indefini(e)	Ile-de-France	50461	28/03/2004		23/10/2017		Conseiller régional
+97004H	M.	Lagauche	Serge	ANCIEN	10720			1986		1998	Ile-de-France	10804		1986		1998	Conseiller régional
+19583F	M.	Lagourgue	Jean-Louis	ACTIF	51000		21/03/2010			Indetermine(e)/Indefini(e)	La Réunion	50309	13/12/2015		30/12/2017		Vice-Président du conseil régional
+19583F	M.	Lagourgue	Jean-Louis	ACTIF	51000		21/03/2010			Indetermine(e)/Indefini(e)	La Réunion	50653	21/03/2010		12/12/2015		Conseiller régional
+19583F	M.	Lagourgue	Jean-Louis	ACTIF	51000		21/03/2010			Indetermine(e)/Indefini(e)	La Réunion	50933	31/12/2017				Conseiller régional
+92029V	M.	Lambert	Alain	ANCIEN	11908			1986		1989	Basse-Normandie	11719		1986		1989	Conseiller régional
+11111C	M.	Lasserre	Jean-Jacques	ANCIEN	12581		16/03/1986			Indetermine(e)/Indefini(e)	Aquitaine	12857	16/03/1986			1992	Conseiller régional
+11111C	M.	Lasserre	Jean-Jacques	ANCIEN	12581		16/03/1986			Indetermine(e)/Indefini(e)	Aquitaine	12858		1992		1998	Vice-Président du conseil régional
+11111C	M.	Lasserre	Jean-Jacques	ANCIEN	12581		16/03/1986			Indetermine(e)/Indefini(e)	Aquitaine	12859		1998	13/12/2015		Conseiller régional
+12041X	M.	Laurent	Pierre	ACTIF	12926		21/03/2010		13/12/2015	Indetermine(e)/Indefini(e)	Ile-de-France	13112	21/03/2010		13/12/2015		Conseiller régional
+08063A	Mme	Laurent-Perrigot	Françoise	ANCIEN	11859					2008	Languedoc-Roussillon	11675				2008	Conseiller régional
+95002W	M.	Lauret	Edmond	ANCIEN	1505					Indetermine(e)/Indefini(e)	La Réunion	1505					Conseiller régional
+82002D	M.	Le Grand	Jean-François	ANCIEN	12017		21/03/2010	2010		Indetermine(e)/Indefini(e)	Basse-Normandie	11778	21/03/2010	2010			Conseiller régional
+08037X	M.	Le Menn	Jacky	ANCIEN	11856			1986		1992	Bretagne	11674		1986		1992	Conseiller régional
+04076N	Mme	Le Texier	Raymonde	ANCIEN	10939			1992		1994	Ile-de-France	10959		1992		1994	Conseiller régional
+07025P	M.	Le Vern	Alain	ANCIEN	11257			1986		Indetermine(e)/Indefini(e)	Haute-Normandie	11178		1986		1998	Conseiller régional
+07025P	M.	Le Vern	Alain	ANCIEN	11257			1986		Indetermine(e)/Indefini(e)	Haute-Normandie	11181		1998			Président du conseil régional
+92030N	M.	Leclerc	Dominique	ANCIEN	10723		11/10/1983	1983	22/03/1985	1985	Centre	10807	11/10/1983	1983	22/03/1985	1985	Conseiller régional
+92030N	M.	Leclerc	Dominique	ANCIEN	10724		16/03/1986	1986		1992	Centre	10808	16/03/1986	1986		1992	Conseiller régional
+92030N	M.	Leclerc	Dominique	ANCIEN	10724		16/03/1986	1986		1992	Centre	10809		1992		1992	Vice-Président du conseil régional
+08010L	M.	Lefèvre	Antoine	ACTIF	11493			2004		2008	Picardie	11423		2004		2008	Conseiller régional
+92031P	M.	Legendre	Jacques	ANCIEN	1492			1992	08/12/2001	2001	Nord-Pas-de-Calais	1492		1992	08/12/2001	2001	Conseiller régional
+11003M	M.	Léonard	Claude	ANCIEN	12082		01/03/1992		28/02/1998	Indetermine(e)/Indefini(e)	Lorraine	12275	01/03/1992		28/02/1998		Conseiller régional
+98025S	M.	Lepeltier	Serge	ANCIEN	6300			1992		1994	Centre	2874		1992		1994	Conseiller régional
+01061S	M.	Leroy	Philippe	ANCIEN	6614			1986	19/08/2019	2002	Lorraine	3080		1986		2002	Vice-Président du conseil régional
+01043Q	Mme	Létard	Valérie	ACTIF	6474			1998	08/12/2001	2001	Nord-Pas-de-Calais	2964		1998	08/12/2001	2001	Conseiller régional
+01043Q	Mme	Létard	Valérie	ACTIF	10612		28/03/2004	2004	22/06/2010	2010	Nord-Pas-de-Calais	10615	28/03/2004	2004	22/06/2010	2010	Conseiller régional
+01043Q	Mme	Létard	Valérie	ACTIF	15292		04/01/2016			Indetermine(e)/Indefini(e)	Hauts-de-France	13892	04/01/2016		23/11/2017		Premier Vice-Président du conseil régional
+01043Q	Mme	Létard	Valérie	ACTIF	15292		04/01/2016			Indetermine(e)/Indefini(e)	Hauts-de-France	51064	24/11/2017				Conseiller régional
+01048V	M.	Longuet	Gérard	ACTIF	6487			1992	02/04/2004	2004	Lorraine	2970		1992	02/04/2004	2004	Président du conseil régional
+01048V	M.	Longuet	Gérard	ACTIF	10635		02/04/2004	2004		2010	Lorraine	10662	02/04/2004	2004		2010	Conseiller régional
+08012N	M.	Lozach	Jean-Jacques	ACTIF	11517			1986		2008	Limousin	11436		1986		2004	Conseiller régional
+08012N	M.	Lozach	Jean-Jacques	ACTIF	11517			1986		2008	Limousin	11437		2004		2008	Premier Vice-Président du conseil régional
+14103D	M.	Luche	Jean-Claude	ACTIF	13922			2010		2014	Midi-Pyrénées	13361		2010		2014	Conseiller régional
+12016W	M.	Lurel	Victorin	ACTIF	50901		29/03/2004		18/12/2015	Indetermine(e)/Indefini(e)	Guadeloupe	50204	29/03/2004		03/08/2012		Président du conseil régional
+12016W	M.	Lurel	Victorin	ACTIF	50901		29/03/2004		18/12/2015	Indetermine(e)/Indefini(e)	Guadeloupe	50548	02/05/2014		18/12/2015		Président du conseil régional
+04079R	M.	Madec	Roger	ANCIEN	10962		16/03/1986	1986	21/03/2004	2004	Ile-de-France	10974	16/03/1986	1986		1998	Conseiller régional
+04079R	M.	Madec	Roger	ANCIEN	10962		16/03/1986	1986	21/03/2004	2004	Ile-de-France	11050		1998	21/03/2004	2004	Vice-Président du conseil régional
+80027E	M.	Madrelle	Philippe	ANCIEN	11913			1981	27/08/2019	1985	Aquitaine	11724		1981		1985	Président du conseil régional
+11104D	M.	Magner	Jacques-Bernard	ACTIF	12575		15/03/1998		14/03/2010	Indetermine(e)/Indefini(e)	Auvergne	12844	15/03/1998		14/03/2004		Conseiller régional
+11104D	M.	Magner	Jacques-Bernard	ACTIF	12575		15/03/1998		14/03/2010	Indetermine(e)/Indefini(e)	Auvergne	12845	15/03/2004		14/03/2010		Vice-Président du conseil régional
+19657G	Mme	Malet	Viviane	ACTIF	51110		21/03/2015		13/12/2015	Indetermine(e)/Indefini(e)	La Réunion	50386	21/03/2015		13/12/2015		Conseiller régional
+04100U	Mme	Malovry	Lucienne	ANCIEN	11105		15/03/1998	1998	21/03/2004	2004	Ile-de-France	11092	15/03/1998	1998	21/03/2004	2004	Conseiller régional
+14111D	M.	Marc	Alain	ACTIF	13937			2004		2007	Midi-Pyrénées	13379		2004		2007	Conseiller régional
+11085T	M.	Marseille	Hervé	ACTIF	12534			1993		2004	Ile-de-France	12764		1993		2004	Conseiller régional
+04096S	M.	Marsin	Daniel	ANCIEN	12042			2010		Indetermine(e)/Indefini(e)	Guadeloupe	11794		2010			Conseiller régional
+83042R	M.	Masseret	Jean-Pierre	ANCIEN	6586			1983	13/12/2015	Indetermine(e)/Indefini(e)	Lorraine	3052		1983	01/04/2004	2004	Conseiller régional
+83042R	M.	Masseret	Jean-Pierre	ANCIEN	6586			1983	13/12/2015	Indetermine(e)/Indefini(e)	Lorraine	10630	02/04/2004	2004	13/12/2015		Président du conseil régional
+83042R	M.	Masseret	Jean-Pierre	ANCIEN	15254		14/12/2015			Indetermine(e)/Indefini(e)	Grand Est	13850	14/12/2015				Conseiller régional
+95003X	M.	Massion	Marc	ANCIEN	10726			1978		1992	Haute-Normandie	10812		1978		1992	Conseiller régional
+01060R	M.	Masson	Jean Louis	ACTIF	6596			1998		2002	Lorraine	3067		1998	02/12/2001	2001	Vice-Président du conseil régional
+01060R	M.	Masson	Jean Louis	ACTIF	6596			1998		2002	Lorraine	3116	02/12/2001	2001	02/01/2002	2002	Conseiller régional
+83043S	M.	Masson	Paul	ANCIEN	5882			1992	28/05/2009	2009	Centre	2234		1992	28/05/2009	2009	Vice-Président du conseil régional
+83043S	M.	Masson	Paul	ANCIEN	5882			1992	28/05/2009	2009	Centre	2235		1992	28/05/2009	2009	Conseiller régional
+92037V	M.	Mauroy	Pierre	ANCIEN	11916			1974		1981	Nord-Pas-de-Calais	11726		1974		1981	Président du conseil régional
+08053X	M.	Mazuir	Rachel	ACTIF	11706		15/03/1998	1998	21/03/2004	2004	Rhône-Alpes	11569	15/03/1998	1998	21/03/2004	2004	Conseiller régional
+14147R	Mme	Mercier	Marie	ACTIF	13985		01/03/2004		01/03/2010	Indetermine(e)/Indefini(e)	Bourgogne	13442	01/03/2004	2004	01/03/2010	2010	Conseiller régional
+95049N	M.	Mercier	Michel	ANCIEN	11918			1992		1993	Rhône-Alpes	11728		1992		1993	Vice-Président du conseil régional
+01020H	M.	Mermaz	Louis	ANCIEN	6550		01/03/1992	1992	01/08/1992	1992	Rhône-Alpes	3009	01/03/1992	1992	01/08/1992	1992	Conseiller régional
+01020H	M.	Mermaz	Louis	ANCIEN	6626			1973		1986	Rhône-Alpes	3087		1973		1986	Conseiller régional
+95050F	Mme	Michaux-Chevry	Lucette	ANCIEN	1502				02/04/2004	2004	Guadeloupe	1502			02/04/2004	2004	Président du conseil régional
+95050F	Mme	Michaux-Chevry	Lucette	ANCIEN	10634		02/04/2004	2004		2005	Guadeloupe	10661	02/04/2004	2004		2005	Conseiller régional
+04092N	M.	Milon	Alain	ACTIF	11020		15/03/1998	1998		2001	Provence-Alpes-Côte d'Azur	11015	15/03/1998	1998		2001	Conseiller régional
+92039X	M.	Miquel	Gérard	ANCIEN	10727			1986		1992	Midi-Pyrénées	10813		1986		1992	Conseiller régional
+68036E	M.	Monory	René	ANCIEN	10728			1973	11/04/2009	2009	Poitou-Charentes	10816		1973	11/04/2009	2009	Conseiller régional
+68036E	M.	Monory	René	ANCIEN	10728			1973	11/04/2009	2009	Poitou-Charentes	10817		1985	11/04/2009	2009	Président du conseil régional
+68036E	M.	Monory	René	ANCIEN	10728			1973	11/04/2009	2009	Poitou-Charentes	10818		1986	11/04/2009	2009	Conseiller régional
+04070G	Mme	Morin-Desailly	Catherine	ACTIF	10913		28/03/2004	2004	20/12/2004	2004	Haute-Normandie	10937	28/03/2004	2004	20/12/2004	2004	Conseiller régional
+04070G	Mme	Morin-Desailly	Catherine	ACTIF	12015		22/03/2010		01/04/2014	Indetermine(e)/Indefini(e)	Haute-Normandie	11776	22/03/2010	2010	01/04/2014		Conseiller régional
+14071N	M.	Mouiller	Philippe	ACTIF	13861			2014	01/10/2014	Indetermine(e)/Indefini(e)	Poitou-Charentes	13291		2014	01/10/2014		Conseiller régional
+92040Q	M.	Nachbar	Philippe	ACTIF	15255		14/12/2015			Indetermine(e)/Indefini(e)	Grand Est	13852	14/12/2015				Conseiller régional
+98008R	M.	Natali	Paul	ANCIEN	5238			1984		1998	Corse	2125		1984		1998	Conseiller régional
+08021P	M.	Navarro	Robert	ANCIEN	11555			1998		Indetermine(e)/Indefini(e)	Languedoc-Roussillon	11459		1998		2004	Conseiller régional
+08021P	M.	Navarro	Robert	ANCIEN	11555			1998		Indetermine(e)/Indefini(e)	Languedoc-Roussillon	11460		2004	13/12/2015		Vice-Président du conseil régional
+11105E	M.	Néri	Alain	ANCIEN	12417		01/01/1983		01/01/1985	1985	Auvergne	12583	01/01/1983		01/01/1985		Vice-Président du conseil régional
+09012S	Mme	Nicoux	Renée	ANCIEN	11989			2004		2010	Limousin	11757		2004		2008	Conseiller régional
+09012S	Mme	Nicoux	Renée	ANCIEN	11989			2004		2010	Limousin	11758		2008		2010	Vice-Président du conseil régional
+14253S	M.	Nougein	Claude	ACTIF	14265		01/03/1992		01/03/2004	Indetermine(e)/Indefini(e)	Limousin	13581	01/03/1992		01/03/2004		Conseiller régional
+95051G	Mme	Olin	Nelly	ANCIEN	6239			1992		1995	Ile-de-France	2581		1992		1995	Conseiller régional
+89035T	M.	Othily	Georges	ANCIEN	1503				18/12/2017	Indetermine(e)/Indefini(e)	Guyane	1503			18/12/2017		Conseiller régional
+19573D	M.	Paccaud	Olivier	ACTIF	51394		21/03/2011		13/12/2015	Indetermine(e)/Indefini(e)	Picardie	50579	21/03/2011		13/12/2015		Conseiller régional
+77053G	M.	Pasqua	Charles	ANCIEN	11368			1986		1986	Ile-de-France	11329		1986		1986	Conseiller régional
+77053G	M.	Pasqua	Charles	ANCIEN	11368			1986		1986	Ile-de-France	11330		1992		1992	Conseiller régional
+08061X	M.	Patriat	François	ACTIF	11752		02/04/2004		13/12/2015	Indetermine(e)/Indefini(e)	Bourgogne	11612	02/04/2004	2004	13/12/2015		Président du conseil régional
+98002K	M.	Payet	Lylian	ANCIEN	1504					Indetermine(e)/Indefini(e)	La Réunion	1504					Vice-Président du conseil régional
+14237S	M.	Pellevat	Cyril	ACTIF	15260		14/12/2015			Indetermine(e)/Indefini(e)	Auvergne-Rhône-Alpes	13857	14/12/2015				Conseiller régional
+83047W	M.	Percheron	Daniel	ANCIEN	1496				13/12/2015	Indetermine(e)/Indefini(e)	Nord-Pas-de-Calais	1496			13/04/2001		Vice-Président du conseil régional
+83047W	M.	Percheron	Daniel	ANCIEN	1496				13/12/2015	Indetermine(e)/Indefini(e)	Nord-Pas-de-Calais	2883	13/04/2001		13/12/2015		Président du conseil régional
+14028W	Mme	Perol-Dumont	Marie-Françoise	ACTIF	13801			1992		1997	Limousin	13226		1992		1997	Conseiller régional
+98040R	M.	Peyrat	Jacques	ANCIEN	5242			1993		1997	Provence-Alpes-Côte d'Azur	2130		1993		1997	Conseiller régional
+98015Q	M.	Picheral	Jean-François	ANCIEN	11136			1982		1989	Provence-Alpes-Côte d'Azur	11109		1982		1989	Conseiller régional
+98021N	M.	Pintat	Xavier	ANCIEN	10606			1992		1993	Aquitaine	10609		1992		1993	Conseiller régional
+11069T	M.	Placé	Jean-Vincent	ANCIEN	15268		14/12/2015			Indetermine(e)/Indefini(e)	Ile-de-France	13867	14/12/2015				Conseiller régional
+95056M	M.	Plasait	Bernard	ANCIEN	10572			1992		1996	Ile-de-France	10565				2003	Conseiller régional
+05012A	M.	Pointereau	Rémy	ACTIF	11171			1998		2001	Centre	11127		1998		2001	Conseiller régional
+08029X	M.	Povinelli	Roland	ANCIEN	11628					1998	Provence-Alpes-Côte d'Azur	11504				1998	Conseiller régional
+17583W	M.	Priou	Christophe	ACTIF	51411		13/12/2015			Indetermine(e)/Indefini(e)	Pays de la Loire	50602	13/12/2015		19/10/2017		Vice-Président du conseil régional
+17583W	M.	Priou	Christophe	ACTIF	51411		13/12/2015			Indetermine(e)/Indefini(e)	Pays de la Loire	50896	20/10/2017				Conseiller régional
+000639	M.	Proriol	Jean	ANCIEN	10552					Indetermine(e)/Indefini(e)	Auvergne	10547					Vice-Président du conseil régional
+000639	M.	Proriol	Jean	ANCIEN	10552					Indetermine(e)/Indefini(e)	Auvergne	10548					Conseiller régional
+14247U	M.	Rachline	David	ANCIEN	14247			2014		2014	Provence-Alpes-Côte d'Azur	13571		2014		2014	Conseiller régional
+95059Q	M.	Raffarin	Jean-Pierre	ANCIEN	1500		19/12/1988		08/05/2002	Indetermine(e)/Indefini(e)	Poitou-Charentes	1500	19/12/1988		08/05/2002		Président du conseil régional
+14135M	M.	Raison	Michel	ACTIF	13964			1992		2008	Franche-Comté	13414		1992		2004	Vice-Président du conseil régional
+14135M	M.	Raison	Michel	ACTIF	13964			1992		2008	Franche-Comté	13631		2005		2008	Conseiller régional
+14331P	M.	Rapin	Jean-François	ACTIF	15280		01/01/2016			Indetermine(e)/Indefini(e)	Hauts-de-France	13881	01/01/2016				Conseiller régional
+14055N	M.	Ravier	Stéphane	ACTIF	14245		01/03/2010		24/10/2017	Indetermine(e)/Indefini(e)	Provence-Alpes-Côte d'Azur	13568	01/03/2010	2010		2014	Conseiller régional
+14055N	M.	Ravier	Stéphane	ACTIF	14245		01/03/2010		24/10/2017	Indetermine(e)/Indefini(e)	Provence-Alpes-Côte d'Azur	13864	14/12/2015		24/10/2017		Conseiller régional
+08070Y	M.	Rebsamen	François	ANCIEN	11786			1994		2001	Bourgogne	11637		1994		2001	Conseiller régional
+10015M	M.	Reichardt	André	ACTIF	12054			1998	13/12/2015	Indetermine(e)/Indefini(e)	Alsace	11802	27/03/2010	2010	13/12/2015		Premier Vice-Président du conseil régional
+10015M	M.	Reichardt	André	ACTIF	12054			1998	13/12/2015	Indetermine(e)/Indefini(e)	Alsace	11803		1998	13/09/2009	2009	Conseiller régional
+10015M	M.	Reichardt	André	ACTIF	12054			1998	13/12/2015	Indetermine(e)/Indefini(e)	Alsace	13075	14/09/2009		26/03/2010		Président du conseil régional
+10015M	M.	Reichardt	André	ACTIF	15256		14/12/2015			Indetermine(e)/Indefini(e)	Grand Est	13853	14/12/2015				Conseiller régional
+01014K	M.	Reiner	Daniel	ANCIEN	6573			1986		2002	Lorraine	3035		1986		2002	Conseiller régional
+85002R	M.	Renar	Ivan	ANCIEN	1493				01/04/2004	2004	Nord-Pas-de-Calais	1493			01/04/2004	2004	Vice-Président du conseil régional
+11012A	M.	Requier	Jean-Claude	ACTIF	12400		16/03/1986			2001	Midi-Pyrénées	12527	16/03/1986		16/03/2001	2001	Conseiller régional
+04033B	M.	Retailleau	Bruno	ACTIF	10760		15/03/1998			Indetermine(e)/Indefini(e)	Pays de la Loire	10842	15/03/1998	1998	21/03/1998	1998	Conseiller régional
+04033B	M.	Retailleau	Bruno	ACTIF	10760		15/03/1998			Indetermine(e)/Indefini(e)	Pays de la Loire	10844	22/03/1998	1998	21/03/2004	2004	Vice-Président du conseil régional
+04033B	M.	Retailleau	Bruno	ACTIF	10760		15/03/1998			Indetermine(e)/Indefini(e)	Pays de la Loire	10847	22/03/2004	2004		2004	Conseiller régional
+04033B	M.	Retailleau	Bruno	ACTIF	10760		15/03/1998			Indetermine(e)/Indefini(e)	Pays de la Loire	13866	14/12/2015		30/09/2017		Président du conseil régional
+04033B	M.	Retailleau	Bruno	ACTIF	10760		15/03/1998			Indetermine(e)/Indefini(e)	Pays de la Loire	50794	01/10/2017				Conseiller régional
+95062K	M.	Revet	Charles	ANCIEN	11928			1992		1993	Haute-Normandie	11737		1992		1993	Conseiller régional
+89037V	M.	Revol	Henri	ANCIEN	10705			1986		1989	Bourgogne	10773		1986		1989	Vice-Président du conseil régional
+92005M	M.	Richert	Philippe	ANCIEN	6750			1985		1992	Alsace	3127		1985		1992	Vice-Président du conseil régional
+92005M	M.	Richert	Philippe	ANCIEN	12013		22/03/2010	2010		Indetermine(e)/Indefini(e)	Alsace	11774	22/03/2010	2010			Président du conseil régional
+04065K	M.	Ries	Roland	ANCIEN	10905					2004	Alsace	10932				2004	Conseiller régional
+89038W	M.	Rigaudière	Roger	ANCIEN	1486				17/02/1999	1999	Auvergne	1486			17/02/1999	1999	Vice-Président du conseil régional
+98033S	M.	Rispat	Yves	ANCIEN	5137			1998	27/10/1998	Indetermine(e)/Indefini(e)	Midi-Pyrénées	2064		1998	27/10/1998		Conseiller régional
+98033S	M.	Rispat	Yves	ANCIEN	10613		28/03/2004	2004		2004	Midi-Pyrénées	10616	28/03/2004	2004		2004	Conseiller régional
+14229S	Mme	Robert	Sylvie	ACTIF	14365			2010	01/10/2014	Indetermine(e)/Indefini(e)	Bretagne	13663		2010	01/10/2014		Premier Vice-Président du conseil régional
+89039X	M.	Rocca Serra	Jacques	ANCIEN	1485					Indetermine(e)/Indefini(e)	Provence-Alpes-Côte d'Azur	1485					Conseiller régional
+59312E	M.	Romani	Roger	ANCIEN	11879					2004	Ile-de-France	11684				2004	Conseiller régional
+11045K	Mme	Rossignol	Laurence	ACTIF	12383		15/03/1998		13/12/2015	Indetermine(e)/Indefini(e)	Picardie	12981	15/03/1998		13/12/2015		Vice-Président du conseil régional
+16431B	M.	Roustan	Max	ANCIEN	51360		16/03/1998		04/07/2002	Indetermine(e)/Indefini(e)	Languedoc-Roussillon	50544	16/03/1998		04/07/2002		Conseiller régional
+14107H	M.	Roux	Jean-Yves	ACTIF	14313		21/03/2010		02/02/2015	Indetermine(e)/Indefini(e)	Provence-Alpes-Côte d'Azur	13603	21/03/2010		02/02/2015		Conseiller régional
+19619A	Mme	Saint-Pé	Denise	ACTIF	51157		28/03/2004			Indetermine(e)/Indefini(e)	Nouvelle Aquitaine	50413	28/03/2004				Conseiller régional
+01019Q	M.	Saugey	Bernard	ANCIEN	6545			1986		1993	Rhône-Alpes	3006		1986		1993	Conseiller régional
+01019Q	M.	Saugey	Bernard	ANCIEN	10730			1974		1979	Rhône-Alpes	10822		1974		1979	Conseiller régional
+89040Q	M.	Saunier	Claude	ANCIEN	10738			1976		1988	Bretagne	10832		1976		1988	Conseiller régional
+11097X	M.	Savary	René-Paul	ACTIF	12551		16/03/1986		21/03/2004	Indetermine(e)/Indefini(e)	Champagne-Ardenne	12801	16/03/1986		21/03/2004		Conseiller régional
+93005R	M.	Schosteck	Jean-Pierre	ANCIEN	10673		16/03/1986	1986	21/03/1992	1992	Ile-de-France	10722	16/03/1986	1986	21/03/1992	1992	Conseiller régional
+92043T	M.	Sergent	Michel	ANCIEN	11930			1988		1992	Nord-Pas-de-Calais	11739		1988		1992	Vice-Président du conseil régional
+01058X	M.	Sido	Bruno	ACTIF	6521			1998	08/12/2001	2001	Champagne-Ardenne	2988		1998	08/12/2001	2001	Vice-Président du conseil régional
+01028R	M.	Sueur	Jean-Pierre	ACTIF	12885			1981		1986	Centre	13076		1981		1986	Conseiller régional
+19689Q	Mme	Taillé-Polian	Sophie	ACTIF	51276		13/12/2015		18/10/2017	Indetermine(e)/Indefini(e)	Ile-de-France	50466	13/12/2015		18/10/2017		Conseiller régional
+19669L	M.	Temal	Rachid	ACTIF	51198		13/12/2015		19/10/2017	Indetermine(e)/Indefini(e)	Ile-de-France	50429	13/12/2015		19/10/2017		Conseiller régional
+19301E	M.	Théophile	Dominique	ACTIF	50895		13/12/2015			Indetermine(e)/Indefini(e)	Guadeloupe	50638	13/12/2015				Conseiller régional
+01039U	M.	Thiollière	Michel	ANCIEN	6538		15/03/1998	1998	15/10/2001	2001	Rhône-Alpes	2998	15/03/1998	1998	15/10/2001	2001	Vice-Président du conseil régional
+01062T	M.	Todeschini	Jean-Marc	ACTIF	6589			1998	08/12/2001	2001	Lorraine	3055		1998	08/12/2001	2001	Conseiller régional
+04044E	Mme	Troendlé	Catherine	ACTIF	10819		28/03/2004	2004		2005	Alsace	10885	28/03/2004	2004		2005	Conseiller régional
+86049M	M.	Trucy	François	ANCIEN	11372			1978		1982	Provence-Alpes-Côte d'Azur	11339		1978		1982	Conseiller régional
+92044U	M.	Türk	Alex	ANCIEN	1494			1983		2001	Nord-Pas-de-Calais	1494		1983		2001	Conseiller régional
+12038D	M.	Vairetto	André	ANCIEN	12924			1998		2008	Rhône-Alpes	13109		1998		2008	Conseiller régional
+80046H	M.	Valade	Jacques	ANCIEN	1487			1973	28/03/2004	2004	Aquitaine	1487	22/03/1992	1992	15/03/1998	1998	Président du conseil régional
+80046H	M.	Valade	Jacques	ANCIEN	1487			1973	28/03/2004	2004	Aquitaine	11358	15/03/1998	1998	28/03/2004	2004	Conseiller régional
+80046H	M.	Valade	Jacques	ANCIEN	1487			1973	28/03/2004	2004	Aquitaine	11363	21/03/2008	1985	22/03/1992	1992	Vice-Président du conseil régional
+80046H	M.	Valade	Jacques	ANCIEN	1487			1973	28/03/2004	2004	Aquitaine	11364		1973	15/04/1985	1985	Conseiller régional
+08049C	M.	Vall	Raymond	ACTIF	11680			1998	17/10/2008	2008	Midi-Pyrénées	11548		1998	17/10/2008	2008	Conseiller régional
+11041F	M.	Vallini	André	ACTIF	12833		15/03/1986		15/06/1997	Indetermine(e)/Indefini(e)	Rhône-Alpes	13006	15/03/1986		15/06/1997		Conseiller régional
+11037K	M.	Vandierendonck	René	ANCIEN	12503		22/03/1992		01/11/2011	Indetermine(e)/Indefini(e)	Nord-Pas-de-Calais	12715	22/03/1992			1998	Conseiller régional
+11037K	M.	Vandierendonck	René	ANCIEN	12503		22/03/1992		01/11/2011	Indetermine(e)/Indefini(e)	Nord-Pas-de-Calais	12728	22/03/1998		13/03/2010		Vice-Président du conseil régional
+11037K	M.	Vandierendonck	René	ANCIEN	12503		22/03/1992		01/11/2011	Indetermine(e)/Indefini(e)	Nord-Pas-de-Calais	12982	14/03/2010		01/11/2011		Conseiller régional
+01034P	M.	Vanlerenberghe	Jean-Marie	ACTIF	6446			1986	30/11/2001	2001	Nord-Pas-de-Calais	2956		1986	30/11/2001	2001	Conseiller régional
+92045V	M.	Vasselle	Alain	ANCIEN	11931			1986		1992	Picardie	11743		1986		1992	Vice-Président du conseil régional
+11066Q	M.	Vaugrenard	Yannick	ACTIF	12376			1986		2011	Pays de la Loire	12442		1986	28/03/2004	2004	Conseiller régional
+11066Q	M.	Vaugrenard	Yannick	ACTIF	12376			1986		2011	Pays de la Loire	12444	29/03/2004	2004	20/03/2010	2010	Premier Vice-Président du conseil régional
+11066Q	M.	Vaugrenard	Yannick	ACTIF	12376			1986		2011	Pays de la Loire	12447	21/03/2010	2010	31/12/2011	2011	Conseiller régional
+96003C	M.	Vergès	Paul	ANCIEN	1506			1983	12/11/2016	Indetermine(e)/Indefini(e)	La Réunion	1506		1983		1991	Conseiller régional
+96003C	M.	Vergès	Paul	ANCIEN	1506			1983	12/11/2016	Indetermine(e)/Indefini(e)	La Réunion	12978		1992		1998	Premier Vice-Président du conseil régional
+96003C	M.	Vergès	Paul	ANCIEN	1506			1983	12/11/2016	Indetermine(e)/Indefini(e)	La Réunion	12979		1998		2010	Président du conseil régional
+96003C	M.	Vergès	Paul	ANCIEN	1506			1983	12/11/2016	Indetermine(e)/Indefini(e)	La Réunion	13050		2010	13/12/2015		Conseiller régional
+11025F	M.	Vergoz	Michel	ANCIEN	12460		15/03/1998	1998	21/03/2004	2004	La Réunion	12660	15/03/1998	1998		1998	Conseiller régional
+11025F	M.	Vergoz	Michel	ANCIEN	12460		15/03/1998	1998	21/03/2004	2004	La Réunion	12661		1998	21/03/2004	2004	Vice-Président du conseil régional
+11025F	M.	Vergoz	Michel	ANCIEN	12460		15/03/1998	1998	21/03/2004	2004	La Réunion	13019	21/03/2004	2004	30/09/2011	2011	Conseiller régional
+19749K	Mme	Vérien	Dominique	ACTIF	51554		13/12/2015		19/01/2018	Indetermine(e)/Indefini(e)	Bourgogne-Franche-Comté	50919	13/12/2015		19/01/2018		Conseiller régional
+19749K	Mme	Vérien	Dominique	ACTIF	51555		30/03/2010		12/12/2015	Indetermine(e)/Indefini(e)	Bourgogne	50920	30/03/2010		12/12/2015		Conseiller régional
+19479G	Mme	Vermeillet	Sylvie	ACTIF	51346		28/04/2004		13/12/2015	Indetermine(e)/Indefini(e)	Franche-Comté	50526	28/04/2004		13/12/2015		Conseiller régional
+11057P	M.	Vincent	Maurice	ANCIEN	12513		28/03/2004		14/03/2010	Indetermine(e)/Indefini(e)	Rhône-Alpes	12737	28/03/2004		14/03/2010		Conseiller régional
+89045V	M.	Vinçon	Serge	ANCIEN	10614		28/03/2004	2004	16/12/2007	2007	Centre	10617	28/03/2004	2004	16/12/2007	2007	Conseiller régional
+01010F	M.	Virapoullé	Jean-Paul	ANCIEN	6569			1985		1988	La Réunion	3030		1985		1988	Vice-Président du conseil régional
+98026T	M.	Vissac	Guy	ANCIEN	5108			1976		Indetermine(e)/Indefini(e)	Auvergne	2049					Vice-Président du conseil régional
+04082L	Mme	Voynet	Dominique	ANCIEN	10974		22/03/1992	1992		1994	Franche-Comté	10981	22/03/1992	1992		1994	Conseiller régional
+01047U	M.	Zocchetto	François	ANCIEN	6560			1998		2008	Pays de la Loire	3022		1998	02/04/2004	2004	Vice-Président du conseil régional
+01047U	M.	Zocchetto	François	ANCIEN	6560			1998		2008	Pays de la Loire	10633	02/04/2004	2004		2008	Conseiller régional

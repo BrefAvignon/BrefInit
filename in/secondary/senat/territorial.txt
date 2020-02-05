@@ -1,0 +1,17 @@
+Matricule	Qualité	Nom usuel	Prénom usuel	État Sénateur	Identifiant mandat	Date d'élection	Date de début de mandat	Année de début de mandat	Date de fin de mandat	Année de fin de mandat	Article assemblée territoriale	Assemblée territoriale
+19717B	M.	Artano	Stéphane	ACTIF	51506	23/10/2017 00:00:00	23/10/2017 00:00:00				d'une 	Autre assemblée territoriale
+19295A	Mme	Conconne	Catherine	ACTIF	50797	01/10/2015 00:00:00	01/10/2015 00:00:00				d'une 	Autre assemblée territoriale
+98052V	M.	Flosse	Gaston	ANCIEN	5805			1984		1987	du 	Gouvernement de Polynésie Française
+98052V	M.	Flosse	Gaston	ANCIEN	5806			1991	14/06/2004 00:00:00	2004	du 	Gouvernement de Polynésie Française
+98052V	M.	Flosse	Gaston	ANCIEN	6314		06/05/2001 00:00:00	2001		2003	du 	Gouvernement de Polynésie Française
+98052V	M.	Flosse	Gaston	ANCIEN	11377		17/05/2013 00:00:00				du 	Gouvernement de Polynésie Française
+98052V	M.	Flosse	Gaston	ANCIEN	11378		23/02/2008 00:00:00	2008	15/04/2008 00:00:00	2008	du 	Gouvernement de Polynésie Française
+01057W	M.	Guené	Charles	ACTIF	15289	11/01/2016 00:00:00	11/01/2016 00:00:00		01/01/2018 00:00:00		d'une 	Autre assemblée territoriale
+14277B	M.	Laurey	Nuihau	ACTIF	15201		01/05/2013 00:00:00		14/01/2017 00:00:00		du 	Gouvernement de Polynésie Française
+14277B	M.	Laurey	Nuihau	ACTIF	51702		15/01/2017 00:00:00				du 	Gouvernement de Polynésie Française
+92033R	M.	Loueckhote	Simon	ANCIEN	5807			1983		2004	du 	Territoire de Nouvelle Calédonie
+92033R	M.	Loueckhote	Simon	ANCIEN	11912			1988		1989	du 	Territoire de Nouvelle Calédonie
+98008R	M.	Natali	Paul	ANCIEN	5810					1998	de l'	Assemblée Territoriale de Corse
+19319Q	M.	Poadja	Gérard	ACTIF	51062		29/08/2012 00:00:00		08/08/2013 00:00:00		du 	Territoire de Nouvelle Calédonie
+14275Y	Mme	Tetuanui	Lana	ACTIF	15199		01/05/2014 00:00:00		30/04/2015 00:00:00		du 	Gouvernement de Polynésie Française
+14275Y	Mme	Tetuanui	Lana	ACTIF	51674		01/05/2015 00:00:00		30/09/2017 00:00:00		du 	Gouvernement de Polynésie Française

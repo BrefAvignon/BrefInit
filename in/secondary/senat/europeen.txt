@@ -1,0 +1,33 @@
+Matricule	Qualité	Nom usuel	Prénom usuel	État Sénateur	Identifiant mandat	Date d'élection	Date de début de mandat	Année de début de mandat	Date de fin de mandat	Année de fin de mandat	Libellé
+01065W	M.	Alfonsi	Nicolas	ANCIEN	6654		04/09/1981	1981	17/06/1984	1984	Député européen
+000465	Mme	Anglade	Magdeleine	ANCIEN	9671				25/03/1998	1998	Indetermine(e)/Indefini(e)
+11055M	Mme	Archimbaud	Aline	ANCIEN	12783		01/07/1992		01/07/1994		Députée européenne
+11030C	M.	Béchu	Christophe	ANCIEN	12280		07/06/2009	2009	01/01/2011	2011	Député au Parlement européen
+07003H	M.	Bernard-Reymond	Pierre	ANCIEN	11228		24/07/1984	1984	04/12/1986	1986	Député européen
+07003H	M.	Bernard-Reymond	Pierre	ANCIEN	11229		25/07/1989	1989	19/07/1999	1999	Député européen
+04063H	Mme	Boumediene-Thiery	Alima	ANCIEN	10892		13/06/1999	1999	13/06/2004	2004	Député au Parlement européen
+08050U	Mme	Bourzai	Bernadette	ANCIEN	11681		01/01/2004	2004	30/09/2008	2008	Député au Parlement européen vice-pdte de la commission
+59527T	M.	Chinaud	Roger	ANCIEN	9672					1989	Indetermine(e)/Indefini(e)
+98032R	M.	de Montesquiou	Aymeri	ANCIEN	5808		04/11/1989	1989	16/04/1993	1992	Parlementaire Européen
+14363X	Mme	de Rose	Marie-France	ANCIEN	15520		19/07/1994		20/07/1999		Députée européenne
+99001N	M.	Donnay	Jacques	ANCIEN	5824			1994		1999	Député au Parlement européen
+98052V	M.	Flosse	Gaston	ANCIEN	5804		24/07/1984	1984	19/03/1986	1986	Parlementaire européen
+02001J	M.	Frimat	Bernard	ANCIEN	6669		02/04/1992	1992	18/07/1994	1994	Membre du Parlement européen
+14026U	Mme	Gruny	Pascale	ACTIF	13886		07/06/2009		14/12/2010		Député européen
+04075M	Mme	Hermange	Marie-Thérèse	ANCIEN	10942		12/06/1994	1994	13/06/2004	2004	Ancien député au Parlement européen
+04078Q	M.	Hue	Robert	ANCIEN	10959		13/06/1999	1999	01/08/2000	2000	Député au Parlement européen
+06006G	M.	Josselin	Charles	ANCIEN	11210		17/07/1979	1979	15/07/1981	1981	Indetermine(e)/Indefini(e)
+99004R	M.	Karoutchi	Roger	ACTIF	5845		06/10/1997	1997	17/12/1999	2000	Indetermine(e)/Indefini(e)
+04061F	Mme	Keller	Fabienne	ANCIEN	11064		17/06/2002	2002	02/07/2002	2002	Député au Parlement européen
+01048V	M.	Longuet	Gérard	ACTIF	6591		24/07/1984	1984	19/03/1986	1986	Parlementaire européen
+86039K	M.	Mélenchon	Jean-Luc	ANCIEN	11968		14/07/2009				Député européen
+000379	M.	Mitterrand	François	ANCIEN	10524						Indetermine(e)/Indefini(e)
+08021P	M.	Navarro	Robert	ANCIEN	11557			2004	30/09/2008	2008	Député européen
+77053G	M.	Pasqua	Charles	ANCIEN	5809		20/07/1999	1999	19/07/2004	2004	Député au Parlement Européen
+83047W	M.	Percheron	Daniel	ANCIEN	11369		07/06/1979	1979	10/06/1983	1983	Député au Parlement européen
+77058M	M.	Poncelet	Christian	ANCIEN	11922		17/07/1979	1979	30/09/1980	1980	Député européen
+95059Q	M.	Raffarin	Jean-Pierre	ANCIEN	11923		25/07/1989	1989	18/05/1995	1995	Député au Parlement  européen
+01034P	M.	Vanlerenberghe	Jean-Marie	ACTIF	6495		20/03/1986	1986	24/07/1989	1989	Député européen
+01034P	M.	Vanlerenberghe	Jean-Marie	ACTIF	11379		31/03/1993	1993	18/07/1994	1994	Député européen
+11066Q	M.	Vaugrenard	Yannick	ACTIF	12377		13/06/2004		07/06/2009		Député européen
+04082L	Mme	Voynet	Dominique	ANCIEN	10973		13/11/1991	1989	10/12/1991	1991	Député au Parlement européen
