@@ -57,9 +57,12 @@ COL_ATT_COM_CODE <- "Code Insee commune"
 COL_ATT_COM_NOM <- "Libelle commune"
 COL_ATT_COM_POP <- "Population commune"
 COL_ATT_DPT_CODE <- "Code departement"
+COL_ATT_DPT_ID <- "ID departement"
 COL_ATT_DPT_NOM <- "Libelle departement"
 COL_ATT_ELU_DDN <- "Date naissance"
+COL_ATT_ELU_DDD <- "Date deces"
 COL_ATT_ELU_ID <- "ID elu"
+COL_ATT_ELU_ID_SENAT <- "ID senateur"
 COL_ATT_ELU_NAT <- "Nationalite elu"
 COL_ATT_ELU_NOM <- "Nom elu"
 COL_ATT_ELU_PRENOM <- "Prenom elu"
@@ -88,6 +91,7 @@ COLS_ATT_NORMALIZED <- c(
 	COL_ATT_CIRCE_NOM,
 	COL_ATT_REG_CODE,
 	COL_ATT_REG_NOM,
+	COL_ATT_DPT_ID,
 	COL_ATT_DPT_CODE,
 	COL_ATT_DPT_NOM,
 	COL_ATT_CIRC_CODE,
@@ -102,9 +106,11 @@ COLS_ATT_NORMALIZED <- c(
 	COL_ATT_EPCI_NOM,
 	COL_ATT_EPCI_DPT,
 	COL_ATT_ELU_ID,
+	COL_ATT_ELU_ID_SENAT,
 	COL_ATT_ELU_NOM,
 	COL_ATT_ELU_PRENOM,
 	COL_ATT_ELU_DDN,
+	COL_ATT_ELU_DDD,
 	COL_ATT_ELU_SEXE,
 	COL_ATT_ELU_NAT,
 	COL_ATT_ELU_NUANCE,
@@ -134,12 +140,12 @@ COLS_ATT_LOCATION_NOUNS <- c(
 
 # proper nouns
 COLS_ATT_PROPER_NOUNS <- c(
-		COLS_ATT_LOCATION_NOUNS,
-		COL_ATT_ELU_NOM,
-		COL_ATT_ELU_PRENOM,
-		COL_ATT_FCT_NOM,
-		COL_ATT_MDT_NOM,
-		COL_ATT_PRO_NOM
+	COLS_ATT_LOCATION_NOUNS,
+	COL_ATT_ELU_NOM,
+	COL_ATT_ELU_PRENOM,
+	COL_ATT_FCT_NOM,
+	COL_ATT_MDT_NOM,
+	COL_ATT_PRO_NOM
 )
 
 # column long names
@@ -154,10 +160,13 @@ LONGNAMES[COL_ATT_CIRCE_NOM] <- "Libellé de la circonscription européenne"
 LONGNAMES[COL_ATT_COM_CODE] <- "Code de la commune"
 LONGNAMES[COL_ATT_COM_NOM] <- "Libellé de la commune"
 LONGNAMES[COL_ATT_COM_POP] <- "Population de la commune"
+LONGNAMES[COL_ATT_DPT_ID] <- "Id unique du département"
 LONGNAMES[COL_ATT_DPT_CODE] <- "Code du département"
 LONGNAMES[COL_ATT_DPT_NOM] <- "Libellé du département"
 LONGNAMES[COL_ATT_ELU_DDN] <- "Date de naissance de l'élu"
+LONGNAMES[COL_ATT_ELU_DDD] <- "Date de décès de l'élu"
 LONGNAMES[COL_ATT_ELU_ID] <- "Numéro d'identification de l'élu"
+LONGNAMES[COL_ATT_ELU_ID_SENAT] <- "Numéro d'identification de sénateur"
 LONGNAMES[COL_ATT_ELU_NAT] <- "Nationalité de l'élu"
 LONGNAMES[COL_ATT_ELU_NOM] <- "Nom de l'élu"
 LONGNAMES[COL_ATT_ELU_PRENOM] <- "Prénom de l'élu"
@@ -193,9 +202,12 @@ BASENAMES[COL_ATT_COM_CODE] <- "commune_code"
 BASENAMES[COL_ATT_COM_NOM] <- "commune_lib"
 BASENAMES[COL_ATT_COM_POP] <- "commune_pop"
 BASENAMES[COL_ATT_DPT_CODE] <- "dept_code"
+BASENAMES[COL_ATT_DPT_ID] <- "dept_id"
 BASENAMES[COL_ATT_DPT_NOM] <- "dept_lib"
 BASENAMES[COL_ATT_ELU_DDN] <- "elu_ddn"
+BASENAMES[COL_ATT_ELU_DDD] <- "elu_ddn"
 BASENAMES[COL_ATT_ELU_ID] <- "elu_id"
+BASENAMES[COL_ATT_ELU_ID_SENAT] <- "elu_id_senat"
 BASENAMES[COL_ATT_ELU_NAT] <- "elu_nation"
 BASENAMES[COL_ATT_ELU_NOM] <- "elu_nom"
 BASENAMES[COL_ATT_ELU_NUANCE] <- "elu_nuance"
@@ -230,10 +242,13 @@ COL_TYPES[COL_ATT_CIRC_CODE] <- "cat"
 COL_TYPES[COL_ATT_CIRC_NOM] <- "nom"
 COL_TYPES[COL_ATT_CIRCE_CODE] <- "cat"
 COL_TYPES[COL_ATT_CIRCE_NOM] <- "nom"
+COL_TYPES[COL_ATT_DPT_ID] <- "nom"
 COL_TYPES[COL_ATT_DPT_CODE] <- "cat"
 COL_TYPES[COL_ATT_DPT_NOM] <- "nom"
 COL_TYPES[COL_ATT_ELU_DDN] <- "dat"
+COL_TYPES[COL_ATT_ELU_DDD] <- "dat"
 COL_TYPES[COL_ATT_ELU_ID] <- "cat"
+COL_TYPES[COL_ATT_ELU_ID_SENAT] <- "nom"
 COL_TYPES[COL_ATT_ELU_NAT] <- "cat"
 COL_TYPES[COL_ATT_ELU_NOM] <- "nom"
 COL_TYPES[COL_ATT_ELU_NUANCE] <- "cat"
@@ -279,6 +294,19 @@ COL_VERIF_REG_NOM <- "Nom"
 COL_VERIF_DATE_TOUR1 <- "Tour1"
 COL_VERIF_DATE_TOUR2 <- "Tour2"
 
+# columns for senate files
+COL_SENAT_DPT_NOM <- "Circonscription"
+COL_SENAT_ELU_DDD <- "Date de deces"
+COL_SENAT_ELU_DDN <- "Date naissance"
+COL_SENAT_ELU_MATRI <- "Matricule"
+COL_SENAT_ELU_NOM <- "Nom usuel"
+COL_SENAT_ELU_PRENOM <- "Prenom usuel"
+COL_SENAT_ELU_NUANCE <- "Groupe politique"
+COL_SENAT_FCT_NOM <- "Fonction au Bureau du Senat"
+COL_SENAT_MDT_DBT <- "Date de debut de mandat"
+COL_SENAT_MDT_FIN <- "Date de fin de mandat"
+COL_SENAT_MDT_MOTIF <- "Motif fin de mandat"
+COL_SENAT_PRO_NOM <- "PCS INSEE"
 
 
 
@@ -286,6 +314,7 @@ COL_VERIF_DATE_TOUR2 <- "Tour2"
 ## folder and file constants
 # input folders
 FOLDER_IN <- "in"
+	FOLDER_CONV <- file.path(FOLDER_IN,"conversions")
 	FOLDER_EXTRACT1 <- file.path(FOLDER_IN,"extraction1")
 		FOLDER_TABLES <- file.path(FOLDER_EXTRACT1,"tables")
 		FOLDER_CORRECS <- file.path(FOLDER_EXTRACT1,"corrections")
@@ -293,6 +322,10 @@ FOLDER_IN <- "in"
 		FOLDER_TABLES2 <- file.path(FOLDER_EXTRACT2,"tables")
 		FOLDER_CORRECS2 <- file.path(FOLDER_EXTRACT2,"corrections")
 	FOLDER_VERIFS <- file.path(FOLDER_IN,"verifications")
+	FOLDER_SECOND <- file.path(FOLDER_IN,"secondary")
+		FOLDER_ASSEMBLEE <- file.path(FOLDER_SECOND,"assembly")
+		FOLDER_SENAT <- file.path(FOLDER_SECOND,"senat")
+
 # table files
 	# first extraction
 	FILES_TAB_CD <- file.path(FOLDER_TABLES, c("F Tous CD.txt"))
@@ -317,16 +350,10 @@ FOLDER_IN <- "in"
 	FILE_CORREC_EPCI <- file.path(FOLDER_CORRECS, "correc_EPCI.txt")
 	FILE_CORREC_M <- file.path(FOLDER_CORRECS, "correc_M.txt")
 	FILE_CORREC_S <- file.path(FOLDER_CORRECS, "correc_S.txt")
-	FILE_EQUIV_IDS <- file.path(FOLDER_CORRECS, "elu_equiv_ids.txt")
-	FILE_HOMON_IDS <- file.path(FOLDER_CORRECS, "elu_homonyms.txt")
-	FILE_CANTON_IDS <- file.path(FOLDER_CORRECS, "canton_unique_ids.txt")
 	# second extraction
 	FILE_CORREC_CD2 <- file.path(FOLDER_CORRECS2, "correc_CD.txt")
 	FILE_CORREC_CM2 <- file.path(FOLDER_CORRECS2, "correc_CM.txt")
 	FILE_CORREC_CR2 <- file.path(FOLDER_CORRECS2, "correc_CR.txt")
-	FILE_EQUIV_IDS2 <- file.path(FOLDER_CORRECS2, "elu_equiv_ids.txt")
-	FILE_HOMON_IDS2 <- file.path(FOLDER_CORRECS2, "elu_homonyms.txt")
-	FILE_CANTON_IDS2 <- file.path(FOLDER_CORRECS2, "canton_unique_ids.txt")
 # verification files
 	# position counts
 	FILE_VERIF_NBR_CR <- file.path(FOLDER_VERIFS, "decomptes_CR.txt")
@@ -339,7 +366,28 @@ FOLDER_IN <- "in"
 	FILE_VERIF_DATES_D <- file.path(FOLDER_VERIFS, "elections_D.txt")
 	FILE_VERIF_DATES_DE <- file.path(FOLDER_VERIFS, "elections_DE.txt")
 	FILE_VERIF_DATES_S <- file.path(FOLDER_VERIFS, "elections_S.txt")
-
+# secondary data
+	# national assembly files
+	FILE_ASSEM_XXX <- file.path(FOLDER_VERIFS, "xxxxxx.txt")
+	# senate files
+	FILE_SENAT_ELEC_CD <- file.path(FOLDER_SENAT, "departemental.txt")
+	FILE_SENAT_ELEC_DE <- file.path(FOLDER_SENAT, "europeen.txt")
+	FILE_SENAT_ELEC_METRO <- file.path(FOLDER_SENAT, "metropolitain.txt")
+	FILE_SENAT_ELEC_CM <- file.path(FOLDER_SENAT, "municipal.txt")
+	FILE_SENAT_ELEC_CR <- file.path(FOLDER_SENAT, "regional.txt")
+	FILE_SENAT_ELEC_S <- file.path(FOLDER_SENAT, "senatorial.txt")
+	FILE_SENAT_ELEC_EPCI <- file.path(FOLDER_SENAT, "territorial.txt")
+	FILE_SENAT_GENERAL <- file.path(FOLDER_SENAT, "general.txt")
+	FILE_SENAT_GROUPE <- file.path(FOLDER_SENAT, "groupes.txt")
+# conversion files
+	FILE_CONV_IDS <- file.path(FOLDER_CONV, "elu_equiv_ids.txt")
+	FILE_CONV_HOMONYMS <- file.path(FOLDER_CONV, "elu_homonyms.txt")
+	FILE_CONV_CANTONS <- file.path(FOLDER_CONV, "canton_unique_ids.txt")
+	FILE_CONV_DPT <- file.path(FOLDER_CONV, "departements.txt")
+	FILE_CONV_PRO <- file.path(FOLDER_CONV, "professions.txt")
+	FILE_CONV_NUANCES <- file.path(FOLDER_CONV, "nuances.txt")
+	
+	
 # output folders
 # folder to store logs
 FOLDER_LOG <- "log"
@@ -370,14 +418,20 @@ FOLDER_OUT <- "out"
 		FOLDER_OUT_S2 <- file.path(FOLDER_EXTRACT2, "S")
 		FOLDER_OUT_ALL2 <- file.path(FOLDER_EXTRACT2, "_All")
 	# comparison folders
-	FOLDER_COMPARISON <- file.path(FOLDER_OUT,"compare_1vs2")
-		# table-specific output folders
-		FOLDER_COMP_CD <- file.path(FOLDER_COMPARISON, "CD")
-		FOLDER_COMP_CM <- file.path(FOLDER_COMPARISON, "CM")
-		FOLDER_COMP_CR <- file.path(FOLDER_COMPARISON, "CR")
-		FOLDER_COMP_D <- file.path(FOLDER_COMPARISON, "D")
-		FOLDER_COMP_DE <- file.path(FOLDER_COMPARISON, "DE")
-		FOLDER_COMP_EPCI <- file.path(FOLDER_COMPARISON, "EPCI")
-		FOLDER_COMP_M <- file.path(FOLDER_COMPARISON, "M")
-		FOLDER_COMP_S <- file.path(FOLDER_COMPARISON, "S")
-		FOLDER_COMP_ALL <- file.path(FOLDER_COMPARISON, "_All")
+	FOLDER_COMPARISON <- file.path(FOLDER_OUT,"comparison")
+		# same table in 2 version
+		FOLDER_COMPAR_VERSIONS <- file.path(FOLDER_COMPARISON,"versions")
+			# table-specific output folders
+			FOLDER_COMP_VERS_CD <- file.path(FOLDER_COMPAR_VERSIONS, "CD")
+			FOLDER_COMP_VERS_CM <- file.path(FOLDER_COMPAR_VERSIONS, "CM")
+			FOLDER_COMP_VERS_CR <- file.path(FOLDER_COMPAR_VERSIONS, "CR")
+			FOLDER_COMP_VERS_D <- file.path(FOLDER_COMPAR_VERSIONS, "D")
+			FOLDER_COMP_VERS_DE <- file.path(FOLDER_COMPAR_VERSIONS, "DE")
+			FOLDER_COMP_VERS_EPCI <- file.path(FOLDER_COMPAR_VERSIONS, "EPCI")
+			FOLDER_COMP_VERS_M <- file.path(FOLDER_COMPAR_VERSIONS, "M")
+			FOLDER_COMP_VERS_S <- file.path(FOLDER_COMPAR_VERSIONS, "S")
+			FOLDER_COMP_VERS_ALL <- file.path(FOLDER_COMPAR_VERSIONS, "_All")
+		# tables from different sources
+		FOLDER_COMPAR_SOURCES <- file.path(FOLDER_COMPARISON,"sources")
+			# source-specific output folders
+			FOLDER_COMP_SRC_SEN <- file.path(FOLDER_COMPAR_SOURCES, "Senat")

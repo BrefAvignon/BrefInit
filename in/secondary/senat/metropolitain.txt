@@ -1,4 +1,4 @@
-Matricule	Qualité	Nom usuel	Prénom usuel	État Sénateur	Identifiant mandat	Date de début de mandat	Date de fin de mandat	Article métropole	Métropole	Identifiant fonction	Date de début de fonction	Date de fin de fonction	Fonction
+Matricule	Qualite	Nom usuel	Prenom usuel	Etat Senateur	Identifiant mandat	Date de debut de mandat	Date de fin de mandat	Article metropole	Metropole	Identifiant fonction	Date de debut de fonction	Date de fin de fonction	Fonction
 14239U	M.	Amiel	Michel	ACTIF	15301	01/01/2016		de la 	Métropole d'Aix-Marseille-Provence	13898	01/01/2016		Conseiller
 08025T	M.	Anziani	Alain	ANCIEN	15306	01/01/2016		de 	Bordeaux Métropole	13903	01/01/2016		Vice-Président
 19515S	M.	Babary	Serge	ACTIF	51524	20/03/2017		de 	Tours Métropole Val de Loire	50862	20/03/2017		Conseiller

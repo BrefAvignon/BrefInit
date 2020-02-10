@@ -1,4 +1,14 @@
 Row	Id	Nom	Prenom	Attribut	ValAvt	ValApr	Commentaire
+1072	1174431	LEPAGE	Claudine	Date naissance	19/8/1949	10/8/1949	Date de naissance incohérente
+538	1179834	ESSAI	Nouvel	Nom elu	ESSAI	DERYCKE	Typo dans le nom (Nouvel ESSAI)
+538	1179834	DERYCKE	Nouvel	Prenom elu	Nouvel	Dinah	Typo dans le prénom (Nouvel ESSAI)
+538	1179834	DERYCKE	Dinah	Date naissance	31/7/1960	1/4/1946	Typo dans le prénom (Nouvel ESSAI)
+243	164	ROUVIERE	André	Date naissance	22/4/1936	29/04/1936	Date de naissance incorrecte
+31	175	BALARELLO	José	Date naissance	24/12/1926	25/12/1926	Date de naissance incorrecte
+478	355631	PANIS	Jacqueline	Date naissance	18/4/1948	16/04/1948	Date de naissance incorrecte
+1044	414	COINTAT	Christian	Date naissance	1/8/1922	11/7/1943	Ligne complètement fausse
+1044	414	COINTAT	Christian	Date fin mandat	20/9/2008	25/9/2004	Ligne complètement fausse
+308	558501	LE MENN	Jacky	Date naissance	10/3/1941	17/03/1941	Date de naissance incorrecte
 581	912	LENOIR	Jean-Claude	Date fin mandat	24/9/2011	NA	Date incorrecte remplacée par NA pour fusion ultérieure
 621	833176	ESPAGNAC	Frédérique	Date fin mandat	24/9/2011	NA	Date incorrecte remplacée par NA pour fusion ultérieure
 625	335393	LABAZEE	Georges	Date fin mandat	24/9/2011	NA	Date incorrecte remplacée par NA pour fusion ultérieure

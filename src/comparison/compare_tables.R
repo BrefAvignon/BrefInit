@@ -148,23 +148,23 @@ lookup.row <- function(tab1, i, tab2, map)
 #
 # returns: the obtained string table.
 #############################################################################################
-read.string.table <- function(files)
+read.string.table <- function(files, ...)
 {	# read each file
 	res <- NULL
 	for(file in files)
 	{	tlog(4,"Reading file ",file)
 		temp <- read.table(
-				file=file, 				# name of the data file
+				file=file, 					# name of the data file
 				header=TRUE, 				# look for a header
 				sep="\t", 					# character used to separate columns 
 				check.names=FALSE, 			# don't change the column names from the file
 				comment.char="", 			# ignore possible comments in the content
 				row.names=NULL, 			# don't look for row names in the file
 				quote="", 					# don't expect double quotes "..." around text fields
-				skip=1,						# ignore the first line of the file ("Titre du rapport")
 				as.is=TRUE,					# don't convert strings to factors
 #				fileEncoding="Latin1",		# original tables seem to be encoded in Latin1 (ANSI)
-				colClasses="character"		# forces to consider everything column as strings
+				colClasses="character",		# forces to consider everything column as strings
+				...
 		)
 		tlog(6,"Read ",nrow(temp)," rows and ",ncol(temp)," columns")
 		
@@ -199,14 +199,14 @@ read.string.table <- function(files)
 # files1: vector of files constituting the second table. All columns must be the same.
 # out.folder: folder used to record the comparison files.
 #############################################################################################
-compare.tables <- function(files0, files1, out.folder)
+compare.tables <- function(files0, files1, out.folder, ...)
 {
 	##################
 	# read everything as strings to avoid any conversion-related issue
 	tlog(2,"Reading table v0")
-	t0 <- read.string.table(files0)
+	t0 <- read.string.table(files0, ...)
 	tlog(2,"Reading table v1")
-	t1 <- read.string.table(files1)
+	t1 <- read.string.table(files1, ...)
 	
 	# only work with columns common to both tables
 	cn0 <- colnames(t0)

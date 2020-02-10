@@ -179,7 +179,7 @@ NA	NA	NA	NA	Libelle commune	TEVA I UTA SECTION 1 MATAIEA	TEVA I UTA	On ignore le
 1136346	1138212	PASSCHIER	Nicolas	Date fin mandat	16/3/2008	8/3/2008	Corrigé pour mandat complet
 61364	845248	FETTUCIARI	Karine	Date naissance	14/5/1968	4/5/1968	Date incohérente
 1162579	1144788	TROUY	Noël	Date naissance	1/1/1900	27/2/1949	Date incohérente
-9143	1522165	DELAGE	LAURY	Date debut mandat	8/24/1987	20/10/2017	Date de naissance pour mandat
+9143	1522165	DELAGE	LAURY	Date debut mandat	24/8/1987	20/10/2017	Date de naissance pour mandat
 39087	1506637	COLLINET	DOMINIQUE	Date debut mandat	16/6/1961	12/6/2015	Date de naissance pour mandat
 92900	1193725	MIGOTTO	XAVIER	Date debut mandat	14/3/1970	21/3/2010	Date de naissance pour mandat
 188762	812832	RICHARD	CHRISTIAN	Date debut mandat	28/11/1955	9/3/2008	Date de naissance pour mandat
@@ -197,5 +197,5 @@ NA	NA	NA	NA	Libelle commune	TEVA I UTA SECTION 1 MATAIEA	TEVA I UTA	On ignore le
 928736	1195729	PONVIENNE	CHRISTINE	Date debut mandat	30/4/1956	10/3/2013	Date de naissance pour mandat
 959696	1161841	REVERET	JEAN LUC	Date debut mandat	9/3/1966	9/3/2008	Date de naissance pour mandat
 1032066	1453956	CASTANER	ALICE	Date debut mandat	16/12/1977	23/3/2014	Date de naissance pour mandat
-1114435	494274	BRUNEAU	DOMINIQUE	Date debut mandat	3/9/1956	9/3/2008	Date de naissance pour mandat
+1114434	494274	BRUNEAU	DOMINIQUE	Date debut mandat	3/9/1956	9/3/2008	Date de naissance pour mandat
 1214486	1507607	TAYLOR	CATHERINE	Date debut mandat	28/1/1969	15/1/2015	Date de naissance pour mandat

@@ -30,6 +30,8 @@ source("src/common/include.R")
 
 # refaire certains (tous ?) tests sur la table fusionnée, une fois que les tables individuelles sont propres
 
+# TODO revoir l'ordre des ids lors de la vérification des homonymes: ordre numérique
+# dans fichiers mais alphabétique dans script, pas compatible.
 
 
 # Points d'implémentation

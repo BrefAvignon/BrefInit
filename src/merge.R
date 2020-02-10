@@ -83,6 +83,7 @@ cols <- c(
 	COL_ATT_CIRCE_NOM,
 	COL_ATT_REG_CODE,
 	COL_ATT_REG_NOM,
+	COL_ATT_DPT_ID,
 	COL_ATT_DPT_CODE,
 	COL_ATT_DPT_NOM,
 	COL_ATT_CIRC_CODE,
@@ -100,7 +101,9 @@ cols <- c(
 	COL_ATT_ELU_NOM,
 	COL_ATT_ELU_PRENOM,
 	COL_ATT_ELU_DDN,
+	COL_ATT_ELU_DDD,
 	COL_ATT_ELU_SEXE,
+	COL_ATT_ELU_NAT,
 	COL_ATT_PRO_CODE,
 	COL_ATT_PRO_NOM,
 	COL_ATT_MDT_NOM,
@@ -244,7 +247,6 @@ table.file <- file.path(FOLDER_OUT_ALL, "merged_data_byperson.txt")
 tlog(0,"Sorting full table by person, then recording in file \"",table.file,"\"")
 idx <- order(data[,COL_ATT_ELU_NOM], data[,COL_ATT_ELU_PRENOM], data[,COL_ATT_ELU_ID],
 		data[,COL_ATT_MDT_DBT], data[,COL_ATT_MDT_FIN], data[,COL_ATT_FCT_DBT], data[,COL_ATT_FCT_FIN])
-table.file <- file.path(FOLDER_OUT_ALL, "merged_data.txt")
 write.table(x=data[idx,],		# sorted data
 	file=table.file,		# name of file containing the new table
 	quote=TRUE,				# put double quotes around strings

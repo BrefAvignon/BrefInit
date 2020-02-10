@@ -1,4 +1,4 @@
-Matricule	Qualité	Nom usuel	Prénom usuel	État Sénateur	Identifiant mandat	Date d'élection	Date de début de mandat	Année de début de mandat	Date de fin de mandat	Année de fin de mandat	Article assemblée territoriale	Assemblée territoriale
+Matricule	Qualite	Nom usuel	Prenom usuel	Etat Senateur	Identifiant mandat	Date d'election	Date de debut de mandat	Annee de debut de mandat	Date de fin de mandat	Annee de fin de mandat	Article assemblee territoriale	Assemblee territoriale
 19717B	M.	Artano	Stéphane	ACTIF	51506	23/10/2017 00:00:00	23/10/2017 00:00:00				d'une 	Autre assemblée territoriale
 19295A	Mme	Conconne	Catherine	ACTIF	50797	01/10/2015 00:00:00	01/10/2015 00:00:00				d'une 	Autre assemblée territoriale
 98052V	M.	Flosse	Gaston	ANCIEN	5805			1984		1987	du 	Gouvernement de Polynésie Française

@@ -1,4 +1,4 @@
-Matricule	Qualité	Nom usuel	Prénom usuel	État Sénateur	Identifiant mandat	Date d'élection	Date de début de mandat	Année de début de mandat	Date de fin de mandat	Année de fin de mandat	Article de la commune	Commune	Identifiant fonction	Date de début de fonction	Année de début de fonction	Date de fin de fonction	Année de fin de fonction	Fonction
+Matricule	Qualite	Nom usuel	Prenom usuel	Etat Senateur	Identifiant mandat	Date d'election	Date de debut de mandat	Annee de debut de mandat	Date de fin de mandat	Annee de fin de mandat	Article de la commune	Commune	Identifiant fonction	Date de debut de fonction	Annee de debut de fonction	Date de fin de fonction	Annee de fin de fonction	Fonction
 14263U	M.	Abate	Patrick	ANCIEN	14392			1989			de 	Talange	13697		1989			Maire
 95004Y	M.	About	Nicolas	ANCIEN	788			1977	11/03/2001 00:00:00	2001	de 	Montigny-le-Bretonneux	10593		1977	11/03/2001 00:00:00		Maire
 95004Y	M.	About	Nicolas	ANCIEN	6043		11/03/2001 00:00:00	2001	04/10/2004 00:00:00	2004	de	Montigny-le-Bretonneux	2342	11/03/2001 00:00:00	2001	17/03/2001 00:00:00	2001	Conseiller municipal
@@ -6,12 +6,12 @@ Matricule	Qualité	Nom usuel	Prénom usuel	État Sénateur	Identifiant mandat	Da
 08008S	M.	Ackermann	Yves	ANCIEN	11465			1977		2008	de	Valdoie	11411		1977		1986	Conseiller municipal
 08008S	M.	Ackermann	Yves	ANCIEN	11465			1977		2008	de	Valdoie	11412		1986	01/04/2004 00:00:00	2004	Maire
 08008S	M.	Ackermann	Yves	ANCIEN	11465			1977		2008	de	Valdoie	11413	01/04/2004 00:00:00	2004		2008	Adjoint au maire
-58343H	Mme	Alduy	Jacqueline	ANCIEN	10056				15/03/2016 00:00:00	2016	Indetermine(e)/Indefini(e)	Amélie les Bains Palalda	3226			15/03/2016 00:00:00	2016	Maire
+58343H	Mme	Alduy	Jacqueline	ANCIEN	10056				15/03/2016 00:00:00	2016		Amélie les Bains Palalda	3226			15/03/2016 00:00:00	2016	Maire
 01006K	M.	Alduy	Jean-Paul	ANCIEN	6360		13/06/1993 00:00:00	1993			de	Perpignan	2919	13/06/1993 00:00:00	1993	25/03/2001 00:00:00	2001	Maire
 01006K	M.	Alduy	Jean-Paul	ANCIEN	6360		13/06/1993 00:00:00	1993			de	Perpignan	10599	25/03/2001 00:00:00	2001	26/04/2009 00:00:00		Maire
 01006K	M.	Alduy	Jean-Paul	ANCIEN	6360		13/06/1993 00:00:00	1993			de	Perpignan	11748	30/06/2009 00:00:00		21/10/2009 00:00:00		Maire
 01006K	M.	Alduy	Jean-Paul	ANCIEN	6360		13/06/1993 00:00:00	1993			de	Perpignan	11763	22/10/2009 00:00:00				Adjoint au maire
-59213C	M.	Alduy	Paul	ANCIEN	10057				23/01/2006 00:00:00	2006	Indetermine(e)/Indefini(e)	Perpignan	3227			23/01/2006 00:00:00	2006	Maire
+59213C	M.	Alduy	Paul	ANCIEN	10057				23/01/2006 00:00:00	2006		Perpignan	3227			23/01/2006 00:00:00	2006	Maire
 01065W	M.	Alfonsi	Nicolas	ANCIEN	6651			1962	11/03/2001 00:00:00	2001	de	Piana	3099		1962	11/03/2001 00:00:00	2001	Maire
 01065W	M.	Alfonsi	Nicolas	ANCIEN	11413		21/03/2008 00:00:00	2008			de	Piana	11407	21/03/2008 00:00:00	2008			Adjoint au maire
 14133K	M.	Allizard	Pascal	ACTIF	13957			1995	01/01/2016 00:00:00		de	Condé-sur-Noireau	13407		1995	01/01/2016 00:00:00		Maire
@@ -77,20 +77,20 @@ Matricule	Qualité	Nom usuel	Prénom usuel	État Sénateur	Identifiant mandat	Da
 95007C	M.	Badré	Denis	ANCIEN	651			1987	11/03/2001 00:00:00	2001	de 	Ville-d'Avray	10774		1987		1995	Adjoint au maire
 95007C	M.	Badré	Denis	ANCIEN	6045		11/03/2001 00:00:00	2001			de	Ville-d'Avray	2344	11/03/2001 00:00:00	2001	09/04/2001 00:00:00	2001	Conseiller municipal
 95007C	M.	Badré	Denis	ANCIEN	6045		11/03/2001 00:00:00	2001			de	Ville-d'Avray	2889	09/04/2001 00:00:00	2001			Maire
-89046W	M.	Bailet	Honoré	ANCIEN	11373				29/10/1993 00:00:00	1993	Indetermine(e)/Indefini(e)	Nice	11344	26/09/1990 00:00:00	1990	29/10/1993 00:00:00	1993	Maire
-89046W	M.	Bailet	Honoré	ANCIEN	11373				29/10/1993 00:00:00	1993	Indetermine(e)/Indefini(e)	Nice	11345			26/09/1990 00:00:00	1990	Adjoint au maire
+89046W	M.	Bailet	Honoré	ANCIEN	11373				29/10/1993 00:00:00	1993		Nice	11344	26/09/1990 00:00:00	1990	29/10/1993 00:00:00	1993	Maire
+89046W	M.	Bailet	Honoré	ANCIEN	11373				29/10/1993 00:00:00	1993		Nice	11345			26/09/1990 00:00:00	1990	Adjoint au maire
 11039M	M.	Bailly	Dominique	ANCIEN	12382			2001			d'	Orchies	12454	01/03/2001 00:00:00	2001	31/10/2005 00:00:00	2005	Adjoint au maire
 11039M	M.	Bailly	Dominique	ANCIEN	12382			2001			d'	Orchies	12455	01/11/2005 00:00:00	2005			Maire
 01008M	M.	Bailly	Gérard	ANCIEN	6581			1965	30/06/2014 00:00:00		d'	Uxelles	3045		1965	23/03/2001 00:00:00	2001	Maire
 01008M	M.	Bailly	Gérard	ANCIEN	6581			1965	30/06/2014 00:00:00		d'	Uxelles	3065	23/03/2001 00:00:00	2001	31/03/2014 00:00:00		Adjoint au maire
 01008M	M.	Bailly	Gérard	ANCIEN	6581			1965	30/06/2014 00:00:00		d'	Uxelles	13148	01/04/2014 00:00:00		30/06/2014 00:00:00		Conseiller municipal
-000339	M.	Bajeux	Octave	ANCIEN	10059						Indetermine(e)/Indefini(e)	Radinghem-en-Weppes	3229					Maire
+000339	M.	Bajeux	Octave	ANCIEN	10059							Radinghem-en-Weppes	3229					Maire
 84004P	M.	Balarello	José	ANCIEN	588				11/03/2001 00:00:00	2001	de 	Tende	588			11/03/2001 00:00:00	2001	Maire
 84004P	M.	Balarello	José	ANCIEN	6092		11/03/2001 00:00:00	2001		2008	de	Tende	2399	11/03/2001 00:00:00	2001	17/03/2001 00:00:00	2001	Conseiller municipal
 84004P	M.	Balarello	José	ANCIEN	6092		11/03/2001 00:00:00	2001		2008	de	Tende	2680	17/03/2001 00:00:00	2001	23/03/2001 00:00:00	2001	Maire
 84004P	M.	Balarello	José	ANCIEN	6092		11/03/2001 00:00:00	2001		2008	de	Tende	2838	23/03/2001 00:00:00	2001		2008	Adjoint au maire
 84004P	M.	Balarello	José	ANCIEN	11346		21/03/2008 00:00:00		25/02/2015 00:00:00	2015	de	Sospel	11314	21/03/2008 00:00:00		25/02/2015 00:00:00	2015	Conseiller municipal
-59564Y	M.	Bangou	Henri	ANCIEN	10060						Indetermine(e)/Indefini(e)	Pointe-à-Pitre	3230					Maire
+59564Y	M.	Bangou	Henri	ANCIEN	10060							Pointe-à-Pitre	3230					Maire
 01046T	M.	Barbier	Gilbert	ANCIEN	6482			1983	04/04/2014 00:00:00		de	Dole	2967		1983	21/03/2008 00:00:00	2008	Maire
 01046T	M.	Barbier	Gilbert	ANCIEN	6482			1983	04/04/2014 00:00:00		de	Dole	11275	22/03/2008 00:00:00	2008	04/04/2014 00:00:00		Conseiller municipal
 19651A	M.	Bargeton	Julien	ACTIF	51053	16/03/2008 00:00:00	09/07/2012 00:00:00				de	Paris	50362	09/07/2012 00:00:00		06/10/2017 00:00:00		Adjoint au maire
@@ -101,12 +101,12 @@ Matricule	Qualité	Nom usuel	Prénom usuel	État Sénateur	Identifiant mandat	Da
 89018S	M.	Barraux	Bernard	ANCIEN	6093		11/03/2001 00:00:00	2001	16/03/2008 00:00:00	2008	de	Marcillat-en-Combraille	2400	11/03/2001 00:00:00	2001	17/03/2001 00:00:00	2001	Conseiller municipal
 89018S	M.	Barraux	Bernard	ANCIEN	6093		11/03/2001 00:00:00	2001	16/03/2008 00:00:00	2008	de	Marcillat-en-Combraille	2628	17/03/2001 00:00:00	2001	16/03/2008 00:00:00	2008	Maire
 19741B	M.	Bascher	Jérôme	ACTIF	51527	18/03/2001 00:00:00	18/03/2001 00:00:00		01/01/2011 00:00:00		de	Senlis	50864	18/03/2001 00:00:00		01/01/2011 00:00:00		Conseiller municipal
-58613L	M.	Bastie	Pierre	ANCIEN	10061				21/05/2013 00:00:00	2013	Indetermine(e)/Indefini(e)	Quillan	3231			21/05/2013 00:00:00	2013	Conseiller municipal
+58613L	M.	Bastie	Pierre	ANCIEN	10061				21/05/2013 00:00:00	2013		Quillan	3231			21/05/2013 00:00:00	2013	Conseiller municipal
 83013L	M.	Bataille	Jean-Paul	ANCIEN	698			1965	16/10/1999 00:00:00	1999	de 	Steenvoorde	698			16/10/1999 00:00:00	1999	Maire
 92007P	M.	Baudot	Jacques	ANCIEN	683			1971	11/03/2001 00:00:00	2001	de 	Nancy	683		1971		1983	Conseiller municipal
 92007P	M.	Baudot	Jacques	ANCIEN	683			1971	11/03/2001 00:00:00	2001	de 	Nancy	10737		1983		1988	Adjoint au maire
 92007P	M.	Baudot	Jacques	ANCIEN	683			1971	11/03/2001 00:00:00	2001	de 	Nancy	10741		1988	11/03/2001 00:00:00	2001	Conseiller municipal
-59721T	M.	Baumet	Gilbert	ANCIEN	10062						Indetermine(e)/Indefini(e)	Pont-Saint-Esprit	3232					Maire
+59721T	M.	Baumet	Gilbert	ANCIEN	10062							Pont-Saint-Esprit	3232					Maire
 86010V	M.	Baylet	Jean-Michel	ANCIEN	766			1977	11/03/2001 00:00:00	2001	de 	Valence-d'Agen	766		1977	11/03/2001 00:00:00	2001	Maire
 19667J	M.	Bazin	Arnaud	ACTIF	51399	19/03/1995 00:00:00	19/03/1995 00:00:00		19/03/2011 00:00:00		de	Persan	50585	19/03/1995 00:00:00		19/03/2011 00:00:00		Maire
 79004F	Mme	Beaudeau	Marie-Claude	ANCIEN	10688			1972		1989	de	Sarcelles	10744		1972		1977	Conseiller municipal
@@ -116,25 +116,25 @@ Matricule	Qualité	Nom usuel	Prénom usuel	État Sénateur	Identifiant mandat	Da
 01013J	Mme	Beaufils	Marie-France	ANCIEN	6386			1977			de	Saint-Pierre-des-Corps	10749		1977		1983	Adjoint au maire
 04091M	M.	Beaumont	René	ANCIEN	11010			1970	21/03/2008 00:00:00	2008	de	Varennes-Saint-Sauveur	11007		1970		2001	Maire
 04091M	M.	Beaumont	René	ANCIEN	11010			1970	21/03/2008 00:00:00	2008	de	Varennes-Saint-Sauveur	11058		2001	21/03/2008 00:00:00	2008	Adjoint au maire
-000460	M.	Beaupetit	Charles	ANCIEN	10063						Indetermine(e)/Indefini(e)	Montoire-sur-le-Loir	3233					Maire
-58819Y	M.	Becam	Marc	ANCIEN	10064						Indetermine(e)/Indefini(e)	Quimper	3234					Maire
+000460	M.	Beaupetit	Charles	ANCIEN	10063							Montoire-sur-le-Loir	3233					Maire
+58819Y	M.	Becam	Marc	ANCIEN	10064							Quimper	3234					Maire
 95009E	M.	Bécot	Michel	ANCIEN	760			1977	11/03/2001 00:00:00	2001	de 	Moncoutant	760		1977	11/03/2001 00:00:00	2001	Maire
 95009E	M.	Bécot	Michel	ANCIEN	6046		11/03/2001 00:00:00	2001	17/03/2008 00:00:00	2008	de	Moncoutant	2345	11/03/2001 00:00:00	2001	17/03/2001 00:00:00	2001	Conseiller municipal
 95009E	M.	Bécot	Michel	ANCIEN	6046		11/03/2001 00:00:00	2001	17/03/2008 00:00:00	2008	de	Moncoutant	2629	17/03/2001 00:00:00	2001	17/03/2008 00:00:00	2008	Maire
 98006P	M.	Bel	Jean-Pierre	ANCIEN	5216			1983		1995	de 	Mijanes	2106		1983		1995	Maire
 98006P	M.	Bel	Jean-Pierre	ANCIEN	6246		11/03/2001 00:00:00	2001	17/03/2008 00:00:00	2008	de	Lavelanet	2648	17/03/2001 00:00:00	2001	17/03/2008 00:00:00	2008	Maire
 80007A	M.	Belcour	Henri	ANCIEN	614				19/11/2003 00:00:00	2003	d'	Ussel	614			19/11/2003 00:00:00	2003	Maire
-59217G	M.	Belin	Gilbert	ANCIEN	10065						Indetermine(e)/Indefini(e)	Brassac-les-Mines	3235					Maire
+59217G	M.	Belin	Gilbert	ANCIEN	10065							Brassac-les-Mines	3235					Maire
 86011W	M.	Bellanger	Jacques	ANCIEN	10692			1977		1989	de	Houilles	10753		1977		1983	Conseiller municipal
 86011W	M.	Bellanger	Jacques	ANCIEN	10692			1977		1989	de	Houilles	10754		1983		1989	Adjoint au maire
 89013M	M.	Belot	Claude	ANCIEN	6023		20/03/1977 00:00:00	1977			de	Jonzac	2325	11/03/2001 00:00:00	2001	14/03/2008 00:00:00	2008	Conseiller municipal
 89013M	M.	Belot	Claude	ANCIEN	6023		20/03/1977 00:00:00	1977			de	Jonzac	11234	14/03/2008 00:00:00	2008			Maire
 89013M	M.	Belot	Claude	ANCIEN	6023		20/03/1977 00:00:00	1977			de	Jonzac	11389	20/03/1977 00:00:00	1977	11/03/2001 00:00:00	2001	Maire
-000541	M.	Benard	Paul	ANCIEN	10066						Indetermine(e)/Indefini(e)	Saint-Paul-de-la-Réunion	3236					Maire
-000321	M.	Benard Mousseaux	Jean	ANCIEN	10067						Indetermine(e)/Indefini(e)	Buzançais	3237					Maire
-59309K	M.	Benedetti	Georges	ANCIEN	10068				19/11/2018 00:00:00		Indetermine(e)/Indefini(e)	Bagnols-sur-Ceze	3238			19/11/2018 00:00:00		Maire
-000553	M.	Beranger	Jean	ANCIEN	10069						Indetermine(e)/Indefini(e)	Marly-le-Roi	3239					Maire
-02007Q	M.	Bergelin	Christian	ANCIEN	6771			1995	26/03/2008 00:00:00	2008	Indetermine(e)/Indefini(e)	Gray	3138		1995	26/03/2008 00:00:00	2008	Conseiller municipal
+000541	M.	Benard	Paul	ANCIEN	10066							Saint-Paul-de-la-Réunion	3236					Maire
+000321	M.	Benard Mousseaux	Jean	ANCIEN	10067							Buzançais	3237					Maire
+59309K	M.	Benedetti	Georges	ANCIEN	10068				19/11/2018 00:00:00			Bagnols-sur-Ceze	3238			19/11/2018 00:00:00		Maire
+000553	M.	Beranger	Jean	ANCIEN	10069							Marly-le-Roi	3239					Maire
+02007Q	M.	Bergelin	Christian	ANCIEN	6771			1995	26/03/2008 00:00:00	2008		Gray	3138		1995	26/03/2008 00:00:00	2008	Conseiller municipal
 08055A	M.	Bérit-Débat	Claude	ACTIF	11708			1992			de	Chancelade	11574		1992	08/02/2009 00:00:00	2009	Maire
 08055A	M.	Bérit-Débat	Claude	ACTIF	11708			1992			de	Chancelade	13111	09/02/2009 00:00:00	2009	30/09/2014 00:00:00		Adjoint au maire
 08055A	M.	Bérit-Débat	Claude	ACTIF	11708			1992			de	Chancelade	13696	01/10/2014 00:00:00				Conseiller municipal
@@ -145,7 +145,7 @@ Matricule	Qualité	Nom usuel	Prénom usuel	État Sénateur	Identifiant mandat	Da
 89020L	M.	Bernardet	Daniel	ANCIEN	5869			1959	21/11/2007 00:00:00	2007	de	Châteauroux	10760		1965	21/11/2007 00:00:00	2007	Adjoint au maire
 07003H	M.	Bernard-Reymond	Pierre	ANCIEN	11231			1971		2007	de	Gap	11166		1989		2007	Maire
 07003H	M.	Bernard-Reymond	Pierre	ANCIEN	11231			1971		2007	de	Gap	11168		1971		1989	Conseiller municipal
-000353	M.	Berrier	Noël	ANCIEN	10070						Indetermine(e)/Indefini(e)	Corbigny	3240					Maire
+000353	M.	Berrier	Noël	ANCIEN	10070							Corbigny	3240					Maire
 11068S	M.	Berson	Michel	ANCIEN	12529		22/03/1977 00:00:00		22/03/1998 00:00:00		de	Crosne	12756	22/03/1977 00:00:00		22/03/1998 00:00:00		Maire
 04098U	M.	Bertaud	Claude	ANCIEN	11097			1983			de	Benassay	11083		1983			Maire
 19575F	Mme	Berthet	Martine	ACTIF	50993	13/03/2011 00:00:00	13/03/2011 00:00:00		24/10/2017 00:00:00		d'	Albertville	50302	04/04/2014 00:00:00		24/10/2017 00:00:00		Maire
@@ -165,7 +165,7 @@ Matricule	Qualité	Nom usuel	Prénom usuel	État Sénateur	Identifiant mandat	Da
 01001E	M.	Béteille	Laurent	ANCIEN	5887			1977	11/03/2001 00:00:00	2001	de	Brunoy	2236		1977	11/03/2001 00:00:00	2001	Maire
 01001E	M.	Béteille	Laurent	ANCIEN	6203		18/03/2001 00:00:00	2001			de	Brunoy	2543	18/03/2001 00:00:00	2001	25/03/2001 00:00:00	2001	Conseiller municipal
 01001E	M.	Béteille	Laurent	ANCIEN	6203		18/03/2001 00:00:00	2001			de	Brunoy	2876	25/03/2001 00:00:00	2001			Maire
-79002D	M.	Bialski	Jacques	ANCIEN	10071				10/06/2013 00:00:00	2013	Indetermine(e)/Indefini(e)	Dunkerque	3241			10/06/2013 00:00:00	2013	Adjoint au maire
+79002D	M.	Bialski	Jacques	ANCIEN	10071				10/06/2013 00:00:00	2013		Dunkerque	3241			10/06/2013 00:00:00	2013	Adjoint au maire
 78007E	Mme	Bidard-Reydet	Danielle	ANCIEN	754				11/03/2001 00:00:00	2001	de 	Pantin	754			11/03/2001 00:00:00	2001	Adjoint au maire
 14093U	M.	Bignon	Jérôme	ACTIF	13907			1980		2000	de	Bermesnil	13341		1980		2000	Maire
 14093U	M.	Bignon	Jérôme	ACTIF	13930			2001		2008	d'	Oisemont	13372		2001		2008	Conseiller municipal
@@ -186,7 +186,7 @@ Matricule	Qualité	Nom usuel	Prénom usuel	État Sénateur	Identifiant mandat	Da
 96004D	M.	Bizet	Jean	ACTIF	6145		11/03/2001 00:00:00		24/03/2014 00:00:00		de	Le Teilleul	2591	17/03/2001 00:00:00	2001	24/03/2014 00:00:00		Maire
 89012L	M.	Blaizot	François	ANCIEN	610				17/07/2007 00:00:00	2007	de 	Saint-Jean d'Angély	610			17/07/2007 00:00:00	2007	Conseiller municipal
 01005J	M.	Blanc	Jacques	ANCIEN	6356						de	La Canourgue	2916	14/03/2008 00:00:00				Maire
-59567C	M.	Blanc	Jean-Pierre	ANCIEN	10072				29/09/2004 00:00:00	2004	Indetermine(e)/Indefini(e)	La Ravoire	3242			29/09/2004 00:00:00	2004	Maire
+59567C	M.	Blanc	Jean-Pierre	ANCIEN	10072				29/09/2004 00:00:00	2004		La Ravoire	3242			29/09/2004 00:00:00	2004	Maire
 92011K	M.	Blanc	Paul	ANCIEN	723				11/03/2001 00:00:00	2001	de 	Prades	723			11/03/2001 00:00:00	2001	Maire
 92011K	M.	Blanc	Paul	ANCIEN	6173		11/03/2001 00:00:00	2001			de	Sournia	2471	11/03/2001 00:00:00	2001	17/03/2001 00:00:00	2001	Conseiller municipal
 92011K	M.	Blanc	Paul	ANCIEN	6173		11/03/2001 00:00:00	2001			de	Sournia	2700	17/03/2001 00:00:00	2001			Maire
@@ -198,17 +198,17 @@ Matricule	Qualité	Nom usuel	Prénom usuel	État Sénateur	Identifiant mandat	Da
 04040A	M.	Bockel	Jean-Marie	ACTIF	12058			1989		2010	de 	Mulhouse	11806		1989		2010	Maire
 04040A	M.	Bockel	Jean-Marie	ACTIF	12059			2010			de	Mulhouse	11807		2010			Conseiller municipal
 04052E	M.	Bodin	Yannick	ANCIEN	10850			1983		2001	de	Dammarie-les-Lys	10901		1983		2001	Conseiller municipal
-000634	M.	Boeuf	Marc	ANCIEN	10073						Indetermine(e)/Indefini(e)	Bruges	3243					Conseiller municipal
+000634	M.	Boeuf	Marc	ANCIEN	10073							Bruges	3243					Conseiller municipal
 74013K	M.	Bohl	André	ANCIEN	689				11/03/2001 00:00:00	2001	de 	Creutzwald	689			11/03/2001 00:00:00	2001	Maire
 74013K	M.	Bohl	André	ANCIEN	6011		11/03/2001 00:00:00	2001			de	Creutzwald	2311	11/03/2001 00:00:00	2001	17/03/2001 00:00:00	2001	Conseiller municipal
 74013K	M.	Bohl	André	ANCIEN	6011		11/03/2001 00:00:00	2001			de	Creutzwald	2633	17/03/2001 00:00:00	2001			Maire
-58920U	M.	Bonduel	Stéphane	ANCIEN	10074						Indetermine(e)/Indefini(e)	Tonnay-Boutonne	3244					Maire
+58920U	M.	Bonduel	Stéphane	ANCIEN	10074							Tonnay-Boutonne	3244					Maire
 19367Y	Mme	Bonfanti-Dossat	Christine	ACTIF	50985	19/03/1995 00:00:00	19/03/1995 00:00:00				de	Lafox	50294	19/03/1995 00:00:00		21/10/2017 00:00:00		Maire
 19367Y	Mme	Bonfanti-Dossat	Christine	ACTIF	50985	19/03/1995 00:00:00	19/03/1995 00:00:00				de	Lafox	51057	22/10/2017 00:00:00				Conseiller municipal
 14069U	M.	Bonhomme	François	ACTIF	13854		21/03/2008 00:00:00				de	Caussade	13283	21/03/2008 00:00:00	2008	15/06/2016 00:00:00		Maire
 14069U	M.	Bonhomme	François	ACTIF	13854		21/03/2008 00:00:00				de	Caussade	50767	16/06/2016 00:00:00		30/09/2017 00:00:00		Adjoint au maire
 14069U	M.	Bonhomme	François	ACTIF	13854		21/03/2008 00:00:00				de	Caussade	50768	01/10/2017 00:00:00				Conseiller municipal
-58921V	M.	Bonifay	Charles	ANCIEN	10075				28/01/2017 00:00:00	2017	Indetermine(e)/Indefini(e)	Aix-en-Provence	3245			28/01/2017 00:00:00	2017	Conseiller municipal
+58921V	M.	Bonifay	Charles	ANCIEN	10075				28/01/2017 00:00:00	2017		Aix-en-Provence	3245			28/01/2017 00:00:00	2017	Conseiller municipal
 19415P	M.	Bonne	Bernard	ACTIF	50873		19/03/1989 00:00:00		15/03/2008 00:00:00		de	Bourg-Argental	50172	19/03/1989 00:00:00		15/03/2008 00:00:00		Maire
 14089Y	M.	Bonnecarrère	Philippe	ACTIF	13887			1995	17/12/2018 00:00:00		d'	Albi	13316		2014	17/12/2018 00:00:00		Conseiller municipal
 14089Y	M.	Bonnecarrère	Philippe	ACTIF	13887			1995	17/12/2018 00:00:00		d'	Albi	13318		1995		2013	Maire
@@ -241,7 +241,7 @@ Matricule	Qualité	Nom usuel	Prénom usuel	État Sénateur	Identifiant mandat	Da
 89022N	M.	Bourdin	Joël	ANCIEN	6027		11/03/2001 00:00:00	2001	21/03/2008 00:00:00	2008	de	Bernay	2328	11/03/2001 00:00:00	2001	17/03/2001 00:00:00	2001	Conseiller municipal
 89022N	M.	Bourdin	Joël	ANCIEN	6027		11/03/2001 00:00:00	2001	21/03/2008 00:00:00	2008	de	Bernay	2681	17/03/2001 00:00:00	2001	27/01/2003 00:00:00	2003	Maire
 89022N	M.	Bourdin	Joël	ANCIEN	6027		11/03/2001 00:00:00	2001	21/03/2008 00:00:00	2008	de	Bernay	3143	27/01/2003 00:00:00	2003	21/03/2008 00:00:00	2008	Conseiller municipal
-000545	M.	Bourgine	Raymond	ANCIEN	10076						Indetermine(e)/Indefini(e)	Paris	3246					Adjoint au maire
+000545	M.	Bourgine	Raymond	ANCIEN	10076							Paris	3246					Adjoint au maire
 11018G	M.	Bourquin	Christian	ANCIEN	12429			1993	26/08/2014 00:00:00	1995	de	Perpignan	12638		1993		1995	Conseiller municipal
 11018G	M.	Bourquin	Christian	ANCIEN	12431			1995	26/08/2014 00:00:00	2001	de	Millas	12644		1995		2001	Maire
 08068F	M.	Bourquin	Martial	ACTIF	11776		01/03/1986 00:00:00				d'	Audincourt	11629	30/04/1997 00:00:00	1997	18/09/2017 00:00:00		Maire
@@ -249,15 +249,15 @@ Matricule	Qualité	Nom usuel	Prénom usuel	État Sénateur	Identifiant mandat	Da
 08068F	M.	Bourquin	Martial	ACTIF	11776		01/03/1986 00:00:00				d'	Audincourt	50832	19/09/2017 00:00:00				Conseiller municipal
 08050U	Mme	Bourzai	Bernadette	ANCIEN	11683			2001		2008	d'	Egletons	11553	01/03/2001 00:00:00	2001	16/03/2008 00:00:00	2008	Maire
 08050U	Mme	Bourzai	Bernadette	ANCIEN	11683			2001		2008	d'	Egletons	11644	01/03/1983 00:00:00		01/03/2001 00:00:00	2001	Conseiller municipal
-59220B	M.	Bousch	Jean-Eric	ANCIEN	10077				06/04/1999 00:00:00	1999	Indetermine(e)/Indefini(e)	Forbach	3247			06/04/1999 00:00:00	1999	Maire
+59220B	M.	Bousch	Jean-Eric	ANCIEN	10077				06/04/1999 00:00:00	1999		Forbach	3247			06/04/1999 00:00:00	1999	Maire
 02003L	Mme	Bout	Brigitte	ANCIEN	6742			1977			de	Fleurbaix	3119		1977	25/03/2001 00:00:00	2001	Conseiller municipal
 02003L	Mme	Bout	Brigitte	ANCIEN	6742			1977			de	Fleurbaix	3120	25/03/2001 00:00:00	2001	21/03/2008 00:00:00		Maire
 02003L	Mme	Bout	Brigitte	ANCIEN	6742			1977			de	Fleurbaix	11294	21/03/2008 00:00:00				Conseiller municipal
 08058D	M.	Boutant	Michel	ACTIF	11722		01/06/1995 00:00:00		31/03/2014 00:00:00		de	Montbron	11588	01/06/1995 00:00:00	1995	01/03/2004 00:00:00	2004	Maire
 08058D	M.	Boutant	Michel	ACTIF	11722		01/06/1995 00:00:00		31/03/2014 00:00:00		de	Montbron	11589	01/03/2008 00:00:00	2008	31/03/2014 00:00:00		Conseiller municipal
 14175V	M.	Bouvard	Michel	ANCIEN	14021		06/03/1983 00:00:00		12/03/1989 00:00:00		de	Chambéry	13485	06/03/1983 00:00:00		12/03/1989 00:00:00		Adjoint au maire
-59568D	M.	Bouvier	Raymond	ANCIEN	10078				18/10/2001 00:00:00	2001	Indetermine(e)/Indefini(e)	Bogève	3248			18/10/2001 00:00:00	2001	Maire
-58951C	M.	Boyer	Eugène	ANCIEN	10079				23/09/2017 00:00:00	2017	Indetermine(e)/Indefini(e)	Caraman	3249			23/09/2017 00:00:00	2017	Maire
+59568D	M.	Bouvier	Raymond	ANCIEN	10078				18/10/2001 00:00:00	2001		Bogève	3248			18/10/2001 00:00:00	2001	Maire
+58951C	M.	Boyer	Eugène	ANCIEN	10079				23/09/2017 00:00:00	2017		Caraman	3249			23/09/2017 00:00:00	2017	Maire
 01052R	M.	Boyer	Jean	ANCIEN	6540			1971		1995	de	Blanzac	2999		1971		1995	Maire
 19383Y	M.	Boyer	Jean-Marc	ACTIF	50937	19/03/1989 00:00:00	19/03/1989 00:00:00		01/10/2017 00:00:00		de	Laqueuille	50245	19/03/1989 00:00:00		01/10/2017 00:00:00		Maire
 98049B	Mme	Boyer	Yolande	ANCIEN	6094		11/03/2001 00:00:00	2001			de	Châteaulin	2401	11/03/2001 00:00:00	2001	17/03/2001 00:00:00	2001	Conseiller municipal
@@ -279,16 +279,16 @@ Matricule	Qualité	Nom usuel	Prénom usuel	État Sénateur	Identifiant mandat	Da
 08020N	Mme	Bruguière	Marie-Thérèse	ACTIF	11553		08/03/1983 00:00:00		30/09/2017 00:00:00		de	Saint-Aunès	11665	08/03/1983 00:00:00	1983	09/06/1995 00:00:00	1995	Conseiller municipal
 19758L	Mme	Brulin	Céline	ACTIF	51592		16/03/2008 00:00:00		21/06/2018 00:00:00		de	Bolbec	51058	16/03/2008 00:00:00		21/06/2018 00:00:00		Conseiller municipal
 08007R	M.	Brun	Elie	ANCIEN	11361			1997			de	Fréjus	11323		1997			Maire
-58946F	M.	Brun	Raymond	ANCIEN	10080						Indetermine(e)/Indefini(e)	Salles	3250					Maire
+58946F	M.	Brun	Raymond	ANCIEN	10080							Salles	3250					Maire
 04047H	M.	Buffet	François-Noël	ACTIF	11037		23/10/1997 00:00:00				d'	Oullins	11029	23/10/1997 00:00:00		23/10/2017 00:00:00		Maire
 04047H	M.	Buffet	François-Noël	ACTIF	11037		23/10/1997 00:00:00				d'	Oullins	50968	24/10/2017 00:00:00				Conseiller municipal
 19782L	M.	Buis	Bernard	ACTIF	51669	18/06/1995 00:00:00	18/06/1995 00:00:00		01/12/2018 00:00:00		de	Lesches-en-Diois	51165	18/06/1995 00:00:00		01/12/2018 00:00:00		Maire
-59524Q	M.	Cabana	Camille	ANCIEN	10081				02/06/2002 00:00:00	2002	Indetermine(e)/Indefini(e)	Paris	3251			02/06/2002 00:00:00	2002	Adjoint au maire
+59524Q	M.	Cabana	Camille	ANCIEN	10081				02/06/2002 00:00:00	2002		Paris	3251			02/06/2002 00:00:00	2002	Adjoint au maire
 14207L	M.	Cabanel	Henri	ACTIF	14128	01/04/2014 00:00:00	01/04/2014 00:00:00				de 	Servian	13529	01/04/2014 00:00:00				Conseiller municipal
-58366Q	M.	Cabocel	Rémi	ANCIEN	10082				22/10/2009 00:00:00	2009	Indetermine(e)/Indefini(e)	Lezey	3252			22/10/2009 00:00:00	2009	Maire
+58366Q	M.	Cabocel	Rémi	ANCIEN	10082				22/10/2009 00:00:00	2009		Lezey	3252			22/10/2009 00:00:00	2009	Maire
 04066L	M.	Caffet	Jean-Pierre	ANCIEN	10896			2001			de	Paris (18ème arrondissement)	10928		2001	21/03/2008 00:00:00	2008	Adjoint au maire
 04066L	M.	Caffet	Jean-Pierre	ANCIEN	10896			2001			de	Paris (18ème arrondissement)	11282	22/03/2008 00:00:00	2008			Conseiller de Paris
-000538	M.	Caiveau	Louis	ANCIEN	10083						Indetermine(e)/Indefini(e)	Saint-Hilaire-de-Riez	3253					Maire
+000538	M.	Caiveau	Louis	ANCIEN	10083							Saint-Hilaire-de-Riez	3253					Maire
 77009C	M.	Caldaguès	Michel	ANCIEN	710				17/04/2000 00:00:00	2000	de 	Ier arrondissement de Paris	710			17/04/2000 00:00:00	2000	Maire d'arrondissement
 77009C	M.	Caldaguès	Michel	ANCIEN	5857		17/04/2000 00:00:00	2000	11/03/2001 00:00:00	2001	de	Ier arrondissement de Paris	2205	17/04/2000 00:00:00	2000	11/03/2001 00:00:00	2001	Adjoint au maire
 86014A	M.	Calméjane	Robert	ANCIEN	759			1983	10/12/2002 00:00:00	2002	de 	Villemomble	759		1983	10/12/2002 00:00:00	2002	Maire
@@ -313,7 +313,7 @@ Matricule	Qualité	Nom usuel	Prénom usuel	État Sénateur	Identifiant mandat	Da
 19545Y	M.	Capus	Emmanuel	ACTIF	50877	30/03/2014 00:00:00	16/03/2008 00:00:00				d'	Angers	50177	30/03/2014 00:00:00		12/12/2017 00:00:00		Adjoint au maire
 19545Y	M.	Capus	Emmanuel	ACTIF	50877	30/03/2014 00:00:00	16/03/2008 00:00:00				d'	Angers	50606	16/03/2008 00:00:00		29/03/2014 00:00:00		Conseiller municipal
 19545Y	M.	Capus	Emmanuel	ACTIF	50877	30/03/2014 00:00:00	16/03/2008 00:00:00				d'	Angers	51055	13/12/2017 00:00:00				Conseiller municipal
-59525R	M.	Carat	Jacques	ANCIEN	10084				19/03/2009 00:00:00	2009	Indetermine(e)/Indefini(e)	Cachan	3254			19/03/2009 00:00:00	2009	Maire
+59525R	M.	Carat	Jacques	ANCIEN	10084				19/03/2009 00:00:00	2009		Cachan	3254			19/03/2009 00:00:00	2009	Maire
 14085U	M.	Carcenac	Thierry	ACTIF	13882		25/06/1995 00:00:00		18/03/2001 00:00:00		de	Lescure d'Albigeois	13314	25/06/1995 00:00:00		18/03/2001 00:00:00		Adjoint au maire
 11103C	M.	Cardoux	Jean-Noël	ACTIF	12327		20/03/1977 00:00:00		18/12/2006 00:00:00		de	Sully-sur-Loire	12395	10/03/1983 00:00:00		18/12/2006 00:00:00		Maire
 11103C	M.	Cardoux	Jean-Noël	ACTIF	12327		20/03/1977 00:00:00		18/12/2006 00:00:00		de	Sully-sur-Loire	12398	20/03/1977 00:00:00		06/03/1983 00:00:00		Conseiller municipal
@@ -326,7 +326,7 @@ Matricule	Qualité	Nom usuel	Prénom usuel	État Sénateur	Identifiant mandat	Da
 11032E	M.	Carvounas	Luc	ANCIEN	12392		18/03/2001 00:00:00				d'	Alfortville	13078	18/03/2012 00:00:00				Maire
 89008Q	M.	Castaing	Robert	ANCIEN	643				11/11/2002 00:00:00	2002	de 	Lectoure	643			11/11/2002 00:00:00	2002	Maire
 14201E	M.	Castelli	Joseph	ACTIF	14078			1982		2010	de	Penta-di-Casinca	13517		1982		2010	Maire
-000510	M.	Caupert	Joseph	ANCIEN	10085						Indetermine(e)/Indefini(e)	Le Bleymard	3255					Maire
+000510	M.	Caupert	Joseph	ANCIEN	10085							Le Bleymard	3255					Maire
 92046W	M.	Cavalier-Benezet	Francis	ANCIEN	640				07/09/2014 00:00:00	2014	de 	Valleraugue	640			07/09/2014 00:00:00	2014	Maire
 11044J	Mme	Cayeux	Caroline	ANCIEN	12859		19/03/1989 00:00:00		18/06/1995 00:00:00		de 	Choisy-la-Victoire	13056	19/03/1989 00:00:00		18/06/1995 00:00:00		Conseiller municipal
 11044J	Mme	Cayeux	Caroline	ANCIEN	12860		18/06/1995 00:00:00		18/03/2001 00:00:00		de 	Blincourt	13057	18/06/1995 00:00:00		18/03/2001 00:00:00		Adjoint au maire
@@ -345,7 +345,7 @@ Matricule	Qualité	Nom usuel	Prénom usuel	État Sénateur	Identifiant mandat	Da
 95017E	M.	Chabroux	Gilbert	ANCIEN	731				11/03/2001 00:00:00	2001	de 	Villeurbanne	731			11/03/2001 00:00:00	2001	Maire
 14038Y	M.	Chaize	Patrick	ACTIF	13826		16/03/2008 00:00:00				de	Vonnas	13256	16/03/2008 00:00:00		30/09/2017 00:00:00		Maire
 14038Y	M.	Chaize	Patrick	ACTIF	13826		16/03/2008 00:00:00				de	Vonnas	50806	01/10/2017 00:00:00				Conseiller municipal
-83022M	M.	Chambriard	Jean-Paul	ANCIEN	10086						Indetermine(e)/Indefini(e)	Brioude	3256					Conseiller municipal
+83022M	M.	Chambriard	Jean-Paul	ANCIEN	10086							Brioude	3256					Conseiller municipal
 81015E	M.	Charasse	Michel	ANCIEN	717				11/03/2001 00:00:00	2001	de 	Puy-Guillaume	717			11/03/2001 00:00:00	2001	Maire
 81015E	M.	Charasse	Michel	ANCIEN	6014		11/03/2001 00:00:00	2001			de	Puy-Guillaume	2314	11/03/2001 00:00:00	2001	17/03/2001 00:00:00	2001	Conseiller municipal
 81015E	M.	Charasse	Michel	ANCIEN	6014		11/03/2001 00:00:00	2001			de	Puy-Guillaume	2652	17/03/2001 00:00:00	2001			Maire
@@ -354,10 +354,10 @@ Matricule	Qualité	Nom usuel	Prénom usuel	État Sénateur	Identifiant mandat	Da
 92016Q	M.	Charmant	Marcel	ANCIEN	6147		11/03/2001 00:00:00	2001			de	Saint-Aubin les Forges	2653	17/03/2001 00:00:00	2001			Maire
 92016Q	M.	Charmant	Marcel	ANCIEN	6279			1983		1988	de	Nevers	2767		1983		1988	Adjoint au maire
 11080N	M.	Charon	Pierre	ACTIF	12384			2001			de	Paris (15ème arrondissement)	12460		2001			Conseiller de Paris
-000572	M.	Charretier	Maurice	ANCIEN	10087						Indetermine(e)/Indefini(e)	Carpentras	3257					Maire
+000572	M.	Charretier	Maurice	ANCIEN	10087							Carpentras	3257					Maire
 95018F	M.	Charzat	Michel	ANCIEN	712						de 	20ème arrondissement de Paris	712					Maire d'arrondissement
-14195A	M.	Chasseing	Daniel	ACTIF	14049	01/04/1977 00:00:00	30/03/1977 00:00:00		30/03/2001 00:00:00		Indetermine(e)/Indefini(e)	Le Lonzac	13502	01/04/1989 00:00:00		30/03/2001 00:00:00		Maire
-14195A	M.	Chasseing	Daniel	ACTIF	14049	01/04/1977 00:00:00	30/03/1977 00:00:00		30/03/2001 00:00:00		Indetermine(e)/Indefini(e)	Le Lonzac	13563	30/03/1977 00:00:00	1977	30/03/1989 00:00:00		Conseiller municipal
+14195A	M.	Chasseing	Daniel	ACTIF	14049	01/04/1977 00:00:00	30/03/1977 00:00:00		30/03/2001 00:00:00			Le Lonzac	13502	01/04/1989 00:00:00		30/03/2001 00:00:00		Maire
+14195A	M.	Chasseing	Daniel	ACTIF	14049	01/04/1977 00:00:00	30/03/1977 00:00:00		30/03/2001 00:00:00			Le Lonzac	13563	30/03/1977 00:00:00	1977	30/03/1989 00:00:00		Conseiller municipal
 14195A	M.	Chasseing	Daniel	ACTIF	14051		01/04/2001 00:00:00				de 	Chamberet	13503	01/04/2001 00:00:00		15/07/2017 00:00:00		Maire
 14195A	M.	Chasseing	Daniel	ACTIF	14051		01/04/2001 00:00:00				de 	Chamberet	50777	16/07/2017 00:00:00				Conseiller municipal
 08057C	M.	Chastan	Yves	ANCIEN	11716			2006			de	Privas	11581	09/03/2008 00:00:00	2008	31/03/2014 00:00:00		Maire
@@ -369,7 +369,7 @@ Matricule	Qualité	Nom usuel	Prénom usuel	État Sénateur	Identifiant mandat	Da
 04099V	M.	Chauveau	Jean-Pierre	ANCIEN	11101			1977	01/03/1995 00:00:00		de	Mamers	11087		1977		1983	Conseiller municipal
 04099V	M.	Chauveau	Jean-Pierre	ANCIEN	11101			1977	01/03/1995 00:00:00		de	Mamers	11088		1984	01/03/1995 00:00:00		Adjoint au maire
 04099V	M.	Chauveau	Jean-Pierre	ANCIEN	11106			1995			de	Commerveil	11093	27/03/1995 00:00:00		31/03/2014 00:00:00		Maire
-58349P	M.	Chazelle	René	ANCIEN	10088				13/04/2006 00:00:00	2006	Indetermine(e)/Indefini(e)	Bresle	3258			13/04/2006 00:00:00	2006	Maire
+58349P	M.	Chazelle	René	ANCIEN	10088				13/04/2006 00:00:00	2006		Bresle	3258			13/04/2006 00:00:00	2006	Maire
 77013X	M.	Chérioux	Jean	ANCIEN	711				11/03/2001 00:00:00	2001	de 	Paris	711			11/03/2001 00:00:00	2001	Conseiller de Paris
 81010Y	M.	Chervy	William	ANCIEN	621						de 	Saint-Vaury	621					Maire
 08013P	Mme	Chevé	Jacqueline	ANCIEN	11519				15/03/2010 00:00:00	2010	de	Loudéac	11435			15/03/2010 00:00:00	2010	Conseiller municipal
@@ -377,7 +377,7 @@ Matricule	Qualité	Nom usuel	Prénom usuel	État Sénateur	Identifiant mandat	Da
 02053W	M.	Chevènement	Jean-Pierre	ANCIEN	11632			1983		2007	de	Belfort	11511		2001		2007	Maire
 02053W	M.	Chevènement	Jean-Pierre	ANCIEN	11632			1983		2007	de	Belfort	11659		1977		1983	Adjoint au maire
 18083K	M.	Chevrollier	Guillaume	ACTIF	51325	16/03/2008 00:00:00	16/03/2008 00:00:00		18/06/2012 00:00:00		de	Château-Gontier	50504	16/03/2008 00:00:00		18/06/2012 00:00:00		Conseiller municipal
-59527T	M.	Chinaud	Roger	ANCIEN	10089						Indetermine(e)/Indefini(e)	Paris	3259					Conseiller de Paris
+59527T	M.	Chinaud	Roger	ANCIEN	10089							Paris	3259					Conseiller de Paris
 11042G	M.	Chiron	Jacques	ANCIEN	12796		18/06/1995 00:00:00		01/04/2014 00:00:00		de	Grenoble	12949	18/06/1995 00:00:00		01/04/2014 00:00:00		Adjoint au maire
 11023D	Mme	Claireaux	Karine	ANCIEN	12466		23/03/2008 00:00:00				de	Saint-Pierre (Miquelon)	12668	23/03/2008 00:00:00				Maire
 11023D	Mme	Claireaux	Karine	ANCIEN	12466		23/03/2008 00:00:00				de	Saint-Pierre (Miquelon)	12952	19/03/1989 00:00:00		28/02/2001 00:00:00		Adjoint au maire
@@ -386,8 +386,8 @@ Matricule	Qualité	Nom usuel	Prénom usuel	État Sénateur	Identifiant mandat	Da
 95019G	M.	Cléach	Marcel-Pierre	ANCIEN	740				11/03/2001 00:00:00	2001	de 	Lombron	740			11/03/2001 00:00:00	2001	Maire
 86018E	M.	Clouet	Jean	ANCIEN	770				11/03/2001 00:00:00	2001	de 	Vincennes	770			11/03/2001 00:00:00	2001	Maire
 81014D	M.	Collard	Henri	ANCIEN	633				13/01/2012 00:00:00	2012	de 	Lyons-la-forêt	633			13/01/2012 00:00:00	2012	Maire
-000501	M.	Collet	François	ANCIEN	10090						Indetermine(e)/Indefini(e)	Paris	3260					Conseiller municipal
-59223E	M.	Collette	Henri	ANCIEN	10091				12/12/1998 00:00:00	1998	Indetermine(e)/Indefini(e)	Licques	3261			12/12/1998 00:00:00	1998	Maire
+000501	M.	Collet	François	ANCIEN	10090							Paris	3260					Conseiller municipal
+59223E	M.	Collette	Henri	ANCIEN	10091				12/12/1998 00:00:00	1998		Licques	3261			12/12/1998 00:00:00	1998	Maire
 88008L	M.	Collin	Yvon	ACTIF	767				11/03/2001 00:00:00	2001	de 	Caussade	767			11/03/2001 00:00:00	2001	Maire
 88008L	M.	Collin	Yvon	ACTIF	6159		11/03/2001 00:00:00	2001	21/03/2008 00:00:00		de	Caussade	2460	11/03/2001 00:00:00	2001	17/03/2001 00:00:00	2001	Conseiller municipal
 88008L	M.	Collin	Yvon	ACTIF	6159		11/03/2001 00:00:00	2001	21/03/2008 00:00:00		de	Caussade	2703	17/03/2001 00:00:00	2001	21/03/2008 00:00:00	2008	Maire
@@ -410,7 +410,7 @@ Matricule	Qualité	Nom usuel	Prénom usuel	État Sénateur	Identifiant mandat	Da
 98023Q	M.	Cornu	Gérard	ANCIEN	5096			1983	11/03/2001 00:00:00	2001	de 	Fontenay-sur-Eure	2041			11/03/2001 00:00:00	2001	Maire
 98023Q	M.	Cornu	Gérard	ANCIEN	6097		11/03/2001 00:00:00		01/04/2014 00:00:00		de	Fontenay-sur-Eure	2404	11/03/2001 00:00:00	2001	17/03/2001 00:00:00	2001	Conseiller municipal
 98023Q	M.	Cornu	Gérard	ANCIEN	6097		11/03/2001 00:00:00		01/04/2014 00:00:00		de	Fontenay-sur-Eure	2595	17/03/2001 00:00:00	2001	01/04/2014 00:00:00		Maire
-59224F	M.	Costes	Marcel	ANCIEN	10092				26/05/2013 00:00:00	2013	Indetermine(e)/Indefini(e)	Figeac	3262			26/05/2013 00:00:00	2013	Conseiller municipal
+59224F	M.	Costes	Marcel	ANCIEN	10092				26/05/2013 00:00:00	2013		Figeac	3262			26/05/2013 00:00:00	2013	Conseiller municipal
 07030L	M.	Couderc	Raymond	ANCIEN	11276			1983			de	Béziers	11194		1995	31/03/2014 00:00:00		Maire
 07030L	M.	Couderc	Raymond	ANCIEN	11276			1983			de	Béziers	11200		1983		1989	Adjoint au maire
 07030L	M.	Couderc	Raymond	ANCIEN	11276			1983			de	Béziers	13158	01/04/2014 00:00:00				Conseiller municipal
@@ -427,11 +427,11 @@ Matricule	Qualité	Nom usuel	Prénom usuel	État Sénateur	Identifiant mandat	Da
 14357A	M.	Cuypers	Pierre	ACTIF	15338	09/03/2008 00:00:00	09/03/2008 00:00:00				d'	Aubepierre-Ozouer-le-Repos	50958	03/11/2017 00:00:00				Conseiller municipal
 19525U	M.	Dagbert	Michel	ACTIF	50824	30/06/2002 00:00:00	30/06/2002 00:00:00		11/10/2017 00:00:00		de	Barlin	50118	30/06/2002 00:00:00		02/07/2014 00:00:00		Maire
 19525U	M.	Dagbert	Michel	ACTIF	50824	30/06/2002 00:00:00	30/06/2002 00:00:00		11/10/2017 00:00:00		de	Barlin	50477	03/07/2014 00:00:00		11/10/2017 00:00:00		Conseiller municipal
-58649Y	M.	Dagonia	Georges	ANCIEN	10093				29/09/2007 00:00:00	2007	Indetermine(e)/Indefini(e)	Lamentin	3263			29/09/2007 00:00:00	2007	Maire
-59533R	M.	D'Aillieres	Michel	ANCIEN	10055				31/10/2010 00:00:00	2010	Indetermine(e)/Indefini(e)	Aillières-Beauvoir	3225			31/10/2010 00:00:00	2010	Maire
+58649Y	M.	Dagonia	Georges	ANCIEN	10093				29/09/2007 00:00:00	2007		Lamentin	3263			29/09/2007 00:00:00	2007	Maire
+59533R	M.	D'Aillieres	Michel	ANCIEN	10055				31/10/2010 00:00:00	2010		Aillières-Beauvoir	3225			31/10/2010 00:00:00	2010	Maire
 04086Q	M.	Dallier	Philippe	ACTIF	10986			1995			des	Pavillons-sous-Bois	10989		1995	21/10/2017 00:00:00		Maire
 04086Q	M.	Dallier	Philippe	ACTIF	10986			1995			des	Pavillons-sous-Bois	50884	22/10/2017 00:00:00				Conseiller municipal
-59215E	M.	D'Andigne	Hubert	ANCIEN	10058				22/09/2005 00:00:00	2005	Indetermine(e)/Indefini(e)	Le Champ-de-la-Pierre	3228			22/09/2005 00:00:00	2005	Maire
+59215E	M.	D'Andigne	Hubert	ANCIEN	10058				22/09/2005 00:00:00	2005		Le Champ-de-la-Pierre	3228			22/09/2005 00:00:00	2005	Maire
 14079W	M.	Danesi	René	ACTIF	13869	18/03/1974 00:00:00	19/03/2014 00:00:00				de	Tagsdorf	13300	19/03/2014 00:00:00		31/10/2017 00:00:00		Maire
 14079W	M.	Danesi	René	ACTIF	13869	18/03/1974 00:00:00	19/03/2014 00:00:00				de	Tagsdorf	50944	01/11/2017 00:00:00				Conseiller municipal
 07001F	M.	Danglot	Jean-Claude	ANCIEN	11219				21/03/2008 00:00:00		de	Fouquières-lès-Lens	11158			21/03/2008 00:00:00		Conseiller municipal
@@ -453,7 +453,7 @@ Matricule	Qualité	Nom usuel	Prénom usuel	État Sénateur	Identifiant mandat	Da
 01012H	M.	Dauge	Yves	ANCIEN	6382			1989			de	Chinon	2925		1989	12/05/2006 00:00:00	2006	Maire
 01012H	M.	Dauge	Yves	ANCIEN	6382			1989			de	Chinon	11156	12/05/2006 00:00:00				Adjoint au maire
 01012H	M.	Dauge	Yves	ANCIEN	6610			1971		1989	de	Saint-Germain-sur-Vienne	3077		1971		1989	Maire
-000438	M.	Daugnac	André	ANCIEN	10094						Indetermine(e)/Indefini(e)	Le Soler	3264					Maire
+000438	M.	Daugnac	André	ANCIEN	10094							Le Soler	3264					Maire
 08038Y	M.	Daunis	Marc	ACTIF	11623			1996			de	Valbonne Sophia Antipolis	11502		1996	20/10/2016 00:00:00		Maire
 08038Y	M.	Daunis	Marc	ACTIF	11623			1996			de	Valbonne Sophia Antipolis	50545	21/10/2016 00:00:00				Conseiller municipal
 01059Y	Mme	David	Annie	ANCIEN	6527						de	Villard-Bonnot	2991					Conseiller municipal
@@ -472,12 +472,12 @@ Matricule	Qualité	Nom usuel	Prénom usuel	État Sénateur	Identifiant mandat	Da
 19735D	Mme	de la Provôté	Sonia	ACTIF	51484	30/03/2014 00:00:00	18/03/2001 00:00:00				de	Caen	50697	16/03/2008 00:00:00		29/03/2014 00:00:00		Conseiller municipal
 19735D	Mme	de la Provôté	Sonia	ACTIF	51484	30/03/2014 00:00:00	18/03/2001 00:00:00				de	Caen	50698	18/03/2001 00:00:00		15/03/2008 00:00:00		Adjoint au maire
 19735D	Mme	de la Provôté	Sonia	ACTIF	51484	30/03/2014 00:00:00	18/03/2001 00:00:00				de	Caen	50724	06/11/2017 00:00:00				Conseiller municipal
-58913V	M.	De La Verpilliere	Guy	ANCIEN	10139				25/04/2006 00:00:00	2006	Indetermine(e)/Indefini(e)	Lagnieu	3309			25/04/2006 00:00:00	2006	Maire
+58913V	M.	De La Verpilliere	Guy	ANCIEN	10139				25/04/2006 00:00:00	2006		Lagnieu	3309			25/04/2006 00:00:00	2006	Maire
 08034U	M.	de Legge	Dominique	ACTIF	11609			1983			du	Pertre	11491		1983	31/05/1995 00:00:00	1995	Conseiller municipal
 08034U	M.	de Legge	Dominique	ACTIF	11609			1983			du	Pertre	11492	01/06/1995 00:00:00	1995	30/09/2017 00:00:00		Maire
 08034U	M.	de Legge	Dominique	ACTIF	11609			1983			du	Pertre	50962	01/10/2017 00:00:00				Conseiller municipal
 89034S	M.	de Menou	Jacques	ANCIEN	639				11/08/2010 00:00:00	2010	de 	Plouvorn	639			11/08/2010 00:00:00	2010	Maire
-000705	M.	de Montalembert	Geoffroy	ANCIEN	10166						Indetermine(e)/Indefini(e)	Ermenouville	3336					Maire
+000705	M.	de Montalembert	Geoffroy	ANCIEN	10166							Ermenouville	3336					Maire
 98032R	M.	de Montesquiou	Aymeri	ANCIEN	5132			1976	11/03/2001 00:00:00	2001	de 	Marsan	2060			11/03/2001 00:00:00	2001	Maire
 98032R	M.	de Montesquiou	Aymeri	ANCIEN	6126		11/03/2001 00:00:00	2001			de	Marsan	2428	11/03/2001 00:00:00	2001	17/03/2001 00:00:00	2001	Conseiller municipal
 98032R	M.	de Montesquiou	Aymeri	ANCIEN	6126		11/03/2001 00:00:00	2001			de	Marsan	2689	17/03/2001 00:00:00	2001			Maire
@@ -512,7 +512,7 @@ Matricule	Qualité	Nom usuel	Prénom usuel	État Sénateur	Identifiant mandat	Da
 14327T	M.	Delcros	Bernard	ACTIF	51561		01/12/2016 00:00:00				de	Neussargues en Pinatelle	50940	01/12/2016 00:00:00				Conseiller municipal
 11035H	M.	Delebarre	Michel	ANCIEN	12407		19/03/1989 00:00:00				de	Dunkerque	12553	19/03/1989 00:00:00		31/03/2014 00:00:00		Maire
 11035H	M.	Delebarre	Michel	ANCIEN	12407		19/03/1989 00:00:00				de	Dunkerque	13168	01/04/2014 00:00:00				Conseiller municipal
-59226H	M.	Delelis	André	ANCIEN	10095				04/09/2012 00:00:00	2012	Indetermine(e)/Indefini(e)	Lens	3265			04/09/2012 00:00:00	2012	Maire
+59226H	M.	Delelis	André	ANCIEN	10095				04/09/2012 00:00:00	2012		Lens	3265			04/09/2012 00:00:00	2012	Maire
 92017R	M.	Delevoye	Jean-Paul	ANCIEN	714				11/03/2001 00:00:00	2001	de 	Bapaume	714			11/03/2001 00:00:00	2001	Maire
 92017R	M.	Delevoye	Jean-Paul	ANCIEN	6149		11/03/2001 00:00:00	2001			de	Bapaume	2450	11/03/2001 00:00:00	2001	17/03/2001 00:00:00	2001	Conseiller municipal
 92017R	M.	Delevoye	Jean-Paul	ANCIEN	6149		11/03/2001 00:00:00	2001			de	Bapaume	2597	17/03/2001 00:00:00	2001			Maire
@@ -520,8 +520,8 @@ Matricule	Qualité	Nom usuel	Prénom usuel	État Sénateur	Identifiant mandat	Da
 80015A	M.	Delfau	Gérard	ANCIEN	6100		11/03/2001 00:00:00	2001			de	Saint-André-de-Sangonis	2406	11/03/2001 00:00:00	2001	17/03/2001 00:00:00	2001	Conseiller municipal
 80015A	M.	Delfau	Gérard	ANCIEN	6100		11/03/2001 00:00:00	2001			de	Saint-André-de-Sangonis	2682	17/03/2001 00:00:00	2001		2008	Maire
 80015A	M.	Delfau	Gérard	ANCIEN	6100		11/03/2001 00:00:00	2001			de	Saint-André-de-Sangonis	11271		2008			Conseiller municipal
-59572Y	M.	Delga	François	ANCIEN	10096				22/06/2016 00:00:00	2016	Indetermine(e)/Indefini(e)	Lautrec	3266			22/06/2016 00:00:00	2016	Maire
-000621	M.	Delmas	Lucien	ANCIEN	10097						Indetermine(e)/Indefini(e)	La Dornac	3267					Maire
+59572Y	M.	Delga	François	ANCIEN	10096				22/06/2016 00:00:00	2016		Lautrec	3266			22/06/2016 00:00:00	2016	Maire
+000621	M.	Delmas	Lucien	ANCIEN	10097							La Dornac	3267					Maire
 19663E	Mme	Delmont-Koropoulis	Annie	ACTIF	51101	30/03/2014 00:00:00	16/03/2008 00:00:00				de	Aulnay-sous-Bois	50384	05/04/2014 00:00:00		01/10/2017 00:00:00		Adjoint au maire
 19663E	Mme	Delmont-Koropoulis	Annie	ACTIF	51101	30/03/2014 00:00:00	16/03/2008 00:00:00				de	Aulnay-sous-Bois	50589	16/03/2008 00:00:00		04/04/2014 00:00:00		Conseiller municipal
 19663E	Mme	Delmont-Koropoulis	Annie	ACTIF	51101	30/03/2014 00:00:00	16/03/2008 00:00:00				de	Aulnay-sous-Bois	50766	02/10/2017 00:00:00				Conseiller municipal
@@ -552,9 +552,9 @@ Matricule	Qualité	Nom usuel	Prénom usuel	État Sénateur	Identifiant mandat	Da
 08022Q	Mme	Des Esgaulx	Marie-Hélène	ANCIEN	11567			2006			de	Gujan-Mestras	11462		2006			Maire
 08022Q	Mme	Des Esgaulx	Marie-Hélène	ANCIEN	11567			2006			de	Gujan-Mestras	11646		1992		2001	Conseiller municipal
 08022Q	Mme	Des Esgaulx	Marie-Hélène	ANCIEN	11567			2006			de	Gujan-Mestras	11647		1983		1992	Adjoint au maire
-58670V	M.	Desbriere	Bernard	ANCIEN	10098						Indetermine(e)/Indefini(e)	Buxy	3268					Conseiller municipal
+58670V	M.	Desbriere	Bernard	ANCIEN	10098							Buxy	3268					Conseiller municipal
 07028S	Mme	Descamps	Béatrice	ANCIEN	11267			2001			de	Méteren	11185		2001			Maire
-000331	M.	Descours Desacres	Jacques	ANCIEN	10099						Indetermine(e)/Indefini(e)	Ouilly-le-Vicomte	3269					Maire
+000331	M.	Descours Desacres	Jacques	ANCIEN	10099							Ouilly-le-Vicomte	3269					Maire
 04067M	M.	Desessard	Jean	ANCIEN	10910			2001	01/03/2006 00:00:00	2006	de	Paris (13ème arrondissement)	10935		2001	01/03/2006 00:00:00	2006	Conseiller de Paris
 14217N	Mme	Deseyne	Chantal	ACTIF	14161		20/03/2001 00:00:00				de	Serville	13542	20/03/2001 00:00:00	2001	30/09/2017 00:00:00		Maire
 14217N	Mme	Deseyne	Chantal	ACTIF	14161		20/03/2001 00:00:00				de	Serville	50964	01/10/2017 00:00:00				Conseiller municipal
@@ -602,16 +602,16 @@ Matricule	Qualité	Nom usuel	Prénom usuel	État Sénateur	Identifiant mandat	Da
 77043E	M.	du Luart	Roland	ANCIEN	6076		11/03/2001 00:00:00	2001			de	Le Luart	2373	11/03/2001 00:00:00	2001	17/03/2001 00:00:00	2001	Conseiller municipal
 77043E	M.	du Luart	Roland	ANCIEN	6076		11/03/2001 00:00:00	2001			de	Le Luart	2707	17/03/2001 00:00:00	2001	23/03/2001 00:00:00	2001	Maire
 77043E	M.	du Luart	Roland	ANCIEN	6076		11/03/2001 00:00:00	2001			de	Le Luart	2804	23/03/2001 00:00:00	2001			Adjoint au maire
-58330C	M.	Dubanchet	François	ANCIEN	10100				26/03/2019 00:00:00		Indetermine(e)/Indefini(e)	Saint-Etienne	3270			26/03/2019 00:00:00		Maire
+58330C	M.	Dubanchet	François	ANCIEN	10100				26/03/2019 00:00:00			Saint-Etienne	3270			26/03/2019 00:00:00		Maire
 04089T	M.	Dubois	Daniel	ACTIF	11891			1989		2004	d'	Oneux	11701		1989		2004	Maire
-59227J	M.	Duboscq	Franz	ANCIEN	10101				07/12/2012 00:00:00	2012	Indetermine(e)/Indefini(e)	Aroue-Ithorots-Olhaïby	3271			07/12/2012 00:00:00	2012	Maire
+59227J	M.	Duboscq	Franz	ANCIEN	10101				07/12/2012 00:00:00	2012		Aroue-Ithorots-Olhaïby	3271			07/12/2012 00:00:00	2012	Maire
 99003Q	M.	Dubrule	Paul	ANCIEN	5841				11/03/2001 00:00:00	2001	de	Fontainebleau	2192			11/03/2001 00:00:00	2001	Maire
 99003Q	M.	Dubrule	Paul	ANCIEN	6243		18/03/2001 00:00:00	2001	25/03/2001 00:00:00	2001	de	Fontainebleau	2586	18/03/2001 00:00:00	2001	25/03/2001 00:00:00	2001	Conseiller municipal
 11091R	Mme	Duchêne	Marie-Annick	ANCIEN	12386		31/03/1983 00:00:00			2014	de	Versailles	12471	18/06/1995 00:00:00			2014	Adjoint au maire
 11091R	Mme	Duchêne	Marie-Annick	ANCIEN	12386		31/03/1983 00:00:00			2014	de	Versailles	12956	31/03/1983 00:00:00		17/06/1995 00:00:00		Conseiller municipal
 87003B	M.	Dufaut	Alain	ACTIF	6207		18/06/1995 00:00:00			2004	d'	Avignon	2895	23/03/2001 00:00:00			2004	Conseiller municipal
 87003B	M.	Dufaut	Alain	ACTIF	6207		18/06/1995 00:00:00			2004	d'	Avignon	11355	18/06/1995 00:00:00	1995	23/03/2001 00:00:00	2001	Premier adjoint au maire
-000164	M.	Duffaut	Henri	ANCIEN	10102						Indetermine(e)/Indefini(e)	Avignon	3272					Conseiller municipal
+000164	M.	Duffaut	Henri	ANCIEN	10102							Avignon	3272					Conseiller municipal
 97003G	M.	Duffour	Michel	ANCIEN	649						de 	Nanterre	649					Conseiller municipal
 95027G	M.	Dugoin	Xavier	ANCIEN	628				13/12/2000 00:00:00	2000	de 	Mennecy	628			13/12/2000 00:00:00	2000	Maire
 95028H	M.	Dulait	André	ANCIEN	761			1983	11/03/2001 00:00:00	2001	de 	Ménigoute	761		1983	11/03/2001 00:00:00	2001	Maire
@@ -633,11 +633,11 @@ Matricule	Qualité	Nom usuel	Prénom usuel	État Sénateur	Identifiant mandat	Da
 98042T	M.	Dupont	Jean-Léonce	ANCIEN	6107		11/03/2001 00:00:00	2001		2008	de 	Bayeux	10835	01/07/2001 00:00:00	2001		2008	Conseiller municipal
 14151M	M.	Durain	Jérôme	ACTIF	14334		09/03/2008 00:00:00		23/03/2014 00:00:00		de	Chalon-sur-Saône	13621	09/03/2008 00:00:00		23/03/2014 00:00:00		Adjoint au maire
 14197C	M.	Duran	Alain	ACTIF	14056	06/01/1985 00:00:00	06/01/1985 00:00:00		03/11/2017 00:00:00		d'	Arnave	13505	06/01/1985 00:00:00		03/11/2017 00:00:00		Maire
-000647	M.	Durand	Jacques	ANCIEN	10103						Indetermine(e)/Indefini(e)	Réalmont	3273					Maire
+000647	M.	Durand	Jacques	ANCIEN	10103							Réalmont	3273					Maire
 14249W	Mme	Duranton	Nicole	ACTIF	14253		17/03/2008 00:00:00		17/03/2014 00:00:00		de	Nagel-Séez-Mesnil	13574	17/03/2008 00:00:00		17/03/2014 00:00:00		Maire
 14249W	Mme	Duranton	Nicole	ACTIF	14378	17/03/2014 00:00:00	17/03/2014 00:00:00				d'	Évreux	13679	17/03/2014 00:00:00				Conseiller municipal
 11062L	Mme	Duriez	Odette	ANCIEN	12823		19/03/1989 00:00:00				de	Cambrin	12993	19/03/1989 00:00:00				Maire
-59305F	M.	Duromea	André	ANCIEN	10104				13/07/1988 00:00:00	1988	Indetermine(e)/Indefini(e)	Le Havre	3274			13/07/1988 00:00:00	1988	Maire
+59305F	M.	Duromea	André	ANCIEN	10104				13/07/1988 00:00:00	1988		Le Havre	3274			13/07/1988 00:00:00	1988	Maire
 92020L	Mme	Durrieu	Josette	ANCIEN	721				11/03/2001 00:00:00	2001	de 	Saint-Laurent de Neste	721			11/03/2001 00:00:00	2001	Conseiller municipal
 92020L	Mme	Durrieu	Josette	ANCIEN	6175		11/03/2001 00:00:00	2001			de	Saint-Laurent de Neste	2473	11/03/2001 00:00:00	2001			Conseiller municipal
 89025R	M.	Dussaut	Bernard	ANCIEN	647				11/03/2001 00:00:00	2001	de 	Monségur	647			11/03/2001 00:00:00	2001	Maire
@@ -648,14 +648,14 @@ Matricule	Qualité	Nom usuel	Prénom usuel	État Sénateur	Identifiant mandat	Da
 14129P	M.	Dusserre	Jean-Yves	ANCIEN	13950			1977	27/12/2014 00:00:00		de	Chabottes	13396		1979		2008	Maire
 14129P	M.	Dusserre	Jean-Yves	ANCIEN	13950			1977	27/12/2014 00:00:00		de	Chabottes	13647		2014	27/12/2014 00:00:00		Premier adjoint au maire
 19285X	M.	Dutheil	Laurent	ANCIEN	50742	24/03/2014 00:00:00	24/03/2014 00:00:00				de	Villeneuve-Saint-Georges	49336	24/03/2014 00:00:00				Adjoint au maire
-58630M	M.	Eberhard	Jacques	ANCIEN	10105				29/07/2009 00:00:00	2009	Indetermine(e)/Indefini(e)	Gonfreville-l'Orcher	3275			29/07/2009 00:00:00	2009	Conseiller municipal
+58630M	M.	Eberhard	Jacques	ANCIEN	10105				29/07/2009 00:00:00	2009		Gonfreville-l'Orcher	3275			29/07/2009 00:00:00	2009	Conseiller municipal
 95029J	M.	Eckenspieller	Daniel	ANCIEN	728				11/03/2001 00:00:00	2001	de 	Illzach	728			11/03/2001 00:00:00	2001	Maire
 95029J	M.	Eckenspieller	Daniel	ANCIEN	6057		11/03/2001 00:00:00	2001			de	Illzach	2355	11/03/2001 00:00:00	2001	17/03/2001 00:00:00	2001	Conseiller municipal
 95029J	M.	Eckenspieller	Daniel	ANCIEN	6057		11/03/2001 00:00:00	2001			de	Illzach	2600	17/03/2001 00:00:00	2001			Maire
-58942B	M.	Eeckhoutte	Léon	ANCIEN	10106				31/01/2004 00:00:00	2004	Indetermine(e)/Indefini(e)	Villemur-sur-Tarn	3276			31/01/2004 00:00:00	2004	Maire
+58942B	M.	Eeckhoutte	Léon	ANCIEN	10106				31/01/2004 00:00:00	2004		Villemur-sur-Tarn	3276			31/01/2004 00:00:00	2004	Maire
 89026S	M.	Égu	André	ANCIEN	658				19/08/2016 00:00:00	2016	de 	Retiers	658			19/08/2016 00:00:00	2016	Conseiller municipal
-58502E	M.	Ehlers	Gérard	ANCIEN	10107						Indetermine(e)/Indefini(e)	<commune indéterminée>	3277					Conseiller municipal
-000411	M.	Elby	Henri	ANCIEN	10108						Indetermine(e)/Indefini(e)	Groffliers	3278					Maire
+58502E	M.	Ehlers	Gérard	ANCIEN	10107							<commune indéterminée>	3277					Conseiller municipal
+000411	M.	Elby	Henri	ANCIEN	10108							Groffliers	3278					Maire
 89027T	M.	Émin	Jean-Paul	ANCIEN	582		13/03/1983 00:00:00	1983	11/03/2001 00:00:00	2001	d'	Oyonnax	582	13/03/1983 00:00:00	1983	11/03/2001 00:00:00	2001	Adjoint au maire
 95030B	M.	Émorine	Jean-Paul	ACTIF	736				11/03/2001 00:00:00	2001	de 	Sennecey-le-Grand	736			11/03/2001 00:00:00	2001	Maire
 95030B	M.	Émorine	Jean-Paul	ACTIF	6058		11/03/2001 00:00:00	2001	16/03/2008 00:00:00	2008	de	Sennecey-le-Grand	2356	11/03/2001 00:00:00	2001	17/03/2001 00:00:00	2001	Conseiller municipal
@@ -666,7 +666,7 @@ Matricule	Qualité	Nom usuel	Prénom usuel	État Sénateur	Identifiant mandat	Da
 11096W	M.	Esnol	Philippe	ANCIEN	12546			1995	30/03/2014 00:00:00		de	Conflans-Sainte-Honorine	12786		1995		2000	Adjoint au maire
 11096W	M.	Esnol	Philippe	ANCIEN	12546			1995	30/03/2014 00:00:00		de	Conflans-Sainte-Honorine	12798	18/03/2001 00:00:00		30/03/2014 00:00:00		Maire
 11110B	Mme	Espagnac	Frédérique	ACTIF	12585		18/03/2001 00:00:00		01/04/2015 00:00:00		de	Pau	12867	18/03/2001 00:00:00		01/04/2015 00:00:00		Conseiller municipal
-58351H	M.	Espagnac	Raymond	ANCIEN	10109						Indetermine(e)/Indefini(e)	<commune indéterminée>	3279					Conseiller municipal
+58351H	M.	Espagnac	Raymond	ANCIEN	10109							<commune indéterminée>	3279					Conseiller municipal
 86025D	M.	Estier	Claude	ANCIEN	707				11/03/2001 00:00:00	2001	de 	Paris	707			11/03/2001 00:00:00	2001	Conseiller de Paris
 14187A	Mme	Estrosi Sassone	Dominique	ACTIF	14034			2001			de	Nice	13498		2001	31/10/2017 00:00:00		Adjoint au maire
 14187A	Mme	Estrosi Sassone	Dominique	ACTIF	14034			2001			de	Nice	50877	01/11/2017 00:00:00				Conseiller municipal
@@ -674,7 +674,7 @@ Matricule	Qualité	Nom usuel	Prénom usuel	État Sénateur	Identifiant mandat	Da
 19673G	Mme	Eustache-Brinio	Jacqueline	ACTIF	51165	18/03/2001 00:00:00		1983			de	Saint-Gratien	50415	18/03/2001 00:00:00		20/10/2017 00:00:00		Maire
 19673G	Mme	Eustache-Brinio	Jacqueline	ACTIF	51165	18/03/2001 00:00:00		1983			de	Saint-Gratien	50572		1983	17/03/2001 00:00:00		Adjoint au maire
 19673G	Mme	Eustache-Brinio	Jacqueline	ACTIF	51165	18/03/2001 00:00:00		1983			de	Saint-Gratien	50792	21/10/2017 00:00:00				Conseiller municipal
-58934B	M.	Faigt	Jules	ANCIEN	10110				08/07/2011 00:00:00	2011	Indetermine(e)/Indefini(e)	Beziers	3280			08/07/2011 00:00:00	2011	Conseiller municipal
+58934B	M.	Faigt	Jules	ANCIEN	10110				08/07/2011 00:00:00	2011		Beziers	3280			08/07/2011 00:00:00	2011	Conseiller municipal
 95031C	M.	Falco	Hubert	ANCIEN	774				11/03/2001 00:00:00	2001	de 	Pignans	774		1983	11/03/2001 00:00:00	2001	Maire
 95031C	M.	Falco	Hubert	ANCIEN	774				11/03/2001 00:00:00	2001	de 	Pignans	3124		1968		1983	Conseiller municipal
 95031C	M.	Falco	Hubert	ANCIEN	6208		18/03/2001 00:00:00	2001			de	Toulon	2547	18/03/2001 00:00:00	2001	25/03/2001 00:00:00	2001	Conseiller municipal
@@ -683,11 +683,11 @@ Matricule	Qualité	Nom usuel	Prénom usuel	État Sénateur	Identifiant mandat	Da
 92022N	M.	Fauchon	Pierre	ANCIEN	11887			1989		1995	de	Choue	11697		1989		1995	Maire
 92022N	M.	Fauchon	Pierre	ANCIEN	11888			1977		1983	de	Montdoubleau	11698		1997		1983	Adjoint au maire
 08066D	M.	Fauconnier	Alain	ANCIEN	11754			2001			de	Saint-Affrique	11615		2001			Maire
-000197	M.	Faure	Edgar	ANCIEN	10111						Indetermine(e)/Indefini(e)	Port-Lesney (Jura)	3281					Maire
+000197	M.	Faure	Edgar	ANCIEN	10111							Port-Lesney (Jura)	3281					Maire
 83031N	M.	Faure	Jean	ANCIEN	663				11/03/2001 00:00:00	2001	d'	Autrans	663			11/03/2001 00:00:00	2001	Maire
 83031N	M.	Faure	Jean	ANCIEN	6151		11/03/2001 00:00:00	2001	16/03/2008 00:00:00	2008	d'	Autrans	2452	11/03/2001 00:00:00	2001	17/03/2001 00:00:00	2001	Conseiller municipal
 83031N	M.	Faure	Jean	ANCIEN	6151		11/03/2001 00:00:00	2001	16/03/2008 00:00:00	2008	d'	Autrans	2637	17/03/2001 00:00:00	2001	16/03/2008 00:00:00	2008	Maire
-58818X	M.	Faure	Maurice	ANCIEN	10112				06/03/2014 00:00:00	2014	Indetermine(e)/Indefini(e)	Cahors	3282			06/03/2014 00:00:00	2014	Maire
+58818X	M.	Faure	Maurice	ANCIEN	10112				06/03/2014 00:00:00	2014		Cahors	3282			06/03/2014 00:00:00	2014	Maire
 11034G	M.	Favier	Christian	ANCIEN	12396			1977		1989	de	Champigny-sur-Marne	12503	01/03/1977 00:00:00	1977	01/03/1989 00:00:00	1989	Adjoint au maire
 11034G	M.	Favier	Christian	ANCIEN	12396			1977		1989	de	Champigny-sur-Marne	12907	01/03/1989 00:00:00		01/03/1995 00:00:00		Conseiller municipal
 97001E	M.	Fayolle	Gérard	ANCIEN	623						de 	Le Bugue	623					Maire
@@ -695,7 +695,7 @@ Matricule	Qualité	Nom usuel	Prénom usuel	État Sénateur	Identifiant mandat	Da
 19647E	M.	Féraud	Rémi	ACTIF	51263	18/03/2001 00:00:00	18/03/2001 00:00:00				du 	dixième arrondissement de Paris	50659	18/03/2001 00:00:00		15/03/2008 00:00:00		Adjoint au maire
 19647E	M.	Féraud	Rémi	ACTIF	51263	18/03/2001 00:00:00	18/03/2001 00:00:00				du 	dixième arrondissement de Paris	51022	16/03/2008 00:00:00		18/10/2017 00:00:00		Maire
 19647E	M.	Féraud	Rémi	ACTIF	51263	18/03/2001 00:00:00	18/03/2001 00:00:00				du 	dixième arrondissement de Paris	51023	19/10/2017 00:00:00				Conseiller d'arrondissement
-000177	M.	Ferrant	Charles	ANCIEN	10113						Indetermine(e)/Indefini(e)	Neufchâtel en Bray	3283					Conseiller municipal
+000177	M.	Ferrant	Charles	ANCIEN	10113							Neufchâtel en Bray	3283					Conseiller municipal
 08045X	M.	Fichet	Jean-Luc	ACTIF	11662			1989			de	Lanmeur	11533		1989	01/10/2017 00:00:00		Maire
 08045X	M.	Fichet	Jean-Luc	ACTIF	11662			1989			de	Lanmeur	50831	02/10/2017 00:00:00				Conseiller municipal
 11107G	M.	Filleul	Jean-Jacques	ANCIEN	12807		12/03/1983 00:00:00		30/03/2014 00:00:00		de	Montlouis sur Loire	12966	12/03/1983 00:00:00		30/03/2014 00:00:00		Maire
@@ -717,8 +717,8 @@ Matricule	Qualité	Nom usuel	Prénom usuel	État Sénateur	Identifiant mandat	Da
 01003G	M.	Fortassin	François	ANCIEN	6268		21/03/1971 00:00:00	1971	15/05/2017 00:00:00		de	Sarp	11393	20/03/1977 00:00:00	1977	11/03/2001 00:00:00	2001	Maire
 01003G	M.	Fortassin	François	ANCIEN	6268		21/03/1971 00:00:00	1971	15/05/2017 00:00:00		de	Sarp	11394	21/03/1971 00:00:00	1971	20/03/1977 00:00:00	1977	Conseiller municipal
 01003G	M.	Fortassin	François	ANCIEN	6268		21/03/1971 00:00:00	1971	15/05/2017 00:00:00		de	Sarp	11395	21/03/2008 00:00:00	2008	15/05/2017 00:00:00		Conseiller municipal
-000449	M.	Fosse	Roger	ANCIEN	10114				18/12/1996 00:00:00	1996	Indetermine(e)/Indefini(e)	Auffay	3284			18/12/1996 00:00:00	1996	Maire
-59574B	Mme	Fost	Paulette	ANCIEN	10115						Indetermine(e)/Indefini(e)	Saint-Ouen	3285					Maire
+000449	M.	Fosse	Roger	ANCIEN	10114				18/12/1996 00:00:00	1996		Auffay	3284			18/12/1996 00:00:00	1996	Maire
+59574B	Mme	Fost	Paulette	ANCIEN	10115							Saint-Ouen	3285					Maire
 98053W	M.	Foucaud	Thierry	ANCIEN	5231			1977	11/03/2001 00:00:00	2001	d'	Oissel	2116		1982	11/03/2001 00:00:00	2001	Maire
 98053W	M.	Foucaud	Thierry	ANCIEN	5231			1977	11/03/2001 00:00:00	2001	d'	Oissel	10791		1977		1982	Adjoint au maire
 98053W	M.	Foucaud	Thierry	ANCIEN	6059		11/03/2001 00:00:00				d'	Oissel	2357	11/03/2001 00:00:00	2001	17/03/2001 00:00:00	2001	Conseiller municipal
@@ -742,8 +742,8 @@ Matricule	Qualité	Nom usuel	Prénom usuel	État Sénateur	Identifiant mandat	Da
 83003J	M.	François	Philippe	ANCIEN	752				11/03/2001 00:00:00	2001	de 	Coulombs-en-Valois	752			11/03/2001 00:00:00	2001	Maire
 83003J	M.	François	Philippe	ANCIEN	6060		11/03/2001 00:00:00	2001	30/03/2019 00:00:00		de	Coulombs-en-Valois	2358	11/03/2001 00:00:00	2001	17/03/2001 00:00:00	2001	Conseiller municipal
 83003J	M.	François	Philippe	ANCIEN	6060		11/03/2001 00:00:00	2001	30/03/2019 00:00:00		de	Coulombs-en-Valois	2602	17/03/2001 00:00:00	2001	30/03/2019 00:00:00		Maire
-58944D	M.	Francou	Jean	ANCIEN	10116				13/03/2013 00:00:00	2013	Indetermine(e)/Indefini(e)	Salon-de-Provence	3286			13/03/2013 00:00:00	2013	Conseiller municipal
-86027F	Mme	Fraysse-Cazalis	Jacqueline	ANCIEN	10117						Indetermine(e)/Indefini(e)	Nanterre	3287					Maire
+58944D	M.	Francou	Jean	ANCIEN	10116				13/03/2013 00:00:00	2013		Salon-de-Provence	3286			13/03/2013 00:00:00	2013	Conseiller municipal
+86027F	Mme	Fraysse-Cazalis	Jacqueline	ANCIEN	10117							Nanterre	3287					Maire
 01037S	M.	Frécon	Jean-Claude	ANCIEN	6456			1971	10/12/2016 00:00:00		de	Pouilly-lès-Feurs	2961		1983		2006	Maire
 01037S	M.	Frécon	Jean-Claude	ANCIEN	6456			1971	10/12/2016 00:00:00		de	Pouilly-lès-Feurs	10826		1971		1972	Conseiller municipal
 01037S	M.	Frécon	Jean-Claude	ANCIEN	6456			1971	10/12/2016 00:00:00		de	Pouilly-lès-Feurs	10827		1972		1983	Adjoint au maire
@@ -753,16 +753,16 @@ Matricule	Qualité	Nom usuel	Prénom usuel	État Sénateur	Identifiant mandat	Da
 02001J	M.	Frimat	Bernard	ANCIEN	6670			2001	01/02/2002 00:00:00	2002	de	Valenciennes	3112		2001	01/02/2002 00:00:00	2002	Conseiller municipal
 11010L	M.	Frogier	Pierre	ACTIF	12412		13/03/1983 00:00:00		18/03/2001 00:00:00		de	Mont-Dore	12566	01/01/1987 00:00:00		18/03/2001 00:00:00		Maire
 11010L	M.	Frogier	Pierre	ACTIF	12412		13/03/1983 00:00:00		18/03/2001 00:00:00		de	Mont-Dore	13038	13/03/1983 00:00:00		01/01/1987 00:00:00		Conseiller municipal
-000533	M.	Fuzier	Claude	ANCIEN	10118				22/01/1997 00:00:00	1997	Indetermine(e)/Indefini(e)	Bondy	3288			22/01/1997 00:00:00	1997	Maire
+000533	M.	Fuzier	Claude	ANCIEN	10118				22/01/1997 00:00:00	1997		Bondy	3288			22/01/1997 00:00:00	1997	Maire
 94003T	M.	Gaillard	Yann	ANCIEN	593			1977	11/03/2001 00:00:00	2001	d'	Essoyes	593		1977	11/03/2001 00:00:00	2001	Maire
-59229L	M.	Gallet	Henri	ANCIEN	10119				18/05/2009 00:00:00	2009	Indetermine(e)/Indefini(e)	Dennebroeucq	3289			18/05/2009 00:00:00	2009	Maire
+59229L	M.	Gallet	Henri	ANCIEN	10119				18/05/2009 00:00:00	2009		Dennebroeucq	3289			18/05/2009 00:00:00	2009	Maire
 13005X	Mme	Gaouyer	Marie-Françoise	ANCIEN	12930		23/03/2008 00:00:00				d'	Eu	13115	23/03/2008 00:00:00	2008	31/03/2014 00:00:00		Maire
 13005X	Mme	Gaouyer	Marie-Françoise	ANCIEN	12930		23/03/2008 00:00:00				d'	Eu	13189	01/04/2014 00:00:00				Conseiller municipal
 98041S	M.	Garrec	René	ANCIEN	5165			1995	11/03/2001 00:00:00	2001	de 	Caen	2080		1995	11/03/2001 00:00:00	2001	Conseiller municipal
 98041S	M.	Garrec	René	ANCIEN	6342		11/03/2001 00:00:00	2001		2001	de	Caen	2907	11/03/2001 00:00:00	2001		2001	Conseiller municipal
 14231L	Mme	Gatel	Françoise	ACTIF	14344		20/03/2001 00:00:00				de	Châteaugiron	13636	20/03/2001 00:00:00		13/09/2017 00:00:00		Maire
 14231L	Mme	Gatel	Françoise	ACTIF	14344		20/03/2001 00:00:00				de	Châteaugiron	50882	14/09/2017 00:00:00				Conseiller municipal
-80020W	M.	Gaud	Gérard	ANCIEN	10120						Indetermine(e)/Indefini(e)	Bourg-lès-Valence	3290					Adjoint au maire
+80020W	M.	Gaud	Gérard	ANCIEN	10120							Bourg-lès-Valence	3290					Adjoint au maire
 01017N	M.	Gaudin	Christian	ANCIEN	6552			1989	15/05/2001 00:00:00	2001	du	Fuilet	3010		1989	15/05/2001 00:00:00	2001	Maire
 89029V	M.	Gaudin	Jean-Claude	ANCIEN	5062			1965	11/03/2001 00:00:00	2001	de 	Marseille	2025		1995	11/03/2001 00:00:00	2001	Maire
 89029V	M.	Gaudin	Jean-Claude	ANCIEN	5062			1965	11/03/2001 00:00:00	2001	de 	Marseille	10792		1965		1977	Conseiller municipal
@@ -770,7 +770,7 @@ Matricule	Qualité	Nom usuel	Prénom usuel	État Sénateur	Identifiant mandat	Da
 89029V	M.	Gaudin	Jean-Claude	ANCIEN	6185		11/03/2001 00:00:00	2001			de	Marseille	2482	11/03/2001 00:00:00	2001	25/03/2001 00:00:00	2001	Conseiller municipal
 89029V	M.	Gaudin	Jean-Claude	ANCIEN	6185		11/03/2001 00:00:00	2001			de	Marseille	2785	25/03/2001 00:00:00	2001			Maire
 01053S	M.	Gautier	Charles	ANCIEN	6508			1989	11/06/2014 00:00:00	2014	de	Saint-Herblain	2980		1989	11/06/2014 00:00:00	2014	Maire
-59535T	M.	Gautier	François	ANCIEN	10121						Indetermine(e)/Indefini(e)	Rouen	3291					Conseiller municipal
+59535T	M.	Gautier	François	ANCIEN	10121							Rouen	3291					Conseiller municipal
 01055U	Mme	Gautier	Gisèle	ANCIEN	6512			1989		2003	de	Carquefou	2982		1989	14/05/2003 00:00:00	2003	Maire
 07024N	M.	Gautier	Jacques	ANCIEN	11248		01/03/1989 00:00:00	1989			de	Garches	11171	01/03/1989 00:00:00	1989			Maire
 19695N	M.	Gay	Fabien	ACTIF	51398	23/03/2014 00:00:00	23/03/2014 00:00:00				du	Blanc-Mesnil	50584	23/03/2014 00:00:00				Conseiller municipal
@@ -789,7 +789,7 @@ Matricule	Qualité	Nom usuel	Prénom usuel	État Sénateur	Identifiant mandat	Da
 86006A	M.	Gérard	Alain	ANCIEN	6211		18/03/2001 00:00:00	2001	16/03/2008 00:00:00	2008	de	Quimper	2795	25/03/2001 00:00:00	2001	16/03/2008 00:00:00	2008	Maire
 89030N	M.	Gerbaud	François	ANCIEN	6112				13/01/2010 00:00:00	2010	de 	Bouges-le-Château	2416	11/03/2001 00:00:00	2001	13/01/2010 00:00:00	2010	Maire
 14355X	Mme	Gerbaud	Frédérique	ACTIF	15335	16/03/2008 00:00:00	16/03/2008 00:00:00				de 	Châteauroux	13933	16/03/2008 00:00:00				Conseiller municipal
-58656X	M.	Gerin	Alfred	ANCIEN	10122				01/06/2009 00:00:00	2009	Indetermine(e)/Indefini(e)	Ampuis	3292			01/06/2009 00:00:00	2009	Maire
+58656X	M.	Gerin	Alfred	ANCIEN	10122				01/06/2009 00:00:00	2009		Ampuis	3292			01/06/2009 00:00:00	2009	Maire
 11108H	M.	Germain	Jean	ANCIEN	12802		13/03/1983 00:00:00		02/04/2014 00:00:00		de	Tours	12958	13/03/1983 00:00:00		17/06/1995 00:00:00		Conseiller municipal
 11108H	M.	Germain	Jean	ANCIEN	12802		13/03/1983 00:00:00		02/04/2014 00:00:00		de	Tours	12959	18/06/1995 00:00:00		30/03/2014 00:00:00		Maire
 11108H	M.	Germain	Jean	ANCIEN	12802		13/03/1983 00:00:00		02/04/2014 00:00:00		de	Tours	13174	01/04/2014 00:00:00		02/04/2014 00:00:00		Conseiller municipal
@@ -814,7 +814,7 @@ Matricule	Qualité	Nom usuel	Prénom usuel	État Sénateur	Identifiant mandat	Da
 98017S	M.	Giraud	Francis	ANCIEN	5069			1983	11/03/2001 00:00:00	2001	de 	Roquefort-la-Bédoule	2029			11/03/2001 00:00:00	2001	Maire
 98017S	M.	Giraud	Francis	ANCIEN	6113		11/03/2001 00:00:00	2001	23/10/2010 00:00:00	2010	de	Roquefort-la-Bédoule	2417	11/03/2001 00:00:00	2001	17/03/2001 00:00:00	2001	Conseiller municipal
 98017S	M.	Giraud	Francis	ANCIEN	6113		11/03/2001 00:00:00	2001	23/10/2010 00:00:00	2010	de	Roquefort-la-Bédoule	2604	17/03/2001 00:00:00	2001	23/10/2010 00:00:00	2010	Maire
-000599	M.	Giraud	Michel	ANCIEN	10123				27/10/2011 00:00:00	2011	Indetermine(e)/Indefini(e)	Le Perreux	3293			27/10/2011 00:00:00	2011	Maire
+000599	M.	Giraud	Michel	ANCIEN	10123				27/10/2011 00:00:00	2011		Le Perreux	3293			27/10/2011 00:00:00	2011	Maire
 71018C	M.	Girault	Jean-Marie	ANCIEN	602				01/05/2016 00:00:00	2016	de 	Caen	602			01/05/2016 00:00:00	2016	Maire
 78003A	M.	Girod	Paul	ANCIEN	584				11/03/2001 00:00:00	2001	de 	Droizy	584			11/03/2001 00:00:00	2001	Maire
 78003A	M.	Girod	Paul	ANCIEN	6114		11/03/2001 00:00:00	2001			de 	Droizy	2418	11/03/2001 00:00:00	2001	17/03/2001 00:00:00	2001	Conseiller municipal
@@ -838,9 +838,9 @@ Matricule	Qualité	Nom usuel	Prénom usuel	État Sénateur	Identifiant mandat	Da
 95035G	M.	Gournac	Alain	ANCIEN	6062		11/03/2001 00:00:00	2001	30/01/2013 00:00:00		de	Le Pecq	2360	11/03/2001 00:00:00	2001	17/03/2001 00:00:00	2001	Conseiller municipal
 95035G	M.	Gournac	Alain	ANCIEN	6062		11/03/2001 00:00:00	2001	30/01/2013 00:00:00		de	Le Pecq	2606	17/03/2001 00:00:00	2001	30/01/2013 00:00:00		Maire
 95035G	M.	Gournac	Alain	ANCIEN	11904			1983		1989	de	Saint-Germain-en-Laye	11715		1983		1989	Adjoint au maire
-59230D	Mme	Gournay	Marie-Fanny	ANCIEN	10124						Indetermine(e)/Indefini(e)	Caestre	3294					Maire
+59230D	Mme	Gournay	Marie-Fanny	ANCIEN	10124							Caestre	3294					Maire
 04060E	Mme	Gousseau	Adeline	ANCIEN	10877			1995			d'	Alluets-le-Roi	10915		1995			Adjoint au maire
-59231E	M.	Goussebaire-Dupin	Yves	ANCIEN	10125						Indetermine(e)/Indefini(e)	Dax	3295					Maire
+59231E	M.	Goussebaire-Dupin	Yves	ANCIEN	10125							Dax	3295					Maire
 78006D	M.	Gouteyron	Adrien	ANCIEN	668				11/03/2001 00:00:00	2001	de 	Rosières	668			11/03/2001 00:00:00	2001	Maire
 78006D	M.	Gouteyron	Adrien	ANCIEN	6152		11/03/2001 00:00:00	2001			de	Rosières	2453	11/03/2001 00:00:00	2001	17/03/2001 00:00:00	2001	Conseiller municipal
 78006D	M.	Gouteyron	Adrien	ANCIEN	6152		11/03/2001 00:00:00	2001			de	Rosières	2607	17/03/2001 00:00:00	2001			Maire
@@ -850,9 +850,9 @@ Matricule	Qualité	Nom usuel	Prénom usuel	État Sénateur	Identifiant mandat	Da
 14211G	M.	Grand	Jean-Pierre	ACTIF	14160	14/03/1983 00:00:00	14/03/1983 00:00:00				de 	Castelnau-le-Lez	13540	14/03/1983 00:00:00		18/03/2001 00:00:00		Maire
 14211G	M.	Grand	Jean-Pierre	ACTIF	14160	14/03/1983 00:00:00	14/03/1983 00:00:00				de 	Castelnau-le-Lez	13541	01/04/2008 00:00:00		30/09/2017 00:00:00		Maire
 14211G	M.	Grand	Jean-Pierre	ACTIF	14160	14/03/1983 00:00:00	14/03/1983 00:00:00				de 	Castelnau-le-Lez	50702	01/10/2017 00:00:00				Conseiller municipal
-58816V	M.	Grandon	Jacques	ANCIEN	10126						Indetermine(e)/Indefini(e)	Poitiers	3296					Conseiller municipal
+58816V	M.	Grandon	Jacques	ANCIEN	10126							Poitiers	3296					Conseiller municipal
 89031P	M.	Grandon	Jean	ANCIEN	636				20/12/2010 00:00:00	2010	de 	Senonches	636			20/12/2010 00:00:00	2010	Maire
-59537V	M.	Graziani	Paul	ANCIEN	10127				30/07/2012 00:00:00	2012	Indetermine(e)/Indefini(e)	Boulogne-Billancourt	3297			30/07/2012 00:00:00	2012	Conseiller municipal
+59537V	M.	Graziani	Paul	ANCIEN	10127				30/07/2012 00:00:00	2012		Boulogne-Billancourt	3297			30/07/2012 00:00:00	2012	Conseiller municipal
 19565D	Mme	Gréaume	Michelle	ACTIF	50972	30/03/2014 00:00:00	16/03/2008 00:00:00				d'	Onnaing	50281	30/03/2014 00:00:00		04/10/2017 00:00:00		Maire
 19565D	Mme	Gréaume	Michelle	ACTIF	50972	30/03/2014 00:00:00	16/03/2008 00:00:00				d'	Onnaing	50660	16/03/2008 00:00:00		29/03/2014 00:00:00		Conseiller municipal
 19565D	Mme	Gréaume	Michelle	ACTIF	50972	30/03/2014 00:00:00	16/03/2008 00:00:00				d'	Onnaing	50846	05/10/2017 00:00:00				Conseiller municipal
@@ -863,8 +863,8 @@ Matricule	Qualité	Nom usuel	Prénom usuel	État Sénateur	Identifiant mandat	Da
 95036H	M.	Grignon	Francis	ANCIEN	6337		11/03/2001 00:00:00	2001		2001	de	Nordhouse	2898	18/03/2001 00:00:00	2001		2001	Maire
 98003L	M.	Grillot	Louis	ANCIEN	6186		11/03/2001 00:00:00	2001	16/03/2008 00:00:00	2008	de	Censerey	2483	11/03/2001 00:00:00	2001	17/03/2001 00:00:00	2001	Conseiller municipal
 98003L	M.	Grillot	Louis	ANCIEN	6186		11/03/2001 00:00:00	2001	16/03/2008 00:00:00	2008	de	Censerey	2686	17/03/2001 00:00:00	2001	16/03/2008 00:00:00	2008	Maire
-59232F	M.	Grimaldi	Roland	ANCIEN	10128						Indetermine(e)/Indefini(e)	Cateau-Cambrésis	3298					Maire
-000551	Mme	Gros	Brigitte	ANCIEN	10129						Indetermine(e)/Indefini(e)	Meulan	3299					Maire
+59232F	M.	Grimaldi	Roland	ANCIEN	10128							Cateau-Cambrésis	3298					Maire
+000551	Mme	Gros	Brigitte	ANCIEN	10129							Meulan	3299					Maire
 11049P	M.	Grosdidier	François	ACTIF	12188		01/03/2001 00:00:00				de	Woippy	12308	01/03/2001 00:00:00	2001	16/10/2017 00:00:00		Maire
 11049P	M.	Grosdidier	François	ACTIF	12188		01/03/2001 00:00:00				de	Woippy	51042	17/10/2017 00:00:00				Conseiller municipal
 11049P	M.	Grosdidier	François	ACTIF	12195		01/04/1989 00:00:00	1989	01/06/1995 00:00:00	1995	de	Metz	12313	01/03/1989 00:00:00	1989		1995	Conseiller municipal
@@ -872,11 +872,11 @@ Matricule	Qualité	Nom usuel	Prénom usuel	État Sénateur	Identifiant mandat	Da
 88009M	M.	Gruillot	Georges	ANCIEN	6338		11/03/2001 00:00:00	2001	01/07/2001 00:00:00	2001	de	Vercel-Villedieu-le-Camp	2899	11/03/2001 00:00:00	2001	18/03/2001 00:00:00	2001	Conseiller municipal
 88009M	M.	Gruillot	Georges	ANCIEN	6338		11/03/2001 00:00:00	2001	01/07/2001 00:00:00	2001	de	Vercel-Villedieu-le-Camp	2900	18/03/2001 00:00:00	2001	01/07/2001 00:00:00	2001	Maire
 14026U	Mme	Gruny	Pascale	ACTIF	14150		19/03/2001 00:00:00		31/10/2017 00:00:00		de	Saint-Quentin	13538	19/03/2001 00:00:00		31/10/2017 00:00:00		Conseiller municipal
-89032Q	M.	Guena	Yves	ANCIEN	10130				03/03/2016 00:00:00	2016	Indetermine(e)/Indefini(e)	Périgueux	3300			03/03/2016 00:00:00	2016	Maire
+89032Q	M.	Guena	Yves	ANCIEN	10130				03/03/2016 00:00:00	2016		Périgueux	3300			03/03/2016 00:00:00	2016	Maire
 01057W	M.	Guené	Charles	ACTIF	6518			1983	31/12/2015 00:00:00		de	Vaux-sous-Aubigny	2986		1983	31/12/2015 00:00:00		Maire
 01057W	M.	Guené	Charles	ACTIF	15287	02/01/2016 00:00:00	02/01/2016 00:00:00				de	Le Montsaugeonnais	13889	02/01/2016 00:00:00		31/10/2017 00:00:00		Maire
 01057W	M.	Guené	Charles	ACTIF	15287	02/01/2016 00:00:00	02/01/2016 00:00:00				de	Le Montsaugeonnais	51008	03/12/2017 00:00:00				Conseiller municipal
-58949J	M.	Guenier	Jean	ANCIEN	10131				25/10/2007 00:00:00	2007	Indetermine(e)/Indefini(e)	Bosc-Roger-en-Roumois	3301			25/10/2007 00:00:00	2007	Maire
+58949J	M.	Guenier	Jean	ANCIEN	10131				25/10/2007 00:00:00	2007		Bosc-Roger-en-Roumois	3301			25/10/2007 00:00:00	2007	Maire
 98022P	M.	Guérini	Jean-Noël	ACTIF	5088			1977	11/03/2001 00:00:00	2001	du	2e secteur de Marseille	2037		1977		1983	Conseiller municipal
 98022P	M.	Guérini	Jean-Noël	ACTIF	5088			1977	11/03/2001 00:00:00	2001	du	2e secteur de Marseille	2157		1983		1998	Conseiller municipal
 98022P	M.	Guérini	Jean-Noël	ACTIF	5088			1977	11/03/2001 00:00:00	2001	du	2e secteur de Marseille	2162		1995	11/03/2001 00:00:00	2001	Maire de secteur
@@ -894,12 +894,12 @@ Matricule	Qualité	Nom usuel	Prénom usuel	État Sénateur	Identifiant mandat	Da
 08016S	M.	Guillaume	Didier	ANCIEN	11531			1983		2009	de	Bourg-de-Péage	11447		1983		2009	Conseiller municipal
 08016S	M.	Guillaume	Didier	ANCIEN	11531			1983		2009	de	Bourg-de-Péage	11453		2004		1983	Adjoint au maire
 08016S	M.	Guillaume	Didier	ANCIEN	11531			1983		2009	de	Bourg-de-Péage	11454		1995		2004	Maire
-59233G	M.	Guillaume	Robert	ANCIEN	10132				07/04/2004 00:00:00	2004	Indetermine(e)/Indefini(e)	La Charité-sur-Loire	3302			07/04/2004 00:00:00	2004	Maire
+59233G	M.	Guillaume	Robert	ANCIEN	10132				07/04/2004 00:00:00	2004		La Charité-sur-Loire	3302			07/04/2004 00:00:00	2004	Maire
 14081Q	Mme	Guillemot	Annie	ACTIF	13871		31/05/1999 00:00:00				de	Bron	13302	31/05/1999 00:00:00		15/09/2015 00:00:00		Maire
 14081Q	Mme	Guillemot	Annie	ACTIF	13871		31/05/1999 00:00:00				de	Bron	13839	16/09/2015 00:00:00				Conseiller municipal
 19553Y	Mme	Guillotin	Véronique	ACTIF	50892		16/03/2008 00:00:00		15/11/2017 00:00:00		de	Villerupt	50194	16/03/2008 00:00:00		15/11/2017 00:00:00		Conseiller municipal
 86030A	M.	Haenel	Hubert	ANCIEN	729			1977	11/03/2001 00:00:00	2001	de 	Lapoutroie	729			11/03/2001 00:00:00	2001	Maire
-58115W	M.	Hammann	Jean-Paul	ANCIEN	10133						Indetermine(e)/Indefini(e)	Ittenheim	3303					Maire
+58115W	M.	Hammann	Jean-Paul	ANCIEN	10133							Ittenheim	3303					Maire
 19725B	Mme	Harribey	Laurence	ACTIF	51465	16/03/2008 00:00:00	16/03/2008 00:00:00		02/10/2017 00:00:00		de	Noaillan	50673	16/03/2008 00:00:00		02/10/2017 00:00:00		Maire
 19329S	M.	Hassani	Abdallah	ACTIF	50948	18/03/2001 00:00:00	18/03/2001 00:00:00				de	Mamoudzou	50256	18/03/2001 00:00:00		16/03/2008 00:00:00		Maire
 19329S	M.	Hassani	Abdallah	ACTIF	50948	18/03/2001 00:00:00	18/03/2001 00:00:00				de	Mamoudzou	50663	23/03/2014 00:00:00				Conseiller municipal
@@ -907,7 +907,7 @@ Matricule	Qualité	Nom usuel	Prénom usuel	État Sénateur	Identifiant mandat	Da
 95037J	M.	Haut	Claude	ACTIF	6339		11/03/2001 00:00:00	2001		2001	de 	Vaison-la-Romaine	2901	11/03/2001 00:00:00	2001	18/03/2001 00:00:00	2001	Conseiller municipal
 95037J	M.	Haut	Claude	ACTIF	6339		11/03/2001 00:00:00	2001		2001	de 	Vaison-la-Romaine	2902	18/03/2001 00:00:00	2001	08/12/2001 00:00:00	2001	Maire
 92025R	Mme	Heinis	Anne	ANCIEN	6241		18/03/2001 00:00:00	2001	18/12/2009 00:00:00	2009	de	Valognes	2584	18/03/2001 00:00:00	2001	18/12/2009 00:00:00	2009	Conseiller municipal
-000185	M.	Henneguelle	Henri	ANCIEN	10134				27/12/1983 00:00:00	1983	Indetermine(e)/Indefini(e)	Boulogne-sur-Mer	3304			27/12/1983 00:00:00	1983	Maire
+000185	M.	Henneguelle	Henri	ANCIEN	10134				27/12/1983 00:00:00	1983		Boulogne-sur-Mer	3304			27/12/1983 00:00:00	1983	Maire
 01033N	Mme	Henneron	Françoise	ANCIEN	6491			1995		2001	de	Roquetoire	2972		1995		2001	Maire
 01033N	Mme	Henneron	Françoise	ANCIEN	6492		23/03/2001 00:00:00	2001	14/03/2008 00:00:00	2008	de	Roquetoire	2973	23/03/2001 00:00:00	2001	14/03/2008 00:00:00	2008	Maire
 01033N	Mme	Henneron	Françoise	ANCIEN	11338		14/03/2008 00:00:00				de	Roquetoire	11306	14/03/2008 00:00:00				Conseiller municipal
@@ -942,7 +942,7 @@ Matricule	Qualité	Nom usuel	Prénom usuel	État Sénateur	Identifiant mandat	Da
 04078Q	M.	Hue	Robert	ANCIEN	10952			1977			de	Montigny-lès-Cormeilles	10965		1977	01/01/2008 00:00:00	2008	Maire
 04078Q	M.	Hue	Robert	ANCIEN	10952			1977			de	Montigny-lès-Cormeilles	13081	02/01/2008 00:00:00				Conseiller municipal
 80021X	M.	Hugo	Bernard Charles	ANCIEN	590				15/10/2001 00:00:00	2001	d'	Aubenas	590			15/10/2001 00:00:00	2001	Conseiller municipal
-58644T	M.	Hugo	Bernard Michel	ANCIEN	10135						Indetermine(e)/Indefini(e)	Trappes	3305					Maire
+58644T	M.	Hugo	Bernard Michel	ANCIEN	10135							Trappes	3305					Maire
 19399H	M.	Hugonet	Jean-Raymond	ACTIF	50962		18/03/2001 00:00:00				de	Limours	50271	18/03/2001 00:00:00		16/11/2017 00:00:00		Maire
 19399H	M.	Hugonet	Jean-Raymond	ACTIF	50962		18/03/2001 00:00:00				de	Limours	50945	17/11/2017 00:00:00				Conseiller municipal
 92026S	M.	Hugot	Jean-Paul	ANCIEN	677				11/03/2001 00:00:00	2001	de 	Saumur	677			11/03/2001 00:00:00	2001	Maire
@@ -969,17 +969,17 @@ Matricule	Qualité	Nom usuel	Prénom usuel	État Sénateur	Identifiant mandat	Da
 14213J	Mme	Imbert	Corinne	ACTIF	14133			1995			de	Beauvais-sur-Matha	50815		1995	30/06/2006 00:00:00		Conseiller municipal
 14044W	Mme	Iriti	Teura	ANCIEN	14379			2008		2008	d'	Arue	13680		2008		2008	Conseiller municipal
 19551W	M.	Jacquin	Olivier	ACTIF	50889	16/03/2008 00:00:00	16/03/2008 00:00:00		09/10/2017 00:00:00		de	Limey-Remenauville	50190	16/03/2008 00:00:00		09/10/2017 00:00:00		Premier adjoint au maire
-000630	M.	Janetti	Maurice	ANCIEN	10136				22/07/1999 00:00:00	1999	Indetermine(e)/Indefini(e)	Saint-Julien-le-Montagne	3306			22/07/1999 00:00:00	1999	Maire
+000630	M.	Janetti	Maurice	ANCIEN	10136				22/07/1999 00:00:00	1999		Saint-Julien-le-Montagne	3306			22/07/1999 00:00:00	1999	Maire
 19511N	M.	Janssens	Jean-Marie	ACTIF	50861		16/03/2008 00:00:00		31/12/2015 00:00:00		de	Montrichard	50160	31/03/2014 00:00:00		31/12/2015 00:00:00		Maire
 19511N	M.	Janssens	Jean-Marie	ACTIF	50861		16/03/2008 00:00:00		31/12/2015 00:00:00		de	Montrichard	50617	16/03/2008 00:00:00		29/03/2014 00:00:00		Conseiller municipal
 19511N	M.	Janssens	Jean-Marie	ACTIF	50862		01/01/2016 00:00:00		25/10/2017 00:00:00		de	Montrichard Val de Cher	50161	01/01/2016 00:00:00		25/10/2017 00:00:00		Maire
-58348N	M.	Jargot	Paul	ANCIEN	10137				04/07/2003 00:00:00	2003	Indetermine(e)/Indefini(e)	Crolles	3307			04/07/2003 00:00:00	2003	Maire
+58348N	M.	Jargot	Paul	ANCIEN	10137				04/07/2003 00:00:00	2003		Crolles	3307			04/07/2003 00:00:00	2003	Maire
 98027U	M.	Jarlier	Pierre	ANCIEN	5123			1993	11/03/2001 00:00:00	2001	de 	Saint-Flour	2055			11/03/2001 00:00:00	2001	Maire
 98027U	M.	Jarlier	Pierre	ANCIEN	6116		11/03/2001 00:00:00	2001			de	Saint-Flour	2419	11/03/2001 00:00:00	2001	18/03/2001 00:00:00	2001	Conseiller municipal
 98027U	M.	Jarlier	Pierre	ANCIEN	6116		11/03/2001 00:00:00	2001			de	Saint-Flour	2642	18/03/2001 00:00:00	2001			Maire
 06001B	Mme	Jarraud-Vergnolle	Annie	ANCIEN	11189		18/03/2001 00:00:00	2001			d'	Anglet	11132	18/03/2001 00:00:00	2001		2008	Conseiller municipal
 06001B	Mme	Jarraud-Vergnolle	Annie	ANCIEN	11189		18/03/2001 00:00:00	2001			d'	Anglet	11382		2008			Adjoint au maire
-59539X	M.	Jarrot	André	ANCIEN	10138				21/04/2000 00:00:00	2000	Indetermine(e)/Indefini(e)	Montceau-les-Mines	3308			21/04/2000 00:00:00	2000	Conseiller municipal
+59539X	M.	Jarrot	André	ANCIEN	10138				21/04/2000 00:00:00	2000		Montceau-les-Mines	3308			21/04/2000 00:00:00	2000	Conseiller municipal
 19715Y	Mme	Jasmin	Victoire	ACTIF	51374	30/03/2014 00:00:00	16/03/2008 00:00:00		01/11/2017 00:00:00		de	Morne-à-l'Eau	50554	30/03/2014 00:00:00		01/11/2017 00:00:00		Adjoint au maire
 19715Y	Mme	Jasmin	Victoire	ACTIF	51374	30/03/2014 00:00:00	16/03/2008 00:00:00		01/11/2017 00:00:00		de	Morne-à-l'Eau	50658	16/03/2008 00:00:00		29/03/2014 00:00:00		Premier adjoint au maire
 19715Y	Mme	Jasmin	Victoire	ACTIF	51613		02/11/2017 00:00:00				de	Morne-à-l'Eau	51080	02/11/2017 00:00:00				Conseiller municipal
@@ -1084,7 +1084,7 @@ Matricule	Qualité	Nom usuel	Prénom usuel	État Sénateur	Identifiant mandat	Da
 98043U	M.	Lassourd	Patrick	ANCIEN	6117		11/03/2001 00:00:00	2001	28/08/2003 00:00:00	2003	de	La Guerche-de-Bretagne	2611	17/03/2001 00:00:00	2001	28/08/2003 00:00:00	2003	Maire
 19699S	M.	Laugier	Michel	ACTIF	51280	18/03/2001 00:00:00	18/03/2001 00:00:00		30/09/2017 00:00:00		de	Montigny-le-Bretonneux	50469	18/03/2001 00:00:00		08/10/2004 00:00:00		Premier adjoint au maire
 19699S	M.	Laugier	Michel	ACTIF	51280	18/03/2001 00:00:00	18/03/2001 00:00:00		30/09/2017 00:00:00		de	Montigny-le-Bretonneux	50471	08/10/2004 00:00:00		30/09/2017 00:00:00		Maire
-000456	M.	Laurent	Bernard	ANCIEN	10140						Indetermine(e)/Indefini(e)	Marigny-le-Châtel	3310					Conseiller municipal
+000456	M.	Laurent	Bernard	ANCIEN	10140							Marigny-le-Châtel	3310					Conseiller municipal
 08015R	M.	Laurent	Daniel	ACTIF	11528			1977	13/01/2019 00:00:00		de	Pons	11443		1977		1982	Conseiller municipal
 08015R	M.	Laurent	Daniel	ACTIF	11528			1977	13/01/2019 00:00:00		de	Pons	11446	18/06/1995 00:00:00	1995	16/10/2008 00:00:00		Maire
 08015R	M.	Laurent	Daniel	ACTIF	11528			1977	13/01/2019 00:00:00		de	Pons	11664		1983		1994	Adjoint au maire
@@ -1098,8 +1098,8 @@ Matricule	Qualité	Nom usuel	Prénom usuel	État Sénateur	Identifiant mandat	Da
 19711U	Mme	Lavarde	Christine	ACTIF	51345		16/03/2008 00:00:00				de	Boulogne-Billancourt	50525	30/03/2014 00:00:00		05/05/2018 00:00:00		Adjoint au maire
 19711U	Mme	Lavarde	Christine	ACTIF	51345		16/03/2008 00:00:00				de	Boulogne-Billancourt	50529	16/03/2008 00:00:00		29/03/2014 00:00:00		Conseiller municipal
 19711U	Mme	Lavarde	Christine	ACTIF	51345		16/03/2008 00:00:00				de	Boulogne-Billancourt	51045	06/05/2018 00:00:00				Conseiller municipal
-58948H	M.	Lazuech	Louis	ANCIEN	10141				07/03/2002 00:00:00	2002	Indetermine(e)/Indefini(e)	Montbazens	3311			07/03/2002 00:00:00	2002	Conseiller municipal
-58626R	Mme	Le Bellegou-Beguin	Geneviève	ANCIEN	10142				27/04/2012 00:00:00	2012	Indetermine(e)/Indefini(e)	Aups	3312			27/04/2012 00:00:00	2012	Maire
+58948H	M.	Lazuech	Louis	ANCIEN	10141				07/03/2002 00:00:00	2002		Montbazens	3311			07/03/2002 00:00:00	2002	Conseiller municipal
+58626R	Mme	Le Bellegou-Beguin	Geneviève	ANCIEN	10142				27/04/2012 00:00:00	2012		Aups	3312			27/04/2012 00:00:00	2012	Maire
 81011A	M.	Le Breton	Henri	ANCIEN	687				11/03/2001 00:00:00	2001	de 	Buléon	687			11/03/2001 00:00:00	2001	Maire
 81011A	M.	Le Breton	Henri	ANCIEN	6028		11/03/2001 00:00:00	2001			de	Buléon	2329	11/03/2001 00:00:00	2001	17/03/2001 00:00:00	2001	Conseiller municipal
 81011A	M.	Le Breton	Henri	ANCIEN	6028		11/03/2001 00:00:00	2001			de	Buléon	2644	17/03/2001 00:00:00	2001			Maire
@@ -1107,7 +1107,7 @@ Matricule	Qualité	Nom usuel	Prénom usuel	État Sénateur	Identifiant mandat	Da
 98038X	M.	Le Cam	Gérard	ANCIEN	6118		11/03/2001 00:00:00	2001			de	Plénée-Jugon	2421	11/03/2001 00:00:00	2001	24/03/2001 00:00:00	2001	Conseiller municipal
 98038X	M.	Le Cam	Gérard	ANCIEN	6118		11/03/2001 00:00:00	2001			de	Plénée-Jugon	2688	24/03/2001 00:00:00	2001	21/03/2008 00:00:00		Adjoint au maire
 98038X	M.	Le Cam	Gérard	ANCIEN	6118		11/03/2001 00:00:00	2001			de	Plénée-Jugon	11299	21/03/2008 00:00:00	2008			Maire
-58924Y	M.	Le Cozannet	Yves	ANCIEN	10143				19/08/2004 00:00:00	2004	Indetermine(e)/Indefini(e)	Minihy-Tréguier	3313			19/08/2004 00:00:00	2004	Maire
+58924Y	M.	Le Cozannet	Yves	ANCIEN	10143				19/08/2004 00:00:00	2004		Minihy-Tréguier	3313			19/08/2004 00:00:00	2004	Maire
 82002D	M.	Le Grand	Jean-François	ANCIEN	678				11/03/2001 00:00:00	2001	de 	Lessay	678			11/03/2001 00:00:00	2001	Conseiller municipal
 82002D	M.	Le Grand	Jean-François	ANCIEN	678				11/03/2001 00:00:00	2001	de 	Lessay	2893		1992		1996	Maire
 82002D	M.	Le Grand	Jean-François	ANCIEN	6340		11/03/2001 00:00:00	2001		2001	de 	Lessay	2904	11/03/2001 00:00:00	2001		2001	Conseiller municipal
@@ -1121,10 +1121,10 @@ Matricule	Qualité	Nom usuel	Prénom usuel	État Sénateur	Identifiant mandat	Da
 07025P	M.	Le Vern	Alain	ANCIEN	11256			1983	21/03/2008 00:00:00	2008	de 	Saint-Saëns	11177		1983	21/03/2008 00:00:00	2008	Conseiller municipal
 07025P	M.	Le Vern	Alain	ANCIEN	11256			1983	21/03/2008 00:00:00	2008	de 	Saint-Saëns	11180		1989		2001	Maire
 07025P	M.	Le Vern	Alain	ANCIEN	11256			1983	21/03/2008 00:00:00	2008	de 	Saint-Saëns	11182		2001		2004	Adjoint au maire
-000442	M.	Lecanuet	Jean	ANCIEN	10144						Indetermine(e)/Indefini(e)	Rouen	3314					Maire
+000442	M.	Lecanuet	Jean	ANCIEN	10144							Rouen	3314					Maire
 01042P	M.	Lecerf	Jean-René	ANCIEN	6557			1994	01/01/2003 00:00:00	2003	de	Marcq-en-Baroeul	3018		1994	26/10/2001 00:00:00	2001	Maire
 01042P	M.	Lecerf	Jean-René	ANCIEN	6557			1994	01/01/2003 00:00:00	2003	de	Marcq-en-Baroeul	3114	26/10/2001 00:00:00	2001	01/01/2003 00:00:00	2003	Conseiller municipal
-000248	M.	Lechenault	France	ANCIEN	10145						Indetermine(e)/Indefini(e)	Bouzeron	3315					Maire
+000248	M.	Lechenault	France	ANCIEN	10145							Bouzeron	3315					Maire
 92030N	M.	Leclerc	Dominique	ANCIEN	661			1977	11/03/2001 00:00:00	2001	de 	La Ville-aux-Dames	661			11/03/2001 00:00:00	2001	Maire
 92030N	M.	Leclerc	Dominique	ANCIEN	6031		11/03/2001 00:00:00		21/03/2008 00:00:00	2008	de	La Ville-aux-Dames	2331	11/03/2001 00:00:00	2001	17/03/2001 00:00:00	2001	Conseiller municipal
 92030N	M.	Leclerc	Dominique	ANCIEN	6031		11/03/2001 00:00:00		21/03/2008 00:00:00	2008	de	La Ville-aux-Dames	2612	17/03/2001 00:00:00	2001	31/01/2006 00:00:00	2006	Maire
@@ -1135,7 +1135,7 @@ Matricule	Qualité	Nom usuel	Prénom usuel	État Sénateur	Identifiant mandat	Da
 08010L	M.	Lefèvre	Antoine	ACTIF	11492			2001			de	Laon	11657		1995		1999	Conseiller municipal
 08010L	M.	Lefèvre	Antoine	ACTIF	11492			2001			de	Laon	11658		1999	17/03/2001 00:00:00		Adjoint au maire
 08010L	M.	Lefèvre	Antoine	ACTIF	11492			2001			de	Laon	50718	16/10/2017 00:00:00				Conseiller municipal
-000280	M.	Lefort	Fernand	ANCIEN	10146						Indetermine(e)/Indefini(e)	Saint-Ouen	3316					Conseiller municipal
+000280	M.	Lefort	Fernand	ANCIEN	10146							Saint-Ouen	3316					Conseiller municipal
 92031P	M.	Legendre	Jacques	ANCIEN	697			1995	10/03/2001 00:00:00		de 	Cambrai	697		1995	10/03/2001 00:00:00	2001	Maire
 92031P	M.	Legendre	Jacques	ANCIEN	6032		11/03/2001 00:00:00				de	Cambrai	2333	11/03/2001 00:00:00	2001			Conseiller municipal
 96001A	M.	Lèguevaques	Guy	ANCIEN	642						de 	Launaguet	642					Conseiller municipal
@@ -1146,7 +1146,7 @@ Matricule	Qualité	Nom usuel	Prénom usuel	État Sénateur	Identifiant mandat	Da
 08039A	M.	Leleux	Jean-Pierre	ACTIF	11634		01/03/1983 00:00:00		31/03/2014 00:00:00		de	Grasse	11660	01/03/1983 00:00:00		01/06/1987 00:00:00		Conseiller municipal
 08039A	M.	Leleux	Jean-Pierre	ACTIF	11634		01/03/1983 00:00:00		31/03/2014 00:00:00		de	Grasse	11661	01/06/1987 00:00:00		18/06/1995 00:00:00		Adjoint au maire
 92032Q	M.	Lemaire	Guy	ANCIEN	671				11/03/2001 00:00:00	2001	de 	La Baule	671			11/03/2001 00:00:00	2001	Conseiller municipal
-000144	M.	Lemaire	Marcel	ANCIEN	10147						Indetermine(e)/Indefini(e)	Saint-Thierry	3317					Maire
+000144	M.	Lemaire	Marcel	ANCIEN	10147							Saint-Thierry	3317					Maire
 14037X	M.	Lemoyne	Jean-Baptiste	ANCIEN	13824	28/03/2014 00:00:00		2014			de	Vallery	13254		2014			Maire
 11003M	M.	Léonard	Claude	ANCIEN	12074			1983			de	Montmédy	12264		2008			Conseiller municipal
 11003M	M.	Léonard	Claude	ANCIEN	12074			1983			de	Montmédy	12266		1983		2008	Maire
@@ -1169,14 +1169,14 @@ Matricule	Qualité	Nom usuel	Prénom usuel	État Sénateur	Identifiant mandat	Da
 01043Q	Mme	Létard	Valérie	ACTIF	6536		18/03/2001 00:00:00	2001		2005	de	Valenciennes	2996	18/03/2001 00:00:00	2001		2005	Adjoint au maire
 01043Q	Mme	Létard	Valérie	ACTIF	12057			2008	12/01/2016 00:00:00		de	Valenciennes	11805		2008	12/01/2016 00:00:00		Adjoint au maire
 19697Q	M.	Lévrier	Martin	ACTIF	51292	16/03/2008 00:00:00	16/03/2008 00:00:00				de	Versailles	50480	16/03/2008 00:00:00				Conseiller municipal
-89033R	M.	Leyzour	Félix	ANCIEN	10148						Indetermine(e)/Indefini(e)	Callac	3318					Maire
+89033R	M.	Leyzour	Félix	ANCIEN	10148							Callac	3318					Maire
 95044H	M.	Lise	Claude	ANCIEN	796				11/03/2001 00:00:00	2001	de 	Fort-de-France	796			11/03/2001 00:00:00	2001	Adjoint au maire
-59546W	M.	Lise	Roger	ANCIEN	10149						Indetermine(e)/Indefini(e)	Case-Pilote	3319					Conseiller municipal
+59546W	M.	Lise	Roger	ANCIEN	10149							Case-Pilote	3319					Conseiller municipal
 14205J	Mme	Loisier	Anne-Catherine	ACTIF	14109	17/03/2008 00:00:00	17/03/2008 00:00:00				de	Saulieu	13526	17/03/2008 00:00:00		11/10/2017 00:00:00		Maire
 14205J	Mme	Loisier	Anne-Catherine	ACTIF	14109	17/03/2008 00:00:00	17/03/2008 00:00:00				de	Saulieu	50775	12/10/2017 00:00:00				Conseiller municipal
 14219Q	M.	Longeot	Jean-François	ACTIF	14187			2014	28/02/2018 00:00:00		d'	Ornans	13550		2014	25/01/2016 00:00:00		Maire
 14219Q	M.	Longeot	Jean-François	ACTIF	14187			2014	28/02/2018 00:00:00		d'	Ornans	13893	26/01/2016 00:00:00		28/02/2018 00:00:00		Conseiller municipal
-000351	M.	Longequeue	Louis	ANCIEN	10150						Indetermine(e)/Indefini(e)	Limoges	3320					Maire
+000351	M.	Longequeue	Louis	ANCIEN	10150							Limoges	3320					Maire
 10005K	Mme	Longère	Christiane	ANCIEN	12029			1997			de	Briennon	11780		1997			Maire
 14059S	Mme	Lopez	Vivette	ACTIF	13843	18/03/2001 00:00:00	18/03/2001 00:00:00				de 	Mus	13272	18/03/2001 00:00:00		18/09/2017 00:00:00		Maire
 14059S	Mme	Lopez	Vivette	ACTIF	13843	18/03/2001 00:00:00	18/03/2001 00:00:00				de 	Mus	50829	19/09/2017 00:00:00				Conseiller municipal
@@ -1190,7 +1190,7 @@ Matricule	Qualité	Nom usuel	Prénom usuel	État Sénateur	Identifiant mandat	Da
 95045J	M.	Lorrain	Jean-Louis	ANCIEN	6075		11/03/2001 00:00:00	2001		2008	de	Landser	2645	17/03/2001 00:00:00	2001		2008	Maire
 92033R	M.	Loueckhote	Simon	ANCIEN	799			1983	11/03/2001 00:00:00	2001	d'	Ouvéa	799		1983	11/03/2001 00:00:00	2001	Conseiller municipal
 92033R	M.	Loueckhote	Simon	ANCIEN	11351			2008		2008	de	Nouméa	11321		2008		2008	Conseiller municipal
-59547X	M.	Louisy	François	ANCIEN	10151				17/09/2007 00:00:00	2007	Indetermine(e)/Indefini(e)	Goyave	3321			17/09/2007 00:00:00	2007	Maire
+59547X	M.	Louisy	François	ANCIEN	10151				17/09/2007 00:00:00	2007		Goyave	3321			17/09/2007 00:00:00	2007	Maire
 08012N	M.	Lozach	Jean-Jacques	ACTIF	11512			1986	18/06/1995 00:00:00	1995	de	Masbaraud-Mérignat	11431		1986	18/06/1995 00:00:00	1995	Maire
 08012N	M.	Lozach	Jean-Jacques	ACTIF	11513		18/06/1995 00:00:00	1995		2009	de	Bourganeuf	11432	18/06/1995 00:00:00	1995		2001	Maire
 08012N	M.	Lozach	Jean-Jacques	ACTIF	11513		18/06/1995 00:00:00	1995		2009	de	Bourganeuf	11433		2001		2009	Conseiller municipal
@@ -1216,8 +1216,8 @@ Matricule	Qualité	Nom usuel	Prénom usuel	État Sénateur	Identifiant mandat	Da
 95046K	M.	Mahéas	Jacques	ANCIEN	756				11/03/2001 00:00:00	2001	de 	Neuilly-sur-Marne	756			11/03/2001 00:00:00	2001	Maire
 95046K	M.	Mahéas	Jacques	ANCIEN	6077		11/03/2001 00:00:00	2001			de	Neuilly-sur-Marne	2374	11/03/2001 00:00:00	2001	17/03/2001 00:00:00	2001	Conseiller municipal
 95046K	M.	Mahéas	Jacques	ANCIEN	6077		11/03/2001 00:00:00	2001			de	Neuilly-sur-Marne	2663	17/03/2001 00:00:00	2001			Maire
-58947G	M.	Malassagne	Paul	ANCIEN	10152				05/09/2007 00:00:00	2007	Indetermine(e)/Indefini(e)	Massiac	3322			05/09/2007 00:00:00	2007	Conseiller municipal
-000611	M.	Male	Guy	ANCIEN	10153						Indetermine(e)/Indefini(e)	Prades	3323					Maire
+58947G	M.	Malassagne	Paul	ANCIEN	10152				05/09/2007 00:00:00	2007		Massiac	3322			05/09/2007 00:00:00	2007	Conseiller municipal
+000611	M.	Male	Guy	ANCIEN	10153							Prades	3323					Maire
 19657G	Mme	Malet	Viviane	ACTIF	51093		16/03/2008 00:00:00				de	Saint-Pierre	50380	30/03/2014 00:00:00		22/12/2017 00:00:00		Adjoint au maire
 19657G	Mme	Malet	Viviane	ACTIF	51093		16/03/2008 00:00:00				de	Saint-Pierre	50382	16/03/2008 00:00:00		29/03/2014 00:00:00		Conseiller municipal
 19657G	Mme	Malet	Viviane	ACTIF	51093		16/03/2008 00:00:00				de	Saint-Pierre	50988	23/12/2017 00:00:00				Conseiller municipal
@@ -1247,9 +1247,9 @@ Matricule	Qualité	Nom usuel	Prénom usuel	État Sénateur	Identifiant mandat	Da
 11085T	M.	Marseille	Hervé	ACTIF	12533			1999			de	Meudon	50800	21/10/2017 00:00:00				Conseiller municipal
 04096S	M.	Marsin	Daniel	ANCIEN	11035			1995		2010	des	Abymes	11026		1995		2008	Maire
 04096S	M.	Marsin	Daniel	ANCIEN	11035			1995		2010	des	Abymes	11266		2008		2010	Conseiller municipal
-58633Q	M.	Marson	James	ANCIEN	10154				01/12/2017 00:00:00	2017	Indetermine(e)/Indefini(e)	La Courneuve	3324			01/12/2017 00:00:00	2017	Maire
-000561	M.	Martin	André	ANCIEN	10155						Indetermine(e)/Indefini(e)	Montville	3325					Maire
-59235J	M.	Martin	Hubert	ANCIEN	10156				08/06/2008 00:00:00	2008	Indetermine(e)/Indefini(e)	Briey	3326			08/06/2008 00:00:00	2008	Conseiller municipal
+58633Q	M.	Marson	James	ANCIEN	10154				01/12/2017 00:00:00	2017		La Courneuve	3324			01/12/2017 00:00:00	2017	Maire
+000561	M.	Martin	André	ANCIEN	10155							Montville	3325					Maire
+59235J	M.	Martin	Hubert	ANCIEN	10156				08/06/2008 00:00:00	2008		Briey	3326			08/06/2008 00:00:00	2008	Conseiller municipal
 95047L	M.	Martin	Pierre	ANCIEN	763				11/03/2001 00:00:00	2001	d'	Hallencourt	763			11/03/2001 00:00:00	2001	Maire
 95047L	M.	Martin	Pierre	ANCIEN	6078		11/03/2001 00:00:00		23/03/2014 00:00:00		d'	Hallencourt	2380	11/03/2001 00:00:00	2001	17/03/2001 00:00:00	2001	Conseiller municipal
 95047L	M.	Martin	Pierre	ANCIEN	6078		11/03/2001 00:00:00		23/03/2014 00:00:00		d'	Hallencourt	2615	17/03/2001 00:00:00	2001	23/03/2014 00:00:00		Maire
@@ -1264,10 +1264,10 @@ Matricule	Qualité	Nom usuel	Prénom usuel	État Sénateur	Identifiant mandat	Da
 01060R	M.	Masson	Jean Louis	ACTIF	11349		21/03/2008 00:00:00				de	Nouilly	11318	21/03/2008 00:00:00				Conseiller municipal
 83043S	M.	Masson	Paul	ANCIEN	673				11/03/2001 00:00:00	2001	de 	Estouy	673			11/03/2001 00:00:00	2001	Maire
 13001T	Mme	Masson-Maret	Hélène	ANCIEN	12908				01/04/2014 00:00:00		de 	Grasse	13087			01/04/2014 00:00:00		Adjoint au maire
-88011F	M.	Mathieu	François	ANCIEN	10157				17/11/1997 00:00:00	1997	Indetermine(e)/Indefini(e)	Saint-Etienne	3327			17/11/1997 00:00:00	1997	Conseiller municipal
+88011F	M.	Mathieu	François	ANCIEN	10157				17/11/1997 00:00:00	1997		Saint-Etienne	3327			17/11/1997 00:00:00	1997	Conseiller municipal
 77047J	M.	Mathieu	Serge	ANCIEN	732			1971	11/03/2001 00:00:00	2001	de 	Corcelles-en-Beaujolais	732		1971	11/03/2001 00:00:00	2001	Maire
 01038T	Mme	Mathon-Poinat	Josiane	ANCIEN	6583		23/03/2001 00:00:00	2001	21/03/2008 00:00:00	2008	de	La Ricamarie	3048	23/03/2001 00:00:00	2001	21/03/2008 00:00:00	2008	Adjoint au maire
-000502	M.	Matraja	Pierre	ANCIEN	10158						Indetermine(e)/Indefini(e)	Sausset-les-Pins	3328					Maire
+000502	M.	Matraja	Pierre	ANCIEN	10158							Sausset-les-Pins	3328					Maire
 08009T	M.	Maurey	Hervé	ACTIF	11489			2001	21/03/2016 00:00:00		de	Bernay	11418		2001		2002	Adjoint au maire
 08009T	M.	Maurey	Hervé	ACTIF	11489			2001	21/03/2016 00:00:00		de	Bernay	11419		2003	21/03/2016 00:00:00		Maire
 08009T	M.	Maurey	Hervé	ACTIF	11490			1983		1989	de	Bonneville-Aptot	11420		1983		1989	Conseiller municipal
@@ -1290,10 +1290,10 @@ Matricule	Qualité	Nom usuel	Prénom usuel	État Sénateur	Identifiant mandat	Da
 14147R	Mme	Mercier	Marie	ACTIF	13981		15/03/2001 00:00:00				de	Châtenoy-le-Royal	50739	23/10/2017 00:00:00				Conseiller municipal
 95049N	M.	Mercier	Michel	ANCIEN	733				11/03/2001 00:00:00	2001	de 	Thizy	733			11/03/2001 00:00:00	2001	Maire
 95049N	M.	Mercier	Michel	ANCIEN	12927		01/01/2013 00:00:00	2013			de	Thizy-les-Bourgs	13114	01/01/2013 00:00:00	2013			Maire
-000323	M.	Meric	André	ANCIEN	10159						Indetermine(e)/Indefini(e)	Calmont	3329					Maire
-59717X	M.	Merli	Pierre	ANCIEN	10160				03/11/2002 00:00:00	2002	Indetermine(e)/Indefini(e)	Antibes Juan-les-Pins	3330			03/11/2002 00:00:00	2002	Maire
+000323	M.	Meric	André	ANCIEN	10159							Calmont	3329					Maire
+59717X	M.	Merli	Pierre	ANCIEN	10160				03/11/2002 00:00:00	2002		Antibes Juan-les-Pins	3330			03/11/2002 00:00:00	2002	Maire
 01020H	M.	Mermaz	Louis	ANCIEN	6549			1971		2001	de	Vienne	3008		1971		2001	Maire
-92038W	M.	Metzinger	Charles	ANCIEN	10161						Indetermine(e)/Indefini(e)	Freyming-Merlebach	3331					Conseiller municipal
+92038W	M.	Metzinger	Charles	ANCIEN	10161							Freyming-Merlebach	3331					Conseiller municipal
 11067R	Mme	Meunier	Michelle	ACTIF	12813		19/03/1989 00:00:00			2008	de	Nantes	12972	19/03/1989 00:00:00			2008	Adjoint au maire
 19671E	M.	Meurant	Sébastien	ACTIF	51182		16/03/2008 00:00:00				de	Saint-Leu-la-Forêt	50422	16/03/2008 00:00:00		18/10/2017 00:00:00		Maire
 19671E	M.	Meurant	Sébastien	ACTIF	51182		16/03/2008 00:00:00				de	Saint-Leu-la-Forêt	50992	19/10/2017 00:00:00				Conseiller municipal
@@ -1306,7 +1306,7 @@ Matricule	Qualité	Nom usuel	Prénom usuel	État Sénateur	Identifiant mandat	Da
 11014C	Mme	Michel	Danielle	ANCIEN	12233		18/06/1995 00:00:00		01/04/2014 00:00:00		de	Saint-Paul-Lès-Dax	12980	18/03/2001 00:00:00		21/09/2012 00:00:00	2012	Maire
 11014C	Mme	Michel	Danielle	ANCIEN	12233		18/06/1995 00:00:00		01/04/2014 00:00:00		de	Saint-Paul-Lès-Dax	13105	22/07/2013 00:00:00		01/04/2014 00:00:00		Conseiller municipal
 04084N	M.	Michel	Jean-Pierre	ANCIEN	10983			1983		2004	d'	Héricourt	10987		1983		2004	Maire
-58635S	Mme	Midy	Monique	ANCIEN	10162				15/12/2016 00:00:00	2016	Indetermine(e)/Indefini(e)	Colombes	3332			15/12/2016 00:00:00	2016	Conseiller municipal
+58635S	Mme	Midy	Monique	ANCIEN	10162				15/12/2016 00:00:00	2016		Colombes	3332			15/12/2016 00:00:00	2016	Conseiller municipal
 08074D	M.	Milhau	Jean	ANCIEN	11851			1965			de	Cazals	11669		1995			Conseiller municipal
 08074D	M.	Milhau	Jean	ANCIEN	11851			1965			de	Cazals	11670		1965		1995	Maire
 04092N	M.	Milon	Alain	ACTIF	11018			1989			de	Sorgues	11012		1989	01/01/2011 00:00:00	2011	Maire
@@ -1321,18 +1321,18 @@ Matricule	Qualité	Nom usuel	Prénom usuel	État Sénateur	Identifiant mandat	Da
 98013N	M.	Miraux	Jean-Luc	ANCIEN	6216		18/03/2001 00:00:00	2001			de	Vernon	2555	18/03/2001 00:00:00	2001	25/03/2001 00:00:00	2001	Conseiller municipal
 98013N	M.	Miraux	Jean-Luc	ANCIEN	6216		18/03/2001 00:00:00	2001			de	Vernon	2854	25/03/2001 00:00:00	2001	21/03/2008 00:00:00	2008	Maire
 98013N	M.	Miraux	Jean-Luc	ANCIEN	6216		18/03/2001 00:00:00	2001			de	Vernon	11265		2008			Conseiller municipal
-59551T	M.	Miroudot	Michel	ANCIEN	10163				25/06/1999 00:00:00	1999	Indetermine(e)/Indefini(e)	Villersexel	3333			25/06/1999 00:00:00	1999	Conseiller municipal
+59551T	M.	Miroudot	Michel	ANCIEN	10163				25/06/1999 00:00:00	1999		Villersexel	3333			25/06/1999 00:00:00	1999	Conseiller municipal
 19335Q	M.	Mizzon	Jean-Marie	ACTIF	50955	30/03/2014 00:00:00	19/03/1989 00:00:00				de	Basse-Ham	50263	19/03/1989 00:00:00		22/10/2017 00:00:00		Maire
 19335Q	M.	Mizzon	Jean-Marie	ACTIF	50955	30/03/2014 00:00:00	19/03/1989 00:00:00				de	Basse-Ham	50899	23/10/2017 00:00:00				Conseiller municipal
 19369B	M.	Moga	Jean-Pierre	ACTIF	51383	18/03/2001 00:00:00	18/03/2001 00:00:00		29/03/2014 00:00:00		de	Tonneins	50564	18/03/2001 00:00:00		29/03/2014 00:00:00		Maire
 11072N	M.	Mohamed Soilihi	Thani	ACTIF	12856		01/03/2001 00:00:00		01/03/2008 00:00:00		de	Sada	13049	01/03/2001 00:00:00		01/03/2008 00:00:00		Conseiller municipal
 87002A	M.	Moinard	Louis	ANCIEN	780				24/05/2000 00:00:00	2000	de 	Nieul-sur-l'Autise	780			24/05/2000 00:00:00	2000	Maire
-58914W	M.	Moinet	Josy	ANCIEN	10164				04/08/2018 00:00:00		Indetermine(e)/Indefini(e)	Saint Rogatien	3334			04/08/2018 00:00:00		Maire
+58914W	M.	Moinet	Josy	ANCIEN	10164				04/08/2018 00:00:00			Saint Rogatien	3334			04/08/2018 00:00:00		Maire
 68036E	M.	Monory	René	ANCIEN	5281			1953	11/03/2001 00:00:00	2001	de 	Loudun	2163	20/03/1999 00:00:00	1999	11/03/2001 00:00:00	2001	Conseiller municipal
 68036E	M.	Monory	René	ANCIEN	5281			1953	11/03/2001 00:00:00	2001	de 	Loudun	2386		1959	20/03/1999 00:00:00	1999	Maire
 68036E	M.	Monory	René	ANCIEN	5281			1953	11/03/2001 00:00:00	2001	de 	Loudun	10814		1953		1959	Conseiller municipal
 68036E	M.	Monory	René	ANCIEN	6258		11/03/2001 00:00:00	2001	11/04/2009 00:00:00	2009	de	Basses	2711	11/03/2001 00:00:00	2001	11/04/2009 00:00:00	2009	Conseiller municipal
-59236K	M.	Mont	Claude	ANCIEN	10165				30/10/2001 00:00:00	2001	Indetermine(e)/Indefini(e)	Noirétable	3335			30/10/2001 00:00:00	2001	Maire
+59236K	M.	Mont	Claude	ANCIEN	10165				30/10/2001 00:00:00	2001		Noirétable	3335			30/10/2001 00:00:00	2001	Maire
 14257W	M.	Montaugé	Franck	ACTIF	14301	01/06/1995 00:00:00	01/06/1995 00:00:00				d'	Auch	13591	01/06/1995 00:00:00		30/03/2008 00:00:00		Adjoint au maire
 14257W	M.	Montaugé	Franck	ACTIF	14301	01/06/1995 00:00:00	01/06/1995 00:00:00				d'	Auch	13592	01/04/2008 00:00:00		30/09/2017 00:00:00		Maire
 14257W	M.	Montaugé	Franck	ACTIF	14301	01/06/1995 00:00:00	01/06/1995 00:00:00				d'	Auch	50771	01/10/2017 00:00:00				Conseiller municipal
@@ -1347,7 +1347,7 @@ Matricule	Qualité	Nom usuel	Prénom usuel	État Sénateur	Identifiant mandat	Da
 14119M	M.	Morisset	Jean-Marie	ACTIF	14360		30/03/2014 00:00:00				de	Mazières-en-Gâtines	51046	02/10/2017 00:00:00				Conseiller municipal
 02005N	M.	Mortemousque	Dominique	ANCIEN	6748		01/06/1995 00:00:00	1995	16/03/2008 00:00:00	2008	de	Nojals-et-Clottes	3122	01/06/1995 00:00:00	1995	16/03/2008 00:00:00	2008	Maire
 02005N	M.	Mortemousque	Dominique	ANCIEN	11334		16/03/2008 00:00:00				de	Beaumont du Perigord	11284	16/03/2008 00:00:00				Maire
-000586	M.	Mossion	Jacques	ANCIEN	10167						Indetermine(e)/Indefini(e)	Doullens	3337					Maire
+000586	M.	Mossion	Jacques	ANCIEN	10167							Doullens	3337					Maire
 14071N	M.	Mouiller	Philippe	ACTIF	13855			2008			de	Moncoutant	13284		2008	30/09/2017 00:00:00		Maire
 14071N	M.	Mouiller	Philippe	ACTIF	13855			2008			de	Moncoutant	50786	01/10/2017 00:00:00				Conseiller municipal
 03003Q	M.	Moulinier	Jacques	ANCIEN	10570			1977	17/12/2010 00:00:00	2010	de	Lyon	10558		1989	17/12/2010 00:00:00	2010	Adjoint au maire
@@ -1376,9 +1376,9 @@ Matricule	Qualité	Nom usuel	Prénom usuel	État Sénateur	Identifiant mandat	Da
 95051G	Mme	Olin	Nelly	ANCIEN	6081		11/03/2001 00:00:00	2001	26/10/2017 00:00:00	2017	de	Garges-lès-Gonesse	2387	11/03/2001 00:00:00	2001	17/03/2001 00:00:00	2001	Conseiller municipal
 95051G	Mme	Olin	Nelly	ANCIEN	6081		11/03/2001 00:00:00	2001	26/10/2017 00:00:00	2017	de	Garges-lès-Gonesse	2577	17/03/2001 00:00:00	2001		2004	Maire
 95051G	Mme	Olin	Nelly	ANCIEN	6081		11/03/2001 00:00:00	2001	26/10/2017 00:00:00	2017	de	Garges-lès-Gonesse	11076		2004	26/10/2017 00:00:00	2017	Adjoint au maire
-59240F	M.	Olivier	Henri	ANCIEN	10168				18/08/2004 00:00:00	2004	Indetermine(e)/Indefini(e)	Saint-Germain-des-Grois	3338			18/08/2004 00:00:00	2004	Maire
-58645U	M.	Ooghe	Jean	ANCIEN	10169						Indetermine(e)/Indefini(e)	Sainte-Geneviève-des-Bois	3339					Maire
-000419	M.	Ornano	Charles	ANCIEN	10170						Indetermine(e)/Indefini(e)	Ajaccio	3340					Maire
+59240F	M.	Olivier	Henri	ANCIEN	10168				18/08/2004 00:00:00	2004		Saint-Germain-des-Grois	3338			18/08/2004 00:00:00	2004	Maire
+58645U	M.	Ooghe	Jean	ANCIEN	10169							Sainte-Geneviève-des-Bois	3339					Maire
+000419	M.	Ornano	Charles	ANCIEN	10170							Ajaccio	3340					Maire
 91002E	M.	Ostermann	Joseph	ANCIEN	727				11/03/2001 00:00:00	2001	de 	Wasselonne	727			11/03/2001 00:00:00	2001	Maire
 91002E	M.	Ostermann	Joseph	ANCIEN	6082		11/03/2001 00:00:00	2001			de	Wasselonne	2388	11/03/2001 00:00:00	2001	17/03/2001 00:00:00	2001	Conseiller municipal
 91002E	M.	Ostermann	Joseph	ANCIEN	6082		11/03/2001 00:00:00	2001			de	Wasselonne	2617	17/03/2001 00:00:00	2001			Maire
@@ -1386,9 +1386,9 @@ Matricule	Qualité	Nom usuel	Prénom usuel	État Sénateur	Identifiant mandat	Da
 86041D	M.	Oudin	Jacques	ANCIEN	778				11/03/2001 00:00:00	2001	de 	La Guérinière	778			11/03/2001 00:00:00	2001	Conseiller municipal
 86041D	M.	Oudin	Jacques	ANCIEN	6265		11/03/2001 00:00:00	2001			de	La Guérinière	2725	11/03/2001 00:00:00	2001			Conseiller municipal
 10007M	Mme	Oudit	Mireille	ANCIEN	12046		01/03/1995 00:00:00	1995	28/02/2008 00:00:00	2008	de	Val-de-Vière	11797	01/03/1995 00:00:00	1995	28/02/2008 00:00:00	2008	Maire
-000488	M.	Pado	Dominique	ANCIEN	10171						Indetermine(e)/Indefini(e)	Paris	3341					Conseiller municipal
+000488	M.	Pado	Dominique	ANCIEN	10171							Paris	3341					Conseiller municipal
 88006J	M.	Pagès	Robert	ANCIEN	749				23/02/2011 00:00:00	2011	de 	Le Petit-Quevilly	749			23/02/2011 00:00:00	2011	Adjoint au maire
-000393	M.	Palmero	Francis	ANCIEN	10172						Indetermine(e)/Indefini(e)	<commune indéterminée>	3342					Conseiller municipal
+000393	M.	Palmero	Francis	ANCIEN	10172							<commune indéterminée>	3342					Conseiller municipal
 07023M	Mme	Panis	Jacqueline	ANCIEN	11246						de	Seichamps	11170				2008	Adjoint au maire
 07023M	Mme	Panis	Jacqueline	ANCIEN	11246						de	Seichamps	11262	21/03/2008 00:00:00	2008			Conseiller municipal
 01054T	Mme	Papon	Monique	ANCIEN	6575			1983	08/12/2001 00:00:00	2001	de	Nantes	3037		1983	08/12/2001 00:00:00	2001	Conseiller municipal
@@ -1409,21 +1409,21 @@ Matricule	Qualité	Nom usuel	Prénom usuel	État Sénateur	Identifiant mandat	Da
 95053J	M.	Pelchat	Michel	ANCIEN	629				11/03/2001 00:00:00	2001	de 	Gif-sur-Yvette	629			11/03/2001 00:00:00	2001	Conseiller municipal
 95053J	M.	Pelchat	Michel	ANCIEN	6242		18/03/2001 00:00:00	2001	12/02/2004 00:00:00	2004	de	Gif-sur-Yvette	2585	18/03/2001 00:00:00	2001	12/02/2004 00:00:00	2004	Conseiller municipal
 14365A	M.	Pélieu	Michel	ANCIEN	15535	01/01/2016 00:00:00	01/01/2016 00:00:00				de	Loudenvielle	14144	01/01/2016 00:00:00				Premier adjoint au maire
-59578F	M.	Pelletier	Charles	ANCIEN	10173				13/08/2019 00:00:00		Indetermine(e)/Indefini(e)	Vinantes	3343			13/08/2019 00:00:00		Maire
+59578F	M.	Pelletier	Charles	ANCIEN	10173				13/08/2019 00:00:00			Vinantes	3343			13/08/2019 00:00:00		Maire
 66002K	M.	Pelletier	Jacques	ANCIEN	5145			1953	11/03/2001 00:00:00	2001	de 	Villers-en-Prayères	2069			11/03/2001 00:00:00	2001	Maire
 66002K	M.	Pelletier	Jacques	ANCIEN	6129		11/03/2001 00:00:00	2001	03/09/2007 00:00:00	2007	de	Villers-en-Prayères	2431	11/03/2001 00:00:00	2001	17/03/2001 00:00:00	2001	Conseiller municipal
 66002K	M.	Pelletier	Jacques	ANCIEN	6129		11/03/2001 00:00:00	2001	03/09/2007 00:00:00	2007	de	Villers-en-Prayères	2690	17/03/2001 00:00:00	2001	03/09/2007 00:00:00	2007	Maire
 14237S	M.	Pellevat	Cyril	ACTIF	14224	01/04/2008 00:00:00		2008	18/08/2016 00:00:00		d'	Arthaz-Pont-Notre-Dame	13557		2008	18/08/2016 00:00:00		Maire
 17637T	M.	Pemezec	Philippe	ACTIF	51336	19/03/1989 00:00:00	19/03/1989 00:00:00				du	Plessis-Robinson	50516	19/03/1989 00:00:00		27/04/2018 00:00:00		Maire
 17637T	M.	Pemezec	Philippe	ACTIF	51336	19/03/1989 00:00:00	19/03/1989 00:00:00				du	Plessis-Robinson	51044	28/04/2018 00:00:00				Conseiller municipal
-59579G	M.	Pen	Albert	ANCIEN	10174				03/07/2003 00:00:00	2003	Indetermine(e)/Indefini(e)	Saint-Pierre	3344			03/07/2003 00:00:00	2003	Maire
+59579G	M.	Pen	Albert	ANCIEN	10174				03/07/2003 00:00:00	2003		Saint-Pierre	3344			03/07/2003 00:00:00	2003	Maire
 86042E	M.	Penne	Guy	ANCIEN	800				11/03/2001 00:00:00	2001	de 	Sainte Cécile les Vignes	800			11/03/2001 00:00:00	2001	Adjoint au maire
 86042E	M.	Penne	Guy	ANCIEN	6248		11/03/2001 00:00:00	2001	25/07/2010 00:00:00	2010	de	Sainte Cécile les Vignes	2668	11/03/2001 00:00:00	2001	25/07/2010 00:00:00	2010	Adjoint au maire
 89016Q	M.	Pépin	Jean	ANCIEN	581				11/03/2001 00:00:00	2001	de 	Saint-Nizier-le-Bouchoux	581			11/03/2001 00:00:00	2001	Maire
 89016Q	M.	Pépin	Jean	ANCIEN	6130		11/03/2001 00:00:00	2001	21/03/2008 00:00:00		de	Saint-Nizier-le-Bouchoux	2432	11/03/2001 00:00:00	2001	21/03/2008 00:00:00		Conseiller municipal
 83047W	M.	Percheron	Daniel	ANCIEN	715				11/03/2001 00:00:00	2001	de 	Liévin	715			11/03/2001 00:00:00	2001	Conseiller municipal
 14028W	Mme	Perol-Dumont	Marie-Françoise	ACTIF	13800	08/01/1977 00:00:00		1977		1984	de	Nedde	13225		1977		1984	Conseiller municipal
-59580Y	M.	Perrein	Louis	ANCIEN	10175				21/06/2004 00:00:00	2004	Indetermine(e)/Indefini(e)	Villiers-le-Bel	3345			21/06/2004 00:00:00	2004	Adjoint au maire
+59580Y	M.	Perrein	Louis	ANCIEN	10175				21/06/2004 00:00:00	2004		Villiers-le-Bel	3345			21/06/2004 00:00:00	2004	Adjoint au maire
 14193X	M.	Perrin	Cédric	ACTIF	14071	17/03/2008 00:00:00	17/03/2014 00:00:00				de	Beaucourt	13508	17/03/2014 00:00:00		30/09/2017 00:00:00		Maire
 14193X	M.	Perrin	Cédric	ACTIF	14071	17/03/2008 00:00:00	17/03/2014 00:00:00				de	Beaucourt	50798	01/10/2017 00:00:00				Conseiller municipal
 19745F	Mme	Perrot	Évelyne	ACTIF	51546	19/03/1989 00:00:00	19/03/1989 00:00:00				de	Dosches	50911	19/03/1995 00:00:00		11/01/2018 00:00:00		Maire
@@ -1436,8 +1436,8 @@ Matricule	Qualité	Nom usuel	Prénom usuel	État Sénateur	Identifiant mandat	Da
 95055L	M.	Peyronnet	Jean-Claude	ANCIEN	784				11/03/2001 00:00:00	2001	de 	Châlus	784			11/03/2001 00:00:00	2001	Conseiller municipal
 95055L	M.	Peyronnet	Jean-Claude	ANCIEN	6179		11/03/2001 00:00:00	2001		2001	de	Châlus	2477	11/03/2001 00:00:00	2001		2001	Conseiller municipal
 89036U	M.	Philibert	Louis	ANCIEN	601				21/06/2000 00:00:00	2000	de 	Puy-Sainte-Réparade	601			21/06/2000 00:00:00	2000	Maire
-59554W	M.	Piat	Robert	ANCIEN	10176				08/10/2007 00:00:00	2007	Indetermine(e)/Indefini(e)	Saint-Rémy-la-Vanne	3346			08/10/2007 00:00:00	2007	Maire
-000307	M.	Pic	Maurice	ANCIEN	10177						Indetermine(e)/Indefini(e)	Montelimar	3347					Conseiller municipal
+59554W	M.	Piat	Robert	ANCIEN	10176				08/10/2007 00:00:00	2007		Saint-Rémy-la-Vanne	3346			08/10/2007 00:00:00	2007	Maire
+000307	M.	Pic	Maurice	ANCIEN	10177							Montelimar	3347					Conseiller municipal
 98015Q	M.	Picheral	Jean-François	ANCIEN	5061			1989	11/03/2001 00:00:00	2001	d'	Aix-En-Provence	2023		1989	11/03/2001 00:00:00	2001	Maire
 98015Q	M.	Picheral	Jean-François	ANCIEN	6249		18/03/2001 00:00:00	2001		2001	d'	Aix-En-Provence	2669	18/03/2001 00:00:00	2001		2001	Conseiller municipal
 19533U	M.	Piednoir	Stéphane	ACTIF	50842	23/03/2014 00:00:00	18/03/2001 00:00:00				de	Montreuil-Juigné	50140	23/03/2014 00:00:00		10/04/2018 00:00:00		Maire
@@ -1446,7 +1446,7 @@ Matricule	Qualité	Nom usuel	Prénom usuel	État Sénateur	Identifiant mandat	Da
 04088S	M.	Pierre	Jackie	ACTIF	10995			1983	16/03/2008 00:00:00	2008	de	La Chapelle-aux-Bois	10996		1983	16/03/2008 00:00:00	2008	Maire
 09010Q	M.	Pignard	Jean-Jacques	ANCIEN	11972			1989		2008	de	Villefranche-sur-Saône	11750		1989		2008	Maire
 07034Q	M.	Pillet	François	ANCIEN	11307		18/06/1995 00:00:00		31/03/2014 00:00:00		de	Mehun-sur-Yèvre	11220	18/06/1995 00:00:00	1995	31/03/2014 00:00:00		Maire
-000514	M.	Pintat	Jean-François	ANCIEN	10178						Indetermine(e)/Indefini(e)	Soulac-sur-Mer	3348					Maire
+000514	M.	Pintat	Jean-François	ANCIEN	10178							Soulac-sur-Mer	3348					Maire
 98021N	M.	Pintat	Xavier	ANCIEN	5081		14/07/1990 00:00:00		11/03/2001 00:00:00	2001	de 	Soulac-sur-Mer	2034	14/07/1990 00:00:00		11/03/2001 00:00:00	2001	Maire
 98021N	M.	Pintat	Xavier	ANCIEN	6131		11/03/2001 00:00:00	2001			de	Soulac-sur-Mer	2433	11/03/2001 00:00:00	2001	17/03/2001 00:00:00	2001	Conseiller municipal
 98021N	M.	Pintat	Xavier	ANCIEN	6131		11/03/2001 00:00:00	2001			de	Soulac-sur-Mer	2692	17/03/2001 00:00:00	2001			Maire
@@ -1470,7 +1470,7 @@ Matricule	Qualité	Nom usuel	Prénom usuel	État Sénateur	Identifiant mandat	Da
 95057N	M.	Poirier	Jean-Marie	ANCIEN	768				11/03/2001 00:00:00	2001	de 	Sucy-en-Brie	768			11/03/2001 00:00:00	2001	Maire
 95057N	M.	Poirier	Jean-Marie	ANCIEN	6219		18/03/2001 00:00:00	2001			de	Sucy-en-Brie	2558	18/03/2001 00:00:00	2001	25/03/2001 00:00:00	2001	Conseiller municipal
 95057N	M.	Poirier	Jean-Marie	ANCIEN	6219		18/03/2001 00:00:00	2001			de	Sucy-en-Brie	2800	25/03/2001 00:00:00	2001			Maire
-58916Y	M.	Poirier	Raymond	ANCIEN	10179				21/05/2007 00:00:00	2007	Indetermine(e)/Indefini(e)	Luisant	3349			21/05/2007 00:00:00	2007	Maire
+58916Y	M.	Poirier	Raymond	ANCIEN	10179				21/05/2007 00:00:00	2007		Luisant	3349			21/05/2007 00:00:00	2007	Maire
 77058M	M.	Poncelet	Christian	ANCIEN	785				11/03/2001 00:00:00	2001	de 	Remiremont	785			11/03/2001 00:00:00	2001	Maire
 77058M	M.	Poncelet	Christian	ANCIEN	6086		11/03/2001 00:00:00	2001		2004	de	Remiremont	2392	11/03/2001 00:00:00	2001	17/03/2001 00:00:00	2001	Conseiller municipal
 77058M	M.	Poncelet	Christian	ANCIEN	6086		11/03/2001 00:00:00	2001		2004	de	Remiremont	2618	17/03/2001 00:00:00	2001	25/03/2001 00:00:00	2001	Maire
@@ -1478,9 +1478,9 @@ Matricule	Qualité	Nom usuel	Prénom usuel	État Sénateur	Identifiant mandat	Da
 98050T	M.	Poniatowski	Ladislas	ACTIF	5201			1977	11/03/2001 00:00:00	2001	de 	Quillebeuf-sur-Seine	2098		1977	11/03/2001 00:00:00	2001	Maire
 98050T	M.	Poniatowski	Ladislas	ACTIF	6168		11/03/2001 00:00:00		31/03/2014 00:00:00		de	Quillebeuf-sur-Seine	2468	11/03/2001 00:00:00	2001	17/03/2001 00:00:00	2001	Conseiller municipal
 98050T	M.	Poniatowski	Ladislas	ACTIF	6168		11/03/2001 00:00:00		31/03/2014 00:00:00		de	Quillebeuf-sur-Seine	2693	17/03/2001 00:00:00	2001	31/03/2014 00:00:00		Maire
-59556Y	M.	Poniatowski	Michel	ANCIEN	10180				15/01/2002 00:00:00	2002	Indetermine(e)/Indefini(e)	L'Isle-Adam	3350			15/01/2002 00:00:00	2002	Maire
+59556Y	M.	Poniatowski	Michel	ANCIEN	10180				15/01/2002 00:00:00	2002		L'Isle-Adam	3350			15/01/2002 00:00:00	2002	Maire
 04074L	M.	Portelli	Hugues	ANCIEN	10932		12/12/1996 00:00:00	1996			d'	Ermont	10952	12/12/1996 00:00:00	1996			Maire
-59242H	M.	Poudonson	Roger	ANCIEN	10181				27/12/2000 00:00:00	2000	Indetermine(e)/Indefini(e)	Duisans	3351			27/12/2000 00:00:00	2000	Maire
+59242H	M.	Poudonson	Roger	ANCIEN	10181				27/12/2000 00:00:00	2000		Duisans	3351			27/12/2000 00:00:00	2000	Maire
 88002E	M.	Pourchet	Jean	ANCIEN	625				27/02/2010 00:00:00	2010	de 	Maisons-du-Bois-Lièvremont	625			27/02/2010 00:00:00	2010	Maire
 86043F	M.	Pourny	André	ANCIEN	737				11/03/2001 00:00:00	2001	de 	Sainte-Radegonde	737			11/03/2001 00:00:00	2001	Maire
 95058P	Mme	Pourtaud	Danièle	ANCIEN	6200		18/03/2001 00:00:00	2001			de	Paris (14ème arrondissement)	2540	18/03/2001 00:00:00	2001	23/03/2001 00:00:00	2001	Conseiller de Paris
@@ -1500,8 +1500,8 @@ Matricule	Qualité	Nom usuel	Prénom usuel	État Sénateur	Identifiant mandat	Da
 17583W	M.	Priou	Christophe	ACTIF	51132		16/03/2008 00:00:00		30/03/2014 00:00:00		de	Guérande	50394	16/03/2008 00:00:00		30/03/2014 00:00:00		Maire
 04043D	Mme	Procaccia	Catherine	ACTIF	11057			1981		2004	de	Vincennes	11038		2001		2004	Adjoint au maire
 04043D	Mme	Procaccia	Catherine	ACTIF	11057			1981		2004	de	Vincennes	11068		1981		2001	Conseiller municipal
-000639	M.	Proriol	Jean	ANCIEN	10553						Indetermine(e)/Indefini(e)	Beuzac	10549					Maire
-59244K	M.	Prouvoyeur	Claude	ANCIEN	10182				17/01/2018 00:00:00		Indetermine(e)/Indefini(e)	Dunkerque	3352			17/01/2018 00:00:00		Conseiller municipal
+000639	M.	Proriol	Jean	ANCIEN	10553							Beuzac	10549					Maire
+59244K	M.	Prouvoyeur	Claude	ANCIEN	10182				17/01/2018 00:00:00			Dunkerque	3352			17/01/2018 00:00:00		Conseiller municipal
 14235Q	Mme	Prunaud	Christine	ACTIF	14225		19/03/2001 00:00:00				de	Lamballe	13558	19/03/2001 00:00:00	2001	27/07/2015 00:00:00		Adjoint au maire
 14235Q	Mme	Prunaud	Christine	ACTIF	14225		19/03/2001 00:00:00				de	Lamballe	13831	28/07/2015 00:00:00				Conseiller municipal
 80035E	M.	Puech	Jean	ANCIEN	596			1977	11/03/2001 00:00:00	2001	de 	Rignac	596		1977	11/03/2001 00:00:00	2001	Maire
@@ -1541,7 +1541,7 @@ Matricule	Qualité	Nom usuel	Prénom usuel	État Sénateur	Identifiant mandat	Da
 74042Q	M.	Rausch	Jean-Marie	ANCIEN	6221		18/03/2001 00:00:00	2001			de	Metz	2798	25/03/2001 00:00:00	2001			Maire
 14055N	M.	Ravier	Stéphane	ACTIF	14244	30/03/2014 00:00:00	30/03/2014 00:00:00				de	Marseille (13ème et 14ème arrondissements)	13567	30/03/2014 00:00:00		23/10/2017 00:00:00		Maire d'arrondissement
 14055N	M.	Ravier	Stéphane	ACTIF	14244	30/03/2014 00:00:00	30/03/2014 00:00:00				de	Marseille (13ème et 14ème arrondissements)	50788	24/10/2017 00:00:00				Conseiller municipal
-000104	M.	Raybaud	Joseph	ANCIEN	10183						Indetermine(e)/Indefini(e)	Levens	3353					Maire
+000104	M.	Raybaud	Joseph	ANCIEN	10183							Levens	3353					Maire
 14225N	M.	Raynal	Claude	ACTIF	14174		17/03/2014 00:00:00				de	Tournefeuille	13546	17/03/2014 00:00:00		28/06/2015 00:00:00		Maire
 14225N	M.	Raynal	Claude	ACTIF	14174		17/03/2014 00:00:00				de	Tournefeuille	13830	29/06/2015 00:00:00		30/09/2017 00:00:00		Adjoint au maire
 14225N	M.	Raynal	Claude	ACTIF	14174		17/03/2014 00:00:00				de	Tournefeuille	51090	01/10/2017 00:00:00				Conseiller municipal
@@ -1569,7 +1569,7 @@ Matricule	Qualité	Nom usuel	Prénom usuel	État Sénateur	Identifiant mandat	Da
 04065K	M.	Ries	Roland	ANCIEN	10895			1983			de	Strasbourg	11042	24/06/2000 00:00:00	2000	21/03/2008 00:00:00	2008	Conseiller municipal
 04065K	M.	Ries	Roland	ANCIEN	10895			1983			de	Strasbourg	11260		2008			Maire
 89038W	M.	Rigaudière	Roger	ANCIEN	606				17/02/1999 00:00:00	1999	de 	Saint-Chamant	606			17/02/1999 00:00:00	1999	Maire
-58938F	M.	Rigou	Michel	ANCIEN	10185				29/09/2016 00:00:00	2016	Indetermine(e)/Indefini(e)	Mirambeau	3355			29/09/2016 00:00:00	2016	Maire
+58938F	M.	Rigou	Michel	ANCIEN	10185				29/09/2016 00:00:00	2016		Mirambeau	3355			29/09/2016 00:00:00	2016	Maire
 77060F	M.	Rinchet	Roger	ANCIEN	741				11/03/2001 00:00:00	2001	de 	Montmélian	741			11/03/2001 00:00:00	2001	Maire
 77060F	M.	Rinchet	Roger	ANCIEN	6180		11/03/2001 00:00:00	2001			de	Montmélian	2478	11/03/2001 00:00:00	2001	17/03/2001 00:00:00	2001	Conseiller municipal
 77060F	M.	Rinchet	Roger	ANCIEN	6180		11/03/2001 00:00:00	2001			de	Montmélian	2675	17/03/2001 00:00:00	2001			Maire
@@ -1578,38 +1578,38 @@ Matricule	Qualité	Nom usuel	Prénom usuel	État Sénateur	Identifiant mandat	Da
 98033S	M.	Rispat	Yves	ANCIEN	6135		11/03/2001 00:00:00	2001	15/01/2015 00:00:00	2015	de	Lupiac	2620	17/03/2001 00:00:00	2001	15/01/2015 00:00:00	2015	Maire
 14361V	Mme	Rivollier	Évelyne	ANCIEN	15458	16/03/2008 00:00:00	01/03/1989 00:00:00		16/03/2014 00:00:00		de	Mars	14065	16/03/2008 00:00:00		16/03/2014 00:00:00	2014	Maire
 14361V	Mme	Rivollier	Évelyne	ANCIEN	15458	16/03/2008 00:00:00	01/03/1989 00:00:00		16/03/2014 00:00:00		de	Mars	14126	01/03/1989 00:00:00		15/03/2008 00:00:00		Conseiller municipal
-77003V	M.	Robert	Guy	ANCIEN	10186				24/10/2011 00:00:00	2011	Indetermine(e)/Indefini(e)	Brux	3356			24/10/2011 00:00:00	2011	Maire
+77003V	M.	Robert	Guy	ANCIEN	10186				24/10/2011 00:00:00	2011		Brux	3356			24/10/2011 00:00:00	2011	Maire
 88003F	M.	Robert	Jean-Jacques	ANCIEN	631				18/03/2000 00:00:00	2000	de 	Mennecy	631			18/03/2000 00:00:00	2000	Conseiller municipal
-58919C	M.	Robert	Paul	ANCIEN	10187				13/09/2013 00:00:00	2013	Indetermine(e)/Indefini(e)	Cros-de-Montvert	3357			13/09/2013 00:00:00	2013	Conseiller municipal
+58919C	M.	Robert	Paul	ANCIEN	10187				13/09/2013 00:00:00	2013		Cros-de-Montvert	3357			13/09/2013 00:00:00	2013	Conseiller municipal
 14229S	Mme	Robert	Sylvie	ACTIF	14364			2008			de	Rennes	13662	30/03/2014 00:00:00	2014	11/09/2017 00:00:00		Deuxième adjoint au maire
 14229S	Mme	Robert	Sylvie	ACTIF	14364			2008			de	Rennes	13665		2008		2013	Conseiller municipal
 14229S	Mme	Robert	Sylvie	ACTIF	14364			2008			de	Rennes	51048	12/09/2017 00:00:00				Conseiller municipal
-95064M	M.	Rocard	Michel	ANCIEN	10188				02/07/2016 00:00:00	2016	Indetermine(e)/Indefini(e)	Conflans-Sainte-Honorine	3358			02/07/2016 00:00:00	2016	Conseiller municipal
+95064M	M.	Rocard	Michel	ANCIEN	10188				02/07/2016 00:00:00	2016		Conflans-Sainte-Honorine	3358			02/07/2016 00:00:00	2016	Conseiller municipal
 89039X	M.	Rocca Serra	Jacques	ANCIEN	600						de 	Marseille	600					Conseiller municipal
-59558B	M.	Roger	Jean	ANCIEN	10189				18/06/2011 00:00:00	2011	Indetermine(e)/Indefini(e)	Saint-Sardos	3359			18/06/2011 00:00:00	2011	Maire
+59558B	M.	Roger	Jean	ANCIEN	10189				18/06/2011 00:00:00	2011		Saint-Sardos	3359			18/06/2011 00:00:00	2011	Maire
 07002G	Mme	Roger-Coupin	Maryse	ANCIEN	11222						d'	Angres	11161					Maire
 07002G	Mme	Roger-Coupin	Maryse	ANCIEN	11222						d'	Angres	11162					Conseiller municipal
 59312E	M.	Romani	Roger	ANCIEN	11878					2001	de	Paris	11683				2001	Adjoint au maire
 11046L	M.	Rome	Yves	ANCIEN	12319			1977	01/09/2014 00:00:00		de	Bailleul-sur-Thérain	12387		1977		1989	Conseiller municipal
 11046L	M.	Rome	Yves	ANCIEN	12319			1977	01/09/2014 00:00:00		de	Bailleul-sur-Thérain	12389		1989		2004	Maire
 11046L	M.	Rome	Yves	ANCIEN	12319			1977	01/09/2014 00:00:00		de	Bailleul-sur-Thérain	12394		2005	01/09/2014 00:00:00		Premier adjoint au maire
-58638V	M.	Rosette	Marcel	ANCIEN	10190				19/11/2005 00:00:00	2005	Indetermine(e)/Indefini(e)	Vitry	3360			19/11/2005 00:00:00	2005	Conseiller municipal
+58638V	M.	Rosette	Marcel	ANCIEN	10190				19/11/2005 00:00:00	2005		Vitry	3360			19/11/2005 00:00:00	2005	Conseiller municipal
 11045K	Mme	Rossignol	Laurence	ACTIF	12779		18/03/2001 00:00:00		05/11/2011 00:00:00		de	Compiègne	12909	18/03/2001 00:00:00		05/11/2011 00:00:00		Conseiller municipal
-58929E	M.	Roudier	Roger	ANCIEN	10191				04/03/2002 00:00:00	2002	Indetermine(e)/Indefini(e)	Razac-sur-l'Isle	3361			04/03/2002 00:00:00	2002	Maire
+58929E	M.	Roudier	Roger	ANCIEN	10191				04/03/2002 00:00:00	2002		Razac-sur-l'Isle	3361			04/03/2002 00:00:00	2002	Maire
 80039J	M.	Roujas	Gérard	ANCIEN	6252		11/03/2001 00:00:00	2001			de	Peyssies	2676	11/03/2001 00:00:00	2001			Conseiller municipal
-000443	M.	Roujon	Jules	ANCIEN	10192				26/05/1985 00:00:00	1985	Indetermine(e)/Indefini(e)	Marvejols	3362			26/05/1985 00:00:00	1985	Maire
-95065N	M.	Rouquet	René	ANCIEN	10193						Indetermine(e)/Indefini(e)	Alfortville	3363					Maire
+000443	M.	Roujon	Jules	ANCIEN	10192				26/05/1985 00:00:00	1985		Marvejols	3362			26/05/1985 00:00:00	1985	Maire
+95065N	M.	Rouquet	René	ANCIEN	10193							Alfortville	3363					Maire
 16431B	M.	Roustan	Max	ANCIEN	51359	11/03/2001 00:00:00	11/03/2001 00:00:00				d'	Alès	50543	11/03/2001 00:00:00				Maire
 80040B	M.	Rouvière	André	ANCIEN	641				11/03/2001 00:00:00	2001	de 	Bessèges	641			11/03/2001 00:00:00	2001	Maire
 14107H	M.	Roux	Jean-Yves	ACTIF	13939			1995		2010	du	Brusquet	13382		1995		2000	Adjoint au maire
 14107H	M.	Roux	Jean-Yves	ACTIF	13939			1995		2010	du	Brusquet	13386		2001		2010	Maire
 01029S	Mme	Rozier	Janine	ANCIEN	6566			1971		2001	d'	Ormes	3027		1971		2001	Maire
-000505	M.	Rudloff	Marcel	ANCIEN	10194						Indetermine(e)/Indefini(e)	Strasbourg	3364					Conseiller municipal
+000505	M.	Rudloff	Marcel	ANCIEN	10194							Strasbourg	3364					Conseiller municipal
 19619A	Mme	Saint-Pé	Denise	ACTIF	51147	13/03/1983 00:00:00	13/03/1983 00:00:00		01/04/2004 00:00:00		d'	Abitain	50401	13/03/1983 00:00:00		01/04/2004 00:00:00		Maire
-000453	M.	Sallenave	Pierre	ANCIEN	10195						Indetermine(e)/Indefini(e)	<commune indéterminée>	3365					Conseiller municipal
-000564	M.	Salvi	Pierre	ANCIEN	10196						Indetermine(e)/Indefini(e)	Viarmes	3366					Maire
+000453	M.	Sallenave	Pierre	ANCIEN	10195							<commune indéterminée>	3365					Conseiller municipal
+000564	M.	Salvi	Pierre	ANCIEN	10196							Viarmes	3366					Maire
 01036R	Mme	San Vicente-Baudrin	Michèle	ANCIEN	6451		25/03/2001 00:00:00				d'	Annay-sous-Lens	2959	25/03/2001 00:00:00				Maire
-57752S	M.	Sanglier	Jacques	ANCIEN	10197				03/03/2014 00:00:00	2014	Indetermine(e)/Indefini(e)	Paris	3367			03/03/2014 00:00:00	2014	Conseiller municipal
+57752S	M.	Sanglier	Jacques	ANCIEN	10197				03/03/2014 00:00:00	2014		Paris	3367			03/03/2014 00:00:00	2014	Conseiller municipal
 01019Q	M.	Saugey	Bernard	ANCIEN	6544			1971		1995	de	Saint-Just-Chaleyssin	3004		1971		1995	Maire
 89040Q	M.	Saunier	Claude	ANCIEN	620				11/03/2001 00:00:00	2001	de 	Saint-Brieuc	620		1983	11/03/2001 00:00:00	2001	Maire
 89040Q	M.	Saunier	Claude	ANCIEN	620				11/03/2001 00:00:00	2001	de 	Saint-Brieuc	10831		1971		1983	Adjoint au maire
@@ -1621,20 +1621,20 @@ Matricule	Qualité	Nom usuel	Prénom usuel	État Sénateur	Identifiant mandat	Da
 11043H	M.	Savin	Michel	ACTIF	12489		18/06/1995 00:00:00				de	Domène	50821	17/10/2017 00:00:00				Conseiller municipal
 04045F	Mme	Schillinger	Patricia	ACTIF	10830			2001	31/03/2014 00:00:00		d'	Hégenheim	10889		2001	15/03/2008 00:00:00	2008	Adjoint au maire
 04045F	Mme	Schillinger	Patricia	ACTIF	10830			2001	31/03/2014 00:00:00		d'	Hégenheim	11276	15/03/2008 00:00:00	2008	31/03/2014 00:00:00	2014	Maire
-58662V	M.	Schmaus	Guy	ANCIEN	10198						Indetermine(e)/Indefini(e)	Clichy	3368					Conseiller municipal
-58352J	M.	Schmitt	Robert	ANCIEN	10199				06/12/2003 00:00:00	2003	Indetermine(e)/Indefini(e)	<commune indéterminée>	3369			06/12/2003 00:00:00	2003	Maire
+58662V	M.	Schmaus	Guy	ANCIEN	10198							Clichy	3368					Conseiller municipal
+58352J	M.	Schmitt	Robert	ANCIEN	10199				06/12/2003 00:00:00	2003		<commune indéterminée>	3369			06/12/2003 00:00:00	2003	Maire
 04018C	M.	Schmitz	Alain	ACTIF	10701			1983	07/06/2004 00:00:00		de	Versailles	10768		1983	07/06/2004 00:00:00	2004	Adjoint au maire
 93005R	M.	Schosteck	Jean-Pierre	ANCIEN	650				11/03/2001 00:00:00	2001	de 	Châtillon	650			11/03/2001 00:00:00	2001	Maire
 93005R	M.	Schosteck	Jean-Pierre	ANCIEN	6088		11/03/2001 00:00:00	2001			de 	Châtillon	2395	11/03/2001 00:00:00	2001	17/03/2001 00:00:00	2001	Conseiller municipal
 93005R	M.	Schosteck	Jean-Pierre	ANCIEN	6088		11/03/2001 00:00:00	2001			de 	Châtillon	2621	17/03/2001 00:00:00	2001			Maire
 08054Y	Mme	Schurch	Mireille	ANCIEN	11807		01/03/1995 00:00:00		31/03/2014 00:00:00		de	Lignerolles	11650	01/03/1995 00:00:00	1995	31/03/2014 00:00:00		Maire
-59307H	M.	Schwint	Robert	ANCIEN	10200				24/01/2011 00:00:00	2011	Indetermine(e)/Indefini(e)	Besançon	3370			24/01/2011 00:00:00	2011	Maire
+59307H	M.	Schwint	Robert	ANCIEN	10200				24/01/2011 00:00:00	2011		Besançon	3370			24/01/2011 00:00:00	2011	Maire
 19762G	M.	Segouin	Vincent	ACTIF	51605		16/03/2008 00:00:00		10/07/2018 00:00:00		de	Bellême	51072	16/03/2008 00:00:00		10/07/2018 00:00:00		Maire
 89041R	M.	Seillier	Bernard	ANCIEN	595			1995	11/03/2001 00:00:00	2001	de 	Séverac-le-Château	595		1995	11/03/2001 00:00:00	2001	Maire
 89041R	M.	Seillier	Bernard	ANCIEN	6138		11/03/2001 00:00:00	2001	21/03/2008 00:00:00		de	Séverac-le-Château	2440	11/03/2001 00:00:00	2001	17/03/2001 00:00:00	2001	Conseiller municipal
 89041R	M.	Seillier	Bernard	ANCIEN	6138		11/03/2001 00:00:00	2001	21/03/2008 00:00:00		de	Séverac-le-Château	2696	17/03/2001 00:00:00	2001	21/03/2008 00:00:00		Maire
-58933A	M.	Sempe	Abel	ANCIEN	10201				22/02/2006 00:00:00	2006	Indetermine(e)/Indefini(e)	Aignan	3371			22/02/2006 00:00:00	2006	Conseiller municipal
-000440	M.	Seramy	Paul	ANCIEN	10202						Indetermine(e)/Indefini(e)	Fontainebleau	3372					Maire
+58933A	M.	Sempe	Abel	ANCIEN	10201				22/02/2006 00:00:00	2006		Aignan	3371			22/02/2006 00:00:00	2006	Conseiller municipal
+000440	M.	Seramy	Paul	ANCIEN	10202							Fontainebleau	3372					Maire
 92043T	M.	Sergent	Michel	ANCIEN	713				11/03/2001 00:00:00	2001	de 	Desvres	713			11/03/2001 00:00:00	2001	Maire
 92043T	M.	Sergent	Michel	ANCIEN	6157		11/03/2001 00:00:00	2001			de	Desvres	2458	11/03/2001 00:00:00	2001	17/03/2001 00:00:00	2001	Conseiller municipal
 92043T	M.	Sergent	Michel	ANCIEN	6157		11/03/2001 00:00:00	2001			de	Desvres	2677	17/03/2001 00:00:00	2001		2005	Maire
@@ -1649,14 +1649,14 @@ Matricule	Qualité	Nom usuel	Prénom usuel	État Sénateur	Identifiant mandat	Da
 04069P	Mme	Sittler	Esther	ACTIF	10918						de	Herbsheim	51290	02/07/2019 00:00:00				Conseiller municipal
 11071M	M.	Soilihi	Abdourahamane	ANCIEN	12544		16/03/2008 00:00:00		31/03/2014 00:00:00		de	Mamoudzou (Mayotte)	12782	16/03/2008 00:00:00		31/03/2014 00:00:00		Maire
 19703U	M.	Sol	Jean	ACTIF	51330		19/03/1989 00:00:00		31/10/2017 00:00:00		de	Bompas	50509	19/03/1989 00:00:00		31/10/2017 00:00:00		Conseiller municipal
-000279	M.	Soldani	Edouard	ANCIEN	10203						Indetermine(e)/Indefini(e)	Draguignan	3373					Conseiller municipal
+000279	M.	Soldani	Edouard	ANCIEN	10203							Draguignan	3373					Conseiller municipal
 19713W	Mme	Sollogoub	Nadia	ACTIF	51344	16/03/2008 00:00:00	16/03/2008 00:00:00				de	Neuvy-sur-Loire	50524	16/03/2008 00:00:00		23/10/2017 00:00:00		Maire
 19713W	Mme	Sollogoub	Nadia	ACTIF	51344	16/03/2008 00:00:00	16/03/2008 00:00:00				de	Neuvy-sur-Loire	50851	24/10/2017 00:00:00				Conseiller municipal
-000452	M.	Sordel	Michel	ANCIEN	10204				23/02/1994 00:00:00	1994	Indetermine(e)/Indefini(e)	Chatillon-sur-Seine	3374			23/02/1994 00:00:00	1994	Conseiller municipal
+000452	M.	Sordel	Michel	ANCIEN	10204				23/02/1994 00:00:00	1994		Chatillon-sur-Seine	3374			23/02/1994 00:00:00	1994	Conseiller municipal
 81001X	M.	Soucaret	Raymond	ANCIEN	675				11/03/2001 00:00:00	2001	de 	Francescas	675			11/03/2001 00:00:00	2001	Maire
 81001X	M.	Soucaret	Raymond	ANCIEN	6040		11/03/2001 00:00:00	2001	08/06/2014 00:00:00	2014	de	Francescas	2339	11/03/2001 00:00:00	2001	17/03/2001 00:00:00	2001	Conseiller municipal
 81001X	M.	Soucaret	Raymond	ANCIEN	6040		11/03/2001 00:00:00	2001	08/06/2014 00:00:00	2014	de	Francescas	2701	17/03/2001 00:00:00	2001	08/06/2014 00:00:00	2014	Maire
-59247N	M.	Souffrin	Paul	ANCIEN	10205						Indetermine(e)/Indefini(e)	Thionville	3375					Maire
+59247N	M.	Souffrin	Paul	ANCIEN	10205							Thionville	3375					Maire
 01050P	M.	Soulage	Daniel	ANCIEN	6498			1983	16/03/2008 00:00:00	2008	de	Monflanquin	2976		1983	16/03/2008 00:00:00		Maire
 83054V	M.	Souplet	Michel	ANCIEN	704				11/03/2001 00:00:00	2001	de 	Chevrières	704			11/03/2001 00:00:00	2001	Adjoint au maire
 83054V	M.	Souplet	Michel	ANCIEN	6177		11/03/2001 00:00:00	2001			de	Chevrières	2475	11/03/2001 00:00:00	2001	25/03/2001 00:00:00	2001	Conseiller municipal
@@ -1664,12 +1664,12 @@ Matricule	Qualité	Nom usuel	Prénom usuel	État Sénateur	Identifiant mandat	Da
 80041C	M.	Souvet	Louis	ANCIEN	626			2001		2008	de 	Montbéliard	626	18/03/2001 00:00:00		21/03/2008 00:00:00	2008	Maire
 80041C	M.	Souvet	Louis	ANCIEN	6223		18/03/2001 00:00:00	2001			de	Montbéliard	2562	18/03/2001 00:00:00	2001	25/03/2001 00:00:00	2001	Conseiller municipal
 80041C	M.	Souvet	Louis	ANCIEN	6223		18/03/2001 00:00:00	2001			de	Montbéliard	11259		2008			Conseiller municipal
-000330	M.	Spenale	Georges	ANCIEN	10206						Indetermine(e)/Indefini(e)	<commune indéterminée>	3376					Conseiller municipal
+000330	M.	Spenale	Georges	ANCIEN	10206							<commune indéterminée>	3376					Conseiller municipal
 01028R	M.	Sueur	Jean-Pierre	ACTIF	6430			1989		2008	d'	Orléans	2948		1989	11/03/2001 00:00:00	2001	Maire
 01028R	M.	Sueur	Jean-Pierre	ACTIF	6430			1989		2008	d'	Orléans	3062	11/03/2001 00:00:00	2001		2008	Conseiller municipal
-59560U	M.	Taittinger	Pierre-Christian	ANCIEN	10207				27/09/2009 00:00:00	2009	Indetermine(e)/Indefini(e)	Paris	3377			27/09/2009 00:00:00	2009	Conseiller de Paris
-000592	M.	Tajan	Pierre	ANCIEN	10208						Indetermine(e)/Indefini(e)	Fabas	3378					Maire
-58950B	M.	Tarcy	Raymond	ANCIEN	10209				03/07/2019 00:00:00		Indetermine(e)/Indefini(e)	Saint-Laurent du Maroni	3379			03/07/2019 00:00:00		Conseiller municipal
+59560U	M.	Taittinger	Pierre-Christian	ANCIEN	10207				27/09/2009 00:00:00	2009		Paris	3377			27/09/2009 00:00:00	2009	Conseiller de Paris
+000592	M.	Tajan	Pierre	ANCIEN	10208							Fabas	3378					Maire
+58950B	M.	Tarcy	Raymond	ANCIEN	10209				03/07/2019 00:00:00			Saint-Laurent du Maroni	3379			03/07/2019 00:00:00		Conseiller municipal
 89009R	M.	Taugourdeau	Martial	ANCIEN	635				11/03/2001 00:00:00	2001	de 	Tremblay-les-Villages	635			11/03/2001 00:00:00	2001	Maire
 89009R	M.	Taugourdeau	Martial	ANCIEN	6156		11/03/2001 00:00:00	2001	14/10/2001 00:00:00	2001	de	Tremblay-les-Villages	2457	11/03/2001 00:00:00	2001	14/10/2001 00:00:00	2001	Conseiller municipal
 19669L	M.	Temal	Rachid	ACTIF	51190	18/06/1995 00:00:00	18/06/1995 00:00:00				de	Taverny	50426	18/06/1995 00:00:00		17/03/2001 00:00:00		Conseiller municipal
@@ -1696,7 +1696,7 @@ Matricule	Qualité	Nom usuel	Prénom usuel	État Sénateur	Identifiant mandat	Da
 14051J	Mme	Tocqueville	Nelly	ACTIF	14025		01/03/1995 00:00:00				de	Saint-Pierre-de-Manneville	49337	08/04/2017 00:00:00				Conseiller municipal
 01062T	M.	Todeschini	Jean-Marc	ACTIF	6588			1983			de	Talange	3054		1983	31/03/2014 00:00:00		Adjoint au maire
 01062T	M.	Todeschini	Jean-Marc	ACTIF	6588			1983			de	Talange	13171	01/04/2014 00:00:00				Conseiller municipal
-000595	M.	Toutain	Jacques	ANCIEN	10210						Indetermine(e)/Indefini(e)	Jouy-en-Josas	3380					Maire
+000595	M.	Toutain	Jacques	ANCIEN	10210							Jouy-en-Josas	3380					Maire
 86047K	M.	Trégouët	René	ANCIEN	6190		11/03/2001 00:00:00	2001			de	Les Halles	2487	11/03/2001 00:00:00	2001			Conseiller municipal
 98012M	M.	Trémel	Pierre-Yvon	ANCIEN	5044			1971	11/03/2001 00:00:00	2001	de 	Cavan	2016			11/03/2001 00:00:00	2001	Maire
 98012M	M.	Trémel	Pierre-Yvon	ANCIEN	6139		11/03/2001 00:00:00	2001	29/06/2006 00:00:00	2006	de	Cavan	2441	11/03/2001 00:00:00	2001	24/03/2001 00:00:00	2001	Conseiller municipal
@@ -1717,7 +1717,7 @@ Matricule	Qualité	Nom usuel	Prénom usuel	État Sénateur	Identifiant mandat	Da
 86049M	M.	Trucy	François	ANCIEN	11370		21/03/1971 00:00:00	1971	14/06/1996 00:00:00	1996	de 	Toulon	11340		1982	03/10/1985 00:00:00	1985	Adjoint au maire
 08071A	M.	Tuheiava	Richard	ANCIEN	11815				17/07/2013 00:00:00		d'	Arue	11656			17/07/2013 00:00:00		Conseiller municipal
 92044U	M.	Türk	Alex	ANCIEN	6273		18/03/2001 00:00:00	2001	01/01/2003 00:00:00	2003	de	Lille	2735	18/03/2001 00:00:00	2001	01/01/2003 00:00:00	2003	Conseiller municipal
-59250H	M.	Ukeiwe	Dick	ANCIEN	10211				03/09/2013 00:00:00	2013	Indetermine(e)/Indefini(e)	Dumbea	3381			03/09/2013 00:00:00	2013	Conseiller municipal
+59250H	M.	Ukeiwe	Dick	ANCIEN	10211				03/09/2013 00:00:00	2013		Dumbea	3381			03/09/2013 00:00:00	2013	Conseiller municipal
 12038D	M.	Vairetto	André	ANCIEN	12922			1989			de 	Notre-Dame-des-Millières	13106		1989		2001	Maire
 12038D	M.	Vairetto	André	ANCIEN	12922			1989			de 	Notre-Dame-des-Millières	13107		2008			Maire
 80046H	M.	Valade	Jacques	ANCIEN	6143		11/03/2001 00:00:00	2001	21/03/2008 00:00:00	2008	de	Bordeaux	2445	11/03/2001 00:00:00	2001		2005	Conseiller municipal
@@ -1726,7 +1726,7 @@ Matricule	Qualité	Nom usuel	Prénom usuel	État Sénateur	Identifiant mandat	Da
 08049C	M.	Vall	Raymond	ACTIF	11682			1995			de	Fleurance	11551		1995	15/09/2017 00:00:00		Maire
 08049C	M.	Vall	Raymond	ACTIF	11682			1995			de	Fleurance	50819	16/09/2017 00:00:00				Conseiller municipal
 89042S	M.	Vallet	André	ANCIEN	599			1989	11/03/2001 00:00:00	2001	de 	Salon-de-Provence	599		1989	11/03/2001 00:00:00	2001	Maire
-55510R	M.	Vallin	Camille	ANCIEN	10212				09/08/2009 00:00:00	2009	Indetermine(e)/Indefini(e)	Givors	3382			09/08/2009 00:00:00	2009	Maire
+55510R	M.	Vallin	Camille	ANCIEN	10212				09/08/2009 00:00:00	2009		Givors	3382			09/08/2009 00:00:00	2009	Maire
 11041F	M.	Vallini	André	ACTIF	12479		27/06/1986 00:00:00		15/06/2001 00:00:00	2001	de	Tullins	12681	27/06/1986 00:00:00		15/06/2001 00:00:00	2001	Maire
 19527W	Mme	Van Heghe	Sabine	ACTIF	50827	18/03/2001 00:00:00	18/03/2001 00:00:00				de	Dourges	50121	18/03/2001 00:00:00		01/10/2017 00:00:00		Adjoint au maire
 19527W	Mme	Van Heghe	Sabine	ACTIF	50827	18/03/2001 00:00:00	18/03/2001 00:00:00				de	Dourges	51062	02/10/2017 00:00:00				Conseiller municipal
@@ -1770,27 +1770,27 @@ Matricule	Qualité	Nom usuel	Prénom usuel	État Sénateur	Identifiant mandat	Da
 89045V	M.	Vinçon	Serge	ANCIEN	6144		11/03/2001 00:00:00	2001	16/12/2007 00:00:00	2007	de	Saint-Amand-Montrond	2624	17/03/2001 00:00:00	2001	16/12/2007 00:00:00	2007	Maire
 01010F	M.	Virapoullé	Jean-Paul	ANCIEN	6376		17/07/1972 00:00:00	1972			de	Saint-André	2924	17/07/1972 00:00:00	1972		2008	Maire
 01010F	M.	Virapoullé	Jean-Paul	ANCIEN	6376		17/07/1972 00:00:00	1972			de	Saint-André	11257		2008			Conseiller municipal
-59252K	M.	Viron	Hector	ANCIEN	10213				25/12/2007 00:00:00	2007	Indetermine(e)/Indefini(e)	Lille	3383			25/12/2007 00:00:00	2007	Conseiller municipal
+59252K	M.	Viron	Hector	ANCIEN	10213				25/12/2007 00:00:00	2007		Lille	3383			25/12/2007 00:00:00	2007	Conseiller municipal
 98026T	M.	Vissac	Guy	ANCIEN	5260			1959	11/03/2001 00:00:00	2001	de 	Langeac	2149		1983	11/03/2001 00:00:00	2001	Maire
 98026T	M.	Vissac	Guy	ANCIEN	5260			1959	11/03/2001 00:00:00	2001	de 	Langeac	2150		1959		1983	Conseiller municipal
 98026T	M.	Vissac	Guy	ANCIEN	6042		11/03/2001 00:00:00	2001			de	Langeac	2341	11/03/2001 00:00:00	2001	17/03/2001 00:00:00	2001	Conseiller municipal
 98026T	M.	Vissac	Guy	ANCIEN	6042		11/03/2001 00:00:00	2001			de	Langeac	2625	17/03/2001 00:00:00	2001			Maire
-59562W	M.	Vizet	Robert	ANCIEN	10214				13/08/2018 00:00:00		Indetermine(e)/Indefini(e)	Palaiseau	3384			13/08/2018 00:00:00		Conseiller municipal
+59562W	M.	Vizet	Robert	ANCIEN	10214				13/08/2018 00:00:00			Palaiseau	3384			13/08/2018 00:00:00		Conseiller municipal
 14173T	M.	Vogel	Jean Pierre	ACTIF	14016		30/03/2014 00:00:00				de	Bonnétable	13480	30/03/2014 00:00:00		29/09/2017 00:00:00		Maire
 14173T	M.	Vogel	Jean Pierre	ACTIF	14016		30/03/2014 00:00:00				de	Bonnétable	50730	30/09/2017 00:00:00				Conseiller municipal
 14173T	M.	Vogel	Jean Pierre	ACTIF	14359		01/03/1995 00:00:00		17/03/2014 00:00:00		de	Beaufay	13657	01/03/1995 00:00:00		17/03/2014 00:00:00		Maire
 04039H	M.	Voguet	Jean-François	ANCIEN	11039			1977			de	Fontenay-sous-Bois	11030		2001			Maire
 04039H	M.	Voguet	Jean-François	ANCIEN	11039			1977			de	Fontenay-sous-Bois	11069		1977		2001	Conseiller municipal
-59253L	M.	Voisin	André	ANCIEN	10215				28/06/2008 00:00:00	2008	Indetermine(e)/Indefini(e)	L'Ile-Bouchard	3385			28/06/2008 00:00:00	2008	Maire
+59253L	M.	Voisin	André	ANCIEN	10215				28/06/2008 00:00:00	2008		L'Ile-Bouchard	3385			28/06/2008 00:00:00	2008	Maire
 04082L	Mme	Voynet	Dominique	ANCIEN	10972			1989		2002	de	Dole	10980		1989		2002	Conseiller municipal
 04082L	Mme	Voynet	Dominique	ANCIEN	11332		22/03/2008 00:00:00				de	Montreuil-sous-Bois	11256	22/03/2008 00:00:00				Maire
 19737F	Mme	Vullien	Michèle	ACTIF	51488	30/03/2014 00:00:00	30/03/2014 00:00:00				de	Dardilly	50690	30/03/2014 00:00:00		09/10/2017 00:00:00		Maire
 19737F	Mme	Vullien	Michèle	ACTIF	51488	30/03/2014 00:00:00	30/03/2014 00:00:00				de	Dardilly	50897	10/10/2017 00:00:00				Conseiller municipal
 11063M	M.	Watrin	Dominique	ANCIEN	12827		01/06/2001 00:00:00		31/01/2012 00:00:00		de	Rouvroy	12997	01/06/2001 00:00:00		31/01/2012 00:00:00		Adjoint au maire
 95066P	M.	Weber	Henri	ANCIEN	747				11/03/2001 00:00:00	2001	de 	Dieppe	747			11/03/2001 00:00:00	2001	Conseiller municipal
-58355M	M.	Yvon	Joseph	ANCIEN	10216				07/07/1998 00:00:00	1998	Indetermine(e)/Indefini(e)	Groix	3386			07/07/1998 00:00:00	1998	Maire
+58355M	M.	Yvon	Joseph	ANCIEN	10216				07/07/1998 00:00:00	1998		Groix	3386			07/07/1998 00:00:00	1998	Maire
 01047U	M.	Zocchetto	François	ANCIEN	6484		19/03/1989 00:00:00	1989	19/10/2001 00:00:00	2001	de	Laval	2968	18/06/1995 00:00:00	1995	19/10/2001 00:00:00	2001	Adjoint au maire
 01047U	M.	Zocchetto	François	ANCIEN	6484		19/03/1989 00:00:00	1989	19/10/2001 00:00:00	2001	de	Laval	3072	19/03/1989 00:00:00	1989	18/06/1995 00:00:00	1995	Conseiller municipal
 01047U	M.	Zocchetto	François	ANCIEN	11344		21/03/2008 00:00:00				de	Laval	11312	21/03/2008 00:00:00		31/03/2014 00:00:00		Conseiller municipal
 01047U	M.	Zocchetto	François	ANCIEN	11344		21/03/2008 00:00:00				de	Laval	13199	01/04/2014 00:00:00				Maire
-58655W	M.	Zwickert	Charles	ANCIEN	10217				27/09/2005 00:00:00	2005	Indetermine(e)/Indefini(e)	Colmar	3387			27/09/2005 00:00:00	2005	Conseiller municipal
+58655W	M.	Zwickert	Charles	ANCIEN	10217				27/09/2005 00:00:00	2005		Colmar	3387			27/09/2005 00:00:00	2005	Conseiller municipal

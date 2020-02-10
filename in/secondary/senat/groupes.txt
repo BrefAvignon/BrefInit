@@ -1,4 +1,4 @@
-Matricule	Id appartenance	Id fonction occupée	Nom	Prénom	Code du groupe politique	Nom court du groupe politique	Date de début d'appartenance	Date de fin d'appartenance	Nom court fonction	Date de début de la fonction	Date de fin de la fonction
+Matricule	Id appartenance	Id fonction occupee	Nom	Prenom	Code du groupe politique	Nom court du groupe politique	Date de debut d'appartenance	Date de fin d'appartenance	Nom court fonction	Date de debut de la fonction	Date de fin de la fonction
 83008P	208	208	Abadie	François	RDSE	Groupe du RDSE		02/03/2001	Membre		02/03/2001
 14263U	2623	2974	Abate	Patrick	CRC	Groupe CRCE	22/12/2014	17/06/2017	Membre	22/12/2014	17/06/2017
 57316A	918	1178	Abdellatif	Mohamed	RI	Groupe des RI		04/07/1962	Membre		04/07/1962

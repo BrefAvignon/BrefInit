@@ -172,13 +172,9 @@ test.multiple.id <- function(data, loc.col=NA, out.folder)
 	count <- 0
 	
 	# load table of equivalent ids
-	if(extraction==1)
-		tab.file <- FILE_EQUIV_IDS
-	else if(extraction==2)
-		tab.file <- FILE_EQUIV_IDS2
-	tlog(2,"Loading the table of equivalent ids (",tab.file,")")
+	tlog(2,"Loading the table of equivalent ids (",FILE_CONV_IDS,")")
 	equiv.table <- read.table(
-			file=tab.file,				# name of the equivalence file
+			file=FILE_CONV_IDS,			# name of the equivalence file
 			header=TRUE, 				# look for a header
 			sep="\t", 					# character used to separate columns 
 			check.names=FALSE, 			# don't change the column names from the file
@@ -201,13 +197,9 @@ test.multiple.id <- function(data, loc.col=NA, out.folder)
 	tlog(4,"Done: ",length(conv.map)," lines read")
 	
 	# load table of confirmed homonyms
-	if(extraction==1)
-		tab.file <- FILE_HOMON_IDS
-	else if(extraction==2)
-		tab.file <- FILE_HOMON_IDS2
-	tlog(2,"Loading the table of confirmed homonyms (",tab.file,")")
+	tlog(2,"Loading the table of confirmed homonyms (",FILE_CONV_HOMONYMS,")")
 	homon.table <- read.table(
-			file=tab.file,				# name of the tab file
+			file=FILE_CONV_HOMONYMS,		# name of the tab file
 			header=TRUE, 				# look for a header
 			sep="\t", 					# character used to separate columns 
 			check.names=FALSE, 			# don't change the column names from the file
@@ -259,6 +251,8 @@ test.multiple.id <- function(data, loc.col=NA, out.folder)
 				{	rem <- homon.table[which(homon.table[,1]==ids[1]),2]
 					ids <- setdiff(ids, rem)
 				}
+# TODO pb: ordre alphabétique différent d'ordre numérique !
+# >> utiliser l'ordre alphabétique
 				
 				tlog(8,"After filtering out the manually confirmed true homonyms, ",length(ids)," ids remain")
 				if(length(ids)>1)
