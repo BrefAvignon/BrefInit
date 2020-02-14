@@ -197,10 +197,6 @@ end.dates <- as.Date(elect.table[,COL_SENAT_MDT_FIN], "%d/%m/%Y")
 #fonct.names <- trimws(normalize.proper.nouns(remove.diacritics(indiv.table[idx,COL_SENAT_FCT_NOM])))
 	fonct.names <- rep(NA,length(idx))
 
-# keep only mandates starting before 2001
-pre.mandates <- which(start.dates<as.Date("2001/01/01"))
-pre.idx <- idx[pre.mandates]
-
 # match senate ids with RNE ids
 rne.ids <- rep(NA, nrow(indiv.table))
 for(i in 1:nrow(indiv.table))
@@ -227,32 +223,32 @@ for(i in 1:nrow(indiv.table))
 }
 ids <- rne.ids[idx]
 
-# match RNE ids with senate ids
-rne.ids <- sort(unique(data[,COL_ATT_ELU_ID]))
-rne.rows <- match(rne.ids,data[,COL_ATT_ELU_ID])
-sen.ids <- rep(NA,length(rne.ids))
-for(i in 1:length(rne.ids))
-{	tlog(2, "Processing row ",i,"/",length(rne.ids))
-	tmp <- which(indiv.last.names==data[rne.rows[i],COL_ATT_ELU_NOM]
-			& indiv.first.names==data[rne.rows[i],COL_ATT_ELU_PRENOM]
-			& indiv.birth.dates==data[rne.rows[i],COL_ATT_ELU_DDN])
-#			& indiv.dpt.names==data[rne.rows[i],COL_ATT_DPT_NOM])
-	if(length(tmp)==0)
-		tlog(4, "No match for row: ",paste(data[rne.rows[i],],collapse=","))
-	else 
-	{	tmp.ids <- sort(unique(indiv.table[tmp,COL_SENAT_ELU_MATRI]))
-		if(length(tmp.ids)>1)
-		{	tlog(4, "Found several matches (ids ",paste(tmp.ids,collapse=","),") for row: ",paste(data[rne.rows[i],],collapse=","))
-			# display more details?
-		}
-		else
-		{	tlog(4, "Found a single Senate entry (id ",tmp.ids,", name ",
-					paste(indiv.last.names[tmp[1]],indiv.first.names[tmp[1]],indiv.birth.dates[tmp[1]],sep=","),
-					") for row: ",paste(indiv.table[i,],collapse=","))
-			sen.ids[i] <- tmp.ids
-		}	
-	}
-}
+## match RNE ids with senate ids
+#rne.ids <- sort(unique(data[,COL_ATT_ELU_ID]))
+#rne.rows <- match(rne.ids,data[,COL_ATT_ELU_ID])
+#sen.ids <- rep(NA,length(rne.ids))
+#for(i in 1:length(rne.ids))
+#{	tlog(2, "Processing row ",i,"/",length(rne.ids))
+#	tmp <- which(indiv.last.names==data[rne.rows[i],COL_ATT_ELU_NOM]
+#			& indiv.first.names==data[rne.rows[i],COL_ATT_ELU_PRENOM]
+#			& indiv.birth.dates==data[rne.rows[i],COL_ATT_ELU_DDN])
+##			& indiv.dpt.names==data[rne.rows[i],COL_ATT_DPT_NOM])
+#	if(length(tmp)==0)
+#		tlog(4, "No match for row: ",paste(data[rne.rows[i],],collapse=","))
+#	else 
+#	{	tmp.ids <- sort(unique(indiv.table[tmp,COL_SENAT_ELU_MATRI]))
+#		if(length(tmp.ids)>1)
+#		{	tlog(4, "Found several matches (ids ",paste(tmp.ids,collapse=","),") for row: ",paste(data[rne.rows[i],],collapse=","))
+#			# display more details?
+#		}
+#		else
+#		{	tlog(4, "Found a single Senate entry (id ",tmp.ids,", name ",
+#					paste(indiv.last.names[tmp[1]],indiv.first.names[tmp[1]],indiv.birth.dates[tmp[1]],sep=","),
+#					") for row: ",paste(indiv.table[i,],collapse=","))
+#			sen.ids[i] <- tmp.ids
+#		}	
+#	}
+#}
 
 # TODO only required if person completely missing from RNE table:
 # - firstnames to sex (?) using majority sex from merged table (?)
@@ -307,7 +303,10 @@ colnames(tab) <- c(
 	COL_ATT_FCT_FIN,
 	COL_ATT_FCT_MOTIF
 )
-tab <- tab[pre.idx,] # only keep pre-2001 mandates
+
+# keep only mandates starting before 2001
+#pre.mandates <- which(start.dates<as.Date("2001/01/01")) 
+#tab <- tab[-pre.mandates,]
 
 # temporarily record both tables
 dir.create(path=FOLDER_COMP_SRC_SEN, showWarnings=FALSE, recursive=TRUE)
@@ -333,6 +332,37 @@ write.table(x=tmp.data,
 	row.names=FALSE,		# no names for rows
 	col.names=TRUE			# record table headers
 )
+
+# match rows using a tolerance of 5 days in dates, then correct RNE dates
+ids <- sort(unique(tmp.data[,COL_ATT_ELU_ID]))
+tlog(2,"Correcting start dates in RNE table")
+for(i in 1:length(ids))
+{	tlog(4,"Processing id ",ids[i]," (",i,"/",length(ids),")")
+	# get all rows for the current id
+	idx.data <- which(tmp.data[,COL_ATT_ELU_ID]==ids[i])
+	idx.tab <- which(tmp.tab[,COL_ATT_ELU_ID]==ids[i])
+	# match the rows, possibly correcting the RNE date
+	for(idx1 in idx.data)
+	{	idx2 <- idx.tab[tmp.tab[idx.tab,COL_ATT_MDT_DBT]==tmp.tab[idx1,COL_ATT_MDT_DBT]]
+		if(length(idx1)==1)
+			tlog(6,"Found 1 matching row, nothing to do")
+		else if(length(idx2)>1)
+		{	tlog(6,"Found several matching rows")
+			stop("Found several matching rows")
+		}
+		else if(length(idx2)<1)
+		{	gaps <- abs(tmp.tab[idx.tab,COL_ATT_MDT_DBT] - tmp.tab[idx1,COL_ATT_MDT_DBT])
+			g <- which.min(gap)
+			if(gaps[g]<=5)
+			{	tlog(6,"Find a matching row using approximate date replacing:")
+				tlog(8,"")
+			}
+			else
+				tlog(6,"Did not found any matching row, even with approximate start date")
+		}
+	}
+}
+
 
 # compare both tables
 compare.tables(files0=tab.rne.file, files1=tab.sen.file, out.folder=FOLDER_COMP_SRC_SEN)
