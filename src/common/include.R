@@ -44,4 +44,4 @@ source("src/common/logging.R")
 source("src/common/stats.R")
 
 source("src/load/load_rne.R")
-source("src/load/load_senat.R")
+#source("src/load/load_senat.R")

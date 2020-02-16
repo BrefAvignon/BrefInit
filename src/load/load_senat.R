@@ -333,38 +333,48 @@ write.table(x=tmp.data,
 	col.names=TRUE			# record table headers
 )
 
-# match rows using a tolerance of 5 days in dates, then correct RNE dates
+# match rows using a tolerance of a few days in dates, then correct RNE dates
+TOLERANCE <- 14
 ids <- sort(unique(tmp.data[,COL_ATT_ELU_ID]))
 tlog(2,"Correcting start dates in RNE table")
 for(i in 1:length(ids))
 {	tlog(4,"Processing id ",ids[i]," (",i,"/",length(ids),")")
+	
 	# get all rows for the current id
 	idx.data <- which(tmp.data[,COL_ATT_ELU_ID]==ids[i])
-	idx.tab <- which(tmp.tab[,COL_ATT_ELU_ID]==ids[i])
+	idx.tab <- which(tab[,COL_ATT_ELU_ID]==ids[i])
 	# match the rows, possibly correcting the RNE date
-	for(idx1 in idx.data)
-	{	idx2 <- idx.tab[tmp.tab[idx.tab,COL_ATT_MDT_DBT]==tmp.tab[idx1,COL_ATT_MDT_DBT]]
-		if(length(idx1)==1)
-			tlog(6,"Found 1 matching row, nothing to do")
+	for(j in 1:length(idx.data))
+	{	idx1 <- idx.data[j]
+		tlog(6,"Processing row ",idx1," (",j,"/",length(idx.data),")")
+		
+		idx2 <- idx.tab[tab[idx.tab,COL_ATT_MDT_DBT]==tmp.data[idx1,COL_ATT_MDT_DBT]]
+		if(length(idx2)==1)
+			tlog(8,"Found 1 matching row, nothing to do")
 		else if(length(idx2)>1)
-		{	tlog(6,"Found several matching rows")
+		{	tlog(8,"Found several matching rows")
 			stop("Found several matching rows")
 		}
 		else if(length(idx2)<1)
-		{	gaps <- abs(tmp.tab[idx.tab,COL_ATT_MDT_DBT] - tmp.tab[idx1,COL_ATT_MDT_DBT])
-			g <- which.min(gap)
-			if(gaps[g]<=5)
-			{	tlog(6,"Find a matching row using approximate date replacing:")
-				tlog(8,"")
+		{	gaps <- abs(tab[idx.tab,COL_ATT_MDT_DBT] - tmp.data[idx1,COL_ATT_MDT_DBT])
+			g <- which.min(gaps)
+			if(gaps[g]<=TOLERANCE)
+			{	idx2 <- idx.tab[g]
+				tlog(8,"Find a matching row using approximate date replacing the first by the second:")
+				tlog(10,paste(tmp.data[idx1,],collapse=","),",",format(tmp.data[idx1,COL_ATT_MDT_DBT]))
+				tlog(10,paste(tab[idx2,],collapse=","),",",format(tab[idx2,COL_ATT_MDT_DBT]))
 			}
 			else
-				tlog(6,"Did not found any matching row, even with approximate start date")
+			{	tlog(8,"Did not find any matching row, even with approximate start date")
+				tlog(10,paste(tmp.data[idx1,],collapse=","),",",format(tmp.data[idx1,COL_ATT_MDT_DBT]))
+			}
 		}
 	}
 }
 
 
 # compare both tables
+source("src/comparison/compare_tables.R")
 compare.tables(files0=tab.rne.file, files1=tab.sen.file, out.folder=FOLDER_COMP_SRC_SEN)
 
 
