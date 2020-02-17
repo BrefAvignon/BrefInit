@@ -84,6 +84,7 @@ COL_ATT_PRO_CODE <- "Code profession"
 COL_ATT_PRO_NOM <- "Libelle profession"
 COL_ATT_REG_CODE <- "Code region"
 COL_ATT_REG_NOM <- "Libelle region"
+COL_ATT_SOURCES <- "Sources"
 
 # normalized col order
 COLS_ATT_NORMALIZED <- c(
@@ -124,7 +125,8 @@ COLS_ATT_NORMALIZED <- c(
 	COL_ATT_FCT_CODE,
 	COL_ATT_FCT_DBT,
 	COL_ATT_FCT_FIN,
-	COL_ATT_FCT_MOTIF
+	COL_ATT_FCT_MOTIF,
+	COL_ATT_SOURCES
 )
 
 # location names
@@ -188,6 +190,7 @@ LONGNAMES[COL_ATT_PRO_CODE] <- "Code de la profession"
 LONGNAMES[COL_ATT_PRO_NOM] <- "Libellé de la profession"
 LONGNAMES[COL_ATT_REG_CODE] <- "Code de la région"
 LONGNAMES[COL_ATT_REG_NOM] <- "Libellé de la région"
+LONGNAMES[COL_ATT_SOURCES] <- "Sources de la ligne"
 
 # column short names
 BASENAMES <- c()
@@ -229,6 +232,7 @@ BASENAMES[COL_ATT_PRO_CODE] <- "elu_pro_code"
 BASENAMES[COL_ATT_PRO_NOM] <- "elu_pro_lib"
 BASENAMES[COL_ATT_REG_CODE] <- "region_code"
 BASENAMES[COL_ATT_REG_NOM] <- "region_lib"
+BASENAMES[COL_ATT_SOURCES] <- "sources"
 
 # column data types
 COL_TYPES <- c()
@@ -270,6 +274,7 @@ COL_TYPES[COL_ATT_PRO_CODE] <- "cat"
 COL_TYPES[COL_ATT_PRO_NOM] <- "nom"
 COL_TYPES[COL_ATT_REG_CODE] <- "cat"
 COL_TYPES[COL_ATT_REG_NOM] <- "nom"
+COL_TYPES[COL_ATT_SOURCES] <- "cat"
 
 # colunms for correction files
 COL_CORREC_ROW <- "Row"

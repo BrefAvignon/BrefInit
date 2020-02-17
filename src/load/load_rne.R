@@ -365,6 +365,10 @@ load.data <- function(filenames, col.map, correc.file, correct.data)
 	}
 	tlog(2,"Now ",nrow(data)," rows and ",ncol(data)," columns in main table")
 	
+	# add source column
+	data <- cbind(data, rep("RNE",nrow(data)))
+	colnames(data)[ncol(data)] <- COL_ATT_SOURCES
+	
 	# normalize columns order
 	norm.cols <- intersect(COLS_ATT_NORMALIZED, colnames(data))
 	if(length(norm.cols)!=ncol(data))
