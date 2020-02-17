@@ -15,6 +15,7 @@ start.rec.log(text="SenateSource")
 
 # load senate table
 data <- load.s.data(correct.data=TRUE)
+dir.create(path=FOLDER_COMP_SRC_SEN, showWarnings=FALSE, recursive=TRUE)
 
 # load individual table
 indiv.table <- read.table(
@@ -101,40 +102,39 @@ dpt.codes <- indiv.dpt.codes[idx]
 
 # retrieve political group
 # NOTE: stored in the general table, so associated to each individual by opposition to each *mandate*
-#indiv.pol.nuances <- indiv.table[,COL_SENAT_ELU_NUANCE]
-#indiv.pol.nuances[indiv.pol.nuances=="Écologiste"] <- "ECO"
-#indiv.pol.nuances[indiv.pol.nuances=="Aucun"] <- NA
-#indiv.pol.nuances[indiv.pol.nuances=="C"] <- "COM"
-#indiv.pol.nuances[indiv.pol.nuances=="C.N.I.P."] <- "CNIP"		# missing
-#indiv.pol.nuances[indiv.pol.nuances=="CRARS"] <- "CRARS"		# missing
-#indiv.pol.nuances[indiv.pol.nuances=="CRCE"] <- "CRCE"			# missing
-#indiv.pol.nuances[indiv.pol.nuances=="G.D."] <- "GD"			# missing
-#indiv.pol.nuances[indiv.pol.nuances=="G.D.S.R.G."] <- "GDSRG"	# missing
-#indiv.pol.nuances[indiv.pol.nuances=="Indetermine(e)/Indefini(e)"] <- NA
-#indiv.pol.nuances[indiv.pol.nuances=="LaREM"] <- "REM"
-#indiv.pol.nuances[indiv.pol.nuances=="Les Indépendants"] <- "LI"# missing
-#indiv.pol.nuances[indiv.pol.nuances=="Les Républicains"] <- "LR"
-#indiv.pol.nuances[indiv.pol.nuances=="MRP"] <- "MRP"			# missing
-#indiv.pol.nuances[indiv.pol.nuances=="NI"] <- "NI"				# missing
-#indiv.pol.nuances[indiv.pol.nuances=="R.D.E."] <- "RDE"		# missing
-#indiv.pol.nuances[indiv.pol.nuances=="R.I.A.S."] <- "RIAS"		# missing
-#indiv.pol.nuances[indiv.pol.nuances=="RDSE"] <- "RDSE"			# missing
-#indiv.pol.nuances[indiv.pol.nuances=="RI"] <- "RI"				# missing
-#indiv.pol.nuances[indiv.pol.nuances=="RP"] <- "RP"				# missing
-#indiv.pol.nuances[indiv.pol.nuances=="RPCD"] <- "RPCD"			# missing
-#indiv.pol.nuances[indiv.pol.nuances=="RPR"] <- "RPR"			# missing
-#indiv.pol.nuances[indiv.pol.nuances=="SOCR"] <- "SOCR"			# missing
-#indiv.pol.nuances[indiv.pol.nuances=="U.C.D.P."] <- "UCDP"		# missing
-#indiv.pol.nuances[indiv.pol.nuances=="U.D.R."] <- "UDR"		# missing
-#indiv.pol.nuances[indiv.pol.nuances=="U.N.R."] <- "UNR"		# missing
-#indiv.pol.nuances[indiv.pol.nuances=="U.R.E.I."] <- "UREI"		# missing
-#indiv.pol.nuances[indiv.pol.nuances=="UC"] <- "UC"				# missing
-#pol.nuances <- indiv.pol.nuances[idx]
-	pol.nuances <- rep(NA,length(idx))
-# TODO la fonction est aussi dispo sous forme dynamique dans la table Groupes
+indiv.pol.nuances <- indiv.table[,COL_SENAT_ELU_NUANCE]
+indiv.pol.nuances[indiv.pol.nuances=="Écologiste"] <- "ECO"
+indiv.pol.nuances[indiv.pol.nuances=="Aucun"] <- NA
+indiv.pol.nuances[indiv.pol.nuances=="C"] <- "COM"
+indiv.pol.nuances[indiv.pol.nuances=="C.N.I.P."] <- "CNIP"		# missing
+indiv.pol.nuances[indiv.pol.nuances=="CRARS"] <- "CRARS"		# missing
+indiv.pol.nuances[indiv.pol.nuances=="CRCE"] <- "CRCE"			# missing
+indiv.pol.nuances[indiv.pol.nuances=="G.D."] <- "GD"			# missing
+indiv.pol.nuances[indiv.pol.nuances=="G.D.S.R.G."] <- "GDSRG"	# missing
+indiv.pol.nuances[indiv.pol.nuances=="Indetermine(e)/Indefini(e)"] <- NA
+indiv.pol.nuances[indiv.pol.nuances=="LaREM"] <- "REM"
+indiv.pol.nuances[indiv.pol.nuances=="Les Indépendants"] <- "LI"# missing
+indiv.pol.nuances[indiv.pol.nuances=="Les Républicains"] <- "LR"
+indiv.pol.nuances[indiv.pol.nuances=="MRP"] <- "MRP"			# missing
+indiv.pol.nuances[indiv.pol.nuances=="NI"] <- "NI"				# missing
+indiv.pol.nuances[indiv.pol.nuances=="R.D.E."] <- "RDE"			# missing
+indiv.pol.nuances[indiv.pol.nuances=="R.I.A.S."] <- "RIAS"		# missing
+indiv.pol.nuances[indiv.pol.nuances=="RDSE"] <- "RDSE"			# missing
+indiv.pol.nuances[indiv.pol.nuances=="RI"] <- "RI"				# missing
+indiv.pol.nuances[indiv.pol.nuances=="RP"] <- "RP"				# missing
+indiv.pol.nuances[indiv.pol.nuances=="RPCD"] <- "RPCD"			# missing
+indiv.pol.nuances[indiv.pol.nuances=="RPR"] <- "RPR"			# missing
+indiv.pol.nuances[indiv.pol.nuances=="SOCR"] <- "SOCR"			# missing
+indiv.pol.nuances[indiv.pol.nuances=="U.C.D.P."] <- "UCDP"		# missing
+indiv.pol.nuances[indiv.pol.nuances=="U.D.R."] <- "UDR"			# missing
+indiv.pol.nuances[indiv.pol.nuances=="U.N.R."] <- "UNR"			# missing
+indiv.pol.nuances[indiv.pol.nuances=="U.R.E.I."] <- "UREI"		# missing
+indiv.pol.nuances[indiv.pol.nuances=="UC"] <- "UC"				# missing
+pol.nuances <- indiv.pol.nuances[idx]
+#	pol.nuances <- rep(NA,length(idx))
 
 # retrieve occupations
-#indiv.occ.names <- trimws(normalize.proper.nouns(remove.diacritics(indiv.table[idx,COL_SENAT_PRO_NOM])))
+indiv.occ.names <- trimws(normalize.proper.nouns(remove.diacritics(indiv.table[idx,COL_SENAT_PRO_NOM])))
 #indiv.occ.names[indiv.occ.names=="AGRICULTEURS EXPLOITANTS"] <- "AGRICULTEURS PROPRIETAIRES EXPLOIT"
 #indiv.occ.names[indiv.occ.names=="ANCIENS AGRICULTEURS EXPLOITANTS"] <- "RETRAITES AGRICOLES"
 #indiv.occ.names[indiv.occ.names=="ANCIENS ARTISANS COMMERCANTS CHEFS D ENTREPRISE"] <- "RETR ARTIS COMMERC CHEFS D ENTREP"
@@ -180,8 +180,8 @@ dpt.codes <- indiv.dpt.codes[idx]
 #indiv.occ.names[indiv.occ.names=="RETRAITES"] <- "AUTRES RETRAITES"
 #indiv.occ.names[indiv.occ.names=="TECHNICIENS"] <- "AGENTS TECHNIQUE ET TECHNICIENS"
 #indiv.occ.names[indiv.occ.names=="VETERINAIRES LIBERAUX OU SALARIES"] <- "VETERINAIRES"
-#occ.names <- indiv.occ.names[idx]
-	occ.names <- rep(NA,length(idx))
+occ.names <- indiv.occ.names[idx]
+#	occ.names <- rep(NA,length(idx))
 # TODO: we could retrieve codes from the merged main table
 	occ.codes <- rep(NA,length(idx))
 
@@ -190,12 +190,13 @@ start.dates <- as.Date(elect.table[,COL_SENAT_MDT_DBT], "%d/%m/%Y")
 end.dates <- as.Date(elect.table[,COL_SENAT_MDT_FIN], "%d/%m/%Y")
 
 # motive of end of mandate
-#motives <- trimws(normalize.proper.nouns(remove.diacritics(elect.table[,COL_SENAT_MDT_MOTIF])))
-	motives <- rep(NA,length(idx))
+motives <- trimws(normalize.proper.nouns(remove.diacritics(elect.table[,COL_SENAT_MDT_MOTIF])))
+#	motives <- rep(NA,length(idx))
 
 # fonction names
 #fonct.names <- trimws(normalize.proper.nouns(remove.diacritics(indiv.table[idx,COL_SENAT_FCT_NOM])))
 	fonct.names <- rep(NA,length(idx))
+# TODO "function" also seems to be available under a dynamic form in the Groupes table
 
 # match senate ids with RNE ids
 rne.ids <- rep(NA, nrow(indiv.table))
@@ -250,9 +251,6 @@ ids <- rne.ids[idx]
 #	}
 #}
 
-# TODO only required if person completely missing from RNE table:
-# - firstnames to sex (?) using majority sex from merged table (?)
-
 # build senate table
 tab <- data.frame(
 	dpt.codes,								# department code
@@ -265,7 +263,7 @@ tab <- data.frame(
 	death.dates,							# death date
 	rep(NA, length(idx)),					# sex
 	rep("FRANCAISE", length(idx)),			# country
-	pol.nuances,							# political nuance
+	pol.nuances,							# political group
 	occ.codes,								# occupation code
 	occ.names,								# occupation name
 	rep("SENATEUR", length(idx)),			# mandate name
@@ -308,10 +306,12 @@ colnames(tab) <- c(
 #pre.mandates <- which(start.dates<as.Date("2001/01/01")) 
 #tab <- tab[-pre.mandates,]
 
-# temporarily record both tables
-dir.create(path=FOLDER_COMP_SRC_SEN, showWarnings=FALSE, recursive=TRUE)
+# order Senate table
+tab <- tab[order(tab[,COL_ATT_DPT_CODE], 
+				tab[,COL_ATT_ELU_NOM], tab[,COL_ATT_ELU_PRENOM], 
+				tab[,COL_ATT_MDT_DBT], tab[,COL_ATT_MDT_FIN]) ,]
+# record Senate table
 tab.sen.file <- file.path(FOLDER_COMP_SRC_SEN, "senat_senat.txt")
-tab <- tab[order(tab[,COL_ATT_DPT_CODE], tab[,COL_ATT_ELU_NOM], tab[,COL_ATT_ELU_PRENOM]),]
 write.table(x=tab,
 	file=tab.sen.file,		# name of file containing the new table
 	quote=FALSE,			# no double quote around strings
@@ -320,9 +320,11 @@ write.table(x=tab,
 	row.names=FALSE,		# no names for rows
 	col.names=TRUE			# record table headers
 )
-tmp.data <- cbind(data,rep(NA,nrow(data)),rep(NA,nrow(data)),rep(NA,nrow(data)))
+# complete RNE table
+tmp.data <- cbind(data, rep(NA,nrow(data)), rep(NA,nrow(data)), rep(NA,nrow(data)))
 colnames(tmp.data)[(ncol(tmp.data)-2):ncol(tmp.data)] <- c(COL_ATT_ELU_ID_SENAT,COL_ATT_ELU_DDD,COL_ATT_ELU_NAT)
 tmp.data <- tmp.data[,colnames(tab)]
+# record RNE table
 tab.rne.file <- file.path(FOLDER_COMP_SRC_SEN, "rne_senat.txt")
 write.table(x=tmp.data,
 	file=tab.rne.file,		# name of file containing the new table
@@ -333,10 +335,11 @@ write.table(x=tmp.data,
 	col.names=TRUE			# record table headers
 )
 
-# match rows using a tolerance of a few days in dates, then correct RNE dates
+# match rows using a tolerance of a few days in dates
 TOLERANCE <- 14
 ids <- sort(unique(tmp.data[,COL_ATT_ELU_ID]))
-tlog(2,"Correcting start dates in RNE table")
+tlog(2,"Matching rows between both tables")
+row.conv <- rep(NA,nrow(tab))
 for(i in 1:length(ids))
 {	tlog(4,"Processing id ",ids[i]," (",i,"/",length(ids),")")
 	
@@ -350,7 +353,9 @@ for(i in 1:length(ids))
 		
 		idx2 <- idx.tab[tab[idx.tab,COL_ATT_MDT_DBT]==tmp.data[idx1,COL_ATT_MDT_DBT]]
 		if(length(idx2)==1)
-			tlog(8,"Found 1 matching row, nothing to do")
+		{	tlog(8,"Found 1 matching row, nothing to do")
+			row.conv[idx2] <- idx1
+		}
 		else if(length(idx2)>1)
 		{	tlog(8,"Found several matching rows")
 			stop("Found several matching rows")
@@ -360,9 +365,10 @@ for(i in 1:length(ids))
 			g <- which.min(gaps)
 			if(gaps[g]<=TOLERANCE)
 			{	idx2 <- idx.tab[g]
-				tlog(8,"Find a matching row using approximate date replacing the first by the second:")
-				tlog(10,paste(tmp.data[idx1,],collapse=","),",",format(tmp.data[idx1,COL_ATT_MDT_DBT]))
-				tlog(10,paste(tab[idx2,],collapse=","),",",format(tab[idx2,COL_ATT_MDT_DBT]))
+				tlog(8,"Found a matching row using approximate date replacing the first by the second:")
+#				tlog(10,paste(tmp.data[idx1,],collapse=","),",",format(tmp.data[idx1,COL_ATT_MDT_DBT]))
+#				tlog(10,paste(tab[idx2,],collapse=","),",",format(tab[idx2,COL_ATT_MDT_DBT]))
+				row.conv[idx2] <- idx1
 			}
 			else
 			{	tlog(8,"Did not find any matching row, even with approximate start date")
@@ -372,18 +378,48 @@ for(i in 1:length(ids))
 	}
 }
 
+# use Senate data to correct/complete existing RNE rows
+exist.rows <- which(!is.na(row.conv))
+tlog(2,"Updating the ",length(exist.rows)," matching rows in the RNE table")
+for(idx2 in exist.rows)
+{	idx1 <- row.conv[idx2]
+	tlog(4,"Processing row ",idx1)
+	
+	# overwrite NA values using Senate data
+	cols <- which(is.na(tmp.data[idx1,]))
+	tmp.data[idx1, cols] <- tab[idx2, cols]
+	
+	# force both mandate dates to the Senate one
+	tmp.data[idx1, c(COL_ATT_MDT_DBT,COL_ATT_MDT_FIN)] <- tab[idx2, c(COL_ATT_MDT_DBT,COL_ATT_MDT_FIN)]
+}
+
+# insert new Senate rows into existing RNE table
+missing.rows <- which(is.na(row.conv))
+tlog(2,"Inserting ",length(missing.rows)," missing rows in the RNE table")
+tmp.data <- rbind(tmp.data, tab[missing.rows,])
+# sort the resulting table
+tmp.data <- tmp.data[order(tmp.data[,COL_ATT_DPT_CODE], 
+				tmp.data[,COL_ATT_ELU_NOM], tmp.data[,COL_ATT_ELU_PRENOM], 
+				tmp.data[,COL_ATT_MDT_DBT], tmp.data[,COL_ATT_MDT_FIN]) ,]
+
+# record the corrected/completed table
+tab.rne.file <- file.path(FOLDER_COMP_SRC_SEN, "rne_senat2.txt")
+write.table(x=tmp.data,
+	file=tab.rne.file,		# name of file containing the new table
+	quote=FALSE,			# no double quote around strings
+	se="\t",				# use tabulations as separators
+#	fileEncoding="UTF-8",	# character encoding
+	row.names=FALSE,		# no names for rows
+	col.names=TRUE			# record table headers
+)
 
 # compare both tables
 source("src/comparison/compare_tables.R")
 compare.tables(files0=tab.rne.file, files1=tab.sen.file, out.folder=FOLDER_COMP_SRC_SEN)
 
-
-# - traiter manuellement les problèmes
-# - compléter RNE avec Senat
-# - éventuellement rajouter les mandats pré-2001
-
-
 # close the log file
 tlog(0,"Comparison done")
 end.rec.log()
 
+# TODO only required if person completely missing from RNE table:
+# - firstnames to sex (?) using majority sex from merged table (?)

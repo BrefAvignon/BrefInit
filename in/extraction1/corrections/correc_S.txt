@@ -12,7 +12,7 @@ Row	Id	Nom	Prenom	Attribut	ValAvt	ValApr	Commentaire
 701	1505409	GRELET-CERTENAIS	Nadine	Date debut mandat	1/10/2014	1/10/2017	Date de debut fausse (BD Sénat)
 598	109825	POHER	Hervé	Date debut mandat	25/9/2011	1/3/2013	Date de debut fausse (BD Sénat)
 838	1133981	LANFRANCHI-DORGAL	Christine	Date debut mandat	1/10/2014	23/9/2017	Date de debut fausse (BD Sénat)
-482	153916	LEONARD	Claude	Date debut mandat	25/9/2011	2/11/2011	Date de debut fausse (BD Sénat)
+483	153916	LEONARD	Claude	Date debut mandat	25/9/2011	2/11/2011	Date de debut fausse (BD Sénat)
 364	159074	PRINCE	Jean-Paul	Date debut mandat	1/10/2017	3/11/2017	Date de debut fausse (BD Sénat)
 311	160992	TEXIER	Yannick	Date debut mandat	28/9/1998	29/8/2003	Date de debut fausse (BD Sénat)
 272	161640	CAZABONNE	Alain	Date debut mandat	1/10/2014	1/10/2017	Date de début fausse (BD Sénat)
@@ -33,17 +33,30 @@ Row	Id	Nom	Prenom	Attribut	ValAvt	ValApr	Commentaire
 41	46979	LEROY	Henri	Date debut mandat	1/10/2014	1/10/2017	Date de début fausse (BD Sénat)
 72	4994	RAINAUD	Marcel	Date debut mandat	5/9/2006	12/8/2006	Date de début fausse (BD Sénat)
 777	525719	CUYPERS	Pierre	Date debut mandat	5/9/2011	1/12/2016	Date de début fausse (BD Sénat)
+707	64361	VAIRETTO	André	Date debut mandat	26/9/2004	22/7/2012	Date de début fausse (BD Sénat)
+280	659470	HARRIBEY	Laurence	Date debut mandat	1/10/2014	1/10/2017	Date de début fausse (BD Sénat)
+146	769685	BORDAS	Patricia	Date debut mandat	21/9/2008	14/2/2014	Date de début fausse (BD Sénat)
+786	832608	LIPIETZ	Hélène	Date debut mandat	25/9/2011	17/6/2012	Date de début fausse (BD Sénat)
+998	839355	HOARAU	Gélita	Date debut mandat	25/9/2011	13/11/2016	Date de début fausse (BD Sénat)
+236	861193	BORIES	Pascale	Date debut mandat	1/10/2014	1/10/2017	Date de début fausse (BD Sénat)
+290	863212	BRUGUIERE	Marie-Thérèse	Date debut mandat	1/10/2014	1/10/2017	Date de début fausse (BD Sénat)
+79	902109	MAZARS	Stéphane	Date debut mandat	21/9/2008	22/7/2012	Date de début fausse (BD Sénat)
+276	968485	DELATTRE	Nathalie	Date debut mandat	1/10/2014	1/10/2017	Date de début fausse (BD Sénat)
+281	971923	LASSARADE	Florence	Date debut mandat	1/10/2014	1/10/2017	Date de début fausse (BD Sénat)
+314	980305	GERBAUD	Frédérique	Date debut mandat	28/9/2014	18/11/2016	Date de début fausse (BD Sénat)
+329	98533	RIOCREUX	Stéphanie	Date debut mandat	25/9/2011	8/4/2015	Date de début fausse (BD Sénat)
+375	998366	RIVOLLIER	Evelyne	Date debut mandat	25/9/2011	11/12/2016	Date de début fausse (BD Sénat)
 243	164	ROUVIERE	André	Date naissance	22/4/1936	29/04/1936	Date de naissance incorrecte
 31	175	BALARELLO	José	Date naissance	24/12/1926	25/12/1926	Date de naissance incorrecte
 478	355631	PANIS	Jacqueline	Date naissance	18/4/1948	16/04/1948	Date de naissance incorrecte
 1044	414	COINTAT	Christian	Date naissance	1/8/1922	11/7/1943	Ligne complètement fausse
 1044	414	COINTAT	Christian	Date fin mandat	20/9/2008	25/9/2004	Ligne complètement fausse
 308	558501	LE MENN	Jacky	Date naissance	10/3/1941	17/03/1941	Date de naissance incorrecte
-581	912	LENOIR	Jean-Claude	Date fin mandat	24/9/2011	NA	Date incorrecte remplacée par NA pour fusion ultérieure
-621	833176	ESPAGNAC	Frédérique	Date fin mandat	24/9/2011	NA	Date incorrecte remplacée par NA pour fusion ultérieure
-625	335393	LABAZEE	Georges	Date fin mandat	24/9/2011	NA	Date incorrecte remplacée par NA pour fusion ultérieure
-627	335394	LASSERRE	Jean-Jacques	Date fin mandat	24/9/2011	NA	Date incorrecte remplacée par NA pour fusion ultérieure
-714	1105676	HERVE	Loïc	Date fin mandat	30/9/2014	NA	Correction pour fusion ultérieure
-715	1105676	HERVE	Loïc	Date debut mandat	1/10/2014	28/9/2014	Correction pour fusion ultérieure
-2	876374	CHAIZE	Patrick	Date fin mandat	30/9/2014	NA	Correction pour fusion ultérieure
-3	876374	CHAIZE	Patrick	Date debut mandat	1/10/2014	28/9/2014	Correction pour fusion ultérieure
+#581	912	LENOIR	Jean-Claude	Date fin mandat	24/9/2011	NA	Date incorrecte remplacée par NA pour fusion ultérieure
+#621	833176	ESPAGNAC	Frédérique	Date fin mandat	24/9/2011	NA	Date incorrecte remplacée par NA pour fusion ultérieure
+#625	335393	LABAZEE	Georges	Date fin mandat	24/9/2011	NA	Date incorrecte remplacée par NA pour fusion ultérieure
+#627	335394	LASSERRE	Jean-Jacques	Date fin mandat	24/9/2011	NA	Date incorrecte remplacée par NA pour fusion ultérieure
+#714	1105676	HERVE	Loïc	Date fin mandat	30/9/2014	NA	Correction pour fusion ultérieure
+#715	1105676	HERVE	Loïc	Date debut mandat	1/10/2014	28/9/2014	Correction pour fusion ultérieure
+#2	876374	CHAIZE	Patrick	Date fin mandat	30/9/2014	NA	Correction pour fusion ultérieure
+#3	876374	CHAIZE	Patrick	Date debut mandat	1/10/2014	28/9/2014	Correction pour fusion ultérieure
