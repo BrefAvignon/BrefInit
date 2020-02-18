@@ -158,3 +158,7 @@ source("src/common/include.R")
 # TODO
 # possible que certains sénateurs apparaissent pas dans RNE sénat mais dans une autre table
 # >> chercher les homonymes/ddn dans la table fusionnée
+
+# TODO
+# voir pq il y a autant de lignes supprimées dans CM vs. CM2
+# >> peut être que la correction dans le script de comparaison a résolu le pb ?

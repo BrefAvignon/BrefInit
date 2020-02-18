@@ -17,7 +17,11 @@ source("src/common/include.R")
 # returns: the substring corresponding to the year.
 #############################################################################################
 extract.year <- function(str) 
-	substr(str, nchar(str)-3, nchar(str))
+{	if(grepl("/", str[1], fixed=TRUE))
+		substr(str, nchar(str)-3, nchar(str))
+	else
+		sapply(strsplit(str, "-"), function(vect) vect[1])
+}
 
 
 
@@ -31,7 +35,11 @@ extract.year <- function(str)
 # returns: the substring corresponding to the month.
 #############################################################################################
 extract.month <- function(str) 
-	sapply(strsplit(str, "/"), function(vect) vect[2])
+{	if(grepl("/", str[1], fixed=TRUE))
+		sapply(strsplit(str, "/"), function(vect) vect[2])
+	else
+		sapply(strsplit(str, "-"), function(vect) vect[2])
+}
 
 
 
@@ -45,7 +53,11 @@ extract.month <- function(str)
 # returns: the substring corresponding to the day.
 #############################################################################################
 extract.day <- function(str) 
-	sapply(strsplit(str, "/"), function(vect) vect[1])
+{	if(grepl("/", str[1], fixed=TRUE))
+		sapply(strsplit(str, "/"), function(vect) vect[1])
+	else
+		sapply(strsplit(str, "-"), function(vect) vect[3])
+}
 
 
 
@@ -64,9 +76,9 @@ extract.day <- function(str)
 #############################################################################################
 lookup.row <- function(tab1, i, tab2, map)
 {	if(COL_ATT_ELU_ID %in% colnames(tab1) && COL_ATT_ELU_ID %in% colnames(tab2))
-		id.col.name <- COL_ATT_ELU_ID
-	else
-		id.col.name <- COL_ATT_ELU_RNE
+	{	id.col.name <- COL_ATT_ELU_ID
+	}else
+		id.col.name <- COL_ATT_ELU_ID_RNE
 	idx <- which((tab2[,id.col.name]==tab1[i,id.col.name] 											# same person id
 						| tab2[,COL_ATT_ELU_PRENOM]==tab1[i,COL_ATT_ELU_PRENOM] 					# or same name
 						& tab2[,COL_ATT_ELU_NOM]==tab1[i,COL_ATT_ELU_NOM])							# and first name
@@ -74,19 +86,19 @@ lookup.row <- function(tab1, i, tab2, map)
 	if(hasArg(map))
 		idx <- setdiff(idx,map)
 	
-	# if several matches, consider the month
+	# if several matches, consider the start month
 	if(length(idx)>1)
 	{	idx2 <- which(extract.month(tab2[idx,COL_ATT_MDT_DBT])==extract.month(tab1[i,COL_ATT_MDT_DBT]))	# having a look at the month
 		idx <- idx[idx2]
 		
-		# if several matches, consider the day
+		# if several matches, consider the start day
 		if(length(idx)>1)
 		{	idx2 <- which(extract.day(tab2[idx,COL_ATT_MDT_DBT])==extract.day(tab1[i,COL_ATT_MDT_DBT]))	# having a look at the day
 			idx <- idx[idx2]
 			
 			# if several matches, consider the end date
 			if(length(idx)>1)
-			{	# if the date is NA
+			{	# if the end date is NA
 				if(is.na(tab1[i,COL_ATT_MDT_FIN]))
 				{	idx2 <- which(is.na(tab2[idx,COL_ATT_MDT_FIN]))
 					idx <- idx[idx2]
@@ -94,7 +106,7 @@ lookup.row <- function(tab1, i, tab2, map)
 				
 				# otherwise, consider the end year
 				else
-				{	idx2 <- which(extract.month(tab2[idx,COL_ATT_MDT_FIN])==extract.month(tab1[i,COL_ATT_MDT_FIN]))	# having a look at the year
+				{	idx2 <- which(extract.year(tab2[idx,COL_ATT_MDT_FIN])==extract.year(tab1[i,COL_ATT_MDT_FIN]))	# having a look at the year
 					idx <- idx[idx2]
 					
 					# if several matches, consider the end month
@@ -102,7 +114,7 @@ lookup.row <- function(tab1, i, tab2, map)
 					{	idx2 <- which(extract.month(tab2[idx,COL_ATT_MDT_FIN])==extract.month(tab1[i,COL_ATT_MDT_FIN]))	# having a look at the month
 						idx <- idx[idx2]
 						
-						# if several matches, consider the day
+						# if several matches, consider the end day
 						if(length(idx)>1)
 						{	idx2 <- which(extract.day(tab2[idx,COL_ATT_MDT_FIN])==extract.day(tab1[i,COL_ATT_MDT_FIN]))	# having a look at the day
 							idx <- idx[idx2]
@@ -190,7 +202,59 @@ read.string.table <- function(files, ...)
 	}
 	
 	# normalize column names
-	# TODO raw tables don't have the appropriate column names
+	col.map <- c()
+	col.map["Circonscription électorale"] <- COL_ATT_DPT_CODE
+	col.map["Code de la cir.législative"] <- COL_ATT_CIRC_CODE
+	col.map["Code de la commune"] <- COL_ATT_COM_CODE
+	col.map["Code département commune rattachée"] <- COL_ATT_DPT_CODE
+	col.map["Code département EPCI"] <- COL_ATT_EPCI_DPT
+	col.map["Code du canton"] <- COL_ATT_CANT_CODE
+	col.map["Code du département (Maire)"] <- COL_ATT_DPT_CODE
+	col.map["Code du département"] <- COL_ATT_DPT_CODE
+	col.map["Code Insee de la commune"] <- COL_ATT_COM_CODE
+	col.map["Code profession"] <- COL_ATT_PRO_CODE
+	col.map["Code région"] <- COL_ATT_REG_CODE
+	col.map["Code sexe"] <- COL_ATT_ELU_SEXE
+	col.map["CodeCirER"] <- COL_ATT_CIRCE_CODE
+	col.map["Date de début de la fonction"] <- COL_ATT_FCT_DBT
+	col.map["Date de début du mandat"] <- COL_ATT_MDT_DBT
+	col.map["Date de fin de la fonction"] <- COL_ATT_FCT_FIN
+	col.map["Date de fin du mandat"] <- COL_ATT_MDT_FIN
+	col.map["Date de naissance"] <- COL_ATT_ELU_DDN
+	col.map["Fonction pour un mandat (Code)"] <- COL_ATT_FCT_CODE
+	col.map["Libellé commune rattachée"] <- COL_ATT_COM_NOM
+	col.map["Libellé de département (Maires)"] <- COL_ATT_DPT_NOM
+	col.map["Libellé de département"] <- COL_ATT_DPT_NOM
+	col.map["Libellé de fonction"] <- COL_ATT_FCT_NOM
+	col.map["Libellé de la cir.législative"] <- COL_ATT_CIRC_NOM
+	col.map["Libellé de la profession"] <- COL_ATT_PRO_NOM
+	col.map["Libellé de la région"] <- COL_ATT_REG_NOM
+	col.map["Libellé de l'EPCI"] <- COL_ATT_EPCI_NOM
+	col.map["Libellé de mandat"] <- COL_ATT_MDT_NOM
+	col.map["Libellé du canton"] <- COL_ATT_CANT_NOM
+	col.map["Libellé du département"] <- COL_ATT_DPT_NOM
+	col.map["LibelléCirER"] <- COL_ATT_CIRCE_NOM
+	col.map["Motif de fin de fonction"] <- COL_ATT_FCT_MOTIF
+	col.map["Motif de fin de mandat"] <- COL_ATT_MDT_MOTIF
+	col.map["N° Identification d'un élu"] <- COL_ATT_ELU_ID_RNE
+	col.map["N° SIREN"] <- COL_ATT_EPCI_SIREN
+	col.map["Nationalité de l'élu"] <- COL_ATT_ELU_NAT
+	col.map["Nom de l'élu"] <- COL_ATT_ELU_NOM
+	col.map["Nuance mandat"] <- COL_ATT_ELU_NUANCE
+	col.map["Nuance politique (C. Gén.)"] <- COL_ATT_ELU_NUANCE
+	col.map["Nuance politique (C. Mun.)"] <- COL_ATT_ELU_NUANCE
+	col.map["Nuance politique (Député)"] <- COL_ATT_ELU_NUANCE
+	col.map["Nuance politique (Rep. P.E.)"] <- COL_ATT_ELU_NUANCE
+	col.map["Nuance politique (Sénateur)"] <- COL_ATT_ELU_NUANCE
+	col.map["Population de la commune"] <- COL_ATT_COM_POP
+	col.map["Prénom de l'élu"] <- COL_ATT_ELU_PRENOM
+	col.map["Région"] <- COL_ATT_REG_NOM
+	
+	# normalize column names
+	for(i in 1:ncol(res))
+	{	if(colnames(res)[i] %in% names(col.map))
+			colnames(res)[i] <- col.map[colnames(res)[i]]
+	}
 	
 	return(res)
 }
