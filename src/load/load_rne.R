@@ -165,7 +165,7 @@ load.data <- function(filenames, col.map, correc.file, correct.data)
 		if(nrow(equiv.table)>0)
 		{	# convert to map
 			tlog(0,"Convert table of equivalent ids to map")
-			unique.ids <- unique(data[,COL_ATT_ELU_ID])
+			unique.ids <- unique(data[,COL_ATT_ELU_ID_RNE])
 			conv.map <- c()
 			for(r in 1:nrow(equiv.table))
 			{	main.id <- equiv.table[r,1]
@@ -177,7 +177,7 @@ load.data <- function(filenames, col.map, correc.file, correct.data)
 			if(length(conv.map)>0)
 			{	# substitute correct ids
 				tlog(0,"Fixing duplicate ids")
-				data[,COL_ATT_ELU_ID] <- future_sapply(data[,COL_ATT_ELU_ID], function(id)
+				data[,COL_ATT_ELU_ID_RNE] <- future_sapply(data[,COL_ATT_ELU_ID_RNE], function(id)
 						{	new.id <- conv.map[id]
 							if(is.na(new.id))
 								return(id)
@@ -228,7 +228,7 @@ load.data <- function(filenames, col.map, correc.file, correct.data)
 				# correction of a specific row
 				else
 				{	# identify the targeted row in the data table
-					idx <- which(data[,COL_ATT_ELU_ID]==correc.table[r,COL_CORREC_ID]
+					idx <- which(data[,COL_ATT_ELU_ID_RNE]==correc.table[r,COL_CORREC_ID_RNE]
 									& data[,COL_ATT_ELU_NOM]==correc.table[r,COL_CORREC_NOM]
 									& data[,COL_ATT_ELU_PRENOM]==correc.table[r,COL_CORREC_PRENOM]
 									& (data[,correc.table[r,COL_CORREC_ATTR]]==correc.table[r,COL_CORREC_VALAVT]
@@ -366,8 +366,13 @@ load.data <- function(filenames, col.map, correc.file, correct.data)
 	tlog(2,"Now ",nrow(data)," rows and ",ncol(data)," columns in main table")
 	
 	# add source column
-	data <- cbind(data, rep("RNE",nrow(data)))
+	src.col <- data.frame(rep("RNE",nrow(data)), stringsAsFactors=FALSE)
+	data <- cbind(data, src.col)
 	colnames(data)[ncol(data)] <- COL_ATT_SOURCES
+	
+	# add universal id column
+	data <- cbind(data, paste("RNE",data[,COL_ATT_ELU_ID_RNE],sep="_"))
+	colnames(data)[ncol(data)] <- COL_ATT_ELU_ID
 	
 	# normalize columns order
 	norm.cols <- intersect(COLS_ATT_NORMALIZED, colnames(data))
@@ -511,7 +516,7 @@ load.cd.data <- function(correct.data)
 	col.map["Code profession"] <- COL_ATT_PRO_CODE
 	col.map["Libellé de la profession"] <- COL_ATT_PRO_NOM
 	col.map["Date de naissance"] <- COL_ATT_ELU_DDN
-	col.map["N° Identification d'un élu"] <- COL_ATT_ELU_ID
+	col.map["N° Identification d'un élu"] <- COL_ATT_ELU_ID_RNE
 	col.map["Date de début du mandat"] <- COL_ATT_MDT_DBT
 	col.map["Date de début de la fonction"] <- COL_ATT_FCT_DBT
 	col.map["Libellé de mandat"] <- COL_ATT_MDT_NOM
@@ -556,7 +561,7 @@ load.cd2.data <- function(correct.data)
 	col.map["Code profession"] <- COL_ATT_PRO_CODE
 	col.map["Libellé de la profession"] <- COL_ATT_PRO_NOM
 	col.map["Date de naissance"] <- COL_ATT_ELU_DDN
-	col.map["N° Identification d'un élu"] <- COL_ATT_ELU_ID
+	col.map["N° Identification d'un élu"] <- COL_ATT_ELU_ID_RNE
 	col.map["Date de début du mandat"] <- COL_ATT_MDT_DBT
 	col.map["Date de début de la fonction"] <- COL_ATT_FCT_DBT
 	col.map["Libellé de mandat"] <- COL_ATT_MDT_NOM
@@ -611,7 +616,7 @@ load.cm.data <- function(correct.data)
 	col.map["Date de fin de la fonction"] <- COL_ATT_FCT_FIN
 	col.map["Motif de fin de fonction"] <- COL_ATT_FCT_MOTIF
 	col.map["Nuance politique (C. Mun.)"] <- COL_ATT_ELU_NUANCE
-	col.map["N° Identification d'un élu"] <- COL_ATT_ELU_ID
+	col.map["N° Identification d'un élu"] <- COL_ATT_ELU_ID_RNE
 	
 	# load the data
 	data <- load.data(filenames=FILES_TAB_CM, col.map=col.map, correc.file=FILE_CORREC_CM, correct.data)
@@ -660,7 +665,7 @@ load.cm.data <- function(correct.data)
 load.cm2.data <- function(correct.data)
 {	# names of the columns
 	col.map <- c()
-	col.map["N° Identification d'un élu"] <- COL_ATT_ELU_ID
+	col.map["N° Identification d'un élu"] <- COL_ATT_ELU_ID_RNE
 	col.map["Nom de l'élu"] <- COL_ATT_ELU_NOM
 	col.map["Prénom de l'élu"] <- COL_ATT_ELU_PRENOM
 	col.map["Date de naissance"] <- COL_ATT_ELU_DDN
@@ -725,7 +730,7 @@ load.cr.data <- function(correct.data)
 	col.map["Date de fin de la fonction"] <- COL_ATT_FCT_FIN
 	col.map["Motif de fin de fonction"] <- COL_ATT_FCT_MOTIF
 	col.map["Nuance mandat"] <- COL_ATT_ELU_NUANCE
-	col.map["N° Identification d'un élu"] <- COL_ATT_ELU_ID
+	col.map["N° Identification d'un élu"] <- COL_ATT_ELU_ID_RNE
 	
 	# load the data
 	data <- load.data(filenames=FILES_TAB_CR, col.map=col.map, correc.file=FILE_CORREC_CR, correct.data)
@@ -754,7 +759,7 @@ load.cr2.data <- function(correct.data)
 	col.map <- c()
 	col.map["Région"] <- COL_ATT_REG_NOM
 	col.map["Circonscription électorale"] <- COL_ATT_DPT_CODE
-	col.map["N° Identification d'un élu"] <- COL_ATT_ELU_ID
+	col.map["N° Identification d'un élu"] <- COL_ATT_ELU_ID_RNE
 	col.map["Nom de l'élu"] <- COL_ATT_ELU_NOM
 	col.map["Prénom de l'élu"] <- COL_ATT_ELU_PRENOM
 	col.map["Date de naissance"] <- COL_ATT_ELU_DDN
@@ -829,7 +834,7 @@ load.d.data <- function(correct.data)
 	col.map["Date de fin de la fonction"] <- COL_ATT_FCT_FIN
 	col.map["Motif de fin de fonction"] <- COL_ATT_FCT_MOTIF
 	col.map["Nuance politique (Député)"] <- COL_ATT_ELU_NUANCE
-	col.map["N° Identification d'un élu"] <- COL_ATT_ELU_ID
+	col.map["N° Identification d'un élu"] <- COL_ATT_ELU_ID_RNE
 	
 	# load the data
 	data <- load.data(filenames=FILES_TAB_D, col.map=col.map, correc.file=FILE_CORREC_D, correct.data)
@@ -869,7 +874,7 @@ load.de.data <- function(correct.data)
 	col.map["Date de fin du mandat"] <- COL_ATT_MDT_FIN
 	col.map["Motif de fin de mandat"] <- COL_ATT_MDT_MOTIF
 	col.map["Nuance politique (Rep. P.E.)"] <- COL_ATT_ELU_NUANCE
-	col.map["N° Identification d'un élu"] <- COL_ATT_ELU_ID
+	col.map["N° Identification d'un élu"] <- COL_ATT_ELU_ID_RNE
 	
 	# load the data
 	data <- load.data(filenames=FILES_TAB_DE, col.map=col.map, correc.file=FILE_CORREC_DE, correct.data)
@@ -916,7 +921,7 @@ load.epci.data <- function(correct.data)
 	col.map["Date de fin de la fonction"] <- COL_ATT_FCT_FIN
 	col.map["Motif de fin de fonction"] <- COL_ATT_FCT_MOTIF
 	col.map["Nuance mandat"] <- COL_ATT_ELU_NUANCE
-	col.map["N° Identification d'un élu"] <- COL_ATT_ELU_ID
+	col.map["N° Identification d'un élu"] <- COL_ATT_ELU_ID_RNE
 	
 	# load the data
 	data <- load.data(filenames=FILES_TAB_EPCI, col.map=col.map, correc.file=FILE_CORREC_EPCI, correct.data)
@@ -975,7 +980,7 @@ load.m.data <- function(correct.data)
 	col.map["Date de fin de la fonction"] <- COL_ATT_FCT_FIN
 	col.map["Motif de fin de fonction"] <- COL_ATT_FCT_MOTIF
 	col.map["Nuance politique (C. Mun.)"] <- COL_ATT_ELU_NUANCE
-	col.map["N° Identification d'un élu"] <- COL_ATT_ELU_ID
+	col.map["N° Identification d'un élu"] <- COL_ATT_ELU_ID_RNE
 	
 	# load the data
 	data <- load.data(filenames=FILES_TAB_M, col.map=col.map, correc.file=FILE_CORREC_M, correct.data)
@@ -1037,7 +1042,7 @@ load.s.data <- function(correct.data)
 	col.map["Date de fin de la fonction"] <- COL_ATT_FCT_FIN
 	col.map["Motif de fin de fonction"] <- COL_ATT_FCT_MOTIF
 	col.map["Nuance politique (Sénateur)"] <- COL_ATT_ELU_NUANCE
-	col.map["N° Identification d'un élu"] <- COL_ATT_ELU_ID
+	col.map["N° Identification d'un élu"] <- COL_ATT_ELU_ID_RNE
 	
 	# load the data
 	data <- load.data(filenames=FILES_TAB_S, col.map=col.map, correc.file=FILE_CORREC_S, correct.data)

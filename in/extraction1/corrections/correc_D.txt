@@ -1,4 +1,4 @@
-Row	Id	Nom	Prenom	Attribut	ValAvt	ValApr	Commentaire
+Row	Id RNE	Nom	Prenom	Attribut	ValAvt	ValApr	Commentaire
 2448	1154458	GIRARDIN	Annick	Libellé de la cir.législative	1ère circonscription	Saint-Pierre-et-Miquelon	Nom changé au cours du temps
 2449	790	GRIGNON	Gérard	Libellé de la cir.législative	1ère circonscription	Saint-Pierre-et-Miquelon	Nom changé au cours du temps
 805	1325550	GALASSO	Virginie	Date debut mandat	23/3/2014	NA	Mandat de 1 jour, corrigé par suppression

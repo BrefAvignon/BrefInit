@@ -63,7 +63,11 @@ extract.day <- function(str)
 # returns: the number of the similar row in the second table, or NULL if none was found.
 #############################################################################################
 lookup.row <- function(tab1, i, tab2, map)
-{	idx <- which((tab2[,COL_ATT_ELU_ID]==tab1[i,COL_ATT_ELU_ID] 									# same person id
+{	if(COL_ATT_ELU_ID %in% colnames(tab1) && COL_ATT_ELU_ID %in% colnames(tab2))
+		id.col.name <- COL_ATT_ELU_ID
+	else
+		id.col.name <- COL_ATT_ELU_RNE
+	idx <- which((tab2[,id.col.name]==tab1[i,id.col.name] 											# same person id
 						| tab2[,COL_ATT_ELU_PRENOM]==tab1[i,COL_ATT_ELU_PRENOM] 					# or same name
 						& tab2[,COL_ATT_ELU_NOM]==tab1[i,COL_ATT_ELU_NOM])							# and first name
 					& extract.year(tab2[,COL_ATT_MDT_DBT])==extract.year(tab1[i,COL_ATT_MDT_DBT]))	# same mandate start year
@@ -108,7 +112,7 @@ lookup.row <- function(tab1, i, tab2, map)
 				
 				# if several matches, be more strict on the id
 				if(length(idx)>1)
-				{	idx2 <- which(tab2[idx,COL_ATT_ELU_ID]==tab1[i,COL_ATT_ELU_ID])
+				{	idx2 <- which(tab2[idx,id.col.name]==tab1[i,id.col.name])
 					idx <- idx[idx2]
 					
 					# if several matches, check the motivation to end the mandate
@@ -184,6 +188,9 @@ read.string.table <- function(files, ...)
 		# replace empty strings by NAs
 		res[which(res[,c]==""),c] <- NA
 	}
+	
+	# normalize column names
+	# TODO raw tables don't have the appropriate column names
 	
 	return(res)
 }

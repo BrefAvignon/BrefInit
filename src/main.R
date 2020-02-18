@@ -150,3 +150,11 @@ source("src/common/include.R")
 # >> faire un test ad hoc pour vérifier ça, puis intégrer au test qui fait la fusion
 # mais même une id donnée peut avoir plusieurs mandats incompatibles, à cause des erreurs présentes dans la BD
 # >> corriger d'abord ces erreurs ? 
+
+# TODO
+# renuméroter les ids universels
+# en classant les élus par date de début de mandat/fin/nom/prénom/ddn
+
+# TODO
+# possible que certains sénateurs apparaissent pas dans RNE sénat mais dans une autre table
+# >> chercher les homonymes/ddn dans la table fusionnée

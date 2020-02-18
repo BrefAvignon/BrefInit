@@ -200,6 +200,7 @@ motives <- trimws(normalize.proper.nouns(remove.diacritics(elect.table[,COL_SENA
 
 # match senate ids with RNE ids
 rne.ids <- rep(NA, nrow(indiv.table))
+univ.ids <- paste("SEN",indiv.table[,COL_SENAT_ELU_MATRI],sep="_")
 for(i in 1:nrow(indiv.table))
 {	tlog(2, "Processing row ",i,"/",nrow(indiv.table))
 	tmp <- which(data[,COL_ATT_ELU_NOM]==indiv.last.names[i]
@@ -209,20 +210,23 @@ for(i in 1:nrow(indiv.table))
 	if(length(tmp)==0)
 		tlog(4, "No match for row: ",paste(indiv.table[i,],collapse=","))
 	else 
-	{	tmp.ids <- sort(unique(data[tmp,COL_ATT_ELU_ID]))
+	{	tmp.ids <- sort(unique(data[tmp,COL_ATT_ELU_ID_RNE]))
 		if(length(tmp.ids)>1)
 		{	tlog(4, "Found several matches (ids ",paste(tmp.ids,collapse=","),") for row: ",paste(indiv.table[i,],collapse=","))
 			# display more details?
+			stop("Found several matches")
 		}
 		else
 		{	tlog(4, "Found a single RNE entry (id ",tmp.ids,", name ",
 					paste(data[tmp[1],c(COL_ATT_ELU_NOM,COL_ATT_ELU_PRENOM,COL_ATT_ELU_DDN)],collapse=","),
 					") for row: ",paste(indiv.table[i,],collapse=","))
 			rne.ids[i] <- tmp.ids
+			univ.ids[i] <- data[tmp[1],COL_ATT_ELU_ID]
 		}	
 	}
 }
-ids <- rne.ids[idx]
+ids.rne <- rne.ids[idx]
+ids.univ <- univ.ids[idx]
 
 ## match RNE ids with senate ids
 #rne.ids <- sort(unique(data[,COL_ATT_ELU_ID]))
@@ -255,7 +259,8 @@ ids <- rne.ids[idx]
 tab <- data.frame(
 	dpt.codes,								# department code
 	dpt.names,								# department name
-	ids,									# RNE id
+	ids.univ,								# universal id
+	ids.rne,								# RNE id
 	indiv.table[idx,COL_SENAT_ELU_MATRI],	# senate id
 	last.names,								# last name
 	first.names,							# first name
@@ -276,12 +281,14 @@ tab <- data.frame(
 	rep(NA, length(idx)),					# function end motive
 	#
 	check.names=FALSE,
-	stringsAsFactors=FALSE
+	stringsAsFactors=FALSE,
+	rep("SENAT", length(idx))
 )
 colnames(tab) <- c(		
 	COL_ATT_DPT_CODE,
 	COL_ATT_DPT_NOM,
 	COL_ATT_ELU_ID,
+	COL_ATT_ELU_ID_RNE,
 	COL_ATT_ELU_ID_SENAT,
 	COL_ATT_ELU_NOM,
 	COL_ATT_ELU_PRENOM,
@@ -299,7 +306,8 @@ colnames(tab) <- c(
 	COL_ATT_FCT_NOM,
 	COL_ATT_FCT_DBT,
 	COL_ATT_FCT_FIN,
-	COL_ATT_FCT_MOTIF
+	COL_ATT_FCT_MOTIF,
+	COL_ATT_SOURCES
 )
 
 # keep only mandates starting before 2001
@@ -321,7 +329,7 @@ write.table(x=tab,
 	col.names=TRUE			# record table headers
 )
 # complete RNE table
-tmp.data <- cbind(data, rep(NA,nrow(data)), rep(NA,nrow(data)), rep(NA,nrow(data)))
+tmp.data <- cbind(data, rep(NA,nrow(data)), as.Date(rep(NA,nrow(data))), rep(NA,nrow(data)))
 colnames(tmp.data)[(ncol(tmp.data)-2):ncol(tmp.data)] <- c(COL_ATT_ELU_ID_SENAT,COL_ATT_ELU_DDD,COL_ATT_ELU_NAT)
 tmp.data <- tmp.data[,colnames(tab)]
 # record RNE table
@@ -388,6 +396,9 @@ for(idx2 in exist.rows)
 	# overwrite NA values using Senate data
 	cols <- which(is.na(tmp.data[idx1,]))
 	tmp.data[idx1, cols] <- tab[idx2, cols]
+	
+	# update source column
+	tmp.data[idx1, COL_ATT_SOURCES] <- paste(tmp.data[idx1, COL_ATT_SOURCES], tab[idx2, COL_ATT_SOURCES], sep=",")
 	
 	# force both mandate dates to the Senate one
 	tmp.data[idx1, c(COL_ATT_MDT_DBT,COL_ATT_MDT_FIN)] <- tab[idx2, c(COL_ATT_MDT_DBT,COL_ATT_MDT_FIN)]

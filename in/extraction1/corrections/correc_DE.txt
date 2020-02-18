@@ -1,4 +1,4 @@
-Row	Id	Nom	Prenom	Attribut	ValAvt	ValApr	Commentaire
+Row	Id RNE	Nom	Prenom	Attribut	ValAvt	ValApr	Commentaire
 47	989	JOULAUD	Marc	Date fin mandat	30/6/2014	NA	Correction pour fusion
 88	850	MORANO	Nadine	Date fin mandat	30/6/2014	NA	Correction pour fusion
 97	833186	ALLIOT-MARIE	Michèle	Date fin mandat	30/6/2014	NA	Correction pour fusion

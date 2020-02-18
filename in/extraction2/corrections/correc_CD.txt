@@ -1,1 +1,1 @@
-Id	Nom	Prenom	Attribut	ValAvt	ValApr	Commentaire
+Row	Id RNE	Nom	Prenom	Attribut	ValAvt	ValApr	Commentaire

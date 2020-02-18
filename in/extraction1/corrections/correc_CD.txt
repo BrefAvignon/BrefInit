@@ -1,4 +1,4 @@
-Row	Id	Nom	Prenom	Attribut	ValAvt	ValApr	Commentaire
+Row	Id RNE	Nom	Prenom	Attribut	ValAvt	ValApr	Commentaire
 NA	NA	NA	NA	Libellé du canton	LA COTE VERMEILLE	COTE VERMEILLE	Article superflu
 NA	NA	NA	NA	Libellé du canton	LE GOND PONTOUVRE	GOND PONTOUVRE	Article superflu
 NA	NA	NA	NA	Libellé du canton	LE GRAND BOURG	GRAND BOURG	Article superflu

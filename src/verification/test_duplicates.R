@@ -240,7 +240,7 @@ test.multiple.id <- function(data, loc.col=NA, out.folder)
 		tlog(6,"Found ",length(idx)," mandate(s)")
 		# check if the individual ID is always the same
 		if(length(idx)>1)
-		{	ids <- sort(unique(data[idx,COL_ATT_ELU_ID]))
+		{	ids <- sort(unique(data[idx,COL_ATT_ELU_ID_RNE]))
 			
 			# if there are several distinct ids
 			if(length(ids)>1)
