@@ -228,7 +228,7 @@ load.data <- function(filenames, col.map, correc.file, correct.data)
 				# correction of a specific row
 				else
 				{	# identify the targeted row in the data table
-					idx <- which(data[,COL_ATT_ELU_ID_RNE]==correc.table[r,COL_CORREC_ID_RNE]
+					idx <- which(data[,COL_ATT_ELU_ID_RNE]==correc.table[r,COL_CORREC_ID]
 									& data[,COL_ATT_ELU_NOM]==correc.table[r,COL_CORREC_NOM]
 									& data[,COL_ATT_ELU_PRENOM]==correc.table[r,COL_CORREC_PRENOM]
 									& (data[,correc.table[r,COL_CORREC_ATTR]]==correc.table[r,COL_CORREC_VALAVT]
@@ -371,7 +371,8 @@ load.data <- function(filenames, col.map, correc.file, correct.data)
 	colnames(data)[ncol(data)] <- COL_ATT_SOURCES
 	
 	# add universal id column
-	data <- cbind(data, paste("RNE",data[,COL_ATT_ELU_ID_RNE],sep="_"))
+	ids.col <- data.frame(paste("RNE",sprintf("%07d", as.integer(data[,COL_ATT_ELU_ID_RNE])),sep="_"), stringsAsFactors=FALSE)
+	data <- cbind(data, ids.col)
 	colnames(data)[ncol(data)] <- COL_ATT_ELU_ID
 	
 	# normalize columns order
