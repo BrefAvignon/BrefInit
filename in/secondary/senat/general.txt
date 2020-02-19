@@ -20,13 +20,13 @@ Matricule	Qualite	Nom usuel	Prenom usuel	Etat	Date naissance	Date de deces	Group
 80002U	M.	Alloncle	Michel	ANCIEN	07/10/1928	23/04/2003	RPR		commission des affaires étrangères	Charente			Medecins libéraux généralistes	Professions médicales (Médecins)	Médecin
 83010H	M.	Allouche	Guy	ANCIEN	27/10/1939		SOCR		commission des lois	Nord	Vice-président du Sénat	Non public	Instituteurs et assimilés	Enseignement primaire	Conseiller pédagogique en éducation physique et sportive
 04087R	Mme	Alquier	Jacqueline	ANCIEN	29/07/1947		SOCR		commission des affaires sociales	Tarn		j.alquier@senat.fr	Employés administratifs d'entreprise	Salariés (Employés)	Secrétaire comptable
-000724	M.	Alric	Gustave	ANCIEN		17/10/1967	RI		commission des finances	Aube			Ingenieurs et cadres techniques d'entreprise	Salariés (Ingénieurs)	Ingénieur des arts et manufactures
+000724	M.	Alric	Gustave	ANCIEN	15/02/1894	17/10/1967	RI		commission des finances	Aube			Ingenieurs et cadres techniques d'entreprise	Salariés (Ingénieurs)	Ingénieur des arts et manufactures
 92006N	M.	Althapé	Louis	ANCIEN	06/11/1947		RPR		commission de l'économie	Pyrénées-Atlantiques		Non public	Chefs d'entreprise de 10 salaries ou plus	Commerce et industrie (Chefs d'entreprises)	Gérant de société
 59214D	M.	Amelin	Jean	ANCIEN	28/05/1927	08/03/2012	RPR		commission de l'économie	Marne	Secrétaire du Sénat		Chirurgiens-dentistes (libéraux ou salariés)	Professions médicales (Dentistes)	Chirurgien dentiste
 57716N	M.	Amic	Auguste	ANCIEN	11/09/1921	14/08/2006	SOCR		commission des finances	Var			Professions libérales	Professions judiciaires et libérales (Divers)	Conseiller juridique
 14239U	M.	Amiel	Michel	ACTIF	03/07/1954		LaREM		commission des affaires sociales	Bouches-du-Rhône		m.amiel@senat.fr	Medecins libéraux généralistes	Professions médicales (Médecins)	Médecin
 95005A	M.	Amoudry	Jean-Paul	ANCIEN	30/03/1950		UC		commission des affaires sociales	Haute-Savoie		jp.amoudry@senat.fr	Professions intermédiaires administratives de la fonction publique	Fonctionnaires (Hauts Fonctionnaires)	Directeur territorial
-000689	M.	Andre	Louis	ANCIEN		24/07/1978	RI		commission de l'économie	Calvados			Agriculteurs exploitants	Professions agricoles	Agriculteur
+000689	M.	Andre	Louis	ANCIEN	06/01/1891	24/07/1978	RI		commission de l'économie	Calvados			Agriculteurs exploitants	Professions agricoles	Agriculteur
 01031L	Mme	André	Michèle	ANCIEN	06/02/1947		SOCR		commission des finances	Puy-de-Dôme		m.andre@senat.fr	Autres personnes sans activité professionnelle	Fonctionnaires (Hauts Fonctionnaires)	Directrice d'établissement médico-social public
 98036V	M.	André	Pierre	ANCIEN	29/06/1947		Les Républicains		commission des affaires étrangères	Aisne		p.andre@senat.fr	Autres personnes sans activité professionnelle	Fonctionnaires (Hauts Fonctionnaires)	Directeur général de CCI
 08040S	M.	Andreoni	Serge	ANCIEN	15/03/1940		SOCR		commission de la culture	Bouches-du-Rhône		s.andreoni@senat.fr	Médecins hospitaliers (sans activité libérale)	Professions médicales (Médecins)	Médecin du travail
@@ -74,7 +74,7 @@ Matricule	Qualite	Nom usuel	Prenom usuel	Etat	Date naissance	Date de deces	Group
 74008N	M.	Ballayer	René	ANCIEN	02/03/1915	26/01/2001	UC		commission des finances	Mayenne		Non public	Autres personnes sans activité professionnelle	Sans profession déclarée	Négociant en vins
 59564Y	M.	Bangou	Henri	ANCIEN	15/07/1922		C	Apparenté	commission de l'économie	Guadeloupe			Medecins libéraux généralistes	Professions médicales (Médecins)	Médecin
 19707Y	M.	Bansard	Jean-Pierre	ANCIEN	15/05/1940		Les Républicains	Rattaché	commission des affaires économiques	Français établis hors de France		jp.bansard@senat.fr	Chefs d'entreprise de 10 salaries ou plus	Commerce et industrie (Chefs d'entreprises)	Président de compagnie
-000733	M.	Baratgin	Paul	ANCIEN		22/12/1966	G.D.		commission des lois	Hautes-Pyrénées	Questeur du Sénat		Medecins libéraux généralistes	Professions médicales (Médecins)	Médecin
+000733	M.	Baratgin	Paul	ANCIEN	17/12/1890	22/12/1966	G.D.		commission des lois	Hautes-Pyrénées	Questeur du Sénat		Medecins libéraux généralistes	Professions médicales (Médecins)	Médecin
 79005G	M.	Barbier	Bernard	ANCIEN	30/06/1924	25/02/1998	RI		commission des finances	Côte-d'Or			Commercants et assimilés	Commerce et industrie (Négociants)	Négociant en vins
 01046T	M.	Barbier	Gilbert	ANCIEN	03/03/1940		RDSE		commission des affaires sociales	Jura		senat.barbiergilbert@wanadoo.fr	Autres personnes sans activité professionnelle	Professions médicales (Chirurgiens)	Chirurgien
 000282	M.	Barbier	Pierre	ANCIEN	02/01/1912	28/10/1982	G.D.		commission des affaires sociales	Nièvre			Medecins libéraux généralistes	Professions médicales (Chirurgiens)	Chirurgien
@@ -103,7 +103,7 @@ Matricule	Qualite	Nom usuel	Prenom usuel	Etat	Date naissance	Date de deces	Group
 19667J	M.	Bazin	Arnaud	ACTIF	10/01/1959		Les Républicains		commission des finances	Val-d'Oise		a.bazin@senat.fr	Vétérinaires (libéraux ou salariés)	Professions médicales (Vétérinaires)	Vétérinaire
 79004F	Mme	Beaudeau	Marie-Claude	ANCIEN	30/10/1937		CRCE		commission des finances	Val-d'Oise		Non public	Cadres d'entreprise	Salariés (Cadres divers)	Secrétaire de direction
 01013J	Mme	Beaufils	Marie-France	ANCIEN	22/11/1946		CRCE		commission des finances	Indre-et-Loire		mariefrance.beaufils@wanadoo.fr	Autres personnes sans activité professionnelle	Enseignement primaire	Professeur des écoles
-000731	M.	Beaujannot	Joseph	ANCIEN		06/10/1981	RI		commission de l'économie	Loir-et-Cher			Commercants et assimilés	Commerce et industrie (Négociants)	Négociant
+000731	M.	Beaujannot	Joseph	ANCIEN	27/01/1898	06/10/1981	RI		commission de l'économie	Loir-et-Cher			Commercants et assimilés	Commerce et industrie (Négociants)	Négociant
 04091M	M.	Beaumont	René	ANCIEN	29/02/1940		Les Républicains		commission des affaires étrangères	Saône-et-Loire		r.beaumont@senat.fr	Vétérinaires (libéraux ou salariés)	Professions médicales (Vétérinaires)	Docteur vétérinaire
 000460	M.	Beaupetit	Charles	ANCIEN	27/04/1921	09/09/1986	G.D.		commission de l'économie	Loir-et-Cher			Professions libérales	Professions judiciaires et libérales (Divers)	Géomètre-expert
 58819Y	M.	Becam	Marc	ANCIEN	09/10/1931		RPR		commission des lois	Finistère			Ingenieurs et cadres techniques d'entreprise	Salariés (Ingénieurs)	Ingénieur
@@ -121,14 +121,14 @@ Matricule	Qualite	Nom usuel	Prenom usuel	Etat	Date naissance	Date de deces	Group
 89013M	M.	Belot	Claude	ANCIEN	11/07/1936		Les Républicains	Rattaché	commission des finances	Charente-Maritime		c.belot@senat.fr	Professeurs, professions scientifiques	Enseignement supérieur (sauf Professeurs de médecine)	Professeur d'université
 57701F	M.	Beloucif	Amar	ANCIEN	01/01/1922	17/02/2002	NI		commission de l'économie	Bône			Personnels de direction de la fonction publique	Fonctionnaires (Hauts Fonctionnaires)	Administrateur des services civils d'Algérie
 000021	M.	Benacer	Salah	ANCIEN	06/07/1900	12/11/1961	NI		commission des lois	Tizi-Ouzou			Agriculteurs exploitants	Professions agricoles	Agriculteur, négociant et industriel
-000064	M.	Benali	Brahim	ANCIEN		29/01/1994	G.D.	Apparenté	commission des affaires sociales	Orléansville-Médéa			Commercants et assimilés	Commerce et industrie (Commercants)	Commerçant
+000064	M.	Benali	Brahim	ANCIEN	30/04/1899	29/01/1994	G.D.	Apparenté	commission des affaires sociales	Orléansville-Médéa			Commercants et assimilés	Commerce et industrie (Commercants)	Commerçant
 000541	M.	Benard	Paul	ANCIEN	09/12/1924	02/02/1987	RPR	Apparenté	commission de la culture	La Réunion			Pharmaciens libéraux	Professions médicales (Pharmaciens)	Pharmacien
 000321	M.	Benard Mousseaux	Jean	ANCIEN	02/08/1913	29/05/1996	U.R.E.I.		commission des lois	Indre			Agriculteurs exploitants	Professions agricoles	Agriculteur
 11033F	Mme	Benbassa	Esther	ACTIF	27/03/1950		CRCE	Rattaché	commission des lois	Paris		e.benbassa@senat.fr	Autres personnes sans activité professionnelle	Enseignement supérieur (sauf Professeurs de médecine)	Professeure d'université
 000665	M.	Bencherif	Mouaouia	ANCIEN	01/01/1902	23/12/1982	G.D.	Apparenté	commission de la culture	Orléansville-Médéa			Agriculteurs exploitants	Professions agricoles	Agriculteur
 000047	M.	Bene	Jean	ANCIEN	12/07/1901	26/04/1992	SOCR		commission des affaires étrangères	Hérault			Avocats	Professions judiciaires et libérales (Avocats)	Avocat
 59309K	M.	Benedetti	Georges	ANCIEN	29/07/1930	19/11/2018	SOCR		commission des affaires sociales	Gard			Medecins libéraux généralistes	Professions médicales (Médecins)	Médecin
-000759	M.	Benhabyles	Chérif	ANCIEN		28/08/1959	G.D.		commission des affaires étrangères	Constantine			Autres personnes sans activité professionnelle	Sans profession déclarée	
+000759	M.	Benhabyles	Chérif	ANCIEN	25/12/1891	28/08/1959	G.D.		commission des affaires étrangères	Constantine			Autres personnes sans activité professionnelle	Sans profession déclarée	
 58302X	M.	Benoist	Daniel	ANCIEN	09/02/1908	03/05/2004	SOCR		commission des affaires sociales	Nièvre			Medecins libéraux généralistes	Professions médicales (Chirurgiens)	Chirurgien
 56326X	M.	Bentchicou	Ahmed	ANCIEN	11/08/1910	20/08/2004	U.N.R.		commission des affaires étrangères	Constantine			Pharmaciens libéraux	Professions médicales (Pharmaciens)	Pharmacien
 000553	M.	Beranger	Jean	ANCIEN	21/08/1925	17/01/1997	G.D.		commission des affaires sociales	Yvelines	Secrétaire du Sénat		Cadres d'entreprise	Salariés (Cadres divers)	Cadre
@@ -147,9 +147,9 @@ Matricule	Qualite	Nom usuel	Prenom usuel	Etat	Date naissance	Date de deces	Group
 000353	M.	Berrier	Noël	ANCIEN	24/12/1914	18/12/1986	SOCR		commission des affaires étrangères	Nièvre			Medecins libéraux généralistes	Professions médicales (Médecins)	Médecin
 11068S	M.	Berson	Michel	ANCIEN	21/04/1945		LaREM		commission des finances	Essonne		m.berson@senat.fr	Autres personnes sans activité professionnelle	Salariés (Cadres divers)	Cadre dans le secteur bancaire
 04098U	M.	Bertaud	Claude	ANCIEN	01/11/1945		Les Républicains		commission de l'économie	Vienne			Instituteurs et assimilés	Enseignement (Retraités)	Enseignant retraité
-000701	M.	Bertaud	Jean	ANCIEN		08/03/1987	RPR		commission de l'économie	Val-de-Marne			Professions intermédiaires administratives de la fonction publique	Fonctionnaires (Cadres moyens)	Inspecteur honoraire de la SNCF
+000701	M.	Bertaud	Jean	ANCIEN	09/09/1898	08/03/1987	RPR		commission de l'économie	Val-de-Marne			Professions intermédiaires administratives de la fonction publique	Fonctionnaires (Cadres moyens)	Inspecteur honoraire de la SNCF
 19575F	Mme	Berthet	Martine	ACTIF	27/03/1961		Les Républicains		commission des affaires sociales	Savoie		m.berthet@senat.fr	Pharmaciens libéraux	Professions médicales (Pharmaciens)	Pharmacienne
-000711	M.	Berthoin	Jean	ANCIEN		25/02/1979	G.D.		commission des affaires étrangères	Isère			Personnels de direction de la fonction publique	Fonctionnaires (Hauts Fonctionnaires)	Ancien secrétaire général du ministère de l'intérieur, ancien payeur général de la Seine
+000711	M.	Berthoin	Jean	ANCIEN	12/01/1895	25/02/1979	G.D.		commission des affaires étrangères	Isère			Personnels de direction de la fonction publique	Fonctionnaires (Hauts Fonctionnaires)	Ancien secrétaire général du ministère de l'intérieur, ancien payeur général de la Seine
 08059E	M.	Berthou	Jacques	ANCIEN	03/03/1940		SOCR	Apparenté	commission des affaires étrangères	Ain		j.berthou@senat.fr	Ingenieurs et cadres techniques d'entreprise	Salariés (Ingénieurs)	Ingénieur EDF
 11081P	M.	Bertrand	Alain	ACTIF	23/02/1951		RDSE		commission des affaires économiques	Lozère		a.bertrand@senat.fr	Cadres de la fonction publique	Fonctionnaires (Retraités)	Inspecteur des domaines
 14115H	Mme	Bertrand	Anne-Marie	ACTIF	27/11/1942		Les Républicains		commission des affaires économiques	Bouches-du-Rhône		am.bertrand@senat.fr	Agriculteurs exploitants	Professions agricoles	Exploitante agricole
@@ -157,9 +157,9 @@ Matricule	Qualite	Nom usuel	Prenom usuel	Etat	Date naissance	Date de deces	Group
 58911T	M.	Besse	Guy	ANCIEN	14/04/1926	17/12/2017	R.D.E.		commission des affaires sociales	Indre			Artisans	Commerce et industrie (Artisans)	Artisan
 89010J	M.	Besse	Roger	ANCIEN	18/08/1929	07/01/2009	Les Républicains		commission des finances	Cantal		r.besse@senat.fr	Artisans, commercants et chefs d'entreprise	Commerce et industrie (Retraités)	Commerçant (retraité)
 89015P	M.	Besson	Jean	ANCIEN	01/07/1948		SOCR		commission des affaires étrangères	Drôme		besson.jean@wanadoo.fr	Professions libérales	Professions judiciaires et libérales (Divers)	Agent d'assurances
-000682	M.	Besson	Roger	ANCIEN		23/11/1970	SOCR		commission de la culture	Allier			Agriculteurs exploitants	Professions agricoles	Agriculteur
+000682	M.	Besson	Roger	ANCIEN	02/12/1888	23/11/1970	SOCR		commission de la culture	Allier			Agriculteurs exploitants	Professions agricoles	Agriculteur
 01001E	M.	Béteille	Laurent	ANCIEN	19/04/1948		Les Républicains		commission des lois	Essonne		l.beteille@senat.fr	Avocats	Professions judiciaires et libérales (Avocats)	Avocat
-000036	M.	Bethouart	Antoine	ANCIEN		17/10/1982	U.C.D.P.		commission des affaires étrangères	Français établis hors de France			Policiers et militaires	Fonctionnaires (Militaires)	Militaire (Général d'armée)
+000036	M.	Bethouart	Antoine	ANCIEN	17/12/1889	17/10/1982	U.C.D.P.		commission des affaires étrangères	Français établis hors de France			Policiers et militaires	Fonctionnaires (Militaires)	Militaire (Général d'armée)
 59522N	M.	Bettencourt	André	ANCIEN	21/04/1919	19/11/2007	RI		commission des affaires étrangères	Seine-Maritime			Chefs d'entreprise de 10 salaries ou plus	Commerce et industrie (Chefs d'entreprises)	Chef d'entreprise
 79002D	M.	Bialski	Jacques	ANCIEN	03/10/1929	10/06/2013	SOCR		commission des affaires sociales	Nord	Questeur du Sénat		Cadres d'entreprise	Salariés (Cadres divers)	Cadre
 89021M	M.	Biarnès	Pierre	ANCIEN	17/01/1932		CRCE	Rattaché	commission des affaires étrangères	Français établis hors de France		p.biarnes@senat.fr	Journalistes, secrétaires de rédaction	Professions libérales (Journalistes)	Journaliste
@@ -193,7 +193,7 @@ Matricule	Qualite	Nom usuel	Prenom usuel	Etat	Date naissance	Date de deces	Group
 74013K	M.	Bohl	André	ANCIEN	26/01/1936		UC		commission de la culture	Moselle		Non public	Ingenieurs et cadres techniques d'entreprise	Salariés (Ingénieurs)	Ingénieur commercial
 59218H	M.	Boileau	Roger	ANCIEN	01/06/1914	12/09/2001	UC		commission de la culture	Meurthe-et-Moselle			Pharmaciens libéraux	Professions médicales (Pharmaciens)	Pharmacien
 000176	M.	Boin	Raymond	ANCIEN	20/02/1908	19/05/1987	G.D.		commission des affaires étrangères	Haute-Marne	Secrétaire du Sénat		Medecins libéraux généralistes	Professions médicales (Médecins)	Médecin
-000761	M.	Boisrond	Jacques	ANCIEN		03/10/1961	RI		commission de la culture	Loir-et-Cher			Professions libérales	Professions judiciaires et libérales (Divers)	Administrateur d'immeubles
+000761	M.	Boisrond	Jacques	ANCIEN	27/02/1891	03/10/1961	RI		commission de la culture	Loir-et-Cher			Professions libérales	Professions judiciaires et libérales (Divers)	Administrateur d'immeubles
 58920U	M.	Bonduel	Stéphane	ANCIEN	30/11/1919		R.D.E.		commission des finances	Charente-Maritime			Medecins libéraux généralistes	Professions médicales (Médecins)	Médecin 
 19367Y	Mme	Bonfanti-Dossat	Christine	ACTIF	25/05/1956		Les Républicains		commission des affaires sociales	Lot-et-Garonne		c.bonfanti-dossat@senat.fr	Professions intermédiaires de la santé et du travail social	Professions médicales (Autres)	Infirmière libérale
 14069U	M.	Bonhomme	François	ACTIF	05/05/1969		Les Républicains	Apparenté	commission des lois	Tarn-et-Garonne		f.bonhomme@senat.fr	Autres personnes sans activité professionnelle	Autres professions	Fonctionnaire
@@ -201,7 +201,7 @@ Matricule	Qualite	Nom usuel	Prenom usuel	Etat	Date naissance	Date de deces	Group
 19415P	M.	Bonne	Bernard	ACTIF	18/09/1948		Les Républicains		commission des affaires sociales	Loire		b.bonne@senat.fr	Medecins libéraux généralistes	Professions médicales (Médecins)	Médecin
 14089Y	M.	Bonnecarrère	Philippe	ACTIF	12/07/1955		UC		commission des lois	Tarn		p.bonnecarrere@senat.fr	Avocats	Professions judiciaires et libérales (Avocats)	Avocat
 58619S	M.	Bonnefous	Edouard	ANCIEN	24/08/1907	24/02/2007	G.D.		commission des finances	Yvelines			Professeurs, professions scientifiques	Enseignement supérieur (sauf Professeurs de médecine)	Professeur à l'Institut des hautes études internationales
-000696	M.	Bonnefous	Raymond	ANCIEN		05/07/1979	RI		commission des lois	Aveyron			Medecins libéraux généralistes	Professions médicales (Chirurgiens)	Chirurgien
+000696	M.	Bonnefous	Raymond	ANCIEN	08/05/1893	05/07/1979	RI		commission des lois	Aveyron			Medecins libéraux généralistes	Professions médicales (Chirurgiens)	Chirurgien
 08060W	Mme	Bonnefoy	Nicole	ACTIF	11/08/1958		SOCR		commission de l'aménagement du territoire et du développement durable	Charente		n.bonnefoy@senat.fr	Cadres et Professions intellectuelles supérieures	Autres professions	Attachée parlementaire
 83016P	M.	Bonnet	Christian	ANCIEN	14/06/1921		RI		commission des lois	Morbihan		Non public	Cadres d'entreprise	Salariés (Cadres divers)	Directeur de société
 58041V	M.	Bonnet	Eugène	ANCIEN	20/04/1922	17/07/2003	U.R.E.I.	Apparenté	commission des affaires étrangères	Haute-Garonne			Professions intermédiaires administratives de la fonction publique	Fonctionnaires (Divers)	Fonctionnaire
@@ -222,7 +222,7 @@ Matricule	Qualite	Nom usuel	Prenom usuel	Etat	Date naissance	Date de deces	Group
 08014Q	M.	Botrel	Yannick	ACTIF	09/12/1951		SOCR		commission des finances	Côtes-d'Armor		y.botrel@senat.fr	Agriculteurs exploitants	Autres professions	Aviculteur
 11060J	Mme	Bouchart	Natacha	ANCIEN	29/05/1963		Les Républicains		commission de l'aménagement du territoire et du développement durable	Pas-de-Calais		n.bouchart@senat.fr	Autres personnes sans activité professionnelle	Salariés (Cadres divers)	Directrice des ressources humaines
 58620K	M.	Boucheny	Serge	ANCIEN	22/03/1929		C		commission des affaires étrangères	Paris			Ouvriers	Salariés (Ouvriers)	Ouvrier
-000718	M.	Boucher	Albert	ANCIEN		02/03/1965	RI		commission de l'économie	Loire-Atlantique			Agriculteurs exploitants	Professions agricoles	Agriculteur
+000718	M.	Boucher	Albert	ANCIEN	13/11/1888	02/03/1965	RI		commission de l'économie	Loire-Atlantique			Agriculteurs exploitants	Professions agricoles	Agriculteur
 14105F	M.	Bouchet	Gilbert	ACTIF	08/01/1947		Les Républicains		commission des affaires étrangères	Drôme		g.bouchet@senat.fr	Artisans, commercants et chefs d'entreprise	Commerce et industrie (Commercants)	Hôtelier
 11029K	Mme	Bouchoux	Corinne	ANCIEN	05/01/1964		NI		commission de la culture	Maine-et-Loire	Secrétaire du Sénat	c.bouchoux@senat.fr	Professeurs, professions scientifiques	Enseignement (Divers)	Personnel de direction, Éducation Nationale
 000028	M.	Boukikaz	Ahmed	ANCIEN	19/02/1909		G.D.	Apparenté	commission des affaires sociales	Constantine			Professions intermédiaires administratives de la fonction publique	Fonctionnaires (Divers)	Fonctionnaire des services de santé
@@ -240,7 +240,7 @@ Matricule	Qualite	Nom usuel	Prenom usuel	Etat	Date naissance	Date de deces	Group
 89022N	M.	Bourdin	Joël	ANCIEN	25/01/1938		Les Républicains	Rattaché	commission des finances	Eure		Non public	Professeurs, professions scientifiques	Enseignement supérieur (sauf Professeurs de médecine)	Professeur d'université
 80011V	M.	Bourges	Yvon	ANCIEN	29/06/1921	18/04/2009	RPR		commission des affaires étrangères	Ille-et-Vilaine			Personnels de direction de la fonction publique	Fonctionnaires (Hauts Fonctionnaires)	Gouverneur général de la France d'outre-mer
 000545	M.	Bourgine	Raymond	ANCIEN	09/03/1925	29/11/1990	RPR	Apparenté	commission des finances	Paris			Journalistes, secrétaires de rédaction	Professions libérales (Journalistes)	Journaliste
-000690	M.	Bourguet	Frédéric	ANCIEN		20/04/1978	SOCR		commission de l'économie	Tarn			Chefs d'entreprise de 10 salaries ou plus	Commerce et industrie (Chefs d'entreprises)	Industriel
+000690	M.	Bourguet	Frédéric	ANCIEN	07/02/1889	20/04/1978	SOCR		commission de l'économie	Tarn			Chefs d'entreprise de 10 salaries ou plus	Commerce et industrie (Chefs d'entreprises)	Industriel
 11018G	M.	Bourquin	Christian	ANCIEN	07/10/1954	26/08/2014	RDSE		commission des finances	Pyrénées-Orientales		c.bourquin@senat.fr	Autres personnes sans activité professionnelle	Salariés (Ingénieurs)	Ingénieur des collectivités territoriales
 08068F	M.	Bourquin	Martial	ACTIF	23/07/1952		SOCR		commission des affaires économiques	Doubs		m.bourquin@senat.fr	Contremaitre et agents de maitrise	Salariés (Employés)	Employé
 08050U	Mme	Bourzai	Bernadette	ANCIEN	28/05/1945		SOCR		commission des affaires économiques	Corrèze		b.bourzai@senat.fr	Professeurs, professions scientifiques	Enseignement secondaire	Professeure agrégée
@@ -261,7 +261,7 @@ Matricule	Qualite	Nom usuel	Prenom usuel	Etat	Date naissance	Date de deces	Group
 98049B	Mme	Boyer	Yolande	ANCIEN	19/11/1950		SOCR		commission de l'économie	Finistère	Secrétaire du Sénat	y.boyer@senat.fr	Autres personnes sans activité professionnelle	Enseignement secondaire	Professeur
 000399	M.	Boyer-Andrivet	Jacques	ANCIEN	21/02/1918	08/06/1990	UC	Rattaché	commission de l'économie	Gironde			Agriculteurs exploitants	Professions agricoles	Viticulteur
 71006X	M.	Braconnier	Jacques	ANCIEN	13/07/1924	15/12/1999	RPR		commission de l'économie	Aisne	Secrétaire du Sénat		Cadres administratifs et commerciaux d'entreprise	Salariés (Cadres divers)	Directeur commercial
-000756	M.	Brajeux	Jean	ANCIEN		29/05/1990	RI		commission des affaires étrangères	Eure			Ingenieurs et cadres techniques d'entreprise	Salariés (Ingénieurs)	Ingénieur agronome
+000756	M.	Brajeux	Jean	ANCIEN	25/08/1895	29/05/1990	RI		commission des affaires étrangères	Eure			Ingenieurs et cadres techniques d'entreprise	Salariés (Ingénieurs)	Ingénieur agronome
 98014P	M.	Branger	Jean-Guy	ANCIEN	15/04/1935		Les Républicains		commission des affaires étrangères	Charente-Maritime		jg.branger@senat.fr	Autres personnes sans activité professionnelle	Enseignement secondaire	Professeur de lycée
 000474	M.	Brantus	Pierre	ANCIEN	27/10/1921	17/09/1989	UC		commission de la culture	Jura			Journalistes, secrétaires de rédaction	Professions libérales (Journalistes)	Journaliste
 95012Y	M.	Braun	Gérard	ANCIEN	02/06/1937		Les Républicains	Apparenté	commission des finances	Vosges		Non public	Pharmaciens libéraux	Professions médicales (Pharmaciens)	Pharmacien
@@ -273,9 +273,9 @@ Matricule	Qualite	Nom usuel	Prenom usuel	Etat	Date naissance	Date de deces	Group
 89023P	Mme	Brisepierre	Paulette	ANCIEN	21/04/1917	07/07/2012	Les Républicains		commission des affaires étrangères	Français établis hors de France		p.brisepierre@senat.fr	Autres personnes sans activité professionnelle	Sans profession déclarée	Sans profession déclarée 
 19621T	M.	Brisson	Max	ACTIF	08/03/1957		Les Républicains		commission de la culture	Pyrénées-Atlantiques		m.brisson@senat.fr	Cadres de la fonction publique	Enseignement (Divers)	Inspecteur général de l'Éducation nationale
 59523P	M.	Brives	Louis	ANCIEN	24/07/1912	09/03/2006	R.D.E.		commission des affaires sociales	Tarn			Agriculteurs exploitants	Professions agricoles	Propriétaire exploitant
-1111R3	M.	BROM	Joseph	ANCIEN		30/01/1945							Autres personnes sans activité professionnelle	Sans profession déclarée	
+1111R3	M.	Brom	Joseph	ANCIEN	30/10/1881	30/01/1945							Autres personnes sans activité professionnelle	Sans profession déclarée	
 000365	M.	Brosseau	Raymond	ANCIEN	16/06/1915	27/09/1980	C		commission des lois	Essonne			Professions libérales	Professions médicales (Autres)	Préparateur en pharmacie
-000760	M.	Brousse	Martial	ANCIEN		11/12/1980	CRARS		commission des finances	Meuse			Agriculteurs exploitants	Professions agricoles	Agriculteur
+000760	M.	Brousse	Martial	ANCIEN	26/09/1893	11/12/1980	CRARS		commission des finances	Meuse			Agriculteurs exploitants	Professions agricoles	Agriculteur
 000574	M.	Brousse	Pierre	ANCIEN	30/11/1926	30/07/1992	G.D.		commission des finances	Hérault			Cadres et Professions intellectuelles supérieures	Salariés (Cadres divers)	Chargé de mission au Cabinet du Président du Sénat
 08020N	Mme	Bruguière	Marie-Thérèse	ACTIF	26/10/1942		Les Républicains	Apparenté	commission de la culture	Hérault		mt.bruguiere@senat.fr	Médecins hospitaliers (sans activité libérale)	Professions médicales (Autres)	Cadre hospitalier 
 19758L	Mme	Brulin	Céline	ACTIF	04/03/1970		CRCE		commission de la culture	Seine-Maritime		c.brulin@senat.fr	Cadres de la fonction publique	Sans profession déclarée	Attachée territoriale
@@ -288,7 +288,7 @@ Matricule	Qualite	Nom usuel	Prenom usuel	Etat	Date naissance	Date de deces	Group
 57432D	M.	Bruyneel	Robert	ANCIEN	25/06/1905	17/03/1999	RI		commission des lois	Loir-et-Cher			Autres personnes sans activité professionnelle	Sans profession déclarée	Administrateur civil
 04047H	M.	Buffet	François-Noël	ACTIF	28/08/1963		Les Républicains		commission des lois	Rhône		fn.buffet@senat.fr	Avocats	Professions judiciaires et libérales (Avocats)	Avocat
 19782L	M.	Buis	Bernard	ACTIF	23/06/1956		LaREM		commission des affaires économiques	Drôme		b.buis@senat.fr	Autres personnes sans activité professionnelle	Sans profession déclarée	
-000010	M.	Burgat	Gabriel	ANCIEN		26/06/1975	U.N.R.		commission de l'économie	Bône			Agriculteurs exploitants	Professions agricoles	Agriculteur
+000010	M.	Burgat	Gabriel	ANCIEN	20/03/1899	26/06/1975	U.N.R.		commission de l'économie	Bône			Agriculteurs exploitants	Professions agricoles	Agriculteur
 000150	M.	Burret	Robert	ANCIEN	25/08/1906	08/03/1985	RI		commission des affaires sociales	Hautes-Pyrénées			Professions libérales	Professions judiciaires et libérales (Divers)	Technicien-géomètre
 59524Q	M.	Cabana	Camille	ANCIEN	11/12/1930	02/06/2002	RPR		commission des finances	Paris			Anciens cadres	Fonctionnaires (Retraités)	Préfet honoraire
 83020K	M.	Cabanel	Guy-Pierre	ANCIEN	07/04/1927	15/03/2016	RDSE		commission des lois	Isère		Non public	Médecins hospitaliers (sans activité libérale)	Professions médicales (Professeurs)	Professeur d'Université
@@ -300,7 +300,7 @@ Matricule	Qualite	Nom usuel	Prenom usuel	Etat	Date naissance	Date de deces	Group
 000538	M.	Caiveau	Louis	ANCIEN	03/10/1924	27/02/1987	UC		commission de l'économie	Vendée			Anciens artisans, commercants, chefs d'entreprise	Commerce et industrie (Retraités)	Ancien entrepreneur de travaux publics
 77009C	M.	Caldaguès	Michel	ANCIEN	28/09/1926	22/09/2012	RPR		commission des affaires étrangères	Paris		Non public	Chefs d'entreprise de 10 salaries ou plus	Commerce et industrie (Chefs d'entreprises)	Administrateur de sociétés
 86014A	M.	Calméjane	Robert	ANCIEN	19/05/1929	10/12/2002	RPR		commission des affaires étrangères	Seine-Saint-Denis		Non public	Anciens artisans, commercants, chefs d'entreprise	Commerce et industrie (Retraités)	Administrateur de sociétés
-000735	M.	Calmels	Gabriel	ANCIEN		03/09/1979	G.D.		commission de la culture	Hérault			Agriculteurs exploitants	Professions agricoles	Agriculteur
+000735	M.	Calmels	Gabriel	ANCIEN	18/09/1887	03/09/1979	G.D.		commission de la culture	Hérault			Agriculteurs exploitants	Professions agricoles	Agriculteur
 11101A	M.	Calvet	François	ACTIF	01/04/1953		Les Républicains		commission des affaires économiques	Pyrénées-Orientales		f.calvet@senat.fr	Autres personnes sans activité professionnelle	Sans profession déclarée	Avocat
 11095V	M.	Camani	Pierre	ANCIEN	19/02/1952		SOCR		commission de l'aménagement du territoire et du développement durable	Lot-et-Garonne		p.camani@senat.fr	Autres personnes sans activité professionnelle	Fonctionnaires (Hauts Fonctionnaires)	Cadre de la fonction publique territoriale
 04042C	M.	Cambon	Christian	ACTIF	08/03/1948		Les Républicains		commission des affaires étrangères	Val-de-Marne		c.cambon@senat.fr	Chefs d'entreprise de 10 salaries ou plus	Commerce et industrie (Retraités)	Chef d'entreprise
@@ -309,13 +309,13 @@ Matricule	Qualite	Nom usuel	Prenom usuel	Etat	Date naissance	Date de deces	Group
 14053L	Mme	Canayer	Agnès	ACTIF	21/09/1965		Les Républicains		commission des lois	Seine-Maritime	Secrétaire du Sénat	a.canayer@senat.fr	Autres personnes sans activité professionnelle	Enseignement (Divers)	
 14083S	M.	Canevet	Michel	ACTIF	14/12/1960		UC		commission des finances	Finistère		m.canevet@senat.fr	Cadres et Professions intellectuelles supérieures	Salariés (Cadres divers)	Responsable de collectivités
 77002U	M.	Cantegrit	Jean-Pierre	ANCIEN	02/07/1933		Les Républicains		commission des affaires étrangères	Français établis hors de France		jp.cantegrit@senat.fr	Chefs d'entreprise de 10 salaries ou plus	Commerce et industrie (Chefs d'entreprises)	Directeur de sociétés
-000755	M.	Capelle	Omer	ANCIEN		26/05/1966	CRARS		commission des affaires sociales	Somme			Agriculteurs exploitants	Professions agricoles	Agriculteur
+000755	M.	Capelle	Omer	ANCIEN	25/07/1891	26/05/1966	CRARS		commission des affaires sociales	Somme			Agriculteurs exploitants	Professions agricoles	Agriculteur
 11053K	M.	Capo-Canellas	Vincent	ACTIF	04/05/1967		UC		commission des finances	Seine-Saint-Denis	Questeur du Sénat	v.capo-canellas@senat.fr	Autres personnes sans activité professionnelle	Salariés (Cadres divers)	Fonctionnaire territorial
 19545Y	M.	Capus	Emmanuel	ACTIF	23/06/1974		Les Indépendants		commission des finances	Maine-et-Loire		e.capus@senat.fr	Avocats	Professions judiciaires et libérales (Avocats)	Avocat
 59525R	M.	Carat	Jacques	ANCIEN	21/09/1919	19/03/2009	SOCR		commission de la culture	Val-de-Marne			Journalistes, secrétaires de rédaction	Professions libérales (Journalistes)	Journaliste
 000076	M.	Carcassonne	Roger	ANCIEN	15/06/1903	28/11/1992	SOCR		commission des affaires étrangères	Bouches-du-Rhône			Avocats	Professions judiciaires et libérales (Avocats)	Avocat
 14085U	M.	Carcenac	Thierry	ACTIF	19/12/1950		SOCR		commission des finances	Tarn		t.carcenac@senat.fr	Cadres de la fonction publique	Fonctionnaires (Hauts Fonctionnaires)	Directeur divisionnaire des Impôts
-000722	Mme	Cardot	Marie-Hélène	ANCIEN		13/08/1977	UC		commission des affaires sociales	Ardennes			Chefs d'entreprise de 10 salaries ou plus	Commerce et industrie (Chefs d'entreprises)	Industriel
+000722	Mme	Cardot	Marie-Hélène	ANCIEN	14/07/1899	13/08/1977	UC		commission des affaires sociales	Ardennes			Chefs d'entreprise de 10 salaries ou plus	Commerce et industrie (Chefs d'entreprises)	Industriel
 11103C	M.	Cardoux	Jean-Noël	ACTIF	18/12/1946		Les Républicains		commission des affaires sociales	Loiret		jn.cardoux@senat.fr	Autres personnes sans activité professionnelle	Professions judiciaires et libérales (Retraités)	Expert comptable
 95015C	M.	Carle	Jean-Claude	ANCIEN	09/06/1948	13/12/2019	Les Républicains		commission de la culture	Haute-Savoie		jean-claude.carle@wanadoo.fr	Techniciens	Salariés (Retraités)	Agent technique
 59526S	M.	Caron	Paul	ANCIEN	13/07/1921	02/02/2012	UC		commission des affaires étrangères	Seine-Maritime			Chefs d'entreprise de 10 salaries ou plus	Commerce et industrie (Chefs d'entreprises)	Industriel
@@ -373,8 +373,8 @@ Matricule	Qualite	Nom usuel	Prenom usuel	Etat	Date naissance	Date de deces	Group
 77013X	M.	Chérioux	Jean	ANCIEN	16/02/1928	25/04/2016	Les Républicains		commission des affaires sociales	Paris		Non public	Chefs d'entreprise de 10 salaries ou plus	Commerce et industrie (Chefs d'entreprises)	Administrateur de sociétés
 58419L	M.	Cherrier	Lionel	ANCIEN	17/11/1929	25/10/2016	U.R.E.I.		commission des lois	Nouvelle-Calédonie			Ingenieurs et cadres techniques d'entreprise	Salariés (Ingénieurs)	Ingénieur
 81010Y	M.	Chervy	William	ANCIEN	03/06/1937		SOCR		commission de l'économie	Creuse			Medecins libéraux généralistes	Professions médicales (Médecins)	Médecin
-000723	M.	Chevalier	Robert	ANCIEN		17/03/1971	U.N.R.		commission des lois	Sarthe			Huissiers de justice, officiers ministériels et professions libérales divers	Professions judiciaires et libérales (Officiers ministériels)	Notaire
-000715	M.	Chevallier	Paul	ANCIEN		28/12/1971	G.D.		commission des finances	Savoie			Artisans, commercants et chefs d'entreprise	Commerce et industrie (Négociants)	Limonadier
+000723	M.	Chevalier	Robert	ANCIEN	14/10/1896	17/03/1971	U.N.R.		commission des lois	Sarthe			Huissiers de justice, officiers ministériels et professions libérales divers	Professions judiciaires et libérales (Officiers ministériels)	Notaire
+000715	M.	Chevallier	Paul	ANCIEN	12/12/1893	28/12/1971	G.D.		commission des finances	Savoie			Artisans, commercants et chefs d'entreprise	Commerce et industrie (Négociants)	Limonadier
 08013P	Mme	Chevé	Jacqueline	ANCIEN	21/08/1961	15/03/2010	SOCR		commission des affaires sociales	Côtes-d'Armor		j.cheve@senat.fr	Professions intermédiaires de la santé et du travail social	Fonctionnaires (Divers)	Directrice de foyer logement
 02053W	M.	Chevènement	Jean-Pierre	ANCIEN	09/03/1939		RDSE		commission des affaires étrangères	Territoire de Belfort		jp.chevenement@senat.fr	Cadres de la fonction publique	Fonctionnaires (Hauts Fonctionnaires)	Conseiller du commerce extérieur
 18083K	M.	Chevrollier	Guillaume	ACTIF	27/10/1974		Les Républicains		commission de l'aménagement du territoire et du développement durable	Mayenne		g.chevrollier@senat.fr	Cadres d'entreprise	Salariés (Cadres divers)	Directeur de programmes immobiliers
@@ -389,7 +389,7 @@ Matricule	Qualite	Nom usuel	Prenom usuel	Etat	Date naissance	Date de deces	Group
 000060	M.	Claparede	Emile	ANCIEN	02/03/1902	03/08/1967	G.D.		commission des affaires sociales	Hérault			Chefs d'entreprise de 10 salaries ou plus	Commerce et industrie (Chefs d'entreprises)	Viticulteur
 04016A	M.	Claudel	Gérard	ANCIEN	23/02/1925		Les Républicains	Apparenté	commission de l'économie	Val-d'Oise		Non public	Agriculteurs exploitants	Professions agricoles	Entrepreneur de travaux agricoles
 95019G	M.	Cléach	Marcel-Pierre	ANCIEN	16/01/1934	18/03/2019	Les Républicains		commission des affaires étrangères	Sarthe		mp.cleach@senat.fr	Chefs d'entreprise de 10 salaries ou plus	Commerce et industrie (Chefs d'entreprises)	Administrateur de sociétés
-000726	M.	Clerc	Jean	ANCIEN		09/03/1966	RP		commission des affaires étrangères	Haute-Savoie			Commercants et assimilés	Commerce et industrie (Négociants)	Négociant
+000726	M.	Clerc	Jean	ANCIEN	15/04/1892	09/03/1966	RP		commission des affaires étrangères	Haute-Savoie			Commercants et assimilés	Commerce et industrie (Négociants)	Négociant
 86018E	M.	Clouet	Jean	ANCIEN	07/05/1921	20/10/2008	Les Républicains		commission des finances	Val-de-Marne			Anciens artisans, commercants, chefs d'entreprise	Commerce et industrie (Retraités)	Retraité
 71009B	M.	Cluzel	Jean	ANCIEN	18/11/1923		UC		commission des finances	Allier			Autres personnes sans activité professionnelle	Sans profession déclarée	Sans profession déclarée
 000058	M.	Cogniot	Georges	ANCIEN	15/12/1901	12/03/1978	C		commission de la culture	Paris			Instituteurs et assimilés	Enseignement secondaire	Professeur agrégé
@@ -416,11 +416,11 @@ Matricule	Qualite	Nom usuel	Prenom usuel	Etat	Date naissance	Date de deces	Group
 89011K	M.	Cornac	Claude	ANCIEN	01/10/1939	12/01/1996	SOCR		commission des lois	Haute-Garonne			Cadres d'entreprise	Salariés (Cadres divers)	Cadre commercial
 11114F	M.	Cornano	Jacques	ANCIEN	18/11/1956		LaREM		commission de l'aménagement du territoire et du développement durable	Guadeloupe		j.cornano@senat.fr	Autres personnes sans activité professionnelle	Enseignement secondaire	Professeur de génie électrique
 000073	M.	Cornat	Henri	ANCIEN	14/02/1903	16/06/1968	RI		commission de l'économie	Manche			Ingenieurs et cadres techniques d'entreprise	Salariés (Ingénieurs)	Ingénieur
-000763	M.	Cornu	André	ANCIEN		05/02/1980	G.D.		commission de la culture	Côtes-du-Nord			Artisans, commercants et chefs d'entreprise	Commerce et industrie (Chefs d'entreprises)	Industriel
+000763	M.	Cornu	André	ANCIEN	27/06/1892	05/02/1980	G.D.		commission de la culture	Côtes-du-Nord			Artisans, commercants et chefs d'entreprise	Commerce et industrie (Chefs d'entreprises)	Industriel
 98023Q	M.	Cornu	Gérard	ANCIEN	06/02/1952		Les Républicains	Apparenté	commission de l'aménagement du territoire et du développement durable	Eure-et-Loir		g.cornu@senat.fr	Commercants et assimilés	Commerce et industrie (Retraités)	Opticien-Audioprothésiste
 19253P	Mme	Costes	Josiane	ACTIF	23/08/1947		RDSE		commission des lois	Cantal		Non public	Retraités	Enseignement supérieur (sauf Professeurs de médecine)	Professeur agrégé d'anglais
 59224F	M.	Costes	Marcel	ANCIEN	05/10/1935	27/05/2013	SOCR		commission de l'économie	Lot			Artisans	Commerce et industrie (Artisans)	Artisan
-000702	M.	Coude Du Foresto	Yvon	ANCIEN		24/01/1980	U.C.D.P.		commission des finances	Deux-Sèvres			Ingenieurs et cadres techniques d'entreprise	Salariés (Ingénieurs)	Ingénieur
+000702	M.	Coude Du Foresto	Yvon	ANCIEN	10/02/1897	24/01/1980	U.C.D.P.		commission des finances	Deux-Sèvres			Ingenieurs et cadres techniques d'entreprise	Salariés (Ingénieurs)	Ingénieur
 07030L	M.	Couderc	Raymond	ANCIEN	16/09/1946		Les Républicains		commission des affaires étrangères	Hérault		r.couderc@senat.fr	Professeurs, professions scientifiques	Enseignement supérieur (sauf Professeurs de médecine)	Professeur d'université
 000192	M.	Coudert	Jacques	ANCIEN	30/07/1908	17/09/1988	U.D.R.	Apparenté	commission de l'économie	Corrèze			Professions libérales	Professions judiciaires et libérales (Divers)	Expert agricole
 000121	M.	Courbatere	Roger	ANCIEN	09/05/1905	16/02/1998	G.D.		commission des affaires sociales	Corrèze			Artisans	Commerce et industrie (Artisans)	Artisan-décorateur
@@ -433,7 +433,7 @@ Matricule	Qualite	Nom usuel	Prenom usuel	Etat	Date naissance	Date de deces	Group
 000089	M.	Cousin	Auguste	ANCIEN	03/11/1903	10/01/1982	U.R.E.I.		commission de la culture	Manche			Agriculteurs exploitants	Professions agricoles	Agriculteur
 000173	M.	Coutrot	Maurice	ANCIEN	03/12/1907	17/09/1992	SOCR		commission de l'économie	Seine-Saint-Denis			Employés administratifs d'entreprise	Salariés (Employés)	Employé de commerce
 59529V	M.	Couve De Murville	Maurice	ANCIEN	24/01/1907	24/12/1999	RPR		commission des finances	Paris			Anciens cadres	Fonctionnaires (Hauts Fonctionnaires)	Inspecteur général des finances en retraite
-000769	Mme	Cremieux	Suzanne	ANCIEN		11/07/1976	G.D.		commission de la culture	Gard			Journalistes, secrétaires de rédaction	Professions libérales (Journalistes)	Journaliste
+000769	Mme	Cremieux	Suzanne	ANCIEN	29/06/1895	11/07/1976	G.D.		commission de la culture	Gard			Journalistes, secrétaires de rédaction	Professions libérales (Journalistes)	Journaliste
 11001K	Mme	Cros	Roselle	ANCIEN	27/08/1947		UC		commission des affaires sociales	Yvelines		r.cros@senat.fr	Cadres de la fonction publique	Fonctionnaires (Retraités)	Consultante formatrice
 71011U	M.	Croze	Pierre	ANCIEN	14/05/1921	19/01/1998	RI		commission des affaires étrangères	Français établis hors de France			Chefs d'entreprise de 10 salaries ou plus	Commerce et industrie (Chefs d'entreprises)	Administrateur de sociétés
 59530N	M.	Crucis	Michel	ANCIEN	04/01/1922	10/09/2012	RI		commission des affaires étrangères	Vendée			Professions libérales	Professions judiciaires et libérales (Divers)	Conseiller juridique et fiscal
@@ -451,12 +451,12 @@ Matricule	Qualite	Nom usuel	Prenom usuel	Etat	Date naissance	Date de deces	Group
 19693L	Mme	Darcos	Laure	ACTIF	27/11/1970		Les Républicains		commission de la culture	Essonne		l.darcos@senat.fr	Autres personnes sans activité professionnelle	Sans profession déclarée	
 98031Q	M.	Darcos	Xavier	ANCIEN	14/07/1947		RPR	Rattaché	commission de la culture	Dordogne		Non public	Autres personnes sans activité professionnelle	Fonctionnaires (Hauts Fonctionnaires)	Inspecteur général de l'Education Nationale
 000416	M.	Dardel	Georges	ANCIEN	13/04/1919	01/10/1982	NI		commission des lois	Hauts-de-Seine			Employés administratifs d'entreprise	Salariés (Employés)	Employé à la société nationale des chemins de fer français
-000757	M.	d'Argenlieu	Philippe	ANCIEN		21/05/1977	U.N.R.		commission des affaires étrangères	Sarthe			Agriculteurs exploitants	Professions agricoles	Propriétaire agriculteur
+000757	M.	d'Argenlieu	Philippe	ANCIEN	25/09/1892	21/05/1977	U.N.R.		commission des affaires étrangères	Sarthe			Agriculteurs exploitants	Professions agricoles	Propriétaire agriculteur
 14259Y	M.	Darnaud	Mathieu	ACTIF	11/07/1975		Les Républicains		commission des lois	Ardèche		m.darnaud@senat.fr	Cadres de la fonction publique	Fonctionnaires (Cadres moyens)	Urbaniste
 95021A	M.	Darniche	Philippe	ANCIEN	23/02/1943		NI		commission de l'aménagement du territoire et du développement durable	Vendée		p.darniche@senat.fr	Pharmaciens libéraux	Professions médicales (Pharmaciens)	Pharmacien
-000683	M.	Darou	Marcel	ANCIEN		29/01/1986	SOCR		commission des affaires sociales	Nord			Instituteurs et assimilés	Enseignement primaire	Directeur d'école
+000683	M.	Darou	Marcel	ANCIEN	03/08/1896	29/01/1986	SOCR		commission des affaires sociales	Nord			Instituteurs et assimilés	Enseignement primaire	Directeur d'école
 000524	M.	Darras	Michel	ANCIEN	05/03/1924	06/01/1992	SOCR		commission des lois	Pas-de-Calais			Ingenieurs et cadres techniques d'entreprise	Salariés (Ingénieurs)	Ingénieur
-000709	M.	Dassaud	Francis	ANCIEN		17/11/1965	SOCR		commission des affaires sociales	Puy-de-Dôme			Ouvriers	Salariés (Ouvriers)	Mécanicien
+000709	M.	Dassaud	Francis	ANCIEN	11/07/1895	17/11/1965	SOCR		commission des affaires sociales	Puy-de-Dôme			Ouvriers	Salariés (Ouvriers)	Mécanicien
 04055H	M.	Dassault	Serge	ANCIEN	04/04/1925	28/05/2018	Les Républicains		commission des finances	Essonne		Non public	Chefs d'entreprise de 10 salaries ou plus	Commerce et industrie (Chefs d'entreprises)	Président-directeur général de sociétés
 98020M	M.	d'Attilio	Henri	ANCIEN	04/02/1927	12/11/2008	SOCR		commission des affaires sociales	Bouches-du-Rhône		Non public	Autres personnes sans activité professionnelle	Commerce et industrie (Retraités)	Cadre de l'aéronautique retraité
 04008A	M.	Daubresse	Marc-Philippe	ACTIF	01/08/1953		Les Républicains		commission des lois	Nord		mp.daubresse@senat.fr	Chefs d'entreprise de 10 salaries ou plus	Commerce et industrie (Chefs d'entreprises)	Directeur de société
@@ -478,9 +478,9 @@ Matricule	Qualite	Nom usuel	Prenom usuel	Etat	Date naissance	Date de deces	Group
 19701S	Mme	de Cidrac	Marta	ACTIF	13/06/1964		Les Républicains		commission de l'aménagement du territoire et du développement durable	Yvelines		m.de-cidrac@senat.fr	Professions libérales	Professions judiciaires et libérales (Divers)	Architecte
 83023N	M.	de Cossé-Brissac	Charles-Henri	ANCIEN	16/03/1936	15/08/2003	RI		commission des affaires étrangères	Loire-Atlantique			Agriculteurs exploitants	Professions agricoles	Exploitant agricole
 74019R	M.	de Cuttoli	Charles	ANCIEN	15/08/1915	11/12/2007	RPR		commission de l'économie	Français établis hors de France		Non public	Avocats	Professions judiciaires et libérales (Avocats)	Avocat
-000719	M.	de Felice	Pierre	ANCIEN		12/01/1978	G.D.		commission des lois	Loiret			Avocats	Professions judiciaires et libérales (Avocats)	Avocat
+000719	M.	de Felice	Pierre	ANCIEN	13/12/1896	12/01/1978	G.D.		commission des lois	Loiret			Avocats	Professions judiciaires et libérales (Avocats)	Avocat
 86028G	M.	de Gaulle	Philippe	ANCIEN	28/12/1921		Les Républicains		commission des affaires étrangères	Paris			Anciens cadres	Fonctionnaires (Retraités)	Ancien inspecteur général de la marine
-000700	M.	de Geoffre de Chabrignac	Jean	ANCIEN		14/03/1971	U.N.R.		commission de l'économie	Maine-et-Loire			Agriculteurs exploitants	Professions agricoles	Agriculteur
+000700	M.	de Geoffre de Chabrignac	Jean	ANCIEN	08/11/1889	14/03/1971	U.N.R.		commission de l'économie	Maine-et-Loire			Agriculteurs exploitants	Professions agricoles	Agriculteur
 000186	M.	de Hauteclocque	Baudouin	ANCIEN	13/06/1908	09/10/1981	U.R.E.I.		commission des lois	Pas-de-Calais	Secrétaire du Sénat		Agriculteurs exploitants	Professions agricoles	Propriétaire exploitant
 000310	Mme	de Hauteclocque	Nicole	ANCIEN	10/03/1913	18/01/1993	RPR		commission des affaires étrangères	Paris			Anciens cadres et professions liberales	Professions judiciaires et libérales (Divers)	Expert en relations publiques
 58945E	M.	De La Forest	Louis	ANCIEN	12/08/1914	30/09/2013	U.R.E.I.		commission des affaires étrangères	Ille-et-Vilaine			Agriculteurs exploitants	Professions agricoles	Agriculteur
@@ -492,9 +492,9 @@ Matricule	Qualite	Nom usuel	Prenom usuel	Etat	Date naissance	Date de deces	Group
 58913V	M.	De La Verpilliere	Guy	ANCIEN	09/08/1922	25/04/2006	U.R.E.I.		commission de l'économie	Ain			Agriculteurs exploitants	Professions agricoles	Agriculteur
 57449N	M.	de Lachomette	Jean	ANCIEN	28/03/1912	12/01/1999	CRARS		commission des affaires étrangères	Haute-Loire			Chefs d'entreprise de 10 salaries ou plus	Commerce et industrie (Chefs d'entreprises)	Industriel
 08034U	M.	de Legge	Dominique	ACTIF	18/02/1952		Les Républicains		commission des finances	Ille-et-Vilaine	Secrétaire du Sénat	d.de-legge@senat.fr	Cadres et Professions intellectuelles supérieures	Autres professions	Cadre dirigeant dans le domaine de l'environnement
-000767	M.	de Maupeou	Jacques	ANCIEN		22/01/1963	RI		commission de la culture	Vendée			Agriculteurs exploitants	Professions agricoles	Propriétaire-exploitant agricole
+000767	M.	de Maupeou	Jacques	ANCIEN	28/12/1899	22/01/1963	RI		commission de la culture	Vendée			Agriculteurs exploitants	Professions agricoles	Propriétaire-exploitant agricole
 89034S	M.	de Menou	Jacques	ANCIEN	30/10/1932	11/08/2010	RPR		commission de l'économie	Finistère			Ingenieurs et cadres techniques d'entreprise	Salariés (Ingénieurs)	Ingénieur agronome
-000705	M.	de Montalembert	Geoffroy	ANCIEN		02/03/1993	RPR		commission des finances	Seine-Maritime			Agriculteurs exploitants	Professions agricoles	Agriculteur
+000705	M.	de Montalembert	Geoffroy	ANCIEN	10/10/1898	02/03/1993	RPR		commission des finances	Seine-Maritime			Agriculteurs exploitants	Professions agricoles	Agriculteur
 98032R	M.	de Montesquiou	Aymeri	ANCIEN	07/07/1942		UC		commission des affaires étrangères	Gers		a.demontesquiou@senat.fr	Autres personnes sans activité professionnelle	Professions agricoles	Exploitant agricole
 08011M	M.	de Montgolfier	Albéric	ACTIF	06/07/1964		Les Républicains		commission des finances	Eure-et-Loir		a.de-montgolfier@senat.fr	Avocats	Professions judiciaires et libérales (Avocats)	Avocat au Conseil d'État et à la Cour de cassation
 000209	M.	de Montigny	Lucien	ANCIEN	06/04/1909	05/07/1975	U.C.D.P.		commission des lois	Mayenne			Avocats	Professions judiciaires et libérales (Avocats)	Avocat
@@ -512,7 +512,7 @@ Matricule	Qualite	Nom usuel	Prenom usuel	Etat	Date naissance	Date de deces	Group
 000268	M.	de Tinguy du Pouet	Lionel	ANCIEN	06/04/1911	09/09/1981	U.C.D.P.		commission des lois	Vendée			Personnels de direction de la fonction publique	Fonctionnaires (Hauts Fonctionnaires)	Conseiller d'Etat
 000668	M.	de Villeneuve Bargemont	Augustin	ANCIEN	16/07/1909	25/07/1989	NI		Aucune (Président du Sénat)	Somme			Agriculteurs exploitants	Professions agricoles	Agriculteur
 86050E	M.	de Villepin	Xavier	ANCIEN	14/03/1926	29/10/2014	Les Républicains		commission des affaires étrangères	Français établis hors de France		Non public	Chefs d'entreprise de 10 salaries ou plus	Commerce et industrie (Chefs d'entreprises)	Industriel
-000669	M.	de Villoutreys de Brignac	Pierre	ANCIEN		31/03/1972	RI		commission de l'économie	Maine-et-Loire			Chefs d'entreprise de 10 salaries ou plus	Commerce et industrie (Chefs d'entreprises)	Industriel
+000669	M.	de Villoutreys de Brignac	Pierre	ANCIEN	29/04/1897	31/03/1972	RI		commission de l'économie	Maine-et-Loire			Chefs d'entreprise de 10 salaries ou plus	Commerce et industrie (Chefs d'entreprises)	Industriel
 000239	M.	de Wazieres	Raymond	ANCIEN	25/03/1910	29/05/1984	G.D.		commission des affaires sociales	Somme			Agriculteurs exploitants	Professions agricoles	Agriculteur
 77017C	M.	Debarge	Marcel	ANCIEN	16/09/1929	23/12/2015	SOCR		commission des lois	Seine-Saint-Denis	Secrétaire du Sénat	Non public	Anciens cadres	Fonctionnaires (Retraités)	Retraité des PTT
 86004X	M.	Debavelaere	Désiré	ANCIEN	18/02/1924	10/05/2002	RPR	Apparenté	commission de l'économie	Pas-de-Calais			Agriculteurs exploitants	Professions agricoles	Agriculteur
@@ -522,7 +522,7 @@ Matricule	Qualite	Nom usuel	Prenom usuel	Etat	Date naissance	Date de deces	Group
 17589D	M.	Decool	Jean-Pierre	ACTIF	19/10/1952		Les Indépendants	Apparenté	commission des affaires économiques	Nord		jp.decool@senat.fr	Retraités	Enseignement (Retraités)	Ancien professeur
 000250	M.	Defferre	Gaston	ANCIEN	14/09/1910	07/05/1986	SOCR		commission des affaires étrangères	Bouches-du-Rhône			Chefs d'entreprise de 10 salaries ou plus	Commerce et industrie (Chefs d'entreprises)	Directeur de journal
 000245	M.	Deguise	Jean	ANCIEN	10/06/1910	03/01/1981	RP		commission des lois	Aisne			Agriculteurs exploitants	Professions agricoles	Agriculteur
-000744	M.	Dehe	Alfred	ANCIEN		11/01/1969	RI		commission de l'économie	Nord			Chefs d'entreprise de 10 salaries ou plus	Commerce et industrie (Chefs d'entreprises)	Entrepreneur de travaux publics
+000744	M.	Dehe	Alfred	ANCIEN	21/02/1899	11/01/1969	RI		commission de l'économie	Nord			Chefs d'entreprise de 10 salaries ou plus	Commerce et industrie (Chefs d'entreprises)	Entrepreneur de travaux publics
 83025Q	M.	Dejoie	Luc	ANCIEN	06/02/1931	21/01/2006	RPR		commission des lois	Loire-Atlantique		Non public	Huissiers de justice, officiers ministériels et professions libérales divers	Professions judiciaires et libérales (Officiers ministériels)	Notaire
 98018T	M.	del Picchia	Robert	ACTIF	10/11/1942		Les Républicains	Rattaché	commission des affaires étrangères	Français établis hors de France		r.delpicchia@senat.fr	Autres personnes sans activité professionnelle	Autres professions	Rédacteur en chef de radio
 000066	M.	Delagnes	Roger	ANCIEN	11/05/1902	06/04/1976	SOCR		commission de l'économie	Bouches-du-Rhône			Anciens cadres	Enseignement (Retraités)	Instituteur en retraite
@@ -542,7 +542,7 @@ Matricule	Qualite	Nom usuel	Prenom usuel	Etat	Date naissance	Date de deces	Group
 19663E	Mme	Delmont-Koropoulis	Annie	ACTIF	13/07/1947		Les Républicains		commission des affaires sociales	Seine-Saint-Denis		a.delmont-koropoulis@senat.fr	Medecins libéraux généralistes	Professions médicales (Médecins)	Médecin
 81007E	M.	Delong	Jacques-Richard	ANCIEN	14/08/1921	15/07/2012	RPR		commission des finances	Haute-Marne		Non public	Pharmaciens libéraux	Professions médicales (Pharmaciens)	Pharmacien 
 000188	M.	Delorme	Claudius	ANCIEN	21/01/1908	03/09/1980	R.I.A.S.		commission de la culture	Rhône			Agriculteurs exploitants	Professions agricoles	Agriculteur
-000685	M.	Delpuech	Vincent	ANCIEN		09/03/1966	G.D.		commission de la culture	Bouches-du-Rhône			Chefs d'entreprise de 10 salaries ou plus	Commerce et industrie (Chefs d'entreprises)	Administrateur de journaux
+000685	M.	Delpuech	Vincent	ANCIEN	05/04/1888	09/03/1966	G.D.		commission de la culture	Bouches-du-Rhône			Chefs d'entreprise de 10 salaries ou plus	Commerce et industrie (Chefs d'entreprises)	Administrateur de journaux
 90004C	M.	Demerliat	Jean-Pierre	ANCIEN	08/05/1943		SOCR		commission des affaires étrangères	Haute-Vienne		jp.demerliat@senat.fr	Instituteurs et assimilés	Enseignement primaire	Instituteur
 92018S	Mme	Demessine	Michelle	ANCIEN	18/06/1947		CRCE		commission des affaires étrangères	Nord		m.demessine@senat.fr	Employés administratifs d'entreprise	Salariés (Permanents politiques)	Secrétaire
 95023C	M.	Demilly	Fernand	ANCIEN	10/12/1934		RDSE		commission de la culture	Somme			Anciens cadres	Enseignement (Retraités)	Retraité
@@ -557,7 +557,7 @@ Matricule	Qualite	Nom usuel	Prenom usuel	Etat	Date naissance	Date de deces	Group
 000180	Mme	Dervaux	Renée	ANCIEN	09/03/1908	26/10/1996	C		commission de la culture	Seine			Employés administratifs d'entreprise	Salariés (Employés)	Comptable
 97007L	Mme	Derycke	Dinah	ANCIEN	01/04/1946	19/01/2002	SOCR		commission des lois	Nord		Non public	Personnels de direction de la fonction publique	Fonctionnaires (Hauts Fonctionnaires)	Conseiller référendaire à la Cour des Comptes
 08022Q	Mme	Des Esgaulx	Marie-Hélène	ANCIEN	26/05/1950		Les Républicains		commission des finances	Gironde		mh.des-esgaulx@senat.fr	Avocats	Professions judiciaires et libérales (Retraités)	Avocat à la Cour
-000728	M.	Desache	Marc	ANCIEN		15/01/1982	U.N.R.		commission des finances	Indre-et-Loire			Anciens cadres	Professions judiciaires et libérales (Retraités)	Agent de change honoraire
+000728	M.	Desache	Marc	ANCIEN	15/10/1892	15/01/1982	U.N.R.		commission des finances	Indre-et-Loire			Anciens cadres	Professions judiciaires et libérales (Retraités)	Agent de change honoraire
 58670V	M.	Desbriere	Bernard	ANCIEN	10/05/1935		SOCR		commission de l'économie	Saône-et-Loire			Agriculteurs exploitants	Professions agricoles	Viticulteur
 07028S	Mme	Descamps	Béatrice	ANCIEN	22/06/1951		NI		Aucune (Président du Sénat)	Nord		b.descamps@senat.fr	Professeurs, professions scientifiques	Enseignement secondaire	Professeur
 83028T	M.	Descours	Charles	ANCIEN	31/12/1937		RPR		commission des affaires sociales	Isère		Non public	Medecins libéraux généralistes	Professions médicales (Chirurgiens)	Chirurgien
@@ -599,22 +599,22 @@ Matricule	Qualite	Nom usuel	Prenom usuel	Etat	Date naissance	Date de deces	Group
 04089T	M.	Dubois	Daniel	ACTIF	05/02/1952		UC		commission des affaires économiques	Somme	Secrétaire du Sénat	d.dubois@senat.fr	Cadres d'entreprise	Autres professions	Directeur général d'OPAC
 000322	M.	Dubois	Emile	ANCIEN	09/08/1913	09/09/1973	SOCR		commission des lois	Nord			Professions intermédiaires administratives de la fonction publique	Fonctionnaires (Divers)	Secrétaire de mairie
 000203	M.	Dubois	Hector	ANCIEN	30/11/1908	16/06/1991	NI		commission de l'économie	Oise			Agriculteurs exploitants	Professions agricoles	Agriculteur
-000713	M.	Dubois	René	ANCIEN		11/04/1982	RI		commission des finances	Loire-Atlantique			Medecins libéraux généralistes	Professions médicales (Chirurgiens)	Chirurgien
+000713	M.	Dubois	René	ANCIEN	12/07/1893	11/04/1982	RI		commission des finances	Loire-Atlantique			Medecins libéraux généralistes	Professions médicales (Chirurgiens)	Chirurgien
 14043V	M.	Dubois	Vincent	ANCIEN	05/08/1981		UC	Apparenté	commission des lois	Polynésie française		v.dubois@senat.fr	Avocats	Professions judiciaires et libérales (Avocats)	Avocat
 59227J	M.	Duboscq	Franz	ANCIEN	06/05/1924	07/12/2012	RPR		commission des affaires étrangères	Pyrénées-Atlantiques			Agriculteurs exploitants	Professions agricoles	Agriculteur
 99003Q	M.	Dubrule	Paul	ANCIEN	06/07/1934		Les Républicains		commission des affaires étrangères	Seine-et-Marne		Non public	Chefs d'entreprise de 10 salaries ou plus	Commerce et industrie (Chefs d'entreprises)	Administrateur de sociétés
 11091R	Mme	Duchêne	Marie-Annick	ANCIEN	23/08/1940		Les Républicains	Rattaché	commission de la culture	Yvelines		ma.duchene@senat.fr	Autres personnes sans activité professionnelle	Enseignement secondaire	Professeur de lettres classiques
 000105	M.	Duchet	Roger	ANCIEN	04/07/1904	06/09/1981	RI		commission de la culture	Côte-d'Or			Agriculteurs exploitants	Professions agricoles	Propriétaire-viticulteur
-000681	M.	Duclos	Jacques	ANCIEN		25/04/1975	C		commission des affaires étrangères	Seine-Saint-Denis			Ouvriers	Salariés (Ouvriers)	Ouvrier pâtissier
+000681	M.	Duclos	Jacques	ANCIEN	02/10/1896	25/04/1975	C		commission des affaires étrangères	Seine-Saint-Denis			Ouvriers	Salariés (Ouvriers)	Ouvrier pâtissier
 87003B	M.	Dufaut	Alain	ACTIF	02/01/1944		Les Républicains		commission de la culture	Vaucluse		alain.dufaut@orange.fr	Professions libérales	Professions judiciaires et libérales (Divers)	Géomètre expert DPLG
-000687	M.	Dufeu	Jean-Baptiste	ANCIEN		22/12/1980	G.D.		commission de l'économie	Isère	Questeur du Sénat		Commercants et assimilés	Commerce et industrie (Commercants)	Directeur de cinéma
+000687	M.	Dufeu	Jean-Baptiste	ANCIEN	15/08/1898	22/12/1980	G.D.		commission de l'économie	Isère	Questeur du Sénat		Commercants et assimilés	Commerce et industrie (Commercants)	Directeur de cinéma
 000164	M.	Duffaut	Henri	ANCIEN	07/06/1907	11/05/1987	SOCR		commission des finances	Vaucluse			Avocats	Professions judiciaires et libérales (Avocats)	Avocat
 97003G	M.	Duffour	Michel	ANCIEN	08/11/1940		CRCE		commission des lois	Hauts-de-Seine			Instituteurs et assimilés	Enseignement primaire	Instituteur
 18127E	Mme	Dufour-Tonini	Anne-Lise	ANCIEN	02/03/1970		SOCR		commission de la culture	Nord			Autres personnes sans activité professionnelle	Sans profession déclarée	
 95027G	M.	Dugoin	Xavier	ANCIEN	27/03/1947		RPR		commission des affaires étrangères	Essonne		Non public	Cadres d'entreprise	Salariés (Cadres divers)	Cadre financier
 95028H	M.	Dulait	André	ANCIEN	14/11/1937	18/01/2020	Les Républicains		commission des affaires étrangères	Deux-Sèvres		a.dulait@senat.fr	Vétérinaires (libéraux ou salariés)	Professions médicales (Vétérinaires)	Docteur vétérinaire
 000011	M.	Dulin	André	ANCIEN	12/04/1900	05/03/1973	G.D.		commission des finances	Charente-Maritime			Agriculteurs exploitants	Professions agricoles	Président de l'association centrale des laiteries coopératives des Charentes et du Poitou
-000009	M.	Dumas	Alexandre	ANCIEN		14/11/1989	G.D.		commission de la culture	Charente			Professions intermédiaires administratives et commerciales d'entreprise	Professions judiciaires et libérales (Divers)	Agent d'assurances
+000009	M.	Dumas	Alexandre	ANCIEN	13/03/1896	14/11/1989	G.D.		commission de la culture	Charente			Professions intermédiaires administratives et commerciales d'entreprise	Professions judiciaires et libérales (Divers)	Agent d'assurances
 07033P	Mme	Dumas	Catherine	ACTIF	13/07/1957		Les Républicains		commission de la culture	Paris		c.dumas@senat.fr	Cadres de la fonction publique	Fonctionnaires (Hauts Fonctionnaires)	
 59531P	M.	Dumas	Pierre	ANCIEN	15/11/1924	04/02/2004	RPR		commission de l'économie	Savoie			Chefs d'entreprise de 10 salaries ou plus	Commerce et industrie (Chefs d'entreprises)	Administrateur de société
 000511	M.	Dumont	Claude	ANCIEN	06/07/1923	23/08/1979	UC		commission des affaires étrangères	Setif-Batna			Professions libérales	Professions judiciaires et libérales (Divers)	Administrateur de sociétés
@@ -627,7 +627,7 @@ Matricule	Qualite	Nom usuel	Prenom usuel	Etat	Date naissance	Date de deces	Group
 57714L	M.	Durafour	Michel	ANCIEN	11/04/1920	27/07/2017	G.D.		commission des finances	Loire			Professeurs, professions scientifiques	Enseignement supérieur (sauf Professeurs de médecine)	Professeur d'université
 14151M	M.	Durain	Jérôme	ACTIF	02/06/1969		SOCR		commission des lois	Saône-et-Loire		j.durain@senat.fr	Cadres de la fonction publique	Fonctionnaires (Hauts Fonctionnaires)	Fonctionnaire
 14197C	M.	Duran	Alain	ACTIF	02/01/1958		SOCR		commission des affaires économiques	Ariège		a.duran@senat.fr	Instituteurs et assimilés	Enseignement primaire	Professeur des écoles
-000703	M.	Durand	Abel	ANCIEN		02/11/1975	RI		commission des lois	Loire-Atlantique			Avocats	Professions judiciaires et libérales (Avocats)	Avocat honoraire
+000703	M.	Durand	Abel	ANCIEN	10/03/1879	02/11/1975	RI		commission des lois	Loire-Atlantique			Avocats	Professions judiciaires et libérales (Avocats)	Avocat honoraire
 000041	M.	Durand	Charles	ANCIEN	15/04/1901	28/03/1983	U.C.D.P.		commission de la culture	Cher			Agriculteurs exploitants	Professions agricoles	Agriculteur
 000255	M.	Durand	Hubert	ANCIEN	21/10/1910	12/10/1981	RI		commission de la culture	Vendée			Professions intermédiaires administratives de la fonction publique	Fonctionnaires (Cadres moyens)	Directeur de la fédération régionale Vendée Loire et Sèvres des caisses de Crédit mutuel libre
 000647	M.	Durand	Jacques	ANCIEN	18/02/1939	05/01/1991	SOCR		commission de la culture	Tarn			Instituteurs et assimilés	Enseignement secondaire	Professeur
@@ -655,11 +655,11 @@ Matricule	Qualite	Nom usuel	Prenom usuel	Etat	Date naissance	Date de deces	Group
 89026S	M.	Égu	André	ANCIEN	12/07/1929	19/08/2016	UC		commission de la culture	Ille-et-Vilaine			Anciens artisans, commercants, chefs d'entreprise	Commerce et industrie (Négociants)	Négociant en vins
 58502E	M.	Ehlers	Gérard	ANCIEN	29/03/1930	23/11/2006	C		commission de l'économie	Nord			Ouvriers	Salariés (Ouvriers)	Ouvrier
 000411	M.	Elby	Henri	ANCIEN	22/11/1918	31/07/1986	U.R.E.I.	Rattaché	commission de l'économie	Pas-de-Calais			Chefs d'entreprise de 10 salaries ou plus	Commerce et industrie (Chefs d'entreprises)	Chef d'entreprise
-000764	M.	Emaille	Jules	ANCIEN		26/09/1966	RP		commission de la culture	Nord			Chefs d'entreprise de 10 salaries ou plus	Commerce et industrie (Chefs d'entreprises)	Industriel
+000764	M.	Emaille	Jules	ANCIEN	27/09/1880	26/09/1966	RP		commission de la culture	Nord			Chefs d'entreprise de 10 salaries ou plus	Commerce et industrie (Chefs d'entreprises)	Industriel
 12042Y	Mme	Émery-Dumas	Anne	ANCIEN	30/08/1959		LaREM		commission des affaires sociales	Nièvre		Non public	Autres personnes sans activité professionnelle	Sans profession déclarée	
 89027T	M.	Émin	Jean-Paul	ANCIEN	17/06/1939		Les Républicains		commission de la culture	Ain		emin.jean-paul@wanadoo.fr	Cadres d'entreprise	Salariés (Cadres divers)	Directeur commercial
 95030B	M.	Émorine	Jean-Paul	ACTIF	20/03/1944		Les Républicains		commission des affaires étrangères	Saône-et-Loire		JeanPaul.Emorine@wanadoo.fr	Agriculteurs exploitants	Professions agricoles	
-000699	M.	Enjalbert	René	ANCIEN		26/12/1976	RI		commission de l'économie	Oran-Tlemcen			Agriculteurs exploitants	Professions agricoles	Agriculteur
+000699	M.	Enjalbert	René	ANCIEN	08/09/1890	26/12/1976	RI		commission de l'économie	Oran-Tlemcen			Agriculteurs exploitants	Professions agricoles	Agriculteur
 000215	M.	Errecart	Jean	ANCIEN	12/07/1909	17/01/1971	U.C.D.P.		commission de l'économie	Basses-Pyrénées			Agriculteurs exploitants	Professions agricoles	Agriculteur
 08064B	Mme	Escoffier	Anne-Marie	ANCIEN	15/08/1942		RDSE		commission de l'aménagement du territoire et du développement durable	Aveyron		am.escoffier@senat.fr	Cadres de la fonction publique	Fonctionnaires (Hauts Fonctionnaires)	Inspecteur général de l'Administration
 98045W	M.	Esneu	Michel	ANCIEN	18/07/1943		Les Républicains		commission des affaires sociales	Ille-et-Vilaine		m.esneu@senat.fr	Autres personnes sans activité professionnelle	Enseignement secondaire	Professeur
@@ -667,7 +667,7 @@ Matricule	Qualite	Nom usuel	Prenom usuel	Etat	Date naissance	Date de deces	Group
 11110B	Mme	Espagnac	Frédérique	ACTIF	19/04/1972		SOCR		commission des finances	Pyrénées-Atlantiques		f.espagnac@senat.fr	Autres personnes sans activité professionnelle	Salariés (Cadres divers)	Cadre
 58351H	M.	Espagnac	Raymond	ANCIEN	08/09/1925		SOCR		commission de la culture	Isère			Artisans	Commerce et industrie (Artisans)	Artisan
 000056	M.	Esseul	Fernand	ANCIEN	19/10/1901	10/03/1993	RI		commission de l'économie	Maine-et-Loire			Agriculteurs exploitants	Professions agricoles	Expert agricole et foncier
-000720	M.	Esteve	Yves	ANCIEN		21/12/1986	RPR		commission des lois	Ille-et-Vilaine			Huissiers de justice, officiers ministériels et professions libérales divers	Professions judiciaires et libérales (Officiers ministériels)	Notaire
+000720	M.	Esteve	Yves	ANCIEN	14/02/1899	21/12/1986	RPR		commission des lois	Ille-et-Vilaine			Huissiers de justice, officiers ministériels et professions libérales divers	Professions judiciaires et libérales (Officiers ministériels)	Notaire
 86025D	M.	Estier	Claude	ANCIEN	08/06/1925	10/03/2016	SOCR		commission des affaires étrangères	Paris			Journalistes, secrétaires de rédaction	Professions libérales (Journalistes)	Journaliste
 14187A	Mme	Estrosi Sassone	Dominique	ACTIF	14/11/1958		Les Républicains		commission des affaires économiques	Alpes-Maritimes		d.estrosi-sassone@senat.fr	Cadres de la fonction publique	Fonctionnaires (Cadres moyens)	Fonctionnaire territoriale
 01026P	M.	Etienne	Jean-Claude	ANCIEN	06/08/1941	11/03/2017	Les Républicains		commission de la culture	Marne		jc.etienne@senat.fr	Cadres de la fonction publique	Fonctionnaires (Divers)	Professeur en médecine
@@ -694,7 +694,7 @@ Matricule	Qualite	Nom usuel	Prenom usuel	Etat	Date naissance	Date de deces	Group
 000075	M.	Ferre	Manuel	ANCIEN	18/04/1903	03/11/1989	G.D.		commission de la culture	Mostaganem-Tiaret			Cadres et Professions intellectuelles supérieures	Salariés (Cadres divers)	Directeur de banque
 08045X	M.	Fichet	Jean-Luc	ACTIF	15/07/1953		SOCR		commission des lois	Finistère		jl.fichet@senat.fr	Cadres d'entreprise	Professions médicales (Autres)	Directeur d'institut médico-éducatif
 56905M	M.	Fichoux	Jean	ANCIEN	16/04/1914	07/03/2002	RI		commission des affaires sociales	Finistère			Agriculteurs exploitants	Professions agricoles	Agriculteur
-000678	M.	Fil	Jules	ANCIEN		23/09/1968	SOCR		commission des affaires sociales	Aude			Retraités	Enseignement (Retraités)	Directeur d'école en retraite
+000678	M.	Fil	Jules	ANCIEN	02/02/1899	23/09/1968	SOCR		commission des affaires sociales	Aude			Retraités	Enseignement (Retraités)	Directeur d'école en retraite
 000135	M.	Filippi	Jean	ANCIEN	19/10/1905	15/01/1993	G.D.S.R.G.		commission de l'économie	Corse			Professions intermédiaires administratives de la fonction publique	Fonctionnaires (Cadres moyens)	Inspecteur des finances
 11107G	M.	Filleul	Jean-Jacques	ANCIEN	22/06/1943		LaREM		commission de l'aménagement du territoire et du développement durable	Indre-et-Loire		jj.filleul@senat.fr	Autres personnes sans activité professionnelle	Salariés (Cadres divers)	Chargé de mission dans un laboratoire pharmaceutique
 19599P	Mme	Filleul	Martine	ACTIF	06/06/1953		SOCR		commission de l'aménagement du territoire et du développement durable	Nord		m.filleul@senat.fr	Anciens professions intermédiaires	Fonctionnaires (Retraités)	Ancienne sociologue
@@ -719,7 +719,7 @@ Matricule	Qualite	Nom usuel	Prenom usuel	Etat	Date naissance	Date de deces	Group
 77019E	M.	Fourcade	Jean-Pierre	ANCIEN	18/10/1929		Les Républicains		commission des finances	Hauts-de-Seine		jp.fourcade@senat.fr	Anciens cadres	Fonctionnaires (Hauts Fonctionnaires)	Inspecteur des finances
 97011G	M.	Fournier	Bernard	ACTIF	13/09/1946		Les Républicains		commission des affaires étrangères	Loire		b.fournier@senat.fr	Professions libérales	Autres professions	Conseil en entreprise
 19521Q	Mme	Fournier	Catherine	ACTIF	16/09/1955		UC		commission des affaires sociales	Pas-de-Calais		c.fournier@senat.fr	Anciens artisans, commercants, chefs d'entreprise	Commerce et industrie (Retraités)	Ancien chef d'entreprise
-000697	M.	Fournier	Jean-Louis	ANCIEN		20/11/1968	SOCR		commission des affaires sociales	Landes			Medecins libéraux généralistes	Professions médicales (Chirurgiens)	Chirurgien
+000697	M.	Fournier	Jean-Louis	ANCIEN	08/07/1887	20/11/1968	SOCR		commission des affaires sociales	Landes			Medecins libéraux généralistes	Professions médicales (Chirurgiens)	Chirurgien
 08065C	M.	Fournier	Jean-Paul	ANCIEN	16/10/1945		Les Républicains		commission des affaires étrangères	Gard		jp.fournier@senat.fr	Artisans	Commerce et industrie (Retraités)	Chef d'entreprise
 000296	M.	Fournis	Henri	ANCIEN	21/07/1912	22/09/1995	RI		commission des lois	Loire-Atlantique			Huissiers de justice, officiers ministériels et professions libérales divers	Professions judiciaires et libérales (Officiers ministériels)	Notaire
 92023P	M.	Foy	Alfred	ANCIEN	11/01/1934		NI		commission des affaires sociales	Nord		Non public	Instituteurs et assimilés	Enseignement secondaire	Professeur de collège
@@ -734,16 +734,16 @@ Matricule	Qualite	Nom usuel	Prenom usuel	Etat	Date naissance	Date de deces	Group
 98047Y	M.	Fréville	Yves	ANCIEN	01/12/1934		Les Républicains	Rattaché	commission des finances	Ille-et-Vilaine		y.freville@senat.fr	Autres personnes sans activité professionnelle	Enseignement supérieur (sauf Professeurs de médecine)	Professeur d'université
 02001J	M.	Frimat	Bernard	ANCIEN	12/10/1940		SOCR		commission des lois	Nord	Vice-président du Sénat	b.frimat@senat.fr	Professeurs, professions scientifiques	Enseignement supérieur (sauf Professeurs de médecine)	Maître de conférences
 11010L	M.	Frogier	Pierre	ACTIF	16/11/1950		Les Républicains		commission des lois	Nouvelle-Calédonie		p.frogier@senat.fr	Autres personnes sans activité professionnelle	Commerce et industrie (Négociants)	Gérant de sociétés
-000766	M.	Fruh	Charles	ANCIEN		20/05/1982	RI		commission de la culture	Seine			Avocats	Professions judiciaires et libérales (Avocats)	Avocat
+000766	M.	Fruh	Charles	ANCIEN	28/05/1894	20/05/1982	RI		commission de la culture	Seine			Avocats	Professions judiciaires et libérales (Avocats)	Avocat
 000533	M.	Fuzier	Claude	ANCIEN	02/06/1924	22/01/1997	SOCR		commission de la culture	Seine-Saint-Denis			Journalistes, secrétaires de rédaction	Professions libérales (Journalistes)	Journaliste
 14034U	M.	Gabouty	Jean-Marc	ACTIF	17/05/1949		RDSE		commission des finances	Haute-Vienne	Vice-président du Sénat	jm.gabouty@senat.fr	Artisans, commercants et chefs d'entreprise	Commerce et industrie (Chefs d'entreprises)	Chef d'entreprise
-000675	M.	Gadoin	Jacques	ANCIEN		19/04/1974	G.D.		commission de l'économie	Nièvre	Questeur du Sénat		Chefs d'entreprise de 10 salaries ou plus	Commerce et industrie (Chefs d'entreprises)	Banquier
+000675	M.	Gadoin	Jacques	ANCIEN	01/12/1892	19/04/1974	G.D.		commission de l'économie	Nièvre	Questeur du Sénat		Chefs d'entreprise de 10 salaries ou plus	Commerce et industrie (Chefs d'entreprises)	Banquier
 94003T	M.	Gaillard	Yann	ANCIEN	09/10/1936		Les Républicains		commission des finances	Aube		y.gaillard@senat.fr	Personnels de direction de la fonction publique	Fonctionnaires (Hauts Fonctionnaires)	Inspecteur général des Finances
-08001K	M.	Gallard	Maurice	ANCIEN		12/08/1969	NI		Aucune (Président du Sénat)	Loiret			Policiers et militaires	Fonctionnaires (Militaires)	Lieutenant Colonel en retraite
+08001K	M.	Gallard	Maurice	ANCIEN	17/03/1891	12/08/1969	NI		Aucune (Président du Sénat)	Loiret			Policiers et militaires	Fonctionnaires (Militaires)	Lieutenant Colonel en retraite
 59229L	M.	Gallet	Henri	ANCIEN	23/12/1921	18/05/2009	SOCR		commission des lois	Pas-de-Calais			Agriculteurs exploitants	Professions agricoles	Agriculteur retraité
 000455	M.	Galley	Robert	ANCIEN	11/01/1921	08/06/2012	RPR		commission des affaires sociales	Aube			Ingenieurs et cadres techniques d'entreprise	Salariés (Ingénieurs)	Ingénieur
 58668C	M.	Gamboa	Pierre	ANCIEN	01/02/1933	19/11/2014	C		commission des finances	Essonne			Journalistes, secrétaires de rédaction	Professions libérales (Journalistes)	Journaliste
-000753	M.	Ganeval	Jean	ANCIEN		12/01/1981	U.N.R.		commission des affaires étrangères	Seine			Policiers et militaires	Fonctionnaires (Militaires)	Général (de Corps d'armée)
+000753	M.	Ganeval	Jean	ANCIEN	24/12/1894	12/01/1981	U.N.R.		commission des affaires étrangères	Seine			Policiers et militaires	Fonctionnaires (Militaires)	Général (de Corps d'armée)
 13005X	Mme	Gaouyer	Marie-Françoise	ANCIEN	17/08/1949		SOCR		commission de l'aménagement du territoire et du développement durable	Seine-Maritime		mf.gaouyer@senat.fr	Professions intermédiaires de la santé et du travail social	Professions médicales (Autres)	Infirmière
 56601X	M.	Garaudy	Roger	ANCIEN	17/07/1913	13/06/2012	C		commission de la culture	Seine			Instituteurs et assimilés	Enseignement secondaire	Professeur agrégé
 89028U	M.	Garcia	Aubert	ANCIEN	07/09/1931	21/02/2000	SOCR		commission de l'économie	Gers			Medecins libéraux généralistes	Professions médicales (Médecins)	Médecin
@@ -822,7 +822,7 @@ Matricule	Qualite	Nom usuel	Prenom usuel	Etat	Date naissance	Date de deces	Group
 000097	M.	Grand	Lucien	ANCIEN	26/03/1904	08/05/1978	G.D.		commission des affaires sociales	Charente-Maritime	Secrétaire du Sénat		Medecins libéraux généralistes	Professions médicales (Médecins)	Médecin
 58816V	M.	Grandon	Jacques	ANCIEN	09/05/1927		UC		commission des lois	Vienne			Avocats	Professions judiciaires et libérales (Avocats)	Avocat
 89031P	M.	Grandon	Jean	ANCIEN	25/02/1926	20/12/2010	NI		commission de l'économie	Eure-et-Loir			Agriculteurs exploitants	Professions agricoles	Agriculteur
-000765	M.	Grangier	Edouard	ANCIEN		27/03/1997	G.D.		commission des affaires étrangères	Vaucluse			Policiers et militaires	Fonctionnaires (Militaires)	Chef de bataillon (infanterie de marine)
+000765	M.	Grangier	Edouard	ANCIEN	28/07/1899	27/03/1997	G.D.		commission des affaires étrangères	Vaucluse			Policiers et militaires	Fonctionnaires (Militaires)	Chef de bataillon (infanterie de marine)
 000370	M.	Gravier	Jean	ANCIEN	27/10/1915	03/08/1991	U.C.D.P.		commission des affaires sociales	Jura	Secrétaire du Sénat		Cadres d'entreprise	Salariés (Cadres divers)	Directeur commercial
 57445J	M.	Gravier	Robert	ANCIEN	05/09/1905	15/07/2005	RI		commission des affaires étrangères	Meurthe-et-Moselle	Questeur du Sénat		Agriculteurs exploitants	Professions agricoles	Agriculteur
 59537V	M.	Graziani	Paul	ANCIEN	14/02/1925	30/07/2012	RPR		commission des lois	Hauts-de-Seine			Personnels de direction de la fonction publique	Fonctionnaires (Hauts Fonctionnaires)	Administrateur civil
@@ -857,7 +857,7 @@ Matricule	Qualite	Nom usuel	Prenom usuel	Etat	Date naissance	Date de deces	Group
 14081Q	Mme	Guillemot	Annie	ACTIF	27/01/1956		SOCR		commission des affaires économiques	Rhône	Secrétaire du Sénat	a.guillemot@senat.fr	Cadres de la fonction publique	Fonctionnaires (Hauts Fonctionnaires)	Ingénieur
 19553Y	Mme	Guillotin	Véronique	ACTIF	03/11/1962		RDSE		commission des affaires sociales	Meurthe-et-Moselle		v.guillotin@senat.fr	Medecins libéraux généralistes	Professions médicales (Médecins)	Médecin
 000459	M.	Guillou	Louis	ANCIEN	06/03/1921	07/03/1998	U.C.D.P.		commission des affaires sociales	Finistère			Agriculteurs exploitants	Professions agricoles	Cultivateur exploitant
-000721	M.	Guislain	Marcel	ANCIEN		10/07/1986	SOCR		commission des affaires sociales	Nord			Medecins libéraux généralistes	Professions médicales (Médecins)	Medecin
+000721	M.	Guislain	Marcel	ANCIEN	14/06/1899	10/07/1986	SOCR		commission des affaires sociales	Nord			Medecins libéraux généralistes	Professions médicales (Médecins)	Medecin
 59538W	M.	Guyomard	Bernard	ANCIEN	02/06/1926	10/11/2010	UC		commission des affaires étrangères	Paris			Personnels de direction de la fonction publique	Fonctionnaires (Hauts Fonctionnaires)	Administrateur civil
 000092	M.	Guyot	Raymond	ANCIEN	17/11/1903	17/04/1986	C		commission des affaires étrangères	Paris			Employés administratifs d'entreprise	Salariés (Employés)	Comptable
 69001W	M.	Habert	Jacques	ANCIEN	26/09/1919	06/08/2012	NI		commission des affaires étrangères	Français établis hors de France	Secrétaire du Sénat		Professeurs, professions scientifiques	Enseignement supérieur (sauf Professeurs de médecine)	Professeur, directeur de journal
@@ -889,7 +889,7 @@ Matricule	Qualite	Nom usuel	Prenom usuel	Etat	Date naissance	Date de deces	Group
 00004D	M.	Hethener	Alain	ANCIEN	15/04/1946		RPR		commission des affaires sociales	Moselle			Professions libérales	Professions judiciaires et libérales (Divers)	Urbaniste
 05001W	Mme	Hoarau	Gélita	ANCIEN	15/01/1956		CRCE		commission de l'aménagement du territoire et du développement durable	La Réunion		gelita.hoarau974@wanadoo.fr	Professeurs, professions scientifiques	Enseignement (Divers)	Enseignante
 77029G	M.	Hoeffel	Daniel	ANCIEN	23/01/1929		Les Républicains		commission des lois	Bas-Rhin	Vice-président du Sénat	Non public	Autres personnes sans activité professionnelle	Sans profession déclarée	Sans profession déclarée
-000732	M.	Houdet	Roger	ANCIEN		25/08/1987	RI		commission de la culture	Seine-Maritime			Ingenieurs et cadres techniques d'entreprise	Salariés (Ingénieurs)	Ingenieur general du Génie Rural
+000732	M.	Houdet	Roger	ANCIEN	14/06/1899	25/08/1987	RI		commission de la culture	Seine-Maritime			Ingenieurs et cadres techniques d'entreprise	Salariés (Ingénieurs)	Ingenieur general du Génie Rural
 04048J	M.	Houel	Michel	ANCIEN	08/11/1942	30/11/2016	Les Républicains		commission des affaires économiques	Seine-et-Marne		m.houel@senat.fr	Chefs d'entreprise de 10 salaries ou plus	Commerce et industrie (Chefs d'entreprises)	Gérant de société
 19333N	M.	Houllegatte	Jean-Michel	ACTIF	30/05/1958		SOCR		commission de l'aménagement du territoire et du développement durable	Manche		jm.houllegatte@senat.fr	Cadres de la fonction publique	Fonctionnaires (Hauts Fonctionnaires)	Administrateur territorial contractuel
 08069G	M.	Houpert	Alain	ACTIF	13/08/1957		Les Républicains		commission des finances	Côte-d'Or		a.houpert@senat.fr	Professions libérales	Professions médicales (Médecins)	Médecin radiologue
@@ -918,7 +918,7 @@ Matricule	Qualite	Nom usuel	Prenom usuel	Etat	Date naissance	Date de deces	Group
 19551W	M.	Jacquin	Olivier	ACTIF	08/05/1964		SOCR		commission de l'aménagement du territoire et du développement durable	Meurthe-et-Moselle		o.jacquin@senat.fr	Agriculteurs exploitants	Professions agricoles	Agriculteur
 000403	M.	Jaffar El Amjad	Said Mohamed	ANCIEN	14/04/1918	22/10/1993	NI		commission des affaires étrangères	Comores			Personnels de direction de la fonction publique	Fonctionnaires (Hauts Fonctionnaires)	Administrateur des Comores
 000207	M.	Jager	René	ANCIEN	08/03/1909	28/07/1983	U.C.D.P.		commission de l'économie	Moselle	Questeur du Sénat		Journalistes, secrétaires de rédaction	Professions libérales (Journalistes)	Journaliste
-000680	M.	Jamain	Eugène	ANCIEN		24/10/1970	CRARS		commission de l'économie	Cher			Ouvriers	Salariés (Ouvriers)	Minotier
+000680	M.	Jamain	Eugène	ANCIEN	02/05/1891	24/10/1970	CRARS		commission de l'économie	Cher			Ouvriers	Salariés (Ouvriers)	Minotier
 000630	M.	Janetti	Maurice	ANCIEN	01/03/1933	22/07/1999	SOCR		commission de l'économie	Var			Instituteurs et assimilés	Enseignement primaire	Instituteur (directeur d'école)
 19511N	M.	Janssens	Jean-Marie	ACTIF	19/03/1953		UC		commission des affaires économiques	Loir-et-Cher		jm.janssens@senat.fr	Anciens agriculteurs exploitants	Professions agricoles	Ancien agriculteur-éleveur
 58348N	M.	Jargot	Paul	ANCIEN	31/03/1925	04/07/2003	C		commission des finances	Isère			Instituteurs et assimilés	Enseignement (Divers)	Maître assistant associé
@@ -951,7 +951,7 @@ Matricule	Qualite	Nom usuel	Prenom usuel	Etat	Date naissance	Date de deces	Group
 01030K	M.	Juilhard	Jean-Marc	ANCIEN	05/02/1940		Les Républicains		commission des affaires sociales	Puy-de-Dôme		jeanmarc.juilhard@wanadoo.fr	Autres personnes sans activité professionnelle	Professions agricoles	Arboriculteur
 59540Q	M.	Jung	Louis	ANCIEN	18/02/1917	22/10/2015	UC		commission des affaires étrangères	Bas-Rhin			Chefs d'entreprise de 10 salaries ou plus	Commerce et industrie (Chefs d'entreprises)	Directeur de société
 000225	M.	Junillon	Lucien	ANCIEN	31/10/1909	29/10/1984	NI		commission de l'économie	Drôme			Professions intermédiaires administratives de la fonction publique	Fonctionnaires (Cadres moyens)	Administrateur des P et T
-000737	M.	Kalb	Paul-Jacques	ANCIEN		07/08/1964	U.N.R.		commission des lois	Haut-Rhin	Vice-président du Sénat		Avocats	Professions judiciaires et libérales (Avocats)	Avocat
+000737	M.	Kalb	Paul-Jacques	ANCIEN	19/08/1898	07/08/1964	U.N.R.		commission des lois	Haut-Rhin	Vice-président du Sénat		Avocats	Professions judiciaires et libérales (Avocats)	Avocat
 11084S	M.	Kaltenbach	Philippe	ANCIEN	09/01/1966		SOCR		commission des lois	Hauts-de-Seine		p.kaltenbach@senat.fr	Autres personnes sans activité professionnelle	Fonctionnaires (Divers)	Administrateur à Pôle Emploi
 57208W	M.	Kamil	Mohamed	ANCIEN	01/01/1917	09/06/2002	U.N.R.		commission de la culture	Côte française des Somalis			Employés administratifs d'entreprise	Salariés (Employés)	Comptable
 04036E	Mme	Kammermann	Christiane	ANCIEN	10/07/1932		Les Républicains		commission des affaires étrangères	Français établis hors de France		c.kammermann@senat.fr	Autres personnes sans activité professionnelle	Sans profession déclarée	Sans profession déclarée
@@ -971,7 +971,7 @@ Matricule	Qualite	Nom usuel	Prenom usuel	Etat	Date naissance	Date de deces	Group
 04077P	Mme	Khiari	Bariza	ANCIEN	03/09/1946		LaREM		commission des affaires étrangères	Paris		b.khiari@senat.fr	Personnels de direction de la fonction publique	Fonctionnaires (Cadres moyens)	Déléguée régionale au tourisme
 000149	M.	Kieffer	Alfred	ANCIEN	22/08/1906	14/07/1991	U.C.D.P.		commission de l'économie	Bas-Rhin			Chefs d'entreprise de 10 salaries ou plus	Commerce et industrie (Chefs d'entreprises)	Directeur de société
 000213	M.	Kientzi	Armand	ANCIEN	22/06/1909	30/12/1980	U.C.D.P.		commission des affaires étrangères	Bas-Rhin			Avocats	Professions judiciaires et libérales (Avocats)	Avocat
-000727	M.	Kistler	Michel	ANCIEN		05/05/1976	U.C.D.P.		commission des finances	Bas-Rhin			Professions libérales	Professions judiciaires et libérales (Divers)	Administrateur de sociétés
+000727	M.	Kistler	Michel	ANCIEN	16/06/1897	05/05/1976	U.C.D.P.		commission des finances	Bas-Rhin			Professions libérales	Professions judiciaires et libérales (Divers)	Administrateur de sociétés
 08032S	Mme	Klès	Virginie	ANCIEN	18/08/1961		SOCR		commission des lois	Ille-et-Vilaine		v.kles@senat.fr	Cadres de la fonction publique	Professions médicales (Vétérinaires)	Vétérinaire toxicologue
 03001N	M.	Krattinger	Yves	ANCIEN	05/11/1948		SOCR		commission des finances	Haute-Saône		y.krattinger@senat.fr	Professeurs, professions scientifiques	Enseignement supérieur (sauf Professeurs de médecine)	Professeur
 10001F	Mme	Labarre	Marie-Agnès	ANCIEN	12/06/1945		CRCE		commission de la culture	Essonne		ma.labarre@senat.fr	Retraités	Professions médicales (Autres)	Ingénieur micro-biologiste
@@ -985,7 +985,7 @@ Matricule	Qualite	Nom usuel	Prenom usuel	Etat	Date naissance	Date de deces	Group
 000231	M.	Lacaze	Jean	ANCIEN	26/12/1909	29/07/1975	G.D.		commission de la culture	Tarn-et-Garonne			Pharmaciens libéraux	Professions médicales (Pharmaciens)	Pharmacien
 95042F	M.	Lachenaud	Jean-Philippe	ANCIEN	22/11/1939		Les Républicains		commission des finances	Val-d'Oise		Non public	Personnels de direction de la fonction publique	Fonctionnaires (Hauts Fonctionnaires)	Conseiller maître à la Cour des comptes
 000153	M.	Lachevre	Roger	ANCIEN	20/08/1906	31/03/1988	RI		commission des finances	Seine-et-Oise			Professions libérales	Professions judiciaires et libérales (Divers)	Administrateur de sociétés
-000686	M.	Lacoste	Robert	ANCIEN		08/03/1989	SOCR		commission de la culture	Dordogne			Professions intermédiaires administratives de la fonction publique	Fonctionnaires (Hauts Fonctionnaires)	Trésorier Payeur Général
+000686	M.	Lacoste	Robert	ANCIEN	05/07/1898	08/03/1989	SOCR		commission de la culture	Dordogne			Professions intermédiaires administratives de la fonction publique	Fonctionnaires (Hauts Fonctionnaires)	Trésorier Payeur Général
 80022Y	M.	Lacour	Pierre	ANCIEN	20/02/1923	22/05/2008	RDSE	Rattaché	commission de la culture	Charente			Vétérinaires (libéraux ou salariés)	Professions médicales (Vétérinaires)	Vétérinaire
 000086	M.	Lafay	Bernard	ANCIEN	08/09/1905	13/02/1977	G.D.		commission des affaires étrangères	Seine			Medecins libéraux généralistes	Professions médicales (Médecins)	Médecin
 85003S	M.	Laffitte	Pierre	ANCIEN	01/01/1925		RDSE		commission de la culture	Alpes-Maritimes		p.laffitte@senat.fr	Personnels de direction de la fonction publique	Fonctionnaires (Hauts Fonctionnaires)	Ingénieur général des Mines
@@ -999,11 +999,11 @@ Matricule	Qualite	Nom usuel	Prenom usuel	Etat	Date naissance	Date de deces	Group
 92028U	M.	Lagourgue	Pierre	ANCIEN	03/01/1921	16/02/1998	UC		commission des affaires sociales	La Réunion			Professions libérales	Professions médicales (Retraités)	Médecin radiologue
 56812H	M.	Lagrange	Roger	ANCIEN	04/05/1913	29/09/2000	SOCR		commission des affaires sociales	Saône-et-Loire			Instituteurs et assimilés	Enseignement primaire	Instituteur
 14012N	Mme	Lajoux	Isabelle	ANCIEN	20/05/1960		SOCR		commission des lois	Côte-d'Or		i.lajoux@senat.fr	Employés de commerce	Sans profession déclarée	Employée de banque
-000670	M.	Lakhdari	Mohamed	ANCIEN		17/03/1971	G.D.	Apparenté	commission des affaires sociales	Constantine			Professions intermédiaires administratives de la fonction publique	Fonctionnaires (Cadres moyens)	Conseiller des Affaires musulmanes
+000670	M.	Lakhdari	Mohamed	ANCIEN	01/01/1899	17/03/1971	G.D.	Apparenté	commission des affaires sociales	Constantine			Professions intermédiaires administratives de la fonction publique	Fonctionnaires (Cadres moyens)	Conseiller des Affaires musulmanes
 14159V	M.	Lalande	Bernard	ACTIF	06/04/1954		SOCR		commission des finances	Charente-Maritime	Questeur du Sénat	b.lalande@senat.fr	Huissiers de justice, officiers ministériels et professions libérales divers	Professions judiciaires et libérales (Divers)	Commissaire aux comptes et expert comptable
-000758	M.	Lalloy	Maurice	ANCIEN		19/12/1985	RPR	Rattaché	commission de l'économie	Seine-et-Marne			Professions intermédiaires administratives de la fonction publique	Fonctionnaires (Cadres moyens)	Ingenieur Général du Génie Rural
+000758	M.	Lalloy	Maurice	ANCIEN	25/11/1896	19/12/1985	RPR	Rattaché	commission de l'économie	Seine-et-Marne			Professions intermédiaires administratives de la fonction publique	Fonctionnaires (Cadres moyens)	Ingenieur Général du Génie Rural
 92029V	M.	Lambert	Alain	ANCIEN	20/07/1946		Les Républicains		commission des finances	Orne		a.lambert@senat.fr	Huissiers de justice, officiers ministériels et professions libérales divers	Professions judiciaires et libérales (Officiers ministériels)	Notaire
-000706	M.	Lambert	Marcel	ANCIEN		14/05/1982	RI		commission des affaires sociales	Morbihan			Chefs d'entreprise de 10 salaries ou plus	Commerce et industrie (Chefs d'entreprises)	Industriel
+000706	M.	Lambert	Marcel	ANCIEN	10/11/1897	14/05/1982	RI		commission des affaires sociales	Morbihan			Chefs d'entreprise de 10 salaries ou plus	Commerce et industrie (Chefs d'entreprises)	Industriel
 07029T	M.	Laménie	Marc	ACTIF	11/07/1956		Les Républicains		commission des finances	Ardennes		m.lamenie@senat.fr	Cadres et Professions intellectuelles supérieures	Autres professions	Chargé d'études
 000230	M.	Lamousse	Georges	ANCIEN	23/12/1909	01/08/1992	SOCR		commission de la culture	Haute-Vienne			Professeurs, professions scientifiques	Enseignement supérieur (sauf Professeurs de médecine)	Professeur d'Ecole Normale
 04049K	Mme	Lamure	Élisabeth	ACTIF	20/11/1947		Les Républicains		commission des affaires économiques	Rhône		e.lamure@senat.fr	Chefs d'entreprise de 10 salaries ou plus	Sans profession déclarée	Chef d'entreprise
@@ -1037,7 +1037,7 @@ Matricule	Qualite	Nom usuel	Prenom usuel	Etat	Date naissance	Date de deces	Group
 19711U	Mme	Lavarde	Christine	ACTIF	16/10/1984		Les Républicains		commission des finances	Hauts-de-Seine		c.lavarde@senat.fr	Cadres de la fonction publique	Fonctionnaires (Hauts Fonctionnaires)	Ingénieur du Corps des Ponts
 000133	M.	Lavy	Arthur	ANCIEN	11/09/1905	19/12/1986	RI		commission de la culture	Haute-Savoie			Professions intermédiaires administratives de la fonction publique	Fonctionnaires (Cadres moyens)	Inspecteur principal des contributions directes
 58948H	M.	Lazuech	Louis	ANCIEN	21/04/1912	07/03/2002	U.R.E.I.		commission des affaires sociales	Aveyron			Commercants et assimilés	Commerce et industrie (Négociants)	Négociant
-000679	M.	Le Basser	Francis	ANCIEN		06/03/1974	U.N.R.		commission des affaires sociales	Mayenne			Medecins libéraux généralistes	Professions médicales (Chirurgiens)	Chirurgien
+000679	M.	Le Basser	Francis	ANCIEN	02/04/1889	06/03/1974	U.N.R.		commission des affaires sociales	Mayenne			Medecins libéraux généralistes	Professions médicales (Chirurgiens)	Chirurgien
 000093	M.	Le Bellegou	Edouard	ANCIEN	20/12/1903	05/12/1972	SOCR		commission des lois	Var			Avocats	Professions judiciaires et libérales (Avocats)	Avocat
 58626R	Mme	Le Bellegou-Beguin	Geneviève	ANCIEN	15/04/1926	27/04/2012	SOCR		commission des lois	Var			Avocats	Professions judiciaires et libérales (Avocats)	Avocate
 81011A	M.	Le Breton	Henri	ANCIEN	10/09/1928		UC		commission des affaires sociales	Morbihan			Cadres administratifs et commerciaux d'entreprise	Salariés (Employés)	Animateur commercial
@@ -1051,7 +1051,7 @@ Matricule	Qualite	Nom usuel	Prenom usuel	Etat	Date naissance	Date de deces	Group
 16685X	M.	Le Nay	Jacques	ACTIF	19/11/1949		UC		commission des affaires étrangères	Morbihan		j.le-nay@senat.fr	Agriculteurs exploitants	Professions agricoles	Agriculteur
 98051U	M.	Le Pensec	Louis	ANCIEN	08/01/1937		SOCR		commission des affaires étrangères	Finistère		l.lepensec@senat.fr	Autres personnes sans activité professionnelle	Sans profession déclarée	Sans profession déclarée
 58652T	M.	Le Pors	Anicet	ANCIEN	28/04/1931		C		commission des finances	Hauts-de-Seine			Personnels de direction de la fonction publique	Fonctionnaires (Hauts Fonctionnaires)	Ingénieur
-000707	M.	Le Sassier Boisauné	Etienne	ANCIEN		14/03/1983	RI		commission des affaires étrangères	Orne			Agriculteurs exploitants	Professions agricoles	Agriculteur
+000707	M.	Le Sassier Boisauné	Etienne	ANCIEN	11/03/1888	14/03/1983	RI		commission des affaires étrangères	Orne			Agriculteurs exploitants	Professions agricoles	Agriculteur
 11098Y	M.	Le Scouarnec	Michel	ANCIEN	12/07/1949		CRCE		commission des affaires économiques	Morbihan		m.le-scouarnec@senat.fr	Instituteurs et assimilés	Enseignement primaire	Professeur des écoles
 04076N	Mme	Le Texier	Raymonde	ANCIEN	29/10/1939		SOCR		commission des affaires sociales	Val-d'Oise		r.letexier@senat.fr	Professions intermédiaires de la santé et du travail social	Fonctionnaires (Divers)	Assistante sociale
 07025P	M.	Le Vern	Alain	ANCIEN	08/05/1948		SOCR		commission de l'aménagement du territoire et du développement durable	Seine-Maritime		Non public	Instituteurs et assimilés	Enseignement primaire	Directeur d'école
@@ -1071,7 +1071,7 @@ Matricule	Qualite	Nom usuel	Prenom usuel	Etat	Date naissance	Date de deces	Group
 92031P	M.	Legendre	Jacques	ANCIEN	02/12/1941		Les Républicains		commission des affaires étrangères	Nord		jacques.legendre@wanadoo.fr	Instituteurs et assimilés	Enseignement secondaire	Professeur agrégé d'histoire
 000201	M.	Legouez	Modeste	ANCIEN	24/09/1908	30/01/1989	U.R.E.I.		commission des finances	Eure			Agriculteurs exploitants	Professions agricoles	Agriculteur
 000531	M.	Legrand	Bernard	ANCIEN	15/05/1924	31/01/1997	R.D.E.		commission de l'économie	Loire-Atlantique			Employés administratifs d'entreprise	Salariés (Employés)	Dessinateur
-000693	M.	Legros	Marcel	ANCIEN		28/10/1971	RI		commission de l'économie	Saône-et-Loire			Agriculteurs exploitants	Professions agricoles	Viticulteur
+000693	M.	Legros	Marcel	ANCIEN	07/10/1898	28/10/1971	RI		commission de l'économie	Saône-et-Loire			Agriculteurs exploitants	Professions agricoles	Viticulteur
 96001A	M.	Lèguevaques	Guy	ANCIEN	06/01/1936		SOCR		commission des lois	Haute-Garonne			Anciens cadres	Fonctionnaires (Retraités)	Agent territorial
 80024B	M.	Lejeune	André	ANCIEN	04/07/1935	09/09/2009	SOCR		commission de l'économie	Creuse			Professeurs, professions scientifiques	Enseignement secondaire	Professeur de sciences physiques
 000206	M.	Lejeune	Max	ANCIEN	19/02/1909	23/11/1995	R.D.E.		commission des affaires étrangères	Somme			Instituteurs et assimilés	Enseignement secondaire	Professeur
@@ -1095,9 +1095,9 @@ Matricule	Qualite	Nom usuel	Prenom usuel	Etat	Date naissance	Date de deces	Group
 01043Q	Mme	Létard	Valérie	ACTIF	13/10/1962		UC		commission des affaires économiques	Nord	Vice-présidente du Sénat	v.letard@senat.fr	Autres personnes sans activité professionnelle	Salariés (Permanents politiques)	Assistante sociale
 57830P	M.	Letoquart	Léandre	ANCIEN	04/06/1919	20/03/2004	C		commission de l'économie	Pas-de-Calais			Ouvriers	Salariés (Ouvriers)	Ouvrier
 57130R	M.	Levacher	François	ANCIEN	24/08/1915	15/05/2000	CRARS		commission des affaires sociales	Eure-et-Loir			Agriculteurs exploitants	Professions agricoles	Agriculteur-Eleveur
-000710	M.	Leveque	Paul	ANCIEN		23/12/1974	RI		commission des affaires sociales	Seine-et-Marne			Medecins libéraux généralistes	Professions médicales (Médecins)	Médécin
+000710	M.	Leveque	Paul	ANCIEN	11/07/1895	23/12/1974	RI		commission des affaires sociales	Seine-et-Marne			Medecins libéraux généralistes	Professions médicales (Médecins)	Médécin
 19697Q	M.	Lévrier	Martin	ACTIF	30/10/1962		LaREM		commission des affaires sociales	Yvelines		m.levrier@senat.fr	Cadres de la fonction publique	Salariés (Cadres divers)	Secrétaire général
-000708	M.	Leygue	Louis	ANCIEN		13/10/1979	G.D.		commission des affaires étrangères	Gers			Huissiers de justice, officiers ministériels et professions libérales divers	Professions judiciaires et libérales (Officiers ministériels)	Notaire
+000708	M.	Leygue	Louis	ANCIEN	11/07/1891	13/10/1979	G.D.		commission des affaires étrangères	Gers			Huissiers de justice, officiers ministériels et professions libérales divers	Professions judiciaires et libérales (Officiers ministériels)	Notaire
 89033R	M.	Leyzour	Félix	ANCIEN	22/07/1932		CRCE		commission de l'économie	Côtes-du-Nord			Anciens cadres	Enseignement (Retraités)	Instituteur en retraite
 19581D	Mme	Lherbier	Brigitte	ACTIF	21/06/1956		Les Républicains		commission des lois	Nord		b.lherbier@senat.fr	Huissiers de justice, officiers ministériels et professions libérales divers	Professions judiciaires et libérales (Divers)	Juriste titulaire d'un doctorat de droit
 000005	M.	Lhospied	Jean	ANCIEN	11/02/1900	25/05/1983	SOCR		commission des affaires étrangères	Nièvre			Anciens cadres et professions liberales	Professions libérales (Journalistes)	Directeur de journal
@@ -1110,7 +1110,7 @@ Matricule	Qualite	Nom usuel	Prenom usuel	Etat	Date naissance	Date de deces	Group
 14205J	Mme	Loisier	Anne-Catherine	ACTIF	13/03/1969		UC	Rattaché	commission des affaires économiques	Côte-d'Or		ac.loisier@senat.fr	Autres personnes sans activité professionnelle	Salariés (Cadres divers)	Gestionnaire de forêts
 58925A	M.	Lombard	Georges	ANCIEN	14/03/1925	13/09/2010	UC		commission des finances	Finistère			Avocats	Professions judiciaires et libérales (Avocats)	Avocat
 80025C	M.	Lombard	Maurice	ANCIEN	04/02/1922	10/03/2008	RPR		commission des affaires étrangères	Côte-d'Or			Instituteurs et assimilés	Enseignement secondaire	Professeur
-000017	M.	Longchambon	Henri	ANCIEN		20/03/1969	G.D.		commission de l'économie	Français établis hors de France			Professeurs, professions scientifiques	Enseignement supérieur (sauf Professeurs de médecine)	Professeur d'Université
+000017	M.	Longchambon	Henri	ANCIEN	27/07/1896	20/03/1969	G.D.		commission de l'économie	Français établis hors de France			Professeurs, professions scientifiques	Enseignement supérieur (sauf Professeurs de médecine)	Professeur d'Université
 14219Q	M.	Longeot	Jean-François	ACTIF	27/12/1956		UC		commission de l'aménagement du territoire et du développement durable	Doubs		jf.longeot@senat.fr	Cadres de la fonction publique	Fonctionnaires (Cadres moyens)	Attaché territorial principal
 000351	M.	Longequeue	Louis	ANCIEN	30/11/1914	11/08/1990	SOCR		commission des affaires étrangères	Haute-Vienne			Pharmaciens libéraux	Professions médicales (Pharmaciens)	Pharmacien
 10005K	Mme	Longère	Christiane	ANCIEN	13/04/1953		Les Républicains		commission de la culture	Loire		c.longere@senat.fr	Cadres de la fonction publique	Fonctionnaires (Cadres moyens)	Cadre en action sociale
@@ -1119,7 +1119,7 @@ Matricule	Qualite	Nom usuel	Prenom usuel	Etat	Date naissance	Date de deces	Group
 11106F	M.	Lorgeoux	Jeanny	ANCIEN	02/01/1950		SOCR		commission des affaires étrangères	Loir-et-Cher		j.lorgeoux@senat.fr	Autres personnes sans activité professionnelle	Salariés (Cadres divers)	Directeur de développement
 86037H	M.	Loridant	Paul	ANCIEN	22/04/1948		CRCE		commission des finances	Essonne		Non public	Cadres d'entreprise	Salariés (Cadres divers)	Directeur-adjoint à la Banque de France
 95045J	M.	Lorrain	Jean-Louis	ANCIEN	12/03/1948	27/06/2013	Les Républicains		commission des affaires sociales	Haut-Rhin		jl.lorrain@senat.fr	Medecins libéraux généralistes	Professions médicales (Médecins)	Médecin
-000762	M.	Loste	Henri	ANCIEN		16/06/1978	RI		commission des affaires sociales	Iles Wallis et Futuna			Professions libérales	Professions judiciaires et libérales (Divers)	Administrateur de sociétés
+000762	M.	Loste	Henri	ANCIEN	27/05/1899	16/06/1978	RI		commission des affaires sociales	Iles Wallis et Futuna			Professions libérales	Professions judiciaires et libérales (Divers)	Administrateur de sociétés
 19441R	M.	Louault	Pierre	ACTIF	03/05/1949		UC		commission des affaires économiques	Indre-et-Loire		p.louault@senat.fr	Anciens agriculteurs exploitants	Professions agricoles	Ancien agriculteur
 92033R	M.	Loueckhote	Simon	ANCIEN	07/05/1957		Les Républicains		commission des affaires étrangères	Nouvelle-Calédonie		s.loueckhote@senat.fr	Instituteurs et assimilés	Enseignement primaire	Instituteur
 59547X	M.	Louisy	François	ANCIEN	19/12/1921	17/09/2007	SOCR		commission des affaires sociales	Guadeloupe			Anciens cadres	Fonctionnaires (Retraités)	Attaché des services extérieurs du Ministère de l'Agriculture
@@ -1144,7 +1144,7 @@ Matricule	Qualite	Nom usuel	Prenom usuel	Etat	Date naissance	Date de deces	Group
 000518	M.	Maille	Pierre	ANCIEN	13/12/1923	16/11/1973	U.C.D.P.		commission de la culture	Somme			Agriculteurs exploitants	Professions agricoles	Cultivateur
 000059	M.	Maillols	Sylvain	ANCIEN	16/12/1901	20/01/1988	RPR		commission de la culture	Pyrénées-Orientales			Autres personnes sans activité professionnelle	Sans profession déclarée	Sans profession déclarée
 58947G	M.	Malassagne	Paul	ANCIEN	24/03/1918	05/09/2007	RPR	Apparenté	commission de l'économie	Cantal	Secrétaire du Sénat		Chirurgiens-dentistes (libéraux ou salariés)	Professions médicales (Dentistes)	Dentiste
-000742	M.	Male	Fernand	ANCIEN		21/02/1961	G.D.	Rattaché	commission de la culture	Mostaganem-Tiaret			Agriculteurs exploitants	Professions agricoles	Eleveur producteur
+000742	M.	Male	Fernand	ANCIEN	20/09/1899	21/02/1961	G.D.	Rattaché	commission de la culture	Mostaganem-Tiaret			Agriculteurs exploitants	Professions agricoles	Eleveur producteur
 000611	M.	Male	Guy	ANCIEN	01/07/1930	03/12/1987	UC		commission des lois	Pyrénées-Orientales			Cadres d'entreprise	Salariés (Cadres divers)	Directeur technique
 74028S	M.	Malécot	Kléber	ANCIEN	12/02/1915	03/01/2008	UC		commission de l'économie	Loiret		Non public	Commercants et assimilés	Commerce et industrie (Négociants)	Négociant
 19657G	Mme	Malet	Viviane	ACTIF	28/10/1954		Les Républicains		commission des affaires sociales	La Réunion		v.malet@senat.fr	Autres personnes sans activité professionnelle	Sans profession déclarée	
@@ -1168,9 +1168,9 @@ Matricule	Qualite	Nom usuel	Prenom usuel	Etat	Date naissance	Date de deces	Group
 14001X	M.	Marie	Didier	ACTIF	19/05/1960		SOCR		commission des lois	Seine-Maritime		d.marie@senat.fr	Professeurs, professions scientifiques	Enseignement primaire	Professeur des écoles
 57749X	M.	Marie Anne	Georges	ANCIEN	09/10/1906	21/02/2001	RPR		commission des affaires sociales	Martinique	Vice-président du Sénat		Professions intermédiaires administratives de la fonction publique	Fonctionnaires (Cadres moyens)	Inspecteur principal des Douanes
 92035T	M.	Marini	Philippe	ANCIEN	28/01/1950		Les Républicains		commission de la culture	Oise		p.marini@senat.fr	Avocats	Professions judiciaires et libérales (Avocats)	Inspecteur des finances, avocat à la Cour
-000746	M.	Maroselli	André	ANCIEN		07/04/1970	G.D.		commission des finances	Haute-Saône			Professions libérales	Professions judiciaires et libérales (Divers)	Administrateur de sociétés
+000746	M.	Maroselli	André	ANCIEN	22/02/1893	07/04/1970	G.D.		commission des finances	Haute-Saône			Professions libérales	Professions judiciaires et libérales (Divers)	Administrateur de sociétés
 92036U	M.	Marquès	René	ANCIEN	17/01/1923	01/08/2013	UC		commission des affaires étrangères	Pyrénées-Orientales			Medecins libéraux généralistes	Professions médicales (Médecins)	Médecin
-000738	M.	Marrane	Georges	ANCIEN		27/08/1976	C		Aucune (Président du Sénat)	Seine			Ouvriers	Salariés (Ouvriers)	Mécanicien
+000738	M.	Marrane	Georges	ANCIEN	20/01/1888	27/08/1976	C		Aucune (Président du Sénat)	Seine			Ouvriers	Salariés (Ouvriers)	Mécanicien
 000227	M.	Marre	Louis	ANCIEN	06/11/1909	12/12/1992	RI		commission de l'économie	Savoie			Commercants et assimilés	Professions judiciaires et libérales (Divers)	Hôtelier
 11085T	M.	Marseille	Hervé	ACTIF	20/08/1954		UC		commission des lois	Hauts-de-Seine		h.marseille@senat.fr	Autres personnes sans activité professionnelle	Autres professions	Cadre
 04096S	M.	Marsin	Daniel	ANCIEN	13/11/1951		RDSE		commission de l'économie	Guadeloupe		d.marsin@senat.fr	Autres personnes sans activité professionnelle	Salariés (Cadres divers)	Cadre supérieur de banque
@@ -1192,7 +1192,7 @@ Matricule	Qualite	Nom usuel	Prenom usuel	Etat	Date naissance	Date de deces	Group
 83043S	M.	Masson	Paul	ANCIEN	21/07/1920	28/05/2009	RPR	Rattaché	commission des affaires étrangères	Loiret		Non public	Personnels de direction de la fonction publique	Fonctionnaires (Hauts Fonctionnaires)	Préfet honoraire
 13001T	Mme	Masson-Maret	Hélène	ANCIEN	04/04/1947		Les Républicains		commission de l'aménagement du territoire et du développement durable	Alpes-Maritimes			Professeurs, professions scientifiques	Enseignement primaire	Professeur des universités
 000080	M.	Masteau	Jacques	ANCIEN	18/07/1903	27/03/1994	G.D.		commission des finances	Vienne			Avocats	Professions judiciaires et libérales (Avocats)	Avocat
-000771	M.	Mathey	Pierre	ANCIEN		27/11/1972	G.D.		commission de la culture	Haute-Marne	Secrétaire du Sénat		Agriculteurs exploitants	Professions agricoles	Agriculteur
+000771	M.	Mathey	Pierre	ANCIEN	30/07/1890	27/11/1972	G.D.		commission de la culture	Haute-Marne	Secrétaire du Sénat		Agriculteurs exploitants	Professions agricoles	Agriculteur
 000314	M.	Mathias	Jean-Baptiste	ANCIEN	29/06/1913	22/05/1974	U.D.R.	Rattaché	commission des affaires sociales	Savoie			Medecins libéraux généralistes	Professions médicales (Médecins)	Médecin
 88011F	M.	Mathieu	François	ANCIEN	01/06/1934	17/11/1997	UC		commission de la culture	Loire			Cadres d'entreprise	Salariés (Cadres divers)	Chargé de mission au Crédit Agricole de la Loire
 77047J	M.	Mathieu	Serge	ANCIEN	10/02/1936		Les Républicains		commission des affaires étrangères	Rhône	Questeur du Sénat		Agriculteurs exploitants	Professions agricoles	Viticulteur
@@ -1224,7 +1224,7 @@ Matricule	Qualite	Nom usuel	Prenom usuel	Etat	Date naissance	Date de deces	Group
 01020H	M.	Mermaz	Louis	ANCIEN	20/08/1931		SOCR		commission des affaires étrangères	Isère		l.mermaz@senat.fr	Professeurs, professions scientifiques	Enseignement secondaire	Professeur agrégé d'histoire
 000001	M.	Merred	Ali	ANCIEN	01/01/1900	19/08/1994	U.N.R.		commission des affaires étrangères	Oasis			Anciens cadres	Fonctionnaires (Retraités)	Lieutenant-Colonel en retraite
 000050	M.	Messager	André	ANCIEN	04/08/1901	17/02/1982	U.C.D.P.		commission de la culture	Val-d'Oise			Chefs d'entreprise de 10 salaries ou plus	Commerce et industrie (Chefs d'entreprises)	Industriel
-000751	M.	Messaud	Léon	ANCIEN		04/12/1983	SOCR		commission des affaires sociales	Haute-Garonne			Avocats	Professions judiciaires et libérales (Avocats)	Avocat
+000751	M.	Messaud	Léon	ANCIEN	23/06/1890	04/12/1983	SOCR		commission des affaires sociales	Haute-Garonne			Avocats	Professions judiciaires et libérales (Avocats)	Avocat
 000129	M.	Metayer	Pierre	ANCIEN	26/08/1905	05/06/1979	SOCR		commission des finances	Seine-et-Oise			Instituteurs et assimilés	Enseignement secondaire	Professeur
 92038W	M.	Metzinger	Charles	ANCIEN	13/08/1929	10/09/1996	SOCR		commission des affaires sociales	Moselle			Retraités	Enseignement (Retraités)	Professeur
 11067R	Mme	Meunier	Michelle	ACTIF	24/01/1956		SOCR		commission des affaires sociales	Loire-Atlantique		m.meunier@senat.fr	Autres personnes sans activité professionnelle	Enseignement (Divers)	Educatrice de jeunes enfants
@@ -1234,7 +1234,7 @@ Matricule	Qualite	Nom usuel	Prenom usuel	Etat	Date naissance	Date de deces	Group
 95050F	Mme	Michaux-Chevry	Lucette	ANCIEN	05/03/1929		Les Républicains		commission des affaires étrangères	Guadeloupe		l.michaux-chevry@senat.fr	Avocats	Professions judiciaires et libérales (Avocats)	Avocate
 11014C	Mme	Michel	Danielle	ANCIEN	03/04/1947		SOCR		commission de la culture	Landes		d.michel@senat.fr	Autres personnes sans activité professionnelle	Autres professions	Coordonnateur emploi-formation
 04084N	M.	Michel	Jean-Pierre	ANCIEN	05/08/1938		SOCR		commission des lois	Haute-Saône		jp.michel@senat.fr	Magistrats	Professions judiciaires (Magistrats)	Magistrat
-000025	M.	Michelet	Edmond	ANCIEN		09/10/1970	U.N.R.		commission des affaires étrangères	Seine	Vice-président du Sénat		Professions libérales	Professions judiciaires et libérales (Divers)	Courtier assermenté
+000025	M.	Michelet	Edmond	ANCIEN	08/10/1899	09/10/1970	U.N.R.		commission des affaires étrangères	Seine	Vice-président du Sénat		Professions libérales	Professions judiciaires et libérales (Divers)	Courtier assermenté
 14223L	Mme	Micouleau	Brigitte	ACTIF	10/09/1951		Les Républicains		commission des affaires sociales	Haute-Garonne		b.micouleau@senat.fr	Employés administratifs d'entreprise	Salariés (Cadres divers)	Assistante de direction
 58635S	Mme	Midy	Monique	ANCIEN	27/06/1930	15/12/2016	C		commission de l'économie	Hauts-de-Seine			Employés administratifs d'entreprise	Salariés (Employés)	Secrétaire
 000356	M.	Mignot	André	ANCIEN	19/01/1915	09/12/1977	RI		commission des lois	Yvelines			Avocats	Professions judiciaires et libérales (Avocats)	Avocat
@@ -1244,7 +1244,7 @@ Matricule	Qualite	Nom usuel	Prenom usuel	Etat	Date naissance	Date de deces	Group
 04092N	M.	Milon	Alain	ACTIF	16/09/1947		Les Républicains		commission des affaires sociales	Vaucluse		a.milon@senat.fr	Medecins libéraux généralistes	Professions judiciaires et libérales (Retraités)	Médecin
 000065	M.	Minard	François	ANCIEN	05/05/1902	22/06/1974	SOCR		commission de la culture	Allier			Agriculteurs exploitants	Professions agricoles	Agriculteur
 78010Y	M.	Minetti	Louis	ANCIEN	01/09/1925		CRCE		commission de l'économie	Bouches-du-Rhône			Agriculteurs exploitants	Professions agricoles	Agriculteur
-000671	M.	Minot	Paul	ANCIEN		03/03/1980	RPR		commission de la culture	Paris			Chefs d'entreprise de 10 salaries ou plus	Commerce et industrie (Chefs d'entreprises)	Industriel
+000671	M.	Minot	Paul	ANCIEN	01/02/1899	03/03/1980	RPR		commission de la culture	Paris			Chefs d'entreprise de 10 salaries ou plus	Commerce et industrie (Chefs d'entreprises)	Industriel
 000070	M.	Minvielle	Gérard	ANCIEN	25/10/1902	26/07/1990	SOCR		Aucune (Président du Sénat)	Landes	Questeur du Sénat		Cadres de la fonction publique	Fonctionnaires (Hauts Fonctionnaires)	Inspecteur des contributions
 92039X	M.	Miquel	Gérard	ANCIEN	17/06/1946		LaREM		commission de l'aménagement du territoire et du développement durable	Lot		g.miquel@senat.fr	Agriculteurs exploitants	Professions agricoles	Agriculteur
 08033T	M.	Mirassou	Jean-Jacques	ANCIEN	01/11/1952		SOCR		commission des affaires économiques	Haute-Garonne		jj.mirassou@senat.fr	Chirurgiens-dentistes (libéraux ou salariés)	Professions médicales (Dentistes)	Chirurgien-dentiste
@@ -1258,11 +1258,11 @@ Matricule	Qualite	Nom usuel	Prenom usuel	Etat	Date naissance	Date de deces	Group
 11072N	M.	Mohamed Soilihi	Thani	ACTIF	20/06/1972		LaREM		commission des lois	Mayotte	Vice-président du Sénat	t.mohamed-soilihi@senat.fr	Autres personnes sans activité professionnelle	Professions judiciaires et libérales (Avocats)	Avocat
 87002A	M.	Moinard	Louis	ANCIEN	31/10/1930		UC		commission des affaires étrangères	Vendée			Agriculteurs exploitants	Professions agricoles	Agriculteur
 58914W	M.	Moinet	Josy	ANCIEN	23/10/1929	04/08/2018	R.D.E.		commission des finances	Charente-Maritime	Secrétaire du Sénat		Cadres d'entreprise	Salariés (Cadres divers)	Cadre
-000034	M.	Mokrane	Mohamed	ANCIEN		26/06/1975	U.N.R.		commission de la culture	Setif-Batna			Autres personnes sans activité professionnelle	Sans profession déclarée	
+000034	M.	Mokrane	Mohamed	ANCIEN	24/11/1898	26/06/1975	U.N.R.		commission de la culture	Setif-Batna			Autres personnes sans activité professionnelle	Sans profession déclarée	
 000069	M.	Molle	Marcel	ANCIEN	12/10/1902	27/03/1995	CRARS		commission des lois	Ardèche			Huissiers de justice, officiers ministériels et professions libérales divers	Professions judiciaires et libérales (Officiers ministériels)	Notaire
 000033	M.	Monichon	Max	ANCIEN	25/11/1900	05/10/1977	CRARS		commission des finances	Gironde			Professions libérales	Professions judiciaires et libérales (Divers)	Administrateur de biens
 14109K	Mme	Monier	Marie-Pierre	ACTIF	28/02/1958		SOCR		commission de la culture	Drôme		mp.monier@senat.fr	Professeurs, professions scientifiques	Enseignement secondaire	Professeur
-000677	M.	Monnerville	Gaston	ANCIEN		07/11/1991	G.D.		commission des finances	Lot	Président du Sénat		Avocats	Professions judiciaires et libérales (Avocats)	Avocat
+000677	M.	Monnerville	Gaston	ANCIEN	02/01/1897	07/11/1991	G.D.		commission des finances	Lot	Président du Sénat		Avocats	Professions judiciaires et libérales (Avocats)	Avocat
 68036E	M.	Monory	René	ANCIEN	06/06/1923	11/04/2009	Les Républicains		commission de l'économie	Vienne		Non public	Commercants et assimilés	Commerce et industrie (Négociants)	Négociant
 000022	M.	Monsarrat	François	ANCIEN	12/09/1900	26/10/1972	G.D.		commission de l'économie	Tarn	Questeur du Sénat		Agriculteurs exploitants	Professions agricoles	Agriculteur
 59236K	M.	Mont	Claude	ANCIEN	30/06/1913	30/10/2001	UC		commission des affaires étrangères	Loire			Instituteurs et assimilés	Enseignement secondaire	Professeur 
@@ -1276,7 +1276,7 @@ Matricule	Qualite	Nom usuel	Prenom usuel	Etat	Date naissance	Date de deces	Group
 000100	M.	Moreau	Roger	ANCIEN	15/05/1904	23/05/1986	RPR		commission de la culture	Indre-et-Loire			Autres personnes sans activité professionnelle	Sans profession déclarée	Sans profession déclarée
 73006G	M.	Moreigne	Michel	ANCIEN	06/05/1934		SOCR		commission des finances	Creuse		michelmoreigne@wanadoo.fr	Medecins libéraux généralistes	Professions médicales (Médecins)	Docteur en médecine
 000284	M.	Morel	Léopold	ANCIEN	09/01/1912	14/05/1996	G.D.	Rattaché	commission des lois	Constantine			Chefs d'entreprise de 10 salaries ou plus	Commerce et industrie (Chefs d'entreprises)	Directeur de journal
-000691	M.	Moreve	Roger	ANCIEN		27/09/1983	G.D.		commission des affaires étrangères	Indre			Commercants et assimilés	Commerce et industrie (Commercants)	Commerçant et Agriculteur
+000691	M.	Moreve	Roger	ANCIEN	07/06/1897	27/09/1983	G.D.		commission des affaires étrangères	Indre			Commercants et assimilés	Commerce et industrie (Commercants)	Commerçant et Agriculteur
 14265W	Mme	Morhet-Richaud	Patricia	ACTIF	28/07/1961		Les Républicains		commission des affaires économiques	Hautes-Alpes		p.morhet-richaud@senat.fr	Employés de commerce	Salariés (Employés)	
 000027	M.	Morice	André	ANCIEN	11/10/1900	17/01/1990	G.D.		commission des affaires étrangères	Loire-Atlantique			Chefs d'entreprise de 10 salaries ou plus	Commerce et industrie (Chefs d'entreprises)	Chef d'entreprise
 04070G	Mme	Morin-Desailly	Catherine	ACTIF	06/07/1960		UC		commission de la culture	Seine-Maritime		c.morin-desailly@senat.fr	Professeurs, professions scientifiques	Enseignement secondaire	Professeur d'anglais
@@ -1291,10 +1291,10 @@ Matricule	Qualite	Nom usuel	Prenom usuel	Etat	Date naissance	Date de deces	Group
 03003Q	M.	Moulinier	Jacques	ANCIEN	18/04/1938	17/12/2010	UC		commission de l'économie	Rhône		Non public	Artisans, commercants et chefs d'entreprise	Commerce et industrie (Chefs d'entreprises)	responsable d'entreprise
 80031A	M.	Mouly	Georges	ANCIEN	21/02/1931	07/12/2019	RDSE		commission des affaires sociales	Corrèze		Non public	Instituteurs et assimilés	Enseignement secondaire	Professeur
 000528	M.	Moutet	Jacques	ANCIEN	31/03/1924	23/04/1998	UC	Rattaché	commission de l'économie	Pyrénées-Atlantiques			Chefs d'entreprise de 10 salaries ou plus	Commerce et industrie (Chefs d'entreprises)	Chef d'entreprise
-000736	M.	Moutet	Marius	ANCIEN		29/10/1968	SOCR		commission des affaires étrangères	Drôme			Avocats	Professions judiciaires et libérales (Avocats)	Avocat
+000736	M.	Moutet	Marius	ANCIEN	19/04/1876	29/10/1968	SOCR		commission des affaires étrangères	Drôme			Avocats	Professions judiciaires et libérales (Avocats)	Avocat
 07027R	M.	Muller	Jacques	ANCIEN	30/10/1954		SOCR	Rattaché	commission de l'économie	Haut-Rhin		j.muller@senat.fr	Cadres de la fonction publique	Fonctionnaires (Divers)	Ingénieur du génie rural, des eaux et forêts
 98007Q	M.	Murat	Bernard	ANCIEN	19/02/1946	27/04/2018	Les Républicains		commission de la culture	Corrèze		b.murat@senat.fr	Autres personnes sans activité professionnelle	Professions judiciaires et libérales (Divers)	Consultant
-000024	M.	Mustapha	Menad	ANCIEN		31/07/1983	G.D.	Apparenté	commission des affaires sociales	Orléansville-Médéa			Anciens cadres	Fonctionnaires (Retraités)	Inspecteur de police
+000024	M.	Mustapha	Menad	ANCIEN	01/01/1898	31/07/1983	G.D.	Apparenté	commission des affaires sociales	Orléansville-Médéa			Anciens cadres	Fonctionnaires (Retraités)	Inspecteur de police
 00002B	M.	Muzeau	Roland	ANCIEN	05/11/1951		CRCE		commission des affaires sociales	Hauts-de-Seine		r.muzeau@senat.fr	Contremaitre et agents de maitrise	Salariés (Cadres divers)	Technicien
 92040Q	M.	Nachbar	Philippe	ACTIF	26/09/1950		Les Républicains		commission de la culture	Meurthe-et-Moselle		Non public	Avocats	Professions judiciaires et libérales (Retraités)	Avocat
 11082Q	M.	Namy	Christian	ANCIEN	19/10/1938		UC		commission des affaires étrangères	Meuse		c.namy@senat.fr	Cadres et Professions intellectuelles supérieures	Professions judiciaires et libérales (Divers)	Consultant d'entreprises
@@ -1304,7 +1304,7 @@ Matricule	Qualite	Nom usuel	Prenom usuel	Etat	Date naissance	Date de deces	Group
 08021P	M.	Navarro	Robert	ANCIEN	01/05/1952		LaREM	Rattaché	commission des affaires économiques	Hérault		r.navarro@senat.fr	Cadres d'entreprise	Salariés (Retraités)	Cadre de la Sncf
 000079	M.	Naveau	Charles	ANCIEN	14/07/1903	24/08/1981	SOCR		commission de l'économie	Nord			Agriculteurs exploitants	Professions agricoles	Agriculteur
 000352	M.	Nayrou	Jean	ANCIEN	03/12/1914	06/02/1983	SOCR		commission des lois	Ariège			Instituteurs et assimilés	Enseignement primaire	Instituteur
-000712	M.	Neddaf	Labidi	ANCIEN		23/12/1981	G.D.	Apparenté	commission des affaires étrangères	Alger			Anciens cadres	Fonctionnaires (Retraités)	Commandant en retraite
+000712	M.	Neddaf	Labidi	ANCIEN	12/04/1893	23/12/1981	G.D.	Apparenté	commission des affaires étrangères	Alger			Anciens cadres	Fonctionnaires (Retraités)	Commandant en retraite
 000166	M.	Negre	Jean	ANCIEN	20/06/1907	08/05/1972	NI		commission des affaires sociales	Allier			Instituteurs et assimilés	Enseignement secondaire	Professeur de lycée
 08042U	M.	Nègre	Louis	ANCIEN	08/02/1947		Les Républicains		commission de l'aménagement du territoire et du développement durable	Alpes-Maritimes		l.negre@senat.fr	Professeurs, professions scientifiques	Enseignement (Retraités)	Professeur d'éducation physique et sportive
 11105E	M.	Néri	Alain	ANCIEN	01/05/1942		SOCR		commission des affaires étrangères	Puy-de-Dôme		a.neri@senat.fr	Retraités	Enseignement (Divers)	Directeur-adjoint de collège
@@ -1319,14 +1319,14 @@ Matricule	Qualite	Nom usuel	Prenom usuel	Etat	Date naissance	Date de deces	Group
 95051G	Mme	Olin	Nelly	ANCIEN	23/03/1941	26/10/2017	Les Républicains		commission de la culture	Val-d'Oise			Cadres d'entreprise	Salariés (Cadres divers)	Assistante de direction
 59240F	M.	Olivier	Henri	ANCIEN	17/01/1917	18/08/2004	U.R.E.I.	Rattaché	commission de l'économie	Orne			Agriculteurs exploitants	Professions agricoles	Agriculteur
 58645U	M.	Ooghe	Jean	ANCIEN	17/04/1928		C		commission des lois	Essonne			Ouvriers	Salariés (Ouvriers)	Cheminot
-000019	M.	Oopa Tetuaapua	Pouvanaa	ANCIEN		10/01/1977	U.C.D.P.		commission de la culture	Polynésie française			Artisans	Commerce et industrie (Artisans)	Entrepreneur dans le bâtiment
+000019	M.	Oopa Tetuaapua	Pouvanaa	ANCIEN	10/05/1895	10/01/1977	U.C.D.P.		commission de la culture	Polynésie française			Artisans	Commerce et industrie (Artisans)	Entrepreneur dans le bâtiment
 000419	M.	Ornano	Charles	ANCIEN	05/05/1919	19/02/1994	NI		commission des lois	Corse-du-Sud			Retraités	Fonctionnaires (Retraités)	Directeur régional adjoint des services de l'équipement
 000437	M.	Orvoen	Louis	ANCIEN	09/12/1919	21/09/1994	UC		commission de l'économie	Finistère			Agriculteurs exploitants	Professions agricoles	Agriculteur
 91002E	M.	Ostermann	Joseph	ANCIEN	26/11/1937		Les Républicains		commission des finances	Bas-Rhin		Non public	Professions libérales	Professions judiciaires et libérales (Divers)	Agent général d'assurances
 89035T	M.	Othily	Georges	ANCIEN	07/01/1944	18/12/2017	RDSE		commission des lois	Guyane		g.othily@senat.fr	Professions libérales	Professions judiciaires et libérales (Divers)	Administrateur de biens
 86041D	M.	Oudin	Jacques	ANCIEN	07/10/1939		Les Républicains		commission des finances	Vendée		Non public	Personnels de direction de la fonction publique	Fonctionnaires (Hauts Fonctionnaires)	Conseiller référendaire à la Cour des Comptes
 10007M	Mme	Oudit	Mireille	ANCIEN	10/10/1945		Les Républicains		commission de la culture	Marne		m.oudit@senat.fr	Autres personnes sans activité professionnelle	Professions agricoles	Agriculteur
-000026	M.	Ouella	Hacène	ANCIEN		24/05/1980	NI		commission des affaires sociales	Bône			Agriculteurs exploitants	Professions agricoles	Agriculteur
+000026	M.	Ouella	Hacène	ANCIEN	08/10/1899	24/05/1980	NI		commission des affaires sociales	Bône			Agriculteurs exploitants	Professions agricoles	Agriculteur
 19593H	M.	Ouzoulias	Pierre	ACTIF	28/01/1964		CRCE		commission de la culture	Hauts-de-Seine		p.ouzoulias@senat.fr	Professeurs, professions scientifiques	Fonctionnaires (Hauts Fonctionnaires)	Chargé de recherche au CNRS
 19573D	M.	Paccaud	Olivier	ACTIF	13/04/1969		Les Républicains	Rattaché	commission de la culture	Oise		o.paccaud@senat.fr	Professeurs, professions scientifiques	Enseignement supérieur (sauf Professeurs de médecine)	Professeur agrégé d'histoire-géographie
 000488	M.	Pado	Dominique	ANCIEN	24/05/1922	18/05/1989	UC		commission de la culture	Paris			Journalistes, secrétaires de rédaction	Professions libérales (Journalistes)	Journaliste
@@ -1339,7 +1339,7 @@ Matricule	Qualite	Nom usuel	Prenom usuel	Etat	Date naissance	Date de deces	Group
 71031Y	M.	Papilio	Soséfo Makapé	ANCIEN	27/02/1928	05/04/1998	RPR		commission des affaires sociales	Iles Wallis et Futuna			Commercants et assimilés	Commerce et industrie (Commercants)	Commerçant
 01054T	Mme	Papon	Monique	ANCIEN	05/10/1934	04/06/2018	Les Républicains		commission de la culture	Loire-Atlantique	Vice-présidente du Sénat	m.papon@senat.fr	Autres personnes sans activité professionnelle	Enseignement secondaire	Professeur d'histoire
 57761T	M.	Parenty	Robert	ANCIEN	13/08/1921	07/01/2017	U.C.D.P.		commission de l'économie	Hauts-de-Seine			Professions intermédiaires administratives de la fonction publique	Fonctionnaires (Cadres moyens)	Inspecteur (Caisse Nationale des Marchés de l'Etat)
-000688	M.	Parisot	Henri	ANCIEN		03/06/1984	RI		commission des affaires étrangères	Vosges			Commercants et assimilés	Commerce et industrie (Négociants)	Négociant
+000688	M.	Parisot	Henri	ANCIEN	05/09/1895	03/06/1984	RI		commission des affaires étrangères	Vosges			Commercants et assimilés	Commerce et industrie (Négociants)	Négociant
 000521	M.	Parmantier	Bernard	ANCIEN	05/02/1924	22/11/1993	SOCR		commission des finances	Paris			Cadres d'entreprise	Salariés (Cadres divers)	Directeur de Centre d'information et d'orientation
 000109	M.	Pascaud	Guy	ANCIEN	11/09/1904	07/12/1979	G.D.		commission de la culture	Charente			Chefs d'entreprise de 10 salaries ou plus	Commerce et industrie (Chefs d'entreprises)	Industriel
 77053G	M.	Pasqua	Charles	ANCIEN	18/04/1927	29/06/2015	Les Républicains	Apparenté	commission des affaires étrangères	Hauts-de-Seine		Non public	Autres personnes sans activité professionnelle	Sans profession déclarée	Sans profession déclarée
@@ -1352,15 +1352,15 @@ Matricule	Qualite	Nom usuel	Prenom usuel	Etat	Date naissance	Date de deces	Group
 08047A	M.	Paul	Philippe	ACTIF	25/01/1965		Les Républicains		commission des affaires étrangères	Finistère		p.paul@senat.fr	Cadres et Professions intellectuelles supérieures	Salariés (Cadres divers)	Cadre du secteur privé
 000090	M.	Paulian	Gilbert	ANCIEN	06/11/1903	22/05/1984	RI	Apparenté	commission de l'économie	Alger			Agriculteurs exploitants	Professions agricoles	Directeur d'exploitation agricole
 000048	M.	Pauly	Paul	ANCIEN	22/07/1901	27/06/1973	SOCR		commission des finances	Creuse			Cadres de la fonction publique	Fonctionnaires (Cadres moyens)	Percepteur
-000725	M.	Paumelle	Henri	ANCIEN		17/12/1965	G.D.		commission de la culture	Seine-Maritime			Professions libérales	Professions judiciaires et libérales (Divers)	Agent général d'assurances
-000748	M.	Pauzet	Marc	ANCIEN		20/08/1985	C.N.I.P.		commission de l'économie	Gironde			Professions libérales	Professions judiciaires et libérales (Divers)	Géomètre expert foncier
+000725	M.	Paumelle	Henri	ANCIEN	15/03/1899	17/12/1965	G.D.		commission de la culture	Seine-Maritime			Professions libérales	Professions judiciaires et libérales (Divers)	Agent général d'assurances
+000748	M.	Pauzet	Marc	ANCIEN	22/07/1897	20/08/1985	C.N.I.P.		commission de l'économie	Gironde			Professions libérales	Professions judiciaires et libérales (Divers)	Géomètre expert foncier
 01009N	Mme	Payet	Anne-Marie	ANCIEN	01/08/1949		UC		commission des affaires sociales	La Réunion	Secrétaire du Sénat	am.payet@senat.fr	Autres personnes sans activité professionnelle	Enseignement primaire	Directrice d'école
 98002K	M.	Payet	Lylian	ANCIEN	03/06/1945		RDSE		commission des affaires sociales	La Réunion		Non public	Professeurs, professions scientifiques	Enseignement (Divers)	Conseiller pédagogique
 95053J	M.	Pelchat	Michel	ANCIEN	08/07/1935	12/02/2004	Les Républicains		commission des affaires étrangères	Essonne		Non public	Ingenieurs et cadres techniques d'entreprise	Fonctionnaires (Divers)	Ingénieur CEA
 14365A	M.	Pélieu	Michel	ANCIEN	26/06/1946		RDSE		Aucune (Président du Sénat)	Hautes-Pyrénées			Autres personnes sans activité professionnelle	Sans profession déclarée	
 59553V	M.	Pellarin	Bernard	ANCIEN	18/09/1928	17/05/2007	R.D.E.	Rattaché	commission des lois	Haute-Savoie			Cadres d'entreprise	Salariés (Cadres divers)	Cadre
-000734	M.	Pellenc	Marcel	ANCIEN		19/10/1972	G.D.		commission des finances	Vaucluse			Professions intermédiaires administratives de la fonction publique	Fonctionnaires (Cadres moyens)	Inspecteur Général
-000714	M.	Pelleray	Paul	ANCIEN		13/05/1980	RI		commission de l'économie	Orne			Agriculteurs exploitants	Professions agricoles	Eleveur
+000734	M.	Pellenc	Marcel	ANCIEN	18/03/1897	19/10/1972	G.D.		commission des finances	Vaucluse			Professions intermédiaires administratives de la fonction publique	Fonctionnaires (Cadres moyens)	Inspecteur Général
+000714	M.	Pelleray	Paul	ANCIEN	12/07/1895	13/05/1980	RI		commission de l'économie	Orne			Agriculteurs exploitants	Professions agricoles	Eleveur
 59578F	M.	Pelletier	Charles	ANCIEN	25/07/1927	13/08/2019	R.D.E.		commission des lois	Seine-et-Marne	Secrétaire du Sénat		Agriculteurs exploitants	Professions agricoles	Agriculteur
 66002K	M.	Pelletier	Jacques	ANCIEN	01/08/1929	03/09/2007	RDSE		commission de l'économie	Aisne		j.pelletier@senat.fr	Agriculteurs exploitants	Professions agricoles	Agriculteur retraité
 14237S	M.	Pellevat	Cyril	ACTIF	18/02/1981		Les Républicains		commission de l'aménagement du territoire et du développement durable	Haute-Savoie		c.pellevat@senat.fr	Cadres et Professions intellectuelles supérieures	Salariés (Cadres divers)	Directeur des ressources humaines
@@ -1379,8 +1379,8 @@ Matricule	Qualite	Nom usuel	Prenom usuel	Etat	Date naissance	Date de deces	Group
 58335H	M.	Perrin	Pierre	ANCIEN	30/12/1918	08/08/2009	NI		commission de l'économie	Isère			Commercants et assimilés	Commerce et industrie (Négociants)	Négociant
 000643	M.	Perron	Jean-Jacques	ANCIEN	24/12/1935	05/10/1978	SOCR		commission des affaires sociales	Var			Medecins libéraux généralistes	Professions médicales (Médecins)	Médecin
 19745F	Mme	Perrot	Évelyne	ACTIF	22/06/1951		UC	Rattaché	commission de l'aménagement du territoire et du développement durable	Aube		Non public	Autres personnes sans activité professionnelle	Sans profession déclarée	
-000694	M.	Peschaud	Hector	ANCIEN		21/09/1968	C.N.I.P.		commission de la culture	Cantal			Medecins libéraux généralistes	Professions médicales (Médecins)	Médecin
-000739	M.	Petit	Ernest	ANCIEN		28/05/1971	C	Apparenté	commission des affaires étrangères	Seine			Anciens cadres	Fonctionnaires (Retraités)	Général en retraite
+000694	M.	Peschaud	Hector	ANCIEN	07/12/1895	21/09/1968	C.N.I.P.		commission de la culture	Cantal			Medecins libéraux généralistes	Professions médicales (Médecins)	Médecin
+000739	M.	Petit	Ernest	ANCIEN	20/02/1888	28/05/1971	C	Apparenté	commission des affaires étrangères	Seine			Anciens cadres	Fonctionnaires (Retraités)	Général en retraite
 000138	M.	Petit	Guy	ANCIEN	23/11/1905	31/10/1988	U.R.E.I.		commission des lois	Pyrénées-Atlantiques			Avocats	Professions judiciaires et libérales (Avocats)	Avocat
 000434	M.	Petit	Pierre	ANCIEN	29/11/1919	21/12/1977	SOCR		commission de la culture	Nièvre			Autres personnes sans activité professionnelle	Sans profession déclarée	Sans profession déclarée
 59241G	M.	Peyou	Hubert	ANCIEN	11/07/1923	27/12/2006	R.D.E.		commission des affaires sociales	Hautes-Pyrénées			Cadres d'entreprise	Salariés (Cadres divers)	Cadre
@@ -1390,17 +1390,17 @@ Matricule	Qualite	Nom usuel	Prenom usuel	Etat	Date naissance	Date de deces	Group
 95055L	M.	Peyronnet	Jean-Claude	ANCIEN	07/11/1940		SOCR		commission des affaires étrangères	Haute-Vienne		jc.peyronnet@senat.fr	Professeurs, professions scientifiques	Enseignement supérieur (sauf Professeurs de médecine)	Maître de conférences agrégé
 89036U	M.	Philibert	Louis	ANCIEN	12/07/1912	21/06/2000	SOCR		commission de la culture	Bouches-du-Rhône			Anciens cadres et professions liberales	Salariés (Retraités)	Conducteur principal de travaux des Ponts et chaussées (retraité)
 000023	M.	Philippon	Gustave	ANCIEN	19/09/1900	16/12/1974	SOCR		commission de la culture	Haute-Vienne	Secrétaire du Sénat		Avocats	Professions judiciaires et libérales (Avocats)	Avocat
-000030	M.	Piales	Paul	ANCIEN		06/03/1987	CRARS		commission des affaires sociales	Cantal			Chefs d'entreprise de 10 salaries ou plus	Commerce et industrie (Chefs d'entreprises)	Industriel
+000030	M.	Piales	Paul	ANCIEN	12/11/1895	06/03/1987	CRARS		commission des affaires sociales	Cantal			Chefs d'entreprise de 10 salaries ou plus	Commerce et industrie (Chefs d'entreprises)	Industriel
 59554W	M.	Piat	Robert	ANCIEN	03/09/1914	08/10/2007	UC		commission de la culture	Seine-et-Marne			Anciens cadres	Enseignement (Retraités)	Retraité de l'Education nationale
 000307	M.	Pic	Maurice	ANCIEN	15/02/1913	30/01/1991	SOCR		commission de la culture	Drôme			Instituteurs et assimilés	Enseignement secondaire	Professeur de l' enseignement secondaire
-000747	M.	Picard	André	ANCIEN		05/07/1979	RI		commission de la culture	Côte-d'Or			Agriculteurs exploitants	Professions agricoles	Agriculteur
+000747	M.	Picard	André	ANCIEN	22/06/1899	05/07/1979	RI		commission de la culture	Côte-d'Or			Agriculteurs exploitants	Professions agricoles	Agriculteur
 98015Q	M.	Picheral	Jean-François	ANCIEN	26/02/1934		SOCR		commission de la culture	Bouches-du-Rhône		jf.picheral@senat.fr	Autres personnes sans activité professionnelle	Professions médicales (Médecins)	Médecin radiologue
 19533U	M.	Piednoir	Stéphane	ACTIF	25/02/1970		Les Républicains		commission de la culture	Maine-et-Loire		s.piednoir@senat.fr	Professeurs, professions scientifiques	Enseignement secondaire	Professeur
 04088S	M.	Pierre	Jackie	ACTIF	27/05/1946		Les Républicains		commission des affaires économiques	Vosges		j.pierre@senat.fr	Cadres d'entreprise	Salariés (Retraités)	Cadre
 09010Q	M.	Pignard	Jean-Jacques	ANCIEN	15/04/1947		UC		commission de la culture	Rhône		Non public	Autres personnes sans activité professionnelle	Fonctionnaires (Cadres moyens)	Professeur agrégé d'histoire
 07034Q	M.	Pillet	François	ANCIEN	13/05/1950		Les Républicains	Rattaché	commission des lois	Cher		f.pillet@senat.fr	Avocats	Professions judiciaires et libérales (Retraités)	Avocat honoraire
 58341F	M.	Pillet	Paul	ANCIEN	01/04/1907	17/12/2002	U.C.D.P.		commission des lois	Loire			Chefs d'entreprise de 10 salaries ou plus	Commerce et industrie (Chefs d'entreprises)	Administrateur de sociétés
-000730	M.	Pinchard	Raymond	ANCIEN		22/08/1961	RI		commission de l'économie	Meurthe-et-Moselle			Chefs d'entreprise de 10 salaries ou plus	Commerce et industrie (Chefs d'entreprises)	Industriel
+000730	M.	Pinchard	Raymond	ANCIEN	16/07/1889	22/08/1961	RI		commission de l'économie	Meurthe-et-Moselle			Chefs d'entreprise de 10 salaries ou plus	Commerce et industrie (Chefs d'entreprises)	Industriel
 000143	M.	Pinsard	Jules	ANCIEN	09/04/1906	09/12/1991	G.D.		commission de l'économie	Saône-et-Loire			Agriculteurs exploitants	Professions agricoles	Viticulteur
 000514	M.	Pintat	Jean-François	ANCIEN	29/07/1923	14/06/1990	U.R.E.I.		commission des finances	Gironde			Ingenieurs et cadres techniques d'entreprise	Salariés (Ingénieurs)	Ingénieur
 98021N	M.	Pintat	Xavier	ANCIEN	15/03/1954		Les Républicains		commission des affaires étrangères	Gironde		x.pintat@senat.fr	Autres personnes sans activité professionnelle	Salariés (Cadres divers)	Ingénieur CEA
@@ -1410,7 +1410,7 @@ Matricule	Qualite	Nom usuel	Prenom usuel	Etat	Date naissance	Date de deces	Group
 96006F	M.	Piras	Bernard	ANCIEN	05/06/1942	01/02/2016	SOCR		commission des affaires étrangères	Drôme		bernard.piras@wanadoo.fr	Agriculteurs exploitants	Fonctionnaires (Divers)	Ingénieur agricole
 57321W	M.	Pisani	Edgard	ANCIEN	09/10/1918	20/06/2016	SOCR		commission des affaires étrangères	Haute-Marne			Anciens cadres	Fonctionnaires (Retraités)	Ancien Préfet
 11069T	M.	Placé	Jean-Vincent	ANCIEN	12/03/1968		SOCR		commission des affaires étrangères	Essonne		jv.place@senat.fr	Autres personnes sans activité professionnelle	Salariés (Cadres divers)	Directeur de centre de formation
-000698	M.	Plait	André	ANCIEN		08/04/1979	RI		commission des affaires sociales	Yonne			Medecins libéraux généralistes	Professions médicales (Médecins)	Médecin
+000698	M.	Plait	André	ANCIEN	08/07/1892	08/04/1979	RI		commission des affaires sociales	Yonne			Medecins libéraux généralistes	Professions médicales (Médecins)	Médecin
 98010K	M.	Plancade	Jean-Pierre	ANCIEN	02/08/1949		RDSE		commission de la culture	Haute-Garonne		jp.plancade@senat.fr	Autres personnes sans activité professionnelle	Salariés (Cadres divers)	Cadre du secteur social
 59619W	M.	Plantegenest	Marc	ANCIEN	11/06/1943		SOCR	Apparenté	commission des affaires sociales	Saint-Pierre-et-Miquelon			Professions intermédiaires administratives de la fonction publique	Fonctionnaires (Cadres moyens)	Fonctionnaire
 95056M	M.	Plasait	Bernard	ANCIEN	20/06/1940		Les Républicains		commission des affaires étrangères	Paris			Chefs d'entreprise de 10 salaries ou plus	Commerce et industrie (Chefs d'entreprises)	Directeur de société
@@ -1432,7 +1432,7 @@ Matricule	Qualite	Nom usuel	Prenom usuel	Etat	Date naissance	Date de deces	Group
 04074L	M.	Portelli	Hugues	ANCIEN	22/12/1947		Les Républicains		commission des lois	Val-d'Oise		h.portelli@senat.fr	Professeurs, professions scientifiques	Enseignement supérieur (sauf Professeurs de médecine)	Professeur des universités
 000156	M.	Porteu De La Morandiere	Paul	ANCIEN	13/10/1906	21/01/1993	RI		Aucune (Président du Sénat)	Ille-et-Vilaine			Chefs d'entreprise de 10 salaries ou plus	Commerce et industrie (Chefs d'entreprises)	Directeur de banque
 58917A	M.	Portier	Henri	ANCIEN	05/06/1921	12/06/2009	RPR		commission des affaires sociales	Aube			Agriculteurs exploitants	Professions agricoles	Agriculteur
-000672	M.	Portmann	Georges	ANCIEN		24/02/1985	RI		commission des finances	Gironde			Professeurs, professions scientifiques	Enseignement supérieur (sauf Professeurs de médecine)	Doyen de la Faculté de Médecine et de Pharmacie
+000672	M.	Portmann	Georges	ANCIEN	01/07/1890	24/02/1985	RI		commission des finances	Gironde			Professeurs, professions scientifiques	Enseignement supérieur (sauf Professeurs de médecine)	Doyen de la Faculté de Médecine et de Pharmacie
 59242H	M.	Poudonson	Roger	ANCIEN	14/12/1922	27/12/2000	UC		commission des affaires étrangères	Pas-de-Calais			Cadres de la publicité; cadres des relations publiques	Professions libérales (Publicistes)	Publiciste
 000470	M.	Pouille	Richard	ANCIEN	15/08/1921	21/07/1996	U.R.E.I.		commission de l'économie	Meurthe-et-Moselle			Anciens cadres et professions liberales	Salariés (Retraités)	Ingénieur
 88002E	M.	Pourchet	Jean	ANCIEN	09/12/1925	27/02/2010	UC		commission de l'économie	Doubs			Agriculteurs exploitants	Professions agricoles	Agriculteur
@@ -1442,8 +1442,8 @@ Matricule	Qualite	Nom usuel	Prenom usuel	Etat	Date naissance	Date de deces	Group
 16813M	M.	Poyart	Alain	ANCIEN	18/11/1947		Les Républicains		commission des lois	Nord			Autres personnes sans activité professionnelle	Sans profession déclarée	
 04080J	M.	Pozzo di Borgo	Yves	ANCIEN	03/05/1948		UC		commission des affaires étrangères	Paris		y.pozzodiborgo@senat.fr	Personnels de direction de la fonction publique	Fonctionnaires (Hauts Fonctionnaires)	Inspecteur général de l'administration de l'Education nationale
 88010E	M.	Pradille	Claude	ANCIEN	29/07/1942		SOCR		commission des lois	Gard			Artisans	Commerce et industrie (Artisans)	Restaurateur
-000772	M.	Prelot	Marcel	ANCIEN		26/12/1972	U.N.R.		commission des lois	Doubs			Professeurs, professions scientifiques	Enseignement supérieur (sauf Professeurs de médecine)	Professeur de Faculté
-000741	M.	Pretre	Henri	ANCIEN		17/05/1983	RI		commission de l'économie	Haute-Saône			Agriculteurs exploitants	Professions agricoles	Agriculteur
+000772	M.	Prelot	Marcel	ANCIEN	30/10/1898	26/12/1972	U.N.R.		commission des lois	Doubs			Professeurs, professions scientifiques	Enseignement supérieur (sauf Professeurs de médecine)	Professeur de Faculté
+000741	M.	Pretre	Henri	ANCIEN	20/08/1892	17/05/1983	RI		commission de l'économie	Haute-Saône			Agriculteurs exploitants	Professions agricoles	Agriculteur
 19503N	Mme	Préville	Angèle	ACTIF	23/11/1955		SOCR		commission de l'aménagement du territoire et du développement durable	Lot		Non public	Retraités	Enseignement (Retraités)	Ancien professeur
 000202	M.	Prevoteau	Maurice	ANCIEN	06/11/1908	02/03/1994	U.C.D.P.		commission de l'économie	Marne			Agriculteurs exploitants	Professions agricoles	Agriculteur
 000275	M.	Prigent	François	ANCIEN	28/07/1911	14/09/1986	UC		commission de l'économie	Finistère			Commercants et assimilés	Commerce et industrie (Commercants)	Commerçant
@@ -1453,7 +1453,7 @@ Matricule	Qualite	Nom usuel	Prenom usuel	Etat	Date naissance	Date de deces	Group
 17583W	M.	Priou	Christophe	ACTIF	02/05/1958		Les Républicains		commission de l'aménagement du territoire et du développement durable	Loire-Atlantique		c.priou@senat.fr	Cadres administratifs et commerciaux d'entreprise	Salariés (Cadres divers)	Cadre de la CCI de Saint-Nazaire
 04043D	Mme	Procaccia	Catherine	ACTIF	13/10/1949		Les Républicains		commission des affaires économiques	Val-de-Marne		c.procaccia@senat.fr	Cadres d'entreprise	Salariés (Retraités)	Cadre supérieur
 000639	M.	Proriol	Jean	ANCIEN	25/11/1934		U.R.E.I.		commission de l'économie	Haute-Loire			Cadres d'entreprise	Salariés (Cadres divers)	Cadre commercial
-000752	M.	Prost	Pierre	ANCIEN		14/12/1982	NI		commission des finances	Essonne	Secrétaire du Sénat		Personnels de direction de la fonction publique	Fonctionnaires (Hauts Fonctionnaires)	Trésorier Payeur Général honoraire, Contrôleur d'Etat honoraire
+000752	M.	Prost	Pierre	ANCIEN	24/06/1896	14/12/1982	NI		commission des finances	Essonne	Secrétaire du Sénat		Personnels de direction de la fonction publique	Fonctionnaires (Hauts Fonctionnaires)	Trésorier Payeur Général honoraire, Contrôleur d'Etat honoraire
 59244K	M.	Prouvoyeur	Claude	ANCIEN	05/01/1927	17/01/2018	RPR	Apparenté	commission des affaires sociales	Nord	Secrétaire du Sénat		Anciens cadres	Enseignement (Retraités)	Conseiller d'Administration scolaire et universitaire
 000085	M.	Provo	Victor	ANCIEN	30/08/1903	04/10/1983	SOCR		commission de la culture	Nord			Ouvriers	Salariés (Ouvriers)	Trieur de laines
 14235Q	Mme	Prunaud	Christine	ACTIF	04/09/1950		CRCE		commission des affaires étrangères	Côtes-d'Armor		c.prunaud@senat.fr	Professions intermédiaires administratives de la fonction publique	Salariés (Employés)	Agent d'assurance
@@ -1461,7 +1461,7 @@ Matricule	Qualite	Nom usuel	Prenom usuel	Etat	Date naissance	Date de deces	Group
 19679N	Mme	Puissat	Frédérique	ACTIF	04/11/1967		Les Républicains		commission des affaires sociales	Isère		f.puissat@senat.fr	Cadres administratifs et commerciaux d'entreprise	Salariés (Cadres divers)	Cadre financier
 74041P	M.	Quilliot	Roger	ANCIEN	19/06/1925	17/07/1998	SOCR		commission de la culture	Puy-de-Dôme			Autres personnes sans activité professionnelle	Enseignement supérieur (sauf Professeurs de médecine)	Professeur d'université
 58918B	M.	Rabineau	André	ANCIEN	16/01/1911	15/02/2009	UC		commission des affaires sociales	Allier			Chefs d'entreprise de 10 salaries ou plus	Commerce et industrie (Chefs d'entreprises)	Chef d'entreprise
-000743	M.	Rabouin	Etienne	ANCIEN		24/11/1979	U.N.R.		commission des lois	Maine-et-Loire			Huissiers de justice, officiers ministériels et professions libérales divers	Professions judiciaires et libérales (Officiers ministériels)	Notaire
+000743	M.	Rabouin	Etienne	ANCIEN	20/11/1893	24/11/1979	U.N.R.		commission des lois	Maine-et-Loire			Huissiers de justice, officiers ministériels et professions libérales divers	Professions judiciaires et libérales (Officiers ministériels)	Notaire
 14247U	M.	Rachline	David	ANCIEN	02/12/1987		NI		commission de l'aménagement du territoire et du développement durable	Var		d.rachline@senat.fr	Autres personnes sans activité professionnelle	Sans profession déclarée	
 95059Q	M.	Raffarin	Jean-Pierre	ANCIEN	03/08/1948		Les Républicains		commission de la culture	Vienne		jp.raffarin@senat.fr	Professions libérales	Autres professions	Consultant
 19443T	Mme	Raimond-Pavero	Isabelle	ACTIF	23/02/1961		Les Républicains		commission des affaires étrangères	Indre-et-Loire		i.raimond-pavero@senat.fr	Huissiers de justice, officiers ministériels et professions libérales divers	Professions judiciaires et libérales (Divers)	Assistante juridique
@@ -1492,7 +1492,7 @@ Matricule	Qualite	Nom usuel	Prenom usuel	Etat	Date naissance	Date de deces	Group
 000293	M.	Repiquet	Georges	ANCIEN	15/04/1912	30/09/1988	RPR		commission des affaires étrangères	La Réunion			Agriculteurs exploitants	Professions agricoles	Agriculteur
 000077	M.	Reptin	Ernest	ANCIEN	17/06/1903	15/12/1976	RI		commission des affaires sociales	Somme			Agriculteurs exploitants	Professions agricoles	Agriculteur
 11012A	M.	Requier	Jean-Claude	ACTIF	04/10/1947		RDSE		commission des finances	Lot		senateur-requier@orange.fr	Autres personnes sans activité professionnelle	Enseignement (Retraités)	Professeur d'histoire-géographie
-000750	M.	Restat	Etienne	ANCIEN		30/11/1971	G.D.		commission de l'économie	Lot-et-Garonne			Agriculteurs exploitants	Professions agricoles	Agriculteur
+000750	M.	Restat	Etienne	ANCIEN	23/05/1898	30/11/1971	G.D.		commission de l'économie	Lot-et-Garonne			Agriculteurs exploitants	Professions agricoles	Agriculteur
 04033B	M.	Retailleau	Bruno	ACTIF	20/11/1960		Les Républicains		commission de la culture	Vendée		b.retailleau@senat.fr	Professeurs, professions scientifiques	Salariés (Permanents politiques)	Sans profession déclarée
 95061J	M.	Reux	Victor	ANCIEN	03/12/1929	01/06/2016	Les Républicains		commission de la culture	Saint-Pierre-et-Miquelon		Non public	Anciens cadres	Enseignement (Retraités)	Enseignant retraité
 95062K	M.	Revet	Charles	ANCIEN	09/11/1937		Les Républicains		commission de l'aménagement du territoire et du développement durable	Seine-Maritime		revet.charles@wanadoo.fr	Agriculteurs exploitants	Professions agricoles	Agriculteur
@@ -1532,7 +1532,7 @@ Matricule	Qualite	Nom usuel	Prenom usuel	Etat	Date naissance	Date de deces	Group
 58638V	M.	Rosette	Marcel	ANCIEN	03/12/1925	18/11/2005	C		commission des affaires étrangères	Val-de-Marne			Employés administratifs d'entreprise	Salariés (Employés)	Employé
 000172	M.	Rosselli	Jacques	ANCIEN	15/11/1907	04/02/1974	U.D.R.		commission des lois	Français établis hors de France			Avocats	Professions judiciaires et libérales (Avocats)	Avocat
 11045K	Mme	Rossignol	Laurence	ACTIF	22/12/1957		SOCR		commission des affaires sociales	Oise		l.rossignol@senat.fr	Autres personnes sans activité professionnelle	Professions judiciaires et libérales (Divers)	Juriste
-000704	M.	Rotinat	Vincent	ANCIEN		14/03/1975	G.D.		commission des affaires étrangères	Indre			Anciens cadres	Enseignement (Retraités)	Professeur honoraire
+000704	M.	Rotinat	Vincent	ANCIEN	10/07/1888	14/03/1975	G.D.		commission des affaires étrangères	Indre			Anciens cadres	Enseignement (Retraités)	Professeur honoraire
 000044	M.	Roubert	Alex	ANCIEN	12/06/1901	14/01/1980	SOCR		commission des finances	Alpes-Maritimes			Avocats	Professions judiciaires et libérales (Avocats)	Avocat
 58929E	M.	Roudier	Roger	ANCIEN	13/05/1926	04/03/2002	SOCR		commission de l'économie	Dordogne			Anciens cadres	Enseignement (Retraités)	Retraité de l'enseignement
 57146A	M.	Rougeron	Georges	ANCIEN	06/01/1911	10/08/2003	SOCR		commission de la culture	Allier			Professions intermédiaires administratives de la fonction publique	Fonctionnaires (Divers)	Fonctionnaire communal
@@ -1543,8 +1543,8 @@ Matricule	Qualite	Nom usuel	Prenom usuel	Etat	Date naissance	Date de deces	Group
 80040B	M.	Rouvière	André	ANCIEN	29/04/1936	02/11/2015	SOCR		commission des affaires étrangères	Gard		permanence.rouviere@wanadoo.fr	Anciens cadres	Enseignement (Retraités)	Enseignant retraité
 14107H	M.	Roux	Jean-Yves	ACTIF	18/01/1970		RDSE		commission de la culture	Alpes de Haute-Provence		jy.roux@senat.fr	Cadres de la fonction publique	Salariés (Cadres divers)	Agent de maîtrise
 000214	M.	Roux	Olivier	ANCIEN	10/07/1909	14/10/1995	UC		commission des affaires sociales	Français établis hors de France			Anciens cadres et professions liberales	Salariés (Retraités)	Directeur de Banque Honoraire
-000768	M.	Roy	Louis	ANCIEN		24/04/1966	U.N.R.		commission des affaires sociales	Aisne			Médecins hospitaliers (sans activité libérale)	Professions médicales (Chirurgiens)	Chirurgien
-000754	M.	Roy	Pierre	ANCIEN		15/07/1984	RI		commission de la culture	Vendée			Commercants et assimilés	Commerce et industrie (Négociants)	Négociant
+000768	M.	Roy	Louis	ANCIEN	29/04/1898	24/04/1966	U.N.R.		commission des affaires sociales	Aisne			Médecins hospitaliers (sans activité libérale)	Professions médicales (Chirurgiens)	Chirurgien
+000754	M.	Roy	Pierre	ANCIEN	25/06/1898	15/07/1984	RI		commission de la culture	Vendée			Commercants et assimilés	Commerce et industrie (Négociants)	Négociant
 01029S	Mme	Rozier	Janine	ANCIEN	13/04/1938		Les Républicains		commission des affaires sociales	Loiret		j.rozier@senat.fr	Huissiers de justice, officiers ministériels et professions libérales divers	Professions judiciaires et libérales (Divers)	Clerc de notaire
 000505	M.	Rudloff	Marcel	ANCIEN	15/03/1923	23/03/1996	UC		commission des lois	Bas-Rhin			Avocats	Professions judiciaires et libérales (Avocats)	Avocat
 58928D	M.	Ruet	Roland	ANCIEN	29/10/1921	26/01/2001	U.R.E.I.		commission de la culture	Ain	Secrétaire du Sénat		Chefs d'entreprise de 10 salaries ou plus	Commerce et industrie (Chefs d'entreprises)	Chef d'entreprise
@@ -1553,7 +1553,7 @@ Matricule	Qualite	Nom usuel	Prenom usuel	Etat	Date naissance	Date de deces	Group
 19619A	Mme	Saint-Pé	Denise	ACTIF	05/01/1951		UC		commission des affaires économiques	Pyrénées-Atlantiques		d.saint-pe@senat.fr	Autres personnes sans activité professionnelle	Sans profession déclarée	
 000453	M.	Sallenave	Pierre	ANCIEN	20/11/1920	31/05/1983	U.R.E.I.		commission des affaires sociales	Pyrénées-Atlantiques			Commercants et assimilés	Commerce et industrie (Négociants)	Négociant
 000564	M.	Salvi	Pierre	ANCIEN	02/04/1926	09/01/1989	UC		commission des lois	Val-d'Oise	Secrétaire du Sénat		Ingenieurs et cadres techniques d'entreprise	Salariés (Ingénieurs)	Ingénieur
-000749	M.	Sambron	Maurice	ANCIEN		13/12/1973	RI		commission de l'économie	Loire-Atlantique			Chefs d'entreprise de 10 salaries ou plus	Commerce et industrie (Chefs d'entreprises)	Industriel
+000749	M.	Sambron	Maurice	ANCIEN	22/07/1898	13/12/1973	RI		commission de l'économie	Loire-Atlantique			Chefs d'entreprise de 10 salaries ou plus	Commerce et industrie (Chefs d'entreprises)	Industriel
 01036R	Mme	San Vicente-Baudrin	Michèle	ANCIEN	19/05/1955		SOCR		commission des affaires sociales	Pas-de-Calais		m.san-vicente@senat.fr	Autres personnes sans activité professionnelle	Sans profession déclarée	Sans profession déclarée
 57752S	M.	Sanglier	Jacques	ANCIEN	22/02/1919	03/03/2014	RPR		commission des affaires étrangères	Paris			Chefs d'entreprise de 10 salaries ou plus	Commerce et industrie (Chefs d'entreprises)	Editeur-Imprimeur
 000300	M.	Sassi	Benaissa	ANCIEN	11/11/1912	18/07/1961	G.D.	Rattaché	commission des affaires étrangères	Mostaganem-Tiaret			Agriculteurs exploitants	Professions agricoles	Propriétaire
@@ -1561,12 +1561,12 @@ Matricule	Qualite	Nom usuel	Prenom usuel	Etat	Date naissance	Date de deces	Group
 89040Q	M.	Saunier	Claude	ANCIEN	26/02/1943		SOCR		commission de l'économie	Côtes-d'Armor		c.saunier@senat.fr	Instituteurs et assimilés	Enseignement secondaire	Professeur
 19421M	M.	Saury	Hugues	ACTIF	12/11/1958		Les Républicains	Apparenté	commission des affaires étrangères	Loiret		h.saury@senat.fr	Pharmaciens libéraux	Professions médicales (Pharmaciens)	Pharmacien
 58336J	M.	Sauvage	Jean	ANCIEN	03/10/1909	15/07/2005	U.C.D.P.		commission de la culture	Maine-et-Loire			Cadres d'entreprise	Salariés (Cadres divers)	Cadre
-000673	M.	Sauvageot	Edmond	ANCIEN		11/10/1983	RI		commission des finances	Français établis hors de France			Professions libérales	Professions judiciaires et libérales (Divers)	Administrateur de Sociétés
+000673	M.	Sauvageot	Edmond	ANCIEN	01/10/1898	11/10/1983	RI		commission des finances	Français établis hors de France			Professions libérales	Professions judiciaires et libérales (Divers)	Administrateur de Sociétés
 11097X	M.	Savary	René-Paul	ACTIF	03/01/1953		Les Républicains		commission des affaires sociales	Marne		rp.savary@senat.fr	Autres personnes sans activité professionnelle	Professions médicales (Médecins)	Médecin
 11043H	M.	Savin	Michel	ACTIF	25/11/1958		Les Républicains		commission de la culture	Isère		m.savin@senat.fr	Autres personnes sans activité professionnelle	Fonctionnaires (Divers)	Agent technique principal
 19687N	M.	Savoldelli	Pascal	ACTIF	14/01/1961		CRCE		commission des finances	Val-de-Marne		p.savoldelli@senat.fr	Professions intermédiaires administratives de la fonction publique	Fonctionnaires (Cadres moyens)	Employé de la fonction publique territoriale
 57738U	Mme	Scellier	Gabrielle	ANCIEN	11/03/1911	08/02/2004	U.C.D.P.		commission des affaires sociales	Somme			Retraités	Professions médicales (Retraités)	Pharmacienne en retraite
-000745	M.	Schiaffino	Laurent	ANCIEN		11/07/1978	G.D.	Apparenté	commission de l'économie	Alger			Chefs d'entreprise de 10 salaries ou plus	Commerce et industrie (Chefs d'entreprises)	Armateur
+000745	M.	Schiaffino	Laurent	ANCIEN	22/01/1897	11/07/1978	G.D.	Apparenté	commission de l'économie	Alger			Chefs d'entreprise de 10 salaries ou plus	Commerce et industrie (Chefs d'entreprises)	Armateur
 59559C	M.	Schiele	Pierre	ANCIEN	05/07/1925	27/07/2011	UC		commission de la culture	Haut-Rhin	Questeur du Sénat		Instituteurs et assimilés	Enseignement secondaire	Professeur
 04045F	Mme	Schillinger	Patricia	ACTIF	18/01/1963		LaREM		commission des affaires sociales	Haut-Rhin	Secrétaire du Sénat	p.schillinger@senat.fr	Professions intermédiaires de la santé et du travail social	Sans profession déclarée	Aide soignante
 000278	M.	Schleiter	François	ANCIEN	15/09/1911	26/09/1990	U.R.E.I.		commission de la culture	Meuse	Vice-président du Sénat		Avocats	Professions judiciaires et libérales (Avocats)	Avocat
@@ -1592,7 +1592,7 @@ Matricule	Qualite	Nom usuel	Prenom usuel	Etat	Date naissance	Date de deces	Group
 04101V	M.	Siffre	Jacques	ANCIEN	04/04/1937		SOCR		commission de la culture	Bouches-du-Rhône		j.siffre@senat.fr	Medecins libéraux généralistes	Professions médicales (Médecins)	Médecin ophtalmologiste
 86053H	M.	Signé	René-Pierre	ANCIEN	16/09/1930		SOCR		commission de la culture	Nièvre		Rene-Pierre.Signe@wanadoo.fr	Medecins libéraux généralistes	Professions médicales (Médecins)	Médecin
 000373	M.	Simonin	Jean	ANCIEN	26/05/1916	06/11/1993	RPR		commission des affaires étrangères	Essonne			Ingenieurs et cadres techniques d'entreprise	Salariés (Ingénieurs)	Ingénieur en retraite
-000716	M.	Sinsout	Charles	ANCIEN		03/05/1985	G.D.		commission des affaires sociales	Dordogne			Agriculteurs exploitants	Professions agricoles	Propriétaire exploitant
+000716	M.	Sinsout	Charles	ANCIEN	13/01/1889	03/05/1985	G.D.		commission des affaires sociales	Dordogne			Agriculteurs exploitants	Professions agricoles	Propriétaire exploitant
 000364	M.	Sirgue	Albert	ANCIEN	05/06/1915	18/11/1980	U.R.E.I.		commission des affaires sociales	Aveyron			Agriculteurs exploitants	Professions agricoles	Agriculteur
 04069P	Mme	Sittler	Esther	ACTIF	09/05/1952		Les Républicains		commission de l'aménagement du territoire et du développement durable	Bas-Rhin		e.sittler@senat.fr	Employés civils et agents de service de la fonction publique	Fonctionnaires (Divers)	Secrétaire administrative
 11071M	M.	Soilihi	Abdourahamane	ANCIEN	04/10/1959		Les Républicains		commission de la culture	Mayotte		a.soilihi@senat.fr	Autres personnes sans activité professionnelle	Enseignement primaire	Enseignant
@@ -1615,7 +1615,7 @@ Matricule	Qualite	Nom usuel	Prenom usuel	Etat	Date naissance	Date de deces	Group
 01028R	M.	Sueur	Jean-Pierre	ACTIF	28/02/1947		SOCR		commission des lois	Loiret		jp.sueur@senat.fr	Autres personnes sans activité professionnelle	Enseignement (Retraités)	Maître de conférences à l'université
 000120	M.	Suran	Charles	ANCIEN	02/05/1904	01/08/1971	SOCR		commission des finances	Haute-Garonne			Instituteurs et assimilés	Enseignement secondaire	Professeur de Cours complémentaire
 98035U	M.	Sutour	Simon	ACTIF	18/08/1952		SOCR		commission des lois	Gard		Simon.Sutour@orange.fr	Autres personnes sans activité professionnelle	Fonctionnaires (Retraités)	Administrateur territorial
-000692	M.	Symphor	Paul	ANCIEN		27/03/1968	SOCR		commission de la culture	Martinique	Secrétaire du Sénat		Instituteurs et assimilés	Enseignement primaire	Directeur d'école
+000692	M.	Symphor	Paul	ANCIEN	07/08/1893	27/03/1968	SOCR		commission de la culture	Martinique	Secrétaire du Sénat		Instituteurs et assimilés	Enseignement primaire	Directeur d'école
 000095	M.	Tailhades	Edgar	ANCIEN	12/01/1904	23/06/1986	SOCR		commission des lois	Gard			Avocats	Professions judiciaires et libérales (Avocats)	Avocat
 19689Q	Mme	Taillé-Polian	Sophie	ACTIF	04/10/1974		SOCR	Apparenté	commission des finances	Val-de-Marne		s.taille-polian@senat.fr	Autres personnes sans activité professionnelle	Fonctionnaires (Divers)	Fonctionnaire territoriale
 59560U	M.	Taittinger	Pierre-Christian	ANCIEN	05/02/1926	27/09/2009	RI		commission des affaires sociales	Paris	Vice-président du Sénat		Chefs d'entreprise de 10 salaries ou plus	Commerce et industrie (Chefs d'entreprises)	Chef d'entreprise
@@ -1627,7 +1627,7 @@ Matricule	Qualite	Nom usuel	Prenom usuel	Etat	Date naissance	Date de deces	Group
 80043E	M.	Tardy	Fernand	ANCIEN	14/06/1919	04/04/2017	SOCR		commission de l'économie	Alpes de Haute-Provence			Ingenieurs et cadres techniques d'entreprise	Salariés (Ingénieurs)	Ingénieur horticole
 04056J	Mme	Tasca	Catherine	ANCIEN	13/12/1941		SOCR		commission des lois	Yvelines	Secrétaire du Sénat	c.tasca@senat.fr	Cadres et Professions intellectuelles supérieures	Salariés (Cadres divers)	Responsable d'entreprises culturelles 
 89009R	M.	Taugourdeau	Martial	ANCIEN	14/12/1926	14/10/2001	RPR		commission des affaires sociales	Eure-et-Loir		Non public	Medecins libéraux généralistes	Professions médicales (Médecins)	Médecin
-000717	M.	Tellier	Gabriel	ANCIEN		09/09/1976	CRARS		commission de l'économie	Pas-de-Calais			Agriculteurs exploitants	Professions agricoles	Agriculteur
+000717	M.	Tellier	Gabriel	ANCIEN	13/01/1899	09/09/1976	CRARS		commission de l'économie	Pas-de-Calais			Agriculteurs exploitants	Professions agricoles	Agriculteur
 19669L	M.	Temal	Rachid	ACTIF	29/03/1973		SOCR		commission des affaires étrangères	Val-d'Oise		r.temal@senat.fr	Autres personnes sans activité professionnelle	Salariés (Cadres divers)	Cadre supérieur
 97005J	Mme	Terrade	Odette	ANCIEN	21/02/1949		CRCE		commission de l'économie	Val-de-Marne		o.terrade@senat.fr	Professions intermédiaires administratives de la fonction publique	Fonctionnaires (Divers)	Fonctionnaire
 000006	M.	Terre	Henri	ANCIEN	16/02/1900	13/10/1978	U.R.E.I.		commission des affaires sociales	Aube			Commercants et assimilés	Commerce et industrie (Négociants)	Négociant
@@ -1637,7 +1637,7 @@ Matricule	Qualite	Nom usuel	Prenom usuel	Etat	Date naissance	Date de deces	Group
 03002P	M.	Texier	Yannick	ANCIEN	20/05/1948		Les Républicains		commission de l'économie	Ille-et-Vilaine		y.texier@senat.fr	Retraités	Salariés (Retraités)	Géomètre principal du cadastre retraité
 19301E	M.	Théophile	Dominique	ACTIF	04/08/1960		LaREM		commission des affaires sociales	Guadeloupe		d.theophile@senat.fr	Cadres administratifs et commerciaux d'entreprise	Commerce et industrie (Chefs d'entreprises)	Contrôleur de gestion
 000118	M.	Thiebault	Roger	ANCIEN	12/03/1905	17/03/1977	SOCR		commission des affaires sociales	Seine-Maritime			Artisans	Commerce et industrie (Artisans)	Verrier
-000674	M.	Thioleron	Louis	ANCIEN		31/03/1976	CRARS		commission de la culture	Cantal			Anciens artisans, commercants, chefs d'entreprise	Commerce et industrie (Retraités)	Ancien négociant
+000674	M.	Thioleron	Louis	ANCIEN	01/11/1890	31/03/1976	CRARS		commission de la culture	Cantal			Anciens artisans, commercants, chefs d'entreprise	Commerce et industrie (Retraités)	Ancien négociant
 01039U	M.	Thiollière	Michel	ANCIEN	10/04/1955		Les Républicains		commission de la culture	Loire		michel.thiolliere.senateur@wanadoo.fr	Autres personnes sans activité professionnelle	Enseignement secondaire	Professeur d'anglais
 19675J	Mme	Thomas	Claudine	ACTIF	19/08/1961		Les Républicains		commission des lois	Seine-et-Marne		c.thomas@senat.fr	Autres personnes sans activité professionnelle	Sans profession déclarée	
 56829S	Mme	Thorez Vermeersch	Jeannette	ANCIEN	26/11/1910	05/11/2001	C		commission de la culture	Seine			Artisans	Commerce et industrie (Artisans)	Tisserande
@@ -1675,7 +1675,7 @@ Matricule	Qualite	Nom usuel	Prenom usuel	Etat	Date naissance	Date de deces	Group
 12038D	M.	Vairetto	André	ANCIEN	20/01/1960		SOCR		commission de l'aménagement du territoire et du développement durable	Savoie			Professions intermédiaires administratives de la fonction publique	Salariés (Permanents politiques)	Attaché parlementaire
 80046H	M.	Valade	Jacques	ANCIEN	04/05/1930		Les Républicains		commission de la culture	Gironde		j.valade@senat.fr	Professeurs, professions scientifiques	Enseignement supérieur (sauf Professeurs de médecine)	Professeur d'université
 000311	M.	Valcin	Edmond	ANCIEN	10/03/1913	06/09/1997	RPR		Aucune (Président du Sénat)	Martinique	Questeur du Sénat		Avocats	Professions judiciaires et libérales (Avocats)	Avocat
-000684	M.	Valeau	Amédée	ANCIEN		10/08/1980	RPR		commission de la culture	Guadeloupe			Agriculteurs exploitants	Professions agricoles	Agriculteur
+000684	M.	Valeau	Amédée	ANCIEN	05/04/1897	10/08/1980	RPR		commission de la culture	Guadeloupe			Agriculteurs exploitants	Professions agricoles	Agriculteur
 08049C	M.	Vall	Raymond	ACTIF	13/01/1942		RDSE		commission des affaires étrangères	Gers		r.vall@senat.fr	Cadres administratifs et commerciaux d'entreprise	Salariés (Cadres divers)	Directeur commercial 
 89042S	M.	Vallet	André	ANCIEN	29/01/1935		UC		commission de la culture	Bouches-du-Rhône		a.vallet@senat.fr	Anciens cadres	Enseignement (Retraités)	Directeur d'école (retraité)
 55510R	M.	Vallin	Camille	ANCIEN	22/11/1918	09/08/2009	C		commission des finances	Rhône			Personnels de direction de la fonction publique	Fonctionnaires (Hauts Fonctionnaires)	Haut fonctionnaire
@@ -1701,11 +1701,11 @@ Matricule	Qualite	Nom usuel	Prenom usuel	Etat	Date naissance	Date de deces	Group
 19749K	Mme	Vérien	Dominique	ACTIF	29/08/1965		UC		commission de la culture	Yonne		d.verien@senat.fr	Ingenieurs et cadres techniques d'entreprise	Salariés (Ingénieurs)	Ingénieure
 58048D	M.	Verillon	Maurice	ANCIEN	14/10/1906	08/06/2001	SOCR		commission de la culture	Drôme			Pharmaciens libéraux	Professions médicales (Pharmaciens)	Pharmacien
 19479G	Mme	Vermeillet	Sylvie	ACTIF	10/06/1967		UC		commission des finances	Jura		s.vermeillet@senat.fr	Cadres administratifs et commerciaux d'entreprise	Salariés (Cadres divers)	Comptable
-000770	M.	Verneuil	Jacques	ANCIEN		09/03/1982	G.D.S.R.G.		commission des affaires sociales	Charente-Maritime			Agriculteurs exploitants	Professions agricoles	Ingénieur agricole, agriculteur
+000770	M.	Verneuil	Jacques	ANCIEN	29/09/1999	09/03/1982	G.D.S.R.G.		commission des affaires sociales	Charente-Maritime			Agriculteurs exploitants	Professions agricoles	Ingénieur agricole, agriculteur
 08036W	M.	Vestri	René	ANCIEN	25/10/1938	06/02/2013	Les Républicains		commission de l'aménagement du territoire et du développement durable	Alpes-Maritimes		r.vestri@senat.fr	Chefs d'entreprise de 10 salaries ou plus	Commerce et industrie (Chefs d'entreprises)	Entrepreneur de travaux publics
 89043T	M.	Vézinhet	André	ANCIEN	07/09/1939		SOCR		commission de l'économie	Hérault		andre.vezinhet@wanadoo.fr	Cadres d'entreprise	Salariés (Cadres divers)	Directeur de recherches
 95067Q	M.	Vial	Jean-Pierre	ACTIF	17/02/1951		Les Républicains		commission des affaires étrangères	Savoie		jp.vial@senat.fr	Avocats	Professions judiciaires et libérales (Avocats)	Avocat
-000676	M.	Viallanes	Etienne	ANCIEN		30/07/1978	RI		commission de la culture	Côte-d'Or			Agriculteurs exploitants	Professions agricoles	Agriculteur
+000676	M.	Viallanes	Etienne	ANCIEN	02/01/1891	30/07/1978	RI		commission de la culture	Côte-d'Or			Agriculteurs exploitants	Professions agricoles	Agriculteur
 80048K	M.	Vidal	Marcel	ANCIEN	07/03/1940	08/07/2006	SOCR	Rattaché	commission de la culture	Hérault		m.vidal@senat.fr	Agriculteurs exploitants	Professions agricoles	Viticulteur
 000354	M.	Vigier	Jean-Louis	ANCIEN	25/12/1914	08/10/1992	RPR		commission des affaires étrangères	Paris			Cadres de la publicité; cadres des relations publiques	Professions libérales (Publicistes)	Publiciste
 000259	M.	Vignon	Robert	ANCIEN	17/11/1910	09/10/1989	U.N.R.	Apparenté	commission des affaires sociales	Guyane			Personnels de direction de la fonction publique	Fonctionnaires (Hauts Fonctionnaires)	Préfet
@@ -1730,16 +1730,16 @@ Matricule	Qualite	Nom usuel	Prenom usuel	Etat	Date naissance	Date de deces	Group
 19737F	Mme	Vullien	Michèle	ACTIF	18/01/1944		UC	Apparenté	commission de l'aménagement du territoire et du développement durable	Rhône		m.vullien@senat.fr	Autres personnes sans activité professionnelle	Sans profession déclarée	
 000148	M.	Wach	Paul	ANCIEN	10/08/1906	01/05/1974	RPCD		commission des affaires étrangères	Bas-Rhin			Chirurgiens-dentistes (libéraux ou salariés)	Professions médicales (Dentistes)	Dentiste
 59308J	M.	Wacheux	Marcel	ANCIEN	28/05/1930	19/09/2008	SOCR		Aucune (Président du Sénat)	Pas-de-Calais			Professions intermédiaires administratives de la fonction publique	Enseignement secondaire	Professeur de collège
-000740	M.	Walker	Maurice	ANCIEN		29/04/1959	MRP		commission des finances	Nord			Chefs d'entreprise de 10 salaries ou plus	Commerce et industrie (Chefs d'entreprises)	Industriel
+000740	M.	Walker	Maurice	ANCIEN	20/05/1897	29/04/1959	MRP		commission des finances	Nord			Chefs d'entreprise de 10 salaries ou plus	Commerce et industrie (Chefs d'entreprises)	Industriel
 11063M	M.	Watrin	Dominique	ANCIEN	14/06/1953		CRCE		commission des affaires sociales	Pas-de-Calais		d.watrin@senat.fr	Autres personnes sans activité professionnelle	Salariés (Retraités)	
 19585H	M.	Wattebled	Dany	ACTIF	22/11/1951		Les Indépendants		commission des lois	Nord		d.wattebled@senat.fr	Retraités	Commerce et industrie (Retraités)	Ancien chef d'entreprise
 95066P	M.	Weber	Henri	ANCIEN	23/06/1944		SOCR		commission de la culture	Seine-Maritime		Non public	Professeurs, professions scientifiques	Enseignement (Divers)	Professeur
 58647W	M.	Wirth	Frédéric	ANCIEN	11/04/1915	13/07/1999	UC		commission de l'économie	Français établis hors de France			Chefs d'entreprise de 10 salaries ou plus	Commerce et industrie (Chefs d'entreprises)	Chef d'entreprise
-000029	M.	Yanat	Mouloud	ANCIEN		10/05/1988	U.N.R.		commission des affaires sociales	Setif-Batna			Agriculteurs exploitants	Professions agricoles	Industriel et Agriculteur
+000029	M.	Yanat	Mouloud	ANCIEN	01/07/1888	10/05/1988	U.N.R.		commission des affaires sociales	Setif-Batna			Agriculteurs exploitants	Professions agricoles	Industriel et Agriculteur
 14269B	Mme	Yonnet	Évelyne	ANCIEN	09/10/1954		SOCR		commission des affaires sociales	Seine-Saint-Denis		e.yonnet@senat.fr	Cadres de la fonction publique	Fonctionnaires (Cadres moyens)	Cadre administratif
 04034C	M.	Yung	Richard	ACTIF	22/09/1947		LaREM		commission des affaires étrangères	Français établis hors de France		r.yung@senat.fr	Personnels de direction de la fonction publique	Autres professions	Directeur des affaires internationales de l'Office européen des brevets
 000169	M.	Yver	Michel	ANCIEN	17/09/1907	10/01/1979	U.R.E.I.		commission des affaires étrangères	Manche			Agriculteurs exploitants	Professions agricoles	Agriculteur
 58355M	M.	Yvon	Joseph	ANCIEN	28/08/1906	07/07/1998	U.C.D.P.		commission de l'économie	Morbihan			Avocats	Professions judiciaires et libérales (Avocats)	Avocat
 01047U	M.	Zocchetto	François	ANCIEN	14/12/1958		UC		commission des lois	Mayenne		f.zocchetto@senat.fr	Autres personnes sans activité professionnelle	Professions judiciaires et libérales (Avocats)	Avocat
-000729	M.	Zussy	Modeste	ANCIEN		18/04/1993	U.N.R.		commission des lois	Haut-Rhin			Employés administratifs d'entreprise	Salariés (Employés)	Comptable
+000729	M.	Zussy	Modeste	ANCIEN	06/02/1897	18/04/1993	U.N.R.		commission des lois	Haut-Rhin			Employés administratifs d'entreprise	Salariés (Employés)	Comptable
 58655W	M.	Zwickert	Charles	ANCIEN	26/03/1920	27/09/2005	UC		commission de l'économie	Haut-Rhin			Agriculteurs exploitants	Professions agricoles	Agriculteur

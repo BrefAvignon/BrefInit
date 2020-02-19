@@ -1,4 +1,4 @@
-Matricule	Qualite	Nom usuel	Prenom usuel	Etat Senateur	Identifiant mandat	Date d'election	Date de debut de mandat	Annee de début de mandat	Motif debut de mandat	Date de fin de mandat	Annee de fin de mandat	Motif fin de mandat	Commentaire
+Matricule	Qualite	Nom usuel	Prenom usuel	Etat Senateur	Identifiant mandat	Date d'election	Date de debut de mandat	Annee de debut de mandat	Motif debut de mandat	Date de fin de mandat	Annee de fin de mandat	Motif fin de mandat	Commentaire
 83008P	M.	Abadie	François	ANCIEN	1	25/09/1983	03/10/1983		Election	01/10/1992		Fin de mandat	
 83008P	M.	Abadie	François	ANCIEN	2	27/09/1992	02/10/1992		Renouvellement 1	02/03/2001	2001	Décédé	
 14263U	M.	Abate	Patrick	ANCIEN	14390		22/12/2014		Remplace	17/06/2017		Reprise mandat d'ancien membre du Gvt	en remplacement de M. Jean-Marc Todeschini, devenu membre du Gouvernement

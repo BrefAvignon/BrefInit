@@ -162,3 +162,5 @@ source("src/common/include.R")
 # TODO
 # voir pq il y a autant de lignes supprimées dans CM vs. CM2
 # >> peut être que la correction dans le script de comparaison a résolu le pb ?
+
+# TODO explorer plus profondément la version postgresql de la BD du Sénat
