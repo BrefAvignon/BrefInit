@@ -5,7 +5,7 @@ Row	Id RNE	Nom	Prenom	Attribut	ValAvt	ValApr	Commentaire
 538	1179834	DERYCKE	Dinah	Date naissance	31/7/1960	1/4/1946	Typo dans le prénom (Nouvel ESSAI)
 538	1179834	DERYCKE	Dinah	Date debut mandat	30/12/2004	3/7/1997	Date de début fausse (Nouvel ESSAI)
 745	1180707	LAURENT	PIERRE	Date debut mandat	25/9/2011	20/9/2012	Date de debut fausse (BD Sénat)
-1034	1192379	ANGO ELA PAVLOPULOS	Kalliopi	Date debut mandat	25/9/2011	2012-07-22	Date de debut fausse (BD Sénat)
+1034	1192379	ANGO ELA PAVLOPULOS	Kalliopi	Date debut mandat	25/9/2011	22/7/2012	Date de debut fausse (BD Sénat)
 966	14194	MALOVRY	Lucienne	Date debut mandat	26/9/2004	2/11/2004	Date de debut fausse (BD Sénat)
 84	1421	BERTRAND	Anne-Marie	Date debut mandat	1/10/2014	23/9/2017	Date de debut fausse (BD Sénat)
 837	1473637	KAUFFMANN	Claudine	Date debut mandat	1/10/2014	1/10/2017	Date de debut fausse (BD Sénat)
@@ -46,17 +46,34 @@ Row	Id RNE	Nom	Prenom	Attribut	ValAvt	ValApr	Commentaire
 314	980305	GERBAUD	Frédérique	Date debut mandat	28/9/2014	18/11/2016	Date de début fausse (BD Sénat)
 329	98533	RIOCREUX	Stéphanie	Date debut mandat	25/9/2011	8/4/2015	Date de début fausse (BD Sénat)
 375	998366	RIVOLLIER	Evelyne	Date debut mandat	25/9/2011	11/12/2016	Date de début fausse (BD Sénat)
+75	869934	ESCOFFIER	Anne-Marie	Date debut mandat	21/9/2008	3/5/2014	Date de début fausse (BD Sénat)
+486	240	LONGUET	Gérard	Date debut mandat	25/9/2011	17/6/2012	Date de début fausse (BD Sénat)
+605	273	VANLERENBERGHE	Jean-Marie	Date debut mandat	28/9/2001	1/10/2011	Date de début fausse (BD Sénat)
+680	295	MERCIER	Michel	Date debut mandat	26/9/2004	17/6/2012	Date de début fausse (BD Sénat)
+1046	1188252	CONWAY-MOURET	Hélène	Date fin mandat	22/7/2012	21/7/2012	Date de fin fausse (BD Sénat)
+1047	1188252	CONWAY-MOURET	Hélène	Date debut mandat	25/9/2011	3/5/2014	Date de début fausse (BD Sénat)
 243	164	ROUVIERE	André	Date naissance	22/4/1936	29/04/1936	Date de naissance incorrecte
 31	175	BALARELLO	José	Date naissance	24/12/1926	25/12/1926	Date de naissance incorrecte
 478	355631	PANIS	Jacqueline	Date naissance	18/4/1948	16/04/1948	Date de naissance incorrecte
 1044	414	COINTAT	Christian	Date naissance	1/8/1922	11/7/1943	Ligne complètement fausse
 1044	414	COINTAT	Christian	Date fin mandat	20/9/2008	25/9/2004	Ligne complètement fausse
 308	558501	LE MENN	Jacky	Date naissance	10/3/1941	17/03/1941	Date de naissance incorrecte
-#581	912	LENOIR	Jean-Claude	Date fin mandat	24/9/2011	NA	Date incorrecte remplacée par NA pour fusion ultérieure
-#621	833176	ESPAGNAC	Frédérique	Date fin mandat	24/9/2011	NA	Date incorrecte remplacée par NA pour fusion ultérieure
-#625	335393	LABAZEE	Georges	Date fin mandat	24/9/2011	NA	Date incorrecte remplacée par NA pour fusion ultérieure
-#627	335394	LASSERRE	Jean-Jacques	Date fin mandat	24/9/2011	NA	Date incorrecte remplacée par NA pour fusion ultérieure
-#714	1105676	HERVE	Loïc	Date fin mandat	30/9/2014	NA	Correction pour fusion ultérieure
-#715	1105676	HERVE	Loïc	Date debut mandat	1/10/2014	28/9/2014	Correction pour fusion ultérieure
-#2	876374	CHAIZE	Patrick	Date fin mandat	30/9/2014	NA	Correction pour fusion ultérieure
-#3	876374	CHAIZE	Patrick	Date debut mandat	1/10/2014	28/9/2014	Correction pour fusion ultérieure
+2	876374	CHAIZE	Patrick	Date fin mandat	30/9/2014	NA	Correction pour fusion ultérieure
+3	876374	CHAIZE	Patrick	Date debut mandat	1/10/2014	28/9/2014	Correction pour fusion ultérieure
+581	912	LENOIR	Jean-Claude	Date fin mandat	24/9/2011	NA	Correction pour fusion ultérieure
+621	833176	ESPAGNAC	Frédérique	Date fin mandat	24/9/2011	NA	Correction pour fusion ultérieure
+625	335393	LABAZEE	Georges	Date fin mandat	24/9/2011	NA	Correction pour fusion ultérieure
+627	335394	LASSERRE	Jean-Jacques	Date fin mandat	24/9/2011	NA	Correction pour fusion ultérieure
+628	335394	LASSERRE	Jean-Jacques	Nuance politique	MODM	DVD	Correction pour fusion ultérieure
+714	1105676	HERVE	Loïc	Date fin mandat	30/9/2014	NA	Correction pour fusion ultérieure
+715	1105676	HERVE	Loïc	Date debut mandat	1/10/2014	28/9/2014	Correction pour fusion ultérieure
+1040	407	CANTEGRIT	Jean-Pierre	Date debut mandat	28/9/2001	23/9/2001	Correction pour fusion ultérieure
+1040	407	CANTEGRIT	Jean-Pierre	Date fin mandat	20/9/2008	NA	Correction pour fusion ultérieure
+1043	408	CERISIER BEN GUIGA	Monique	Date debut mandat	28/9/2001	23/9/2001	Correction pour fusion ultérieure
+1043	408	CERISIER BEN GUIGA	Monique	Date fin mandat	20/9/2008	NA	Correction pour fusion ultérieure
+1054	411	DUVERNOIS	Louis	Date debut mandat	28/9/2001	23/9/2001	Correction pour fusion ultérieure
+1054	411	DUVERNOIS	Louis	Date fin mandat	20/9/2008	NA	Correction pour fusion ultérieure
+1064	413	GUERRY	Michel	Date debut mandat	28/9/2001	23/9/2001	Correction pour fusion ultérieure
+1064	413	GUERRY	Michel	Date fin mandat	20/9/2008	NA	Correction pour fusion ultérieure
+1065	837970	KAMMERMANN	Christiane	Date fin mandat	20/9/2008	NA	Correction pour fusion ultérieure
+1074	837971	YUNG	Richard	Date fin mandat	20/9/2008	NA	Correction pour fusion ultérieure

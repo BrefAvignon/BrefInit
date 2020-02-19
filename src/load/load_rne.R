@@ -31,7 +31,8 @@ load.data <- function(filenames, col.map, correc.file, correct.data)
 			comment.char="", 			# ignore possible comments in the content
 			row.names=NULL, 			# don't look for row names in the file
 			quote="", 					# don't expect double quotes "..." around text fields
-			as.is=TRUE					# don't convert strings to factors
+			as.is=TRUE,					# don't convert strings to factors
+			colClasses="character"		# all column originally read as characters, then converted later if needed
 #			fileEncoding="Latin1"		# original tables seem to be encoded in Latin1 (ANSI)
 	)
 	tlog(2,"Read ",nrow(correc.table)," rows and ",ncol(correc.table)," columns")
