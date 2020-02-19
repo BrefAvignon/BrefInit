@@ -1,4 +1,4 @@
-Matricule	Qualité	Nom usuel	Prénom usuel	État Sénateur	Identifiant mandat	Date d'élection	Date de début de mandat	Année de début de mandat	Date de fin de mandat	Année de fin de mandat	Identifiant fonction	Date de début de fonction	Année de début de fonction	Date de fin de fonction	Année de fin de fonction	Fonction
+Matricule	Qualite	Nom usuel	Prenom usuel	Etat Senateur	Identifiant mandat	Date d'election	Date de debut de mandat	Annee de debut de mandat	Date de fin de mandat	Annee de fin de mandat	Identifiant fonction	Date de debut de fonction	Annee de debut de fonction	Date de fin de fonction	Annee de fin de fonction	Fonction
 83008P	M.	Abadie	François	ANCIEN	43824		02/07/1981		23/07/1981		42420	02/07/1981		23/07/1981		Député
 59213C	M.	Alduy	Paul	ANCIEN	9673			1956		1958	3150		1956		1958	Député
 01065W	M.	Alfonsi	Nicolas	ANCIEN	43867		02/04/1973		01/04/1978		42463	02/04/1973		01/04/1978		Député

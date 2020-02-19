@@ -305,18 +305,26 @@ COL_VERIF_DATE_TOUR1 <- "Tour1"
 COL_VERIF_DATE_TOUR2 <- "Tour2"
 
 # columns for senate files
+COL_SENAT_CANT_NOM <- "Circonscription"
+COL_SENAT_COM_NOM <- "Commune"
 COL_SENAT_DPT_NOM <- "Circonscription"
+COL_SENAT_DPT_NOM2 <- "Departement ou collectivite"
 COL_SENAT_ELU_DDD <- "Date de deces"
 COL_SENAT_ELU_DDN <- "Date naissance"
 COL_SENAT_ELU_MATRI <- "Matricule"
 COL_SENAT_ELU_NOM <- "Nom usuel"
 COL_SENAT_ELU_PRENOM <- "Prenom usuel"
 COL_SENAT_ELU_NUANCE <- "Groupe politique"
-COL_SENAT_FCT_NOM <- "Fonction au Bureau du Senat"
+COL_SENAT_ELU_QUALI <- "Qualite"
+COL_SENAT_FCT_DBT <- "Date de debut de fonction"
+COL_SENAT_FCT_FIN <- "Date de fin de fonction"
+COL_SENAT_FCT_BUR <- "Fonction au Bureau du Senat"
+COL_SENAT_FCT_NOM <- "Fonction"
 COL_SENAT_MDT_DBT <- "Date de debut de mandat"
 COL_SENAT_MDT_FIN <- "Date de fin de mandat"
 COL_SENAT_MDT_MOTIF <- "Motif fin de mandat"
 COL_SENAT_PRO_NOM <- "PCS INSEE"
+COL_SENAT_REG_NOM <- "Region"
 
 
 
@@ -384,14 +392,21 @@ FOLDER_IN <- "in"
 	# national assembly files
 	FILE_ASSEM_XXX <- file.path(FOLDER_VERIFS, "xxxxxx.txt")
 	# senate files
+	FILE_SENAT_CONV_DPTS <- file.path(FOLDER_SENAT, "conv_dpts.txt")
+	FILE_SENAT_CONV_NOMSFAM <- file.path(FOLDER_SENAT, "conv_noms.txt")
+	FILE_SENAT_CONV_NUANCES <- file.path(FOLDER_SENAT, "conv_nuances.txt")
+	FILE_SENAT_CONV_PRENOMS <- file.path(FOLDER_SENAT, "conv_prenoms.txt")
+	FILE_SENAT_CONV_PRO <- file.path(FOLDER_SENAT, "conv_professions.txt")
 	FILE_SENAT_ELEC_CD <- file.path(FOLDER_SENAT, "departemental.txt")
+	FILE_SENAT_ELEC_D <- file.path(FOLDER_SENAT, "depute.txt")
 	FILE_SENAT_ELEC_DE <- file.path(FOLDER_SENAT, "europeen.txt")
-	FILE_SENAT_ELEC_METRO <- file.path(FOLDER_SENAT, "metropolitain.txt")
+#	FILE_SENAT_ELEC_METRO <- file.path(FOLDER_SENAT, "metropolitain.txt")	# not sure what this is exactly
 	FILE_SENAT_ELEC_CM <- file.path(FOLDER_SENAT, "municipal.txt")
 	FILE_SENAT_ELEC_CR <- file.path(FOLDER_SENAT, "regional.txt")
 	FILE_SENAT_ELEC_S <- file.path(FOLDER_SENAT, "senatorial.txt")
-	FILE_SENAT_ELEC_EPCI <- file.path(FOLDER_SENAT, "territorial.txt")
+#	FILE_SENAT_ELEC_EPCI <- file.path(FOLDER_SENAT, "territorial.txt")		# not sure what this is exactly
 	FILE_SENAT_GENERAL <- file.path(FOLDER_SENAT, "general.txt")
+	FILE_SENAT_GENERAL_CACHE <- file.path(FOLDER_SENAT, "general_cache.txt")
 	FILE_SENAT_GROUPE <- file.path(FOLDER_SENAT, "groupes.txt")
 # conversion files
 	FILE_CONV_IDS <- file.path(FOLDER_CONV, "elu_equiv_ids.txt")
