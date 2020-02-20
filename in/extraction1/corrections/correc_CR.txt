@@ -7,3 +7,5 @@ NA	NA	NA	NA	Libelle departement	RHONE HORS METROPOLE DE LYON	RHONE	Pas besoin de
 NA	NA	NA	NA	Libelle departement	METROPOLE DE LYON	RHONE	Pas besoin de distinguer Lyon du reste du Rhone
 4434	1509834	FERRER	Thérèse	Date fin mandat	30/12/2015	NA	Date incorrecte remplacée par NA (sans fusion ultérieure)
 5180	1509912	VILCOQ	Marie	Date fin mandat	24/12/2015	NA	Date incorrecte remplacée par NA (sans fusion ultérieure)
+3898	102	FRANCOIS-PONCET	Jean	Date debut mandat	24/4/2008	16/3/1986	Date completement fausse (Senat)
+3898	102	FRANCOIS-PONCET	Jean	Date fin mandat	13/3/2010	21/3/1992	Date completement fausse (Senat)

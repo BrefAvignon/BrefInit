@@ -300,6 +300,8 @@ senate.load.elect.table <- function(type)
 	sen.data.file["DE"] <- FILE_SENAT_ELEC_DE
 	sen.data.file["S"] <- FILE_SENAT_ELEC_S
 	
+	tlog(2,"Loading the Senate madate table: ",sen.data.file)
+	
 	# load the corresponding senate mandate table(s)
 	elect.table <- read.table(
 		file=sen.data.file[type],	# name of the data file
@@ -315,6 +317,7 @@ senate.load.elect.table <- function(type)
 	)
 	
 	# set empty cells to NA
+	tlog(4,"Cleaning the table")
 	for(c in 1:ncol(elect.table))
 		elect.table[which(elect.table[,c]==""),c] <- NA
 	
@@ -334,7 +337,9 @@ senate.load.elect.table <- function(type)
 # returns: the table resulting from the conversion.
 #############################################################################################
 senate.convert.mandate.table <- function(general.table, elect.table, type)
-{	# for mayors, only keep the appropriate mandates
+{	tlog(2,"Converting the Senate mandate table")
+	
+	# for mayors, only keep the appropriate mandates
 	if(type=="M")
 	{	function.names <- trimws(normalize.proper.nouns(remove.diacritics(elect.table[,COL_SENAT_FCT_NOM])))
 		# we only keep the mayors from the municipal counselor table
@@ -345,10 +350,12 @@ senate.convert.mandate.table <- function(general.table, elect.table, type)
 	idx <- match(elect.table[,COL_SENAT_ELU_MATRI], general.table[,COL_ATT_ELU_ID_SENAT])
 	
 	# convert mandate dates
+	tlog(4,"Converting mandate dates")
 	mdt.start.dates <- as.Date(elect.table[,COL_SENAT_MDT_DBT], "%d/%m/%Y")
 	mdt.end.dates <- as.Date(elect.table[,COL_SENAT_MDT_FIN], "%d/%m/%Y")
 	
 	# mandate name
+	tlog(4,"Inserting mandate names")
 	if(type=="CD")
 		mdt.names <- rep("CONSEILLER DEPARTEMENTAL", length(idx))
 	else if(type=="CM" || type=="M")
@@ -363,11 +370,13 @@ senate.convert.mandate.table <- function(general.table, elect.table, type)
 		mdt.names <- rep("SENATEUR", length(idx))
 	
 	# possibly get motive of end of mandate
+	tlog(4,"Processing end of mandate motive")
 	mdt.motives <- rep(NA,length(idx))
 	if(COL_SENAT_MDT_MOTIF %in% colnames(elect.table))
 		mdt.motives <- trimws(normalize.proper.nouns(remove.diacritics(elect.table[,COL_SENAT_MDT_MOTIF])))
 	
 	# possibly get and convert function dates
+	tlog(4,"Processing function dates")
 	fct.start.dates <- rep(NA, length(idx))
 	if(COL_SENAT_FCT_DBT %in% colnames(elect.table))
 		fct.start.dates <- as.Date(elect.table[,COL_SENAT_FCT_DBT], "%d/%m/%Y")
@@ -376,6 +385,7 @@ senate.convert.mandate.table <- function(general.table, elect.table, type)
 		fct.end.dates <- as.Date(elect.table[,COL_SENAT_FCT_FIN], "%d/%m/%Y")
 	
 	# possibly get function name
+	tlog(4,"Processing function names")
 	function.names <- general.table[idx,COL_ATT_FCT_NOM]
 	if(COL_SENAT_FCT_NOM %in% colnames(elect.table))
 	{	function.names <- trimws(normalize.proper.nouns(remove.diacritics(elect.table[,COL_SENAT_FCT_NOM])))
@@ -384,6 +394,7 @@ senate.convert.mandate.table <- function(general.table, elect.table, type)
 	}
 	
 	# build senate table
+	tlog(4,"Building new Senate mandate table")
 	sen.tab <- data.frame(
 		general.table[idx,COL_ATT_ELU_ID],			# universal id
 		general.table[idx,COL_ATT_ELU_ID_RNE],		# RNE id
@@ -437,7 +448,9 @@ senate.convert.mandate.table <- function(general.table, elect.table, type)
 	# possibly add location columns
 	place.order <- rep(NA, nrow(sen.tab))
 	if(type=="CR")
-	{	# clean region names
+	{	tlog(4,"Adding region-related columns")
+		
+		# clean region names
 		reg.names <- trimws(normalize.proper.nouns(remove.diacritics(elect.table[,COL_SENAT_REG_NOM])))
 		regs.conv <- senate.load.conversion.file(FILE_SENAT_CONV_REGIONS)
 		idx <- match(reg.names, regs.conv[, COL_CORREC_VALAVT])
@@ -458,7 +471,7 @@ senate.convert.mandate.table <- function(general.table, elect.table, type)
 		)
 		reg.idx <- match(reg.names, reg.table[,COL_ATT_REG_NOM])
 		reg.codes <- reg.table[reg.idx, COL_ATT_REG_CODE]
-	
+		
 		# add to table
 		regions <- data.frame(reg.codes, reg.names, stringsAsFactors=FALSE)
 		colnames(regions) <- c(COL_ATT_REG_CODE, COL_ATT_REG_NOM)
@@ -468,7 +481,9 @@ senate.convert.mandate.table <- function(general.table, elect.table, type)
 		place.order <- sen.tab[,COL_ATT_REG_CODE]
 	}
 	else if(type=="CD")
-	{	# clean department names
+	{	tlog(4,"Adding department-related columns")
+		
+		# clean department names
 		dpt.names <- trimws(normalize.proper.nouns(remove.diacritics(elect.table[,COL_SENAT_DPT_NOM2])))
 		dpts.conv <- senate.load.conversion.file(FILE_SENAT_CONV_DPTS)
 		idx <- match(dpt.names, dpts.conv[, COL_CORREC_VALAVT])
@@ -503,6 +518,7 @@ senate.convert.mandate.table <- function(general.table, elect.table, type)
 		cant.names <- trimws(normalize.proper.nouns(remove.diacritics(elect.table[,COL_SENAT_CANT_NOM])))
 		
 		# retrieve canton codes and ids
+		tlog(4,"Adding canton-related columns")
 		cant.table <- read.table(
 			file=FILE_CONV_CANTONS,		# name of the id file
 			header=TRUE, 				# look for a header
@@ -537,7 +553,9 @@ senate.convert.mandate.table <- function(general.table, elect.table, type)
 		place.order <- paste(COL_ATT_DPT_CODE, sprintf("%02d", as.integer(COL_ATT_CANT_CODE)), sep=":")
 	}
 	else if(type=="CM" || type=="M")
-	{	# municipalities
+	{	tlog(4,"Adding municipality-related columns")
+		
+		# municipalities
 		municipality <- data.frame(trimws(normalize.proper.nouns(remove.diacritics(elect.table[,COL_SENAT_COM_NOM]))), stringsAsFactors=FALSE)
 		sen.tab <- cbind(sen.tab, municipality)
 		colnames(sen.tab)[ncol(sen.tab)] <- COL_ATT_COM_NOM
@@ -548,7 +566,9 @@ senate.convert.mandate.table <- function(general.table, elect.table, type)
 		place.order <- sen.tab[,COL_ATT_COM_NOM]
 	}
 	else if(type=="S")
-	{	# get the department ids, codes and names
+	{	tlog(4,"Adding department-related columns")
+		
+		# get the department ids, codes and names
 		dpt.ids <- general.table[idx, COL_ATT_DPT_ID]
 		dpt.codes <- general.table[idx, COL_ATT_DPT_CODE]
 		dpt.names <- general.table[idx, COL_ATT_DPT_NOM]
@@ -577,9 +597,11 @@ senate.convert.mandate.table <- function(general.table, elect.table, type)
 	{	tlog(4,"We keep only the pre-",format(limit.date)," mandates")
 		pre.mandates <- which(mdt.start.dates<limit.date) 
 		sen.tab <- sen.tab[-pre.mandates,]
+		place.order <- place.order[-pre.mandates]
 	}
 	
 	# order the Senate table
+	tlog(4,"Ordering the table rows")
 	sen.tab <- sen.tab[order(place.order, 
 				sen.tab[,COL_ATT_ELU_NOM], sen.tab[,COL_ATT_ELU_PRENOM], 
 				sen.tab[,COL_ATT_MDT_DBT], sen.tab[,COL_ATT_MDT_FIN]) ,]
@@ -590,6 +612,7 @@ senate.convert.mandate.table <- function(general.table, elect.table, type)
 	folder <- file.path(FOLDER_COMP_SRC_SEN, type)
 	dir.create(path=folder, showWarnings=FALSE, recursive=TRUE)
 	sen.tab.file <- file.path(folder, "data_senat.txt")
+	tlog(4,"Recording the new table in ",sen.tab.file)
 	write.table(x=sen.tab,
 		file=sen.tab.file,		# name of file containing the new table
 		quote=FALSE,			# no double quote around strings
@@ -600,8 +623,9 @@ senate.convert.mandate.table <- function(general.table, elect.table, type)
 	)
 	
 	# add years columns
-	start.years <- as.integer(elect.table[,COL_SENAT_MDT_ADBT])
-	end.years <- as.integer(elect.table[,COL_SENAT_MDT_AFIN])
+	tlog(4,"Adding years columns")
+	start.years <- as.integer(elect.table[-pre.mandates,COL_SENAT_MDT_ADBT])
+	end.years <- as.integer(elect.table[-pre.mandates,COL_SENAT_MDT_AFIN])
 	sen.tab <- cbind(sen.tab, start.years, end.years)
 	colnames(sen.tab)[(ncol(sen.tab)-1):ncol(sen.tab)] <- c(COL_SENAT_MDT_ADBT, COL_SENAT_MDT_AFIN)
 	
@@ -706,17 +730,22 @@ senate.match.senate.vs.rne.rows <- function(sen.tab, rne.tab, tolerance)
 # returns: adjusted RNE table.
 #############################################################################################
 senate.adjust.rne.table <- function(data)
-{	# add missing columns to the RNE table
+{	tlog(2,"Adjusting RNE table")
+	
+	# add missing columns to the RNE table
+	tlog(4,"Adding missing columns to the RNE table")
 	rne.tab <- cbind(data, rep(NA,nrow(data)), as.Date(rep(NA,nrow(data))), rep(NA,nrow(data)))
 	colnames(rne.tab)[(ncol(rne.tab)-2):ncol(rne.tab)] <- c(COL_ATT_ELU_ID_SENAT, COL_ATT_ELU_DDD, COL_ATT_ELU_NAT)
 	rne.tab <- rne.tab[,colnames(rne.tab)]
 	
 	# reorder its columns
+	tlog(4,"Sorting RNE table rows")
 	norm.cols <- intersect(COLS_ATT_NORMALIZED, colnames(rne.tab))
 	rne.tab <- rne.tab[,norm.cols]
 	
 	# record temp RNE table
 	rne.tab.file <- file.path(FOLDER_COMP_SRC_SEN, type, "data_rne1.txt")
+	tlog(4,"Recording the new RNE table in ",rne.tab.file)
 	write.table(x=rne.tab,
 		file=rne.tab.file,		# name of file containing the new table
 		quote=FALSE,			# no double quote around strings
@@ -743,14 +772,15 @@ senate.adjust.rne.table <- function(data)
 # returns: updated RNE table.
 #############################################################################################
 senate.update.rne.table <- function(rne.tab, sen.tab, row.conv)
-{	result <- rne.tab
+{	tlog(2,"Updating the RNE table")
+	result <- rne.tab
 	
 	# process the Senate rows that are matched in the RNE table
 	exist.rows <- which(!is.na(row.conv))
-	tlog(2,"Updating the ",length(exist.rows)," matching rows in the RNE table")
+	tlog(4,"Updating the ",length(exist.rows)," matching rows in the RNE table")
 	for(idx2 in exist.rows)
 	{	idx1 <- row.conv[idx2]
-		tlog(4,"Processing row ",idx1)
+		tlog(6,"Processing row ",idx1)
 		
 		# overwrite NA values using Senate data
 		cols <- which(is.na(result[idx1,]))
@@ -768,7 +798,7 @@ senate.update.rne.table <- function(rne.tab, sen.tab, row.conv)
 	
 	# insert new Senate rows into existing RNE table
 	missing.rows <- which(is.na(row.conv))
-	tlog(2,"Inserting ",length(missing.rows)," missing rows in the RNE table")
+	tlog(4,"Inserting ",length(missing.rows)," missing rows in the RNE table")
 	result <- rbind(result, sen.tab[missing.rows,])
 	# sort the resulting table
 	result <- result[order(result[,COL_ATT_DPT_CODE], 
@@ -777,6 +807,7 @@ senate.update.rne.table <- function(rne.tab, sen.tab, row.conv)
 	
 	# record the corrected/completed table
 	rne.tab.file <- file.path(FOLDER_COMP_SRC_SEN, type, "data_rne2.txt")
+	tlog(4,"Recording the corrected/completed table: ",rne.tab.file)
 	write.table(x=result,
 		file=rne.tab.file,		# name of file containing the new table
 		quote=FALSE,			# no double quote around strings
