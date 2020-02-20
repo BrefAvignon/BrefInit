@@ -20,6 +20,7 @@ source("src/verification/test_duplicates.R")
 # set up the extraction
 extraction <- 1 # 1 or 2
 correct.data <- TRUE
+complete.data <- TRUE
 
 # start logging
 start.rec.log(text="S")
@@ -29,7 +30,7 @@ out.folder <- FOLDER_OUT_S
 dir.create(path=out.folder, showWarnings=FALSE, recursive=TRUE)
 
 # load the data
-data <- load.s.data(correct.data)
+data <- load.s.data(correct.data, complete.data)
 
 # summarizes each column separately
 tlog(0,"Examining each column separately")

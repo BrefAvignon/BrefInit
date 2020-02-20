@@ -500,10 +500,11 @@ insert.unique.canton.id <- function(data)
 # Loads the table for departmental counsilors (first extraction).
 #
 # correct.data: whether or not to apply the correction on the data read.
+# complete.data: whether or not to use secondary sources to correct/complete the RNE.
 #
 # returns: data frame made of the cleaned data contained in the appropriate files.
 #############################################################################################
-load.cd.data <- function(correct.data)
+load.cd.data <- function(correct.data, complete.data)
 {	# names of the columns
 	col.map <- c()
 	col.map["Code du département"] <- COL_ATT_DPT_CODE
@@ -539,16 +540,25 @@ load.cd.data <- function(correct.data)
 		data <- merge.similar.rows(data=data)
 	}
 	
+	# correct/complete with secondary sources
+	if(complete.data)
+	{	# senate database
+		data <- senate.integrate.data(data, type="CD", cache=TRUE, compare=FALSE)
+		# assembly database
+		# TODO
+	}
+	
 	return(data)
 }
 #############################################################################################
 # Loads the table for departmental counsilors (second extraction).
 #
 # correct.data: whether or not to apply the correction on the data read.
+# complete.data: whether or not to use secondary sources to correct/complete the RNE.
 #
 # returns: data frame made of the cleaned data contained in the appropriate files.
 #############################################################################################
-load.cd2.data <- function(correct.data)
+load.cd2.data <- function(correct.data, complete.data)
 {	# names of the columns
 	col.map <- c()
 	col.map["Code du département"] <- COL_ATT_DPT_CODE
@@ -583,6 +593,14 @@ load.cd2.data <- function(correct.data)
 		data <- merge.similar.rows(data=data)
 	}
 	
+	# correct/complete with secondary sources
+	if(complete.data)
+	{	# senate database
+		data <- senate.integrate.data(data, type="CD", cache=TRUE, compare=FALSE)
+		# assembly database
+		# TODO
+	}
+	
 	return(data)
 }
 
@@ -593,10 +611,11 @@ load.cd2.data <- function(correct.data)
 # Loads the tables for municipal counsilors (first extraction).
 #
 # correct.data: whether or not to apply the correction on the data read.
+# complete.data: whether or not to use secondary sources to correct/complete the RNE.
 #
 # returns: data frame made of the cleaned data contained in the appropriate files.
 #############################################################################################
-load.cm.data <- function(correct.data)
+load.cm.data <- function(correct.data, complete.data)
 {	# names of the columns
 	col.map <- c()
 	col.map["Code du département (Maire)"] <- COL_ATT_DPT_CODE
@@ -651,6 +670,14 @@ load.cm.data <- function(correct.data)
 		data <- merge.similar.rows(data=data)
 	}
 	
+	# correct/complete with secondary sources
+	if(complete.data)
+	{	# senate database
+		data <- senate.integrate.data(data, type="CM", cache=TRUE, compare=FALSE)
+		# assembly database
+		# TODO
+	}
+	
 	return(data)
 }
 
@@ -661,10 +688,11 @@ load.cm.data <- function(correct.data)
 # Loads the tables for municipal counsilors (second extraction).
 #
 # correct.data: whether or not to apply the correction on the data read.
+# complete.data: whether or not to use secondary sources to correct/complete the RNE.
 #
 # returns: data frame made of the cleaned data contained in the appropriate files.
 #############################################################################################
-load.cm2.data <- function(correct.data)
+load.cm2.data <- function(correct.data, complete.data)
 {	# names of the columns
 	col.map <- c()
 	col.map["N° Identification d'un élu"] <- COL_ATT_ELU_ID_RNE
@@ -697,6 +725,14 @@ load.cm2.data <- function(correct.data)
 		data <- merge.similar.rows(data=data)
 	}
 	
+	# correct/complete with secondary sources
+	if(complete.data)
+	{	# senate database
+		data <- senate.integrate.data(data, type="CM", cache=TRUE, compare=FALSE)
+		# assembly database
+		# TODO
+	}
+	
 	return(data)
 }
 
@@ -707,10 +743,11 @@ load.cm2.data <- function(correct.data)
 # Loads the table for regional counsilors (first extraction).
 #
 # correct.data: whether or not to apply the correction on the data read.
+# complete.data: whether or not to use secondary sources to correct/complete the RNE.
 #
 # returns: data frame made of the cleaned data contained in the appropriate files.
 #############################################################################################
-load.cr.data <- function(correct.data)
+load.cr.data <- function(correct.data, complete.data)
 {	# names of the columns
 	col.map <- c()
 	col.map["Code région"] <- COL_ATT_REG_CODE
@@ -743,6 +780,14 @@ load.cr.data <- function(correct.data)
 		data <- merge.similar.rows(data=data)
 	}
 	
+	# correct/complete with secondary sources
+	if(complete.data)
+	{	# senate database
+		data <- senate.integrate.data(data, type="CR", cache=TRUE, compare=FALSE)
+		# assembly database
+		# TODO
+	}
+	
 	return(data)
 }
 
@@ -753,10 +798,11 @@ load.cr.data <- function(correct.data)
 # Loads the table for regional counsilors (first extraction).
 #
 # correct.data: whether or not to apply the correction on the data read.
+# complete.data: whether or not to use secondary sources to correct/complete the RNE.
 #
 # returns: data frame made of the cleaned data contained in the appropriate files.
 #############################################################################################
-load.cr2.data <- function(correct.data)
+load.cr2.data <- function(correct.data, complete.data)
 {	# names of the columns
 	col.map <- c()
 	col.map["Région"] <- COL_ATT_REG_NOM
@@ -801,6 +847,14 @@ load.cr2.data <- function(correct.data)
 		data <- merge.similar.rows(data=data)
 	}
 	
+	# correct/complete with secondary sources
+	if(complete.data)
+	{	# senate database
+		data <- senate.integrate.data(data, type="CR", cache=TRUE, compare=FALSE)
+		# assembly database
+		# TODO
+	}
+	
 	return(data)
 }
 
@@ -811,10 +865,11 @@ load.cr2.data <- function(correct.data)
 # Loads the table for members of the parliament.
 #
 # correct.data: whether or not to apply the correction on the data read.
+# complete.data: whether or not to use secondary sources to correct/complete the RNE.
 #
 # returns: data frame made of the cleaned data contained in the appropriate files.
 #############################################################################################
-load.d.data <- function(correct.data)
+load.d.data <- function(correct.data, complete.data)
 {	# names of the columns
 	col.map <- c()
 	col.map["Code du département"] <- COL_ATT_DPT_CODE
@@ -847,6 +902,14 @@ load.d.data <- function(correct.data)
 		data <- merge.similar.rows(data=data)
 	}
 	
+	# correct/complete with secondary sources
+	if(complete.data)
+	{	# senate database
+		data <- senate.integrate.data(data, type="D", cache=TRUE, compare=FALSE)
+		# assembly database
+		# TODO
+	}
+	
 	return(data)
 }
 
@@ -857,10 +920,11 @@ load.d.data <- function(correct.data)
 # Loads the table for European counsilors.
 #
 # correct.data: whether or not to apply the correction on the data read.
+# complete.data: whether or not to use secondary sources to correct/complete the RNE.
 #
 # returns: data frame made of the cleaned data contained in the appropriate files.
 #############################################################################################
-load.de.data <- function(correct.data)
+load.de.data <- function(correct.data, complete.data)
 {	# names of the columns
 	col.map <- c()
 	col.map["CodeCirER"] <- COL_ATT_CIRCE_CODE
@@ -887,6 +951,14 @@ load.de.data <- function(correct.data)
 		data <- merge.similar.rows(data=data)
 	}
 	
+	# correct/complete with secondary sources
+	if(complete.data)
+	{	# senate database
+		data <- senate.integrate.data(data, type="DE", cache=TRUE, compare=FALSE)
+		# assembly database
+		# TODO
+	}
+	
 	return(data)
 }
 
@@ -897,10 +969,11 @@ load.de.data <- function(correct.data)
 # Loads the table for EPCI counsilors.
 #
 # correct.data: whether or not to apply the correction on the data read.
+# complete.data: whether or not to use secondary sources to correct/complete the RNE.
 #
 # returns: data frame made of the cleaned data contained in the appropriate files.
 #############################################################################################
-load.epci.data <- function(correct.data)
+load.epci.data <- function(correct.data, complete.data)
 {	# names of the columns
 	col.map <- c()
 	col.map["Code département EPCI"] <- COL_ATT_EPCI_DPT
@@ -946,6 +1019,14 @@ load.epci.data <- function(correct.data)
 		data <- merge.similar.rows(data=data)
 	}
 	
+	# correct/complete with secondary sources
+	if(complete.data)
+	{	# no EPCI data in the senate database
+
+		# assembly database
+		# TODO
+	}
+	
 	return(data)
 }
 
@@ -956,10 +1037,11 @@ load.epci.data <- function(correct.data)
 # Loads the table for mayors.
 #
 # correct.data: whether or not to apply the correction on the data read.
+# complete.data: whether or not to use secondary sources to correct/complete the RNE.
 #
 # returns: data frame made of the cleaned data contained in the appropriate files.
 #############################################################################################
-load.m.data <- function(correct.data)
+load.m.data <- function(correct.data, complete.data)
 {	# names of the columns
 	col.map <- c()
 	col.map["Code du département (Maire)"] <- COL_ATT_DPT_CODE
@@ -1011,6 +1093,14 @@ load.m.data <- function(correct.data)
 		data <- merge.similar.rows(data=data)
 	}
 	
+	# correct/complete with secondary sources
+	if(complete.data)
+	{	# senate database
+		data <- senate.integrate.data(data, type="M", cache=TRUE, compare=FALSE)
+		# assembly database
+		# TODO
+	}
+	
 	return(data)
 }
 
@@ -1021,10 +1111,11 @@ load.m.data <- function(correct.data)
 # Loads the table for senators.
 #
 # correct.data: whether or not to apply the correction on the data read.
+# complete.data: whether or not to use secondary sources to correct/complete the RNE.
 #
 # returns: data frame made of the cleaned data contained in the appropriate files.
 #############################################################################################
-load.s.data <- function(correct.data)
+load.s.data <- function(correct.data, complete.data)
 {	# names of the columns
 	col.map <- c()
 	col.map["Code du département"] <- COL_ATT_DPT_CODE
@@ -1053,6 +1144,14 @@ load.s.data <- function(correct.data)
 	if(correct.data)
 	{	# merge similar rows
 		data <- merge.similar.rows(data=data)
+	}
+	
+	# correct/complete with secondary sources
+	if(complete.data)
+	{	# senate database
+		data <- senate.integrate.data(data, type="S", cache=TRUE, compare=FALSE)
+		# assembly database
+		# TODO
 	}
 	
 	return(data)

@@ -331,7 +331,14 @@ senate.load.elect.table <- function(type)
 # returns: the table resulting from the conversion.
 #############################################################################################
 senate.convert.mandate.table <- function(general.table, elect.table, type)
-{	# match the general and mandate tables
+{	# for mayors, only keep the appropriate mandates
+	if(type=="M")
+	{	function.names <- trimws(normalize.proper.nouns(remove.diacritics(elect.table[,COL_SENAT_FCT_NOM])))
+		# we only keep the mayors from the municipal counselor table
+		elect.table <- elect.table[which(function.names=="MAIRE"),]
+	}
+	
+	# match the general and mandate tables
 	idx <- match(elect.table[,COL_SENAT_ELU_MATRI], general.table[,COL_ATT_ELU_ID_SENAT])
 	
 	# convert mandate dates
@@ -339,14 +346,18 @@ senate.convert.mandate.table <- function(general.table, elect.table, type)
 	mdt.end.dates <- as.Date(elect.table[,COL_SENAT_MDT_FIN], "%d/%m/%Y")
 	
 	# mandate name
-	mdt.name <- c()
-	mdt.name["CD"] <- "CONSEILLER DEPARTEMENTAL"
-	mdt.name["CM"] <- "CONSEILLER MUNICIPAL"
-	mdt.name["CR"] <- "CONSEILLER REGIONAL"
-	mdt.name["D"] <- "DEPUTE"
-	mdt.name["DE"] <- "REPRESENTANT AU PARLEMENT EUROPEEN"
-	mdt.name["S"] <- "SENATEUR"
-	mdt.names <- rep(mdt.name[type], length(idx))
+	if(type=="CD")
+		mdt.names <- rep("CONSEILLER DEPARTEMENTAL", length(idx))
+	else if(type=="CM" || type=="M")
+		mdt.names <- rep("CONSEILLER MUNICIPAL", length(idx))
+	else if(type=="CR")
+		mdt.names <- rep("CONSEILLER REGIONAL", length(idx))
+	else if(type=="D")
+		mdt.names <- rep("DEPUTE", length(idx))
+	else if(type=="DE")
+		mdt.names <- rep("REPRESENTANT AU PARLEMENT EUROPEEN", length(idx))
+	else if(type=="S")
+		mdt.names <- rep("SENATEUR", length(idx))
 	
 	# possibly get motive of end of mandate
 	mdt.motives <- rep(NA,length(idx))
@@ -364,7 +375,10 @@ senate.convert.mandate.table <- function(general.table, elect.table, type)
 	# possibly get function name
 	function.names <- general.table[idx,COL_ATT_FCT_NOM]
 	if(COL_SENAT_FCT_NOM %in% colnames(elect.table))
-		function.names <- trimws(normalize.proper.nouns(remove.diacritics(elect.table[,COL_SENAT_FCT_NOM])))
+	{	function.names <- trimws(normalize.proper.nouns(remove.diacritics(elect.table[,COL_SENAT_FCT_NOM])))
+		if(type=="CM")
+			function.names[which(function.names=="CONSEILLER MUNICIPAL")] <- NA		# this is not considered as a function in the RNE
+	}
 	
 	# build senate table
 	sen.tab <- data.frame(
@@ -441,7 +455,7 @@ senate.convert.mandate.table <- function(general.table, elect.table, type)
 		# NOTE we could get the canton code from the RNE table
 		# TODO check whether it is necessery to adjust certain canton names from the CD Senate table
 	}
-	else if(type=="CM")
+	else if(type=="CM" || type=="M")
 	{	# municipalities
 		municipality <- data.frame(trimws(normalize.proper.nouns(remove.diacritics(elect.table[,COL_SENAT_COM_NOM]))), stringsAsFactors=FALSE)
 		sen.tab <- cbind(sen.tab, municipality)
@@ -671,7 +685,7 @@ senate.update.rne.table <- function(rne.tab, sen.tab, row.conv)
 #
 # returns: the same table, completed using the Senate DB.
 #############################################################################################
-senate.integrate.data <- function(data, type, cache=TRUE, compare=FALSE) 	# debug type="S";cache=FALSE;compare=TRUE
+senate.integrate.data <- function(data, type, cache=TRUE, compare=FALSE) 	# debug type="CD";cache=TRUE;compare=TRUE
 {	# load the general senate table, containing individual information
 	general.table <- senate.load.general.table(cache)
 	

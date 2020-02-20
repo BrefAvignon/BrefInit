@@ -19,6 +19,7 @@ source("src/verification/test_duplicates.R")
 # set up the extraction
 extraction <- 1 # 1 or 2
 correct.data <- TRUE
+complete.data <- FALSE
 
 # start logging
 start.rec.log(text="EPCI")
@@ -28,7 +29,7 @@ out.folder <- FOLDER_OUT_EPCI
 dir.create(path=out.folder, showWarnings=FALSE, recursive=TRUE)
 
 # load the data
-data <- load.epci.data(correct.data)
+data <- load.epci.data(correct.data, complete.data)
 
 # summarizes each column separately
 tlog(0,"Examining each column separately")

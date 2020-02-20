@@ -20,6 +20,7 @@ source("src/verification/test_duplicates.R")
 # set up the extraction
 extraction <- 1 # 1 or 2
 correct.data <- TRUE
+complete.data <- FALSE
 
 # start logging
 start.rec.log(text=paste0("CD",extraction))
@@ -29,7 +30,7 @@ out.folder <- if(extraction==1) FOLDER_OUT_CD else FOLDER_OUT_CD2
 dir.create(path=out.folder, showWarnings=FALSE, recursive=TRUE)
 
 # load the data
-data <- if(extraction==1) load.cd.data(correct.data) else load.cd2.data(correct.data) 
+data <- if(extraction==1) load.cd.data(correct.data, complete.data) else load.cd2.data(correct.data, complete.data) 
 
 # summarizes each column separately
 tlog(0,"Examining each column separately")
