@@ -162,7 +162,7 @@ senate.load.general.table <- function(cache)
 		##################### cross referencing with RNE to get ids
 		# load RNE senate table
 		tlog(4,"Loading RNE Senate table")
-		data <- load.s.data(correct.data=TRUE)
+		data <- load.s.data(correct.data=TRUE, complete.data=FALSE)
 		
 		# match senate ids with RNE ids
 		tlog(4,"Matching Senate and RNE people ids")
@@ -685,7 +685,7 @@ senate.update.rne.table <- function(rne.tab, sen.tab, row.conv)
 #
 # returns: the same table, completed using the Senate DB.
 #############################################################################################
-senate.integrate.data <- function(data, type, cache=TRUE, compare=FALSE) 	# debug type="CD";cache=TRUE;compare=TRUE
+senate.integrate.data <- function(data, type, cache=TRUE, compare=FALSE) 	# debug type="CR";cache=TRUE;compare=TRUE
 {	# load the general senate table, containing individual information
 	general.table <- senate.load.general.table(cache)
 	
