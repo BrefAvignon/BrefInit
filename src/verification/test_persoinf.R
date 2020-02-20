@@ -221,7 +221,7 @@ test.occupation.col <- function(data, out.folder)
 #############################################################################################
 test.personal.info <- function(data, out.folder)
 {	# check personal info
-#	test.personal.details(data, out.folder)
+	test.personal.details(data, out.folder)
 	
 	# check the occupation column
 	test.occupation.col(data, out.folder)

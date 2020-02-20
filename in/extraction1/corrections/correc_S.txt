@@ -4,6 +4,8 @@ Row	Id RNE	Nom	Prenom	Attribut	ValAvt	ValApr	Commentaire
 538	1179834	DERYCKE	Nouvel	Prenom elu	Nouvel	Dinah	Typo dans le prénom (Nouvel ESSAI)
 538	1179834	DERYCKE	Dinah	Date naissance	31/7/1960	1/4/1946	Typo dans le prénom (Nouvel ESSAI)
 538	1179834	DERYCKE	Dinah	Date debut mandat	30/12/2004	3/7/1997	Date de début fausse (Nouvel ESSAI)
+538	1179834	DERYCKE	Dinah	Code sexe	M	F	Sexe incorrect (Nouvel ESSAI)
+796	184589	DUCHENE	Marie-Annick	Code sexe	M	F	Sexe incorrect (BD Sénat)
 745	1180707	LAURENT	PIERRE	Date debut mandat	25/9/2011	20/9/2012	Date de debut fausse (BD Sénat)
 1034	1192379	ANGO ELA PAVLOPULOS	Kalliopi	Date debut mandat	25/9/2011	22/7/2012	Date de debut fausse (BD Sénat)
 966	14194	MALOVRY	Lucienne	Date debut mandat	26/9/2004	2/11/2004	Date de debut fausse (BD Sénat)

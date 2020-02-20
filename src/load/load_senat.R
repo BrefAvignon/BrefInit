@@ -692,10 +692,11 @@ senate.integrate.data <- function(data, type, cache=TRUE, compare=FALSE) 	# debu
 	
 	# compare both tables
 	if(compare)
-	{	sen.tab.file <- file.path(FOLDER_COMP_SRC_SEN, type, "data_senat.txt")
-		rne.tab.file <- file.path(FOLDER_COMP_SRC_SEN, type, "data_rne2.txt")
+	{	out.folder <- file.path(FOLDER_COMP_SRC_SEN, type)
+		sen.tab.file <- file.path(out.folder, "data_senat.txt")
+		rne.tab.file <- file.path(out.folder, "data_rne2.txt")
 		source("src/comparison/compare_tables.R")
-		compare.tables(files0=rne.tab.file, files1=sen.tab.file, out.folder=FOLDER_COMP_SRC_SEN)
+		compare.tables(files0=rne.tab.file, files1=sen.tab.file, out.folder)
 	}
 	
 	return(result)
