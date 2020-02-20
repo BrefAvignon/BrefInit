@@ -95,8 +95,7 @@ senate.load.general.table <- function(cache)
 		indiv.first.names <- trimws(normalize.proper.nouns(remove.diacritics(indiv.table[,COL_SENAT_ELU_PRENOM])))
 		firstname.conv <- senate.load.conversion.file(FILE_SENAT_CONV_PRENOMS)
 		idx <- as.integer(firstname.conv[, COL_CORREC_ROW])
-		idx2 <- which(!is.na(idx))
-		indiv.first.names[idx2] <- firstname.conv[idx[idx2], COL_CORREC_VALAPR]
+		indiv.first.names[idx] <- firstname.conv[, COL_CORREC_VALAPR]
 		
 		# init sex
 		indiv.sex <- trimws(normalize.proper.nouns(remove.diacritics(indiv.table[,COL_SENAT_ELU_QUALI])))
@@ -290,6 +289,7 @@ senate.load.general.table <- function(cache)
 #############################################################################################
 senate.load.elect.table <- function(type)
 {	# get the appropriate senate data file
+	sen.data.file <- c()
 	sen.data.file["CD"] <- FILE_SENAT_ELEC_CD
 	sen.data.file["CM"] <- FILE_SENAT_ELEC_CM
 	sen.data.file["CR"] <- FILE_SENAT_ELEC_CR
@@ -332,13 +332,14 @@ senate.load.elect.table <- function(type)
 #############################################################################################
 senate.convert.mandate.table <- function(general.table, elect.table, type)
 {	# match the general and mandate tables
-	idx <- match(elect.table[,COL_SENAT_ELU_MATRI], general.table[,COL_SENAT_ELU_MATRI])
+	idx <- match(elect.table[,COL_SENAT_ELU_MATRI], general.table[,COL_ATT_ELU_ID_SENAT])
 	
 	# convert mandate dates
 	mdt.start.dates <- as.Date(elect.table[,COL_SENAT_MDT_DBT], "%d/%m/%Y")
 	mdt.end.dates <- as.Date(elect.table[,COL_SENAT_MDT_FIN], "%d/%m/%Y")
 	
 	# mandate name
+	mdt.name <- c()
 	mdt.name["CD"] <- "CONSEILLER DEPARTEMENTAL"
 	mdt.name["CM"] <- "CONSEILLER MUNICIPAL"
 	mdt.name["CR"] <- "CONSEILLER REGIONAL"
@@ -367,8 +368,6 @@ senate.convert.mandate.table <- function(general.table, elect.table, type)
 	
 	# build senate table
 	sen.tab <- data.frame(
-		general.table[idx,COL_ATT_DPT_CODE],		# department code
-		general.table[idx,COL_ATT_DPT_NOM],			# department name
 		general.table[idx,COL_ATT_ELU_ID],			# universal id
 		general.table[idx,COL_ATT_ELU_ID_RNE],		# RNE id
 		general.table[idx,COL_ATT_ELU_ID_SENAT],	# senate id
@@ -395,8 +394,6 @@ senate.convert.mandate.table <- function(general.table, elect.table, type)
 		stringsAsFactors=FALSE
 	)
 	colnames(sen.tab) <- c(		
-		COL_ATT_DPT_CODE,
-		COL_ATT_DPT_NOM,
 		COL_ATT_ELU_ID,
 		COL_ATT_ELU_ID_RNE,
 		COL_ATT_ELU_ID_SENAT,
@@ -422,19 +419,22 @@ senate.convert.mandate.table <- function(general.table, elect.table, type)
 	
 	# possibly add location columns
 	if(type=="CR")
-	{	regions <- data.frame(trimws(normalize.proper.nouns(remove.diacritics(elect.table[,COL_SENAT_REG_NOM]))), stringsAsFactors=FALSE)
+	{	# regions
+		regions <- data.frame(trimws(normalize.proper.nouns(remove.diacritics(elect.table[,COL_SENAT_REG_NOM]))), stringsAsFactors=FALSE)
 		sen.tab <- cbind(sen.tab, regions)
 		colnames(sen.tab)[ncol(sen.tab)] <- COL_ATT_REG_NOM
 		# NOTE we could get the region code from the RNE table
 		# TODO check whether it is necessery to adjust certain regions names from the CR Senate table
 	}
 	else if(type=="CD")
-	{	departments <- data.frame(trimws(normalize.proper.nouns(remove.diacritics(elect.table[,COL_SENAT_DPT_NOM2]))), stringsAsFactors=FALSE)
+	{	# departments
+		departments <- data.frame(trimws(normalize.proper.nouns(remove.diacritics(elect.table[,COL_SENAT_DPT_NOM2]))), stringsAsFactors=FALSE)
 		sen.tab <- cbind(sen.tab, departments)
 		colnames(sen.tab)[ncol(sen.tab)] <- COL_ATT_DPT_NOM
 		# NOTE we could get the department code from the RNE table
 		# TODO check whether it is necessery to adjust certain department names from the CD Senate table
 		
+		# cantons
 		cantons <- data.frame(trimws(normalize.proper.nouns(remove.diacritics(elect.table[,COL_SENAT_CANT_NOM]))), stringsAsFactors=FALSE)
 		sen.tab <- cbind(sen.tab, cantons)
 		colnames(sen.tab)[ncol(sen.tab)] <- COL_ATT_CANT_NOM
@@ -442,12 +442,24 @@ senate.convert.mandate.table <- function(general.table, elect.table, type)
 		# TODO check whether it is necessery to adjust certain canton names from the CD Senate table
 	}
 	else if(type=="CM")
-	{	municipality <- data.frame(trimws(normalize.proper.nouns(remove.diacritics(elect.table[,COL_SENAT_COM_NOM]))), stringsAsFactors=FALSE)
+	{	# municipalities
+		municipality <- data.frame(trimws(normalize.proper.nouns(remove.diacritics(elect.table[,COL_SENAT_COM_NOM]))), stringsAsFactors=FALSE)
 		sen.tab <- cbind(sen.tab, municipality)
 		colnames(sen.tab)[ncol(sen.tab)] <- COL_ATT_COM_NOM
 		# NOTE we could get the department and other missing columns from the RNE table
 		#      but we might also need to check the postgresql version of the senate DB
 		# TODO check whether it is necessery to adjust certain municipality names from the CM Senate table
+	}
+	else if(type=="S")
+	{	# department codes
+		dpt.codes <- general.table[idx, COL_ATT_DPT_CODE]
+		sen.tab <- cbind(sen.tab, dpt.codes)
+		colnames(sen.tab)[ncol(sen.tab)] <- COL_ATT_DPT_CODE
+		
+		# department names
+		dpt.names <- general.table[idx, COL_ATT_DPT_NOM]
+		sen.tab <- cbind(sen.tab, dpt.names)
+		colnames(sen.tab)[ncol(sen.tab)] <- COL_ATT_DPT_NOM
 	}
 	
 #	# keep only mandates starting before 2001
@@ -462,8 +474,9 @@ senate.convert.mandate.table <- function(general.table, elect.table, type)
 	sen.tab <- sen.tab[,norm.cols]
 	
 	# record Senate table
-	dir.create(path=FOLDER_COMP_SRC_SEN, showWarnings=FALSE, recursive=TRUE)
-	sen.tab.file <- file.path(FOLDER_COMP_SRC_SEN, type, "data_senat.txt")
+	folder <- file.path(FOLDER_COMP_SRC_SEN, type)
+	dir.create(path=folder, showWarnings=FALSE, recursive=TRUE)
+	sen.tab.file <- file.path(folder, "data_senat.txt")
 	write.table(x=sen.tab,
 		file=sen.tab.file,		# name of file containing the new table
 		quote=FALSE,			# no double quote around strings
@@ -566,7 +579,7 @@ senate.adjust.rne.table <- function(data)
 {	# add missing columns to the RNE table
 	rne.tab <- cbind(data, rep(NA,nrow(data)), as.Date(rep(NA,nrow(data))), rep(NA,nrow(data)))
 	colnames(rne.tab)[(ncol(rne.tab)-2):ncol(rne.tab)] <- c(COL_ATT_ELU_ID_SENAT, COL_ATT_ELU_DDD, COL_ATT_ELU_NAT)
-	rne.tab <- rne.tab[,colnames(tab)]
+	rne.tab <- rne.tab[,colnames(rne.tab)]
 	
 	# reorder its columns
 	norm.cols <- intersect(COLS_ATT_NORMALIZED, colnames(rne.tab))
@@ -611,19 +624,19 @@ senate.update.rne.table <- function(rne.tab, sen.tab, row.conv)
 		
 		# overwrite NA values using Senate data
 		cols <- which(is.na(result[idx1,]))
-		result[idx1, cols] <- tab[idx2, cols]
+		result[idx1, cols] <- sen.tab[idx2, cols]
 		
 		# update source column
-		result[idx1, COL_ATT_SOURCES] <- paste(result[idx1, COL_ATT_SOURCES], tab[idx2, COL_ATT_SOURCES], sep=",")
+		result[idx1, COL_ATT_SOURCES] <- paste(result[idx1, COL_ATT_SOURCES], sen.tab[idx2, COL_ATT_SOURCES], sep=",")
 		
 		# force both mandate dates to the Senate one (considered more reliable)
-		result[idx1, c(COL_ATT_MDT_DBT,COL_ATT_MDT_FIN)] <- tab[idx2, c(COL_ATT_MDT_DBT,COL_ATT_MDT_FIN)]
+		result[idx1, c(COL_ATT_MDT_DBT,COL_ATT_MDT_FIN)] <- sen.tab[idx2, c(COL_ATT_MDT_DBT,COL_ATT_MDT_FIN)]
 	}
 	
 	# insert new Senate rows into existing RNE table
 	missing.rows <- which(is.na(row.conv))
 	tlog(2,"Inserting ",length(missing.rows)," missing rows in the RNE table")
-	result <- rbind(result, tab[missing.rows,])
+	result <- rbind(result, sen.tab[missing.rows,])
 	# sort the resulting table
 	result <- result[order(result[,COL_ATT_DPT_CODE], 
 					result[,COL_ATT_ELU_NOM], result[,COL_ATT_ELU_PRENOM], 
@@ -658,7 +671,7 @@ senate.update.rne.table <- function(rne.tab, sen.tab, row.conv)
 #
 # returns: the same table, completed using the Senate DB.
 #############################################################################################
-senate.integrate.data <- function(data, type, cache=TRUE, compare=FALSE) 	# debug type="S";cache=FALSE;compare=FALSE
+senate.integrate.data <- function(data, type, cache=TRUE, compare=FALSE) 	# debug type="S";cache=FALSE;compare=TRUE
 {	# load the general senate table, containing individual information
 	general.table <- senate.load.general.table(cache)
 	
@@ -681,6 +694,7 @@ senate.integrate.data <- function(data, type, cache=TRUE, compare=FALSE) 	# debu
 	if(compare)
 	{	sen.tab.file <- file.path(FOLDER_COMP_SRC_SEN, type, "data_senat.txt")
 		rne.tab.file <- file.path(FOLDER_COMP_SRC_SEN, type, "data_rne2.txt")
+		source("src/comparison/compare_tables.R")
 		compare.tables(files0=rne.tab.file, files1=sen.tab.file, out.folder=FOLDER_COMP_SRC_SEN)
 	}
 	
