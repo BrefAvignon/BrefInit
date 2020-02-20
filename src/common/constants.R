@@ -47,7 +47,7 @@ COL_STATS_NAMES <- c(
 
 # attribute names
 COL_ATT_CANT_CODE <- "Code canton"
-COL_ATT_CANT_ID <- "Id canton"
+COL_ATT_CANT_ID <- "ID canton"
 COL_ATT_CANT_NOM <- "Libelle canton"
 COL_ATT_CIRC_CODE <- "Code circo legislative"
 COL_ATT_CIRC_NOM <- "Libelle circo legislative"
@@ -320,7 +320,9 @@ COL_SENAT_FCT_DBT <- "Date de debut de fonction"
 COL_SENAT_FCT_FIN <- "Date de fin de fonction"
 COL_SENAT_FCT_BUR <- "Fonction au Bureau du Senat"
 COL_SENAT_FCT_NOM <- "Fonction"
+COL_SENAT_MDT_ADBT <- "Annee de debut de mandat"
 COL_SENAT_MDT_DBT <- "Date de debut de mandat"
+COL_SENAT_MDT_AFIN <- "Annee de fin de mandat"
 COL_SENAT_MDT_FIN <- "Date de fin de mandat"
 COL_SENAT_MDT_MOTIF <- "Motif fin de mandat"
 COL_SENAT_PRO_NOM <- "PCS INSEE"

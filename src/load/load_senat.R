@@ -561,9 +561,23 @@ senate.convert.mandate.table <- function(general.table, elect.table, type)
 		place.order <- sen.tab[,COL_ATT_DPT_CODE]
 	}
 	
-#	# keep only mandates starting before 2001
-#	pre.mandates <- which(mdt.start.dates<as.Date("2001/01/01")) 
-#	sen.tab <- sen.tab[-pre.mandates,]
+	# keep only mandates starting before 2001
+	limit.date <- NA
+	if(type=="CD")
+		limit.date <- as.Date("1994/01/01")
+	else if(type=="CM" || type=="M")
+		limit.date <- as.Date("2001/01/01")
+	else if(type=="CR")
+		limit.date <- as.Date("1998/01/01")
+	else if(type=="D")
+		limit.date <- as.Date("1997/01/01")
+	else if(type=="DE")
+		limit.date <- as.Date("1999/01/01")
+	if(!is.na(limit.date))
+	{	tlog(4,"We keep only the pre-",format(limit.date)," mandates")
+		pre.mandates <- which(mdt.start.dates<limit.date) 
+		sen.tab <- sen.tab[-pre.mandates,]
+	}
 	
 	# order the Senate table
 	sen.tab <- sen.tab[order(place.order, 
@@ -585,6 +599,12 @@ senate.convert.mandate.table <- function(general.table, elect.table, type)
 		col.names=TRUE			# record table headers
 	)
 	
+	# add years columns
+	start.years <- as.integer(elect.table[,COL_SENAT_MDT_ADBT])
+	end.years <- as.integer(elect.table[,COL_SENAT_MDT_AFIN])
+	sen.tab <- cbind(sen.tab, start.years, end.years)
+	colnames(sen.tab)[(ncol(sen.tab)-1):ncol(sen.tab)] <- c(COL_SENAT_MDT_ADBT, COL_SENAT_MDT_AFIN)
+	
 	return(sen.tab)
 }
 
@@ -605,6 +625,9 @@ senate.convert.mandate.table <- function(general.table, elect.table, type)
 senate.match.senate.vs.rne.rows <- function(sen.tab, rne.tab, tolerance)
 {	# get all the RNE ids
 	ids <- sort(unique(rne.tab[,COL_ATT_ELU_ID]))
+	# keep only the senators
+	if(rne.tab[1,COL_ATT_MDT_NOM]!="SENATEUR")
+		ids <- intersect(ids, sen.tab[,COL_ATT_ELU_ID])
 	
 	tlog(2,"Matching rows between both tables")
 	row.conv <- rep(NA,nrow(sen.tab))	# Senate->RNE conversion map
@@ -623,6 +646,14 @@ senate.match.senate.vs.rne.rows <- function(sen.tab, rne.tab, tolerance)
 			
 			# get the Senate row(s) matching the mandate start date
 			idx2 <- idx.sen[sen.tab[idx.sen,COL_ATT_MDT_DBT]==rne.tab[idx1,COL_ATT_MDT_DBT]]
+			
+# TODO if we use the old mandates (<2001)
+#			# all dates missing in the senate table
+#			if(all(is.na(idx2)))
+#			{	# we compare just the years, instead of the full date
+#				year1 <- get.year(rne.tab[idx1,COL_ATT_MDT_DBT])
+#				idx2 <- idx.sen[sen.tab[idx.sen,COL_SENAT_MDT_ADBT]==year1]
+#			}
 			
 			# if there is exactly one: match done
 			if(length(idx2)==1)
@@ -729,7 +760,10 @@ senate.update.rne.table <- function(rne.tab, sen.tab, row.conv)
 		result[idx1, COL_ATT_SOURCES] <- paste(result[idx1, COL_ATT_SOURCES], sen.tab[idx2, COL_ATT_SOURCES], sep=",")
 		
 		# force both mandate dates to the Senate one (considered more reliable)
-		result[idx1, c(COL_ATT_MDT_DBT,COL_ATT_MDT_FIN)] <- sen.tab[idx2, c(COL_ATT_MDT_DBT,COL_ATT_MDT_FIN)]
+		if(!is.na(sen.tab[idx2, COL_ATT_MDT_DBT]))
+			result[idx1, COL_ATT_MDT_DBT] <- sen.tab[idx2, COL_ATT_MDT_DBT]
+		if(!is.na(sen.tab[idx2, COL_ATT_MDT_FIN]))
+			result[idx1, COL_ATT_MDT_FIN] <- sen.tab[idx2, COL_ATT_MDT_FIN]
 	}
 	
 	# insert new Senate rows into existing RNE table
@@ -770,7 +804,7 @@ senate.update.rne.table <- function(rne.tab, sen.tab, row.conv)
 #
 # returns: the same table, completed using the Senate DB.
 #############################################################################################
-senate.integrate.data <- function(data, type, cache=TRUE, compare=FALSE) 	# debug type="S";cache=FALSE;compare=TRUE
+senate.integrate.data <- function(data, type, cache=TRUE, compare=FALSE) 	# debug type="CR";cache=FALSE;compare=TRUE
 {	# load the general senate table, containing individual information
 	general.table <- senate.load.general.table(cache)
 	
