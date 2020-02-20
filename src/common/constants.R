@@ -397,6 +397,7 @@ FOLDER_IN <- "in"
 	FILE_SENAT_CONV_NUANCES <- file.path(FOLDER_SENAT, "conv_nuances.txt")
 	FILE_SENAT_CONV_PRENOMS <- file.path(FOLDER_SENAT, "conv_prenoms.txt")
 	FILE_SENAT_CONV_PRO <- file.path(FOLDER_SENAT, "conv_professions.txt")
+	FILE_SENAT_CONV_REGIONS <- file.path(FOLDER_SENAT, "conv_regions.txt")
 	FILE_SENAT_ELEC_CD <- file.path(FOLDER_SENAT, "departemental.txt")
 	FILE_SENAT_ELEC_D <- file.path(FOLDER_SENAT, "depute.txt")
 	FILE_SENAT_ELEC_DE <- file.path(FOLDER_SENAT, "europeen.txt")
@@ -414,6 +415,7 @@ FOLDER_IN <- "in"
 	FILE_CONV_CANTONS <- file.path(FOLDER_CONV, "canton_unique_ids.txt")
 	FILE_CONV_DPT <- file.path(FOLDER_CONV, "departements.txt")
 	FILE_CONV_PRO <- file.path(FOLDER_CONV, "professions.txt")
+	FILE_CONV_REGIONS <- file.path(FOLDER_CONV, "regions.txt")
 	FILE_CONV_NUANCES <- file.path(FOLDER_CONV, "nuances.txt")
 	
 	

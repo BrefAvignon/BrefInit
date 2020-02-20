@@ -366,7 +366,7 @@ load.data <- function(filenames, col.map, correc.file, correct.data)
 	}
 	tlog(2,"Now ",nrow(data)," rows and ",ncol(data)," columns in main table")
 	
-	# add source column
+	# add data source column
 	src.col <- data.frame(rep("RNE",nrow(data)), stringsAsFactors=FALSE)
 	data <- cbind(data, src.col)
 	colnames(data)[ncol(data)] <- COL_ATT_SOURCES
@@ -375,6 +375,25 @@ load.data <- function(filenames, col.map, correc.file, correct.data)
 	ids.col <- data.frame(paste("RNE",sprintf("%07d", as.integer(data[,COL_ATT_ELU_ID_RNE])),sep="_"), stringsAsFactors=FALSE)
 	data <- cbind(data, ids.col)
 	colnames(data)[ncol(data)] <- COL_ATT_ELU_ID
+	
+	# possibly add unique department id column
+	if(COL_ATT_DPT_NOM %in% colnames(data))
+	{	dpt.table <- read.table(
+			file=FILE_CONV_DPT,			# name of the data file
+			header=TRUE, 				# look for a header
+			sep="\t", 					# character used to separate columns 
+			check.names=FALSE, 			# don't change the column names from the file
+			comment.char="", 			# ignore possible comments in the content
+			row.names=NULL, 			# don't look for row names in the file
+			quote="", 					# don't expect double quotes "..." around text fields
+			as.is=TRUE					# don't convert strings to factors
+#			fileEncoding="Latin1"		# original tables seem to be encoded in Latin1 (ANSI)
+		)
+		dpt.idx <- match(data[,COL_ATT_DPT_NOM], dpt.table[,COL_ATT_DPT_NOM])
+		dpt.ids <- data.frame(dpt.table[dpt.idx, COL_ATT_DPT_ID], stringsAsFactors=FALSE)
+		colnames(dpt.ids) <- COL_ATT_DPT_ID
+		data <- cbind(data, dpt.ids)
+	}
 	
 	# normalize columns order
 	norm.cols <- intersect(COLS_ATT_NORMALIZED, colnames(data))
@@ -488,7 +507,7 @@ insert.unique.canton.id <- function(data)
 		stop("Problem when inserting canton ids: cound not find some cantons")
 	}
 	
-	# insert in the table, at the correct place
+	# insert in the table, at the correct location
 	col <- which(colnames(data)==COL_ATT_CANT_CODE)
 	df <- as.data.frame(x=equiv.table[idx,COL_ATT_CANT_ID], stringsAsFactors=FALSE)
 	data <- cbind(data[,1:(col-1)], df, data[,col:ncol(data)])

@@ -117,7 +117,7 @@ senate.load.general.table <- function(cache)
 		idx2 <- which(!is.na(idx))
 		indiv.dpt.names[idx2] <- dpts.conv[idx[idx2], COL_CORREC_VALAPR]
 		
-		# retrieve department codes
+		# retrieve department codes and ids
 		dpt.table <- read.table(
 			file=FILE_CONV_DPT,			# name of the data file
 			header=TRUE, 				# look for a header
@@ -134,6 +134,7 @@ senate.load.general.table <- function(cache)
 				{	str <- strsplit(x, ",", fixed=TRUE)[[1]]
 					str[length(str)]
 				})
+		indiv.dpt.ids <- dpt.table[indiv.dpt.idx,COL_ATT_DPT_ID]
 		
 		# retrieve political group
 		# NOTE: stored in the general table, so associated to each individual by opposition to each *mandate*
@@ -223,6 +224,7 @@ senate.load.general.table <- function(cache)
 		##################### build clean table
 		tlog(4,"Building clean individual table")
 		result <- data.frame(
+			indiv.dpt.ids,							# department id
 			indiv.dpt.codes,						# department code
 			indiv.dpt.names,						# department name
 			indiv.ids.univ,							# universal id
@@ -243,6 +245,7 @@ senate.load.general.table <- function(cache)
 			stringsAsFactors=FALSE
 		)
 		colnames(result) <- c(
+			COL_ATT_DPT_ID,
 			COL_ATT_DPT_CODE,
 			COL_ATT_DPT_NOM,
 			COL_ATT_ELU_ID,
@@ -432,28 +435,106 @@ senate.convert.mandate.table <- function(general.table, elect.table, type)
 	)
 	
 	# possibly add location columns
+	place.order <- rep(NA, nrow(sen.tab))
 	if(type=="CR")
-	{	# regions
-		regions <- data.frame(trimws(normalize.proper.nouns(remove.diacritics(elect.table[,COL_SENAT_REG_NOM]))), stringsAsFactors=FALSE)
+	{	# clean region names
+		reg.names <- trimws(normalize.proper.nouns(remove.diacritics(elect.table[,COL_SENAT_REG_NOM])))
+		regs.conv <- senate.load.conversion.file(FILE_SENAT_CONV_REGIONS)
+		idx <- match(reg.names, regs.conv[, COL_CORREC_VALAVT])
+		idx2 <- which(!is.na(idx))
+		reg.names[idx2] <- regs.conv[idx[idx2], COL_CORREC_VALAPR]
+		
+		# retrieve region codes
+		reg.table <- read.table(
+			file=FILE_CONV_REGIONS,		# name of the data file
+			header=TRUE, 				# look for a header
+			sep="\t", 					# character used to separate columns 
+			check.names=FALSE, 			# don't change the column names from the file
+			comment.char="", 			# ignore possible comments in the content
+			row.names=NULL, 			# don't look for row names in the file
+			quote="", 					# don't expect double quotes "..." around text fields
+			as.is=TRUE					# don't convert strings to factors
+#			fileEncoding="Latin1"		# original tables seem to be encoded in Latin1 (ANSI)
+		)
+		reg.idx <- match(reg.names, reg.table[,COL_ATT_REG_NOM])
+		reg.codes <- reg.table[reg.idx, COL_ATT_REG_CODE]
+	
+		# add to table
+		regions <- data.frame(reg.codes, reg.names, stringsAsFactors=FALSE)
+		colnames(regions) <- c(COL_ATT_REG_CODE, COL_ATT_REG_NOM)
 		sen.tab <- cbind(sen.tab, regions)
-		colnames(sen.tab)[ncol(sen.tab)] <- COL_ATT_REG_NOM
-		# NOTE we could get the region code from the RNE table
-		# TODO check whether it is necessery to adjust certain regions names from the CR Senate table
+		
+		# use to order table, later
+		place.order <- sen.tab[,COL_ATT_REG_CODE]
 	}
 	else if(type=="CD")
-	{	# departments
-		departments <- data.frame(trimws(normalize.proper.nouns(remove.diacritics(elect.table[,COL_SENAT_DPT_NOM2]))), stringsAsFactors=FALSE)
-		sen.tab <- cbind(sen.tab, departments)
-		colnames(sen.tab)[ncol(sen.tab)] <- COL_ATT_DPT_NOM
-		# NOTE we could get the department code from the RNE table
-		# TODO check whether it is necessery to adjust certain department names from the CD Senate table
+	{	# clean department names
+		dpt.names <- trimws(normalize.proper.nouns(remove.diacritics(elect.table[,COL_SENAT_DPT_NOM2])))
+		dpts.conv <- senate.load.conversion.file(FILE_SENAT_CONV_DPTS)
+		idx <- match(dpt.names, dpts.conv[, COL_CORREC_VALAVT])
+		idx2 <- which(!is.na(idx))
+		dpt.names[idx2] <- dpts.conv[idx[idx2], COL_CORREC_VALAPR]
 		
-		# cantons
-		cantons <- data.frame(trimws(normalize.proper.nouns(remove.diacritics(elect.table[,COL_SENAT_CANT_NOM]))), stringsAsFactors=FALSE)
+		# retrieve department codes and ids
+		dpt.table <- read.table(
+				file=FILE_CONV_DPT,			# name of the data file
+				header=TRUE, 				# look for a header
+				sep="\t", 					# character used to separate columns 
+				check.names=FALSE, 			# don't change the column names from the file
+				comment.char="", 			# ignore possible comments in the content
+				row.names=NULL, 			# don't look for row names in the file
+				quote="", 					# don't expect double quotes "..." around text fields
+				as.is=TRUE					# don't convert strings to factors
+#			fileEncoding="Latin1"		# original tables seem to be encoded in Latin1 (ANSI)
+		)
+		dpt.idx <- match(dpt.names, dpt.table[,COL_ATT_DPT_NOM])
+		dpt.codes <- sapply(dpt.table[dpt.idx,COL_ATT_DPT_CODE], function(x) 
+				{	str <- strsplit(x, ",", fixed=TRUE)[[1]]
+					str[length(str)]
+				})
+		dpt.ids <- dpt.table[dpt.idx, COL_ATT_DPT_ID]
+		
+		# add departments to table
+		departments <- data.frame(dpt.ids, dpt.codes, dpt.names, stringsAsFactors=FALSE)
+		colnames(departments) <- c(COL_ATT_DPT_ID, COL_ATT_DPT_CODE, COL_ATT_DPT_NOM) 
+		sen.tab <- cbind(sen.tab, departments)
+		
+		# clean canton names
+		cant.names <- trimws(normalize.proper.nouns(remove.diacritics(elect.table[,COL_SENAT_CANT_NOM])))
+		
+		# retrieve canton codes and ids
+		cant.table <- read.table(
+			file=FILE_CONV_CANTONS,		# name of the id file
+			header=TRUE, 				# look for a header
+			sep="\t", 					# character used to separate columns 
+			check.names=FALSE, 			# don't change the column names from the file
+			comment.char="", 			# ignore possible comments in the content
+			row.names=NULL, 			# don't look for row names in the file
+			quote="", 					# don't expect double quotes "..." around text fields
+			as.is=TRUE,					# don't convert strings to factors
+			colClasses="character"		# all column originally read as characters
+#			fileEncoding="Latin1"		# original tables seem to be encoded in Latin1 (ANSI)
+		)
+		cant.codes <- rep(NA,length(cant.names))
+		cant.ids <- rep(NA,length(cant.names))
+		for(i in 1:length(cant.names))
+		{	dpt.idx <- which(cant.table[,COL_ATT_DPT_CODE]==dpt.codes[i])
+			cant.idx <- dpt.idx[which(cant.table[dpt.idx,COL_ATT_CANT_NOM]==cant.names[i])]
+			if(length(cant.idx)!=1)
+				stop("Problem")
+			cant.codes[i] <- cant.table[i,COL_ATT_CANT_CODE]
+			cant.ids[i] <- cant.table[i,COL_ATT_CANT_ID]
+		}
+		
+		# add cantons to table
+		cantons <- data.frame(cant.ids, cant.codes, cant.names, stringsAsFactors=FALSE) 
+		colnames(cantons) <- c(COL_ATT_CANT_ID, COL_ATT_CANT_CODE, COL_ATT_CANT_NOM)
 		sen.tab <- cbind(sen.tab, cantons)
-		colnames(sen.tab)[ncol(sen.tab)] <- COL_ATT_CANT_NOM
-		# NOTE we could get the canton code from the RNE table
+		
 		# TODO check whether it is necessery to adjust certain canton names from the CD Senate table
+		
+		# use to order table, later
+		place.order <- paste(COL_ATT_DPT_CODE, sprintf("%02d", as.integer(COL_ATT_CANT_CODE)), sep=":")
 	}
 	else if(type=="CM" || type=="M")
 	{	# municipalities
@@ -463,17 +544,21 @@ senate.convert.mandate.table <- function(general.table, elect.table, type)
 		# NOTE we could get the department and other missing columns from the RNE table
 		#      but we might also need to check the postgresql version of the senate DB
 		# TODO check whether it is necessery to adjust certain municipality names from the CM Senate table
+		
+		place.order <- sen.tab[,COL_ATT_COM_NOM]
 	}
 	else if(type=="S")
-	{	# department codes
+	{	# get the department ids, codes and names
+		dpt.ids <- general.table[idx, COL_ATT_DPT_ID]
 		dpt.codes <- general.table[idx, COL_ATT_DPT_CODE]
-		sen.tab <- cbind(sen.tab, dpt.codes)
-		colnames(sen.tab)[ncol(sen.tab)] <- COL_ATT_DPT_CODE
-		
-		# department names
 		dpt.names <- general.table[idx, COL_ATT_DPT_NOM]
-		sen.tab <- cbind(sen.tab, dpt.names)
-		colnames(sen.tab)[ncol(sen.tab)] <- COL_ATT_DPT_NOM
+		
+		# add departments to table
+		sen.tab <- cbind(sen.tab, dpt.ids, dpt.codes, dpt.names)
+		colnames(sen.tab)[(ncol(sen.tab)-2):ncol(sen.tab)] <- c(COL_ATT_DPT_ID, COL_ATT_DPT_CODE, COL_ATT_DPT_NOM)
+		
+		# use to order table, later
+		place.order <- sen.tab[,COL_ATT_DPT_CODE]
 	}
 	
 #	# keep only mandates starting before 2001
@@ -481,9 +566,9 @@ senate.convert.mandate.table <- function(general.table, elect.table, type)
 #	sen.tab <- sen.tab[-pre.mandates,]
 	
 	# order the Senate table
-	sen.tab <- sen.tab[order(sen.tab[,COL_ATT_DPT_CODE], 
-					sen.tab[,COL_ATT_ELU_NOM], sen.tab[,COL_ATT_ELU_PRENOM], 
-					sen.tab[,COL_ATT_MDT_DBT], sen.tab[,COL_ATT_MDT_FIN]) ,]
+	sen.tab <- sen.tab[order(place.order, 
+				sen.tab[,COL_ATT_ELU_NOM], sen.tab[,COL_ATT_ELU_PRENOM], 
+				sen.tab[,COL_ATT_MDT_DBT], sen.tab[,COL_ATT_MDT_FIN]) ,]
 	norm.cols <- intersect(COLS_ATT_NORMALIZED, colnames(sen.tab))
 	sen.tab <- sen.tab[,norm.cols]
 	
@@ -685,7 +770,7 @@ senate.update.rne.table <- function(rne.tab, sen.tab, row.conv)
 #
 # returns: the same table, completed using the Senate DB.
 #############################################################################################
-senate.integrate.data <- function(data, type, cache=TRUE, compare=FALSE) 	# debug type="CR";cache=TRUE;compare=TRUE
+senate.integrate.data <- function(data, type, cache=TRUE, compare=FALSE) 	# debug type="S";cache=FALSE;compare=TRUE
 {	# load the general senate table, containing individual information
 	general.table <- senate.load.general.table(cache)
 	
