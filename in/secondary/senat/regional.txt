@@ -134,9 +134,9 @@ Matricule	Qualite	Nom usuel	Prenom usuel	Etat Senateur	Identifiant mandat	Date d
 87003B	M.	Dufaut	Alain	ACTIF	11382		12/03/1992	1992		1992	Provence-Alpes-Côte d'Azur	11352	12/03/1992	1992		1992	Conseiller régional
 07033P	Mme	Dumas	Catherine	ACTIF	11303		15/03/1998		21/03/2004	2004	Ile-de-France	11214	15/03/1998		21/03/2004	2004	Conseiller régional
 07033P	Mme	Dumas	Catherine	ACTIF	51057		13/12/2015		18/10/2017		Ile-de-France	50367	13/12/2015		18/10/2017		Conseiller régional
-14151M	M.	Durain	Jérôme	ACTIF	13986	21/03/2010 00:00:00	21/03/2010		13/12/2015		Bourgogne	13443	21/03/2010		30/08/2012		Conseiller régional
-14151M	M.	Durain	Jérôme	ACTIF	13986	21/03/2010 00:00:00	21/03/2010		13/12/2015		Bourgogne	13602	01/09/2012		01/01/2015		Vice-Président du conseil régional
-14151M	M.	Durain	Jérôme	ACTIF	13986	21/03/2010 00:00:00	21/03/2010		13/12/2015		Bourgogne	13702	02/01/2015		13/12/2015		Conseiller régional
+14151M	M.	Durain	Jérôme	ACTIF	13986	21/03/2010	21/03/2010		13/12/2015		Bourgogne	13443	21/03/2010		30/08/2012		Conseiller régional
+14151M	M.	Durain	Jérôme	ACTIF	13986	21/03/2010	21/03/2010		13/12/2015		Bourgogne	13602	01/09/2012		01/01/2015		Vice-Président du conseil régional
+14151M	M.	Durain	Jérôme	ACTIF	13986	21/03/2010	21/03/2010		13/12/2015		Bourgogne	13702	02/01/2015		13/12/2015		Conseiller régional
 14151M	M.	Durain	Jérôme	ACTIF	15264		14/12/2015				Bourgogne-Franche-Comté	13861	14/12/2015				Conseiller régional
 14249W	Mme	Duranton	Nicole	ACTIF	14255		28/09/2011		01/10/2014		Haute-Normandie	13576	28/09/2011	2011	01/10/2014		Conseiller régional
 11110B	Mme	Espagnac	Frédérique	ACTIF	12584		28/03/2004		14/03/2010		Aquitaine	12865	28/03/2004		14/03/2010		Conseiller régional
