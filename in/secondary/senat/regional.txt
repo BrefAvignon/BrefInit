@@ -32,7 +32,9 @@ Matricule	Qualite	Nom usuel	Prenom usuel	Etat Senateur	Identifiant mandat	Date d
 95009E	M.	Bécot	Michel	ANCIEN	1499			1995	28/03/2004	2004	Poitou-Charentes	10751		1999	28/03/2004	2004	Conseiller régional
 98006P	M.	Bel	Jean-Pierre	ANCIEN	10691			1992	15/03/1998	1998	Midi-Pyrénées	10752		1992	15/03/1998	1998	Conseiller régional
 89013M	M.	Belot	Claude	ANCIEN	10693			1985		1989	Poitou-Charentes	10755		1985		1989	Vice-Président du conseil régional
-74011H	M.	Berchet	Georges	ANCIEN	1490				23/09/1973	1973	Champagne-Ardenne	1490			23/09/1973	1973	Conseiller régional
+74011H	M.	Berchet	Georges	ANCIEN	1490		16/03/1986		21/03/1992		Champagne-Ardenne	1490					Conseiller régional
+74011H	M.	Berchet	Georges	ANCIEN			22/03/1992		14/03/1998		Champagne-Ardenne						Vice-Président du conseil régional
+74011H	M.	Berchet	Georges	ANCIEN			15/03/1998		20/03/2004		Champagne-Ardenne						Conseiller régional
 89019T	Mme	Bergé-Lavigne	Maryse	ANCIEN	10694		16/03/1986	1986	22/03/1992	1992	Midi-Pyrénées	10758	16/03/1986	1986	22/03/1992	1992	Conseiller régional
 89020L	M.	Bernardet	Daniel	ANCIEN	5870			1983	21/11/2007	2007	Centre	2221		1983	21/11/2007	2007	Président du conseil régional
 07003H	M.	Bernard-Reymond	Pierre	ANCIEN	11230		01/10/2002	2002		2010	Provence-Alpes-Côte d'Azur	11165	01/10/2002	2002		2010	Conseiller régional
@@ -44,7 +46,7 @@ Matricule	Qualite	Nom usuel	Prenom usuel	Etat Senateur	Identifiant mandat	Date d
 14093U	M.	Bignon	Jérôme	ACTIF	13926		17/03/1986		13/04/2004		Picardie	13381	17/03/1986		22/03/1992		Conseiller régional
 14093U	M.	Bignon	Jérôme	ACTIF	13926		17/03/1986		13/04/2004		Picardie	13383	29/03/2004		13/04/2004		Conseiller régional
 14065Q	M.	Bigot	Jacques	ACTIF	13858		15/03/1998		06/10/2010		Alsace	13287	15/03/1998		06/10/2010		Conseiller régional
-01005J	M.	Blanc	Jacques	ANCIEN	6357				02/04/2004	2004	Languedoc-Roussillon	2914			02/04/2004	2004	Président du conseil régional
+01005J	M.	Blanc	Jacques	ANCIEN	6357		16/03/1986		02/04/2004	2004	Languedoc-Roussillon	2914			02/04/2004	2004	Président du conseil régional
 01005J	M.	Blanc	Jacques	ANCIEN	10636		02/04/2004	2004	21/03/2010	2010	Languedoc-Roussillon	10663	02/04/2004	2004	21/03/2010	2010	Conseiller régional
 01044R	Mme	Blandin	Marie-Christine	ANCIEN	6476			1992	22/10/2001	2001	Nord-Pas-de-Calais	2965		1998	22/10/2001	2001	Conseiller régional
 01044R	Mme	Blandin	Marie-Christine	ANCIEN	6476			1992	22/10/2001	2001	Nord-Pas-de-Calais	3017		1992		1998	Président du conseil régional
@@ -66,7 +68,7 @@ Matricule	Qualite	Nom usuel	Prenom usuel	Etat Senateur	Identifiant mandat	Date d
 88004G	M.	Boyer	André	ANCIEN	11350			1985	24/09/2008	2008	Midi-Pyrénées	11319		1985	24/09/2008	2008	Conseiller régional
 01052R	M.	Boyer	Jean	ANCIEN	6543			1983		1988	Auvergne	3003		1983		1988	Conseiller régional
 98049B	Mme	Boyer	Yolande	ANCIEN	5199			1998		1998	Bretagne	2097				1998	Conseiller régional
-95012Y	M.	Braun	Gérard	ANCIEN	1501				28/03/2004	2004	Lorraine	1501			28/03/2004	2004	Vice-Président du conseil régional
+95012Y	M.	Braun	Gérard	ANCIEN	1501		16/03/1986		20/03/2004	2004	Lorraine	1501			20/03/2004	2004	Vice-Président du conseil régional
 04053F	Mme	Bricq	Nicole	ANCIEN	10854		16/03/1986	1986	22/03/1992	1992	Ile-de-France	10906	16/03/1986	1986	22/03/1992		Conseiller régional
 19621T	M.	Brisson	Max	ACTIF	51136		15/03/1998		01/05/2001		Aquitaine	50395	15/03/1998		01/05/2001		Conseiller régional
 08020N	Mme	Bruguière	Marie-Thérèse	ACTIF	11552		02/04/2004	2004		2008	Languedoc-Roussillon	11457	02/04/2004	2004		2008	Conseiller régional
@@ -77,8 +79,8 @@ Matricule	Qualite	Nom usuel	Prenom usuel	Etat Senateur	Identifiant mandat	Date d
 11101A	M.	Calvet	François	ACTIF	12563		23/03/1992		24/02/2003		Languedoc-Roussillon	12831	01/08/2002		24/02/2003		Conseiller régional
 04042C	M.	Cambon	Christian	ACTIF	10810		16/03/1986	1986		2004	Ile-de-France	10878	15/03/1998	1998		2004	Conseiller régional
 04042C	M.	Cambon	Christian	ACTIF	10810		16/03/1986	1986		2004	Ile-de-France	10879	16/03/1986	1986	15/03/1998	1998	Vice-Président du conseil régional
-95015C	M.	Carle	Jean-Claude	ANCIEN	1498				03/06/2013		Rhône-Alpes	1498			03/06/2013		Conseiller régional
-92015P	M.	Carrère	Jean-Louis	ANCIEN	1488				21/03/2010	2010	Aquitaine	1488			21/03/2010	2010	Vice-Président du conseil régional
+95015C	M.	Carle	Jean-Claude	ANCIEN	1498		22/03/1992		03/06/2013		Rhône-Alpes	1498			03/06/2013		Conseiller régional
+92015P	M.	Carrère	Jean-Louis	ANCIEN	1488		17/03/1986		21/03/2010	2010	Aquitaine	1488			21/03/2010	2010	Vice-Président du conseil régional
 08024S	Mme	Cartron	Françoise	ACTIF	11574		01/03/1998	1998		2008	Aquitaine	11469	01/03/1998	1998		2008	Vice-Président du conseil régional
 11044J	Mme	Cayeux	Caroline	ANCIEN	12861		01/03/2002		30/09/2011		Picardie	13058	01/03/2002		30/09/2011		Conseiller régional
 19721W	M.	Cazabonne	Alain	ACTIF	51460		17/03/1985		29/09/1993		Aquitaine	50670	17/03/1985		29/09/1993		Conseiller régional
@@ -110,7 +112,7 @@ Matricule	Qualite	Nom usuel	Prenom usuel	Etat Senateur	Identifiant mandat	Date d
 14169X	M.	de Nicolaÿ	Louis-Jean	ACTIF	14015			2010	01/10/2014		Pays de la Loire	13479		2010	01/10/2014		Conseiller régional
 98039Y	M.	de Richemont	Henri	ANCIEN	5157			1986			Poitou-Charentes	2077		1986		2004	Vice-Président du conseil régional
 98039Y	M.	de Richemont	Henri	ANCIEN	5157			1986			Poitou-Charentes	10627					Conseiller régional
-83050R	M.	de Rohan	Josselin	ANCIEN	1491				30/03/2004	2004	Bretagne	1491			30/03/2004	2004	Président du conseil régional
+83050R	M.	de Rohan	Josselin	ANCIEN	1491		20/03/1998		30/03/2004	2004	Bretagne	1491			30/03/2004	2004	Président du conseil régional
 04081K	Mme	Debré	Isabelle	ANCIEN	11040			2004		2005	Ile-de-France	11031		2004		2005	Conseiller régional
 19719D	Mme	Delattre	Nathalie	ACTIF	51455		13/12/2015		31/10/2017		Aquitaine	50665	13/12/2015		31/10/2017		Conseiller régional
 11035H	M.	Delebarre	Michel	ANCIEN	12791		16/03/1998		25/01/2001		Nord-Pas-de-Calais	12939	16/03/1998		25/01/2001		Président du conseil régional
@@ -152,7 +154,8 @@ Matricule	Qualite	Nom usuel	Prenom usuel	Etat Senateur	Identifiant mandat	Date d
 02009S	M.	Fillon	François	ANCIEN	10772			1998			Pays de la Loire	10856		1998		2002	Président du conseil régional
 02009S	M.	Fillon	François	ANCIEN	10772			1998			Pays de la Loire	10862		2004		2004	Conseiller régional
 95032D	M.	Fischer	Guy	ANCIEN	11884			1986		1988	Rhône-Alpes	11695		1986		1988	Conseiller régional
-96005E	M.	Flandre	Hilaire	ANCIEN	5830				18/10/2004	2004	Champagne-Ardenne	2184			18/10/2004	2004	Conseiller régional
+96005E	M.	Flandre	Hilaire	ANCIEN	5830		16/03/1986		21/03/1992		Champagne-Ardenne	2184					Conseiller régional
+96005E	M.	Flandre	Hilaire	ANCIEN			22/03/1992		14/03/1998		Champagne-Ardenne						
 08023R	M.	Fleming	Louis-Constant	ANCIEN	11849			1986		1992	Guadeloupe	11668		1986		1992	Conseiller régional
 11020A	M.	Fontaine	Michel	ANCIEN	15253		13/12/2015		30/06/2016		La Réunion	13849	13/12/2015		30/06/2016		Conseiller régional
 01003G	M.	Fortassin	François	ANCIEN	6195			1982	11/03/2001	2001	Midi-Pyrénées	2534		1982	11/03/2001	2001	Conseiller régional
@@ -162,8 +165,7 @@ Matricule	Qualite	Nom usuel	Prenom usuel	Etat Senateur	Identifiant mandat	Date d
 77019E	M.	Fourcade	Jean-Pierre	ANCIEN	11882			1976		1995	Ile-de-France	11694		1982		1986	Vice-Président du conseil régional
 19521Q	Mme	Fournier	Catherine	ACTIF	51407		13/12/2015				Hauts-de-France	50598	13/12/2015				Conseiller régional
 08065C	M.	Fournier	Jean-Paul	ANCIEN	11751			1986		2002	Languedoc-Roussillon	11613		1986		2002	Conseiller régional
-83033Q	M.	François-Poncet	Jean	ANCIEN	11881					1992	Aquitaine	11689				1985	Premier Vice-Président du conseil régional
-83033Q	M.	François-Poncet	Jean	ANCIEN	11881					1992	Aquitaine	11690				1992	Conseiller régional
+83033Q	M.	François-Poncet	Jean	ANCIEN	11881		16/03/1986		21/03/1992	1992	Aquitaine	11689				1985	Premier Vice-Président du conseil régional
 02001J	M.	Frimat	Bernard	ANCIEN	6666			1977	28/03/2004	2004	Nord-Pas-de-Calais	3108		1977		1998	Conseiller régional
 02001J	M.	Frimat	Bernard	ANCIEN	6666			1977	28/03/2004	2004	Nord-Pas-de-Calais	3109		1998	28/03/2004	2004	Vice-Président du conseil régional
 94003T	M.	Gaillard	Yann	ANCIEN	10736			1983		1992	Champagne-Ardenne	10828		1983		1992	Conseiller régional
@@ -183,7 +185,9 @@ Matricule	Qualite	Nom usuel	Prenom usuel	Etat Senateur	Identifiant mandat	Date d
 01011G	M.	Godefroy	Jean-Pierre	ANCIEN	6584			1986	28/03/2004	2004	Basse-Normandie	11687		1986		1992	Vice-Président du conseil régional
 01011G	M.	Godefroy	Jean-Pierre	ANCIEN	12014		22/03/2010		13/12/2015		Basse-Normandie	11775	22/03/2010	2010	13/12/2015		Conseiller régional
 04072J	M.	Goujon	Philippe	ANCIEN	10927			1998		2004	Ile-de-France	10949		1998		2004	Conseiller régional
-92024Q	M.	Goulet	Daniel	ANCIEN	1495				28/03/2004	2004	Basse-Normandie	1495			25/02/2007	2007	Vice-Président du conseil régional
+92024Q	M.	Goulet	Daniel	ANCIEN	1495		16/03/1986		21/03/1992		Basse-Normandie	1495					Conseiller régional
+92024Q	M.	Goulet	Daniel	ANCIEN			22/03/1992		14/03/1998		Basse-Normandie						Vice-Président du conseil régional
+92024Q	M.	Goulet	Daniel	ANCIEN			15/03/1998		20/03/2004		Basse-Normandie						Vice-Président du conseil régional
 01007L	Mme	Gourault	Jacqueline	ANCIEN	6663			1992		2001	Centre	3106		1992		2001	Conseiller régional
 01007L	Mme	Gourault	Jacqueline	ANCIEN	10611		28/03/2004	2004		2004	Centre	10614	28/03/2004	2004		2004	Conseiller régional
 08056B	Mme	Goy-Chavent	Sylvie	ACTIF	15259		14/12/2015				Auvergne-Rhône-Alpes	13856	14/12/2015				Conseiller régional
@@ -207,8 +211,9 @@ Matricule	Qualite	Nom usuel	Prenom usuel	Etat Senateur	Identifiant mandat	Date d
 08027V	M.	Hervé	Edmond	ANCIEN	11592			1986		1988	Bretagne	11480		1986		1988	Conseiller régional
 01022K	Mme	Herviaux	Odette	ANCIEN	6496			1998		2010	Bretagne	2975		1998	02/04/2004	2004	Conseiller régional
 01022K	Mme	Herviaux	Odette	ANCIEN	6496			1998		2010	Bretagne	10702	02/04/2004	2004		2010	Vice-Président du conseil régional
-00004D	M.	Hethener	Alain	ANCIEN	5877					1998	Lorraine	2229				1998	Conseiller régional
-83035S	M.	Huchon	Jean	ANCIEN	1489				08/12/2009	2009	Pays de la Loire	1489			08/12/2009	2009	Vice-Président du conseil régional
+00004D	M.	Hethener	Alain	ANCIEN	5877		22/03/1992		14/03/1998	1998	Lorraine	2229				1998	Conseiller régional
+83035S	M.	Huchon	Jean	ANCIEN			16/03/1986		14/03/1998		Pays de la Loire						Conseiller régional
+83035S	M.	Huchon	Jean	ANCIEN	1489		15/03/1998		27/03/2004		Pays de la Loire	1489			08/12/2009	2009	Vice-Président du conseil régional
 04078Q	M.	Hue	Robert	ANCIEN	10954			1983		1988	Ile-de-France	10966		1983		1988	Conseiller régional
 04078Q	M.	Hue	Robert	ANCIEN	10957			1992		1994	Ile-de-France	10968		1992		1994	Conseiller régional
 19399H	M.	Hugonet	Jean-Raymond	ACTIF	50963		13/12/2015		18/10/2017		Ile-de-France	50272	13/12/2015		18/10/2017		Conseiller régional
@@ -247,8 +252,8 @@ Matricule	Qualite	Nom usuel	Prenom usuel	Etat Senateur	Identifiant mandat	Date d
 11111C	M.	Lasserre	Jean-Jacques	ANCIEN	12581		16/03/1986				Aquitaine	12858		1992		1998	Vice-Président du conseil régional
 11111C	M.	Lasserre	Jean-Jacques	ANCIEN	12581		16/03/1986				Aquitaine	12859		1998	13/12/2015		Conseiller régional
 12041X	M.	Laurent	Pierre	ACTIF	12926		21/03/2010		13/12/2015		Ile-de-France	13112	21/03/2010		13/12/2015		Conseiller régional
-08063A	Mme	Laurent-Perrigot	Françoise	ANCIEN	11859					2008	Languedoc-Roussillon	11675				2008	Conseiller régional
-95002W	M.	Lauret	Edmond	ANCIEN	1505						La Réunion	1505					Conseiller régional
+08063A	Mme	Laurent-Perrigot	Françoise	ANCIEN	11859			1997	14/03/1998		Languedoc-Roussillon	11675					Conseiller régional
+95002W	M.	Lauret	Edmond	ANCIEN	1505		16/03/1986		21/03/1992		La Réunion	1505					Conseiller régional
 82002D	M.	Le Grand	Jean-François	ANCIEN	12017		21/03/2010	2010			Basse-Normandie	11778	21/03/2010	2010			Conseiller régional
 08037X	M.	Le Menn	Jacky	ANCIEN	11856			1986		1992	Bretagne	11674		1986		1992	Conseiller régional
 04076N	Mme	Le Texier	Raymonde	ANCIEN	10939			1992		1994	Ile-de-France	10959		1992		1994	Conseiller régional
@@ -297,8 +302,7 @@ Matricule	Qualite	Nom usuel	Prenom usuel	Etat Senateur	Identifiant mandat	Date d
 95049N	M.	Mercier	Michel	ANCIEN	11918			1992		1993	Rhône-Alpes	11728		1992		1993	Vice-Président du conseil régional
 01020H	M.	Mermaz	Louis	ANCIEN	6550		01/03/1992	1992	01/08/1992	1992	Rhône-Alpes	3009	01/03/1992	1992	01/08/1992	1992	Conseiller régional
 01020H	M.	Mermaz	Louis	ANCIEN	6626			1973		1986	Rhône-Alpes	3087		1973		1986	Conseiller régional
-95050F	Mme	Michaux-Chevry	Lucette	ANCIEN	1502				02/04/2004	2004	Guadeloupe	1502			02/04/2004	2004	Président du conseil régional
-95050F	Mme	Michaux-Chevry	Lucette	ANCIEN	10634		02/04/2004	2004		2005	Guadeloupe	10661	02/04/2004	2004		2005	Conseiller régional
+95050F	Mme	Michaux-Chevry	Lucette	ANCIEN	1502		22/03/1992		02/04/2004	2004	Guadeloupe	1502			02/04/2004	2004	Président du conseil régional
 04092N	M.	Milon	Alain	ACTIF	11020		15/03/1998	1998		2001	Provence-Alpes-Côte d'Azur	11015	15/03/1998	1998		2001	Conseiller régional
 92039X	M.	Miquel	Gérard	ANCIEN	10727			1986		1992	Midi-Pyrénées	10813		1986		1992	Conseiller régional
 68036E	M.	Monory	René	ANCIEN	10728			1973	11/04/2009	2009	Poitou-Charentes	10816		1973	11/04/2009	2009	Conseiller régional
@@ -316,15 +320,17 @@ Matricule	Qualite	Nom usuel	Prenom usuel	Etat Senateur	Identifiant mandat	Date d
 09012S	Mme	Nicoux	Renée	ANCIEN	11989			2004		2010	Limousin	11758		2008		2010	Vice-Président du conseil régional
 14253S	M.	Nougein	Claude	ACTIF	14265		01/03/1992		01/03/2004		Limousin	13581	01/03/1992		01/03/2004		Conseiller régional
 95051G	Mme	Olin	Nelly	ANCIEN	6239			1992		1995	Ile-de-France	2581		1992		1995	Conseiller régional
-89035T	M.	Othily	Georges	ANCIEN	1503				18/12/2017		Guyane	1503			18/12/2017		Conseiller régional
+89035T	M.	Othily	Georges	ANCIEN	1503		16/03/1986		21/03/1992		Guyane	1503					Conseiller régional
+89035T	M.	Othily	Georges	ANCIEN			22/03/1992		13/03/2010		Guyane						Président du conseil régional
 19573D	M.	Paccaud	Olivier	ACTIF	51394		21/03/2011		13/12/2015		Picardie	50579	21/03/2011		13/12/2015		Conseiller régional
 77053G	M.	Pasqua	Charles	ANCIEN	11368			1986		1986	Ile-de-France	11329		1986		1986	Conseiller régional
 77053G	M.	Pasqua	Charles	ANCIEN	11368			1986		1986	Ile-de-France	11330		1992		1992	Conseiller régional
 08061X	M.	Patriat	François	ACTIF	11752		02/04/2004		13/12/2015		Bourgogne	11612	02/04/2004	2004	13/12/2015		Président du conseil régional
-98002K	M.	Payet	Lylian	ANCIEN	1504						La Réunion	1504					Vice-Président du conseil régional
+98002K	M.	Payet	Lylian	ANCIEN	1504		16/03/1986		21/03/1992		La Réunion	1504					Vice-Président du conseil régional
+98002K	M.	Payet	Lylian	ANCIEN			22/03/1992		20/03/2004		La Réunion						Conseiller régional
 14237S	M.	Pellevat	Cyril	ACTIF	15260		14/12/2015				Auvergne-Rhône-Alpes	13857	14/12/2015				Conseiller régional
-83047W	M.	Percheron	Daniel	ANCIEN	1496				13/12/2015		Nord-Pas-de-Calais	1496			13/04/2001		Vice-Président du conseil régional
-83047W	M.	Percheron	Daniel	ANCIEN	1496				13/12/2015		Nord-Pas-de-Calais	2883	13/04/2001		13/12/2015		Président du conseil régional
+83047W	M.	Percheron	Daniel	ANCIEN	1496		16/03/1986		12/04/2001		Nord-Pas-de-Calais	1496			12/04/2001		Vice-Président du conseil régional
+83047W	M.	Percheron	Daniel	ANCIEN	1496		13/04/2001		13/12/2015		Nord-Pas-de-Calais	2883	13/04/2001		13/12/2015		Président du conseil régional
 14028W	Mme	Perol-Dumont	Marie-Françoise	ACTIF	13801			1992		1997	Limousin	13226		1992		1997	Conseiller régional
 98040R	M.	Peyrat	Jacques	ANCIEN	5242			1993		1997	Provence-Alpes-Côte d'Azur	2130		1993		1997	Conseiller régional
 98015Q	M.	Picheral	Jean-François	ANCIEN	11136			1982		1989	Provence-Alpes-Côte d'Azur	11109		1982		1989	Conseiller régional
@@ -332,11 +338,12 @@ Matricule	Qualite	Nom usuel	Prenom usuel	Etat Senateur	Identifiant mandat	Date d
 11069T	M.	Placé	Jean-Vincent	ANCIEN	15268		14/12/2015				Ile-de-France	13867	14/12/2015				Conseiller régional
 95056M	M.	Plasait	Bernard	ANCIEN	10572			1992		1996	Ile-de-France	10565				2003	Conseiller régional
 05012A	M.	Pointereau	Rémy	ACTIF	11171			1998		2001	Centre	11127		1998		2001	Conseiller régional
-08029X	M.	Povinelli	Roland	ANCIEN	11628					1998	Provence-Alpes-Côte d'Azur	11504				1998	Conseiller régional
+08029X	M.	Povinelli	Roland	ANCIEN	11628			1995		1998	Provence-Alpes-Côte d'Azur	11504				1998	Conseiller régional
 17583W	M.	Priou	Christophe	ACTIF	51411		13/12/2015				Pays de la Loire	50602	13/12/2015		19/10/2017		Vice-Président du conseil régional
 17583W	M.	Priou	Christophe	ACTIF	51411		13/12/2015				Pays de la Loire	50896	20/10/2017				Conseiller régional
-000639	M.	Proriol	Jean	ANCIEN	10552						Auvergne	10547					Vice-Président du conseil régional
-000639	M.	Proriol	Jean	ANCIEN	10552						Auvergne	10548					Conseiller régional
+000639	M.	Proriol	Jean	ANCIEN	10552		16/03/1986			1988	Auvergne	10547					Vice-Président du conseil régional
+000639	M.	Proriol	Jean	ANCIEN	10552			1988	21/03/1992		Auvergne	10548					Conseiller régional
+000639	M.	Proriol	Jean	ANCIEN			22/03/1992		20/03/2004		Auvergne						Vice-Président du conseil régional
 14247U	M.	Rachline	David	ANCIEN	14247			2014		2014	Provence-Alpes-Côte d'Azur	13571		2014		2014	Conseiller régional
 95059Q	M.	Raffarin	Jean-Pierre	ANCIEN	1500		19/12/1988		08/05/2002		Poitou-Charentes	1500	19/12/1988		08/05/2002		Président du conseil régional
 14135M	M.	Raison	Michel	ACTIF	13964			1992		2008	Franche-Comté	13414		1992		2004	Vice-Président du conseil régional
@@ -350,7 +357,7 @@ Matricule	Qualite	Nom usuel	Prenom usuel	Etat Senateur	Identifiant mandat	Date d
 10015M	M.	Reichardt	André	ACTIF	12054			1998	13/12/2015		Alsace	13075	14/09/2009		26/03/2010		Président du conseil régional
 10015M	M.	Reichardt	André	ACTIF	15256		14/12/2015				Grand Est	13853	14/12/2015				Conseiller régional
 01014K	M.	Reiner	Daniel	ANCIEN	6573			1986		2002	Lorraine	3035		1986		2002	Conseiller régional
-85002R	M.	Renar	Ivan	ANCIEN	1493				01/04/2004	2004	Nord-Pas-de-Calais	1493			01/04/2004	2004	Vice-Président du conseil régional
+85002R	M.	Renar	Ivan	ANCIEN	1493		15/03/1998		01/04/2004	2004	Nord-Pas-de-Calais	1493			01/04/2004	2004	Vice-Président du conseil régional
 11012A	M.	Requier	Jean-Claude	ACTIF	12400		16/03/1986			2001	Midi-Pyrénées	12527	16/03/1986		16/03/2001	2001	Conseiller régional
 04033B	M.	Retailleau	Bruno	ACTIF	10760		15/03/1998				Pays de la Loire	10842	15/03/1998	1998	21/03/1998	1998	Conseiller régional
 04033B	M.	Retailleau	Bruno	ACTIF	10760		15/03/1998				Pays de la Loire	10844	22/03/1998	1998	21/03/2004	2004	Vice-Président du conseil régional
@@ -361,8 +368,8 @@ Matricule	Qualite	Nom usuel	Prenom usuel	Etat Senateur	Identifiant mandat	Date d
 89037V	M.	Revol	Henri	ANCIEN	10705			1986		1989	Bourgogne	10773		1986		1989	Vice-Président du conseil régional
 92005M	M.	Richert	Philippe	ANCIEN	6750			1985		1992	Alsace	3127		1985		1992	Vice-Président du conseil régional
 92005M	M.	Richert	Philippe	ANCIEN	12013		22/03/2010	2010			Alsace	11774	22/03/2010	2010			Président du conseil régional
-04065K	M.	Ries	Roland	ANCIEN	10905					2004	Alsace	10932				2004	Conseiller régional
-89038W	M.	Rigaudière	Roger	ANCIEN	1486				17/02/1999	1999	Auvergne	1486			17/02/1999	1999	Vice-Président du conseil régional
+04065K	M.	Ries	Roland	ANCIEN	10905		15/03/1998		28/03/2004	2004	Alsace	10932				2004	Conseiller régional
+89038W	M.	Rigaudière	Roger	ANCIEN	1486		16/03/1986		17/02/1999	1999	Auvergne	1486			17/02/1999	1999	Vice-Président du conseil régional
 98033S	M.	Rispat	Yves	ANCIEN	5137			1998	27/10/1998		Midi-Pyrénées	2064		1998	27/10/1998		Conseiller régional
 98033S	M.	Rispat	Yves	ANCIEN	10613		28/03/2004	2004		2004	Midi-Pyrénées	10616	28/03/2004	2004		2004	Conseiller régional
 14229S	Mme	Robert	Sylvie	ACTIF	14365			2010	01/10/2014		Bretagne	13663		2010	01/10/2014		Premier Vice-Président du conseil régional
