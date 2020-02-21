@@ -16,12 +16,10 @@ source("src/common/include.R")
 
 # install stringdist
 
-# TODO fusionner merge.R de Zenbook3 ! 
-
 # TODO
 # 2) étudier la façon dont certaines lignes incluent plusieurs mandats, ou le contraire
 #    éprouver l'hypothèse voulant que 1 ligne = 1 fonction (ou absence de)
-#    >> pout ça: sortir la liste de lignes pour une position bien identifiés
+#    >> pour ça: sortir la liste de lignes pour une position bien identifiés
 # 3) forcer le découpage des lignes recouvrant plusieurs mandats
 #    >> va requérir de tracer les positions pour CD et S.
 #    >> créer un nouveau champ pour stocker l'information ?
@@ -151,16 +149,28 @@ source("src/common/include.R")
 # mais même une id donnée peut avoir plusieurs mandats incompatibles, à cause des erreurs présentes dans la BD
 # >> corriger d'abord ces erreurs ? 
 
-# TODO
-# renuméroter les ids universels
-# en classant les élus par date de début de mandat/fin/nom/prénom/ddn
+# A faire par Emilie
+# - Explorer plus profondément la version postgresql de la BD du Sénat
 
 # TODO
-# possible que certains sénateurs apparaissent pas dans RNE sénat mais dans une autre table
+# possible que certains sénateurs apparaissent pas dans RNE sénat (trop vieux) 
+# mais dans une autre table oui (mandat de fin de carrière)
 # >> chercher les homonymes/ddn dans la table fusionnée
 
 # TODO
 # voir pq il y a autant de lignes supprimées dans CM vs. CM2
 # >> peut être que la correction dans le script de comparaison a résolu le pb ?
+# (traitement en cours sur PC LIA)
 
-# TODO explorer plus profondément la version postgresql de la BD du Sénat
+# TODO
+# certaines lignes non trouvées lors de l'intégration BD sénat sont dues aux mandats "intégrés", 
+# i.e. une ligne recouvrant plusieurs mandats
+# >> solution:
+#    - découper systématiquement toutes les lignes en fonction des dates d'élection, sans se soucier des micro-mandats
+#      (mais en respectant les changement de fonctions (=1 ligne distincte par fonction, même si même mandat).
+#    - faire ça pour le RNE mais aussi pour le sénat
+#	 - faire l'intégration, et là on aura des dates compatibles
+# difficulté : S et CD ont des dates d'élection ambigües.
+
+# TODO
+# quand plusieurs lignes matchent et non-S : utiliser les fonctions pour les départager
