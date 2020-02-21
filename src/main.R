@@ -170,7 +170,32 @@ source("src/common/include.R")
 #      (mais en respectant les changement de fonctions (=1 ligne distincte par fonction, même si même mandat).
 #    - faire ça pour le RNE mais aussi pour le sénat
 #	 - faire l'intégration, et là on aura des dates compatibles
+#
 # difficulté : S et CD ont des dates d'élection ambigües.
-
+#
+# algo pour fusion des lignes : on réunit les lignes qui s'intersectent, i.e. qui ont au moins un jour en commun
+# - on détecte deux lignes dont les mandats s'intersectent (pas strictement consécutifs, attention !)
+#   - si au plus l'une des deux contient une fonction, on peut les fusionner
+#     >> on met à jour les dates, on supprime la ligne superflue
+#   - si les deux ont une fonction, il y a une erreur à régler 
+# 
+# hypothèses:
+# - on suppose que les fonctions sont contenues dans les mandats 
+#   sinon: on raccourcit la fonction pour qu'elle tienne dans le mandat
+# - on suppose qu'il n'y a pas d'intersections entre les mandats
+#   - car on vient de fusionner les lignes quand c'était possible
+#   - les lignes non-fusionnées restantes sont à traiter manuellement 
+#
+# algo pour découpage:
+# - dans une table donnée, pour chaque élu, on récupère ses lignes
+# - pour chacune de ces lignes
+# - prendre la date de début de mandat, puis la date de la première élection suivante
+#   - si elle précède la fin du mandat >> découpage en deux lignes distinctes
+#     - la nouvelle fin de mandat est la veille de la date d'élection
+#     - s'il y a une fonction et que l'élection précède sa fin >> pareil
+#     - la nouvelle ligne démarre le jour de l'élection 
+#       (mandat, et fonction le cas échéant)
+# - on prend la ligne crée et on continue avec la date de l'élection suivante
+# - dès qu'on a une date d'élection ultérieure à la fin de mandat, on s'arrête
 # TODO
 # quand plusieurs lignes matchent et non-S : utiliser les fonctions pour les départager
