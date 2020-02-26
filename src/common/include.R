@@ -9,11 +9,13 @@
 
 
 
+
 #############################################################################################
 # handling of warnings
 #options(warn=1)			# as they happen
 options(warn=2)				# as errors
 #options(error=recover)		# debug
+
 
 
 
@@ -31,6 +33,10 @@ library("stringdist")
 library("parallel")
 library("future.apply")
 
+# XML files
+library("XML")
+library("methods")
+
 
 
 
@@ -43,5 +49,6 @@ source("src/common/strings.R")
 source("src/common/logging.R")
 source("src/common/stats.R")
 
-source("src/load/load_rne.R")
+#source("src/load/load_assnat.R")
 source("src/load/load_senat.R")
+source("src/load/load_rne.R")

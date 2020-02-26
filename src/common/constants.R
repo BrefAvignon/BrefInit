@@ -63,6 +63,7 @@ COL_ATT_ELU_DDN <- "Date naissance"
 COL_ATT_ELU_DDD <- "Date deces"
 COL_ATT_ELU_ID <- "ID universel"
 COL_ATT_ELU_ID_RNE <- "ID RNE"
+COL_ATT_ELU_ID_ASSEMB <- "ID Assemblee"
 COL_ATT_ELU_ID_SENAT <- "ID Senat"
 COL_ATT_ELU_NAT <- "Nationalite elu"
 COL_ATT_ELU_NOM <- "Nom elu"
@@ -109,6 +110,7 @@ COLS_ATT_NORMALIZED <- c(
 	COL_ATT_EPCI_DPT,
 	COL_ATT_ELU_ID,
 	COL_ATT_ELU_ID_RNE,
+	COL_ATT_ELU_ID_ASSEMB,
 	COL_ATT_ELU_ID_SENAT,
 	COL_ATT_ELU_NOM,
 	COL_ATT_ELU_PRENOM,
@@ -171,6 +173,7 @@ LONGNAMES[COL_ATT_ELU_DDN] <- "Date de naissance de l'élu"
 LONGNAMES[COL_ATT_ELU_DDD] <- "Date de décès de l'élu"
 LONGNAMES[COL_ATT_ELU_ID] <- "Id universel de l'élu"
 LONGNAMES[COL_ATT_ELU_ID_RNE] <- "Id RNE de l'élu"
+LONGNAMES[COL_ATT_ELU_ID_ASSEMB] <- "Id parlementaire de l'élu"
 LONGNAMES[COL_ATT_ELU_ID_SENAT] <- "Id sénatorial de l'élu"
 LONGNAMES[COL_ATT_ELU_NAT] <- "Nationalité de l'élu"
 LONGNAMES[COL_ATT_ELU_NOM] <- "Nom de l'élu"
@@ -214,6 +217,7 @@ BASENAMES[COL_ATT_ELU_DDN] <- "elu_ddn"
 BASENAMES[COL_ATT_ELU_DDD] <- "elu_ddd"
 BASENAMES[COL_ATT_ELU_ID] <- "elu_id_univ"
 BASENAMES[COL_ATT_ELU_ID_RNE] <- "elu_id_rne"
+BASENAMES[COL_ATT_ELU_ID_ASSEMB] <- "elu_id_assemb"
 BASENAMES[COL_ATT_ELU_ID_SENAT] <- "elu_id_senat"
 BASENAMES[COL_ATT_ELU_NAT] <- "elu_nation"
 BASENAMES[COL_ATT_ELU_NOM] <- "elu_nom"
@@ -257,6 +261,7 @@ COL_TYPES[COL_ATT_ELU_DDN] <- "dat"
 COL_TYPES[COL_ATT_ELU_DDD] <- "dat"
 COL_TYPES[COL_ATT_ELU_ID] <- "nom"
 COL_TYPES[COL_ATT_ELU_ID_RNE] <- "cat"
+COL_TYPES[COL_ATT_ELU_ID_ASSEMB] <- "nom"
 COL_TYPES[COL_ATT_ELU_ID_SENAT] <- "nom"
 COL_TYPES[COL_ATT_ELU_NAT] <- "cat"
 COL_TYPES[COL_ATT_ELU_NOM] <- "nom"
@@ -330,6 +335,16 @@ COL_SENAT_MDT_MOTIF <- "Motif fin de mandat"
 COL_SENAT_PRO_NOM <- "PCS INSEE"
 COL_SENAT_REG_NOM <- "Region"
 
+# columns for assemblee files
+COL_ASSEMB_ELU_CIV <- "Civilite"
+COL_ASSEMB_ELU_CODN <- "Commune de naissance"
+COL_ASSEMB_ELU_DEDN <- "Departement de naissance"
+COL_ASSEMB_ELU_PADN <- "Pays de naissance"
+COL_ASSEMB_PRO_NOM <- "Nom profession"
+COL_ASSEMB_PRO_CAT <- "Categorie profession"
+COL_ASSEMB_PRO_FAM <- "Famille profession"
+
+
 
 
 #############################################################################################
@@ -345,7 +360,7 @@ FOLDER_IN <- "in"
 		FOLDER_CORRECS2 <- file.path(FOLDER_EXTRACT2,"corrections")
 	FOLDER_VERIFS <- file.path(FOLDER_IN,"verifications")
 	FOLDER_SECOND <- file.path(FOLDER_IN,"secondary")
-		FOLDER_ASSEMBLEE <- file.path(FOLDER_SECOND,"assembly")
+		FOLDER_ASSEMBLEE <- file.path(FOLDER_SECOND,"assemblee")
 		FOLDER_SENAT <- file.path(FOLDER_SECOND,"senat")
 
 # table files
@@ -394,7 +409,8 @@ FOLDER_IN <- "in"
 	FILE_VERIF_DATES_S <- file.path(FOLDER_VERIFS, "elections_S.txt")
 # secondary data
 	# national assembly files
-	FILE_ASSEM_XXX <- file.path(FOLDER_VERIFS, "xxxxxx.txt")
+	FOLDER_ASSEM_RAW <- file.path(FOLDER_ASSEMBLEE, "raw")
+	FILE_ASSEM_XXX <- file.path(FOLDER_ASSEMBLEE, "xxxxxx.txt")
 	# senate files
 	FILE_SENAT_CONV_DPTS <- file.path(FOLDER_SENAT, "conv_dpts.txt")
 	FILE_SENAT_CONV_NOMSFAM <- file.path(FOLDER_SENAT, "conv_noms.txt")

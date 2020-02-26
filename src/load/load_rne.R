@@ -1187,6 +1187,7 @@ load.s.data <- function(correct.data, complete.data)
 	if(complete.data)
 	{	# senate database
 		data <- senate.integrate.data(data, type="S", cache=TRUE, compare=TRUE)
+		
 		# assembly database
 		# TODO
 	}
