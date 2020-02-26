@@ -168,7 +168,7 @@ senate.load.general.table <- function(cache)
 		# match senate ids with RNE ids
 		tlog(4,"Matching Senate and RNE people ids")
 		indiv.ids.rne <- rep(NA, nrow(indiv.table))
-		indiv.ids.univ <- paste("SEN",indiv.table[,COL_SENAT_ELU_MATRI],sep="_")
+		indiv.ids.univ <- paste0("SEN_0",indiv.table[,COL_SENAT_ELU_MATRI])
 		for(i in 1:nrow(indiv.table))
 		{	tlog(6, "Processing senator ",i,"/",nrow(indiv.table))
 			tmp <- which(data[,COL_ATT_ELU_NOM]==indiv.last.names[i]
@@ -881,6 +881,7 @@ senate.update.rne.table <- function(rne.tab, sen.tab, row.conv)
 	
 	# insert new Senate rows into existing RNE table
 	missing.rows <- which(is.na(row.conv))
+	#missing.rows <- which(is.na(row.conv) & get.year(sen.tab[,COL_ATT_MDT_DBT])>=2001)
 	tlog(4,"Inserting ",length(missing.rows)," missing rows in the RNE table")
 	result <- rbind(result, sen.tab[missing.rows,])
 	# sort the resulting table
