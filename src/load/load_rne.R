@@ -562,7 +562,9 @@ load.cd.data <- function(correct.data, complete.data)
 	# correct/complete with secondary sources
 	if(complete.data)
 	{	# senate database
-		data <- senate.integrate.data(data, type="CD", cache=TRUE, compare=FALSE)
+# NOTE Senate data eventually not used
+#		data <- senate.integrate.data(data, type="CD", cache=TRUE, compare=FALSE)
+		
 		# assembly database
 		# TODO
 	}
@@ -615,7 +617,9 @@ load.cd2.data <- function(correct.data, complete.data)
 	# correct/complete with secondary sources
 	if(complete.data)
 	{	# senate database
-		data <- senate.integrate.data(data, type="CD", cache=TRUE, compare=FALSE)
+# NOTE Senate data eventually not used
+#		data <- senate.integrate.data(data, type="CD", cache=TRUE, compare=FALSE)
+		
 		# assembly database
 		# TODO
 	}
@@ -692,7 +696,9 @@ load.cm.data <- function(correct.data, complete.data)
 	# correct/complete with secondary sources
 	if(complete.data)
 	{	# senate database
-		data <- senate.integrate.data(data, type="CM", cache=TRUE, compare=FALSE)
+# NOTE Senate data eventually not used
+#		data <- senate.integrate.data(data, type="CM", cache=TRUE, compare=FALSE)
+		
 		# assembly database
 		# TODO
 	}
@@ -747,7 +753,9 @@ load.cm2.data <- function(correct.data, complete.data)
 	# correct/complete with secondary sources
 	if(complete.data)
 	{	# senate database
-		data <- senate.integrate.data(data, type="CM", cache=TRUE, compare=FALSE)
+# NOTE Senate data eventually not used
+#		data <- senate.integrate.data(data, type="CM", cache=TRUE, compare=FALSE)
+		
 		# assembly database
 		# TODO
 	}
@@ -802,7 +810,9 @@ load.cr.data <- function(correct.data, complete.data)
 	# correct/complete with secondary sources
 	if(complete.data)
 	{	# senate database
-		data <- senate.integrate.data(data, type="CR", cache=TRUE, compare=FALSE)
+# NOTE Senate data eventually not used
+#		data <- senate.integrate.data(data, type="CR", cache=TRUE, compare=FALSE)
+		
 		# assembly database
 		# TODO
 	}
@@ -869,7 +879,9 @@ load.cr2.data <- function(correct.data, complete.data)
 	# correct/complete with secondary sources
 	if(complete.data)
 	{	# senate database
-		data <- senate.integrate.data(data, type="CR", cache=TRUE, compare=FALSE)
+# NOTE Senate data eventually not used
+#		data <- senate.integrate.data(data, type="CR", cache=TRUE, compare=FALSE)
+		
 		# assembly database
 		# TODO
 	}
@@ -924,7 +936,9 @@ load.d.data <- function(correct.data, complete.data)
 	# correct/complete with secondary sources
 	if(complete.data)
 	{	# senate database
-		data <- senate.integrate.data(data, type="D", cache=TRUE, compare=FALSE)
+# NOTE Senate data eventually not used
+#		data <- senate.integrate.data(data, type="D", cache=TRUE, compare=FALSE)
+		
 		# assembly database
 		# TODO
 	}
@@ -973,7 +987,9 @@ load.de.data <- function(correct.data, complete.data)
 	# correct/complete with secondary sources
 	if(complete.data)
 	{	# senate database
-		data <- senate.integrate.data(data, type="DE", cache=TRUE, compare=FALSE)
+# NOTE Senate data eventually not used
+#		data <- senate.integrate.data(data, type="DE", cache=TRUE, compare=FALSE)
+		
 		# assembly database
 		# TODO
 	}
@@ -1115,7 +1131,9 @@ load.m.data <- function(correct.data, complete.data)
 	# correct/complete with secondary sources
 	if(complete.data)
 	{	# senate database
-		data <- senate.integrate.data(data, type="M", cache=TRUE, compare=FALSE)
+# NOTE Senate data eventually not used
+#		data <- senate.integrate.data(data, type="M", cache=TRUE, compare=FALSE)
+		
 		# assembly database
 		# TODO
 	}
@@ -1168,7 +1186,7 @@ load.s.data <- function(correct.data, complete.data)
 	# correct/complete with secondary sources
 	if(complete.data)
 	{	# senate database
-		data <- senate.integrate.data(data, type="S", cache=TRUE, compare=FALSE)
+		data <- senate.integrate.data(data, type="S", cache=TRUE, compare=TRUE)
 		# assembly database
 		# TODO
 	}

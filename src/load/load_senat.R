@@ -660,14 +660,16 @@ senate.convert.mandate.table <- function(general.table, elect.table, type)
 		col.names=TRUE			# record table headers
 	)
 	
-	# add years columns
-	tlog(4,"Adding years columns")
-	sen.tab <- cbind(sen.tab, 
+	# add years columns for non-senatorial tables
+	if(type!="S")
+	{	tlog(4,"Adding years columns")
+		sen.tab <- cbind(sen.tab, 
 			mdt.start.years[order.idx], mdt.end.years[order.idx], 
 			fct.start.years[order.idx], fct.end.years[order.idx])
-	colnames(sen.tab)[(ncol(sen.tab)-3):ncol(sen.tab)] <- c(
+		colnames(sen.tab)[(ncol(sen.tab)-3):ncol(sen.tab)] <- c(
 			COL_SENAT_MDT_ADBT, COL_SENAT_MDT_AFIN, 
 			COL_SENAT_FCT_ADBT, COL_SENAT_FCT_AFIN)
+	}
 	
 	return(sen.tab)
 }
@@ -749,28 +751,30 @@ senate.match.senate.vs.rne.rows <- function(sen.tab, rne.tab, tolerance)
 				}
 				
 				# otherwise, try to compare the years when the precise date is missing
-				else if(!senators)
-				{	idx2 <- idx.sen[is.na(sen.tab[idx.sen,COL_ATT_MDT_DBT])]
-					if(length(idx2)>0)
-					{	idx2 <- idx2[sen.tab[idx2,COL_SENAT_MDT_ADBT]==year1]
-						# if there is exactly one: match done
-						if(length(idx2)==1)
-						{	tlog(8,"Found 1 matching Senate row using year, nothing to do:")
-							tlog(10,paste(rne.tab[idx1,],collapse=","),",",format(rne.tab[idx1,COL_ATT_MDT_DBT]))
-							tlog(10,paste(sen.tab[idx2,],collapse=","),",",format(sen.tab[idx2,COL_ATT_MDT_DBT]))
-							row.conv[idx2] <- idx1
-							failed <- FALSE
-						}
-						# if there are several, we have a problem (manual correction)
-						else if(length(idx2)>1)
-						{	tlog(8,"Found several (",length(idx2),") matching Senate rows (year), stopping")
-							tlog(10,paste(rne.tab[idx1,],collapse=","),",",format(rne.tab[idx1,COL_ATT_MDT_DBT]))
-							for(i2 in idx2)
-								tlog(10,paste(sen.tab[i2,],collapse=","),",",format(sen.tab[i2,COL_ATT_MDT_DBT]))
-							stop("Found several matching Senate rows (year)")
-						}
-					}
-				}
+# TODO the above part was added to handle other tables than the senatorial mandates
+# but not completely tested before we decided to finally not use this feature 
+#				else if(!senators)
+#				{	idx2 <- idx.sen[is.na(sen.tab[idx.sen,COL_ATT_MDT_DBT])]
+#					if(length(idx2)>0)
+#					{	idx2 <- idx2[sen.tab[idx2,COL_SENAT_MDT_ADBT]==year1]
+#						# if there is exactly one: match done
+#						if(length(idx2)==1)
+#						{	tlog(8,"Found 1 matching Senate row using year, nothing to do:")
+#							tlog(10,paste(rne.tab[idx1,],collapse=","),",",format(rne.tab[idx1,COL_ATT_MDT_DBT]))
+#							tlog(10,paste(sen.tab[idx2,],collapse=","),",",format(sen.tab[idx2,COL_ATT_MDT_DBT]))
+#							row.conv[idx2] <- idx1
+#							failed <- FALSE
+#						}
+#						# if there are several, we have a problem (manual correction)
+#						else if(length(idx2)>1)
+#						{	tlog(8,"Found several (",length(idx2),") matching Senate rows (year), stopping")
+#							tlog(10,paste(rne.tab[idx1,],collapse=","),",",format(rne.tab[idx1,COL_ATT_MDT_DBT]))
+#							for(i2 in idx2)
+#								tlog(10,paste(sen.tab[i2,],collapse=","),",",format(sen.tab[i2,COL_ATT_MDT_DBT]))
+#							stop("Found several matching Senate rows (year)")
+#						}
+#					}
+#				}
 		
 				# if everything failed, the row is probably wrong and should be corrected manually
 				if(failed)
@@ -865,7 +869,9 @@ senate.update.rne.table <- function(rne.tab, sen.tab, row.conv)
 		# update source column
 		result[idx1, COL_ATT_SOURCES] <- paste(result[idx1, COL_ATT_SOURCES], sen.tab[idx2, COL_ATT_SOURCES], sep=",")
 		
-# TODO actually, this is true only for the senate mandates (not the others)		
+# TODO actually, this is true only for the senate mandates, not the others
+# for them, the date may be NA, and only the year may be available (or even nothing at all)
+# This part was not finished as we finally decided not use non-senatorial tables (from the Senate DB)
 		# force both mandate dates to the Senate one (considered more reliable)
 		if(!is.na(sen.tab[idx2, COL_ATT_MDT_DBT]))
 			result[idx1, COL_ATT_MDT_DBT] <- sen.tab[idx2, COL_ATT_MDT_DBT]
@@ -902,8 +908,11 @@ senate.update.rne.table <- function(rne.tab, sen.tab, row.conv)
 
 #############################################################################################
 # Complete the RNE data with the mandates found in the Senate database.
+# 
+# NOTE: in the end, only the Senatorial data was leveraged, as the other tables seem
+# declarative, are sometimes imprecise and appear to be unreliable.
 #
-# data: one of the RNE table.
+# data: one of the RNE tables.
 # type: nature of the table (CD, CM, CR, D, DE, M, S).
 # cache: whether or not to cache the map allowing to match people in the RNE and Senate tables.
 #        If FALSE, this operation is performed each time, otherwise it is computed only once.
@@ -912,7 +921,7 @@ senate.update.rne.table <- function(rne.tab, sen.tab, row.conv)
 #
 # returns: the same table, completed using the Senate DB.
 #############################################################################################
-senate.integrate.data <- function(data, type, cache=TRUE, compare=FALSE) 	# debug type="CR";cache=FALSE;compare=TRUE
+senate.integrate.data <- function(data, type, cache=TRUE, compare=FALSE)
 {	# load the general senate table, containing individual information
 	general.table <- senate.load.general.table(cache)
 	
