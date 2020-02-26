@@ -31,6 +31,7 @@ perso.tab <- data.frame(
 	as.character(rep(NA,length(xml.files))),
 	as.character(rep(NA,length(xml.files))),
 	as.character(rep(NA,length(xml.files))),
+	as.character(rep(NA,length(xml.files))),
 	#
 	check.names=FALSE,
 	stringsAsFactors=FALSE
@@ -41,6 +42,7 @@ colnames(perso.tab) <- c(
 	COL_ATT_ELU_PRENOM,
 	COL_ATT_ELU_NOM,
 	COL_ATT_ELU_DDN,
+	COL_ATT_ELU_DDD,
 	COL_ASSEMB_ELU_CODN,
 	COL_ASSEMB_ELU_DEDN,
 	COL_ASSEMB_ELU_PADN,
@@ -92,17 +94,18 @@ for(i in 1:length(xml.files))
 	perso.tab[i,COL_ATT_ELU_PRENOM] <- xmlValue(getNodeSet(doc,"/d:acteur/d:etatCivil/d:ident/d:prenom", c(d="http://schemas.assemblee-nationale.fr/referentiel"))[[1]])
 	perso.tab[i,COL_ATT_ELU_NOM] <- xmlValue(getNodeSet(doc,"/d:acteur/d:etatCivil/d:ident/d:nom", c(d="http://schemas.assemblee-nationale.fr/referentiel"))[[1]])
 	tlog(6, "Name: ",perso.tab[i,COL_ATT_ELU_PRENOM]," ",perso.tab[i,COL_ATT_ELU_NOM])
-tlog(6, "trigramme: \"",getNodeSet(doc,"/d:acteur/d:etatCivil/d:ident/d:trigramme", c(d="http://schemas.assemblee-nationale.fr/referentiel"))[[1]][1]$text,"\"")
-
+tlog(6, "trigramme: \"",xmlValue(getNodeSet(doc,"/d:acteur/d:etatCivil/d:ident/d:trigramme", c(d="http://schemas.assemblee-nationale.fr/referentiel"))[[1]]),"\"")
+	
 	# retrieve bith-related info
 	perso.tab[i,COL_ATT_ELU_DDN] <- xmlValue(getNodeSet(doc,"/d:acteur/d:etatCivil/d:infoNaissance/d:dateNais", c(d="http://schemas.assemblee-nationale.fr/referentiel"))[[1]])
-	tlog(6, "Birthdate: ",perso.tab[i,COL_ATT_ELU_DDN])
+	tlog(6, "Birth date: ",perso.tab[i,COL_ATT_ELU_DDN])
 	perso.tab[i,COL_ASSEMB_ELU_CODN] <- xmlValue(getNodeSet(doc,"/d:acteur/d:etatCivil/d:infoNaissance/d:villeNais", c(d="http://schemas.assemblee-nationale.fr/referentiel"))[[1]])
 	perso.tab[i,COL_ASSEMB_ELU_DEDN] <- xmlValue(getNodeSet(doc,"/d:acteur/d:etatCivil/d:infoNaissance/d:depNais", c(d="http://schemas.assemblee-nationale.fr/referentiel"))[[1]])
 	perso.tab[i,COL_ASSEMB_ELU_PADN] <- xmlValue(getNodeSet(doc,"/d:acteur/d:etatCivil/d:infoNaissance/d:paysNais", c(d="http://schemas.assemblee-nationale.fr/referentiel"))[[1]])
 	
 	# retrieve death-related info
-tlog(6,"dateDeces: \"",getNodeSet(doc,"/d:acteur/d:etatCivil/d:dateDeces", c(d="http://schemas.assemblee-nationale.fr/referentiel"))[[1]][1]$text,"\"")
+	perso.tab[i,COL_ATT_ELU_DDD] <- xmlValue(getNodeSet(doc,"/d:acteur/d:etatCivil/d:dateDeces", c(d="http://schemas.assemblee-nationale.fr/referentiel"))[[1]])
+	tlog(6,"Death date: ",xmlValue(getNodeSet(doc,"/d:acteur/d:etatCivil/d:dateDeces", c(d="http://schemas.assemblee-nationale.fr/referentiel"))[[1]]))
 	
 	# retrieve occupation-related info
 	perso.tab[i,COL_ASSEMB_PRO_NOM] <- xmlValue(getNodeSet(doc,"/d:acteur/d:profession/d:libelleCourant", c(d="http://schemas.assemblee-nationale.fr/referentiel"))[[1]])
@@ -148,3 +151,23 @@ tlog(6,"dateDeces: \"",getNodeSet(doc,"/d:acteur/d:etatCivil/d:dateDeces", c(d="
 		}
 	}
 }
+
+# record personal table
+write.table(x=perso.tab,
+	file=FILE_ASSEM_GENERAL,	# name of file containing the new table
+	quote=FALSE,				# no double quote around strings
+	se="\t",					# use tabulations as separators
+#	fileEncoding="UTF-8",		# character encoding
+	row.names=FALSE,			# no names for rows
+	col.names=TRUE				# record table headers
+)
+
+# record mandate table
+write.table(x=mandate.tab,
+	file=FILE_ASSEM_MANDATS,	# name of file containing the new table
+	quote=FALSE,				# no double quote around strings
+	se="\t",					# use tabulations as separators
+#	fileEncoding="UTF-8",		# character encoding
+	row.names=FALSE,			# no names for rows
+	col.names=TRUE				# record table headers
+)

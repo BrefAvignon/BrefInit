@@ -410,7 +410,8 @@ FOLDER_IN <- "in"
 # secondary data
 	# national assembly files
 	FOLDER_ASSEM_RAW <- file.path(FOLDER_ASSEMBLEE, "raw")
-	FILE_ASSEM_XXX <- file.path(FOLDER_ASSEMBLEE, "xxxxxx.txt")
+	FILE_ASSEM_GENERAL <- file.path(FOLDER_ASSEMBLEE, "_general_cache.txt")
+	FILE_ASSEM_MANDATS <- file.path(FOLDER_ASSEMBLEE, "_mandates_cache.txt")
 	# senate files
 	FILE_SENAT_CONV_DPTS <- file.path(FOLDER_SENAT, "conv_dpts.txt")
 	FILE_SENAT_CONV_NOMSFAM <- file.path(FOLDER_SENAT, "conv_noms.txt")
