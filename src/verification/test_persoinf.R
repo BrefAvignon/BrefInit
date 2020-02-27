@@ -23,7 +23,7 @@ test.personal.details <- function(data, out.folder)
 		COL_ATT_ELU_NOM,
 		COL_ATT_ELU_PRENOM,
 		COL_ATT_ELU_SEXE,
-		COL_ATT_ELU_DDN,
+		COL_ATT_ELU_NAIS_DATE,
 		COL_ATT_ELU_NAT
 	)
 	tlog(2,"Trying to detect problems in personal information columns: ",paste(cols,collapse="\",\""))

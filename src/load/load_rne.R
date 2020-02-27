@@ -421,7 +421,7 @@ load.data <- function(filenames, col.map, correc.file, correct.data)
 # returns: the table with the merged similar rows.
 #############################################################################################
 merge.similar.rows <- function(data)
-{	comp.cols <- c(COL_ATT_ELU_ID, COL_ATT_ELU_NOM, COL_ATT_ELU_PRENOM, COL_ATT_ELU_SEXE, COL_ATT_ELU_DDN)
+{	comp.cols <- c(COL_ATT_ELU_ID, COL_ATT_ELU_NOM, COL_ATT_ELU_PRENOM, COL_ATT_ELU_SEXE, COL_ATT_ELU_NAIS_DATE)
 	tlog(0,"Merging compatible rows for compulsory columns \"",paste(comp.cols,collapse="\",\""),"\"")
 	rm.col <- which(colnames(data) %in% comp.cols)
 	
@@ -537,7 +537,7 @@ load.cd.data <- function(correct.data, complete.data)
 	col.map["Libellé de fonction"] <- COL_ATT_FCT_NOM
 	col.map["Code profession"] <- COL_ATT_PRO_CODE
 	col.map["Libellé de la profession"] <- COL_ATT_PRO_NOM
-	col.map["Date de naissance"] <- COL_ATT_ELU_DDN
+	col.map["Date de naissance"] <- COL_ATT_ELU_NAIS_DATE
 	col.map["N° Identification d'un élu"] <- COL_ATT_ELU_ID_RNE
 	col.map["Date de début du mandat"] <- COL_ATT_MDT_DBT
 	col.map["Date de début de la fonction"] <- COL_ATT_FCT_DBT
@@ -593,7 +593,7 @@ load.cd2.data <- function(correct.data, complete.data)
 	col.map["Libellé de fonction"] <- COL_ATT_FCT_NOM
 	col.map["Code profession"] <- COL_ATT_PRO_CODE
 	col.map["Libellé de la profession"] <- COL_ATT_PRO_NOM
-	col.map["Date de naissance"] <- COL_ATT_ELU_DDN
+	col.map["Date de naissance"] <- COL_ATT_ELU_NAIS_DATE
 	col.map["N° Identification d'un élu"] <- COL_ATT_ELU_ID_RNE
 	col.map["Date de début du mandat"] <- COL_ATT_MDT_DBT
 	col.map["Date de début de la fonction"] <- COL_ATT_FCT_DBT
@@ -649,7 +649,7 @@ load.cm.data <- function(correct.data, complete.data)
 	col.map["Nom de l'élu"] <- COL_ATT_ELU_NOM
 	col.map["Prénom de l'élu"] <- COL_ATT_ELU_PRENOM
 	col.map["Code sexe"] <- COL_ATT_ELU_SEXE
-	col.map["Date de naissance"] <- COL_ATT_ELU_DDN
+	col.map["Date de naissance"] <- COL_ATT_ELU_NAIS_DATE
 	col.map["Code profession"] <- COL_ATT_PRO_CODE
 	col.map["Libellé de la profession"] <- COL_ATT_PRO_NOM
 	col.map["Date de début du mandat"] <- COL_ATT_MDT_DBT
@@ -723,7 +723,7 @@ load.cm2.data <- function(correct.data, complete.data)
 	col.map["N° Identification d'un élu"] <- COL_ATT_ELU_ID_RNE
 	col.map["Nom de l'élu"] <- COL_ATT_ELU_NOM
 	col.map["Prénom de l'élu"] <- COL_ATT_ELU_PRENOM
-	col.map["Date de naissance"] <- COL_ATT_ELU_DDN
+	col.map["Date de naissance"] <- COL_ATT_ELU_NAIS_DATE
 	col.map["Code sexe"] <- COL_ATT_ELU_SEXE
 	col.map["Code profession"] <- COL_ATT_PRO_CODE
 	col.map["Nationalité de l'élu"] <- COL_ATT_ELU_NAT
@@ -784,7 +784,7 @@ load.cr.data <- function(correct.data, complete.data)
 	col.map["Nom de l'élu"] <- COL_ATT_ELU_NOM
 	col.map["Prénom de l'élu"] <- COL_ATT_ELU_PRENOM
 	col.map["Code sexe"] <- COL_ATT_ELU_SEXE
-	col.map["Date de naissance"] <- COL_ATT_ELU_DDN
+	col.map["Date de naissance"] <- COL_ATT_ELU_NAIS_DATE
 	col.map["Code profession"] <- COL_ATT_PRO_CODE
 	col.map["Libellé de la profession"] <- COL_ATT_PRO_NOM
 	col.map["Libellé de mandat"] <- COL_ATT_MDT_NOM
@@ -839,7 +839,7 @@ load.cr2.data <- function(correct.data, complete.data)
 	col.map["N° Identification d'un élu"] <- COL_ATT_ELU_ID_RNE
 	col.map["Nom de l'élu"] <- COL_ATT_ELU_NOM
 	col.map["Prénom de l'élu"] <- COL_ATT_ELU_PRENOM
-	col.map["Date de naissance"] <- COL_ATT_ELU_DDN
+	col.map["Date de naissance"] <- COL_ATT_ELU_NAIS_DATE
 	col.map["Code sexe"] <- COL_ATT_ELU_SEXE
 	col.map["Code profession"] <- COL_ATT_PRO_CODE
 	col.map["Nationalité de l'élu"] <- COL_ATT_ELU_NAT
@@ -909,7 +909,7 @@ load.d.data <- function(correct.data, complete.data)
 	col.map["Libellé de la cir.législative"] <- COL_ATT_CIRC_NOM
 	col.map["Nom de l'élu"] <- COL_ATT_ELU_NOM
 	col.map["Prénom de l'élu"] <- COL_ATT_ELU_PRENOM
-	col.map["Date de naissance"] <- COL_ATT_ELU_DDN
+	col.map["Date de naissance"] <- COL_ATT_ELU_NAIS_DATE
 	col.map["Code sexe"] <- COL_ATT_ELU_SEXE
 	col.map["Code profession"] <- COL_ATT_PRO_CODE
 	col.map["Libellé de la profession"] <- COL_ATT_PRO_NOM
@@ -964,7 +964,7 @@ load.de.data <- function(correct.data, complete.data)
 	col.map["LibelléCirER"] <- COL_ATT_CIRCE_NOM
 	col.map["Nom de l'élu"] <- COL_ATT_ELU_NOM
 	col.map["Prénom de l'élu"] <- COL_ATT_ELU_PRENOM
-	col.map["Date de naissance"] <- COL_ATT_ELU_DDN
+	col.map["Date de naissance"] <- COL_ATT_ELU_NAIS_DATE
 	col.map["Code sexe"] <- COL_ATT_ELU_SEXE
 	col.map["Code profession"] <- COL_ATT_PRO_CODE
 	col.map["Libellé de la profession"] <- COL_ATT_PRO_NOM
@@ -1020,7 +1020,7 @@ load.epci.data <- function(correct.data, complete.data)
 	col.map["Nom de l'élu"] <- COL_ATT_ELU_NOM
 	col.map["Prénom de l'élu"] <- COL_ATT_ELU_PRENOM
 	col.map["Code sexe"] <- COL_ATT_ELU_SEXE
-	col.map["Date de naissance"] <- COL_ATT_ELU_DDN
+	col.map["Date de naissance"] <- COL_ATT_ELU_NAIS_DATE
 	col.map["Code profession"] <- COL_ATT_PRO_CODE
 	col.map["Libellé de la profession"] <- COL_ATT_PRO_NOM
 	col.map["Date de début du mandat"] <- COL_ATT_MDT_DBT
@@ -1086,7 +1086,7 @@ load.m.data <- function(correct.data, complete.data)
 	col.map["Population de la commune"] <- COL_ATT_COM_POP
 	col.map["Nom de l'élu"] <- COL_ATT_ELU_NOM
 	col.map["Prénom de l'élu"] <- COL_ATT_ELU_PRENOM
-	col.map["Date de naissance"] <- COL_ATT_ELU_DDN
+	col.map["Date de naissance"] <- COL_ATT_ELU_NAIS_DATE
 	col.map["Code sexe"] <- COL_ATT_ELU_SEXE
 	col.map["Code profession"] <- COL_ATT_PRO_CODE
 	col.map["Libellé de la profession"] <- COL_ATT_PRO_NOM
@@ -1159,7 +1159,7 @@ load.s.data <- function(correct.data, complete.data)
 	col.map["Libellé du département"] <- COL_ATT_DPT_NOM
 	col.map["Nom de l'élu"] <- COL_ATT_ELU_NOM
 	col.map["Prénom de l'élu"] <- COL_ATT_ELU_PRENOM
-	col.map["Date de naissance"] <- COL_ATT_ELU_DDN
+	col.map["Date de naissance"] <- COL_ATT_ELU_NAIS_DATE
 	col.map["Code sexe"] <- COL_ATT_ELU_SEXE
 	col.map["Code profession"] <- COL_ATT_PRO_CODE
 	col.map["Libellé de la profession"] <- COL_ATT_PRO_NOM

@@ -98,7 +98,7 @@ test.col.dates.generic <- function(data, out.folder)
 		}
 		
 		# born after mandate begins
-		idx <- which(data[,COL_ATT_ELU_DDN]>=data[,COL_ATT_MDT_DBT])			
+		idx <- which(data[,COL_ATT_ELU_NAIS_DATE]>=data[,COL_ATT_MDT_DBT])			
 		tlog(6,"Found ",length(idx)," mandate(s) starting before birthdate")
 		if(length(idx)>0)
 		{	tmp <- cbind(idx, data[idx,])
@@ -193,7 +193,7 @@ test.col.dates.generic <- function(data, out.folder)
 		}
 		
 		# born after function begins
-		idx <- which(data[,COL_ATT_ELU_DDN]>=data[,COL_ATT_FCT_DBT])
+		idx <- which(data[,COL_ATT_ELU_NAIS_DATE]>=data[,COL_ATT_FCT_DBT])
 		tlog(6,"Found ",length(idx)," function(s) starting before birthdate")
 		if(length(idx)>0)
 		{	tmp <- cbind(idx,data[idx,])

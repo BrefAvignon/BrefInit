@@ -220,7 +220,7 @@ read.string.table <- function(files, ...)
 	col.map["Date de début du mandat"] <- COL_ATT_MDT_DBT
 	col.map["Date de fin de la fonction"] <- COL_ATT_FCT_FIN
 	col.map["Date de fin du mandat"] <- COL_ATT_MDT_FIN
-	col.map["Date de naissance"] <- COL_ATT_ELU_DDN
+	col.map["Date de naissance"] <- COL_ATT_ELU_NAIS_DATE
 	col.map["Fonction pour un mandat (Code)"] <- COL_ATT_FCT_CODE
 	col.map["Libellé commune rattachée"] <- COL_ATT_COM_NOM
 	col.map["Libellé de département (Maires)"] <- COL_ATT_DPT_NOM

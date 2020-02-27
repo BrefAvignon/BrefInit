@@ -59,7 +59,10 @@ COL_ATT_COM_POP <- "Population commune"
 COL_ATT_DPT_CODE <- "Code departement"
 COL_ATT_DPT_ID <- "ID departement"
 COL_ATT_DPT_NOM <- "Libelle departement"
-COL_ATT_ELU_DDN <- "Date naissance"
+COL_ATT_ELU_NAIS_COM <- "Commune de naissance"
+COL_ATT_ELU_NAIS_DATE <- "Date naissance"
+COL_ATT_ELU_NAIS_DPT <- "Departement de naissance"
+COL_ATT_ELU_NAIS_PAYS <- "Pays de naissance"
 COL_ATT_ELU_DDD <- "Date deces"
 COL_ATT_ELU_ID <- "ID universel"
 COL_ATT_ELU_ID_RNE <- "ID RNE"
@@ -112,9 +115,12 @@ COLS_ATT_NORMALIZED <- c(
 	COL_ATT_ELU_ID_RNE,
 	COL_ATT_ELU_ID_ASSEMB,
 	COL_ATT_ELU_ID_SENAT,
+	COL_ATT_ELU_NAIS_DATE,
+	COL_ATT_ELU_NAIS_COM,
+	COL_ATT_ELU_NAIS_DPT,
+	COL_ATT_ELU_NAIS_PAYS,
 	COL_ATT_ELU_NOM,
 	COL_ATT_ELU_PRENOM,
-	COL_ATT_ELU_DDN,
 	COL_ATT_ELU_DDD,
 	COL_ATT_ELU_SEXE,
 	COL_ATT_ELU_NAT,
@@ -169,7 +175,10 @@ LONGNAMES[COL_ATT_COM_POP] <- "Population de la commune"
 LONGNAMES[COL_ATT_DPT_ID] <- "Id unique du département"
 LONGNAMES[COL_ATT_DPT_CODE] <- "Code du département"
 LONGNAMES[COL_ATT_DPT_NOM] <- "Libellé du département"
-LONGNAMES[COL_ATT_ELU_DDN] <- "Date de naissance de l'élu"
+LONGNAMES[COL_ATT_ELU_NAIS_COM] <- "Commune de naissance de l'élu"
+LONGNAMES[COL_ATT_ELU_NAIS_DATE] <- "Date de naissance de l'élu"
+LONGNAMES[COL_ATT_ELU_NAIS_DPT] <- "Département de naissance de l'élu"
+LONGNAMES[COL_ATT_ELU_NAIS_PAYS] <- "Pays de naissance de l'élu"
 LONGNAMES[COL_ATT_ELU_DDD] <- "Date de décès de l'élu"
 LONGNAMES[COL_ATT_ELU_ID] <- "Id universel de l'élu"
 LONGNAMES[COL_ATT_ELU_ID_RNE] <- "Id RNE de l'élu"
@@ -213,7 +222,10 @@ BASENAMES[COL_ATT_COM_POP] <- "commune_pop"
 BASENAMES[COL_ATT_DPT_CODE] <- "dept_code"
 BASENAMES[COL_ATT_DPT_ID] <- "dept_id"
 BASENAMES[COL_ATT_DPT_NOM] <- "dept_lib"
-BASENAMES[COL_ATT_ELU_DDN] <- "elu_ddn"
+BASENAMES[COL_ATT_ELU_NAIS_COM] <- "elu_nais_com"
+BASENAMES[COL_ATT_ELU_NAIS_DATE] <- "elu_nais_date"
+BASENAMES[COL_ATT_ELU_NAIS_DPT] <- "elu_nais_dpt"
+BASENAMES[COL_ATT_ELU_NAIS_PAYS] <- "elu_nais_pays"
 BASENAMES[COL_ATT_ELU_DDD] <- "elu_ddd"
 BASENAMES[COL_ATT_ELU_ID] <- "elu_id_univ"
 BASENAMES[COL_ATT_ELU_ID_RNE] <- "elu_id_rne"
@@ -257,7 +269,10 @@ COL_TYPES[COL_ATT_CIRCE_NOM] <- "nom"
 COL_TYPES[COL_ATT_DPT_ID] <- "nom"
 COL_TYPES[COL_ATT_DPT_CODE] <- "cat"
 COL_TYPES[COL_ATT_DPT_NOM] <- "nom"
-COL_TYPES[COL_ATT_ELU_DDN] <- "dat"
+COL_TYPES[COL_ATT_ELU_NAIS_COM] <- "nom"
+COL_TYPES[COL_ATT_ELU_NAIS_DATE] <- "dat"
+COL_TYPES[COL_ATT_ELU_NAIS_DPT] <- "nom"
+COL_TYPES[COL_ATT_ELU_NAIS_PAYS] <- "nom"
 COL_TYPES[COL_ATT_ELU_DDD] <- "dat"
 COL_TYPES[COL_ATT_ELU_ID] <- "nom"
 COL_TYPES[COL_ATT_ELU_ID_RNE] <- "cat"
@@ -336,10 +351,6 @@ COL_SENAT_PRO_NOM <- "PCS INSEE"
 COL_SENAT_REG_NOM <- "Region"
 
 # columns for assemblee files
-COL_ASSEMB_ELU_CIV <- "Civilite"
-COL_ASSEMB_ELU_CODN <- "Commune de naissance"
-COL_ASSEMB_ELU_DEDN <- "Departement de naissance"
-COL_ASSEMB_ELU_PADN <- "Pays de naissance"
 COL_ASSEMB_PRO_NOM <- "Nom profession"
 COL_ASSEMB_PRO_CAT <- "Categorie profession"
 COL_ASSEMB_PRO_FAM <- "Famille profession"
@@ -409,9 +420,15 @@ FOLDER_IN <- "in"
 	FILE_VERIF_DATES_S <- file.path(FOLDER_VERIFS, "elections_S.txt")
 # secondary data
 	# national assembly files
-	FOLDER_ASSEM_RAW <- file.path(FOLDER_ASSEMBLEE, "raw")
-	FILE_ASSEM_GENERAL <- file.path(FOLDER_ASSEMBLEE, "_general_cache.txt")
-	FILE_ASSEM_MANDATS <- file.path(FOLDER_ASSEMBLEE, "_mandates_cache.txt")
+	FOLDER_ASSEMB_RAW <- file.path(FOLDER_ASSEMBLEE, "raw")
+	FILE_ASSEMB_CONV_DPTS <- file.path(FOLDER_ASSEMBLEE, "conv_dpts.txt")
+	FILE_ASSEMB_CONV_IDS <- file.path(FOLDER_ASSEMBLEE, "elu_equiv_ids.txt")
+	FILE_ASSEMB_CONV_NOMSFAM <- file.path(FOLDER_ASSEMBLEE, "conv_noms.txt")
+	FILE_ASSEMB_CONV_PAYS <- file.path(FOLDER_ASSEMBLEE, "conv_pays.txt")
+	FILE_ASSEMB_CONV_PRENOMS <- file.path(FOLDER_ASSEMBLEE, "conv_prenoms.txt")
+	FILE_ASSEMB_GENERAL <- file.path(FOLDER_ASSEMBLEE, "general.txt")
+	FILE_ASSEMB_GENERAL_CACHE <- file.path(FOLDER_ASSEMBLEE, "_general_cache.txt")
+	FILE_ASSEMB_MANDATS <- file.path(FOLDER_ASSEMBLEE, "depute.txt")
 	# senate files
 	FILE_SENAT_CONV_DPTS <- file.path(FOLDER_SENAT, "conv_dpts.txt")
 	FILE_SENAT_CONV_NOMSFAM <- file.path(FOLDER_SENAT, "conv_noms.txt")

@@ -1,8 +1,22 @@
 Row	Id RNE	Nom	Prenom	Attribut	ValAvt	ValApr	Commentaire
 2448	1154458	GIRARDIN	Annick	Libellé de la cir.législative	1ère circonscription	Saint-Pierre-et-Miquelon	Nom changé au cours du temps
 2449	790	GRIGNON	Gérard	Libellé de la cir.législative	1ère circonscription	Saint-Pierre-et-Miquelon	Nom changé au cours du temps
-805	1325550	GALASSO	Virginie	Date debut mandat	23/3/2014	NA	Mandat de 1 jour, corrigé par suppression
-805	1325550	GALASSO	Virginie	Date fin mandat	23/3/2014	NA	Mandat de 1 jour, corrigé par suppression
+315	719	BEAULIEU	Jean-Claude	Date naissance	21/6/1944	24/6/1944	Date de naissance incorrecte (BD Assemblée)
+563	47119	PAIX	Bernardette	Prenom elu	Bernardette	Bernadette	Typo dans le prénom (BD Assemblée)
+649	92972	FAURE	Martine	Date naissance	30/9/1958	30/9/1948	Date de naissance incorrecte (BD Assemblée)
+662	92972	FAURE	Martine	Date naissance	30/9/1958	30/9/1948	Date de naissance incorrecte (BD Assemblée)
+969	157418	GOUGET	Jean-Claude	Date naissance	5/12/1942	5/11/1942	Date de naissance incorrecte (BD Assemblée)
+314	834248	QUERE	Catherine	Date naissance	12/2/1972	16/3/1948	Date de naissance incorrecte (BD Assemblée)
+314	834248	QUERE	Catherine	Code profession	20	58	Code profession incorrect (BD Assemblée)
+314	834248	QUERE	Catherine	Libelle profession	Employés (secteur privé)	Retraités agricoles	Nom profession incorrect (BD Assemblée)
+2239	1192022	HAMMADI	Razzy	Date naissance	22/1/1979	22/2/1979	Date de naissance incorrecte (BD Assemblée)
+2243	1192023	POCHON	Elisabeth	Date naissance	19/4/1954	19/4/1955	Date de naissance incorrecte (BD Assemblée)
+1128	1372345	JACQUES	Jean-Michel	Date naissance	26/2/1968	29/2/1968	Date de naissance incorrecte (BD Assemblée)
+319	1519731	GÉRARD	Raphaël	Date naissance	11/1/1968	17/10/1968	Date de naissance incorrecte (BD Assemblée)
+692	1519766	DÉMOULIN	Nicolas	Date naissance	22/7/1979	22/7/1972	Date de naissance incorrecte (BD Assemblée)
+1071	1519799	GRANDJEAN	Carole	Date naissance	18/5/1993	18/5/1983	Date de naissance incorrecte (BD Assemblée)
+805	1325550	GALASSO	Virginie	Date debut mandat	23/3/2014	NA	Corrigé pour fusion ultérieure
+805	1325550	GALASSO	Virginie	Date fin mandat	23/3/2014	NA	Corrigé pour fusion ultérieure
 1605	1166801	DUBOIS	Françoise	Date fin mandat	20/6/2012	NA	Corrigé pour fusion ultérieure
 1642	168242	MIGNOLA	Patrick	Date debut mandat	19/6/2017	18/6/2017	Corrigé pour fusion ultérieure
 1642	168242	MIGNOLA	Patrick	Date fin mandat	20/6/2017	NA	Correction coquille

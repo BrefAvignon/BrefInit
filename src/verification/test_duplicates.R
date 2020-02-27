@@ -16,7 +16,7 @@
 # out.folder: folder where to output the results.
 #############################################################################################
 test.compatible.rows <- function(data, out.folder=NA)
-{	comp.cols <- c(COL_ATT_ELU_ID, COL_ATT_ELU_NOM, COL_ATT_ELU_PRENOM, COL_ATT_ELU_SEXE, COL_ATT_ELU_DDN)
+{	comp.cols <- c(COL_ATT_ELU_ID, COL_ATT_ELU_NOM, COL_ATT_ELU_PRENOM, COL_ATT_ELU_SEXE, COL_ATT_ELU_NAIS_DATE)
 	tlog(0,"Looking for compatible rows, using compulsory columns \"",paste(comp.cols,collapse="\",\""),"\"")
 	plan(multiprocess, workers=CORE.NBR/2)
 	rm.col <- which(colnames(data) %in% comp.cols)
@@ -118,7 +118,7 @@ test.id.reuse <- function(data, out.folder)
 			}
 			
 			# compare birth dates
-			birthdates <- sort(unique(data[idx,COL_ATT_ELU_DDN]))
+			birthdates <- sort(unique(data[idx,COL_ATT_ELU_NAIS_DATE]))
 			if(length(birthdates)>1)
 			{	tlog(8,"Found ",length(birthdates)," different birth dates: ",paste(birthdates,collapse=", "))
 				differs <- TRUE
@@ -217,7 +217,7 @@ test.multiple.id <- function(data, loc.col=NA, out.folder)
 	tlog(2,"Identifying all unique individuals")
 	lastnames <- data[,COL_ATT_ELU_NOM]
 	firstnames <- data[,COL_ATT_ELU_PRENOM]
-	birthdates <- format(data[,COL_ATT_ELU_DDN])
+	birthdates <- format(data[,COL_ATT_ELU_NAIS_DATE])
 	sexes <- data[,COL_ATT_ELU_SEXE]
 	if(hasArg(loc.col) && !is.na(loc.col))
 	{	locations <- data[,loc.col]

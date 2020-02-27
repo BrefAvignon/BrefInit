@@ -36,7 +36,7 @@ senate.load.conversion.file <- function(file)
 
 #############################################################################################
 # Loads the Senate table containing the description of individuals, and converts/normalizes
-# everything that needs to be. This function uses a cache system in order to speed the process.
+# everything that needs to be. This function uses a cache system in order to speed up the process.
 #
 # cache: whether or not to use the cache system.
 # 
@@ -145,7 +145,7 @@ senate.load.general.table <- function(cache)
 		indiv.pol.nuances[idx2] <- nuances.conv[idx[idx2], COL_CORREC_VALAPR]
 		
 		# retrieve occupations names
-		indiv.occ.names <- trimws(normalize.proper.nouns(remove.diacritics(indiv.table[idx,COL_SENAT_PRO_NOM])))
+		indiv.occ.names <- trimws(normalize.proper.nouns(remove.diacritics(indiv.table[,COL_SENAT_PRO_NOM])))
 		occup.conv <- senate.load.conversion.file(FILE_SENAT_CONV_PRO)
 		idx <- match(indiv.occ.names, occup.conv[, COL_CORREC_VALAVT])
 		idx2 <- which(!is.na(idx))
@@ -156,7 +156,7 @@ senate.load.general.table <- function(cache)
 		indiv.occ.codes <- rep(NA,nrow(indiv.table))
 		
 		# retrieve functions
-		indiv.fonct.names <- trimws(normalize.proper.nouns(remove.diacritics(indiv.table[idx,COL_SENAT_FCT_BUR])))
+		indiv.fonct.names <- trimws(normalize.proper.nouns(remove.diacritics(indiv.table[,COL_SENAT_FCT_BUR])))
 		# NOTE "function" also seems to be available under a dynamic form in the "Groupes" table
 #		indiv.fonct.names <- rep(NA,nrow(indiv.table))
 		
@@ -170,11 +170,11 @@ senate.load.general.table <- function(cache)
 		indiv.ids.rne <- rep(NA, nrow(indiv.table))
 		indiv.ids.univ <- paste0("SEN_0",indiv.table[,COL_SENAT_ELU_MATRI])
 		for(i in 1:nrow(indiv.table))
-		{	tlog(6, "Processing senator ",i,"/",nrow(indiv.table))
+		{	tlog(6, "Processing senator ",indiv.ids.univ[i]," (",i,"/",nrow(indiv.table),")")
 			tmp <- which(data[,COL_ATT_ELU_NOM]==indiv.last.names[i]
 							& data[,COL_ATT_ELU_PRENOM]==indiv.first.names[i]
-							& data[,COL_ATT_ELU_DDN]==indiv.birth.dates[i])
-#			& data[,COL_ATT_DPT_NOM]==indiv.dpt.names[i])
+							& data[,COL_ATT_ELU_NAIS_DATE]==indiv.birth.dates[i])
+#							& data[,COL_ATT_DPT_NOM]==indiv.dpt.names[i])
 			if(length(tmp)==0)
 				tlog(6, "No match for senator: ",paste(indiv.table[i,],collapse=","))
 			else 
@@ -186,7 +186,7 @@ senate.load.general.table <- function(cache)
 				}
 				else
 				{	tlog(8, "Found a single RNE entry (id ",tmp.ids,", name ",
-							paste(data[tmp[1],c(COL_ATT_ELU_NOM,COL_ATT_ELU_PRENOM,COL_ATT_ELU_DDN)],collapse=","),
+							paste(data[tmp[1],c(COL_ATT_ELU_NOM,COL_ATT_ELU_PRENOM,COL_ATT_ELU_NAIS_DATE)],collapse=","),
 							") for senator: ",paste(indiv.table[i,],collapse=","))
 					indiv.ids.rne[i] <- tmp.ids
 					indiv.ids.univ[i] <- data[tmp[1],COL_ATT_ELU_ID]
@@ -202,8 +202,8 @@ senate.load.general.table <- function(cache)
 #		{	tlog(2, "Processing row ",i,"/",length(rne.ids))
 #			tmp <- which(indiv.last.names==data[rne.rows[i],COL_ATT_ELU_NOM]
 #					& indiv.first.names==data[rne.rows[i],COL_ATT_ELU_PRENOM]
-#					& indiv.birth.dates==data[rne.rows[i],COL_ATT_ELU_DDN])
-#				#			& indiv.dpt.names==data[rne.rows[i],COL_ATT_DPT_NOM])
+#					& indiv.birth.dates==data[rne.rows[i],COL_ATT_ELU_NAIS_DATE])
+##					& indiv.dpt.names==data[rne.rows[i],COL_ATT_DPT_NOM])
 #			if(length(tmp)==0)
 #				tlog(4, "No match for row: ",paste(data[rne.rows[i],],collapse=","))
 #			else 
@@ -253,7 +253,7 @@ senate.load.general.table <- function(cache)
 			COL_ATT_ELU_ID_SENAT,
 			COL_ATT_ELU_NOM,
 			COL_ATT_ELU_PRENOM,
-			COL_ATT_ELU_DDN,
+			COL_ATT_ELU_NAIS_DATE,
 			COL_ATT_ELU_DDD,
 			COL_ATT_ELU_SEXE,
 			COL_ATT_ELU_NAT,
@@ -408,7 +408,7 @@ senate.convert.mandate.table <- function(general.table, elect.table, type)
 		general.table[idx,COL_ATT_ELU_ID_SENAT],	# senate id
 		general.table[idx,COL_ATT_ELU_NOM],			# last name
 		general.table[idx,COL_ATT_ELU_PRENOM],		# first name
-		general.table[idx,COL_ATT_ELU_DDN],			# birth date
+		general.table[idx,COL_ATT_ELU_NAIS_DATE],			# birth date
 		general.table[idx,COL_ATT_ELU_DDD],			# death date
 		general.table[idx,COL_ATT_ELU_SEXE],		# sex
 		general.table[idx,COL_ATT_ELU_NAT],			# country
@@ -434,7 +434,7 @@ senate.convert.mandate.table <- function(general.table, elect.table, type)
 		COL_ATT_ELU_ID_SENAT,
 		COL_ATT_ELU_NOM,
 		COL_ATT_ELU_PRENOM,
-		COL_ATT_ELU_DDN,
+		COL_ATT_ELU_NAIS_DATE,
 		COL_ATT_ELU_DDD,
 		COL_ATT_ELU_SEXE,
 		COL_ATT_ELU_NAT,
