@@ -408,7 +408,7 @@ senate.convert.mandate.table <- function(general.table, elect.table, type)
 		general.table[idx,COL_ATT_ELU_ID_SENAT],	# senate id
 		general.table[idx,COL_ATT_ELU_NOM],			# last name
 		general.table[idx,COL_ATT_ELU_PRENOM],		# first name
-		general.table[idx,COL_ATT_ELU_NAIS_DATE],			# birth date
+		general.table[idx,COL_ATT_ELU_NAIS_DATE],	# birth date
 		general.table[idx,COL_ATT_ELU_DDD],			# death date
 		general.table[idx,COL_ATT_ELU_SEXE],		# sex
 		general.table[idx,COL_ATT_ELU_NAT],			# country
@@ -646,7 +646,7 @@ senate.convert.mandate.table <- function(general.table, elect.table, type)
 	norm.cols <- intersect(COLS_ATT_NORMALIZED, colnames(sen.tab))
 	sen.tab <- sen.tab[,norm.cols]
 	
-	# record Senate table
+	# record the Senate table
 	folder <- file.path(FOLDER_COMP_SRC_SEN, type)
 	dir.create(path=folder, showWarnings=FALSE, recursive=TRUE)
 	sen.tab.file <- file.path(folder, "data_senat.txt")

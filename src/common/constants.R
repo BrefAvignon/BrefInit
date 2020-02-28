@@ -426,6 +426,7 @@ FOLDER_IN <- "in"
 	FILE_ASSEMB_CONV_NOMSFAM <- file.path(FOLDER_ASSEMBLEE, "conv_noms.txt")
 	FILE_ASSEMB_CONV_PAYS <- file.path(FOLDER_ASSEMBLEE, "conv_pays.txt")
 	FILE_ASSEMB_CONV_PRENOMS <- file.path(FOLDER_ASSEMBLEE, "conv_prenoms.txt")
+	FILE_ASSEMB_CORRECS <- file.path(FOLDER_ASSEMBLEE,"corrections.txt")
 	FILE_ASSEMB_GENERAL <- file.path(FOLDER_ASSEMBLEE, "general.txt")
 	FILE_ASSEMB_GENERAL_CACHE <- file.path(FOLDER_ASSEMBLEE, "_general_cache.txt")
 	FILE_ASSEMB_MANDATS <- file.path(FOLDER_ASSEMBLEE, "depute.txt")
@@ -503,4 +504,5 @@ FOLDER_OUT <- "out"
 		# tables from different sources
 		FOLDER_COMPAR_SOURCES <- file.path(FOLDER_COMPARISON,"sources")
 			# source-specific output folders
+			FOLDER_COMP_SRC_ASSEMB <- file.path(FOLDER_COMPAR_SOURCES, "Assemblee")
 			FOLDER_COMP_SRC_SEN <- file.path(FOLDER_COMPAR_SOURCES, "Senat")

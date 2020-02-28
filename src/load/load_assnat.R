@@ -496,3 +496,340 @@ assembly.load.general.table <- function(cache)
 	tlog(4,"General file loaded")
 	return(result)
 }
+
+
+
+
+#############################################################################################
+# Loads the Senate table containing the description of mandates.
+# 
+# returns: the loaded table.
+#############################################################################################
+assembly.load.elect.table <- function()
+{	tlog(2,"Loading the Assembly madate table: ",FILE_ASSEMB_MANDATS)
+	
+	# load the corresponding senate mandate table(s)
+	elect.table <- read.table(
+		file=FILE_ASSEMB_MANDATS,	# name of the data file
+		header=TRUE, 				# look for a header
+		sep="\t", 					# character used to separate columns 
+		check.names=FALSE, 			# don't change the column names from the file
+		comment.char="", 			# ignore possible comments in the content
+		row.names=NULL, 			# don't look for row names in the file
+		quote="", 					# don't expect double quotes "..." around text fields
+		as.is=TRUE,					# don't convert strings to factors
+		colClasses="character"		# all column originally read as characters, then converted later if needed
+#		fileEncoding="Latin1"		# original tables seem to be encoded in Latin1 (ANSI)
+	)
+	
+	# set empty cells to NA
+	tlog(4,"Cleaning empty cells")
+	for(c in 1:ncol(elect.table))
+		elect.table[which(elect.table[,c]==""),c] <- NA
+	
+	# make a few corrections
+	tlog(4,"Loading correction table")
+	correc.table <- read.table(
+		file=FILE_ASSEMB_CORRECS,	# name of the data file
+		header=TRUE, 				# look for a header
+		sep="\t", 					# character used to separate columns 
+		check.names=FALSE, 			# don't change the column names from the file
+		comment.char="", 			# ignore possible comments in the content
+		row.names=NULL, 			# don't look for row names in the file
+		quote="", 					# don't expect double quotes "..." around text fields
+		as.is=TRUE,					# don't convert strings to factors
+		colClasses="character"		# all column originally read as characters, then converted later if needed
+#		fileEncoding="Latin1"		# original tables seem to be encoded in Latin1 (ANSI)
+	)
+	correc.table[correc.table=="NA"] <- NA
+	tlog(4,"Applying corrections to the data")
+	for(i in 1:nrow(correc.table))
+	{	tlog(6, "Correction ",i,"/",nrow(correc.table))
+		idx <- which(elect.table[,COL_ATT_ELU_ID_ASSEMB]==correc.table[i,COL_ATT_ELU_ID_ASSEMB]
+						& elect.table[,COL_ATT_MDT_DBT]==correc.table[i,COL_ATT_MDT_DBT]
+						& (elect.table[,COL_ATT_MDT_FIN]==correc.table[i,COL_ATT_MDT_FIN] 
+							| is.na(elect.table[,COL_ATT_MDT_FIN]) & is.na(correc.table[i,COL_ATT_MDT_FIN])))
+		if(length(idx)!=1)
+		{	tlog(8, "ERROR: found ",length(idx)," matching rows while correcting the table")
+			stop("ERROR: found ",length(idx)," matching rows while correcting the table")
+		}
+		else
+		{	if(elect.table[idx,correc.table[i,COL_CORREC_ATTR]]==correc.table[i,COL_CORREC_VALAVT])
+			{	tlog(8, "Replacing \"",correc.table[i,COL_CORREC_VALAVT],"\" by \"",correc.table[i,COL_CORREC_VALAPR],"\"")
+				elect.table[idx,correc.table[i,COL_CORREC_ATTR]] <- correc.table[i,COL_CORREC_VALAPR]
+			}
+			else
+			{	tlog(8, "ERROR: the found value (",elect.table[idx,correc.table[i,COL_CORREC_ATTR]],") does not match the correction file (",correc.table[i,COL_CORREC_VALAVT],")")
+				stop("ERROR: the found value (",elect.table[idx,correc.table[i,COL_CORREC_ATTR]],") does not match the correction file (",correc.table[i,COL_CORREC_VALAVT],")")
+			}
+		}
+	}
+	
+	return(elect.table)
+}
+
+
+
+
+#############################################################################################
+# Convert a data table originating from the Assembly DB into one comparable to a RNE table.
+#
+# general.table: table containing the personal data.
+# elect.table: table containing the mandate data.
+# 
+# returns: the table resulting from the conversion.
+#############################################################################################
+assembly.convert.mandate.table <- function(general.table, elect.table)
+{	tlog(2,"Converting the Assembly mandate table")
+	
+	# match the general and mandate tables
+	indiv.idx <- match(elect.table[,COL_ATT_ELU_ID_ASSEMB], general.table[,COL_ATT_ELU_ID_ASSEMB])
+	
+	# get departments
+	tlog(4,"Normalizing department names")
+#	region.names <- trimws(normalize.proper.nouns(remove.diacritics(elect.table[,COL_ATT_REG_NOM])))	# we actually don't need regions
+	dpt.names <- trimws(normalize.proper.nouns(remove.diacritics(elect.table[,COL_ATT_DPT_NOM])))
+	dpts.conv <- senate.load.conversion.file(FILE_ASSEMB_CONV_DPTS)
+	idx <- match(dpt.names, dpts.conv[, COL_CORREC_VALAVT])
+	idx2 <- which(!is.na(idx))
+	dpt.names[idx2] <- dpts.conv[idx[idx2], COL_CORREC_VALAPR]
+	
+	# retrieve department codes and ids
+	dpt.table <- read.table(
+			file=FILE_CONV_DPT,			# name of the data file
+			header=TRUE, 				# look for a header
+			sep="\t", 					# character used to separate columns 
+			check.names=FALSE, 			# don't change the column names from the file
+			comment.char="", 			# ignore possible comments in the content
+			row.names=NULL, 			# don't look for row names in the file
+			quote="", 					# don't expect double quotes "..." around text fields
+			as.is=TRUE					# don't convert strings to factors
+#			fileEncoding="Latin1"		# original tables seem to be encoded in Latin1 (ANSI)
+	)
+	dpt.idx <- match(dpt.names, dpt.table[,COL_ATT_DPT_NOM])
+#	dpt.codes <- trimws(elect.table[,COL_ATT_DPT_CODE])		# better to force using the codes from the RNE, as long as the names match
+	dpt.codes <- sapply(dpt.table[dpt.idx,COL_ATT_DPT_CODE], function(x) 
+			{	str <- strsplit(x, ",", fixed=TRUE)[[1]]
+				str[length(str)]
+			})
+	dpt.ids <- dpt.table[dpt.idx,COL_ATT_DPT_ID]
+	
+	# retrieve circonscription codes
+	circo.codes <- trimws(elect.table[,COL_ATT_CIRC_CODE])
+	
+	# convert mandate dates
+	tlog(4,"Converting mandate dates")
+	mdt.start.dates <- as.Date(elect.table[,COL_ATT_MDT_DBT], "%Y-%m-%d")
+	mdt.end.dates <- as.Date(elect.table[,COL_ATT_MDT_FIN], "%Y-%m-%d")
+	
+	# mandate name
+	tlog(4,"Inserting mandate names")
+	mdt.names <- rep("DEPUTE", length(idx))
+	
+	# get motive of end of mandate
+	tlog(4,"Processing end of mandate motive")
+	mdt.motives <- trimws(normalize.proper.nouns(remove.diacritics(elect.table[,COL_ATT_MDT_MOTIF])))
+	
+	# set up empty function dates
+	fct.start.dates <- as.Date(rep(NA,length(mdt.start.dates)))
+	fct.end.dates <- as.Date(rep(NA,length(mdt.end.dates)))
+	
+	# set up function names
+	fct.names <- trimws(normalize.proper.nouns(remove.diacritics(elect.table[,COL_ATT_FCT_NOM])))
+	fct.names[fct.names=="MEMBRE"] <- NA		# member is not a function in the RNE
+	
+	# distinguish mandate rows from function rows
+	# (the latter do not have any territorial information)
+	idx.mandates <- which(!is.na(dpt.names))
+	idx.functions <- which(is.na(dpt.names))
+	
+	# get function dates and names
+	tlog(4,"Processing function dates and names, for each id in the table")
+	ids <- sort(unique(elect.table[,COL_ATT_ELU_ID_ASSEMB]))
+	for(i in 1:length(ids))
+	{	tlog(6,"Processing id ",ids[i]," (",i,"/",length(ids),")")
+		fct.idx <- which(elect.table[,COL_ATT_ELU_ID_ASSEMB]==ids[i] & is.na(dpt.names))
+		if(length(fct.idx)>0)
+		{	for(j in 1:length(fct.idx))
+			{	tlog(8,"Processing function ",j,"/",length(fct.idx))
+				mdt.idx <- which(elect.table[,COL_ATT_ELU_ID_ASSEMB]==ids[i] & !is.na(dpt.names)
+							& mdt.start.dates<=mdt.start.dates[fct.idx[j]]
+							& (is.na(mdt.end.dates) | mdt.end.dates>=mdt.end.dates[fct.idx[j]]))
+				if(length(mdt.idx)==0)
+				{	tlog(10,"ERROR: did not find any matching mandate for ",paste(elect.table[fct.idx[j],],collapse=","))
+					stop("ERROR: did not find any matching mandate for ",paste(elect.table[fct.idx[j],],collapse=","))
+				}
+				else if(length(mdt.idx)>1)
+				{	tlog(10,"ERROR: found several matching mandates:")
+					tlog(10,paste(elect.table[fct.idx[j],],collapse=","))
+					for(mdtidx in mdt.idx)
+						tlog(10,paste(elect.table[mdtidx,],collapse=","))
+					stop("ERROR: found several matching mandates")
+				}
+				else
+				{	tlog(10,"Found a single matching mandate, now updating it")
+					# if the mandate has no function yet: just update it
+					if(is.na(fct.start.dates[mdt.idx]))
+					{	fct.start.dates[mdt.idx] <- mdt.start.dates[fct.idx[j]]
+						fct.end.dates[mdt.idx] <- mdt.end.dates[fct.idx[j]]
+						fct.names[mdt.idx] <- mdt.names[fct.idx[j]]
+					}
+					# else, if it already has a function: must insert new row
+					else
+					{	n <- length(dpt.names)
+						indiv.idx[n] <- indiv.idx[mdt.idx]
+						dpt.names[n] <- dpt.names[mdt.idx]
+						dpt.codes[n] <- dpt.codes[mdt.idx]
+						dpt.ids[n] <- dpt.ids[mdt.idx]
+						circo.codes[n] <- circo.codes[mdt.idx]
+						mdt.start.dates[n] <- mdt.start.dates[mdt.idx]
+						mdt.end.dates[n] <- mdt.end.dates[mdt.idx]
+						mdt.names[n] <- mdt.names[mdt.idx]
+						mdt.motives[n] <- mdt.motives[mdt.idx]
+						fct.start.dates[n] <- mdt.start.dates[fct.idx[j]]
+						fct.end.dates[n] <- mdt.end.dates[fct.idx[j]]
+						fct.names[n] <- mdt.names[fct.idx[j]]
+					}
+				}
+			}
+		}
+		else
+			tlog(8,"No function to process")
+	}
+	
+	# build assembly table
+	tlog(4,"Building new Assembly mandate table")
+	indiv.idx <- indiv.idx[-idx.functions]
+	asn.tab <- data.frame(
+			general.table[indiv.idx,COL_ATT_ELU_ID],		# universal id
+			general.table[indiv.idx,COL_ATT_ELU_ID_RNE],	# RNE id
+			general.table[indiv.idx,COL_ATT_ELU_ID_ASSEMB],	# assembly id
+			general.table[indiv.idx,COL_ATT_ELU_NOM],		# last name
+			general.table[indiv.idx,COL_ATT_ELU_PRENOM],	# first name
+			general.table[indiv.idx,COL_ATT_ELU_NAIS_DATE],	# birth date
+			general.table[indiv.idx,COL_ATT_ELU_DDD],		# death date
+			general.table[indiv.idx,COL_ATT_ELU_SEXE],		# sex
+			general.table[indiv.idx,COL_ATT_ELU_NAT],		# country
+			general.table[indiv.idx,COL_ATT_ELU_NAIS_COM],	# birth city
+			general.table[indiv.idx,COL_ATT_ELU_NAIS_DPT],	# birth department
+			general.table[indiv.idx,COL_ATT_ELU_NAIS_PAYS],	# birth country
+			general.table[indiv.idx,COL_ATT_PRO_CODE],		# occupation code
+			general.table[indiv.idx,COL_ATT_PRO_NOM],		# occupation name
+			dpt.ids[-idx.functions],						# mandate department id
+			dpt.codes[-idx.functions],						# mandate department code
+			dpt.names[-idx.functions],						# mandate department name
+			circo.codes[-idx.functions],					# mandate circonscription
+			mdt.names[-idx.functions],						# mandate name
+			mdt.start.dates[-idx.functions],				# mandate start date
+			mdt.end.dates[-idx.functions],					# mandate end date
+			mdt.motives[-idx.functions],					# mandate end motive
+			fct.names[-idx.functions],						# function name
+			fct.start.dates[-idx.functions],				# function start date
+			fct.end.dates[-idx.functions],					# function end date
+			rep("ASSEMBLEE", length(indiv.idx)),			# data source
+			#
+			check.names=FALSE,
+			stringsAsFactors=FALSE
+	)
+	colnames(asn.tab) <- c(		
+			COL_ATT_ELU_ID,
+			COL_ATT_ELU_ID_RNE,
+			COL_ATT_ELU_ID_ASSEMB,
+			COL_ATT_ELU_NOM,
+			COL_ATT_ELU_PRENOM,
+			COL_ATT_ELU_NAIS_DATE,
+			COL_ATT_ELU_DDD,
+			COL_ATT_ELU_SEXE,
+			COL_ATT_ELU_NAT,
+			COL_ATT_ELU_NAIS_COM,
+			COL_ATT_ELU_NAIS_DPT,
+			COL_ATT_ELU_NAIS_PAYS,
+			COL_ATT_PRO_CODE,
+			COL_ATT_PRO_NOM,
+			COL_ATT_DPT_ID,
+			COL_ATT_DPT_CODE,
+			COL_ATT_DPT_NOM,
+			COL_ATT_CIRC_CODE,
+			COL_ATT_MDT_NOM,
+			COL_ATT_MDT_DBT,
+			COL_ATT_MDT_FIN,
+			COL_ATT_MDT_MOTIF,
+			COL_ATT_FCT_NOM,
+			COL_ATT_FCT_DBT,
+			COL_ATT_FCT_FIN,
+			COL_ATT_SOURCES
+	)
+	
+	# order the Assembly table
+	tlog(4,"Ordering the table rows")
+	order.idx <- order(
+		asn.tab[,COL_ATT_ELU_NOM], asn.tab[,COL_ATT_ELU_PRENOM], 
+		asn.tab[,COL_ATT_MDT_DBT], asn.tab[,COL_ATT_MDT_FIN])
+	asn.tab <- asn.tab[order.idx,]
+	norm.cols <- intersect(COLS_ATT_NORMALIZED, colnames(asn.tab))
+	asn.tab <- asn.tab[,norm.cols]
+	
+	# record the Assembly table
+	folder <- file.path(FOLDER_COMP_SRC_ASSEMB, "D")
+	dir.create(path=folder, showWarnings=FALSE, recursive=TRUE)
+	asn.tab.file <- file.path(folder, "data_assemb.txt")
+	tlog(4,"Recording the new table in ",asn.tab.file)
+	write.table(x=asn.tab,
+		file=asn.tab.file,		# name of file containing the new table
+		quote=FALSE,			# no double quote around strings
+		se="\t",				# use tabulations as separators
+#		fileEncoding="UTF-8",	# character encoding
+		row.names=FALSE,		# no names for rows
+		col.names=TRUE			# record table headers
+	)
+	
+	return(asn.tab)
+}
+
+
+
+
+#############################################################################################
+# Complete the RNE data with the mandates found in the Assembly database.
+# 
+# data: D table of the RNE.
+# cache: whether or not to cache the map allowing to match people in the RNE and Assembly tables.
+#        If FALSE, this operation is performed each time, otherwise it is computed only once.
+# compare: whether or not to perform a comparison of the resulting RNE and Assembly tables
+#          (used for debugging only).
+#
+# returns: the same table, completed using the Assembly DB.
+#############################################################################################
+assembly.integrate.data <- function(data, cache=TRUE, compare=FALSE)
+{	# parse the large collection of XML files and create the raw tables
+#	assembly.convert.xml()	# already done, do not execute anymore
+	
+	# load the general assembly table, containing individual information
+	general.table <- assembly.load.general.table(cache)
+	
+	# load the mandate table
+	elect.table <- assembly.load.elect.table()
+	
+	# build a mandate table comparable to a RNE table
+	asn.tab <- assembly.convert.mandate.table(general.table, elect.table)
+	
+# adjust the RNE table
+rne.tab <- assembly.adjust.rne.table(data)
+
+# match rows using a tolerance of a few days for dates
+row.conv <- assembly.match.assembly.vs.rne.rows(asn.tab, rne.tab, tolerance=14)
+
+# use Assembly data to correct/complete existing RNE rows
+result <- assembly.update.rne.table(rne.tab, asn.tab, row.conv)
+
+# compare both tables
+if(compare)
+{	out.folder <- file.path(FOLDER_COMP_SRC_ASSEMB, "D")
+	asn.tab.file <- file.path(out.folder, "data_assemb.txt")
+	rne.tab.file <- file.path(out.folder, "data_rne2.txt")
+	source("src/comparison/compare_tables.R")
+	compare.tables(files0=rne.tab.file, files1=asn.tab.file, out.folder)
+}
+	
+	return(result)
+}

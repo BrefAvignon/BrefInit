@@ -197,5 +197,7 @@ source("src/common/include.R")
 #       (mandat, et fonction le cas échéant)
 # - on prend la ligne crée et on continue avec la date de l'élection suivante
 # - dès qu'on a une date d'élection ultérieure à la fin de mandat, on s'arrête
-# TODO
-# quand plusieurs lignes matchent et non-S : utiliser les fonctions pour les départager
+#
+# Fonctions: si plusieurs fonctions dans mandat:
+#		- autant de lignes que de fonctions
+#		- chacune avec les mêmes infos sauf fonction (y compris dates mandat)

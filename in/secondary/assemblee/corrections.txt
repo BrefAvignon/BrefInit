@@ -1,0 +1,7 @@
+ID Assemblee	Date debut mandat	Date fin mandat	Attribut	ValAvt	ValApr	Commentaire
+PA1001	2007-06-20	2012-06-19	Date debut mandat	2007-06-20	2010-11-14	Date incorrecte
+PA1790	2007-06-20	2012-06-19	Date debut mandat	2007-06-20	2012-05-11	Date incorrecte
+PA1960	2007-06-20	2012-06-19	Date debut mandat	2007-06-20	2012-05-11	Date incorrecte
+PA267459	2007-06-20	2012-06-19	Date debut mandat	2007-06-20	2012-05-11	Date incorrecte
+PA267743	2007-06-20	2012-06-19	Date debut mandat	2007-06-20	2012-05-11	Date incorrecte
+PA332747	2017-06-18	NA	Date debut mandat	2017-06-18	2019-07-16	Date incorrecte
