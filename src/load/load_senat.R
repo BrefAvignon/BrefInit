@@ -678,6 +678,55 @@ senate.convert.mandate.table <- function(general.table, elect.table, type)
 
 
 #############################################################################################
+# Adjusts the columns of the specified RNE table, in order to make it comparable with the
+# currently processed Senate table.
+#
+# data: original RNE table.
+#
+# returns: adjusted RNE table.
+#############################################################################################
+senate.adjust.rne.table <- function(data)
+{	tlog(2,"Adjusting RNE table")
+	
+	# add missing columns to the RNE table
+	tlog(4,"Adding missing columns to the RNE table")
+	cols <- data.frame(as.character(rep(NA,nrow(data))), as.Date(rep(NA,nrow(data))), stringsAsFactors=FALSE)
+	colnames(cols) <- c(COL_ATT_ELU_ID_SENAT, COL_ATT_ELU_DDD)
+	rne.tab <- cbind(data, cols)
+	
+	# possibly add the nationality column
+	if(!(COL_ATT_ELU_NAT %in% colnames(data)))
+	{	cols <- data.frame(as.character(rep(NA,nrow(data))), stringsAsFactors=FALSE)
+		colnames(cols) <- COL_ATT_ELU_NAT
+		rne.tab <- cbind(rne.tab, cols)
+	}
+	
+	# reorder its columns
+	tlog(4,"Sorting RNE table rows")
+	norm.cols <- intersect(COLS_ATT_NORMALIZED, colnames(rne.tab))
+	rne.tab <- rne.tab[,norm.cols]
+	
+	# record temp RNE table
+	out.folder <- file.path(FOLDER_COMP_SRC_ASSEMB, type)
+	dir.create(path=out.folder, showWarnings=FALSE, recursive=TRUE)
+	rne.tab.file <- file.path(out.folder, "data_rne1.txt")
+	tlog(4,"Recording the new RNE table in ",rne.tab.file)
+	write.table(x=rne.tab,
+		file=rne.tab.file,		# name of file containing the new table
+		quote=FALSE,			# no double quote around strings
+		se="\t",				# use tabulations as separators
+#		fileEncoding="UTF-8",	# character encoding
+		row.names=FALSE,		# no names for rows
+		col.names=TRUE			# record table headers
+	)
+	
+	return(rne.tab)
+}
+
+
+
+
+#############################################################################################
 # Matches the rows from the Senate table into the RNE table. The process is quite similar to
 # the one permored when comparing several versions of the same table (script compare_tables.R).
 #
@@ -714,22 +763,26 @@ senate.match.senate.vs.rne.rows <- function(sen.tab, rne.tab, tolerance)
 			tlog(6,"Processing RNE row ",idx1," (",j,"/",length(idx.rne),")")
 			
 			# get the Senate row(s) matching the mandate start date
-			idx2 <- idx.sen[which(sen.tab[idx.sen,COL_ATT_MDT_DBT]==rne.tab[idx1,COL_ATT_MDT_DBT])]
+			idx2 <- idx.sen[which(sen.tab[idx.sen,COL_ATT_MDT_DBT]==rne.tab[idx1,COL_ATT_MDT_DBT])
+						& (sen.tab[idx.sen,COL_ATT_MDT_FIN]==rne.tab[idx1,COL_ATT_MDT_FIN]
+							| is.na(sen.tab[idx.sen,COL_ATT_MDT_FIN]) & is.na(rne.tab[idx1,COL_ATT_MDT_FIN]))]
+			#rbind(rne.tab[idx1,c(COL_ATT_ELU_ID,COL_ATT_MDT_DBT,COL_ATT_MDT_FIN)], sen.tab[idx2,c(COL_ATT_ELU_ID,COL_ATT_MDT_DBT,COL_ATT_MDT_FIN)])	# for debug
 			
 			# if there is exactly one: match done
 			if(length(idx2)==1)
-			{	tlog(8,"Found 1 matching Senate row, nothing to do:")
-				tlog(10,paste(rne.tab[idx1,],collapse=","),",",format(rne.tab[idx1,COL_ATT_MDT_DBT]))
-				tlog(10,paste(sen.tab[idx2,],collapse=","),",",format(sen.tab[idx2,COL_ATT_MDT_DBT]))
+			{	tlog(8,"Found 1 exactly matching Senate row, nothing to do:")
+				tlog(10,paste(rne.tab[idx1,],collapse=","),",",format(rne.tab[idx1,COL_ATT_MDT_DBT]),",",format(rne.tab[idx1,COL_ATT_MDT_FIN]))
+				tlog(10,paste(sen.tab[idx2,],collapse=","),",",format(sen.tab[idx2,COL_ATT_MDT_DBT]),",",format(sen.tab[idx2,COL_ATT_MDT_FIN]))
 				row.conv[idx2] <- idx1
 			}
 			
 			# if there are several, we have a problem (manual correction)
+			# TODO should we check the function dates, as for the Assembly data?
 			else if(length(idx2)>1)
 			{	tlog(8,"Found several (",length(idx2),") matching Senate rows, stopping")
-				tlog(10,paste(rne.tab[idx1,],collapse=","),",",format(rne.tab[idx1,COL_ATT_MDT_DBT]))
+				tlog(10,paste(rne.tab[idx1,],collapse=","),",",format(rne.tab[idx1,COL_ATT_MDT_DBT]),",",format(rne.tab[idx1,COL_ATT_MDT_FIN]))
 				for(i2 in idx2)
-					tlog(10,paste(sen.tab[i2,],collapse=","),",",format(sen.tab[i2,COL_ATT_MDT_DBT]))
+					tlog(10,paste(sen.tab[i2,],collapse=","),",",format(sen.tab[i2,COL_ATT_MDT_DBT]),",",format(sen.tab[idx2,COL_ATT_MDT_FIN]))
 				stop("Found several matching Senate rows")
 			}
 			
@@ -737,17 +790,44 @@ senate.match.senate.vs.rne.rows <- function(sen.tab, rne.tab, tolerance)
 			else if(length(idx2)<1)
 			{	failed <- TRUE
 				# difference in days between the dates
-				gaps <- abs(sen.tab[idx.sen,COL_ATT_MDT_DBT] - rne.tab[idx1,COL_ATT_MDT_DBT])
-				# get the closest date
-				g <- which.min(gaps)
+				start.gaps <- abs(sen.tab[idx.sen,COL_ATT_MDT_DBT] - rne.tab[idx1,COL_ATT_MDT_DBT])
+				end.gaps <- abs(sen.tab[idx.sen,COL_ATT_MDT_FIN] - rne.tab[idx1,COL_ATT_MDT_FIN])
+				end.gaps <- sapply(sen.tab[idx.sen,COL_ATT_MDT_FIN], function(date)
+							if(is.na(date))
+							{	if(is.na(rne.tab[idx1,COL_ATT_MDT_FIN]))
+									0
+								else
+									.Machine$integer.max/2
+							}
+							else
+							{	if(is.na(rne.tab[idx1,COL_ATT_MDT_FIN]))
+									.Machine$integer.max/2
+								else
+									abs(date-rne.tab[idx1,COL_ATT_MDT_FIN])
+							})
+				total.gaps <- start.gaps + end.gaps
+				# get the closest period
+				g <- which(total.gaps==min(total.gaps))
+				
 				# check it is within the tolerance
-				if(length(g)>0 && gaps[g]<=tolerance)
+				if(length(g)==1 && start.gaps[g]<=tolerance && end.gaps[g]<=tolerance)
 				{	idx2 <- idx.sen[g]
-					tlog(8,"Found a matching Senate row using approximate date (replacing the first by the second):")
-					tlog(10,paste(rne.tab[idx1,],collapse=","),",",format(rne.tab[idx1,COL_ATT_MDT_DBT]))
-					tlog(10,paste(sen.tab[idx2,],collapse=","),",",format(sen.tab[idx2,COL_ATT_MDT_DBT]))
+					tlog(8,"Found a matching Senate row using approximate date:")
+					tlog(10,paste(rne.tab[idx1,],collapse=","),",",format(rne.tab[idx1,COL_ATT_MDT_DBT]),",",format(rne.tab[idx1,COL_ATT_MDT_FIN]))
+					tlog(10,paste(sen.tab[idx2,],collapse=","),",",format(sen.tab[idx2,COL_ATT_MDT_DBT]),",",format(sen.tab[idx2,COL_ATT_MDT_FIN]))
 					row.conv[idx2] <- idx1
 					failed <- FALSE
+				}
+				
+				# if there are several rows matching, we have a problem (manual correction)
+				# TODO should we check the function dates, as for the Assembly data?
+				else if(length(g)>1 && all(start.gaps[g]<=tolerance & end.gaps[g]<=tolerance))
+				{	idx2 <- idx.sen[g]
+					tlog(8,"Found several (",length(idx2),") matching Senate rows using approximate dates, stopping")
+					tlog(10,paste(rne.tab[idx1,],collapse=","),",",format(rne.tab[idx1,COL_ATT_MDT_DBT]),",",format(rne.tab[idx1,COL_ATT_MDT_FIN]))
+					for(i2 in idx2)
+						tlog(10,paste(sen.tab[i2,],collapse=","),",",format(sen.tab[idx2,COL_ATT_MDT_DBT]),",",format(sen.tab[idx2,COL_ATT_MDT_FIN]))
+					stop("Found several matching Senate rows using approximate matching")
 				}
 				
 				# otherwise, try to compare the years when the precise date is missing
@@ -760,17 +840,17 @@ senate.match.senate.vs.rne.rows <- function(sen.tab, rne.tab, tolerance)
 #						# if there is exactly one: match done
 #						if(length(idx2)==1)
 #						{	tlog(8,"Found 1 matching Senate row using year, nothing to do:")
-#							tlog(10,paste(rne.tab[idx1,],collapse=","),",",format(rne.tab[idx1,COL_ATT_MDT_DBT]))
-#							tlog(10,paste(sen.tab[idx2,],collapse=","),",",format(sen.tab[idx2,COL_ATT_MDT_DBT]))
+#							tlog(10,paste(rne.tab[idx1,],collapse=","),",",format(rne.tab[idx1,COL_ATT_MDT_DBT]),",",format(rne.tab[idx1,COL_ATT_MDT_FIN]))
+#							tlog(10,paste(sen.tab[idx2,],collapse=","),",",format(sen.tab[idx2,COL_ATT_MDT_DBT]),",",format(sen.tab[idx2,COL_ATT_MDT_FIN]))
 #							row.conv[idx2] <- idx1
 #							failed <- FALSE
 #						}
 #						# if there are several, we have a problem (manual correction)
 #						else if(length(idx2)>1)
 #						{	tlog(8,"Found several (",length(idx2),") matching Senate rows (year), stopping")
-#							tlog(10,paste(rne.tab[idx1,],collapse=","),",",format(rne.tab[idx1,COL_ATT_MDT_DBT]))
+#							tlog(10,paste(rne.tab[idx1,],collapse=","),",",format(rne.tab[idx1,COL_ATT_MDT_DBT]),",",format(rne.tab[idx1,COL_ATT_MDT_FIN]))
 #							for(i2 in idx2)
-#								tlog(10,paste(sen.tab[i2,],collapse=","),",",format(sen.tab[i2,COL_ATT_MDT_DBT]))
+#								tlog(10,paste(sen.tab[i2,],collapse=","),",",format(sen.tab[i2,COL_ATT_MDT_DBT]),",",format(sen.tab[idx2,COL_ATT_MDT_FIN]))
 #							stop("Found several matching Senate rows (year)")
 #						}
 #					}
@@ -779,9 +859,9 @@ senate.match.senate.vs.rne.rows <- function(sen.tab, rne.tab, tolerance)
 				# if everything failed, the row is probably wrong and should be corrected manually
 				if(failed)
 				{	tlog(8,"Did not find any matching Senate row, even with approximate start date or year only")
-					tlog(10,paste(rne.tab[idx1,],collapse=","),",",format(rne.tab[idx1,COL_ATT_MDT_DBT]))
+					tlog(10,paste(rne.tab[idx1,],collapse=","),",",format(rne.tab[idx1,COL_ATT_MDT_DBT]),",",format(rne.tab[idx1,COL_ATT_MDT_FIN]))
 					for(i2 in idx.sen)
-						tlog(10,paste(sen.tab[i2,],collapse=","),",",format(sen.tab[i2,COL_ATT_MDT_DBT]))
+						tlog(10,paste(sen.tab[i2,],collapse=","),",",format(sen.tab[i2,COL_ATT_MDT_DBT]),",",format(sen.tab[idx2,COL_ATT_MDT_FIN]))
 				}
 			}
 		}
@@ -789,53 +869,6 @@ senate.match.senate.vs.rne.rows <- function(sen.tab, rne.tab, tolerance)
 	
 	# each value represents a Senate row, and indicates the matching RNE row, or NA if no RNE row matches
 	return(row.conv)
-}
-
-
-
-
-#############################################################################################
-# Adjusts the columns of the specified RNE table, in order to make it comparable with the
-# currently processed Senate table.
-#
-# data: original RNE table.
-#
-# returns: adjusted RNE table.
-#############################################################################################
-senate.adjust.rne.table <- function(data)
-{	tlog(2,"Adjusting RNE table")
-	
-	# add missing columns to the RNE table
-	tlog(4,"Adding missing columns to the RNE table")
-	cols <- data.frame(rep(NA,nrow(data)), as.Date(rep(NA,nrow(data))), stringsAsFactors=FALSE)
-	colnames(cols) <- c(COL_ATT_ELU_ID_SENAT, COL_ATT_ELU_DDD)
-	rne.tab <- cbind(data, cols)
-	
-	# possibly add the nationality column
-	if(!(COL_ATT_ELU_NAT %in% colnames(data)))
-	{	cols <- data.frame(rep(NA,nrow(data)), stringsAsFactors=FALSE)
-		colnames(cols) <- COL_ATT_ELU_NAT
-		rne.tab <- cbind(rne.tab, cols)
-	}
-	
-	# reorder its columns
-	tlog(4,"Sorting RNE table rows")
-	norm.cols <- intersect(COLS_ATT_NORMALIZED, colnames(rne.tab))
-	rne.tab <- rne.tab[,norm.cols]
-	
-	# record temp RNE table
-	rne.tab.file <- file.path(FOLDER_COMP_SRC_SEN, type, "data_rne1.txt")
-	tlog(4,"Recording the new RNE table in ",rne.tab.file)
-	write.table(x=rne.tab,
-		file=rne.tab.file,		# name of file containing the new table
-		quote=FALSE,			# no double quote around strings
-		se="\t",				# use tabulations as separators
-#		fileEncoding="UTF-8",	# character encoding
-		row.names=FALSE,		# no names for rows
-		col.names=TRUE			# record table headers
-	)
-	
-	return(rne.tab)
 }
 
 
@@ -872,11 +905,15 @@ senate.update.rne.table <- function(rne.tab, sen.tab, row.conv)
 # TODO actually, this is true only for the senate mandates, not the others
 # for them, the date may be NA, and only the year may be available (or even nothing at all)
 # This part was not finished as we finally decided not use non-senatorial tables (from the Senate DB)
-		# force both mandate dates to the Senate one (considered more reliable)
+		# force the mandate/function dates to the Senate ones (considered more reliable)
 		if(!is.na(sen.tab[idx2, COL_ATT_MDT_DBT]))
 			result[idx1, COL_ATT_MDT_DBT] <- sen.tab[idx2, COL_ATT_MDT_DBT]
 		if(!is.na(sen.tab[idx2, COL_ATT_MDT_FIN]))
 			result[idx1, COL_ATT_MDT_FIN] <- sen.tab[idx2, COL_ATT_MDT_FIN]
+		if(!is.na(sen.tab[idx2, COL_ATT_FCT_DBT]))
+			result[idx1, COL_ATT_FCT_DBT] <- sen.tab[idx2, COL_ATT_FCT_DBT]
+		if(!is.na(sen.tab[idx2, COL_ATT_MDT_FIN]))
+			result[idx1, COL_ATT_FCT_FIN] <- sen.tab[idx2, COL_ATT_FCT_FIN]
 	}
 	
 	# insert new Senate rows into existing RNE table
@@ -887,7 +924,8 @@ senate.update.rne.table <- function(rne.tab, sen.tab, row.conv)
 	# sort the resulting table
 	result <- result[order(result[,COL_ATT_DPT_CODE], 
 					result[,COL_ATT_ELU_NOM], result[,COL_ATT_ELU_PRENOM], 
-					result[,COL_ATT_MDT_DBT], result[,COL_ATT_MDT_FIN]) ,]
+					result[,COL_ATT_MDT_DBT], result[,COL_ATT_MDT_FIN],
+					result[,COL_ATT_FCT_DBT], result[,COL_ATT_FCT_FIN]) ,]
 	
 	# record the corrected/completed table
 	rne.tab.file <- file.path(FOLDER_COMP_SRC_SEN, type, "data_rne2.txt")

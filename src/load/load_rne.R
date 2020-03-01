@@ -194,6 +194,7 @@ load.data <- function(filenames, col.map, correc.file, correct.data)
 		{	tlog(0,"Applying ad hoc corrections")
 			
 			# apply each correction one after the other
+			idx.rm <- c()
 			for(r in 1:nrow(correc.table))
 			{	correc.attr <- correc.table[r,COL_CORREC_ATTR]
 				row <- as.integer(correc.table[r,COL_CORREC_ROW])
@@ -250,8 +251,14 @@ load.data <- function(filenames, col.map, correc.file, correct.data)
 #						data[idx,correc.table[r,COL_CORREC_ATTR]] <- correc.table[r,COL_CORREC_VALAPR]
 						else
 						{	if(row %in% idx)
-							{	tlog(4,"Correcting entry: ",paste(correc.table[r,],collapse=";"))
-								data[row,correc.table[r,COL_CORREC_ATTR]] <- correc.table[r,COL_CORREC_VALAPR]
+							{	if(correc.table[r,COL_CORREC_ATTR]==COL_ATT_ELU_ID_RNE && is.na(correc.table[r,COL_CORREC_VALAPR]))
+								{	tlog(4, "Row ",row," marked for removal")
+									idx.rm <- c(idx.rm, row)
+								}
+								else
+								{	tlog(4,"Correcting entry: ",paste(correc.table[r,],collapse=";"))
+									data[row,correc.table[r,COL_CORREC_ATTR]] <- correc.table[r,COL_CORREC_VALAPR]
+								}
 							}
 						}
 					}
@@ -261,14 +268,26 @@ load.data <- function(filenames, col.map, correc.file, correct.data)
 							stop(paste0("The specified row (",row,") does not correspond to the one matching the criteria (",idx,")"))
 						}
 						else
-						{	if(is.na(row))
-								tlog(4,"Correcting entry (",idx,"): ",paste(correc.table[r,],collapse=";"))
+						{	if(correc.table[r,COL_CORREC_ATTR]==COL_ATT_ELU_ID_RNE && is.na(correc.table[r,COL_CORREC_VALAPR]))
+							{	tlog(4, "Row ",idx," marked for removal")
+								idx.rm <- c(idx.rm, idx)
+							}
 							else
-								tlog(4,"Correcting entry: ",paste(correc.table[r,],collapse=";"))
-							data[idx,correc.table[r,COL_CORREC_ATTR]] <- correc.table[r,COL_CORREC_VALAPR]
+							{	if(is.na(row))
+									tlog(4,"Correcting entry (",idx,"): ",paste(correc.table[r,],collapse=";"))
+								else
+									tlog(4,"Correcting entry: ",paste(correc.table[r,],collapse=";"))
+								data[idx,correc.table[r,COL_CORREC_ATTR]] <- correc.table[r,COL_CORREC_VALAPR]
+							}
 						}
 					}
 				}
+			}
+			
+			# remove the marked rows
+			if(length(idx.rm)>0)
+			{	tlog(2,"Removing ",length(idx.rm)," from the table")
+				data <- data[-idx.rm,]
 			}
 			
 			tlog(2,"Now ",nrow(data)," rows and ",ncol(data)," columns in main table")
