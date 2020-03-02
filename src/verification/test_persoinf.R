@@ -16,9 +16,7 @@
 # out.folder: folder where to output the results.
 #############################################################################################
 test.personal.details <- function(data, out.folder)
-{	plan(multiprocess, workers=CORE.NBR/2)
-	
-	# columns to check
+{	# columns to check
 	cols <- c(
 		COL_ATT_ELU_NOM,
 		COL_ATT_ELU_PRENOM,

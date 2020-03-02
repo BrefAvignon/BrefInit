@@ -179,7 +179,6 @@ assembly.convert.xml <- function()
 		if(length(other.ids)>0)
 			conv.map[other.ids] <- rep(main.id, length(other.ids))
 	}
-	plan(multiprocess, workers=CORE.NBR/2)
 	# substitute correct ids
 	tlog(0,"Fixing duplicate ids")
 	perso.tab[,COL_ATT_ELU_ID_ASSEMB] <- future_sapply(perso.tab[,COL_ATT_ELU_ID_ASSEMB], function(id)

@@ -18,7 +18,6 @@
 test.compatible.rows <- function(data, out.folder=NA)
 {	comp.cols <- c(COL_ATT_ELU_ID, COL_ATT_ELU_NOM, COL_ATT_ELU_PRENOM, COL_ATT_ELU_SEXE, COL_ATT_ELU_NAIS_DATE)
 	tlog(0,"Looking for compatible rows, using compulsory columns \"",paste(comp.cols,collapse="\",\""),"\"")
-	plan(multiprocess, workers=CORE.NBR/2)
 	rm.col <- which(colnames(data) %in% comp.cols)
 	
 	# identify redundant rows

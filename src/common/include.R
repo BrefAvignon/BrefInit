@@ -31,7 +31,6 @@ library("stringdist")
 # parallel computing
 library("parallel")
 library("future.apply")
-plan(multiprocess, workers=CORE.NBR/2)	# set the number of processor cores used
 
 # XML files								# used to import the parliament DB
 library("XML")
@@ -52,3 +51,8 @@ source("src/common/stats.R")
 source("src/load/integrate_assnat.R")
 source("src/load/integrate_senat.R")
 source("src/load/load_rne.R")
+
+plan(multiprocess, workers=CORE.NBR/2)	# set the number of processor cores used
+
+
+

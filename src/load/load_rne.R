@@ -158,11 +158,12 @@ fix.id.problems <- function(data)
 # Loads the correction table, a file containing a set of manually defined corrections to apply
 # to the raw RNE data right after loading.
 #
+# col.map: how to convert column names.
 # correc.file: file containing the corrections.
 #
 # returns: data frame made of the content of the correction file.
 #############################################################################################
-load.correction.table <- function(correc.file)
+load.correction.table <- function(col.map, correc.file)
 {	# load the corrections
 	tlog(0,"Loading correction file \"",correc.file,"\"")
 	correc.table <- read.table(
@@ -222,13 +223,14 @@ load.correction.table <- function(correc.file)
 # Applies various ad hoc corrections to the raw RNE data.
 #
 # data: raw data, before applying the corrections.
+# col.map: how to convert column names.
 # correc.file: file containing the corrections.
 #
 # returns: data frame after the corrections.
 #############################################################################################
-apply.adhoc.corrections <- function(data, correc.file)
+apply.adhoc.corrections <- function(data, col.map, correc.file)
 {	# load the correction table
-	correc.table <- load.correction.table(correc.file)
+	correc.table <- load.correction.table(col.map, correc.file)
 	
 	# apply ad hoc corrections
 	if(nrow(correc.table)>0)	
@@ -622,6 +624,7 @@ merge.similar.rows <- function(data)
 #############################################################################################
 # Performs various corrections on the dates defining mandates and functions: 
 # 1) Adjusts function dates so that they are contained inside the corresponding mandate period.
+# TODO check whether 1) is actually necessary
 # 2) Merge rows corresponding to overlapping mandates, provided they have different functions.
 # 3) Round mandate and function dates to match election dates (when approximately equal).
 # 4) Split rows containing election dates (other than as a start date).
@@ -683,7 +686,7 @@ load.data <- function(filenames, col.map, correc.file, correct.data)
 	{	# fix id duplicates and other id-related issues
 		data <- fix.id.problems(data)
 		# apply ad hoc corrections
-		data <- apply.adhoc.corrections(data, correc.file)
+		data <- apply.adhoc.corrections(data, col.map, correc.file)
 		# apply systematic corrections
 		data <- apply.systematic.corrections(data)
 	}

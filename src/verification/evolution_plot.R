@@ -16,7 +16,6 @@
 #############################################################################################
 plot.pers.time <- function(data, out.folder, daily=FALSE)
 {	tlog(2,"Plotting number of mandate occurrences as a function of time")
-	plan(multiprocess, workers=CORE.NBR/2) #core.nbr/2 
 	
 	# set up start/end dates
 	start.date <- min(c(data[,COL_ATT_MDT_DBT],data[,COL_ATT_MDT_FIN]),na.rm=TRUE)
@@ -225,7 +224,6 @@ plot.pers.time <- function(data, out.folder, daily=FALSE)
 #############################################################################################
 plot.pers.time2 <- function(data, out.folder)
 {	tlog(2,"Plotting number of mandate occurrences as a function of time")
-	plan(multiprocess, workers=CORE.NBR/2) #core.nbr/2 
 	
 	# set up start/end dates
 	start.date <- min(c(data[,COL_ATT_MDT_DBT],data[,COL_ATT_MDT_FIN]),na.rm=TRUE)
