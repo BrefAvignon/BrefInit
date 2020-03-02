@@ -177,7 +177,9 @@ source("src/common/include.R")
 # - on détecte deux lignes dont les mandats s'intersectent (pas strictement consécutifs, attention !)
 #   - si au plus l'une des deux contient une fonction, on peut les fusionner
 #     >> on met à jour les dates, on supprime la ligne superflue
-#   - si les deux ont une fonction, il y a une erreur à régler 
+#   - si les deux ont une fonction
+#     - si les dates de mandat sont les mêmes et celles de fonction ne se recouvrent pas >> on garde comme ça
+#     - sinon, on a un problème >> traitement manuel
 # 
 # hypothèses:
 # - on suppose que les fonctions sont contenues dans les mandats 
@@ -195,9 +197,15 @@ source("src/common/include.R")
 #     - s'il y a une fonction et que l'élection précède sa fin >> pareil
 #     - la nouvelle ligne démarre le jour de l'élection 
 #       (mandat, et fonction le cas échéant)
-# - on prend la ligne crée et on continue avec la date de l'élection suivante
+# - on prend la ligne créée et on continue avec la date de l'élection suivante
 # - dès qu'on a une date d'élection ultérieure à la fin de mandat, on s'arrête
 #
 # Fonctions: si plusieurs fonctions dans mandat:
 #		- autant de lignes que de fonctions
 #		- chacune avec les mêmes infos sauf fonction (y compris dates mandat)
+#
+# Comment traiter les dates d'élection de S et CD ?
+# - Pour chaque département+canton
+#   - Identifier les dates de passation de pouvoir
+#   - D'après cette séquence d'années, en déduire la classe de mandat
+# - Pour sénat, plus compliqué...

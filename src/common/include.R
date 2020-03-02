@@ -9,7 +9,6 @@
 
 
 
-
 #############################################################################################
 # handling of warnings
 #options(warn=1)			# as they happen
@@ -23,17 +22,18 @@ options(warn=2)				# as errors
 # packages
 
 # load data
-#library("readr")			# not necessary, in the end
+#library("readr")						# not necessary, in the end
 
 # string manipulation
 library("stringdist")
-#library("stringi")			# not used, in the end
+#library("stringi")						# not used, in the end
 
 # parallel computing
 library("parallel")
 library("future.apply")
+plan(multiprocess, workers=CORE.NBR/2)	# set the number of processor cores used
 
-# XML files					# used to import the parliament DB
+# XML files								# used to import the parliament DB
 library("XML")
 library("methods")
 
@@ -49,6 +49,6 @@ source("src/common/strings.R")
 source("src/common/logging.R")
 source("src/common/stats.R")
 
-source("src/load/load_assnat.R")
-source("src/load/load_senat.R")
+source("src/load/integrate_assnat.R")
+source("src/load/integrate_senat.R")
 source("src/load/load_rne.R")

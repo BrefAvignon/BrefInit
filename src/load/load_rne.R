@@ -1,5 +1,5 @@
 #############################################################################################
-# Functions used to load each table.
+# Functions used to load each table, and apply specific corrections to them.
 # 
 # 09/2019 Vincent Labatut
 #############################################################################################
@@ -8,85 +8,32 @@
 
 
 #############################################################################################
-# Loads the specified tables, binds them is there are several ones, convert certain values
-# to appropriate types (dates, integers), and returns the resulting data frame.
+# Loads the raw RNE data as string, normalizes and perform sbasic cleaning, then return a proper
+# data frame. The column names are also normalized.
 #
 # filenames: list of files to read.
 # col.map: how to convert column names.
-# correc.file: file containing the corrections.
-# correct.data: whether or not to apply the correction on the data read.
 #
-# returns: data frame made of the cleaned data contained in the files.
+# returns: data frame containing only (clean) strings.
 #############################################################################################
-load.data <- function(filenames, col.map, correc.file, correct.data)
-{	plan(multiprocess, workers=CORE.NBR/2)
-	
-	# load the corrections
-	tlog(0,"Loading correction file \"",correc.file,"\"")
-	correc.table <- read.table(
-			file=correc.file,			# name of the data file
+retrieve.normalize.data <- function(filenames, col.map)
+{	# load the data table(s)
+	data <- NULL
+	for(filename in filenames)
+	{	tlog(0,"Loading table file \"",filename,"\"")
+		# read the partial table
+		temp <- read.table(
+			file=filename, 				# name of the data file
 			header=TRUE, 				# look for a header
 			sep="\t", 					# character used to separate columns 
 			check.names=FALSE, 			# don't change the column names from the file
 			comment.char="", 			# ignore possible comments in the content
 			row.names=NULL, 			# don't look for row names in the file
 			quote="", 					# don't expect double quotes "..." around text fields
+			skip=1,						# ignore the first line of the file ("Titre du rapport")
 			as.is=TRUE,					# don't convert strings to factors
 			colClasses="character"		# all column originally read as characters, then converted later if needed
 #			fileEncoding="Latin1"		# original tables seem to be encoded in Latin1 (ANSI)
-	)
-	tlog(2,"Read ",nrow(correc.table)," rows and ",ncol(correc.table)," columns")
-	
-	# remove commented rows
-	idx <- which(startsWith(correc.table[,1],"#"))
-	if(length(idx)>0)
-		correc.table <- correc.table[-idx,]
-	tlog(2,"Kept ",nrow(correc.table)," rows")
-	
-	# normalize the correction table
-	if(nrow(correc.table)>0)
-	{	for(r in 1:nrow(correc.table))
-		{	# normalize name of corrected column
-			att.name <- correc.table[r,COL_CORREC_ATTR]
-			norm.name <- col.map[att.name]
-			if(!is.na(norm.name))
-				correc.table[r,COL_CORREC_ATTR] <- norm.name
-			
-			# remove diacritics
-			correc.table[r,colnames(correc.table)!=COL_CORREC_COMM] <- remove.diacritics(correc.table[r,colnames(correc.table)!=COL_CORREC_COMM])
-			
-			# normalize proper nouns
-			correc.table[r,c(COL_CORREC_NOM,COL_CORREC_PRENOM)] <- normalize.proper.nouns(correc.table[r,c(COL_CORREC_NOM,COL_CORREC_PRENOM)])
-			if(correc.table[r,COL_CORREC_ATTR] %in% COLS_ATT_PROPER_NOUNS)
-				correc.table[r,c(COL_CORREC_VALAVT,COL_CORREC_VALAPR)] <- normalize.proper.nouns(correc.table[r,c(COL_CORREC_VALAVT,COL_CORREC_VALAPR)])
-			if(correc.table[r,COL_CORREC_ATTR] %in% COLS_ATT_LOCATION_NOUNS)
-				correc.table[r,c(COL_CORREC_VALAVT,COL_CORREC_VALAPR)] <- normalize.location.nouns(correc.table[r,c(COL_CORREC_VALAVT,COL_CORREC_VALAPR)])
-				
-			# trim ending/starting whitespace
-			correc.table[r,] <- trimws(correc.table[r,])
-			
-			# replace "NA"s by actual NAs
-			correc.table[r,which(correc.table[r,]=="NA")] <- NA	
-		}
-	}
-	
-	# load the data table(s)
-	data <- NULL
-	for(filename in filenames)
-	{	tlog(0,"Loading table file \"",filename,"\"")
-		# read the partial table
-		temp <- read.table(
-				file=filename, 				# name of the data file
-				header=TRUE, 				# look for a header
-				sep="\t", 					# character used to separate columns 
-				check.names=FALSE, 			# don't change the column names from the file
-				comment.char="", 			# ignore possible comments in the content
-				row.names=NULL, 			# don't look for row names in the file
-				quote="", 					# don't expect double quotes "..." around text fields
-				skip=1,						# ignore the first line of the file ("Titre du rapport")
-				as.is=TRUE,					# don't convert strings to factors
-				colClasses="character"		# all column originally read as characters, then converted later if needed
-#				fileEncoding="Latin1"		# original tables seem to be encoded in Latin1 (ANSI)
 		)
 		tlog(2,"Read ",nrow(temp)," rows and ",ncol(temp)," columns")
 		
@@ -99,7 +46,7 @@ load.data <- function(filenames, col.map, correc.file, correct.data)
 		tlog(2,"Now ",nrow(data)," rows and ",ncol(data)," columns in main table")
 	}
 	tlog(2,"Columns: ",paste(colnames(data),collapse=","))
-
+	
 	# normalize data table column names
 	norm.names <- col.map[colnames(data)]
 	if(any(is.na(norm.names)) || length(norm.names)!=ncol(data))
@@ -107,8 +54,7 @@ load.data <- function(filenames, col.map, correc.file, correct.data)
 	else
 		colnames(data) <- norm.names
 	
-	# setting appropriate encoding of string columns,
-	# replace "" by NAs, and normalize proper nouns
+	# setting appropriate encoding of string columns, replace "" by NAs, and normalize proper nouns
 	tlog(0,"Cleaning/encoding/normalizing strings")
 	for(c in 1:ncol(data))
 	{	col.name <- colnames(data)[c]
@@ -118,7 +64,7 @@ load.data <- function(filenames, col.map, correc.file, correct.data)
 		if(col.type %in% c("cat","nom"))
 		{	tlog(2,"Processing column \"",col.name,"\" (",c,"/",ncol(data),")")
 			# convert encoding
-##			data[,c] <- iconv(x=data[,c], from="Latin1", to="UTF8")
+			##			data[,c] <- iconv(x=data[,c], from="Latin1", to="UTF8")
 #			data[,c] <- iconv(x=data[,c], to="UTF8")
 			
 			# remove diacritics
@@ -146,205 +92,326 @@ load.data <- function(filenames, col.map, correc.file, correct.data)
 	}
 	tlog(2,"Now ",nrow(data)," rows and ",ncol(data)," columns in main table")
 	
-	if(correct.data)
-	{	# load table of equivalent ids
-		tlog(0,"Loading the table of equivalent ids (",FILE_CONV_IDS,")")
-		equiv.table <- read.table(
-				file=FILE_CONV_IDS,			# name of the equivalence file
-				header=TRUE, 				# look for a header
-				sep="\t", 					# character used to separate columns 
-				check.names=FALSE, 			# don't change the column names from the file
-				comment.char="", 			# ignore possible comments in the content
-				row.names=NULL, 			# don't look for row names in the file
-				quote="", 					# don't expect double quotes "..." around text fields
-				as.is=TRUE,					# don't convert strings to factors
-				colClasses="character"		# all column originally read as characters
-#				fileEncoding="Latin1"		# original tables seem to be encoded in Latin1 (ANSI)
-		)
-		
-		# fix dupplicate ids
-		if(nrow(equiv.table)>0)
-		{	# convert to map
-			tlog(0,"Convert table of equivalent ids to map")
-			unique.ids <- unique(data[,COL_ATT_ELU_ID_RNE])
-			conv.map <- c()
-			for(r in 1:nrow(equiv.table))
-			{	main.id <- equiv.table[r,1]
-				other.ids <- strsplit(x=equiv.table[r,2], split=",", fixed=TRUE)[[1]]
-				other.ids <- intersect(other.ids,unique.ids)
-				if(length(other.ids)>0)
-					conv.map[other.ids] <- rep(main.id, length(other.ids))
-			}
-			if(length(conv.map)>0)
-			{	# substitute correct ids
-				tlog(0,"Fixing duplicate ids")
-				data[,COL_ATT_ELU_ID_RNE] <- future_sapply(data[,COL_ATT_ELU_ID_RNE], function(id)
-						{	new.id <- conv.map[id]
-							if(is.na(new.id))
-								return(id)
-							else
-								return(new.id)
-						})
-			}
-			tlog(2,"Now ",nrow(data)," rows and ",ncol(data)," columns in main table")
+	return(data)
+}
+
+
+
+
+#############################################################################################
+# Applies various ad hoc corrections to the raw RNE data.
+#
+# data: raw data, before fixing the ids.
+#
+# returns: table resulting from the id corrections.
+#############################################################################################
+fix.id.problems <- function(data)
+{	# load table of equivalent ids
+	tlog(0,"Loading the table of equivalent ids (",FILE_CONV_IDS,")")
+	equiv.table <- read.table(
+		file=FILE_CONV_IDS,			# name of the equivalence file
+		header=TRUE, 				# look for a header
+		sep="\t", 					# character used to separate columns 
+		check.names=FALSE, 			# don't change the column names from the file
+		comment.char="", 			# ignore possible comments in the content
+		row.names=NULL, 			# don't look for row names in the file
+		quote="", 					# don't expect double quotes "..." around text fields
+		as.is=TRUE,					# don't convert strings to factors
+		colClasses="character"		# all column originally read as characters
+#		fileEncoding="Latin1"		# original tables seem to be encoded in Latin1 (ANSI)
+	)
+	
+	# fix dupplicate ids
+	if(nrow(equiv.table)>0)
+	{	# convert to map
+		tlog(0,"Convert table of equivalent ids to map")
+		unique.ids <- unique(data[,COL_ATT_ELU_ID_RNE])
+		conv.map <- c()
+		for(r in 1:nrow(equiv.table))
+		{	main.id <- equiv.table[r,1]
+			other.ids <- strsplit(x=equiv.table[r,2], split=",", fixed=TRUE)[[1]]
+			other.ids <- intersect(other.ids,unique.ids)
+			if(length(other.ids)>0)
+				conv.map[other.ids] <- rep(main.id, length(other.ids))
 		}
-		
-		# apply ad hoc corrections
-		if(nrow(correc.table)>0)	
-		{	tlog(0,"Applying ad hoc corrections")
-			
-			# apply each correction one after the other
-			idx.rm <- c()
-			for(r in 1:nrow(correc.table))
-			{	correc.attr <- correc.table[r,COL_CORREC_ATTR]
-				row <- as.integer(correc.table[r,COL_CORREC_ROW])
-				
-				# general correction
-				if(all(is.na(correc.table[r,c(COL_CORREC_ID,COL_CORREC_NOM,COL_CORREC_PRENOM)])))
-				{	# identify the targeted rows in the data table
-					idx <- which(data[,correc.table[r,COL_CORREC_ATTR]]==correc.table[r,COL_CORREC_VALAVT]
-							| is.na(data[,correc.table[r,COL_CORREC_ATTR]]) & is.na(correc.table[r,COL_CORREC_VALAVT]))
-					
-					# there should be at least one
-					if(length(idx)<1)
-					{	tlog(4,"Could not find a correction: ",paste(correc.table[r,],collapse=";"))
-						stop(paste0("Could not find a correction: ",paste(correc.table[r,],collapse=";")))
-					}
-					# if several, try to check the specified row
-					else 
-					{	if(!is.na(row))
-						{	if(length(idx)==1 && idx!=row)
-							{	tlog(4,"Row ",idx," matches the criteria but not the specified row (",row,")")
-								stop(paste0("Row ",idx," matches the criteria but not the specified row (",row,")"))
-							}
-							else if(length(idx)>1)
-							{	tlog(4,"Found several rows matching the criteria when there's only one specified row: ",row," vs. ",paste(idx,collapse=","))
-								stop(paste0("Found several rows matching the criteria when there's only one specified row: ",row," vs. ",paste(idx,collapse=",")))
-							}
-						}
-						tlog(4,"Replacing ",correc.table[r,COL_CORREC_VALAVT]," by ",correc.table[r,COL_CORREC_VALAPR])
-						data[idx,correc.table[r,COL_CORREC_ATTR]] <- correc.table[r,COL_CORREC_VALAPR]
-					}
-				}
-				
-				# correction of a specific row
-				else
-				{	# identify the targeted row in the data table
-					idx <- which(data[,COL_ATT_ELU_ID_RNE]==correc.table[r,COL_CORREC_ID]
-									& data[,COL_ATT_ELU_NOM]==correc.table[r,COL_CORREC_NOM]
-									& data[,COL_ATT_ELU_PRENOM]==correc.table[r,COL_CORREC_PRENOM]
-									& (data[,correc.table[r,COL_CORREC_ATTR]]==correc.table[r,COL_CORREC_VALAVT]
-										| is.na(data[,correc.table[r,COL_CORREC_ATTR]]) & is.na(correc.table[r,COL_CORREC_VALAVT]))
-					)
-					
-					# there should be exactly one
-					if(length(idx)<1)
-					{	tlog(4,"Could not find a correction: ",paste(correc.table[r,],collapse=";"))
-						stop(paste0("Could not find a correction: ",paste(correc.table[r,],collapse=";")))
-					}
-					else if(length(idx)>1)
-					{	if(is.na(row))
-						{	tlog(4,"A correction matches several cases (",paste(idx,collapse=","),"), but no row is specified: ",paste(correc.table[r,],collapse=";"))
-							stop(paste0("A correction matches several cases (",paste(idx,collapse=","),"), but no row is specified: ",paste(correc.table[r,],collapse=";")))
-						}
-#						tlog(4,"WARNING: A correction matches several cases: ",paste(correc.table[r,],collapse=";"))
-#						data[idx,correc.table[r,COL_CORREC_ATTR]] <- correc.table[r,COL_CORREC_VALAPR]
+		if(length(conv.map)>0)
+		{	# substitute correct ids
+			tlog(0,"Fixing duplicate ids")
+			data[,COL_ATT_ELU_ID_RNE] <- future_sapply(data[,COL_ATT_ELU_ID_RNE], function(id)
+					{	new.id <- conv.map[id]
+						if(is.na(new.id))
+							return(id)
 						else
-						{	if(row %in% idx)
-							{	if(correc.table[r,COL_CORREC_ATTR]==COL_ATT_ELU_ID_RNE && is.na(correc.table[r,COL_CORREC_VALAPR]))
-								{	tlog(4, "Row ",row," marked for removal")
-									idx.rm <- c(idx.rm, row)
-								}
-								else
-								{	tlog(4,"Correcting entry: ",paste(correc.table[r,],collapse=";"))
-									data[row,correc.table[r,COL_CORREC_ATTR]] <- correc.table[r,COL_CORREC_VALAPR]
-								}
-							}
-						}
-					}
-					else
-					{	if(!is.na(row) && row!=idx)
-						{	tlog(4,"The specified row (",row,") does not correspond to the one matching the criteria (",idx,")")
-							stop(paste0("The specified row (",row,") does not correspond to the one matching the criteria (",idx,")"))
-						}
-						else
-						{	if(correc.table[r,COL_CORREC_ATTR]==COL_ATT_ELU_ID_RNE && is.na(correc.table[r,COL_CORREC_VALAPR]))
-							{	tlog(4, "Row ",idx," marked for removal")
-								idx.rm <- c(idx.rm, idx)
-							}
-							else
-							{	if(is.na(row))
-									tlog(4,"Correcting entry (",idx,"): ",paste(correc.table[r,],collapse=";"))
-								else
-									tlog(4,"Correcting entry: ",paste(correc.table[r,],collapse=";"))
-								data[idx,correc.table[r,COL_CORREC_ATTR]] <- correc.table[r,COL_CORREC_VALAPR]
-							}
-						}
-					}
-				}
-			}
+							return(new.id)
+					})
+		}
+		tlog(2,"Now ",nrow(data)," rows and ",ncol(data)," columns in main table")
+	}
+	
+	return(data)
+}
+
+
+
+
+#############################################################################################
+# Loads the correction table, a file containing a set of manually defined corrections to apply
+# to the raw RNE data right after loading.
+#
+# correc.file: file containing the corrections.
+#
+# returns: data frame made of the content of the correction file.
+#############################################################################################
+load.correction.table <- function(correc.file)
+{	# load the corrections
+	tlog(0,"Loading correction file \"",correc.file,"\"")
+	correc.table <- read.table(
+		file=correc.file,			# name of the data file
+		header=TRUE, 				# look for a header
+		sep="\t", 					# character used to separate columns 
+		check.names=FALSE, 			# don't change the column names from the file
+		comment.char="", 			# ignore possible comments in the content
+		row.names=NULL, 			# don't look for row names in the file
+		quote="", 					# don't expect double quotes "..." around text fields
+		as.is=TRUE,					# don't convert strings to factors
+		colClasses="character"		# all column originally read as characters, then converted later if needed
+#		fileEncoding="Latin1"		# original tables seem to be encoded in Latin1 (ANSI)
+	)
+	tlog(2,"Read ",nrow(correc.table)," rows and ",ncol(correc.table)," columns")
+	
+	# remove commented rows
+	idx <- which(startsWith(correc.table[,1],"#"))
+	if(length(idx)>0)
+		correc.table <- correc.table[-idx,]
+	tlog(2,"Kept ",nrow(correc.table)," rows")
+	
+	# normalize the correction table
+	if(nrow(correc.table)>0)
+	{	for(r in 1:nrow(correc.table))
+		{	# normalize name of corrected column
+			att.name <- correc.table[r,COL_CORREC_ATTR]
+			norm.name <- col.map[att.name]
+			if(!is.na(norm.name))
+				correc.table[r,COL_CORREC_ATTR] <- norm.name
 			
-			# remove the marked rows
-			if(length(idx.rm)>0)
-			{	tlog(2,"Removing ",length(idx.rm)," from the table")
-				data <- data[-idx.rm,]
-			}
+			# remove diacritics
+			correc.table[r,colnames(correc.table)!=COL_CORREC_COMM] <- remove.diacritics(correc.table[r,colnames(correc.table)!=COL_CORREC_COMM])
 			
-			tlog(2,"Now ",nrow(data)," rows and ",ncol(data)," columns in main table")
-		}
-		
-		# possibly normalize municipality ids
-		if(COL_ATT_COM_CODE %in% colnames(data))
-		{	tlog(0,"Normalizing municipality ids")
-			# we simply keep the first three characters of the id
-			data[,COL_ATT_COM_CODE] <- substr(x=data[,COL_ATT_COM_CODE], start=1, stop=3)
-			tlog(2,"Now ",nrow(data)," rows and ",ncol(data)," columns in main table")
-		}
-		
-		# replace the NC political nuance by proper NAs
-		if(COL_ATT_ELU_NUANCE %in% colnames(data))
-		{	tlog(0,"Normalizing political nuance labels")
-			idx <- which(data[,COL_ATT_ELU_NUANCE]=="NC")
-			if(length(idx)>0)
-				data[idx,COL_ATT_ELU_NUANCE] <- NA
-			tlog(2,"Fixed ",length(idx)," rows")
-			tlog(2,"Now ",nrow(data)," rows and ",ncol(data)," columns in main table")
-		}
-		
-		# remove rows without mandate and without function dates
-		tlog(0,"Removing rows with no mandate and no function date")
-		if(COL_ATT_FCT_DBT %in% colnames(data))
-		{	idx <- which(is.na(data[,COL_ATT_MDT_DBT]) & is.na(data[,COL_ATT_MDT_FIN]) 
-					& is.na(data[,COL_ATT_FCT_DBT]) & is.na(data[,COL_ATT_FCT_FIN]))
-			if(length(idx)>0)
-				data <- data[-idx, ]
-			tlog(2,"Removed ",length(idx)," incomplete rows")
-			tlog(2,"Now ",nrow(data)," rows and ",ncol(data)," columns in main table")
-		}
-		
-		# use mandate start date when function start date is missing 
-		if(COL_ATT_FCT_NOM %in% colnames(data))
-		{	tlog(0,"Completing missing function start dates using mandate start dates")
-			idx <- which(!is.na(data[,COL_ATT_FCT_NOM]) & is.na(data[,COL_ATT_FCT_DBT]))
-			if(length(idx)>0)
-				data[idx,COL_ATT_FCT_DBT] <- data[idx,COL_ATT_MDT_DBT]
-			tlog(2,"Fixed ",length(idx)," rows")
-			tlog(2,"Now ",nrow(data)," rows and ",ncol(data)," columns in main table")
-		}
-		
-		# use mandate end date when function end date is missing 
-		if(COL_ATT_FCT_NOM %in% colnames(data))
-		{	tlog(0,"Completing missing function end dates using mandate end dates")
-			idx <- which(!is.na(data[,COL_ATT_FCT_NOM]) & is.na(data[,COL_ATT_FCT_FIN]) & !is.na(data[,COL_ATT_MDT_FIN]))
-			if(length(idx)>0)
-				data[idx,COL_ATT_FCT_FIN] <- data[idx,COL_ATT_MDT_FIN]
-			tlog(2,"Fixed ",length(idx)," rows")
-			tlog(2,"Now ",nrow(data)," rows and ",ncol(data)," columns in main table")
+			# normalize proper nouns
+			correc.table[r,c(COL_CORREC_NOM,COL_CORREC_PRENOM)] <- normalize.proper.nouns(correc.table[r,c(COL_CORREC_NOM,COL_CORREC_PRENOM)])
+			if(correc.table[r,COL_CORREC_ATTR] %in% COLS_ATT_PROPER_NOUNS)
+				correc.table[r,c(COL_CORREC_VALAVT,COL_CORREC_VALAPR)] <- normalize.proper.nouns(correc.table[r,c(COL_CORREC_VALAVT,COL_CORREC_VALAPR)])
+			if(correc.table[r,COL_CORREC_ATTR] %in% COLS_ATT_LOCATION_NOUNS)
+				correc.table[r,c(COL_CORREC_VALAVT,COL_CORREC_VALAPR)] <- normalize.location.nouns(correc.table[r,c(COL_CORREC_VALAVT,COL_CORREC_VALAPR)])
+			
+			# trim ending/starting whitespace
+			correc.table[r,] <- trimws(correc.table[r,])
+			
+			# replace "NA"s by actual NAs
+			correc.table[r,which(correc.table[r,]=="NA")] <- NA	
 		}
 	}
 	
-	# convert date and numeric columns
-	tlog(0,"Converting date and numeric columns")
+	return(correc.table)
+}
+
+
+
+
+#############################################################################################
+# Applies various ad hoc corrections to the raw RNE data.
+#
+# data: raw data, before applying the corrections.
+# correc.file: file containing the corrections.
+#
+# returns: data frame after the corrections.
+#############################################################################################
+apply.adhoc.corrections <- function(data, correc.file)
+{	# load the correction table
+	correc.table <- load.correction.table(correc.file)
+	
+	# apply ad hoc corrections
+	if(nrow(correc.table)>0)	
+	{	tlog(0,"Applying ad hoc corrections")
+		
+		# apply each correction one after the other
+		idx.rm <- c()
+		for(r in 1:nrow(correc.table))
+		{	correc.attr <- correc.table[r,COL_CORREC_ATTR]
+			row <- as.integer(correc.table[r,COL_CORREC_ROW])
+			
+			# general correction
+			if(all(is.na(correc.table[r,c(COL_CORREC_ID,COL_CORREC_NOM,COL_CORREC_PRENOM)])))
+			{	# identify the targeted rows in the data table
+				idx <- which(data[,correc.table[r,COL_CORREC_ATTR]]==correc.table[r,COL_CORREC_VALAVT]
+								| is.na(data[,correc.table[r,COL_CORREC_ATTR]]) & is.na(correc.table[r,COL_CORREC_VALAVT]))
+				
+				# there should be at least one
+				if(length(idx)<1)
+				{	tlog(4,"Could not find a correction: ",paste(correc.table[r,],collapse=";"))
+					stop(paste0("Could not find a correction: ",paste(correc.table[r,],collapse=";")))
+				}
+				# if several, try to check the specified row
+				else 
+				{	if(!is.na(row))
+					{	if(length(idx)==1 && idx!=row)
+						{	tlog(4,"Row ",idx," matches the criteria but not the specified row (",row,")")
+							stop(paste0("Row ",idx," matches the criteria but not the specified row (",row,")"))
+						}
+						else if(length(idx)>1)
+						{	tlog(4,"Found several rows matching the criteria when there's only one specified row: ",row," vs. ",paste(idx,collapse=","))
+							stop(paste0("Found several rows matching the criteria when there's only one specified row: ",row," vs. ",paste(idx,collapse=",")))
+						}
+					}
+					tlog(4,"Replacing ",correc.table[r,COL_CORREC_VALAVT]," by ",correc.table[r,COL_CORREC_VALAPR])
+					data[idx,correc.table[r,COL_CORREC_ATTR]] <- correc.table[r,COL_CORREC_VALAPR]
+				}
+			}
+			
+			# correction of a specific row
+			else
+			{	# identify the targeted row in the data table
+				idx <- which(data[,COL_ATT_ELU_ID_RNE]==correc.table[r,COL_CORREC_ID]
+							& data[,COL_ATT_ELU_NOM]==correc.table[r,COL_CORREC_NOM]
+							& data[,COL_ATT_ELU_PRENOM]==correc.table[r,COL_CORREC_PRENOM]
+							& (data[,correc.table[r,COL_CORREC_ATTR]]==correc.table[r,COL_CORREC_VALAVT]
+								| is.na(data[,correc.table[r,COL_CORREC_ATTR]]) & is.na(correc.table[r,COL_CORREC_VALAVT]))
+				)
+				
+				# there should be exactly one
+				if(length(idx)<1)
+				{	tlog(4,"Could not find a correction: ",paste(correc.table[r,],collapse=";"))
+					stop(paste0("Could not find a correction: ",paste(correc.table[r,],collapse=";")))
+				}
+				else if(length(idx)>1)
+				{	if(is.na(row))
+					{	tlog(4,"A correction matches several cases (",paste(idx,collapse=","),"), but no row is specified: ",paste(correc.table[r,],collapse=";"))
+						stop(paste0("A correction matches several cases (",paste(idx,collapse=","),"), but no row is specified: ",paste(correc.table[r,],collapse=";")))
+					}
+#						tlog(4,"WARNING: A correction matches several cases: ",paste(correc.table[r,],collapse=";"))
+#						data[idx,correc.table[r,COL_CORREC_ATTR]] <- correc.table[r,COL_CORREC_VALAPR]
+					else
+					{	if(row %in% idx)
+						{	if(correc.table[r,COL_CORREC_ATTR]==COL_ATT_ELU_ID_RNE && is.na(correc.table[r,COL_CORREC_VALAPR]))
+							{	tlog(4, "Row ",row," marked for removal")
+								idx.rm <- c(idx.rm, row)
+							}
+							else
+							{	tlog(4,"Correcting entry: ",paste(correc.table[r,],collapse=";"))
+								data[row,correc.table[r,COL_CORREC_ATTR]] <- correc.table[r,COL_CORREC_VALAPR]
+							}
+						}
+					}
+				}
+				else
+				{	if(!is.na(row) && row!=idx)
+					{	tlog(4,"The specified row (",row,") does not correspond to the one matching the criteria (",idx,")")
+						stop(paste0("The specified row (",row,") does not correspond to the one matching the criteria (",idx,")"))
+					}
+					else
+					{	if(correc.table[r,COL_CORREC_ATTR]==COL_ATT_ELU_ID_RNE && is.na(correc.table[r,COL_CORREC_VALAPR]))
+						{	tlog(4, "Row ",idx," marked for removal")
+							idx.rm <- c(idx.rm, idx)
+						}
+						else
+						{	if(is.na(row))
+								tlog(4,"Correcting entry (",idx,"): ",paste(correc.table[r,],collapse=";"))
+							else
+								tlog(4,"Correcting entry: ",paste(correc.table[r,],collapse=";"))
+							data[idx,correc.table[r,COL_CORREC_ATTR]] <- correc.table[r,COL_CORREC_VALAPR]
+						}
+					}
+				}
+			}
+		}
+		
+		# remove the marked rows
+		if(length(idx.rm)>0)
+		{	tlog(2,"Removing ",length(idx.rm)," from the table")
+			data <- data[-idx.rm,]
+		}
+		
+		tlog(2,"Now ",nrow(data)," rows and ",ncol(data)," columns in main table")
+	}
+	
+	return(data)
+}
+
+
+
+
+#############################################################################################
+# Applies various systematic corrections to the raw RNE data.
+#
+# data: raw data, before applying the corrections.
+#
+# returns: data frame after the corrections.
+#############################################################################################
+apply.systematic.corrections <- function(data)
+{	# possibly normalize municipality ids
+	if(COL_ATT_COM_CODE %in% colnames(data))
+	{	tlog(0,"Normalizing municipality ids")
+		# we simply keep the first three characters of the id
+		data[,COL_ATT_COM_CODE] <- substr(x=data[,COL_ATT_COM_CODE], start=1, stop=3)
+		tlog(2,"Now ",nrow(data)," rows and ",ncol(data)," columns in main table")
+	}
+	
+	# replace the NC political nuance by proper NAs
+	if(COL_ATT_ELU_NUANCE %in% colnames(data))
+	{	tlog(0,"Normalizing political nuance labels")
+		idx <- which(data[,COL_ATT_ELU_NUANCE]=="NC")
+		if(length(idx)>0)
+			data[idx,COL_ATT_ELU_NUANCE] <- NA
+		tlog(2,"Fixed ",length(idx)," rows")
+		tlog(2,"Now ",nrow(data)," rows and ",ncol(data)," columns in main table")
+	}
+	
+	# remove rows without mandate and without function dates
+	tlog(0,"Removing rows with no mandate and no function date")
+	if(COL_ATT_FCT_DBT %in% colnames(data))
+	{	idx <- which(is.na(data[,COL_ATT_MDT_DBT]) & is.na(data[,COL_ATT_MDT_FIN]) 
+						& is.na(data[,COL_ATT_FCT_DBT]) & is.na(data[,COL_ATT_FCT_FIN]))
+		if(length(idx)>0)
+			data <- data[-idx, ]
+		tlog(2,"Removed ",length(idx)," incomplete rows")
+		tlog(2,"Now ",nrow(data)," rows and ",ncol(data)," columns in main table")
+	}
+	
+	# use mandate start date when function start date is missing 
+	if(COL_ATT_FCT_NOM %in% colnames(data))
+	{	tlog(0,"Completing missing function start dates using mandate start dates")
+		idx <- which(!is.na(data[,COL_ATT_FCT_NOM]) & is.na(data[,COL_ATT_FCT_DBT]))
+		if(length(idx)>0)
+			data[idx,COL_ATT_FCT_DBT] <- data[idx,COL_ATT_MDT_DBT]
+		tlog(2,"Fixed ",length(idx)," rows")
+		tlog(2,"Now ",nrow(data)," rows and ",ncol(data)," columns in main table")
+	}
+	
+	# use mandate end date when function end date is missing 
+	if(COL_ATT_FCT_NOM %in% colnames(data))
+	{	tlog(0,"Completing missing function end dates using mandate end dates")
+		idx <- which(!is.na(data[,COL_ATT_FCT_NOM]) & is.na(data[,COL_ATT_FCT_FIN]) & !is.na(data[,COL_ATT_MDT_FIN]))
+		if(length(idx)>0)
+			data[idx,COL_ATT_FCT_FIN] <- data[idx,COL_ATT_MDT_FIN]
+		tlog(2,"Fixed ",length(idx)," rows")
+		tlog(2,"Now ",nrow(data)," rows and ",ncol(data)," columns in main table")
+	}
+	
+	return(data)
+}
+
+
+
+
+#############################################################################################
+# Convert the content of certain columns to the appropriate type: date or numbers.
+#
+# data: raw data, before performing the type conversion.
+#
+# returns: same data frame, but with converted columns.
+#############################################################################################
+convert.col.types <- function(data)
+{	tlog(0,"Converting date and numeric columns")
 	for(c in 1:ncol(data))
 	{	col.name <- colnames(data)[c]
 		col.type <- COL_TYPES[col.name]
@@ -377,6 +444,7 @@ load.data <- function(filenames, col.map, correc.file, correct.data)
 #			else
 #				data <- cbind(data[,1:(c-1),drop=FALSE],vals)
 #			colnames(data)[c] <- col.name
+#		
 #		}
 		
 		# the other columns stay strings
@@ -385,7 +453,35 @@ load.data <- function(filenames, col.map, correc.file, correct.data)
 	}
 	tlog(2,"Now ",nrow(data)," rows and ",ncol(data)," columns in main table")
 	
-	# add data source column
+	
+	# convert population numbers to actual integers
+	if(COL_ATT_COM_POP %in% colnames(data))
+	{	tlog(0,"Converting population to integer values")
+		vals <- data[,COL_ATT_COM_POP]
+		vals <- gsub(" ", "",  vals)	# \\s matches all whitespaces
+		vals <- gsub(",00", "",  vals)
+#		vals <- suppressWarnings(as.integer(vals))
+		vals <- as.integer(vals)
+		data <- data[, names(data)!=COL_ATT_COM_POP]
+		data <- cbind(data,vals)
+		names(data)[ncol(data)] <- COL_ATT_COM_POP
+	}
+	
+	return(data)
+}
+
+
+
+
+#############################################################################################
+# Adds missing column to the normalized table.
+#
+# data: RNE table missing columns.
+#
+# returns: same table with the extra columns.
+#############################################################################################
+add.missing.columns <- function(data)
+{	# add data source column
 	src.col <- data.frame(rep("RNE",nrow(data)), stringsAsFactors=FALSE)
 	data <- cbind(data, src.col)
 	colnames(data)[ncol(data)] <- COL_ATT_SOURCES
@@ -397,7 +493,9 @@ load.data <- function(filenames, col.map, correc.file, correct.data)
 	
 	# possibly add unique department id column
 	if(COL_ATT_DPT_NOM %in% colnames(data))
-	{	dpt.table <- read.table(
+	{	# load table of department ids
+		tlog(0,"Loading the table of department ids (",FILE_CONV_DPT,")")
+		dpt.table <- read.table(
 			file=FILE_CONV_DPT,			# name of the data file
 			header=TRUE, 				# look for a header
 			sep="\t", 					# character used to separate columns 
@@ -408,19 +506,48 @@ load.data <- function(filenames, col.map, correc.file, correct.data)
 			as.is=TRUE					# don't convert strings to factors
 #			fileEncoding="Latin1"		# original tables seem to be encoded in Latin1 (ANSI)
 		)
+		
+		# get the appropriate unique ids
 		dpt.idx <- match(data[,COL_ATT_DPT_NOM], dpt.table[,COL_ATT_DPT_NOM])
+		
+		# insert in the table
 		dpt.ids <- data.frame(dpt.table[dpt.idx, COL_ATT_DPT_ID], stringsAsFactors=FALSE)
 		colnames(dpt.ids) <- COL_ATT_DPT_ID
 		data <- cbind(data, dpt.ids)
 	}
 	
-	# normalize columns order
-	norm.cols <- intersect(COLS_ATT_NORMALIZED, colnames(data))
-	if(length(norm.cols)!=ncol(data))
-		stop("Problem with the number of columns when loading the table, after reordering")
-	else
-		data <- data[,norm.cols]
-	tlog(2,"Now ",nrow(data)," rows and ",ncol(data)," columns in main table")
+	# possibly add unique canton id column		
+	if(COL_ATT_CANT_NOM %in% colnames(data))
+	{	# load table of canton ids
+		tlog(0,"Loading the table of canton ids (",FILE_CONV_CANTONS,")")
+		equiv.table <- read.table(
+			file=FILE_CONV_CANTONS,		# name of the id file
+			header=TRUE, 				# look for a header
+			sep="\t", 					# character used to separate columns 
+			check.names=FALSE, 			# don't change the column names from the file
+			comment.char="", 			# ignore possible comments in the content
+			row.names=NULL, 			# don't look for row names in the file
+			quote="", 					# don't expect double quotes "..." around text fields
+			as.is=TRUE,					# don't convert strings to factors
+			colClasses="character"		# all column originally read as characters
+#			fileEncoding="Latin1"		# original tables seem to be encoded in Latin1 (ANSI)
+		)
+		
+		# get the appropriate unique ids
+		data.code <- paste(data[,COL_ATT_DPT_CODE],data[,COL_ATT_CANT_NOM],sep=":")
+		conv.code <- paste(equiv.table[,COL_ATT_DPT_CODE],equiv.table[,COL_ATT_CANT_NOM],sep=":")
+		idx <- match(data.code, conv.code)
+		if(any(is.na(idx)))
+		{	idx0 <- which(is.na(idx))
+			print(cbind(data.code[idx0]))
+			stop("Problem when inserting canton ids: cound not find some cantons")
+		}
+		
+		# insert in the table, at the correct location
+		cant.ids <- as.data.frame(x=equiv.table[idx,COL_ATT_CANT_ID], stringsAsFactors=FALSE)
+		colnames(cant.ids) <- COL_ATT_CANT_ID
+		data <- cbind(data, cant.ids)
+	}
 	
 	return(data)
 }
@@ -493,47 +620,97 @@ merge.similar.rows <- function(data)
 
 
 #############################################################################################
-# Inserts a new column in the table, that contains the unique id associated to each canton.
-# Otherwise, their code is not unique, there is no match between codes and names.
-#
+# Performs various corrections on the dates defining mandates and functions: 
+# 1) Adjusts function dates so that they are contained inside the corresponding mandate period.
+# 2) Merge rows corresponding to overlapping mandates, provided they have different functions.
+# 3) Round mandate and function dates to match election dates (when approximately equal).
+# 4) Split rows containing election dates (other than as a start date).
+# 5) Remove micro-mandates.
+# 
 # data: the data table.
 #
-# returns: the table with the extra column.
+# returns: same table, but with corrected dates.
 #############################################################################################
-insert.unique.canton.id <- function(data)
-{	# load table of canton ids
-	tlog(0,"Loading the table of canton ids (",FILE_CONV_CANTONS,")")
-	equiv.table <- read.table(
-			file=FILE_CONV_CANTONS,		# name of the id file
-			header=TRUE, 				# look for a header
-			sep="\t", 					# character used to separate columns 
-			check.names=FALSE, 			# don't change the column names from the file
-			comment.char="", 			# ignore possible comments in the content
-			row.names=NULL, 			# don't look for row names in the file
-			quote="", 					# don't expect double quotes "..." around text fields
-			as.is=TRUE,					# don't convert strings to factors
-			colClasses="character"		# all column originally read as characters
-#			fileEncoding="Latin1"		# original tables seem to be encoded in Latin1 (ANSI)
-	)
+fix.mdtfct.dates <- function(data)
+{	
 	
-	# get the appropriate unique ids
-	data.code <- paste(data[,COL_ATT_DPT_CODE],data[,COL_ATT_CANT_NOM],sep=":")
-	conv.code <- paste(equiv.table[,COL_ATT_DPT_CODE],equiv.table[,COL_ATT_CANT_NOM],sep=":")
-	idx <- match(data.code, conv.code)
-	if(any(is.na(idx)))
-	{	idx0 <- which(is.na(idx))
-		print(cbind(data.code[idx0]))
-		stop("Problem when inserting canton ids: cound not find some cantons")
-	}
-	
-	# insert in the table, at the correct location
-	col <- which(colnames(data)==COL_ATT_CANT_CODE)
-	df <- as.data.frame(x=equiv.table[idx,COL_ATT_CANT_ID], stringsAsFactors=FALSE)
-	data <- cbind(data[,1:(col-1)], df, data[,col:ncol(data)])
-	colnames(data)[col] <- COL_ATT_CANT_ID
 	
 	return(data)
 }
+
+
+
+#############################################################################################
+# Changes the order of the columns of the specified table, in order to match a predefined order
+# and ease table comparison.
+#
+# data: the data table.
+#
+# returns: same table, but with reordered columns.
+#############################################################################################
+normalize.col.order <- function(data)
+{
+	tlog(0,"Normalizing column order")
+	norm.cols <- intersect(COLS_ATT_NORMALIZED, colnames(data))
+	if(length(norm.cols)!=ncol(data))
+		stop("Problem with the number of columns when loading the table, after reordering")
+	else
+		data <- data[,norm.cols]
+	tlog(2,"Now ",nrow(data)," rows and ",ncol(data)," columns in main table")
+	
+}
+
+
+
+
+#############################################################################################
+# Loads the specified tables, binds them if there are several ones, convert certain values
+# to appropriate types (dates, integers), and returns the resulting data frame.
+#
+# filenames: list of files to read.
+# col.map: how to convert column names.
+# correc.file: file containing the corrections.
+# correct.data: whether or not to apply the correction on the data read.
+#
+# returns: data frame made of the cleaned data contained in the files.
+#############################################################################################
+load.data <- function(filenames, col.map, correc.file, correct.data)
+{	# load and normalize the data as strings
+	data <- retrieve.normalize.data(filenames, col.map)
+	
+	# possibly apply the corrections
+	if(correct.data)
+	{	# fix id duplicates and other id-related issues
+		data <- fix.id.problems(data)
+		# apply ad hoc corrections
+		data <- apply.adhoc.corrections(data, correc.file)
+		# apply systematic corrections
+		data <- apply.systematic.corrections(data)
+	}
+	
+	# convert date and numeric columns
+	data <- convert.col.types(data)
+	
+	# add missing columns
+	data <- add.missing.columns(data)
+	
+	# possibly perform additional corrections
+	if(correct.data)
+	{	# merge rows considered as compatible
+		data <- merge.similar.rows(data)
+		# fix mandate/function dates
+		data <- fix.mdtfct.dates(data)
+	}
+	
+	# normalize columns order
+	data <- normalize.col.order(data)
+	
+	return(data)
+}
+
+
+
+
 #############################################################################################
 # Loads the table for departmental counsilors (first extraction).
 #
@@ -569,23 +746,14 @@ load.cd.data <- function(correct.data, complete.data)
 	# load the data
 	data <- load.data(filenames=FILES_TAB_CD, col.map=col.map, correc.file=FILE_CORREC_CD, correct.data)
 	
-	# perform additional corrections
-	if(correct.data)
-	{	# add a unique id for cantons
-		data <- insert.unique.canton.id(data=data)
-		
-		# merge similar rows
-		data <- merge.similar.rows(data=data)
-	}
-	
 	# correct/complete with secondary sources
 	if(complete.data)
 	{	# senate database
-# NOTE Senate data eventually not used
-#		data <- senate.integrate.data(data, type="CD", cache=TRUE, compare=FALSE)
+		# NOTE Senate data eventually not used
+		#data <- senate.integrate.data(data, type="CD", cache=TRUE, compare=FALSE)
 		
 		# assembly database
-		# TODO
+		# no CD data in the assembly database
 	}
 	
 	return(data)
@@ -624,23 +792,14 @@ load.cd2.data <- function(correct.data, complete.data)
 	# load the data
 	data <- load.data(filenames=FILES_TAB_CD2, col.map=col.map, correc.file=FILE_CORREC_CD2, correct.data) 
 	
-	# perform additional corrections
-	if(correct.data)
-	{	# add a unique id for cantons
-		data <- insert.unique.canton.id(data=data)
-		
-		# merge similar rows
-		data <- merge.similar.rows(data=data)
-	}
-	
 	# correct/complete with secondary sources
 	if(complete.data)
 	{	# senate database
-# NOTE Senate data eventually not used
-#		data <- senate.integrate.data(data, type="CD", cache=TRUE, compare=FALSE)
+		# NOTE Senate data eventually not used
+		#data <- senate.integrate.data(data, type="CD", cache=TRUE, compare=FALSE)
 		
 		# assembly database
-		# TODO
+		# no CD data in the assembly database
 	}
 	
 	return(data)
@@ -684,42 +843,20 @@ load.cm.data <- function(correct.data, complete.data)
 	# load the data
 	data <- load.data(filenames=FILES_TAB_CM, col.map=col.map, correc.file=FILE_CORREC_CM, correct.data)
 	
-	# convert population numbers to actual integers
-	tlog(0,"Converting population to integer values")
-	cn <- COL_ATT_COM_POP
-	vals <- data[,cn]
-#	vals <- suppressWarnings(as.integer(vals))
-	vals <- as.integer(vals)
-	data <- data[, names(data)!=cn]
-	data <- cbind(data,vals)
-	names(data)[ncol(data)] <- cn
-	
 	# add mandate name
 	vals <- rep("CONSEILLER MUNICIPAL",nrow(data))
 	data <- cbind(data, vals)
 	colnames(data)[ncol(data)] <- COL_ATT_MDT_NOM
-	
-	# normalize columns order
-	norm.cols <- intersect(COLS_ATT_NORMALIZED, colnames(data))
-	if(length(norm.cols)!=ncol(data))
-		stop("Problem with the number of columns when reordering table CM columns")
-	else
-		data <- data[,norm.cols]
-	
-	# perform additional corrections
-	if(correct.data)
-	{	# merge similar rows
-		data <- merge.similar.rows(data=data)
-	}
+	data <- normalize.col.order()
 	
 	# correct/complete with secondary sources
 	if(complete.data)
 	{	# senate database
-# NOTE Senate data eventually not used
-#		data <- senate.integrate.data(data, type="CM", cache=TRUE, compare=FALSE)
+		# NOTE Senate data eventually not used
+		#data <- senate.integrate.data(data, type="CM", cache=TRUE, compare=FALSE)
 		
 		# assembly database
-		# TODO
+		# no CM data in the assembly database
 	}
 	
 	return(data)
@@ -763,20 +900,14 @@ load.cm2.data <- function(correct.data, complete.data)
 	# load the data
 	data <- load.data(filenames=FILES_TAB_CM2, col.map=col.map, correc.file=FILE_CORREC_CM2, correct.data)
 	
-	# perform additional corrections
-	if(correct.data)
-	{	# merge similar rows
-		data <- merge.similar.rows(data=data)
-	}
-	
 	# correct/complete with secondary sources
 	if(complete.data)
 	{	# senate database
-# NOTE Senate data eventually not used
-#		data <- senate.integrate.data(data, type="CM", cache=TRUE, compare=FALSE)
+		# NOTE Senate data eventually not used
+		#data <- senate.integrate.data(data, type="CM", cache=TRUE, compare=FALSE)
 		
 		# assembly database
-		# TODO
+		# no CM data in the assembly database
 	}
 	
 	return(data)
@@ -820,20 +951,14 @@ load.cr.data <- function(correct.data, complete.data)
 	# load the data
 	data <- load.data(filenames=FILES_TAB_CR, col.map=col.map, correc.file=FILE_CORREC_CR, correct.data)
 	
-	# perform additional corrections
-	if(correct.data)
-	{	# merge similar rows
-		data <- merge.similar.rows(data=data)
-	}
-	
 	# correct/complete with secondary sources
 	if(complete.data)
 	{	# senate database
-# NOTE Senate data eventually not used
-#		data <- senate.integrate.data(data, type="CR", cache=TRUE, compare=FALSE)
+		# NOTE Senate data eventually not used
+		#data <- senate.integrate.data(data, type="CR", cache=TRUE, compare=FALSE)
 		
 		# assembly database
-		# TODO
+		# no CR data in the assembly database
 	}
 	
 	return(data)
@@ -881,28 +1006,16 @@ load.cr2.data <- function(correct.data, complete.data)
 	reg.name <- sapply(data[,COL_ATT_REG_NOM], function(x) substr(x,3,nchar(x)))
 	data[,COL_ATT_REG_NOM] <- reg.name
 	data[,COL_ATT_REG_CODE] <- reg.code
-	
-	# normalize columns order
-	norm.cols <- intersect(COLS_ATT_NORMALIZED, colnames(data))
-	if(length(norm.cols)!=ncol(data))
-		stop("Problem with the number of columns when reordering table CR2 columns")
-	else
-		data <- data[,norm.cols]
-	
-	# perform additional corrections
-	if(correct.data)
-	{	# merge similar rows
-		data <- merge.similar.rows(data=data)
-	}
+	data <- normalize.col.order(data)
 	
 	# correct/complete with secondary sources
 	if(complete.data)
 	{	# senate database
-# NOTE Senate data eventually not used
-#		data <- senate.integrate.data(data, type="CR", cache=TRUE, compare=FALSE)
+		# NOTE Senate data eventually not used
+		#data <- senate.integrate.data(data, type="CR", cache=TRUE, compare=FALSE)
 		
 		# assembly database
-		# TODO
+		# no CR data in the assembly database
 	}
 	
 	return(data)
@@ -946,20 +1059,14 @@ load.d.data <- function(correct.data, complete.data)
 	# load the data
 	data <- load.data(filenames=FILES_TAB_D, col.map=col.map, correc.file=FILE_CORREC_D, correct.data)
 	
-	# perform additional corrections
-	if(correct.data)
-	{	# merge similar rows
-		data <- merge.similar.rows(data=data)
-	}
-	
 	# correct/complete with secondary sources
 	if(complete.data)
 	{	# senate database
-# NOTE Senate data eventually not used
-#		data <- senate.integrate.data(data, type="D", cache=TRUE, compare=FALSE)
+		# NOTE Senate data eventually not used
+		#data <- senate.integrate.data(data, type="D", cache=TRUE, compare=FALSE)
 		
 		# assembly database
-		# TODO
+		data <- assembly.integrate.data(data, cache=TRUE, compare=FALSE)
 	}
 	
 	return(data)
@@ -997,20 +1104,14 @@ load.de.data <- function(correct.data, complete.data)
 	# load the data
 	data <- load.data(filenames=FILES_TAB_DE, col.map=col.map, correc.file=FILE_CORREC_DE, correct.data)
 	
-	# perform additional corrections
-	if(correct.data)
-	{	# merge similar rows
-		data <- merge.similar.rows(data=data)
-	}
-	
 	# correct/complete with secondary sources
 	if(complete.data)
 	{	# senate database
-# NOTE Senate data eventually not used
-#		data <- senate.integrate.data(data, type="DE", cache=TRUE, compare=FALSE)
+		# NOTE Senate data eventually not used
+		#data <- senate.integrate.data(data, type="DE", cache=TRUE, compare=FALSE)
 		
 		# assembly database
-		# TODO
+		# no DE data in the assembly database
 	}
 	
 	return(data)
@@ -1059,26 +1160,15 @@ load.epci.data <- function(correct.data, complete.data)
 	vals <- rep("CONSEILLER EPCI",nrow(data))
 	data <- cbind(data, vals)
 	colnames(data)[ncol(data)] <- COL_ATT_MDT_NOM
-	
-	# normalize columns order
-	norm.cols <- intersect(COLS_ATT_NORMALIZED, colnames(data))
-	if(length(norm.cols)!=ncol(data))
-		stop("Problem with the number of columns when reordering table EPCI columns")
-	else
-		data <- data[,norm.cols]
-	
-	# perform additional corrections
-	if(correct.data)
-	{	# merge similar rows
-		data <- merge.similar.rows(data=data)
-	}
+	data <- normalize.col.order(data)
 	
 	# correct/complete with secondary sources
 	if(complete.data)
-	{	# no EPCI data in the senate database
-
+	{	# senate database
+		# no EPCI data in the senate database
+		
 		# assembly database
-		# TODO
+		# no EPCI data in the assembly database
 	}
 	
 	return(data)
@@ -1123,38 +1213,14 @@ load.m.data <- function(correct.data, complete.data)
 	# load the data
 	data <- load.data(filenames=FILES_TAB_M, col.map=col.map, correc.file=FILE_CORREC_M, correct.data)
 	
-	# convert population numbers to actual integers
-	tlog(0,"Converting population to integer values")
-	cn <- COL_ATT_COM_POP
-	vals <- data[,cn]
-	vals <- gsub(" ", "",  vals)	# \\s matches all whitespaces
-	vals <- gsub(",00", "",  vals)
-	vals <- suppressWarnings(as.integer(vals))
-	data <- data[, names(data)!=cn]
-	data <- cbind(data,vals)
-	names(data)[ncol(data)] <- cn
-	
-	# normalize columns order
-	norm.cols <- intersect(COLS_ATT_NORMALIZED, colnames(data))
-	if(length(norm.cols)!=ncol(data))
-		stop("Problem with the number of columns when reordering table M columns")
-	else
-		data <- data[,norm.cols]
-	
-	# perform additional corrections
-	if(correct.data)
-	{	# merge similar rows
-		data <- merge.similar.rows(data=data)
-	}
-	
 	# correct/complete with secondary sources
 	if(complete.data)
 	{	# senate database
-# NOTE Senate data eventually not used
-#		data <- senate.integrate.data(data, type="M", cache=TRUE, compare=FALSE)
+		# NOTE Senate data eventually not used
+		#data <- senate.integrate.data(data, type="M", cache=TRUE, compare=FALSE)
 		
 		# assembly database
-		# TODO
+		# no M data in the assembly database
 	}
 	
 	return(data)
@@ -1196,19 +1262,13 @@ load.s.data <- function(correct.data, complete.data)
 	# load the data
 	data <- load.data(filenames=FILES_TAB_S, col.map=col.map, correc.file=FILE_CORREC_S, correct.data)
 	
-	# perform additional corrections
-	if(correct.data)
-	{	# merge similar rows
-		data <- merge.similar.rows(data=data)
-	}
-	
 	# correct/complete with secondary sources
 	if(complete.data)
 	{	# senate database
 		data <- senate.integrate.data(data, type="S", cache=TRUE, compare=TRUE)
 		
 		# assembly database
-		# TODO
+		# no S data in the assembly database
 	}
 	
 	return(data)
