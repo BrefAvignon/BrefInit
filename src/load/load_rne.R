@@ -577,7 +577,7 @@ merge.similar.rows <- function(data)
 	concat <- apply(data[,comp.cols], 1, function(row) paste(row, collapse=":"))
 	tt <- table(concat)
 	codes <- names(tt)[which(tt>1)]
-	tlog(2,"Looking for redundant rows: found ",length(codes))
+	tlog(2,"Looking for possibly redundant rows: found ",length(codes))
 	
 	# identify compatible rows amongst redundant ones
 	tlog(2,"Looking for compatible rows among them")
@@ -652,8 +652,7 @@ fix.mdtfct.dates <- function(data)
 # returns: same table, but with reordered columns.
 #############################################################################################
 normalize.col.order <- function(data)
-{
-	tlog(0,"Normalizing column order")
+{	tlog(0,"Normalizing column order")
 	norm.cols <- intersect(COLS_ATT_NORMALIZED, colnames(data))
 	if(length(norm.cols)!=ncol(data))
 		stop("Problem with the number of columns when loading the table, after reordering")
@@ -661,6 +660,7 @@ normalize.col.order <- function(data)
 		data <- data[,norm.cols]
 	tlog(2,"Now ",nrow(data)," rows and ",ncol(data)," columns in main table")
 	
+	return(data)
 }
 
 
