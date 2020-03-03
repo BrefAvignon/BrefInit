@@ -312,17 +312,13 @@ COL_CORREC_VALAPR <- "ValApr"
 COL_CORREC_COMM <- "Commentaire"
 
 # colunms for verification files
-COL_VERIF_CIRCE_CODE <- "CodeCirco"
-COL_VERIF_CIRCE_NOM <- "Nom"
-COL_VERIF_DPT_CODE <- "CodeDpt"
-COL_VERIF_DPT_NOM <- "Nom"
 COL_VERIF_MDT_NBR <- "Nombre"
 COL_VERIF_MDT_DBT <- "Debut"
 COL_VERIF_MDT_FIN <- "Fin"
-COL_VERIF_REG_CODE <- "CodeRegion"
-COL_VERIF_REG_NOM <- "Nom"
 COL_VERIF_DATE_TOUR1 <- "Tour1"
 COL_VERIF_DATE_TOUR2 <- "Tour2"
+COL_VERIF_SERIE <- "Serie"
+COL_VERIF_SERIES <- "Series"
 
 # columns for senate files
 COL_SENAT_CANT_NOM <- "Circonscription"
@@ -418,6 +414,9 @@ FOLDER_IN <- "in"
 	FILE_VERIF_DATES_D <- file.path(FOLDER_VERIFS, "elections_D.txt")
 	FILE_VERIF_DATES_DE <- file.path(FOLDER_VERIFS, "elections_DE.txt")
 	FILE_VERIF_DATES_S <- file.path(FOLDER_VERIFS, "elections_S.txt")
+	# series lists
+	FILE_VERIF_SERIES_CD <- file.path(FOLDER_VERIFS, "series_CD.txt")
+	FILE_VERIF_SERIES_S <- file.path(FOLDER_VERIFS, "series_S.txt")
 # secondary data
 	# national assembly files
 	FOLDER_ASSEMB_RAW <- file.path(FOLDER_ASSEMBLEE, "raw")

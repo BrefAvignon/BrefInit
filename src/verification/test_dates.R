@@ -348,14 +348,18 @@ test.col.dates.nofun <- function(data, out.folder)
 # data: table containing the data.
 # out.folder: folder where to output the results.
 # election.file: name of the file containing the election dates.
+# series.file: name of the file containing the series (optional, depends on the type of mandate).
 #############################################################################################
-test.col.dates.election <- function(data, out.folder, election.file)
+test.col.dates.election <- function(data, out.folder, election.file, series.file)
 {	tlog(2,"Identifying mandates whose bounds are incompatible with election dates")
 	
 	# load election dates
 	tlog(4,"Loading the table containing election dates: \"",election.file,"\"")
+	col.classes <- c("Date", "Date")
+	if(hasArg(series.file))
+		col.classes <- c("Date", "Date", "character")
 	election.table <- read.table(
-		file=election.file,		# name of the data file
+		file=election.file,			# name of the data file
 		header=TRUE, 				# look for a header
 		sep="\t", 					# character used to separate columns 
 		check.names=FALSE, 			# don't change the column names from the file
@@ -363,8 +367,8 @@ test.col.dates.election <- function(data, out.folder, election.file)
 		row.names=NULL, 			# don't look for row names in the file
 		quote="", 					# don't expect double quotes "..." around text fields
 		as.is=TRUE,					# don't convert strings to factors
-#			fileEncoding="Latin1"		# original tables seem to be encoded in Latin1 (ANSI)
-		colClasses=c("Date","Date")
+#		fileEncoding="Latin1"		# original tables seem to be encoded in Latin1 (ANSI)
+		colClasses=col.classes
 	)
 	
 	# possibly complete second round dates
@@ -373,12 +377,60 @@ test.col.dates.election <- function(data, out.folder, election.file)
 	if(length(idx)>0)
 		election.table[idx,COL_VERIF_DATE_TOUR2] <- election.table[idx,COL_VERIF_DATE_TOUR1]
 	
+	# break down series
+	series.list <- strsplit(x=election.table[,COL_VERIF_SERIES], split=",", fixed=TRUE)
+	
+	# possibly load series
+	if(hasArg(series.file))
+	{	# CD table
+		if(COL_ATT_CANT_CODE %in% colnames(series.table))
+			col.classes <- c("character","integer","character","character")
+		# S table
+		else 
+			col.classes <- c("character","character")
+		series.table <- read.table(
+			file=series.file,			# name of the data file
+			header=TRUE, 				# look for a header
+			sep="\t", 					# character used to separate columns 
+			check.names=FALSE, 			# don't change the column names from the file
+			comment.char="", 			# ignore possible comments in the content
+			row.names=NULL, 			# don't look for row names in the file
+			quote="", 					# don't expect double quotes "..." around text fields
+			as.is=TRUE,					# don't convert strings to factors
+#			fileEncoding="Latin1",		# original tables seem to be encoded in Latin1 (ANSI)
+			colClasses=col.classes
+		)
+	}
+	
 	# compare mandate and election dates
 	tlog(4,"Check mandate dates against election dates")
 	idx <- which(apply(data, 1, function(data.row)
-		{	any(apply(election.table, 1, function(election.row)
+		{	# get election dates
+			election.dates <- election.table
+			if(hasArg(series.file))
+			{	# CD table
+				if(COL_ATT_CANT_CODE %in% colnames(series.table))
+					idx <- which(series.table[,COL_ATT_DPT_CODE]==data.row[1,COL_ATT_DPT_CODE]
+									& series.table[,COL_ATT_CANT_CODE]==data.row[1,COL_ATT_CANT_CODE])
+				# S table
+				else 
+					idx <- which(series.table[,COL_ATT_DPT_CODE]==data.row[1,COL_ATT_DPT_CODE])
+				# retrieve the series corresponding to the position
+				series <- series.table[idx,COL_VERIF_SERIE]
+				# and the election dates corresponding to the series
+				idx <- sapply(series.list, function(s) series %in% s)
+				election.dates <- election.table[idx,]
+			}
+			
+			# compare with mandate dates
+			any(apply(election.dates, 1, function(election.row)
 				{	(data.row[COL_ATT_MDT_DBT]<election.row[COL_VERIF_DATE_TOUR1] 
-						&& (is.na(data.row[COL_ATT_MDT_FIN]) || data.row[COL_ATT_MDT_FIN]>=election.row[COL_VERIF_DATE_TOUR2])) #TODO
+						&& (is.na(data.row[COL_ATT_MDT_FIN]) || data.row[COL_ATT_MDT_FIN]>=election.row[COL_VERIF_DATE_TOUR2]))
+# TODO
+# plus compliqué: autoriser une date d'élection dans la période, mais en tant que borne
+										
+# TODO
+# synchroniser les deux fichiers de séries avec les données (noms de cantons)
 					#date.intersect(
 					#		start1=election.row[COL_VERIF_DATE_TOUR1], 
 					#		end1=election.row[COL_VERIF_DATE_TOUR2], 
@@ -468,10 +520,7 @@ test.col.dates.cd <- function(data, out.folder)
 	test.col.end.motive(data, out.folder)
 	
 	# election dates
-#	test.col.dates.election(data, out.folder, election.file=FILE_VERIF_DATES_CD)
-	# TODO multiple coexisting election dates due to the existence of several distinct cohorts: 
-	# performing this test requires identifying each unique position, in order to determine 
-	# which cohort it belongs to. This is possible for departmental counsilors.
+	test.col.dates.election(data, out.folder, election.file=FILE_VERIF_DATES_CD, series.file=FILE_VERIF_SERIES_CD)
 	
 	# specific tests
 	tlog(2,"Checking mandate durations")
@@ -712,10 +761,7 @@ test.col.dates.s <- function(data, out.folder)
 	test.col.end.motive(data, out.folder)
 		
 	# election dates
-#	test.col.dates.election(data, out.folder, election.file=FILE_VERIF_DATES_S)
-	# TODO multiple coexisting election dates due to the existence of several distinct cohorts: 
-	# performing this test requires identifying each unique position, in order to determine 
-	# which cohort it belongs to. But that is not possible for senators...
+	test.col.dates.election(data, out.folder, election.file=FILE_VERIF_DATES_S, series.file=FILE_VERIF_SERIES_S)
 	
 	# specific tests
 	tlog(2,"Checking mandate durations")

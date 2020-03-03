@@ -1,4 +1,4 @@
-CodeRegion	Nom	Nombre	Debut	Fin
+Code region	Libelle region	Nombre	Debut	Fin
 42	ALSACE	47	1986/03/16	2015/12/05
 72	AQUITAINE	85	1986/03/16	2015/12/05
 83	AUVERGNE	47	1986/03/16	2015/12/05

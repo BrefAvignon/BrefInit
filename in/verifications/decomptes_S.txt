@@ -1,4 +1,4 @@
-CodeDpt	Nom	Nombre	Debut	Fin
+Code departement	Libelle departement	Nombre	Debut	Fin
 1	AIN	2	1959/04/26	2008/09/20
 1	AIN	3	2008/09/21	NA
 2	AISNE	3	1959/04/26	NA

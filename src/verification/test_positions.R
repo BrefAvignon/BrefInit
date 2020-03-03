@@ -341,7 +341,7 @@ test.position.cr <- function(data, out.folder)
 								date.intersect(verif.table[r,COL_VERIF_MDT_DBT], verif.table[r,COL_VERIF_MDT_FIN], cur.day, cur.day)
 					))
 			# match to the departments names
-			midx <- match(names(tt),verif.table[per.idx, COL_VERIF_REG_NOM])
+			midx <- match(names(tt),verif.table[per.idx, COL_COL_ATT_REG_NOM])
 			# compare the mandate counts and upper bounds
 			ridx <- which(tt > verif.table[per.idx[midx], COL_VERIF_MDT_NBR])
 			# record the problematic departments
@@ -485,7 +485,7 @@ test.position.de <- function(data, out.folder)
 								date.intersect(verif.table[r,COL_VERIF_MDT_DBT], verif.table[r,COL_VERIF_MDT_FIN], cur.day, cur.day)
 					))
 			# match to the departments names
-			midx <- match(names(tt),verif.table[per.idx, COL_VERIF_CIRCE_NOM])
+			midx <- match(names(tt),verif.table[per.idx, COL_ATT_CIRCE_NOM])
 			# compare the mandate counts and upper bounds
 			ridx <- which(tt > verif.table[per.idx[midx], COL_VERIF_MDT_NBR])
 			# record the problematic circonscriptions
@@ -898,7 +898,7 @@ test.position.s <- function(data, out.folder)
 								date.intersect(verif.table[r,COL_VERIF_MDT_DBT], verif.table[r,COL_VERIF_MDT_FIN], cur.day, cur.day)
 						))
 			# match to the departments names
-			midx <- match(names(tt),verif.table[per.idx, COL_VERIF_DPT_NOM])
+			midx <- match(names(tt),verif.table[per.idx, COL_ATT_DPT_NOM])
 			# compare the mandate counts and upper bounds
 			didx <- which(tt > verif.table[per.idx[midx], COL_VERIF_MDT_NBR])
 			# record the problematic departments
