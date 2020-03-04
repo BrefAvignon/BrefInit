@@ -388,6 +388,7 @@ test.col.dates.election <- function(data, out.folder, election.file, series.file
 		# S table
 		else 
 			col.classes <- c("character","character")
+		# load the table
 		series.table <- read.table(
 			file=series.file,			# name of the data file
 			header=TRUE, 				# look for a header
@@ -428,6 +429,10 @@ test.col.dates.election <- function(data, out.folder, election.file, series.file
 						&& (is.na(data.row[COL_ATT_MDT_FIN]) || data.row[COL_ATT_MDT_FIN]>=election.row[COL_VERIF_DATE_TOUR2]))
 # TODO
 # plus compliqué: autoriser une date d'élection dans la période, mais en tant que borne
+# >> pas besoin si on a déjà aligné les dates de mandat sur celles d'élections.
+# >> mais alors pb pour synchroniser avec BD sénat/assemblée
+# Plutot : introduire une tolérance dont la valeur dépend de la distribution des durées de mandat ?
+										
 										
 # TODO
 # synchroniser les deux fichiers de séries avec les données (noms de cantons)
