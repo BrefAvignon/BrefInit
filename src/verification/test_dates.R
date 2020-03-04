@@ -401,6 +401,10 @@ test.col.dates.election <- function(data, out.folder, election.file, series.file
 #			fileEncoding="Latin1",		# original tables seem to be encoded in Latin1 (ANSI)
 			colClasses=col.classes
 		)
+		
+		# for debug
+		# idx <- match(cant.table[,COL_ATT_CANT_NOM],series.table[,COL_ATT_CANT_NOM])
+		# cant.table[which(is.na(idx)),]
 	}
 	
 	# compare mandate and election dates

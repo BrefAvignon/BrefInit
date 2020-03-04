@@ -455,8 +455,8 @@ FOLDER_IN <- "in"
 	FILE_CONV_PRO <- file.path(FOLDER_CONV, "professions.txt")
 	FILE_CONV_REGIONS <- file.path(FOLDER_CONV, "regions.txt")
 	FILE_CONV_NUANCES <- file.path(FOLDER_CONV, "nuances.txt")
-	
-	
+
+
 # output folders
 # folder to store logs
 FOLDER_LOG <- "log"
