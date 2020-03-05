@@ -352,11 +352,12 @@ test.col.dates.nofun <- function(data, out.folder)
 #############################################################################################
 test.col.dates.election <- function(data, out.folder, election.file, series.file)
 {	tlog(2,"Identifying mandates whose bounds are incompatible with election dates")
-	
+	series.present <- hasArg(series.file)
+		 
 	# load election dates
 	tlog(4,"Loading the table containing election dates: \"",election.file,"\"")
 	col.classes <- c("Date", "Date")
-	if(hasArg(series.file))
+	if(series.present)
 		col.classes <- c("Date", "Date", "character")
 	election.table <- read.table(
 		file=election.file,			# name of the data file
@@ -381,7 +382,7 @@ test.col.dates.election <- function(data, out.folder, election.file, series.file
 	series.list <- strsplit(x=election.table[,COL_VERIF_SERIES], split=",", fixed=TRUE)
 	
 	# possibly load series
-	if(hasArg(series.file))
+	if(series.present)
 	{	# CD table
 		if(COL_ATT_CANT_CODE %in% colnames(series.table))
 			col.classes <- c("character","integer","character","character")
@@ -409,37 +410,29 @@ test.col.dates.election <- function(data, out.folder, election.file, series.file
 	
 	# compare mandate and election dates
 	tlog(4,"Check mandate dates against election dates")
-	idx <- which(apply(data, 1, function(data.row)
-		{	# get election dates
+	idx <- which(sapply(1:nrow(data), function(r)
+		{	tlog(6,"Processing row ",r,"/",nrow(data))
+			# get election dates
 			election.dates <- election.table
-			if(hasArg(series.file))
+			if(series.present)
 			{	# CD table
 				if(COL_ATT_CANT_CODE %in% colnames(series.table))
-					idx <- which(series.table[,COL_ATT_DPT_CODE]==data.row[1,COL_ATT_DPT_CODE]
-									& series.table[,COL_ATT_CANT_CODE]==data.row[1,COL_ATT_CANT_CODE])
+					idx <- which(series.table[,COL_ATT_DPT_CODE]==data[r,COL_ATT_DPT_CODE]
+									& series.table[,COL_ATT_CANT_NOM]==data[r,COL_ATT_CANT_NOM])
 				# S table
 				else 
-					idx <- which(series.table[,COL_ATT_DPT_CODE]==data.row[1,COL_ATT_DPT_CODE])
+					idx <- which(series.table[,COL_ATT_DPT_CODE]==data[r,COL_ATT_DPT_CODE])
 				# retrieve the series corresponding to the position
 				series <- series.table[idx,COL_VERIF_SERIE]
 				# and the election dates corresponding to the series
-				idx <- sapply(series.list, function(s) series %in% s)
+				idx <- sapply(series.list, function(s) is.na(series) || series %in% s)
 				election.dates <- election.table[idx,]
 			}
 			
 			# compare with mandate dates
-			any(apply(election.dates, 1, function(election.row)
-				{	(data.row[COL_ATT_MDT_DBT]<election.row[COL_VERIF_DATE_TOUR1] 
-						&& (is.na(data.row[COL_ATT_MDT_FIN]) || data.row[COL_ATT_MDT_FIN]>=election.row[COL_VERIF_DATE_TOUR2]))
-# TODO
-# plus compliqué: autoriser une date d'élection dans la période, mais en tant que borne
-# >> pas besoin si on a déjà aligné les dates de mandat sur celles d'élections.
-# >> mais alors pb pour synchroniser avec BD sénat/assemblée
-# Plutot : introduire une tolérance dont la valeur dépend de la distribution des durées de mandat ?
-										
-										
-# TODO
-# synchroniser les deux fichiers de séries avec les données (noms de cantons)
+			tests <- apply(election.dates, 1, function(election.row)
+				{	(data[r,COL_ATT_MDT_DBT]<election.row[COL_VERIF_DATE_TOUR1] 
+						&& (is.na(data[r,COL_ATT_MDT_FIN]) || data[r,COL_ATT_MDT_FIN]>=election.row[COL_VERIF_DATE_TOUR2]))
 					#date.intersect(
 					#		start1=election.row[COL_VERIF_DATE_TOUR1], 
 					#		end1=election.row[COL_VERIF_DATE_TOUR2], 
@@ -447,7 +440,23 @@ test.col.dates.election <- function(data, out.folder, election.file, series.file
 					#		end2=data.row[COL_ATT_MDT_FIN]
 					#)
 				}
-			))
+			)
+			res <- any(tests)
+			if(res)
+			{	tlog(8,paste(data[r,],colapse=","))
+				print(data[r,])
+				print(cbind(election.dates,tests))
+				idx.tests <- which(tests)
+				if(length(idx.tests)>1)
+					stop("Problem: several rows match")
+				else
+				{	tlog(8,format(data[r,COL_ATT_MDT_DBT]),"--", format(data[r,COL_ATT_MDT_FIN]), " vs. ",
+							format(election.dates[idx.tests,1]), "--", format(election.dates[idx.tests,2]))
+					readline()
+#					stop()
+				}
+			}	
+			return(res)
 		}))
 	tlog(6,"Found ",length(idx)," rows with election-related issues")
 	
