@@ -15,7 +15,7 @@
 #
 # returns: same strings, but without the diacritics.
 #############################################################################################
-remove.diacritics<- function(strings)
+remove.diacritics <- function(strings)
 {	result <- strings
 	
 	map <- c()
@@ -252,7 +252,7 @@ normalize.location.nouns <- function(strings)
 {	result <- strings
 	
 	# "st" for "saint" and variants
-	result <- gsub(x=result, pattern="( |^)ST(E*S*) ",replacement="SAINT\\2 ")
+	result <- gsub(x=result, pattern="( |^)ST(E*S*) ",replacement="\\1SAINT\\2 ")
 	
 	# replace roman numerals by indo-arab ones
 	map <- c("I","II","III","IV","V","VI","VII","VIII","IX","X","XI","XII","XIII","XIV","XV","XVI","XVII","XVIII","XIX","XX")
