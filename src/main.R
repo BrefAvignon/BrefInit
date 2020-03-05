@@ -203,9 +203,3 @@ source("src/common/include.R")
 # Fonctions: si plusieurs fonctions dans mandat:
 #		- autant de lignes que de fonctions
 #		- chacune avec les mêmes infos sauf fonction (y compris dates mandat)
-#
-# Comment traiter les dates d'élection de S et CD ?
-# - Pour chaque département+canton
-#   - Identifier les dates de passation de pouvoir
-#   - D'après cette séquence d'années, en déduire la classe de mandat
-# - Pour sénat, plus compliqué...

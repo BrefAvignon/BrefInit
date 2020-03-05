@@ -443,18 +443,18 @@ test.col.dates.election <- function(data, out.folder, election.file, series.file
 			)
 			res <- any(tests)
 			if(res)
-			{	tlog(8,paste(data[r,],colapse=","))
-				print(data[r,])
-				print(cbind(election.dates,tests))
-				idx.tests <- which(tests)
+			{	
+#				tlog(8,paste(data[r,],colapse=","))
+#				print(data[r,])
+#				print(cbind(election.dates,tests))
+#				idx.tests <- which(tests)
 				if(length(idx.tests)>1)
 					stop("Problem: several rows match")
-				else
-				{	tlog(8,format(data[r,COL_ATT_MDT_DBT]),"--", format(data[r,COL_ATT_MDT_FIN]), " vs. ",
-							format(election.dates[idx.tests,1]), "--", format(election.dates[idx.tests,2]))
-					readline()
-#					stop()
-				}
+#				else
+#				{	tlog(8,format(data[r,COL_ATT_MDT_DBT]),"--", format(data[r,COL_ATT_MDT_FIN]), " vs. ",
+#							format(election.dates[idx.tests,1]), "--", format(election.dates[idx.tests,2]))
+#					readline() #stop()
+#				}
 			}	
 			return(res)
 		}))

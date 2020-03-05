@@ -368,7 +368,7 @@ apply.systematic.corrections <- function(data)
 		tlog(2,"Now ",nrow(data)," rows and ",ncol(data)," columns in main table")
 	}
 	
-	# remove rows without mandate and without function dates
+	# remove rows without mandate dates and without function dates
 	tlog(0,"Removing rows with no mandate and no function date")
 	if(COL_ATT_FCT_DBT %in% colnames(data))
 	{	idx <- which(is.na(data[,COL_ATT_MDT_DBT]) & is.na(data[,COL_ATT_MDT_FIN]) 
@@ -623,9 +623,8 @@ merge.similar.rows <- function(data)
 
 #############################################################################################
 # Performs various corrections on the dates defining mandates and functions: 
-# 1) Adjusts function dates so that they are contained inside the corresponding mandate period.
-# TODO check whether 1) is actually necessary
-# 2) Merge rows corresponding to overlapping mandates, provided they have different functions.
+# 1) Adidx[k]usts function dates so that they are contained inside the corresponding mandate period.
+# 2) Merge rows corresponding to overlapping mandates, provided they have compatible functions.
 # 3) Round mandate and function dates to match election dates (when approximately equal).
 # 4) Split rows containing election dates (other than as a start date).
 # 5) Remove micro-mandates.
@@ -636,8 +635,77 @@ merge.similar.rows <- function(data)
 #############################################################################################
 fix.mdtfct.dates <- function(data)
 {	
+	# adjust function dates so that they are contained inside the corresponding mandate period
+	tlog(0,"Adjusting function dates to be contained into mandate periods")
+	nbr.corr <- 0
+	for(r in 1:nrow(data))
+	{	str <- paste0("Considering (",r,"/",nrow(data),") ",
+				format(data[r,COL_ATT_MDT_DBT]),"--", format(data[r,COL_ATT_MDT_FIN]), " vs. ",
+				format(data[r,COL_ATT_FCT_DBT]), "--", format(data[r,COL_ATT_FCT_FIN]))
+		changed.start <- FALSE
+		changed.end <- FALSE
+		if(!is.na(data[r,COL_ATT_FCT_DBT]) && !is.na(data[r,COL_ATT_MDT_DBT]) 
+				&& data[r,COL_ATT_FCT_DBT]<data[r,COL_ATT_MDT_DBT])
+		{	data[r,COL_ATT_FCT_DBT] <- data[r,COL_ATT_MDT_DBT]
+			nbr.corr <- nbr.corr + 1
+			changed.start <- TRUE
+		}
+		if(!is.na(data[r,COL_ATT_FCT_FIN]) && !is.na(data[r,COL_ATT_MDT_FIN]) 
+				&& data[r,COL_ATT_FCT_FIN]>data[r,COL_ATT_MDT_FIN])
+		{	data[r,COL_ATT_FCT_FIN] <- data[r,COL_ATT_MDT_FIN]
+			nbr.corr <- nbr.corr + 1
+			changed.end <- TRUE
+		}
+		if(changed.start || changed.end)
+		{	#print(data[r,])
+			tlog(2,str)
+			tlog(2,data[r,COL_ATT_DPT_NOM])
+			if(changed.start)
+				tlog(4,"Modifying function start")
+			if(changed.end)
+				tlog(4,"Modifying function end")
+		}
+	}
+	tlog(2, "Total number of corrected dates: ",nbr.corr)
 	
+	# merge rows corresponding to overlapping mandates of the same person, provided they have compatible functions
+	tlog(0,"Merging overlapping rows of the same person (provided their functions are compatible)")
+	# set the attribute used to compare functions
+	if(COL_ATT_FCT_NOM %in% colnames(data))
+		fct.att <- COL_ATT_FCT_NOM
+	else if(COL_ATT_FCT_CODE %in% colnames(data))
+		fct.att <- COL_ATT_FCT_CODE
+	else
+		fct.att <- NA
+	# get all ids
+	unique.ids <- sort(unique(data[,COL_ATT_ELU_ID]))
+	for(i in 1:length(unique.ids))
+	{	idx <- which(data[,COL_ATT_ELU_ID]==unique.ids[i])
+		tlog(2,"Processing id ",unique.ids[i]," (",i,"/",length(unique.ids),"): found ",length(idx)," rows")
+		if(length(idx)>1)
+		{	for(j in 1:(length(idx)-1))
+			{	tlog(4,"Processing row ",j,"/",length(idx))
+				for(k in 2:length(idx))
+				{	tlog(6,"Comparing to row ",k,"/",length(idx))
+					if(date.intersect(start1=data[idx[j],COL_ATT_MDT_DBT], end1=data[idx[j],COL_ATT_MDT_FIN], 	# overlapping mandates
+						start2=data[idx[k],COL_ATT_MDT_DBT], end2=data[idx[k],COL_ATT_MDT_FIN])
+							&& (is.na(fct.att) || 																# either no function specified at all
+								(is.na(data[idx[j],fct.att]) || is.na(data[idx[k],fct.att]) 					# or compatible functions
+									|| data[idx[j],fct.att]==data[idx[k],fct.att])))
+					{	print(data[c(idx[j],idx[k]),])
+						tlog(8, "Overlap detected between")
+						tlog(10, format(data[idx[j],COL_ATT_MDT_DBT]),"--",format(data[idx[j],COL_ATT_MDT_FIN])," <<>> ",format(data[idx[j],COL_ATT_FCT_DBT]),"--",format(data[idx[j],COL_ATT_FCT_FIN]),"(",data[idx[j],fct.att],")")
+						tlog(10, format(data[idx[k],COL_ATT_MDT_DBT]),"--",format(data[idx[k],COL_ATT_MDT_FIN])," <<>> ",format(data[idx[k],COL_ATT_FCT_DBT]),"--",format(data[idx[k],COL_ATT_FCT_FIN]),"(",data[idx[k],fct.att],")")
+						stop()
+					}
+				}
+			}
+		}
+		else
+			tlog(6,"Unique row, nothing to compare to")
+	}
 	
+	stop()
 	return(data)
 }
 
