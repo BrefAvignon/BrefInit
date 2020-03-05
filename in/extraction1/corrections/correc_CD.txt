@@ -9,6 +9,21 @@ NA	NA	NA	NA	Libellé du canton	LES ABYMES 2	ABYMES 2	Article superflu
 NA	NA	NA	NA	Libellé du canton	LES ABYMES 3	ABYMES 3	Article superflu
 NA	NA	NA	NA	Livellé du canton	CARCASONNE 2 SUD	CARCASSONNE 2 SUD	Manque un S
 NA	NA	NA	NA	Livellé du canton	SALIGNAC EYVIGUES	SALIGNAC EYVIGUES	Typo dans nom de canton
+NA	NA	NA	NA	Livellé du canton	MAMOUDZOU 1ER CANTON	MAMOUDZOU 1	Nom existant déjà sous une forme plus simple
+NA	NA	NA	NA	Livellé du canton	MAMOUDZOU 2E CANTON	MAMOUDZOU 2	Nom existant déjà sous une forme plus simple
+NA	NA	NA	NA	Livellé du canton	MAMOUDZOU 3E CANTON	MAMOUDZOU 3	Nom existant déjà sous une forme plus simple
+NA	NA	NA	NA	Livellé du canton	MARSEILLE LA BLANCARDE	LA BLANCARDE	Nom existant déjà sous une forme plus simple
+NA	NA	NA	NA	Livellé du canton	MARSEILLE LES TROIS LUCS	LES TROIS LUCS	Nom existant déjà sous une forme plus simple
+NA	NA	NA	NA	Livellé du canton	MARSEILLE SAINTE MARGUERITE	SAINTE MARGUERITE	Nom existant déjà sous une forme plus simple
+NA	NA	NA	NA	Livellé du canton	MARSEILLE NOTRE DAME LIMITE	NOTRE DAME LIMITE	Nom existant déjà sous une forme plus simple
+NA	NA	NA	NA	Livellé du canton	MARSEILLE VAUBAN	VAUBAN	Nom existant déjà sous une forme plus simple
+NA	NA	NA	NA	Livellé du canton	xxxx	xxxx	Nom existant déjà sous une forme plus simple
+NA	NA	NA	NA	Livellé du canton	xxxx	xxxx	Nom existant déjà sous une forme plus simple
+NA	NA	NA	NA	Livellé du canton	xxxx	xxxx	Nom existant déjà sous une forme plus simple
+NA	NA	NA	NA	Livellé du canton	xxxx	xxxx	Nom existant déjà sous une forme plus simple
+NA	NA	NA	NA	Livellé du canton	xxxx	xxxx	Nom existant déjà sous une forme plus simple
+NA	NA	NA	NA	Livellé du canton	xxxx	xxxx	Nom existant déjà sous une forme plus simple
+NA	NA	NA	NA	Livellé du canton	xxxx	xxxx	Nom existant déjà sous une forme plus simple
 11557	5748	DUROVRAY	François	Date fin mandat	1/4/2015	NA	Date incorrecte remplacée par NA pour fusion ultérieure
 11557	5748	DUROVRAY	François	Date fin fonction	1/4/2015	NA	Date incorrecte remplacée par NA pour fusion ultérieure
 4765	62511	ARIAS VILLANUEVA BENET	JOSE	Date fin mandat	8/3/2008	21/03/2015	Corrigé pour mandat complet
