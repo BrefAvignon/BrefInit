@@ -538,6 +538,7 @@ senate.convert.mandate.table <- function(general.table, elect.table, type)
 			colClasses="character"		# all column originally read as characters
 #			fileEncoding="Latin1"		# original tables seem to be encoded in Latin1 (ANSI)
 		)
+# TODO might be invalidated by the modifications in the cantons list
 		cant.codes <- rep(NA,length(cant.names))
 		cant.ids <- rep(NA,length(cant.names))
 		for(i in 1:length(cant.names))
