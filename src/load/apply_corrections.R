@@ -1063,13 +1063,19 @@ fix.mdtfct.dates <- function(data, election.file, series.file)
 	
 	# removes micro-mandates
 	data <- remove.micro.mandates(data, tolerance=7)
+	# TODO not tested
 	
 	# merge rows corresponding to overlapping mandates of the same person, provided they have compatible functions
 	data <- merge.overlapping.mandates(data)
+	# TODO not finished
 	
 	# splits rows containing election dates (other than as a start date)
 	if(hasArg(election.file))
 		data <- split.long.mandates(data, election.file, series.file)
+	# TODO not written
+	
+	# removes micro-mandates again (in case split created any)
+	data <- remove.micro.mandates(data, tolerance=7)
 	
 	stop()
 	return(data)
