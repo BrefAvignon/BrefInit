@@ -15,10 +15,12 @@
 # col.map: how to convert column names.
 # correc.file: file containing the corrections.
 # correct.data: whether or not to apply the correction on the data read.
+# election.file: name of the file containing the election dates.
+# series.file: name of the file containing the series (optional, depends on the type of mandate).
 #
 # returns: data frame made of the cleaned data contained in the files.
 #############################################################################################
-load.data <- function(filenames, col.map, correc.file, correct.data)
+load.data <- function(filenames, col.map, correc.file, correct.data, election.file, series.file)
 {	# load and normalize the data as strings
 	data <- retrieve.normalize.data(filenames, col.map)
 	
@@ -43,7 +45,7 @@ load.data <- function(filenames, col.map, correc.file, correct.data)
 	{	# merge rows considered as compatible
 		data <- merge.similar.rows(data)
 		# fix mandate/function dates
-		data <- fix.mdtfct.dates(data)
+		data <- fix.mdtfct.dates(data, election.file, series.file)
 	}
 	
 	# normalize columns order
@@ -88,7 +90,9 @@ load.cd.data <- function(correct.data, complete.data)
 	col.map["Motif de fin de fonction"] <- COL_ATT_FCT_MOTIF
 	
 	# load the data
-	data <- load.data(filenames=FILES_TAB_CD, col.map=col.map, correc.file=FILE_CORREC_CD, correct.data)
+	data <- load.data(filenames=FILES_TAB_CD, col.map=col.map, 
+			correc.file=FILE_CORREC_CD, correct.data,
+			election.file=FILE_VERIF_DATES_CD, series.file=FILE_VERIF_SERIES_CD)
 	
 	# correct/complete with secondary sources
 	if(complete.data)
@@ -134,7 +138,9 @@ load.cd2.data <- function(correct.data, complete.data)
 	col.map["Date de fin de la fonction"] <- COL_ATT_FCT_FIN
 	
 	# load the data
-	data <- load.data(filenames=FILES_TAB_CD2, col.map=col.map, correc.file=FILE_CORREC_CD2, correct.data) 
+	data <- load.data(filenames=FILES_TAB_CD2, col.map=col.map, 
+			correc.file=FILE_CORREC_CD2, correct.data,
+			election.file=FILE_VERIF_DATES_CD, series.file=FILE_VERIF_SERIES_CD) 
 	
 	# correct/complete with secondary sources
 	if(complete.data)
@@ -185,7 +191,9 @@ load.cm.data <- function(correct.data, complete.data)
 	col.map["N° Identification d'un élu"] <- COL_ATT_ELU_ID_RNE
 	
 	# load the data
-	data <- load.data(filenames=FILES_TAB_CM, col.map=col.map, correc.file=FILE_CORREC_CM, correct.data)
+	data <- load.data(filenames=FILES_TAB_CM, col.map=col.map, 
+			correc.file=FILE_CORREC_CM, correct.data,
+			election.file=FILE_VERIF_DATES_CM)
 	
 	# add mandate name
 	vals <- rep("CONSEILLER MUNICIPAL",nrow(data))
@@ -242,7 +250,9 @@ load.cm2.data <- function(correct.data, complete.data)
 	col.map["Libellé de département (Maires)"] <- COL_ATT_DPT_NOM
 	
 	# load the data
-	data <- load.data(filenames=FILES_TAB_CM2, col.map=col.map, correc.file=FILE_CORREC_CM2, correct.data)
+	data <- load.data(filenames=FILES_TAB_CM2, col.map=col.map, 
+			correc.file=FILE_CORREC_CM2, correct.data,
+			election.file=FILE_VERIF_DATES_CM)
 	
 	# correct/complete with secondary sources
 	if(complete.data)
@@ -293,7 +303,9 @@ load.cr.data <- function(correct.data, complete.data)
 	col.map["N° Identification d'un élu"] <- COL_ATT_ELU_ID_RNE
 	
 	# load the data
-	data <- load.data(filenames=FILES_TAB_CR, col.map=col.map, correc.file=FILE_CORREC_CR, correct.data)
+	data <- load.data(filenames=FILES_TAB_CR, col.map=col.map, 
+			correc.file=FILE_CORREC_CR, correct.data,
+			election.file=FILE_VERIF_DATES_CR)
 	
 	# correct/complete with secondary sources
 	if(complete.data)
@@ -343,7 +355,9 @@ load.cr2.data <- function(correct.data, complete.data)
 	col.map["Nuance mandat"] <- COL_ATT_ELU_NUANCE
 	
 	# load the data
-	data <- load.data(filenames=FILES_TAB_CR2, col.map=col.map, correc.file=FILE_CORREC_CR2, correct.data)
+	data <- load.data(filenames=FILES_TAB_CR2, col.map=col.map, 
+			correc.file=FILE_CORREC_CR2, correct.data,
+			election.file=FILE_VERIF_DATES_CR)
 	
 	# split region name column
 	reg.code <- sapply(data[,COL_ATT_REG_NOM], function(x) substr(x,1,2))
@@ -401,7 +415,9 @@ load.d.data <- function(correct.data, complete.data)
 	col.map["N° Identification d'un élu"] <- COL_ATT_ELU_ID_RNE
 	
 	# load the data
-	data <- load.data(filenames=FILES_TAB_D, col.map=col.map, correc.file=FILE_CORREC_D, correct.data)
+	data <- load.data(filenames=FILES_TAB_D, col.map=col.map, 
+			correc.file=FILE_CORREC_D, correct.data,
+			election.file=FILE_VERIF_DATES_D)
 	
 	# correct/complete with secondary sources
 	if(complete.data)
@@ -446,7 +462,9 @@ load.de.data <- function(correct.data, complete.data)
 	col.map["N° Identification d'un élu"] <- COL_ATT_ELU_ID_RNE
 	
 	# load the data
-	data <- load.data(filenames=FILES_TAB_DE, col.map=col.map, correc.file=FILE_CORREC_DE, correct.data)
+	data <- load.data(filenames=FILES_TAB_DE, col.map=col.map, 
+			correc.file=FILE_CORREC_DE, correct.data,
+			election.file=FILE_VERIF_DATES_DE)
 	
 	# correct/complete with secondary sources
 	if(complete.data)
@@ -498,7 +516,9 @@ load.epci.data <- function(correct.data, complete.data)
 	col.map["N° Identification d'un élu"] <- COL_ATT_ELU_ID_RNE
 	
 	# load the data
-	data <- load.data(filenames=FILES_TAB_EPCI, col.map=col.map, correc.file=FILE_CORREC_EPCI, correct.data)
+	data <- load.data(filenames=FILES_TAB_EPCI, col.map=col.map, 
+			correc.file=FILE_CORREC_EPCI, correct.data)
+	# TODO should we use CM election dates for EPCI?
 	
 	# add mandate name
 	vals <- rep("CONSEILLER EPCI",nrow(data))
@@ -555,7 +575,9 @@ load.m.data <- function(correct.data, complete.data)
 	col.map["N° Identification d'un élu"] <- COL_ATT_ELU_ID_RNE
 	
 	# load the data
-	data <- load.data(filenames=FILES_TAB_M, col.map=col.map, correc.file=FILE_CORREC_M, correct.data)
+	data <- load.data(filenames=FILES_TAB_M, col.map=col.map, 
+			correc.file=FILE_CORREC_M, correct.data,
+			election.file=FILE_VERIF_DATES_CM)
 	
 	# correct/complete with secondary sources
 	if(complete.data)
@@ -604,7 +626,9 @@ load.s.data <- function(correct.data, complete.data)
 	col.map["N° Identification d'un élu"] <- COL_ATT_ELU_ID_RNE
 	
 	# load the data
-	data <- load.data(filenames=FILES_TAB_S, col.map=col.map, correc.file=FILE_CORREC_S, correct.data)
+	data <- load.data(filenames=FILES_TAB_S, col.map=col.map, 
+			correc.file=FILE_CORREC_S, correct.data,
+			election.file=FILE_VERIF_DATES_S, series.file=FILE_VERIF_SERIES_S)
 	
 	# correct/complete with secondary sources
 	if(complete.data)

@@ -701,17 +701,177 @@ adjust.function.dates <- function(data)
 
 
 #############################################################################################
+# Loads election-related data and returns the corresponding tables as a list.
+#
+# election.file: name of the file containing the election dates.
+# series.file: name of the file containing the series (optional, depends on the type of mandate).
+#
+# return: a list containing at least election.table, and possibly (in case of series) series.table
+#		  and series.list.
+#############################################################################################
+load.election.data <- function(election.file, series.file)
+{	series.present <- hasArg(series.file)
+	
+	# load election dates
+	tlog(4,"Loading the table containing election dates: \"",election.file,"\"")
+	col.classes <- c("Date", "Date")
+	if(series.present)
+		col.classes <- c("Date", "Date", "character")
+	election.table <- read.table(
+		file=election.file,			# name of the data file
+		header=TRUE, 				# look for a header
+		sep="\t", 					# character used to separate columns 
+		check.names=FALSE, 			# don't change the column names from the file
+		comment.char="", 			# ignore possible comments in the content
+		row.names=NULL, 			# don't look for row names in the file
+		quote="", 					# don't expect double quotes "..." around text fields
+		as.is=TRUE,					# don't convert strings to factors
+#		fileEncoding="Latin1"		# original tables seem to be encoded in Latin1 (ANSI)
+		colClasses=col.classes
+	)
+	
+	# possibly complete second round dates
+	tlog(4,"Complete missing dates in the table")
+	idx <- which(is.na(election.table[,COL_VERIF_DATE_TOUR2]))
+	if(length(idx)>0)
+		election.table[idx,COL_VERIF_DATE_TOUR2] <- election.table[idx,COL_VERIF_DATE_TOUR1]
+	
+	# deal with series
+	if(series.present)
+	{	# break down series
+		series.list <- strsplit(x=election.table[,COL_VERIF_SERIES], split=",", fixed=TRUE)
+		
+		# prepare classes
+		if(COL_ATT_CANT_CODE %in% colnames(series.table))						# CD table
+			col.classes <- c("character","integer","character","character")
+		else 																	# S table
+			col.classes <- c("character","character")
+		
+		# load the table
+		series.table <- read.table(
+			file=series.file,			# name of the data file
+			header=TRUE, 				# look for a header
+			sep="\t", 					# character used to separate columns 
+			check.names=FALSE, 			# don't change the column names from the file
+			comment.char="", 			# ignore possible comments in the content
+			row.names=NULL, 			# don't look for row names in the file
+			quote="", 					# don't expect double quotes "..." around text fields
+			as.is=TRUE,					# don't convert strings to factors
+#			fileEncoding="Latin1",		# original tables seem to be encoded in Latin1 (ANSI)
+			colClasses=col.classes
+		)
+		
+		# for debug
+		# idx <- match(cant.table[,COL_ATT_CANT_NOM],series.table[,COL_ATT_CANT_NOM])
+		# cant.table[which(is.na(idx)),]
+	
+		# set up result
+		res <- list(election.table=election.table, series.table=series.table, series.list=series.list)
+	}
+	
+	# if no series
+	else
+		res <- list(election.table=election.table)
+	
+	return(result)
+}
+
+
+
+
+#############################################################################################
 # Adjusts the start/end of mandates/functions so that they match election dates whenever possible.
 # If the start/end date of a mandate is approximately equal to the closest election date, it is
 # set to this date. If it contains function dates, these are set to the same date. (Only mandates
 # of the same person, obviously).
 #
 # data: original table.
+# election.file: name of the file containing the election dates.
+# series.file: name of the file containing the series (optional, depends on the type of mandate).
 #
 # return: same table, with mandate/function dates rounded.
 #############################################################################################
-round.mdtfct.dates <- function(data)
-{	
+round.mdtfct.dates <- function(data, election.file, series.file)
+{	tlog(0,"Rounding start/end dates when approximately equal to election dates")
+	series.present <- hasArg(series.file)
+	
+	# load election-related data
+	tmp <- load.election.data(election.file, series.file)
+	election.table <- tmp$election.table
+	if(series.present)
+	{	series.table <- tmp$series.table
+		series.list <- tmp$series.list
+	}
+	
+	
+	
+	# TODO
+	# compare mandate and election dates
+	tlog(4,"Check mandate dates against election dates")
+	idx <- which(sapply(1:nrow(data), function(r)
+					{	tlog(6,"Processing row ",r,"/",nrow(data))
+						# get election dates
+						election.dates <- election.table
+						if(series.present)
+						{	# CD table
+							if(COL_ATT_CANT_CODE %in% colnames(series.table))
+								idx <- which(series.table[,COL_ATT_DPT_CODE]==data[r,COL_ATT_DPT_CODE]
+												& series.table[,COL_ATT_CANT_NOM]==data[r,COL_ATT_CANT_NOM])
+							# S table
+							else 
+								idx <- which(series.table[,COL_ATT_DPT_CODE]==data[r,COL_ATT_DPT_CODE])
+							# retrieve the series corresponding to the position
+							series <- series.table[idx,COL_VERIF_SERIE]
+							# and the election dates corresponding to the series
+							idx <- sapply(series.list, function(s) is.na(series) || series %in% s)
+							election.dates <- election.table[idx,]
+						}
+						
+						# compare with mandate dates
+						tests <- apply(election.dates, 1, function(election.row)
+								{	(data[r,COL_ATT_MDT_DBT]<election.row[COL_VERIF_DATE_TOUR1] 
+												&& (is.na(data[r,COL_ATT_MDT_FIN]) || data[r,COL_ATT_MDT_FIN]>=election.row[COL_VERIF_DATE_TOUR2]))
+									#date.intersect(
+									#		start1=election.row[COL_VERIF_DATE_TOUR1], 
+									#		end1=election.row[COL_VERIF_DATE_TOUR2], 
+									#		start2=data.row[COL_ATT_MDT_DBT], 
+									#		end2=data.row[COL_ATT_MDT_FIN]
+									#)
+								}
+						)
+						res <- any(tests)
+						if(res)
+						{	
+#				tlog(8,paste(data[r,],colapse=","))
+#				print(data[r,])
+#				print(cbind(election.dates,tests))
+#				idx.tests <- which(tests)
+							if(length(idx.tests)>1)
+								stop("Problem: several rows match")
+#				else
+#				{	tlog(8,format(data[r,COL_ATT_MDT_DBT]),"--", format(data[r,COL_ATT_MDT_FIN]), " vs. ",
+#							format(election.dates[idx.tests,1]), "--", format(election.dates[idx.tests,2]))
+#					readline() #stop()
+#				}
+						}	
+						return(res)
+					}))
+	tlog(6,"Found ",length(idx)," rows with election-related issues")
+	
+	if(length(idx)>0)
+	{	# build the table and write it
+		tmp <- cbind(idx, data[idx,])
+		colnames(tmp)[1] <- "Ligne"
+		tab.file <- file.path(out.folder,paste0("mandat_dates_problems_election.txt"))
+		tlog(6,"Recording in file \"",tab.file,"\"")
+		write.table(x=tmp,file=tab.file,
+#				fileEncoding="UTF-8",
+				row.names=FALSE, 
+				col.names=TRUE,
+#			quote=TRUE,
+				se="\t"
+		)
+	}
 	
 	return(data)
 }
@@ -798,11 +958,24 @@ merge.overlapping.mandates <- function(data)
 # the election dates. The functions dates are updated accordingly.
 #
 # data: original table.
+# election.file: name of the file containing the election dates.
+# series.file: name of the file containing the series (optional, depends on the type of mandate).
 #
 # return: same table, with split long mandates.
 #############################################################################################
-split.long.mandates <- function(data)
-{	
+split.long.mandates <- function(data, election.file, series.file)
+{	tlog(0,"Split rows spanning several mandates")
+	series.present <- hasArg(series.file)
+	
+	# load election-related data
+	tmp <- load.election.data(election.file, series.file)
+	election.table <- tmp$election.table
+	if(series.present)
+	{	series.table <- tmp$series.table
+		series.list <- tmp$series.list
+	}
+	
+	# TODO
 	
 	return(data)
 }
@@ -821,6 +994,7 @@ split.long.mandates <- function(data)
 #############################################################################################
 remove.micro.mandates <- function(data)
 {	
+	# TODO
 	
 	return(data)
 }
@@ -837,21 +1011,25 @@ remove.micro.mandates <- function(data)
 # 5) Removes micro-mandates.
 # 
 # data: the data table.
+# election.file: name of the file containing the election dates.
+# series.file: name of the file containing the series (optional, depends on the type of mandate).
 #
 # returns: same table, but with corrected dates.
 #############################################################################################
-fix.mdtfct.dates <- function(data)
+fix.mdtfct.dates <- function(data, election.file, series.file)
 {	# adjust function dates so that they are contained inside the corresponding mandate period
 	data <- adjust.function.dates(data)
 	
 	# round mandate and function dates to match election dates, when approximately equal
-	data <- round.mdtfct.dates(data)
+	if(hasArg(election.file))
+		data <- round.mdtfct.dates(data, election.file, series.file)
 	
 	# merge rows corresponding to overlapping mandates of the same person, provided they have compatible functions
 	data <- merge.overlapping.mandates(data)
 	
 	# splits rows containing election dates (other than as a start date)
-	data <- split.long.mandates(data)
+	if(hasArg(election.file))
+		data <- split.long.mandates(data, election.file, series.file)
 	
 	# removes micro-mandates
 	data <- remove.micro.mandates(data)

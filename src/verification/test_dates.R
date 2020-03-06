@@ -353,59 +353,13 @@ test.col.dates.nofun <- function(data, out.folder)
 test.col.dates.election <- function(data, out.folder, election.file, series.file)
 {	tlog(2,"Identifying mandates whose bounds are incompatible with election dates")
 	series.present <- hasArg(series.file)
-		 
-	# load election dates
-	tlog(4,"Loading the table containing election dates: \"",election.file,"\"")
-	col.classes <- c("Date", "Date")
+	
+	# load election-related data
+	tmp <- load.election.data(election.file, series.file)
+	election.table <- tmp$election.table
 	if(series.present)
-		col.classes <- c("Date", "Date", "character")
-	election.table <- read.table(
-		file=election.file,			# name of the data file
-		header=TRUE, 				# look for a header
-		sep="\t", 					# character used to separate columns 
-		check.names=FALSE, 			# don't change the column names from the file
-		comment.char="", 			# ignore possible comments in the content
-		row.names=NULL, 			# don't look for row names in the file
-		quote="", 					# don't expect double quotes "..." around text fields
-		as.is=TRUE,					# don't convert strings to factors
-#		fileEncoding="Latin1"		# original tables seem to be encoded in Latin1 (ANSI)
-		colClasses=col.classes
-	)
-	
-	# possibly complete second round dates
-	tlog(4,"Complete missing dates in the table")
-	idx <- which(is.na(election.table[,COL_VERIF_DATE_TOUR2]))
-	if(length(idx)>0)
-		election.table[idx,COL_VERIF_DATE_TOUR2] <- election.table[idx,COL_VERIF_DATE_TOUR1]
-	
-	# break down series
-	series.list <- strsplit(x=election.table[,COL_VERIF_SERIES], split=",", fixed=TRUE)
-	
-	# possibly load series
-	if(series.present)
-	{	# CD table
-		if(COL_ATT_CANT_CODE %in% colnames(series.table))
-			col.classes <- c("character","integer","character","character")
-		# S table
-		else 
-			col.classes <- c("character","character")
-		# load the table
-		series.table <- read.table(
-			file=series.file,			# name of the data file
-			header=TRUE, 				# look for a header
-			sep="\t", 					# character used to separate columns 
-			check.names=FALSE, 			# don't change the column names from the file
-			comment.char="", 			# ignore possible comments in the content
-			row.names=NULL, 			# don't look for row names in the file
-			quote="", 					# don't expect double quotes "..." around text fields
-			as.is=TRUE,					# don't convert strings to factors
-#			fileEncoding="Latin1",		# original tables seem to be encoded in Latin1 (ANSI)
-			colClasses=col.classes
-		)
-		
-		# for debug
-		# idx <- match(cant.table[,COL_ATT_CANT_NOM],series.table[,COL_ATT_CANT_NOM])
-		# cant.table[which(is.na(idx)),]
+	{	series.table <- tmp$series.table
+		series.list <- tmp$series.list
 	}
 	
 	# compare mandate and election dates
