@@ -989,12 +989,49 @@ split.long.mandates <- function(data, election.file, series.file)
 # means).
 #
 # data: original table.
+# tolerance: minimal length of a mandate (expressed in days).
 #
 # return: same table, without the micro-mandates.
 #############################################################################################
-remove.micro.mandates <- function(data)
-{	
-	# TODO
+remove.micro.mandates <- function(data, tolerance)
+{	tlog(0,"Removing micro-mandates, for a minimal duration > ",tolerance," days")
+	
+	# compute duration in number of days
+	idx <- which(!is.na(data[,COL_ATT_MDT_DBT]) & !is.na(data[,COL_ATT_MDT_FIN]))
+	tlog(2,"Found ",length(idx)," rows with both start and end mandate dates")
+	if(length(idx)>0)
+	{	# compute mandate duration
+		durations <- as.integer(data[idx,COL_ATT_MDT_FIN] - data[idx,COL_ATT_MDT_DBT])
+		
+		# compare to limit
+		if(!is.na(tolerance))
+			idx <- idx[duration<=tolerance]
+		tlog(2,"Found ",length(idx)," mandate(s) which are too short (<=",tolerance," days)")
+		if(length(idx)>0)
+		{	# log the list of micro-mandates
+			sapply(1:length(idx), function(i)
+			{	tlog(4, "Row ", idx[i], "(",i,"/",length(idx),"): ",
+					format(data[idx[j],COL_ATT_MDT_DBT]),"--",format(data[idx[j],COL_ATT_MDT_FIN]))
+			})
+			
+			# get the ids associated to a single micro-mandate
+			nms1 <- names(which(table(data[,COL_ATT_ELU_ID])==1))
+			nms2 <- unique(data[idx,COL_ATT_ELU_ID])
+			nms <- intersect(nms1,nms2)
+			tlog(2,"Among them, ",length(nms)," correspond to persons with only this very mandate")
+			
+			# log the mandates associated to these ids
+			sapply(1:length(nms), function(i)
+			{	j <- which(data[,COL_ATT_ELU_ID]==nms[i])
+				tlog(4, "Row ", j, "(",i,"/",length(idx),"): ",
+						paste(data[j,],collapse=","),","
+						,format(data[j,COL_ATT_MDT_DBT]),"--",format(data[j,COL_ATT_MDT_FIN]))
+			})
+			
+			# remove micro-mandates
+			data <- data[-idx,]
+		}
+	}
 	
 	return(data)
 }
@@ -1024,15 +1061,15 @@ fix.mdtfct.dates <- function(data, election.file, series.file)
 	if(hasArg(election.file))
 		data <- round.mdtfct.dates(data, election.file, series.file)
 	
+	# removes micro-mandates
+	data <- remove.micro.mandates(data, tolerance=7)
+	
 	# merge rows corresponding to overlapping mandates of the same person, provided they have compatible functions
 	data <- merge.overlapping.mandates(data)
 	
 	# splits rows containing election dates (other than as a start date)
 	if(hasArg(election.file))
 		data <- split.long.mandates(data, election.file, series.file)
-	
-	# removes micro-mandates
-	data <- remove.micro.mandates(data)
 	
 	stop()
 	return(data)
