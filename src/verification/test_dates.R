@@ -401,7 +401,7 @@ test.col.dates.election <- function(data, out.folder, election.file, series.file
 #				tlog(8,paste(data[r,],colapse=","))
 #				print(data[r,])
 #				print(cbind(election.dates,tests))
-#				idx.tests <- which(tests)
+				idx.tests <- which(tests)
 				if(length(idx.tests)>1)
 					stop("Problem: several rows match")
 #				else

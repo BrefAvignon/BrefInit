@@ -993,6 +993,10 @@ merge.overlapping.mandates <- function(data)
 split.long.mandates <- function(data, election.file, series.file)
 {	tlog(0,"Split rows spanning several mandates")
 	series.present <- hasArg(series.file)
+	col.mdt <- c(COL_ATT_MDT_DBT, COL_ATT_MDT_FIN)
+	col.fct <- c(COL_ATT_FCT_DBT, COL_ATT_FCT_FIN)
+	has.fct <- COL_ATT_FCT_DBT %in% colnames(data)
+	new.data <- data[-(1:nrow(data)),]
 	
 	# load election-related data
 	tmp <- load.election.data(election.file, series.file)
@@ -1002,8 +1006,107 @@ split.long.mandates <- function(data, election.file, series.file)
 		series.list <- tmp$series.list
 	}
 	
-	# TODO
+	# compare mandate and election dates
+	tlog(2,"Check mandate dates against election dates")
+	nbr.splits <- 0
+	for(r in 1:nrow(data))
+	{	tlog(4,"Processing row ",r,"/",nrow(data))
+		split.flag <- TRUE
+		
+		while(split.flag)
+		{	split.flag <- FALSE
+			
+			# get election dates
+			election.dates <- election.table
+			if(series.present)
+			{	# CD table
+				if(COL_ATT_CANT_CODE %in% colnames(series.table))
+					idx <- which(series.table[,COL_ATT_DPT_CODE]==data[r,COL_ATT_DPT_CODE]
+									& series.table[,COL_ATT_CANT_NOM]==data[r,COL_ATT_CANT_NOM])
+				# S table
+				else 
+					idx <- which(series.table[,COL_ATT_DPT_CODE]==data[r,COL_ATT_DPT_CODE])
+				# retrieve the series corresponding to the position
+				series <- series.table[idx,COL_VERIF_SERIE]
+				# and the election dates corresponding to the series
+				idx <- sapply(series.list, function(s) is.na(series) || series %in% s)
+				election.dates <- election.table[idx,]
+			}
+			
+			# look for mandates containing election dates
+			tests <- (data[r,COL_ATT_MDT_DBT]<election.dates[,COL_VERIF_DATE_TOUR1] 
+						& (is.na(data[r,COL_ATT_MDT_FIN]) 
+							| data[r,COL_ATT_MDT_FIN]>=election.dates[,COL_VERIF_DATE_TOUR2]))
+			res <- any(tests)
+			
+			# possibly split the row
+			if(res)
+			{	idx.tests <- which(tests)
+				if(length(idx.tests)>1)
+					stop("ERROR: several elections match")
+				else
+				{	# log event
+					tlog(6,"Splitting overlap detected for election ",election.dates[idx.tests,1],"--",election.dates[idx.tests,2])
+					tlog(8,"Before: ",format(data[r,COL_ATT_MDT_DBT]),"--", format(data[r,COL_ATT_MDT_FIN]), " <<>> ",
+							format(data[r,COL_ATT_FCT_DBT]),"--", format(data[r,COL_ATT_FCT_FIN]), " vs. ",
+							format(election.dates[idx.tests,1]), "--", format(election.dates[idx.tests,2]))
+				#	readline() #stop()
+					
+					# copy row
+					new.row <- data[r,]
+			
+					# update mandate start date in existing row and end date in new row
+					data[r,COL_ATT_MDT_DBT] <- election.dates[idx.tests,COL_VERIF_DATE_TOUR2]
+					new.row[1,COL_ATT_MDT_FIN] <- election.dates[idx.tests,COL_VERIF_DATE_TOUR2] - 1
+					
+					# possibly update similarly function dates
+					if(!is.na(data[r,COL_ATT_FCT_DBT]) 
+							&& data[r,COL_ATT_FCT_DBT]<election.dates[idx.tests,COL_VERIF_DATE_TOUR1] 
+							&& (is.na(data[r,COL_ATT_FCT_FIN]) 
+								|| data[r,COL_ATT_FCT_FIN]>=election.dates[idx.tests,COL_VERIF_DATE_TOUR2]))
+					{	# case where the function overlaps two consecutive mandates
+						data[r,COL_ATT_FCT_DBT] <- election.dates[idx.tests,COL_VERIF_DATE_TOUR2]
+						new.row[1,COL_ATT_FCT_FIN] <- election.dates[idx.tests,COL_VERIF_DATE_TOUR2] - 1
+					}
+					else
+					{	# case where the function starts after the 1st mandate
+						if(data[r,COL_ATT_FCT_DBT]>=election.dates[idx.tests,COL_VERIF_DATE_TOUR2])
+						{	new.row[1,COL_ATT_FCT_DBT] <- NA
+							new.row[1,COL_ATT_FCT_FIN] <- NA
+							if(COL_ATT_FCT_CODE %in% colnames(data))
+								new.row[1,COL_ATT_FCT_CODE] <- NA
+							if(COL_ATT_FCT_NOM %in% colnames(data))
+								new.row[1,COL_ATT_FCT_NOM] <- NA
+						}
+						# case where the function ends before the 2nd mandate
+						else
+						{	data[r,COL_ATT_FCT_DBT] <- NA
+							data[r,COL_ATT_FCT_FIN] <- NA
+							if(COL_ATT_FCT_CODE %in% colnames(data))
+								data[r,COL_ATT_FCT_CODE] <- NA
+							if(COL_ATT_FCT_NOM %in% colnames(data))
+								data[r,COL_ATT_FCT_NOM] <- NA
+						}
+					}
+					
+					# log modification
+					tlog(8,"After 1: ",format(new.row[1,COL_ATT_MDT_DBT]),"--", format(new.row[1,COL_ATT_MDT_FIN]), " <<>> ",
+							format(new.row[1,COL_ATT_FCT_DBT]),"--", format(new.row[1,COL_ATT_FCT_FIN]))
+					tlog(8,"After 2: ",format(data[r,COL_ATT_MDT_DBT]),"--", format(data[r,COL_ATT_MDT_FIN]), " <<>> ",
+							format(data[r,COL_ATT_FCT_DBT]),"--", format(data[r,COL_ATT_FCT_FIN]))
+					
+					# add new row to new data frame
+					new.data <- rbind(new.data, new.row)
+					
+					nbr.split <- nbr.split + 1
+					split.flag <- TRUE
+				}
+			}
+		}
+	}
+	tlog(2,"Found ",nbr.splits," rows spanning several actual mandates and split")
 	
+	data <- rbind(data, new.data)
 	return(data)
 }
 
@@ -1100,7 +1203,7 @@ fix.mdtfct.dates <- function(data, election.file, series.file)
 	# splits rows containing election dates (other than as a start date)
 	if(hasArg(election.file))
 		data <- split.long.mandates(data, election.file, series.file)
-	# TODO not written
+	# TODO not tested
 	
 	# removes micro-mandates again (in case split created any)
 	data <- remove.micro.mandates(data, tolerance=7)
