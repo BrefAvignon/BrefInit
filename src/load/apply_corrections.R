@@ -782,18 +782,22 @@ load.election.data <- function(election.file, series.file)
 #############################################################################################
 # Adjusts the start/end of mandates/functions so that they match election dates whenever possible.
 # If the start/end date of a mandate is approximately equal to the closest election date, it is
-# set to this date. If it contains function dates, these are set to the same date. (Only mandates
-# of the same person, obviously).
+# set to this date. If it contains function dates, these are set to the same date. This holds only 
+# for mandates of the same person, obviously.
 #
 # data: original table.
 # election.file: name of the file containing the election dates.
 # series.file: name of the file containing the series (optional, depends on the type of mandate).
+# tolerance: maximal difference between 2 dates for them to be considered the same.
 #
 # return: same table, with mandate/function dates rounded.
 #############################################################################################
-round.mdtfct.dates <- function(data, election.file, series.file)
+round.mdtfct.dates <- function(data, election.file, series.file, tolerance)
 {	tlog(0,"Rounding start/end dates when approximately equal to election dates")
 	series.present <- hasArg(series.file)
+	col.mdt <- c(COL_ATT_MDT_DBT, COL_ATT_MDT_FIN)
+	col.fct <- c(COL_ATT_FCT_DBT, COL_ATT_FCT_FIN)
+	has.fct <- COL_ATT_FCT_DBT %in% colnames(data)
 	
 	# load election-related data
 	tmp <- load.election.data(election.file, series.file)
@@ -803,75 +807,74 @@ round.mdtfct.dates <- function(data, election.file, series.file)
 		series.list <- tmp$series.list
 	}
 	
-	
-	
-	# TODO
 	# compare mandate and election dates
-	tlog(4,"Check mandate dates against election dates")
+	tlog(2,"Check mandate dates against election dates")
 	idx <- which(sapply(1:nrow(data), function(r)
-					{	tlog(6,"Processing row ",r,"/",nrow(data))
-						# get election dates
-						election.dates <- election.table
-						if(series.present)
-						{	# CD table
-							if(COL_ATT_CANT_CODE %in% colnames(series.table))
-								idx <- which(series.table[,COL_ATT_DPT_CODE]==data[r,COL_ATT_DPT_CODE]
-												& series.table[,COL_ATT_CANT_NOM]==data[r,COL_ATT_CANT_NOM])
-							# S table
-							else 
-								idx <- which(series.table[,COL_ATT_DPT_CODE]==data[r,COL_ATT_DPT_CODE])
-							# retrieve the series corresponding to the position
-							series <- series.table[idx,COL_VERIF_SERIE]
-							# and the election dates corresponding to the series
-							idx <- sapply(series.list, function(s) is.na(series) || series %in% s)
-							election.dates <- election.table[idx,]
-						}
-						
-						# compare with mandate dates
-						tests <- apply(election.dates, 1, function(election.row)
-								{	(data[r,COL_ATT_MDT_DBT]<election.row[COL_VERIF_DATE_TOUR1] 
-												&& (is.na(data[r,COL_ATT_MDT_FIN]) || data[r,COL_ATT_MDT_FIN]>=election.row[COL_VERIF_DATE_TOUR2]))
-									#date.intersect(
-									#		start1=election.row[COL_VERIF_DATE_TOUR1], 
-									#		end1=election.row[COL_VERIF_DATE_TOUR2], 
-									#		start2=data.row[COL_ATT_MDT_DBT], 
-									#		end2=data.row[COL_ATT_MDT_FIN]
-									#)
-								}
-						)
-						res <- any(tests)
-						if(res)
-						{	
-#				tlog(8,paste(data[r,],colapse=","))
-#				print(data[r,])
-#				print(cbind(election.dates,tests))
-#				idx.tests <- which(tests)
-							if(length(idx.tests)>1)
-								stop("Problem: several rows match")
-#				else
-#				{	tlog(8,format(data[r,COL_ATT_MDT_DBT]),"--", format(data[r,COL_ATT_MDT_FIN]), " vs. ",
-#							format(election.dates[idx.tests,1]), "--", format(election.dates[idx.tests,2]))
-#					readline() #stop()
-#				}
-						}	
-						return(res)
-					}))
-	tlog(6,"Found ",length(idx)," rows with election-related issues")
-	
-	if(length(idx)>0)
-	{	# build the table and write it
-		tmp <- cbind(idx, data[idx,])
-		colnames(tmp)[1] <- "Ligne"
-		tab.file <- file.path(out.folder,paste0("mandat_dates_problems_election.txt"))
-		tlog(6,"Recording in file \"",tab.file,"\"")
-		write.table(x=tmp,file=tab.file,
-#				fileEncoding="UTF-8",
-				row.names=FALSE, 
-				col.names=TRUE,
-#			quote=TRUE,
-				se="\t"
-		)
-	}
+	{	tlog(4,"Processing row ",r,"/",nrow(data))
+		
+		# get election dates
+		election.dates <- election.table
+		if(series.present)
+		{	# CD table
+			if(COL_ATT_CANT_CODE %in% colnames(series.table))
+				idx <- which(series.table[,COL_ATT_DPT_CODE]==data[r,COL_ATT_DPT_CODE]
+					& series.table[,COL_ATT_CANT_NOM]==data[r,COL_ATT_CANT_NOM])
+			# S table
+			else 
+				idx <- which(series.table[,COL_ATT_DPT_CODE]==data[r,COL_ATT_DPT_CODE])
+			# retrieve the series corresponding to the position
+			series <- series.table[idx,COL_VERIF_SERIE]
+			# and the election dates corresponding to the series
+			idx <- sapply(series.list, function(s) is.na(series) || series %in% s)
+			election.dates <- election.table[idx,]
+		}
+		
+		# process the smallest election difference for each mandate and election date
+		date.diffs <- sapply(1:nrow(election.dates), function(e)
+		{	sapply(1:length(col.mdt), function(i)
+			{	diffs <- c(data[r, col.mdt[i]]-election.dates[e, COL_VERIF_DATE_TOUR1],
+					data[r, col.mdt[i]]-election.dates[e, COL_VERIF_DATE_TOUR2])
+				diffs <- diffs[!is.na(diffs)]
+				if(length(diffs)>0)
+					diffs[which.min(abs(diffs))]
+				else
+					NA
+			})
+		})
+		
+		# get the closest date for each election
+		idx <- apply(col.mdt, 2, function(col)
+		{	res <- which.min(abs(col))
+			if(length(res)==0)
+				res <- NA
+			return(res)
+		})
+		
+		# possibly update mandate/function dates
+		res <- FALSE
+		bef.str <- ""
+		for(i in 1:2)
+		{	if(!is.na(idx[i]))
+			{	date.diff <- date.diffs[idx[i]]
+				if(abs(date.diff)<tolerance)
+				{	bef.str <- paste0(format(data[r,COL_ATT_MDT_DBT]),"--",format(data[r,COL_ATT_MDT_FIN])," <<>> ",
+						format(data[r,COL_ATT_FCT_DBT]),"--",format(data[r,COL_ATT_FCT_FIN]))
+					if(has.fct && data[r,col.fct[i]]==data[r,col.mdt[i]])
+						data[r,col.fct[i]] <- data[r,col.fct[i]] + date.diff
+					data[r,col.mdt[i]] <- data[r,col.mdt[i]] + date.diff
+					res <- TRUE
+				}
+			}
+		}
+		
+		# log changes
+		tlog(6, "Before: ", bef.str)
+		tlog(6, "After: ", format(data[r,COL_ATT_MDT_DBT]),"--",format(data[r,COL_ATT_MDT_FIN])," <<>> ",
+				format(data[r,COL_ATT_FCT_DBT]),"--",format(data[r,COL_ATT_FCT_FIN]))
+		
+		return(res)
+	}))
+	tlog(2,"Found ",length(idx)," rows with election-related issues")
 	
 	return(data)
 }
@@ -880,10 +883,9 @@ round.mdtfct.dates <- function(data, election.file, series.file)
 
 
 #############################################################################################
-# Merges the mandate that strictly overlap and have compatible function data. This concerns
-# mandates of a single person, obviously. Compatible function data means that one of the
-# rows has no function information, or that both have such information but that the function
-# name (or code) is the same.
+# Merges the mandates that strictly overlap and have compatible data data. Compatible data means 
+# that besides the personal info and mandate dates, for the rest of the columns, one value must 
+# be NA or both values must be exactly identical.
 #
 # data: original table.
 #
@@ -892,13 +894,10 @@ round.mdtfct.dates <- function(data, election.file, series.file)
 merge.overlapping.mandates <- function(data)
 {	tlog(0,"Merging overlapping rows of the same person (provided their functions are compatible)")
 	
-	# set the attribute used to compare functions
-	if(COL_ATT_FCT_NOM %in% colnames(data))
-		fct.att <- COL_ATT_FCT_NOM
-	else if(COL_ATT_FCT_CODE %in% colnames(data))
-		fct.att <- COL_ATT_FCT_CODE
-	else
-		fct.att <- NA
+	# set the attributes used to test for compatibility
+	atts <- setdiff(colnames(data), c(COL_ATT_ELU_ID, 
+					COL_ATT_MDT_DBT, COL_ATT_MDT_FIN, 
+					COL_ATT_FCT_DBT, COL_ATT_FCT_DBT))
 	
 	# process each id present in the table
 	unique.ids <- sort(unique(data[,COL_ATT_ELU_ID]))
@@ -923,21 +922,49 @@ merge.overlapping.mandates <- function(data)
 					if(date.intersect(start1=data[idx[j],COL_ATT_MDT_DBT], end1=data[idx[j],COL_ATT_MDT_FIN], 	# overlapping mandates
 									start2=data[idx[k],COL_ATT_MDT_DBT], end2=data[idx[k],COL_ATT_MDT_FIN])
 							&& (is.na(fct.att) || 																# either no function specified at all
-								(is.na(data[idx[j],fct.att]) || is.na(data[idx[k],fct.att]) 					# or compatible functions
-									|| data[idx[j],fct.att]==data[idx[k],fct.att])))
-					{	print(data[c(idx[j],idx[k]),])
+								(all(is.na(data[idx[j],atts]) | is.na(data[idx[k],atts]) 						# or compatible functions
+									| data[idx[j],atts]==data[idx[k],atts]))))
+					{	# log detected overlap
+						print(data[c(idx[j],idx[k]),])
 						tlog(8, "Overlap detected between")
 						tlog(10, format(data[idx[j],COL_ATT_MDT_DBT]),"--",format(data[idx[j],COL_ATT_MDT_FIN])," <<>> ",format(data[idx[j],COL_ATT_FCT_DBT]),"--",format(data[idx[j],COL_ATT_FCT_FIN])," (",data[idx[j],fct.att],")")
 						tlog(10, format(data[idx[k],COL_ATT_MDT_DBT]),"--",format(data[idx[k],COL_ATT_MDT_FIN])," <<>> ",format(data[idx[k],COL_ATT_FCT_DBT]),"--",format(data[idx[k],COL_ATT_FCT_FIN])," (",data[idx[k],fct.att],")")
 #						readline() #stop()
-						tlog(8, "After merge:")
 						
-						# merge the rows
-						# TODO
+						# update mandate start date
+						if(is.na(data[idx[j],COL_ATT_MDT_DBT]))
+							data[idx[j],COL_ATT_MDT_DBT] <- data[idx[k],COL_ATT_MDT_DBT]
+						else if(!is.na(data[idx[k],COL_ATT_MDT_DBT]))
+							data[idx[j],COL_ATT_MDT_DBT] <- min(data[idx[j],COL_ATT_MDT_DBT], data[idx[k],COL_ATT_MDT_DBT])
+						# update mandate end date
+						if(is.na(data[idx[j],COL_ATT_MDT_FIN]))
+							data[idx[j],COL_ATT_MDT_FIN] <- data[idx[k],COL_ATT_MDT_FIN]
+						else if(!is.na(data[idx[k],COL_ATT_MDT_FIN]))
+							data[idx[j],COL_ATT_MDT_FIN] <- min(data[idx[j],COL_ATT_MDT_FIN], data[idx[k],COL_ATT_MDT_FIN])
+						# update function start date
+						if(is.na(data[idx[j],COL_ATT_FCT_DBT]))
+							data[idx[j],COL_ATT_FCT_DBT] <- data[idx[k],COL_ATT_FCT_DBT]
+						else if(!is.na(data[idx[k],COL_ATT_FCT_DBT]))
+							data[idx[j],COL_ATT_FCT_DBT] <- min(data[idx[j],COL_ATT_FCT_DBT], data[idx[k],COL_ATT_FCT_DBT])
+						# update function end date
+						if(is.na(data[idx[j],COL_ATT_FCT_FIN]))
+							data[idx[j],COL_ATT_FCT_FIN] <- data[idx[k],COL_ATT_FCT_FIN]
+						else if(!is.na(data[idx[k],COL_ATT_FCT_FIN]))
+							data[idx[j],COL_ATT_FCT_FIN] <- min(data[idx[j],COL_ATT_FCT_FIN], data[idx[k],COL_ATT_FCT_FIN])
+						# update the rest of the columns
+						for(c in 1:length(atts))
+						{	if(is.na(data[idx[j],atts[c]]))
+								data[idx[j],atts[c]] <- data[idx[k],atts[c]]
+						}
+						
+						# log merged row
+						tlog(8, "After merge:")
+						print(data[idx[j],])
+						tlog(10, format(data[idx[j],COL_ATT_MDT_DBT]),"--",format(data[idx[j],COL_ATT_MDT_FIN])," <<>> ",format(data[idx[j],COL_ATT_FCT_DBT]),"--",format(data[idx[j],COL_ATT_FCT_FIN])," (",data[idx[j],fct.att],")")
 						
 						# update counters
 						nbr.corr <- nbr.corr + 1
-						idx.rmv <- c(idx.rmv, j)
+						idx.rmv <- c(idx.rmv, idx[k])
 					}
 				}
 			}
@@ -1043,7 +1070,7 @@ remove.micro.mandates <- function(data, tolerance)
 # Performs various corrections on the dates defining mandates and functions: 
 # 1) Adjusts function dates so that they are contained inside the corresponding mandate period.
 # 2) Rounds mandate and function dates to match election dates, when approximately equal.
-# 3) Merges rows corresponding to overlapping mandates, provided they have compatible functions.
+# 3) Merges rows corresponding to overlapping compatible mandates.
 # 4) Splits rows containing election dates (other than as a start date).
 # 5) Removes micro-mandates.
 # 
@@ -1060,14 +1087,15 @@ fix.mdtfct.dates <- function(data, election.file, series.file)
 	# round mandate and function dates to match election dates, when approximately equal
 	if(hasArg(election.file))
 		data <- round.mdtfct.dates(data, election.file, series.file)
+	# TODO not tested
 	
 	# removes micro-mandates
 	data <- remove.micro.mandates(data, tolerance=7)
 	# TODO not tested
 	
-	# merge rows corresponding to overlapping mandates of the same person, provided they have compatible functions
+	# merge rows corresponding to overlapping and compatible mandates
 	data <- merge.overlapping.mandates(data)
-	# TODO not finished
+	# TODO not tested
 	
 	# splits rows containing election dates (other than as a start date)
 	if(hasArg(election.file))

@@ -384,12 +384,12 @@ test.col.dates.election <- function(data, out.folder, election.file, series.file
 			}
 			
 			# compare with mandate dates
-			tests <- apply(election.dates, 1, function(election.row)
-				{	(data[r,COL_ATT_MDT_DBT]<election.row[COL_VERIF_DATE_TOUR1] 
-						&& (is.na(data[r,COL_ATT_MDT_FIN]) || data[r,COL_ATT_MDT_FIN]>=election.row[COL_VERIF_DATE_TOUR2]))
+			tests <- apply(1:nrow(election.dates), function(e)
+				{	(data[r,COL_ATT_MDT_DBT]<election.dates[e,COL_VERIF_DATE_TOUR1] 
+						&& (is.na(data[r,COL_ATT_MDT_FIN]) || data[r,COL_ATT_MDT_FIN]>=election.dates[e,COL_VERIF_DATE_TOUR2]))
 					#date.intersect(
-					#		start1=election.row[COL_VERIF_DATE_TOUR1], 
-					#		end1=election.row[COL_VERIF_DATE_TOUR2], 
+					#		start1=election.dates[e,COL_VERIF_DATE_TOUR1], 
+					#		end1=election.dates[e,COL_VERIF_DATE_TOUR2], 
 					#		start2=data.row[COL_ATT_MDT_DBT], 
 					#		end2=data.row[COL_ATT_MDT_FIN]
 					#)
