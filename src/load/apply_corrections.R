@@ -1135,6 +1135,7 @@ split.long.mandates <- function(data, election.file, series.file)
 #############################################################################################
 remove.micro.mandates <- function(data, tolerance)
 {	tlog(0,"Removing micro-mandates, for a minimal duration > ",tolerance," days")
+	nbr.removed <- 0
 	
 	# compute duration in number of days
 	idx <- which(!is.na(data[,COL_ATT_MDT_DBT]) & !is.na(data[,COL_ATT_MDT_FIN]))
@@ -1145,13 +1146,14 @@ remove.micro.mandates <- function(data, tolerance)
 		
 		# compare to limit
 		if(!is.na(tolerance))
-			idx <- idx[duration<=tolerance]
+			idx <- idx[durations<=tolerance]
 		tlog(2,"Found ",length(idx)," mandate(s) which are too short (<=",tolerance," days)")
 		if(length(idx)>0)
 		{	# log the list of micro-mandates
-			sapply(1:length(idx), function(i)
+			tmp <- sapply(1:length(idx), function(i)
 			{	tlog(4, "Row ", idx[i], "(",i,"/",length(idx),"): ",
-					format(data[idx[j],COL_ATT_MDT_DBT]),"--",format(data[idx[j],COL_ATT_MDT_FIN]))
+					format(data[idx[i],COL_ATT_MDT_DBT]),"--",format(data[idx[i],COL_ATT_MDT_FIN]))
+				tlog(6, paste(data[idx[i],],collapse=","))
 			})
 			
 			# get the ids associated to a single micro-mandate
@@ -1161,7 +1163,7 @@ remove.micro.mandates <- function(data, tolerance)
 			tlog(2,"Among them, ",length(nms)," correspond to persons with only this very mandate")
 			
 			# log the mandates associated to these ids
-			sapply(1:length(nms), function(i)
+			tmp <- sapply(1:length(nms), function(i)
 			{	j <- which(data[,COL_ATT_ELU_ID]==nms[i])
 				tlog(4, "Row ", j, "(",i,"/",length(idx),"): ",
 						paste(data[j,],collapse=","),","
@@ -1170,9 +1172,11 @@ remove.micro.mandates <- function(data, tolerance)
 			
 			# remove micro-mandates
 			data <- data[-idx,]
+			nbr.removed <- length(idx)
 		}
 	}
 	
+	tlog(2,"Removed a total of ",length(nbr.rmoved)," rows corresponding to micro-mandates")
 	return(data)
 }
 
@@ -1203,7 +1207,6 @@ fix.mdtfct.dates <- function(data, election.file, series.file)
 	
 	# removes micro-mandates
 	data <- remove.micro.mandates(data, tolerance=7)
-	# TODO not tested
 	
 	# merge rows corresponding to overlapping and compatible mandates
 	data <- merge.overlapping.mandates(data)
