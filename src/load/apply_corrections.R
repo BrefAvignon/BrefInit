@@ -691,7 +691,7 @@ adjust.function.dates <- function(data)
 				tlog(4,"Modifying function end")
 		}
 	}
-	tlog(2, "Total number of corrected function dates: ",nbr.corr)
+	tlog(2, "Total number of corrected function dates: ",nbr.corr, "(",(100*nbr.corr/nrow(data)),"%)")
 	
 	tlog(2, "Number of rows remaining: ",nrow(data))
 	return(data)
@@ -703,13 +703,14 @@ adjust.function.dates <- function(data)
 #############################################################################################
 # Loads election-related data and returns the corresponding tables as a list.
 #
+# data: main table.
 # election.file: name of the file containing the election dates.
 # series.file: name of the file containing the series (optional, depends on the type of mandate).
 #
 # return: a list containing at least election.table, and possibly (in case of series) series.table
 #		  and series.list.
 #############################################################################################
-load.election.data <- function(election.file, series.file)
+load.election.data <- function(data, election.file, series.file)
 {	series.present <- hasArg(series.file)
 	
 	# load election dates
@@ -742,7 +743,7 @@ load.election.data <- function(election.file, series.file)
 		series.list <- strsplit(x=election.table[,COL_VERIF_SERIES], split=",", fixed=TRUE)
 		
 		# prepare classes
-		if(COL_ATT_CANT_CODE %in% colnames(series.table))						# CD table
+		if(COL_ATT_CANT_CODE %in% colnames(data))								# CD table
 			col.classes <- c("character","integer","character","character")
 		else 																	# S table
 			col.classes <- c("character","character")
@@ -773,7 +774,7 @@ load.election.data <- function(election.file, series.file)
 	else
 		res <- list(election.table=election.table)
 	
-	return(result)
+	return(res)
 }
 
 
@@ -800,7 +801,7 @@ round.mdtfct.dates <- function(data, election.file, series.file, tolerance)
 	has.fct <- COL_ATT_FCT_DBT %in% colnames(data)
 	
 	# load election-related data
-	tmp <- load.election.data(election.file, series.file)
+	tmp <- load.election.data(data, election.file, series.file)
 	election.table <- tmp$election.table
 	if(series.present)
 	{	series.table <- tmp$series.table
@@ -830,7 +831,7 @@ round.mdtfct.dates <- function(data, election.file, series.file, tolerance)
 		}
 		
 		# process the smallest election difference for each mandate and election date
-		date.diffs <- sapply(1:nrow(election.dates), function(e)
+		date.diffs <- t(sapply(1:nrow(election.dates), function(e)
 		{	sapply(1:length(col.mdt), function(i)
 			{	diffs <- c(data[r, col.mdt[i]]-election.dates[e, COL_VERIF_DATE_TOUR1],
 					data[r, col.mdt[i]]-election.dates[e, COL_VERIF_DATE_TOUR2])
@@ -840,41 +841,50 @@ round.mdtfct.dates <- function(data, election.file, series.file, tolerance)
 				else
 					NA
 			})
-		})
-		
+		}))
+		date.diffs[,2] <- date.diffs[,2] + 1
+	
 		# get the closest date for each election
-		idx <- apply(col.mdt, 2, function(col)
-		{	res <- which.min(abs(col))
+		idx <- apply(date.diffs, 2, function(dates)
+		{	res <- which.min(abs(dates))
 			if(length(res)==0)
 				res <- NA
 			return(res)
 		})
 		
 		# possibly update mandate/function dates
+		bef.str <- paste0(format(data[r,COL_ATT_MDT_DBT]),"--",format(data[r,COL_ATT_MDT_FIN])," <<>> ",
+				format(data[r,COL_ATT_FCT_DBT]),"--",format(data[r,COL_ATT_FCT_FIN]))
 		res <- FALSE
-		bef.str <- ""
 		for(i in 1:2)
 		{	if(!is.na(idx[i]))
-			{	date.diff <- date.diffs[idx[i]]
-				if(abs(date.diff)<tolerance)
-				{	bef.str <- paste0(format(data[r,COL_ATT_MDT_DBT]),"--",format(data[r,COL_ATT_MDT_FIN])," <<>> ",
-						format(data[r,COL_ATT_FCT_DBT]),"--",format(data[r,COL_ATT_FCT_FIN]))
-					if(has.fct && data[r,col.fct[i]]==data[r,col.mdt[i]])
-						data[r,col.fct[i]] <- data[r,col.fct[i]] + date.diff
-					data[r,col.mdt[i]] <- data[r,col.mdt[i]] + date.diff
+			{	date.diff <- date.diffs[idx[i],i]
+				if(abs(date.diff)>0 && abs(date.diff)<tolerance)
+				{	if(has.fct && !is.na(data[r,col.fct[i]]) && !is.na(data[r,col.mdt[i]]) && data[r,col.fct[i]]==data[r,col.mdt[i]])
+						data[r,col.fct[i]] <- data[r,col.fct[i]] - date.diff
+					data[r,col.mdt[i]] <- data[r,col.mdt[i]] - date.diff
 					res <- TRUE
 				}
 			}
 		}
 		
+		# adjustments, probably for micro-mandates anyways
+		if(!is.na(data[r,COL_ATT_MDT_FIN]) && data[r,COL_ATT_MDT_FIN]<data[r,COL_ATT_MDT_DBT])
+			data[r,COL_ATT_MDT_FIN] <- data[r,COL_ATT_MDT_DBT]
+		if(!is.na(data[r,COL_ATT_FCT_DBT]) && !is.na(data[r,COL_ATT_FCT_FIN]) && data[r,COL_ATT_FCT_FIN]<data[r,COL_ATT_FCT_DBT])
+			data[r,COL_ATT_FCT_FIN] <- data[r,COL_ATT_FCT_DBT]
+		
 		# log changes
-		tlog(6, "Before: ", bef.str)
-		tlog(6, "After: ", format(data[r,COL_ATT_MDT_DBT]),"--",format(data[r,COL_ATT_MDT_FIN])," <<>> ",
+		if(res)
+		{	tlog(6, "Before: ", bef.str)
+			tlog(6, "After: ", format(data[r,COL_ATT_MDT_DBT]),"--",format(data[r,COL_ATT_MDT_FIN])," <<>> ",
 				format(data[r,COL_ATT_FCT_DBT]),"--",format(data[r,COL_ATT_FCT_FIN]))
+#			readline()
+		}
 		
 		return(res)
 	}))
-	tlog(2,"Found ",length(idx)," rows with election-related issues")
+	tlog(2,"Corrected ",length(idx)," rows with election-related issues (",(100*length(idx)/nrow(data)),"%)")
 	
 	return(data)
 }
@@ -999,7 +1009,7 @@ split.long.mandates <- function(data, election.file, series.file)
 	new.data <- data[-(1:nrow(data)),]
 	
 	# load election-related data
-	tmp <- load.election.data(election.file, series.file)
+	tmp <- load.election.data(data, election.file, series.file)
 	election.table <- tmp$election.table
 	if(series.present)
 	{	series.table <- tmp$series.table
@@ -1189,8 +1199,7 @@ fix.mdtfct.dates <- function(data, election.file, series.file)
 	
 	# round mandate and function dates to match election dates, when approximately equal
 	if(hasArg(election.file))
-		data <- round.mdtfct.dates(data, election.file, series.file)
-	# TODO not tested
+		data <- round.mdtfct.dates(data, election.file, series.file, tolerance=7)
 	
 	# removes micro-mandates
 	data <- remove.micro.mandates(data, tolerance=7)
