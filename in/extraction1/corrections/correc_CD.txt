@@ -17,6 +17,7 @@ NA	NA	NA	NA	Libellé du canton	MARSEILLE LES TROIS LUCS	LES TROIS LUCS	Nom exist
 NA	NA	NA	NA	Libellé du canton	MARSEILLE SAINTE MARGUERITE	SAINTE MARGUERITE	Nom existant déjà sous une forme plus simple
 NA	NA	NA	NA	Libellé du canton	MARSEILLE NOTRE DAME LIMITE	NOTRE DAME LIMITE	Nom existant déjà sous une forme plus simple
 NA	NA	NA	NA	Libellé du canton	MARSEILLE VAUBAN	VAUBAN	Nom existant déjà sous une forme plus simple
+12521	36	FIDJI	JEAN CLAUDE	Date fin mandat	8/3/2008	16/03/2008	Corrigé pour suppression ultérieure
 11557	5748	DUROVRAY	François	Date fin mandat	1/4/2015	NA	Date incorrecte remplacée par NA pour fusion ultérieure
 11557	5748	DUROVRAY	François	Date fin fonction	1/4/2015	NA	Date incorrecte remplacée par NA pour fusion ultérieure
 4765	62511	ARIAS VILLANUEVA BENET	JOSE	Date fin mandat	8/3/2008	21/03/2015	Corrigé pour mandat complet
@@ -27,12 +28,12 @@ NA	NA	NA	NA	Libellé du canton	MARSEILLE VAUBAN	VAUBAN	Nom existant déjà sous 
 4785	28131	BICH	CHARLES	Date fin mandat	8/3/2008	21/03/2015	Corrigé pour mandat complet
 4788	869915	BINET	ERWANN	Date fin mandat	8/3/2008	21/03/2015	Corrigé pour mandat complet
 4791	22893	BRETTE	CATHERINE	Date fin mandat	8/3/2008	21/03/2015	Corrigé pour mandat complet
-4801	23100	CHIRON	JACQUES	Date fin mandat	8/3/2008	21/03/2015	Corrigé pour mandat complet
+4801	23100	CHIRON	JACQUES	Date fin mandat	8/3/2008	27/10/2011	Corrigé pour fusion ultérieure
 4805	867216	COLOMB BOUVARD	ANDRE	Date fin mandat	8/3/2008	21/03/2015	Corrigé pour mandat complet
 4812	160090	COTTAZ	BERNARD	Date fin mandat	8/3/2008	21/03/2015	Corrigé pour mandat complet
 4817	23663	CRIFO	CHRISTINE	Date fin mandat	8/3/2008	21/03/2015	Corrigé pour mandat complet
 4824	160401	DEZEMPTE	GERARD	Date fin mandat	8/3/2008	21/03/2015	Corrigé pour mandat complet
-4828	160276	EYMERY	ANDRE	Date fin mandat	8/3/2008	21/03/2015	Corrigé pour mandat complet
+4828	160276	EYMERY	ANDRE	Date fin mandat	8/3/2008	17/09/2012	Corrigé pour fusion ultérieure
 4853	160487	LANGENIEUX VILLARD	PHILIPPE	Date fin mandat	8/3/2008	21/03/2015	Corrigé pour mandat complet
 4871	160461	NUCCI	CHRISTIAN	Date fin mandat	8/3/2008	21/03/2015	Corrigé pour mandat complet
 4873	276609	PAYEN	PASCAL	Date fin mandat	8/3/2008	21/03/2015	Corrigé pour mandat complet
@@ -42,8 +43,8 @@ NA	NA	NA	NA	Libellé du canton	MARSEILLE VAUBAN	VAUBAN	Nom existant déjà sous 
 4888	28308	PICHON MARTIN	JACQUES	Date fin mandat	8/3/2008	21/03/2015	Corrigé pour mandat complet
 4892	23247	PILAUD	ALAIN	Date fin mandat	8/3/2008	21/03/2015	Corrigé pour mandat complet
 4910	28238	REVEL	SERGE	Date fin mandat	8/3/2008	21/03/2015	Corrigé pour mandat complet
-4923	16911	ROUVEYRE	GUY	Date fin mandat	8/3/2008	21/03/2015	Corrigé pour mandat complet
-4927	28123	SAVIN	MICHEL	Date fin mandat	8/3/2008	21/03/2015	Corrigé pour mandat complet
+4923	16911	ROUVEYRE	GUY	Date fin mandat	8/3/2008	18/04/2011	Corrigé pour fusion ultérieure
+4927	28123	SAVIN	MICHEL	Date fin mandat	8/3/2008	27/10/2011	Corrigé pour fusion ultérieure
 4931	160171	STRAPPAZZON	GILLES	Date fin mandat	8/3/2008	21/03/2015	Corrigé pour mandat complet
 4942	28280	VETTE	RENE	Date fin mandat	8/3/2008	21/03/2015	Corrigé pour mandat complet
 4944	869917	VEYRET	ROBERT	Date fin mandat	8/3/2008	21/03/2015	Corrigé pour mandat complet
@@ -55,13 +56,11 @@ NA	NA	NA	NA	Libellé du canton	MARSEILLE VAUBAN	VAUBAN	Nom existant déjà sous 
 8679	30901	BECKER	LOUIS	Date fin mandat	8/3/2008	21/03/2015	Corrigé pour mandat complet
 8693	869923	BITZ	OLIVIER	Date fin mandat	8/3/2008	21/03/2015	Corrigé pour mandat complet
 8695	30884	BRENDLE	ROLAND	Date fin mandat	8/3/2008	21/03/2015	Corrigé pour mandat complet
-8705	170859	DANN	GASTON	Date fin mandat	8/3/2008	21/03/2015	Corrigé pour mandat complet
+8705	170859	DANN	GASTON	Date fin mandat	8/3/2008	13/01/2013	Corrigé pour fusion ultérieure
 8711	31243	DREYFUS	HENRI	Date fin mandat	8/3/2008	21/03/2015	Corrigé pour mandat complet
 8719	170743	FETSCH	JEAN MICHEL	Date fin mandat	8/3/2008	21/03/2015	Corrigé pour mandat complet
-8725	31074	FURST	LAURENT	Date fin mandat	8/3/2008	21/03/2015	Corrigé pour mandat complet
-8729	284	GRIGNON	FRANCIS	Date fin mandat	8/3/2008	21/03/2015	Corrigé pour mandat complet
 8736	584036	HERRMANN	ROBERT	Date fin mandat	8/3/2008	21/03/2015	Corrigé pour mandat complet
-8741	31025	INGWILLER	BERNARD	Date fin mandat	8/3/2008	21/03/2015	Corrigé pour mandat complet
+8741	31025	INGWILLER	BERNARD	Date fin mandat	8/3/2008	02/09/2009	Corrigé pour fusion ultérieure
 8755	31289	KLEIN MOSSER	ANDRE	Date fin mandat	8/3/2008	21/03/2015	Corrigé pour mandat complet
 8761	31269	LE TALLEC	YVES	Date fin mandat	8/3/2008	21/03/2015	Corrigé pour mandat complet
 8767	170655	MARMILLOD	PIERRE	Date fin mandat	8/3/2008	21/03/2015	Corrigé pour mandat complet
@@ -75,13 +74,12 @@ NA	NA	NA	NA	Libellé du canton	MARSEILLE VAUBAN	VAUBAN	Nom existant déjà sous 
 12488	1200713	ANNETTE	GILBERT	Date fin mandat	8/3/2008	21/03/2015	Corrigé pour mandat complet
 12493	14797	BASSIRE	NATHALIE MARIE ANDREE	Date fin mandat	8/3/2008	21/03/2015	Corrigé pour mandat complet
 12520	275756	ERUDEL	PATRICK HENRI CLAUDE	Date fin mandat	8/3/2008	21/03/2015	Corrigé pour mandat complet
-12521	36	FIDJI	JEAN CLAUDE	Date fin mandat	8/3/2008	21/03/2015	Corrigé pour mandat complet
 12543	842329	HOARAU	EMMANUEL	Date fin mandat	8/3/2008	21/03/2015	Corrigé pour mandat complet
 12550	872198	HUET	DANIEL SYLVAIN	Date fin mandat	8/3/2008	21/03/2015	Corrigé pour mandat complet
-12596	151234	POUDROUX	MARIE ISABELLE	Date fin mandat	8/3/2008	21/03/2015	Corrigé pour mandat complet
+12596	151234	POUDROUX	MARIE ISABELLE	Date fin mandat	8/3/2008	31/07/2009	Corrigé pour fusion ultérieure
 12601	87901	RAMOUNE	GUITO	Date fin mandat	8/3/2008	21/03/2015	Corrigé pour mandat complet
 12605	449746	RIFOSTA	JEAN HERMANN	Date fin mandat	8/3/2008	21/03/2015	Corrigé pour mandat complet
-12612	1192026	ROBERT	THIERRY	Date fin mandat	8/3/2008	21/03/2015	Corrigé pour mandat complet
+12612	1192026	ROBERT	THIERRY	Date fin mandat	8/3/2008	28/12/2010	Corrigé pour fusion ultérieure
 12633	151247	VALY	BACHIL MOUSSA	Date fin mandat	8/3/2008	21/03/2015	Corrigé pour mandat complet
 11509	1492493	ALLOUCH	DAMIEN	Date fin mandat	1/4/2015	NA	Corrigé pour mandat courant
 11512	336831	BECHTER	JEAN PIERRE	Date fin mandat	1/4/2015	NA	Corrigé pour mandat courant
