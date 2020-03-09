@@ -1046,7 +1046,8 @@ split.long.mandates <- function(data, election.file, series.file)
 	tlog(2,"Check mandate dates against election dates")
 	nbr.splits <- 0
 	for(r in 1:nrow(data))
-	{	tlog(4,"Processing row ",r,"/",nrow(data))
+	{	tlog(4,"Processing row ",r,"/",nrow(data),": ",format(data[r,COL_ATT_MDT_DBT]),"--",format(data[r,COL_ATT_MDT_FIN]))
+		tlog(4, paste(data[r,],collapse=","))
 		split.flag <- TRUE
 		
 		while(split.flag)
@@ -1082,11 +1083,11 @@ split.long.mandates <- function(data, election.file, series.file)
 					stop("ERROR: several elections match")
 				else
 				{	# log event
-					tlog(6,"Splitting overlap detected for election ",election.dates[idx.tests,1],"--",election.dates[idx.tests,2])
+					tlog(6,"Splitting overlap detected for election ",format(election.dates[idx.tests,1]),"--",format(election.dates[idx.tests,2]))
 					tlog(8,"Before: ",format(data[r,COL_ATT_MDT_DBT]),"--", format(data[r,COL_ATT_MDT_FIN]), " <<>> ",
 							format(data[r,COL_ATT_FCT_DBT]),"--", format(data[r,COL_ATT_FCT_FIN]), " vs. ",
 							format(election.dates[idx.tests,1]), "--", format(election.dates[idx.tests,2]))
-				#	readline() #stop()
+					#readline() #stop()
 					
 					# copy row
 					new.row <- data[r,]
@@ -1096,17 +1097,17 @@ split.long.mandates <- function(data, election.file, series.file)
 					new.row[1,COL_ATT_MDT_FIN] <- election.dates[idx.tests,COL_VERIF_DATE_TOUR2] - 1
 					
 					# possibly update similarly function dates
-					if(!is.na(data[r,COL_ATT_FCT_DBT]) 
-							&& data[r,COL_ATT_FCT_DBT]<election.dates[idx.tests,COL_VERIF_DATE_TOUR1] 
+					if(!is.na(data[r,COL_ATT_FCT_DBT]))
+					{	# case where the function overlaps two consecutive mandates
+						if(data[r,COL_ATT_FCT_DBT]<election.dates[idx.tests,COL_VERIF_DATE_TOUR1] 
 							&& (is.na(data[r,COL_ATT_FCT_FIN]) 
 								|| data[r,COL_ATT_FCT_FIN]>=election.dates[idx.tests,COL_VERIF_DATE_TOUR2]))
-					{	# case where the function overlaps two consecutive mandates
-						data[r,COL_ATT_FCT_DBT] <- election.dates[idx.tests,COL_VERIF_DATE_TOUR2]
-						new.row[1,COL_ATT_FCT_FIN] <- election.dates[idx.tests,COL_VERIF_DATE_TOUR2] - 1
-					}
-					else
-					{	# case where the function starts after the 1st mandate
-						if(data[r,COL_ATT_FCT_DBT]>=election.dates[idx.tests,COL_VERIF_DATE_TOUR2])
+						{	data[r,COL_ATT_FCT_DBT] <- election.dates[idx.tests,COL_VERIF_DATE_TOUR2]
+							new.row[1,COL_ATT_FCT_FIN] <- election.dates[idx.tests,COL_VERIF_DATE_TOUR2] - 1
+						}
+						
+						# case where the function starts after the 1st mandate
+						else if(data[r,COL_ATT_FCT_DBT]>=election.dates[idx.tests,COL_VERIF_DATE_TOUR2])
 						{	new.row[1,COL_ATT_FCT_DBT] <- NA
 							new.row[1,COL_ATT_FCT_FIN] <- NA
 							if(COL_ATT_FCT_CODE %in% colnames(data))
@@ -1130,11 +1131,12 @@ split.long.mandates <- function(data, election.file, series.file)
 							format(new.row[1,COL_ATT_FCT_DBT]),"--", format(new.row[1,COL_ATT_FCT_FIN]))
 					tlog(8,"After 2: ",format(data[r,COL_ATT_MDT_DBT]),"--", format(data[r,COL_ATT_MDT_FIN]), " <<>> ",
 							format(data[r,COL_ATT_FCT_DBT]),"--", format(data[r,COL_ATT_FCT_FIN]))
+					readline() #stop()
 					
 					# add new row to new data frame
 					new.data <- rbind(new.data, new.row)
 					
-					nbr.split <- nbr.split + 1
+					nbr.splits <- nbr.splits + 1
 					split.flag <- TRUE
 				}
 			}
@@ -1240,7 +1242,7 @@ fix.mdtfct.dates <- function(data, election.file, series.file)
 	# splits rows containing election dates (other than as a start date)
 	if(hasArg(election.file))
 		data <- split.long.mandates(data, election.file, series.file)
-	# TODO not tested
+	# TODO testing
 	
 	# removes micro-mandates again (in case split created any)
 	data <- remove.micro.mandates(data, tolerance=7)
