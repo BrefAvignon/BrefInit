@@ -239,7 +239,7 @@ tlog(0,"Recording the full table in file \"",table.file,"\"")
 write.table(x=data,
 	file=table.file,		# name of file containing the new table
 	quote=TRUE,				# put double quotes around strings
-	se="\t",				# use tabulations as separators
+	sep="\t",				# use tabulations as separators
 #	fileEncoding="UTF-8",	# character encoding
 	row.names=FALSE,		# no names for rows
 	col.names=TRUE			# record table headers
@@ -254,7 +254,7 @@ idx <- order(data[,COL_ATT_ELU_NOM], data[,COL_ATT_ELU_PRENOM], data[,COL_ATT_EL
 write.table(x=data[idx,],		# sorted data
 	file=table.file,		# name of file containing the new table
 	quote=TRUE,				# put double quotes around strings
-	se="\t",				# use tabulations as separators
+	sep="\t",				# use tabulations as separators
 #	fileEncoding="UTF-8",	# character encoding
 	row.names=FALSE,		# no names for rows
 	col.names=TRUE			# record table headers

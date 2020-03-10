@@ -117,7 +117,7 @@ plot.pers.time <- function(data, out.folder, daily=FALSE)
 				row.names=FALSE, 
 				col.names=TRUE,
 #				quote=TRUE,
-				se="\t"
+				sep="\t"
 		)
 	}
 	# same by month
@@ -128,7 +128,7 @@ plot.pers.time <- function(data, out.folder, daily=FALSE)
 			row.names=FALSE,
 			col.names=TRUE,
 #			quote=TRUE,
-			se="\t"
+			sep="\t"
 	)
 	
 	# generate plot only starting from 2000
@@ -259,7 +259,7 @@ plot.pers.time2 <- function(data, out.folder)
 			row.names=FALSE,
 			col.names=TRUE,
 #			quote=TRUE,
-			se="\t"
+			sep="\t"
 	)
 	
 	# generate plot only starting from 2000

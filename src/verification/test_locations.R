@@ -61,7 +61,7 @@ test.locations.articles <- function(data, out.folder)
 					row.names=FALSE, 
 					col.names=TRUE,
 #					quote=TRUE,
-					se="\t"
+					sep="\t"
 				)
 			}
 		}
@@ -125,7 +125,7 @@ test.col.locations.municipality <- function(data, out.folder)
 				row.names=FALSE, 
 				col.names=TRUE,
 #				quote=TRUE,
-				se="\t"
+				sep="\t"
 			)
 		}
 		tlog(4,"Found a total of ",nrow(tab1)," problematic municipality names")
@@ -163,7 +163,7 @@ test.col.locations.municipality <- function(data, out.folder)
 #					row.names=FALSE, 
 #					col.names=TRUE,
 #					quote=TRUE,
-#					se="\t"
+#					sep="\t"
 #			)
 #		}
 #		tlog(4,"Found a total of ",nrow(tab2)," names with several distinct codes")
@@ -185,7 +185,7 @@ test.col.locations.municipality <- function(data, out.folder)
 				row.names=FALSE, 
 				col.names=TRUE,
 #				quote=TRUE,
-				se="\t"
+				sep="\t"
 			)
 		}
 		tlog(4,"Found a total of ",nrow(tab3)," long municipality codes")
@@ -248,7 +248,7 @@ test.col.locations.canton <- function(data, out.folder)
 					row.names=FALSE, 
 					col.names=TRUE,
 #					quote=TRUE,
-					se="\t"
+					sep="\t"
 			)
 		}
 		tlog(4,"Found a total of ",nrow(tab1)," codes with several distinct names")
@@ -285,7 +285,7 @@ test.col.locations.canton <- function(data, out.folder)
 					row.names=FALSE, 
 					col.names=TRUE,
 #					quote=TRUE,
-					se="\t"
+					sep="\t"
 			)
 		}
 		tlog(4,"Found a total of ",nrow(tab2)," names with several distinct codes")
@@ -369,7 +369,7 @@ test.col.locations.legcirco <- function(data, out.folder)
 					row.names=FALSE, 
 					col.names=TRUE,
 #					quote=TRUE,
-					se="\t"
+					sep="\t"
 			)
 		}
 		tlog(4,"Found a total of ",nrow(tab1)," codes with several distinct names")
@@ -407,7 +407,7 @@ test.col.locations.legcirco <- function(data, out.folder)
 #					row.names=FALSE, 
 #					col.names=TRUE,
 #					quote=TRUE,
-#					se="\t"
+#					sep="\t"
 #			)
 #		}
 #		tlog(4,"Found a total of ",nrow(tab2)," names with several distinct codes")
@@ -466,7 +466,7 @@ test.col.locations.eurocirco <- function(data, out.folder)
 					row.names=FALSE, 
 					col.names=TRUE,
 #					quote=TRUE,
-					se="\t"
+					sep="\t"
 			)
 		}
 		tlog(4,"Found a total of ",nrow(tab1)," codes with several distinct names")
@@ -503,7 +503,7 @@ test.col.locations.eurocirco <- function(data, out.folder)
 					row.names=FALSE, 
 					col.names=TRUE,
 #					quote=TRUE,
-					se="\t"
+					sep="\t"
 			)
 		}
 		tlog(4,"Found a total of ",nrow(tab2)," names with several distinct codes")
@@ -563,7 +563,7 @@ test.col.locations.epci <- function(data, out.folder)
 					row.names=FALSE, 
 					col.names=TRUE,
 #					quote=TRUE,
-					se="\t"
+					sep="\t"
 			)
 		}
 		tlog(4,"Found a total of ",nrow(tab1)," codes with several distinct names")
@@ -600,7 +600,7 @@ test.col.locations.epci <- function(data, out.folder)
 					row.names=FALSE, 
 					col.names=TRUE,
 #					quote=TRUE,
-					se="\t"
+					sep="\t"
 			)
 		}
 		tlog(4,"Found a total of ",nrow(tab2)," names with several distinct codes")
@@ -660,7 +660,7 @@ test.col.locations.department <- function(data, out.folder)
 					row.names=FALSE, 
 					col.names=TRUE,
 #					quote=TRUE,
-					se="\t"
+					sep="\t"
 			)
 		}
 		tlog(4,"Found a total of ",nrow(tab1)," codes with several distinct names")
@@ -697,7 +697,7 @@ test.col.locations.department <- function(data, out.folder)
 					row.names=FALSE, 
 					col.names=TRUE,
 #					quote=TRUE,
-					se="\t"
+					sep="\t"
 			)
 		}
 		tlog(4,"Found a total of ",nrow(tab2)," names with several distinct codes")
@@ -757,7 +757,7 @@ test.col.locations.region <- function(data, out.folder)
 					row.names=FALSE,
 					col.names=TRUE,
 #					quote=TRUE,
-					se="\t"
+					sep="\t"
 			)
 		}
 		tlog(4,"Found a total of ",nrow(tab1)," codes with several distinct names")
@@ -794,7 +794,7 @@ test.col.locations.region <- function(data, out.folder)
 					row.names=FALSE,
 					col.names=TRUE,
 #					quote=TRUE,
-					se="\t"
+					sep="\t"
 			)
 		}
 		tlog(4,"Found a total of ",nrow(tab2)," names with several distinct codes")

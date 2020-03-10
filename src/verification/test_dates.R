@@ -41,7 +41,7 @@ test.col.dates.generic <- function(data, out.folder)
 						row.names=FALSE,
 						col.names=TRUE,
 #						quote=TRUE,
-						se="\t"
+						sep="\t"
 				)
 			}
 			
@@ -58,7 +58,7 @@ test.col.dates.generic <- function(data, out.folder)
 						row.names=FALSE,
 						col.names=TRUE,
 #						quote=TRUE,
-						se="\t"
+						sep="\t"
 				)
 			}
 		}
@@ -93,7 +93,7 @@ test.col.dates.generic <- function(data, out.folder)
 					row.names=FALSE,
 					col.names=TRUE,
 #					quote=TRUE,
-					se="\t"
+					sep="\t"
 			)
 		}
 		
@@ -110,7 +110,7 @@ test.col.dates.generic <- function(data, out.folder)
 					row.names=FALSE,
 					col.names=TRUE,
 #					quote=TRUE,
-					se="\t"
+					sep="\t"
 			)
 		}
 		
@@ -129,7 +129,7 @@ test.col.dates.generic <- function(data, out.folder)
 				row.names=FALSE,
 				col.names=FALSE,
 #				quote=TRUE,
-				se="\t"
+				sep="\t"
 			)
 			
 			# compare to limit
@@ -147,7 +147,7 @@ test.col.dates.generic <- function(data, out.folder)
 					row.names=FALSE,
 					col.names=TRUE,
 #					quote=TRUE,
-					se="\t"
+					sep="\t"
 				)
 			}
 		}
@@ -171,7 +171,7 @@ test.col.dates.generic <- function(data, out.folder)
 					row.names=FALSE,
 					col.names=TRUE,
 #					quote=TRUE,
-					se="\t"
+					sep="\t"
 			)
 		}
 		
@@ -188,7 +188,7 @@ test.col.dates.generic <- function(data, out.folder)
 					row.names=FALSE,
 					col.names=TRUE,
 #					quote=TRUE,
-					se="\t"
+					sep="\t"
 			)
 		}
 		
@@ -205,7 +205,7 @@ test.col.dates.generic <- function(data, out.folder)
 					row.names=FALSE,
 					col.names=TRUE,
 #					quote=TRUE,
-					se="\t"
+					sep="\t"
 			)
 		}
 		
@@ -228,7 +228,7 @@ test.col.dates.generic <- function(data, out.folder)
 					row.names=FALSE,
 					col.names=TRUE,
 #					quote=TRUE,
-					se="\t"
+					sep="\t"
 				)
 			}
 		}
@@ -281,7 +281,7 @@ test.col.dates.pre.rne <- function(data, out.folder)
 				row.names=FALSE,
 				col.names=TRUE,
 #				quote=TRUE,
-				se="\t"
+				sep="\t"
 		)
 	}
 }
@@ -314,7 +314,7 @@ test.col.dates.nofun <- function(data, out.folder)
 			row.names=FALSE, 
 			col.names=TRUE,
 #			quote=TRUE,
-			se="\t"
+			sep="\t"
 		)
 	}
 	
@@ -333,7 +333,7 @@ test.col.dates.nofun <- function(data, out.folder)
 			row.names=FALSE, 
 			col.names=TRUE,
 #			quote=TRUE,
-			se="\t"
+			sep="\t"
 		)
 	}
 }
@@ -425,7 +425,7 @@ test.col.dates.election <- function(data, out.folder, election.file, series.file
 			row.names=FALSE, 
 			col.names=TRUE,
 #			quote=TRUE,
-			se="\t"
+			sep="\t"
 		)
 	}
 }
@@ -464,7 +464,7 @@ test.col.end.motive <- function(data, out.folder)
 					row.names=FALSE, 
 					col.names=TRUE,
 #					quote=TRUE,
-					se="\t"
+					sep="\t"
 				)
 			}
 		}
@@ -514,7 +514,7 @@ test.col.dates.cd <- function(data, out.folder)
 				row.names=FALSE,
 				col.names=TRUE,
 #				quote=TRUE,
-				se="\t"
+				sep="\t"
 		)
 	}
 }
@@ -556,7 +556,7 @@ test.col.dates.cm <- function(data, out.folder)
 				row.names=FALSE,
 				col.names=TRUE,
 #				quote=TRUE,
-				se="\t"
+				sep="\t"
 		)
 	}
 }
@@ -600,7 +600,7 @@ test.col.dates.cr <- function(data, out.folder)
 				row.names=FALSE,
 				col.names=TRUE,
 #				quote=TRUE,
-				se="\t"
+				sep="\t"
 		)
 	}
 }
@@ -651,7 +651,7 @@ test.col.dates.d <- function(data, out.folder)
 				row.names=FALSE,
 				col.names=TRUE,
 #				quote=TRUE,
-				se="\t"
+				sep="\t"
 		)
 	}
 }
@@ -692,7 +692,7 @@ test.col.dates.de <- function(data, out.folder)
 				row.names=FALSE,
 				col.names=TRUE,
 #				quote=TRUE,
-				se="\t"
+				sep="\t"
 		)
 	}
 }
@@ -755,7 +755,7 @@ test.col.dates.s <- function(data, out.folder)
 				row.names=FALSE,
 				col.names=TRUE,
 #				quote=TRUE,
-				se="\t"
+				sep="\t"
 		)
 	}
 }

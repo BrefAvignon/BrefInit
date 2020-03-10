@@ -65,7 +65,7 @@ test.personal.details <- function(data, out.folder)
 					row.names=FALSE, 
 					col.names=TRUE,
 #					quote=TRUE,
-					se="\t"
+					sep="\t"
 			)
 		}
 	}
@@ -125,7 +125,7 @@ test.occupation.col <- function(data, out.folder)
 				row.names=FALSE, 
 				col.names=TRUE,
 #				quote=TRUE,
-				se="\t"
+				sep="\t"
 			)
 		}
 		tlog(4,"Found a total of ",nrow(tab1)," problematic occupation names")
@@ -145,7 +145,7 @@ test.occupation.col <- function(data, out.folder)
 				row.names=FALSE, 
 				col.names=TRUE,
 #				quote=TRUE,
-				se="\t"
+				sep="\t"
 			)
 		}
 		
@@ -181,7 +181,7 @@ test.occupation.col <- function(data, out.folder)
 				row.names=FALSE, 
 				col.names=TRUE,
 #				quote=TRUE,
-				se="\t"
+				sep="\t"
 			)
 		}
 		tlog(4,"Found a total of ",nrow(tab2)," names with several distinct codes")
@@ -201,7 +201,7 @@ test.occupation.col <- function(data, out.folder)
 				row.names=FALSE, 
 				col.names=TRUE,
 #				quote=TRUE,
-				se="\t"
+				sep="\t"
 			)
 		}
 	}

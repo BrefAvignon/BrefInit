@@ -54,7 +54,7 @@ sumup.col.numerical <- function(data, col, basename, ...)
 			row.names=FALSE,
 			col.names=FALSE,
 #			quote=TRUE,
-			se="\t"
+			sep="\t"
 	)
 	
 	# show signs
@@ -172,7 +172,7 @@ sumup.col.categorical <- function(data, col, basename, ...)
 			row.names=FALSE,
 			col.names=FALSE,
 #			quote=TRUE,
-			se="\t"
+			sep="\t"
 	)
 	# also record double distr (no NAs)
 	val.file <- paste0(basename,"_double_freq.txt")
@@ -182,7 +182,7 @@ sumup.col.categorical <- function(data, col, basename, ...)
 			row.names=FALSE,
 			col.names=FALSE,
 #			quote=TRUE,
-			se="\t"
+			sep="\t"
 	)
 	
 	# show standard statistics
@@ -262,21 +262,21 @@ sumup.col.nominal <- function(data, col, basename, dist.threhsold=3, ...)
 	# record unique values and their freq
 	val.file <- paste0(basename,"_unique_vals.txt")
 	write.table(x=tt,file=val.file,
-#			fileEncoding="UTF-8",
-			row.names=FALSE,
-			col.names=FALSE,
-#			quote=TRUE,
-			se="\t"
+#		fileEncoding="UTF-8",
+		row.names=FALSE,
+		col.names=FALSE,
+#		quote=TRUE,
+		sep="\t"
 	)
 	# also record double distr (no NAs)
 	val.file <- paste0(basename,"_double_freq.txt")
 	ttt <- table(table(vals))
 	write.table(x=ttt,file=val.file,
-#			fileEncoding="UTF-8",
-			row.names=FALSE,
-			col.names=FALSE,
-#			quote=TRUE,
-			se="\t"
+#		fileEncoding="UTF-8",
+		row.names=FALSE,
+		col.names=FALSE,
+#		quote=TRUE,
+		sep="\t"
 	)
 	
 	# basic stats
@@ -386,7 +386,7 @@ sumup.col.temporal <- function(data, col, basename, ...)
 			row.names=FALSE,
 			col.names=FALSE,
 #			quote=TRUE,
-			se="\t"
+			sep="\t"
 	)
 	# also record double distr (no NAs)
 	val.file <- paste0(basename,"_double_freq.txt")
@@ -396,7 +396,7 @@ sumup.col.temporal <- function(data, col, basename, ...)
 			row.names=FALSE,
 			col.names=FALSE,
 #			quote=TRUE,
-			se="\t"
+			sep="\t"
 	)
 	
 	# number of 1st January dates (supposedly representing unknown dates)
@@ -567,10 +567,10 @@ sumup.cols <- function(data, out.folder, ...)
 	# record the stats table
 	file <- file.path(out.folder,"stats.txt")
 	write.table(x=stats, file=file, sep="\t", 
-#			fileEncoding="UTF-8", 
-			row.names=TRUE, 
-			col.names=TRUE, 
-			quote=TRUE,
-			se="\t"
+#		fileEncoding="UTF-8", 
+		row.names=TRUE, 
+		col.names=TRUE, 
+		quote=TRUE,
+		sep="\t"
 	)
 }

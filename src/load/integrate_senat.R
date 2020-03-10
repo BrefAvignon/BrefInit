@@ -269,7 +269,7 @@ senate.load.general.table <- function(cache)
 			write.table(x=result,
 				file=FILE_SENAT_GENERAL_CACHE,	# name of file containing the new table
 				quote=TRUE,						# put double quotes around strings
-				se="\t",						# use tabulations as separators
+				sep="\t",						# use tabulations as separators
 				row.names=FALSE,				# no names for rows
 				col.names=TRUE					# record table headers
 			)
@@ -655,7 +655,7 @@ senate.convert.mandate.table <- function(general.table, elect.table, type)
 	write.table(x=sen.tab,
 		file=sen.tab.file,		# name of file containing the new table
 		quote=FALSE,			# no double quote around strings
-		se="\t",				# use tabulations as separators
+		sep="\t",				# use tabulations as separators
 #		fileEncoding="UTF-8",	# character encoding
 		row.names=FALSE,		# no names for rows
 		col.names=TRUE			# record table headers
@@ -715,7 +715,7 @@ senate.adjust.rne.table <- function(data)
 	write.table(x=rne.tab,
 		file=rne.tab.file,		# name of file containing the new table
 		quote=FALSE,			# no double quote around strings
-		se="\t",				# use tabulations as separators
+		sep="\t",				# use tabulations as separators
 #		fileEncoding="UTF-8",	# character encoding
 		row.names=FALSE,		# no names for rows
 		col.names=TRUE			# record table headers
@@ -934,7 +934,7 @@ senate.update.rne.table <- function(rne.tab, sen.tab, row.conv)
 	write.table(x=result,
 		file=rne.tab.file,		# name of file containing the new table
 		quote=FALSE,			# no double quote around strings
-		se="\t",				# use tabulations as separators
+		sep="\t",				# use tabulations as separators
 #		fileEncoding="UTF-8",	# character encoding
 		row.names=FALSE,		# no names for rows
 		col.names=TRUE			# record table headers

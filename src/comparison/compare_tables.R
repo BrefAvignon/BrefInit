@@ -306,7 +306,7 @@ compare.tables <- function(files0, files1, out.folder, ...)
 		write.table(x=tab,
 			file=table.file,		# name of file containing the new table
 #			quote=TRUE,				# put double quotes around strings
-			se="\t",				# use tabulations as separators
+			sep="\t",				# use tabulations as separators
 			row.names=FALSE,		# no names for rows
 			col.names=TRUE			# record table headers
 		)
@@ -372,7 +372,7 @@ compare.tables <- function(files0, files1, out.folder, ...)
 	write.table(x=tab,
 		file=table.file,		# name of file containing the new table
 		quote=TRUE,				# put double quotes around strings
-		se="\t",				# use tabulations as separators
+		sep="\t",				# use tabulations as separators
 		row.names=FALSE,		# no names for rows
 		col.names=TRUE			# record table headers
 	)
@@ -383,7 +383,7 @@ compare.tables <- function(files0, files1, out.folder, ...)
 	write.table(x=tab,
 		file=table.file,		# name of file containing the new table
 		quote=TRUE,				# put double quotes around strings
-		se="\t",				# use tabulations as separators
+		sep="\t",				# use tabulations as separators
 		row.names=FALSE,		# no names for rows
 		col.names=TRUE			# record table headers
 	)
@@ -394,7 +394,7 @@ compare.tables <- function(files0, files1, out.folder, ...)
 	write.table(x=tab,
 		file=table.file,		# name of file containing the new table
 		quote=TRUE,				# put double quotes around strings
-		se="\t",				# use tabulations as separators
+		sep="\t",				# use tabulations as separators
 		row.names=FALSE,		# no names for rows
 		col.names=TRUE			# record table headers
 	)
@@ -416,7 +416,7 @@ compare.tables <- function(files0, files1, out.folder, ...)
 	write.table(x=counts,
 		file=table.file,		# name of file containing the new table
 		quote=TRUE,				# put double quotes around strings
-		se="\t",				# use tabulations as separators
+		sep="\t",				# use tabulations as separators
 		row.names=TRUE,			# record row names
 		col.names=TRUE			# record table headers
 	)
@@ -440,11 +440,11 @@ compare.tables <- function(files0, files1, out.folder, ...)
 				table.file <- file.path(out.folder, paste0(BASENAMES[c],"_changes.txt"))
 				tlog(6,"Recording changes in file ",table.file)
 				write.table(x=tab,
-						file=table.file,		# name of file containing the new table
-						quote=TRUE,				# put double quotes around strings
-						se="\t",				# use tabulations as separators
-						row.names=FALSE,		# no names for rows
-						col.names=TRUE			# record table headers
+					file=table.file,		# name of file containing the new table
+					quote=TRUE,				# put double quotes around strings
+					sep="\t",				# use tabulations as separators
+					row.names=FALSE,		# no names for rows
+					col.names=TRUE			# record table headers
 				)
 			}
 		}

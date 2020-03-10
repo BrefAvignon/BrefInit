@@ -61,7 +61,7 @@ test.compatible.rows <- function(data, out.folder=NA)
 			row.names=FALSE, 
 			col.names=TRUE,
 #			quote=TRUE,
-			se="\t"
+			sep="\t"
 		)
 	}
 	
@@ -148,7 +148,7 @@ test.id.reuse <- function(data, out.folder)
 				row.names=FALSE,
 				col.names=TRUE,
 #				quote=TRUE,
-				se="\t"
+				sep="\t"
 		)
 	}
 	tlog(4,"Found a total of ",count," IDs associated with different personal information")
@@ -291,7 +291,7 @@ test.multiple.id <- function(data, loc.col=NA, out.folder)
 				row.names=FALSE, 
 				col.names=TRUE,
 #				quote=TRUE,
-				se="\t"
+				sep="\t"
 		)
 		
 		# update the table of equivalent ids (but in the output folder)

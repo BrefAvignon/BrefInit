@@ -224,7 +224,7 @@ assembly.convert.xml <- function()
 	write.table(x=perso.tab,
 		file=FILE_ASSEMB_GENERAL,	# name of file containing the new table
 		quote=FALSE,				# no double quote around strings
-		se="\t",					# use tabulations as separators
+		sep="\t",					# use tabulations as separators
 #		fileEncoding="UTF-8",		# character encoding
 		row.names=FALSE,			# no names for rows
 		col.names=TRUE				# record table headers
@@ -235,7 +235,7 @@ assembly.convert.xml <- function()
 	write.table(x=mandate.tab,
 		file=FILE_ASSEMB_MANDATS,	# name of file containing the new table
 		quote=FALSE,				# no double quote around strings
-		se="\t",					# use tabulations as separators
+		sep="\t",					# use tabulations as separators
 #		fileEncoding="UTF-8",		# character encoding
 		row.names=FALSE,			# no names for rows
 		col.names=TRUE				# record table headers
@@ -485,7 +485,7 @@ assembly.load.general.table <- function(cache)
 			write.table(x=result,
 					file=FILE_ASSEMB_GENERAL_CACHE,	# name of file containing the new table
 					quote=TRUE,						# put double quotes around strings
-					se="\t",						# use tabulations as separators
+					sep="\t",						# use tabulations as separators
 					row.names=FALSE,				# no names for rows
 					col.names=TRUE					# record table headers
 			)
@@ -814,7 +814,7 @@ assembly.convert.mandate.table <- function(general.table, elect.table)
 	write.table(x=asn.tab,
 		file=asn.tab.file,		# name of file containing the new table
 		quote=FALSE,			# no double quote around strings
-		se="\t",				# use tabulations as separators
+		sep="\t",				# use tabulations as separators
 #		fileEncoding="UTF-8",	# character encoding
 		row.names=FALSE,		# no names for rows
 		col.names=TRUE			# record table headers
@@ -859,7 +859,7 @@ assembly.adjust.rne.table <- function(data)
 	write.table(x=rne.tab,
 		file=rne.tab.file,		# name of file containing the new table
 		quote=FALSE,			# no double quote around strings
-		se="\t",				# use tabulations as separators
+		sep="\t",				# use tabulations as separators
 #		fileEncoding="UTF-8",	# character encoding
 		row.names=FALSE,		# no names for rows
 		col.names=TRUE			# record table headers
@@ -1148,7 +1148,7 @@ assembly.update.rne.table <- function(rne.tab, asn.tab, row.conv)
 	write.table(x=result,
 		file=rne.tab.file,		# name of file containing the new table
 		quote=FALSE,			# no double quote around strings
-		se="\t",				# use tabulations as separators
+		sep="\t",				# use tabulations as separators
 #		fileEncoding="UTF-8",	# character encoding
 		row.names=FALSE,		# no names for rows
 		col.names=TRUE			# record table headers

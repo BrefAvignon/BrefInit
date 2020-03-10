@@ -49,7 +49,7 @@ test.position.cd <- function(data, out.folder)
 				row.names=FALSE, 
 				col.names=TRUE,
 #				quote=TRUE,
-				se="\t"
+				sep="\t"
 			)
 			tab2 <- data[idx2,c(COL_ATT_MDT_DBT,COL_ATT_MDT_FIN,COL_ATT_ELU_NOM,COL_ATT_ELU_PRENOM,COL_ATT_ELU_ID)]
 			tab.file <- file.path(folder,paste0(unique.pos[p],".txt"))
@@ -59,7 +59,7 @@ test.position.cd <- function(data, out.folder)
 				row.names=FALSE, 
 				col.names=TRUE,
 				quote=FALSE,
-				se="\t"
+				sep="\t"
 			)
 			
 			# check if their dates overlap
@@ -111,7 +111,7 @@ test.position.cd <- function(data, out.folder)
 				row.names=FALSE, 
 				col.names=TRUE,
 #				quote=TRUE,
-				se="\t"
+				sep="\t"
 		)
 		tlog(4,"Found a total of ",count," pairs of overlapping mandates for the whole table")
 	}
@@ -176,7 +176,7 @@ test.position.cm <- function(data, out.folder)
 				row.names=FALSE, 
 				col.names=TRUE,
 #				quote=TRUE,
-				se="\t"
+				sep="\t"
 			)
 			tab2 <- data[idx2,c(COL_ATT_MDT_DBT,COL_ATT_MDT_FIN,COL_ATT_ELU_NOM,COL_ATT_ELU_PRENOM,COL_ATT_ELU_ID)]
 			tab.file <- file.path(folder2,paste0(com,".txt"))
@@ -186,7 +186,7 @@ test.position.cm <- function(data, out.folder)
 				row.names=FALSE, 
 				col.names=TRUE,
 				quote=FALSE,
-				se="\t"
+				sep="\t"
 			)
 			
 			# check if their dates overlap
@@ -229,7 +229,7 @@ test.position.cm <- function(data, out.folder)
 				row.names=FALSE, 
 				col.names=TRUE,
 #				quote=TRUE,
-				se="\t"
+				sep="\t"
 		)
 		tlog(4,"Found a total of ",count," pairs of overlapping mandates for the whole table")
 	}
@@ -280,7 +280,7 @@ test.position.cr <- function(data, out.folder)
 				row.names=FALSE, 
 				col.names=TRUE,
 #				quote=TRUE,
-				se="\t"
+				sep="\t"
 			)
 			tab2 <- data[idx2,c(COL_ATT_MDT_DBT,COL_ATT_MDT_FIN,COL_ATT_ELU_NOM,COL_ATT_ELU_PRENOM,COL_ATT_ELU_ID)]
 			tab.file <- file.path(folder,paste0(unique.pos[p],".txt"))
@@ -290,7 +290,7 @@ test.position.cr <- function(data, out.folder)
 				row.names=FALSE, 
 				col.names=TRUE,
 				quote=FALSE,
-				se="\t"
+				sep="\t"
 			)
 		}
 	}
@@ -374,7 +374,7 @@ test.position.cr <- function(data, out.folder)
 				row.names=FALSE, 
 				col.names=TRUE,
 #				quote=TRUE,
-				se="\t"
+				sep="\t"
 		)
 	}
 }
@@ -424,7 +424,7 @@ test.position.de <- function(data, out.folder)
 				row.names=FALSE, 
 				col.names=TRUE,
 #				quote=TRUE,
-				se="\t"
+				sep="\t"
 			)
 			tab2 <- data[idx2,c(COL_ATT_MDT_DBT,COL_ATT_MDT_FIN,COL_ATT_ELU_NOM,COL_ATT_ELU_PRENOM,COL_ATT_ELU_ID)]
 			tab.file <- file.path(folder,paste0(reg.name,".txt"))
@@ -434,7 +434,7 @@ test.position.de <- function(data, out.folder)
 				row.names=FALSE, 
 				col.names=TRUE,
 				quote=FALSE,
-				se="\t"
+				sep="\t"
 			)
 		}
 	}
@@ -518,7 +518,7 @@ test.position.de <- function(data, out.folder)
 				row.names=FALSE, 
 				col.names=TRUE,
 #				quote=TRUE,
-				se="\t"
+				sep="\t"
 		)
 	}
 }
@@ -575,7 +575,7 @@ test.position.d <- function(data, out.folder)
 				row.names=FALSE, 
 				col.names=TRUE,
 #				quote=TRUE,
-				se="\t"
+				sep="\t"
 			)
 			tab2 <- data[idx2,c(COL_ATT_MDT_DBT,COL_ATT_MDT_FIN,COL_ATT_ELU_NOM,COL_ATT_ELU_PRENOM,COL_ATT_ELU_ID)]
 			tab.file <- file.path(folder,paste0(unique.pos[p],".txt"))
@@ -585,7 +585,7 @@ test.position.d <- function(data, out.folder)
 				row.names=FALSE, 
 				col.names=TRUE,
 				quote=FALSE,
-				se="\t"
+				sep="\t"
 			)
 			
 			# check if their dates overlap
@@ -628,7 +628,7 @@ test.position.d <- function(data, out.folder)
 				row.names=FALSE, 
 				col.names=TRUE,
 #				quote=TRUE,
-				se="\t"
+				sep="\t"
 		)
 		tlog(4,"Found a total of ",count," pairs of overlapping mandates for the whole table")
 	}
@@ -691,7 +691,7 @@ test.position.m <- function(data, out.folder)
 				row.names=FALSE, 
 				col.names=TRUE,
 #				quote=TRUE,
-				se="\t"
+				sep="\t"
 			)
 			tab2 <- data[idx2,c(COL_ATT_MDT_DBT,COL_ATT_MDT_FIN,COL_ATT_ELU_NOM,COL_ATT_ELU_PRENOM,COL_ATT_ELU_ID)]
 			tab.file <- file.path(folder2,paste0(com,".txt"))
@@ -701,7 +701,7 @@ test.position.m <- function(data, out.folder)
 				row.names=FALSE, 
 				col.names=TRUE,
 				quote=FALSE,
-				se="\t"
+				sep="\t"
 			)
 			
 			# check if the mandate dates overlap
@@ -773,7 +773,7 @@ test.position.m <- function(data, out.folder)
 				row.names=FALSE,
 				col.names=TRUE,
 #				quote=TRUE,
-				se="\t"
+				sep="\t"
 		)
 		tlog(4,"Found a total of ",count," pairs of overlapping mandates for the whole table")
 	}
@@ -786,7 +786,7 @@ test.position.m <- function(data, out.folder)
 				row.names=FALSE, 
 				col.names=TRUE,
 #				quote=TRUE,
-				se="\t"
+				sep="\t"
 		)
 		tlog(4,"Found a total of ",count," pairs of overlapping functions for the whole table")
 	}
@@ -837,7 +837,7 @@ test.position.s <- function(data, out.folder)
 				row.names=FALSE, 
 				col.names=TRUE,
 #				quote=TRUE,
-				se="\t"
+				sep="\t"
 			)
 			tab2 <- data[idx2,c(COL_ATT_MDT_DBT,COL_ATT_MDT_FIN,COL_ATT_ELU_NOM,COL_ATT_ELU_PRENOM,COL_ATT_ELU_ID)]
 			tab.file <- file.path(folder,paste0(unique.pos[p],".txt"))
@@ -847,7 +847,7 @@ test.position.s <- function(data, out.folder)
 				row.names=FALSE, 
 				col.names=TRUE,
 				quote=FALSE,
-				se="\t"
+				sep="\t"
 			)
 		}
 	}
@@ -931,7 +931,7 @@ test.position.s <- function(data, out.folder)
 				row.names=FALSE, 
 				col.names=TRUE,
 #				quote=TRUE,
-				se="\t"
+				sep="\t"
 		)
 	}
 }
