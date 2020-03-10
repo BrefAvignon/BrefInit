@@ -61,11 +61,11 @@ test.personal.details <- function(data, out.folder)
 			tab.file <- file.path(out.folder,paste0(col.basename,"_problems_same_id_diff_val.txt"))
 			tlog(8,"Recording in file \"",tab.file,"\"")
 			write.table(x=tmp, file=tab.file,
-#					fileEncoding="UTF-8",
-					row.names=FALSE, 
-					col.names=TRUE,
-#					quote=TRUE,
-					sep="\t"
+#				fileEncoding="UTF-8",
+				row.names=FALSE, 
+				col.names=TRUE,
+#				quote=TRUE,
+				sep="\t"
 			)
 		}
 	}

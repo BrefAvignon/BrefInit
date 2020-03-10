@@ -566,7 +566,7 @@ sumup.cols <- function(data, out.folder, ...)
 	
 	# record the stats table
 	file <- file.path(out.folder,"stats.txt")
-	write.table(x=stats, file=file, sep="\t", 
+	write.table(x=stats, file=file,
 #		fileEncoding="UTF-8", 
 		row.names=TRUE, 
 		col.names=TRUE, 

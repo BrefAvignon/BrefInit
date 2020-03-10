@@ -712,12 +712,14 @@ adjust.function.dates <- function(data)
 #############################################################################################
 load.election.data <- function(data, election.file, series.file)
 {	series.present <- hasArg(series.file)
+print(hasArg(series.file))
 	
 	# load election dates
 	tlog(4,"Loading the table containing election dates: \"",election.file,"\"")
 	col.classes <- c("Date", "Date")
 	if(series.present)
 		col.classes <- c("Date", "Date", "character")
+print(col.classes)	
 	election.table <- read.table(
 		file=election.file,			# name of the data file
 		header=TRUE, 				# look for a header
@@ -728,7 +730,7 @@ load.election.data <- function(data, election.file, series.file)
 		quote="", 					# don't expect double quotes "..." around text fields
 		as.is=TRUE,					# don't convert strings to factors
 #		fileEncoding="Latin1"		# original tables seem to be encoded in Latin1 (ANSI)
-		colClasses=col.classes
+		colClasses=col.classes		# column data types
 	)
 	
 	# possibly complete second round dates
@@ -759,7 +761,7 @@ load.election.data <- function(data, election.file, series.file)
 			quote="", 					# don't expect double quotes "..." around text fields
 			as.is=TRUE,					# don't convert strings to factors
 #			fileEncoding="Latin1",		# original tables seem to be encoded in Latin1 (ANSI)
-			colClasses=col.classes
+			colClasses=col.classes		# column data types
 		)
 		
 		# for debug

@@ -355,7 +355,7 @@ test.col.dates.election <- function(data, out.folder, election.file, series.file
 	series.present <- hasArg(series.file)
 	
 	# load election-related data
-	tmp <- load.election.data(election.file, series.file)
+	tmp <- load.election.data(data, election.file, series.file)
 	election.table <- tmp$election.table
 	if(series.present)
 	{	series.table <- tmp$series.table
@@ -365,53 +365,53 @@ test.col.dates.election <- function(data, out.folder, election.file, series.file
 	# compare mandate and election dates
 	tlog(4,"Check mandate dates against election dates")
 	idx <- which(sapply(1:nrow(data), function(r)
-		{	tlog(6,"Processing row ",r,"/",nrow(data))
-			# get election dates
-			election.dates <- election.table
-			if(series.present)
-			{	# CD table
-				if(COL_ATT_CANT_CODE %in% colnames(series.table))
-					idx <- which(series.table[,COL_ATT_DPT_CODE]==data[r,COL_ATT_DPT_CODE]
-									& series.table[,COL_ATT_CANT_NOM]==data[r,COL_ATT_CANT_NOM])
-				# S table
-				else 
-					idx <- which(series.table[,COL_ATT_DPT_CODE]==data[r,COL_ATT_DPT_CODE])
-				# retrieve the series corresponding to the position
-				series <- series.table[idx,COL_VERIF_SERIE]
-				# and the election dates corresponding to the series
-				idx <- sapply(series.list, function(s) is.na(series) || series %in% s)
-				election.dates <- election.table[idx,]
-			}
-			
-			# compare with mandate dates
-			tests <- apply(1:nrow(election.dates), function(e)
-				{	(data[r,COL_ATT_MDT_DBT]<election.dates[e,COL_VERIF_DATE_TOUR1] 
-						&& (is.na(data[r,COL_ATT_MDT_FIN]) || data[r,COL_ATT_MDT_FIN]>=election.dates[e,COL_VERIF_DATE_TOUR2]))
-					#date.intersect(
-					#		start1=election.dates[e,COL_VERIF_DATE_TOUR1], 
-					#		end1=election.dates[e,COL_VERIF_DATE_TOUR2], 
-					#		start2=data.row[COL_ATT_MDT_DBT], 
-					#		end2=data.row[COL_ATT_MDT_FIN]
-					#)
-				}
-			)
-			res <- any(tests)
-			if(res)
-			{	
-#				tlog(8,paste(data[r,],colapse=","))
-#				print(data[r,])
-#				print(cbind(election.dates,tests))
-				idx.tests <- which(tests)
-				if(length(idx.tests)>1)
-					stop("Problem: several rows match")
-#				else
-#				{	tlog(8,format(data[r,COL_ATT_MDT_DBT]),"--", format(data[r,COL_ATT_MDT_FIN]), " vs. ",
-#							format(election.dates[idx.tests,1]), "--", format(election.dates[idx.tests,2]))
-#					readline() #stop()
-#				}
-			}	
-			return(res)
-		}))
+	{	tlog(6,"Processing row ",r,"/",nrow(data))
+		# get election dates
+		election.dates <- election.table
+		if(series.present)
+		{	# CD table
+			if(COL_ATT_CANT_CODE %in% colnames(series.table))
+				idx <- which(series.table[,COL_ATT_DPT_CODE]==data[r,COL_ATT_DPT_CODE]
+								& series.table[,COL_ATT_CANT_NOM]==data[r,COL_ATT_CANT_NOM])
+			# S table
+			else 
+				idx <- which(series.table[,COL_ATT_DPT_CODE]==data[r,COL_ATT_DPT_CODE])
+			# retrieve the series corresponding to the position
+			series <- series.table[idx,COL_VERIF_SERIE]
+			# and the election dates corresponding to the series
+			idx <- sapply(series.list, function(s) is.na(series) || series %in% s)
+			election.dates <- election.table[idx,]
+		}
+		
+		# compare with mandate dates
+		tests <- sapply(1:nrow(election.dates), function(e)
+		{	(data[r,COL_ATT_MDT_DBT]<election.dates[e,COL_VERIF_DATE_TOUR1] 
+				&& (is.na(data[r,COL_ATT_MDT_FIN]) 
+					|| data[r,COL_ATT_MDT_FIN]>=election.dates[e,COL_VERIF_DATE_TOUR2]))
+			#date.intersect(
+			#		start1=election.dates[e,COL_VERIF_DATE_TOUR1], 
+			#		end1=election.dates[e,COL_VERIF_DATE_TOUR2], 
+			#		start2=data.row[COL_ATT_MDT_DBT], 
+			#		end2=data.row[COL_ATT_MDT_FIN]
+			#)
+		})
+		res <- any(tests)
+		if(res)
+		{	
+#			tlog(8,paste(data[r,],colapse=","))
+#			print(data[r,])
+#			print(cbind(election.dates,tests))
+			idx.tests <- which(tests)
+			if(length(idx.tests)>1)
+				stop("Problem: several rows match")
+#			else
+#			{	tlog(8,format(data[r,COL_ATT_MDT_DBT]),"--", format(data[r,COL_ATT_MDT_FIN]), " vs. ",
+#						format(election.dates[idx.tests,1]), "--", format(election.dates[idx.tests,2]))
+#				readline() #stop()
+#			}
+		}	
+		return(res)
+	}))
 	tlog(6,"Found ",length(idx)," rows with election-related issues")
 	
 	if(length(idx)>0)
@@ -421,7 +421,7 @@ test.col.dates.election <- function(data, out.folder, election.file, series.file
 		tab.file <- file.path(out.folder,paste0("mandat_dates_problems_election.txt"))
 		tlog(6,"Recording in file \"",tab.file,"\"")
 		write.table(x=tmp,file=tab.file,
-#				fileEncoding="UTF-8",
+#			fileEncoding="UTF-8",
 			row.names=FALSE, 
 			col.names=TRUE,
 #			quote=TRUE,

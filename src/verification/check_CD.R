@@ -30,19 +30,19 @@ out.folder <- if(extraction==1) FOLDER_OUT_CD else FOLDER_OUT_CD2
 dir.create(path=out.folder, showWarnings=FALSE, recursive=TRUE)
 
 # load the data
-data <- if(extraction==1) load.cd.data(correct.data, complete.data) else load.cd2.data(correct.data, complete.data) 
+#data <- if(extraction==1) load.cd.data(correct.data, complete.data) else load.cd2.data(correct.data, complete.data) 
 
 # summarizes each column separately
 tlog(0,"Examining each column separately")
-sumup.cols(data=data, out.folder=out.folder)
+#sumup.cols(data=data, out.folder=out.folder)
 
 # look for duplicate rows
 tlog(0,"Looking for duplicate rows")
-test.compatible.rows(data=data, out.folder=out.folder)
+#test.compatible.rows(data=data, out.folder=out.folder)
 
 # check personal information
 tlog(0,"Checking personal information consistency")
-test.personal.info(data=data, out.folder=out.folder)
+#test.personal.info(data=data, out.folder=out.folder)
 
 # check dates
 tlog(0,"Checking dates")
