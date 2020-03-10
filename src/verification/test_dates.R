@@ -365,14 +365,14 @@ test.col.dates.election <- function(data, out.folder, election.file, series.file
 	# compare mandate and election dates
 	tlog(4,"Check mandate dates against election dates")
 	idx <- which(sapply(1:nrow(data), function(r)
-	{	tlog(6,"Processing row ",r,"/",nrow(data))
+	{	tlog(6,"Processing row ",r,"/",nrow(data),": ",format(data[r,COL_ATT_MDT_DBT]),"--",format(data[r,COL_ATT_MDT_FIN]))
 		# get election dates
 		election.dates <- election.table
 		if(series.present)
 		{	# CD table
 			if(COL_ATT_CANT_CODE %in% colnames(series.table))
 				idx <- which(series.table[,COL_ATT_DPT_CODE]==data[r,COL_ATT_DPT_CODE]
-								& series.table[,COL_ATT_CANT_NOM]==data[r,COL_ATT_CANT_NOM])
+						& series.table[,COL_ATT_CANT_NOM]==data[r,COL_ATT_CANT_NOM])
 			# S table
 			else 
 				idx <- which(series.table[,COL_ATT_DPT_CODE]==data[r,COL_ATT_DPT_CODE])
