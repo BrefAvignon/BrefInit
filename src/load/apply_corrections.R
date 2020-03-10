@@ -1163,7 +1163,7 @@ split.long.mandates <- function(data, election.file, series.file)
 # return: same table, without the micro-mandates.
 #############################################################################################
 remove.micro.mandates <- function(data, tolerance)
-{	tlog(0,"Removing micro-mandates, for a minimal duration > ",tolerance," days")
+{	tlog(0,"Removing micro-mandates, for a duration <",tolerance," days")
 	nbr.removed <- 0
 	
 	# compute duration in number of days
@@ -1205,7 +1205,7 @@ remove.micro.mandates <- function(data, tolerance)
 		}
 	}
 	
-	tlog(2,"Removed a total of ",length(nbr.removed)," rows corresponding to micro-mandates")
+	tlog(2,"Removed a total of ",nbr.removed," rows corresponding to micro-mandates")
 	return(data)
 }
 
@@ -1247,6 +1247,6 @@ fix.mdtfct.dates <- function(data, election.file, series.file)
 	# removes micro-mandates again (in case split created any)
 	data <- remove.micro.mandates(data, tolerance=7)
 	
-	stop()
+#	stop()
 	return(data)
 }
