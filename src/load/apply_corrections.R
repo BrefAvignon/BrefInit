@@ -1046,12 +1046,12 @@ split.long.mandates <- function(data, election.file, series.file)
 	tlog(2,"Check mandate dates against election dates")
 	nbr.splits <- 0
 	for(r in 1:nrow(data))
-	{	tlog(4,"Processing row ",r,"/",nrow(data),": ",format(data[r,COL_ATT_MDT_DBT]),"--",format(data[r,COL_ATT_MDT_FIN]))
-		tlog(4, paste(data[r,],collapse=","))
-		split.flag <- TRUE
+	{	split.flag <- TRUE
 		
 		while(split.flag)
-		{	split.flag <- FALSE
+		{	tlog(4,"Processing row ",r,"/",nrow(data),": ",format(data[r,COL_ATT_MDT_DBT]),"--",format(data[r,COL_ATT_MDT_FIN]))
+			tlog(4, paste(data[r,],collapse=","))
+			split.flag <- FALSE
 			
 			# get election dates
 			election.dates <- election.table
@@ -1080,8 +1080,9 @@ split.long.mandates <- function(data, election.file, series.file)
 			if(res)
 			{	idx.tests <- which(tests)
 				if(length(idx.tests)>1)
-					stop("ERROR: several elections match")
-				else
+#					stop("ERROR: several elections match")
+					idx.tests <- idx.tests[1]
+#				else
 				{	# log event
 					tlog(6,"Splitting overlap detected for election ",format(election.dates[idx.tests,1]),"--",format(election.dates[idx.tests,2]))
 					tlog(8,"Before: ",format(data[r,COL_ATT_MDT_DBT]),"--", format(data[r,COL_ATT_MDT_FIN]), " <<>> ",
@@ -1131,7 +1132,7 @@ split.long.mandates <- function(data, election.file, series.file)
 							format(new.row[1,COL_ATT_FCT_DBT]),"--", format(new.row[1,COL_ATT_FCT_FIN]))
 					tlog(8,"After 2: ",format(data[r,COL_ATT_MDT_DBT]),"--", format(data[r,COL_ATT_MDT_FIN]), " <<>> ",
 							format(data[r,COL_ATT_FCT_DBT]),"--", format(data[r,COL_ATT_FCT_FIN]))
-					readline() #stop()
+#					readline() #stop()
 					
 					# add new row to new data frame
 					new.data <- rbind(new.data, new.row)
@@ -1242,7 +1243,6 @@ fix.mdtfct.dates <- function(data, election.file, series.file)
 	# splits rows containing election dates (other than as a start date)
 	if(hasArg(election.file))
 		data <- split.long.mandates(data, election.file, series.file)
-	# TODO testing
 	
 	# removes micro-mandates again (in case split created any)
 	data <- remove.micro.mandates(data, tolerance=7)
