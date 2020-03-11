@@ -740,18 +740,23 @@ test.position.m <- function(data, out.folder)
 				start1 <- data[idx[i],COL_ATT_FCT_DBT]
 				end1 <- data[idx[i],COL_ATT_FCT_FIN]
 				
-				for(j in (i+1):length(idx))
-				{	# get the dates of the second compared function
-					start2 <- data[idx[j],COL_ATT_FCT_DBT]
-					end2 <- data[idx[j],COL_ATT_FCT_FIN]
-					
-					# check if the periods intersect
-					if(date.intersect(start1, end1, start2, end2))
-					{	# add to the table of problematic cases
-						tab.f <- rbind(tab.f, data[c(idx[i],idx[j]),], rep(NA,ncol(data)))
-						# add a row of NAs in order to separate pairs of cases
-						count <- count + 1
-						ccount <- ccount + 1
+				if(!(is.na(start1) && is.na(end1)))
+				{	for(j in (i+1):length(idx))
+					{	# get the dates of the second compared function
+						start2 <- data[idx[j],COL_ATT_FCT_DBT]
+						end2 <- data[idx[j],COL_ATT_FCT_FIN]
+						
+						# check if the periods intersect
+						if(!(is.na(start2) && is.na(end2)))
+						{	tlog(6, "Comparing ",format(start1),"--",format(end1)," vs. ",format(start2),"--",format(end2))
+							if(date.intersect(start1, end1, start2, end2))
+							{	# add to the table of problematic cases
+								tab.f <- rbind(tab.f, data[c(idx[i],idx[j]),], rep(NA,ncol(data)))
+								# add a row of NAs in order to separate pairs of cases
+								count <- count + 1
+								ccount <- ccount + 1
+							}
+						}
 					}
 				}
 			}

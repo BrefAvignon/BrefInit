@@ -20,7 +20,7 @@ source("src/verification/test_duplicates.R")
 # set up the extraction
 extraction <- 1 # 1 or 2
 correct.data <- TRUE
-complete.data <- TRUE
+complete.data <- FALSE
 
 # start logging
 start.rec.log(text="S")
@@ -34,31 +34,31 @@ data <- load.s.data(correct.data, complete.data)
 
 # summarizes each column separately
 tlog(0,"Examining each column separately")
-#sumup.cols(data=data, out.folder=out.folder)
+sumup.cols(data=data, out.folder=out.folder)
 
 # look for duplicate rows
 tlog(0,"Looking for duplicate rows")
-#test.compatible.rows(data=data, out.folder=out.folder)
+test.compatible.rows(data=data, out.folder=out.folder)
 
 # check personal information
 tlog(0,"Checking personal information consistency")
-#test.personal.info(data=data, out.folder=out.folder)
+test.personal.info(data=data, out.folder=out.folder)
 
 # check dates
 tlog(0,"Checking dates")
-#test.col.dates.s(data=data, out.folder=out.folder)
+test.col.dates.s(data=data, out.folder=out.folder)
 
 # check locations
 tlog(0,"Checking locations")
-#test.col.locations(data=data, out.folder=out.folder, merged=FALSE)
+test.col.locations(data=data, out.folder=out.folder, merged=FALSE)
 
 # check overlapping mandates for the same position
 tlog(0,"Checking overlapping mandates for the same position")
-#test.position.s(data=data, out.folder=out.folder)
+test.position.s(data=data, out.folder=out.folder)
 
 # look for duplicates (not really necessary to do that here, better after the merge)
 tlog(0,"Looking for duplicates")
-#test.duplicates(data=data, loc.col=COL_ATT_DPT_CODE, out.folder=out.folder)
+test.duplicates(data=data, loc.col=COL_ATT_DPT_CODE, out.folder=out.folder)
 
 # plots the number of persons over time
 tlog(0,"Ploting the number of simultaneously hold positions over time")
