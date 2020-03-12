@@ -1057,13 +1057,13 @@ split.long.mandates <- function(data, election.file, series.file)
 	tlog(2,"Check mandate dates against election dates")
 	nbr.splits <- 0
 	for(r in 1:nrow(data))
-	{	split.flag <- TRUE
-		
-		# specific case of CD representatives of people leaving abroad: don't split mandates
+	{	# specific case of CD representatives of people leaving abroad: don't split mandates
 		if(!(series.present 
-				&& COL_ATT_CANT_CODE %in% colnames(series.table) 
+				&& COL_ATT_DPT_CODE %in% colnames(series.table) 
 				&& data[r,COL_ATT_DPT_CODE]=="ZZ"))
-		{	while(split.flag)
+		{	split.flag <- TRUE
+			
+			while(split.flag)
 			{	tlog(4,"Processing row ",r,"/",nrow(data),": ",format(data[r,COL_ATT_MDT_DBT]),"--",format(data[r,COL_ATT_MDT_FIN]))
 				tlog(4, paste(data[r,],collapse=","))
 				split.flag <- FALSE
