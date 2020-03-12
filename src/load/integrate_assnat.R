@@ -722,6 +722,7 @@ assembly.convert.mandate.table <- function(general.table, elect.table)
 	}
 	
 	# update vectors with new rows
+	tlog(4,"Inserting ",length(new.indiv.idx)," new rows")
 	indiv.idx <- c(indiv.idx[-idx.functions], new.indiv.idx)
 	dpt.names <- c(dpt.names[-idx.functions], new.dpt.names)
 	dpt.codes <- c(dpt.codes[-idx.functions], new.dpt.codes)
@@ -805,6 +806,11 @@ assembly.convert.mandate.table <- function(general.table, elect.table)
 	asn.tab <- asn.tab[order.idx,]
 	norm.cols <- intersect(COLS_ATT_NORMALIZED, colnames(asn.tab))
 	asn.tab <- asn.tab[,norm.cols]
+	
+	# adjusting mandate dates to match elections
+	asn.tab <- round.mdtfct.dates(data=asn.tab, election.file=FILE_VERIF_DATES_D, tolerance=7)
+	# split long mandates spanning several elections
+	asn.tab <- split.long.mandates(data=asn.tab, election.file=FILE_VERIF_DATES_D)
 	
 	# record the Assembly table
 	folder <- file.path(FOLDER_COMP_SRC_ASSEMB, "D")
@@ -1012,7 +1018,7 @@ assembly.match.assembly.vs.rne.rows <- function(asn.tab, rne.tab, tolerance)
 		idx.rne <- which(rne.tab[,COL_ATT_ELU_ID]==ids[i])
 		idx.asn <- which(asn.tab[,COL_ATT_ELU_ID]==ids[i])
 		
-		if(!(rne.tab[idx.rne[1],COL_ATT_ELU_ID_RNE] %in% c(1513599)))		#(length(idx.asn)>0)
+		if(!(rne.tab[idx.rne[1],COL_ATT_ELU_ID_RNE] %in% c(1513599)))		#(length(idx.asn)>0) # because no mandate after 2001
 		{	# match each RNE row, possibly correcting its mandate dates
 			for(j in 1:length(idx.rne))
 			{	idx1 <- idx.rne[j]
@@ -1072,13 +1078,20 @@ assembly.match.assembly.vs.rne.rows <- function(asn.tab, rne.tab, tolerance)
 						row.conv <- assembly.check.function.dates(asn.tab, rne.tab, tolerance, idx1, idx2, row.conv)
 					}
 					
-					# if everything failed, the row is probably wrong and should be corrected manually
+					# if everything failed, either the mandate is too old
+					else if(get.year(rne.tab[idx1,COL_ATT_MDT_DBT])<=1997)
+					{	tlog(8,"Did not find any matching Assembly row, even with approximate start date (mandate), the mandate is probably too old (",format(rne.tab[idx1,COL_ATT_MDT_DBT]),"--",format(rne.tab[idx1,COL_ATT_MDT_FIN]),")")
+						# TODO
+						
+					}
+					
+					# or the row is probably wrong and should be corrected manually
 					else
 					{	tlog(8,"Did not find any matching Assembly row, even with approximate start date (mandate)")
 						tlog(10,paste(rne.tab[idx1,],collapse=","),",",format(rne.tab[idx1,COL_ATT_MDT_DBT]),",",format(rne.tab[idx1,COL_ATT_MDT_FIN]))
 						for(i2 in idx.asn)
 							tlog(10,paste(asn.tab[i2,],collapse=","),",",format(asn.tab[i2,COL_ATT_MDT_DBT]),",",format(asn.tab[i2,COL_ATT_MDT_FIN]))
-						stop(8,"Did not find any matching Assembly row, even with approximate start date (mandate)")						
+						stop("Did not find any matching Assembly row, even with approximate start date (mandate)")						
 					}
 				}
 			}

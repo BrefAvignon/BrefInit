@@ -1208,12 +1208,14 @@ remove.micro.mandates <- function(data, tolerance)
 			tlog(2,"Among them, ",length(nms)," correspond to persons with only this very mandate")
 			
 			# log the mandates associated to these ids
-			tmp <- sapply(1:length(nms), function(i)
-			{	j <- which(data[,COL_ATT_ELU_ID]==nms[i])
-				tlog(4, "Row ", j, "(",i,"/",length(idx),"): ",
-						paste(data[j,], collapse=","),","
-						,format(data[j,COL_ATT_MDT_DBT]),"--",format(data[j,COL_ATT_MDT_FIN]))
-			})
+			if(length(nms)>0)
+			{	tmp <- sapply(1:length(nms), function(i)
+				{	j <- which(data[,COL_ATT_ELU_ID]==nms[i])
+					tlog(4, "Row ", j, "(",i,"/",length(idx),"): ",
+							paste(data[j,], collapse=","),","
+							,format(data[j,COL_ATT_MDT_DBT]),"--",format(data[j,COL_ATT_MDT_FIN]))
+				})
+			}
 			
 			# remove micro-mandates
 			data <- data[-idx,]
