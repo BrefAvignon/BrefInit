@@ -5,7 +5,11 @@ NA	NA	NA	NA	Code departement	69D	69	Pas besoin de distinguer Lyon du reste du Rh
 NA	NA	NA	NA	Code departement	69M	69	Pas besoin de distinguer Lyon du reste du Rhone
 NA	NA	NA	NA	Libelle departement	RHONE HORS METROPOLE DE LYON	RHONE	Pas besoin de distinguer Lyon du reste du Rhone
 NA	NA	NA	NA	Libelle departement	METROPOLE DE LYON	RHONE	Pas besoin de distinguer Lyon du reste du Rhone
+NA	NA	NA	NA	Date fin mandat	31/12/2015	12/12/2015	Ajustement date de fin pr régions effectivement fusionnées le 01/01/2016
 4434	1509834	FERRER	Thérèse	Date fin mandat	30/12/2015	NA	Date incorrecte remplacée par NA (sans fusion ultérieure)
 5180	1509912	VILCOQ	Marie	Date fin mandat	24/12/2015	NA	Date incorrecte remplacée par NA (sans fusion ultérieure)
 3898	102	FRANCOIS-PONCET	Jean	Date debut mandat	24/4/2008	16/3/1986	Date completement fausse (Senat)
 3898	102	FRANCOIS-PONCET	Jean	Date fin mandat	13/3/2010	21/3/1992	Date completement fausse (Senat)
+1421	1109193	LEFRANCOIS	Xavier	Date fin mandat	15/12/2015	NA	Date fausse (mandat en cours)
+3844	937	LASSALLE	Jean	Date fin mandat	24/3/2010	5/12/2015	Date probablement fausse, changée pour mandat complet
+991	17440	HUGONET	Jean-Raymond	Date fin mandat	18/12/2015	18/10/2017	Date incorrecte

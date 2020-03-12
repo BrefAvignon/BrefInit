@@ -45,7 +45,7 @@ retrieve.normalize.data <- function(filenames, col.map)
 			data <- rbind(data,temp)
 		tlog(2,"Now ",nrow(data)," rows and ",ncol(data)," columns in main table")
 	}
-	tlog(2,"Columns: ",paste(colnames(data),collapse=","))
+	tlog(2,"Columns: ",paste(colnames(data), collapse=","))
 	
 	# normalize data table column names
 	norm.names <- col.map[colnames(data)]
@@ -250,8 +250,8 @@ apply.adhoc.corrections <- function(data, col.map, correc.file)
 				
 				# there should be at least one
 				if(length(idx)<1)
-				{	tlog(4,"Could not find a correction: ",paste(correc.table[r,],collapse=";"))
-					stop(paste0("Could not find a correction: ",paste(correc.table[r,],collapse=";")))
+				{	tlog(4,"Could not find a correction: ",paste(correc.table[r,], collapse=";"))
+					stop(paste0("Could not find a correction: ",paste(correc.table[r,], collapse=";")))
 				}
 				# if several, try to check the specified row
 				else 
@@ -261,8 +261,8 @@ apply.adhoc.corrections <- function(data, col.map, correc.file)
 							stop(paste0("Row ",idx," matches the criteria but not the specified row (",row,")"))
 						}
 						else if(length(idx)>1)
-						{	tlog(4,"Found several rows matching the criteria when there's only one specified row: ",row," vs. ",paste(idx,collapse=","))
-							stop(paste0("Found several rows matching the criteria when there's only one specified row: ",row," vs. ",paste(idx,collapse=",")))
+						{	tlog(4,"Found several rows matching the criteria when there's only one specified row: ",row," vs. ",paste(idx, collapse=","))
+							stop(paste0("Found several rows matching the criteria when there's only one specified row: ",row," vs. ",paste(idx, collapse=",")))
 						}
 					}
 					tlog(4,"Replacing ",correc.table[r,COL_CORREC_VALAVT]," by ",correc.table[r,COL_CORREC_VALAPR])
@@ -282,15 +282,15 @@ apply.adhoc.corrections <- function(data, col.map, correc.file)
 				
 				# there should be exactly one
 				if(length(idx)<1)
-				{	tlog(4,"Could not find a correction: ",paste(correc.table[r,],collapse=";"))
-					stop(paste0("Could not find a correction: ",paste(correc.table[r,],collapse=";")))
+				{	tlog(4,"Could not find a correction: ",paste(correc.table[r,], collapse=";"))
+					stop(paste0("Could not find a correction: ",paste(correc.table[r,], collapse=";")))
 				}
 				else if(length(idx)>1)
 				{	if(is.na(row))
-					{	tlog(4,"A correction matches several cases (",paste(idx,collapse=","),"), but no row is specified: ",paste(correc.table[r,],collapse=";"))
-						stop(paste0("A correction matches several cases (",paste(idx,collapse=","),"), but no row is specified: ",paste(correc.table[r,],collapse=";")))
+					{	tlog(4,"A correction matches several cases (",paste(idx, collapse=","),"), but no row is specified: ",paste(correc.table[r,], collapse=";"))
+						stop(paste0("A correction matches several cases (",paste(idx, collapse=","),"), but no row is specified: ",paste(correc.table[r,], collapse=";")))
 					}
-#						tlog(4,"WARNING: A correction matches several cases: ",paste(correc.table[r,],collapse=";"))
+#						tlog(4,"WARNING: A correction matches several cases: ",paste(correc.table[r,], collapse=";"))
 #						data[idx,correc.table[r,COL_CORREC_ATTR]] <- correc.table[r,COL_CORREC_VALAPR]
 					else
 					{	if(row %in% idx)
@@ -299,7 +299,7 @@ apply.adhoc.corrections <- function(data, col.map, correc.file)
 								idx.rm <- c(idx.rm, row)
 							}
 							else
-							{	tlog(4,"Correcting entry: ",paste(correc.table[r,],collapse=";"))
+							{	tlog(4,"Correcting entry: ",paste(correc.table[r,], collapse=";"))
 								data[row,correc.table[r,COL_CORREC_ATTR]] <- correc.table[r,COL_CORREC_VALAPR]
 							}
 						}
@@ -317,9 +317,9 @@ apply.adhoc.corrections <- function(data, col.map, correc.file)
 						}
 						else
 						{	if(is.na(row))
-								tlog(4,"Correcting entry (",idx,"): ",paste(correc.table[r,],collapse=";"))
+								tlog(4,"Correcting entry (",idx,"): ",paste(correc.table[r,], collapse=";"))
 							else
-								tlog(4,"Correcting entry: ",paste(correc.table[r,],collapse=";"))
+								tlog(4,"Correcting entry: ",paste(correc.table[r,], collapse=";"))
 							data[idx,correc.table[r,COL_CORREC_ATTR]] <- correc.table[r,COL_CORREC_VALAPR]
 						}
 					}
@@ -570,7 +570,7 @@ add.missing.columns <- function(data)
 #############################################################################################
 merge.similar.rows <- function(data)
 {	comp.cols <- c(COL_ATT_ELU_ID, COL_ATT_ELU_NOM, COL_ATT_ELU_PRENOM, COL_ATT_ELU_SEXE, COL_ATT_ELU_NAIS_DATE)
-	tlog(0,"Merging compatible rows for compulsory columns \"",paste(comp.cols,collapse="\",\""),"\"")
+	tlog(0,"Merging compatible rows for compulsory columns \"",paste(comp.cols, collapse="\",\""),"\"")
 	rm.col <- which(colnames(data) %in% comp.cols)
 	
 	# identify redundant rows
@@ -957,8 +957,8 @@ merge.overlapping.mandates <- function(data)
 												end2=data[idx[k],COL_ATT_FCT_FIN]))
 					))
 					{	# log detected overlap
-						tlog(10, paste(data[idx[j],]),collapse=",")
-						tlog(10, paste(data[idx[k],]),collapse=",")
+						tlog(10, paste(data[idx[j],], collapse=","))
+						tlog(10, paste(data[idx[k],], collapse=","))
 						tlog(8, "Overlap detected between")
 						tlog(10, format(data[idx[j],COL_ATT_MDT_DBT]),"--",format(data[idx[j],COL_ATT_MDT_FIN]),
 								if(!is.na(fct.att)) paste0(" <<>> ", 
@@ -1001,7 +1001,7 @@ merge.overlapping.mandates <- function(data)
 						
 						# log merged row
 						tlog(8, "After merge:")
-						tlog(10, paste(data[idx[j],]),collapse=",")
+						tlog(10, paste(data[idx[j],], collapse=","))
 						tlog(10, format(data[idx[j],COL_ATT_MDT_DBT]),"--",format(data[idx[j],COL_ATT_MDT_FIN]),
 								if(!is.na(fct.att)) paste0(" <<>> ",
 									format(data[idx[j],COL_ATT_FCT_DBT]),"--",format(data[idx[j],COL_ATT_FCT_FIN]),
@@ -1065,7 +1065,7 @@ split.long.mandates <- function(data, election.file, series.file)
 			
 			while(split.flag)
 			{	tlog(4,"Processing row ",r,"/",nrow(data),": ",format(data[r,COL_ATT_MDT_DBT]),"--",format(data[r,COL_ATT_MDT_FIN]))
-				tlog(4, paste(data[r,],collapse=","))
+				tlog(4, paste(data[r,], collapse=","))
 				split.flag <- FALSE
 				
 				# get election dates
@@ -1198,7 +1198,7 @@ remove.micro.mandates <- function(data, tolerance)
 			tmp <- sapply(1:length(idx), function(i)
 			{	tlog(4, "Row ", idx[i], "(",i,"/",length(idx),"): ",
 					format(data[idx[i],COL_ATT_MDT_DBT]),"--",format(data[idx[i],COL_ATT_MDT_FIN]))
-				tlog(6, paste(data[idx[i],],collapse=","))
+				tlog(6, paste(data[idx[i],], collapse=","))
 			})
 			
 			# get the ids associated to a single micro-mandate
@@ -1211,7 +1211,7 @@ remove.micro.mandates <- function(data, tolerance)
 			tmp <- sapply(1:length(nms), function(i)
 			{	j <- which(data[,COL_ATT_ELU_ID]==nms[i])
 				tlog(4, "Row ", j, "(",i,"/",length(idx),"): ",
-						paste(data[j,],collapse=","),","
+						paste(data[j,], collapse=","),","
 						,format(data[j,COL_ATT_MDT_DBT]),"--",format(data[j,COL_ATT_MDT_FIN]))
 			})
 			
