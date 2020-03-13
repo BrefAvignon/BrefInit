@@ -1,6 +1,6 @@
 ID Assemblee	Date debut mandat	Date fin mandat	Attribut	ValAvt	ValApr	Commentaire
 PA877	2012-06-27	2016-09-26	Date fin mandat	2016-09-26	2017-06-20	Fonction incorrectement divisée
-PA877	2016-09-27	2017-06-20	ID Assemblee	PA877	NA	Supression ligne superflue
+PA877	2016-09-27	2017-06-20	ID Assemblee	PA877	NA	Suppression ligne superflue
 PA1001	2007-06-20	2012-06-19	Date debut mandat	2007-06-20	2010-11-14	Date incorrecte
 PA1790	2007-06-20	2012-06-19	Date debut mandat	2007-06-20	2012-05-11	Date incorrecte
 PA1960	2007-06-20	2012-06-19	Date debut mandat	2007-06-20	2012-05-11	Date incorrecte
@@ -8,3 +8,19 @@ PA267459	2007-06-20	2012-06-19	Date debut mandat	2007-06-20	2012-05-11	Date inco
 PA267743	2007-06-20	2012-06-19	Date debut mandat	2007-06-20	2012-05-11	Date incorrecte
 PA332747	2017-06-18	NA	Date debut mandat	2017-06-18	2019-07-16	Date incorrecte
 PA328	2012-06-20	2016-03-11	Date debut mandat	2012-06-20	2014-05-01	Date incorrecte
+PA369	2007-06-20	2012-06-19	ID Assemblee	PA369	NA	Suppression ligne superflue
+PA1263	2008-05-25	2012-06-19	Date debut mandat	2008-05-25	2010-12-14	Date incorrecte
+PA1946	2007-06-20	2012-06-19	ID Assemblee	PA1946	NA	Suppression ligne superflue
+PA1023	2002-12-15	2007-06-19	Date debut mandat	2002-12-15	2002-06-16	Date incorrecte
+PA267532	2002-06-19	2007-06-19	Date debut mandat	2002-06-19	2003-03-11	Date incorrecte
+PA2073	2007-06-20	2012-06-19	ID Assemblee	PA2073	NA	Suppression ligne superflue
+PA267605	2007-06-20	2012-06-19	ID Assemblee	PA267605	NA	Suppression ligne superflue
+PA267622	2012-06-20	2017-06-20	ID Assemblee	PA267622	NA	Suppression ligne superflue
+PA2843	2007-06-20	2012-06-19	Date debut mandat	2007-06-20	2011-06-30	Date incorrecte
+PA267875	2007-06-20	2010-12-14	Date debut mandat	2007-06-20	2009-01-05	Date incorrecte
+PA267309	2007-06-20	2010-08-05	Date debut mandat	2007-06-20	2008-04-19	Date incorrecte
+PA642705	2012-06-20	2017-06-17	Date debut mandat	2012-06-20	2015-06-17	Date incorrecte
+PA332364	2012-06-20	2017-06-20	Date debut mandat	2012-06-20	2015-04-05	Date incorrecte
+PA2155	2002-06-19	2007-06-19	Date debut mandat	2002-06-19	2005-07-02	Date incorrecte
+PA823	2002-06-19	2007-06-19	Date debut mandat	2002-06-19	2007-03-05	Date incorrecte
+PA267366	2002-06-19	2007-06-19	Date debut mandat	2002-06-19	2006-06-24	Date incorrecte

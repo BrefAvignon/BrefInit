@@ -203,3 +203,6 @@ source("src/common/include.R")
 # Fonctions: si plusieurs fonctions dans mandat:
 #		- autant de lignes que de fonctions
 #		- chacune avec les mêmes infos sauf fonction (y compris dates mandat)
+
+# TODO
+# Rajouter des marqueurs dans les sources pour indiquer les modifications effectuées lors du nettoyage du RNE

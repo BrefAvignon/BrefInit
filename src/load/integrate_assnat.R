@@ -492,7 +492,7 @@ assembly.load.general.table <- function(cache)
 		}
 	}
 	
-	tlog(4,"General file loaded")
+	tlog(4,"General file loaded/created")
 	return(result)
 }
 
@@ -505,7 +505,7 @@ assembly.load.general.table <- function(cache)
 # returns: the loaded table.
 #############################################################################################
 assembly.load.elect.table <- function()
-{	tlog(2,"Loading the Assembly madate table: ",FILE_ASSEMB_MANDATS)
+{	tlog(2,"Loading the Assembly mandate table: ",FILE_ASSEMB_MANDATS)
 	
 	# load the corresponding assembly mandate table(s)
 	elect.table <- read.table(
@@ -911,7 +911,8 @@ assembly.check.function.dates <- function(asn.tab, rne.tab, tolerance, idx1, idx
 		tlog(10,paste(rne.tab[idx1,],collapse=","),",",format(rne.tab[idx1,COL_ATT_MDT_DBT]),",",format(rne.tab[idx1,COL_ATT_MDT_FIN]))
 		for(i2 in idx2)
 			tlog(10,paste(asn.tab[i2,],collapse=","),",",format(asn.tab[i2,COL_ATT_MDT_DBT]),",",format(asn.tab[i2,COL_ATT_MDT_FIN]))
-		stop("Found several matching Assembly rows")
+#		stop("Found several matching Assembly rows")
+		readline()
 	}
 	
 	# if there are none, compare function dates in an approximate way
@@ -963,8 +964,8 @@ assembly.check.function.dates <- function(asn.tab, rne.tab, tolerance, idx1, idx
 			tlog(10,paste(rne.tab[idx1,],collapse=","),",",format(rne.tab[idx1,COL_ATT_FCT_DBT]),",",format(rne.tab[idx1,COL_ATT_FCT_FIN]))
 			for(i3 in idx3)
 				tlog(10,paste(asn.tab[i3,],collapse=","),",",format(asn.tab[i3,COL_ATT_FCT_DBT]),",",format(asn.tab[i3,COL_ATT_FCT_FIN]))
-			stop("Found several matching Assembly rows using approximate matching")
-			
+#			stop("Found several matching Assembly rows using approximate matching")
+			readline()
 		}
 		
 		# still no matching row: check whether the RNE row has any function dates at all
@@ -983,7 +984,8 @@ assembly.check.function.dates <- function(asn.tab, rne.tab, tolerance, idx1, idx
 			tlog(10,paste(rne.tab[idx1,],collapse=","),",",format(rne.tab[idx1,COL_ATT_FCT_DBT]),",",format(rne.tab[idx1,COL_ATT_FCT_FIN]))
 			for(i3 in idx3)
 				tlog(10,paste(asn.tab[i3,],collapse=","),",",format(asn.tab[i3,COL_ATT_FCT_DBT]),",",format(asn.tab[i3,COL_ATT_FCT_FIN]))
-			stop(8,"Did not find any matching Assembly row, even with approximate start date (function)")
+#			stop(8,"Did not find any matching Assembly row, even with approximate start date (function)")
+			readline()
 		}
 	}
 	
@@ -1081,8 +1083,6 @@ assembly.match.assembly.vs.rne.rows <- function(asn.tab, rne.tab, tolerance)
 					# if everything failed, either the mandate is too old
 					else if(get.year(rne.tab[idx1,COL_ATT_MDT_DBT])<=1997)
 					{	tlog(8,"Did not find any matching Assembly row, even with approximate start date (mandate), the mandate is probably too old (",format(rne.tab[idx1,COL_ATT_MDT_DBT]),"--",format(rne.tab[idx1,COL_ATT_MDT_FIN]),")")
-						# TODO
-						
 					}
 					
 					# or the row is probably wrong and should be corrected manually
@@ -1091,7 +1091,8 @@ assembly.match.assembly.vs.rne.rows <- function(asn.tab, rne.tab, tolerance)
 						tlog(10,paste(rne.tab[idx1,],collapse=","),",",format(rne.tab[idx1,COL_ATT_MDT_DBT]),",",format(rne.tab[idx1,COL_ATT_MDT_FIN]))
 						for(i2 in idx.asn)
 							tlog(10,paste(asn.tab[i2,],collapse=","),",",format(asn.tab[i2,COL_ATT_MDT_DBT]),",",format(asn.tab[i2,COL_ATT_MDT_FIN]))
-						stop("Did not find any matching Assembly row, even with approximate start date (mandate)")						
+#						stop("Did not find any matching Assembly row, even with approximate start date (mandate)")
+						readline()
 					}
 				}
 			}
@@ -1199,10 +1200,14 @@ assembly.integrate.data <- function(data, cache=TRUE, compare=FALSE)
 	
 	# adjust the RNE table
 	rne.tab <- assembly.adjust.rne.table(data)
-
+	
 	# match rows using a tolerance of a few days for dates
 	row.conv <- assembly.match.assembly.vs.rne.rows(asn.tab, rne.tab, tolerance=14)
-
+	# LELLOUCHE - JEGO - PECRESSE - MARIANI - VALLS - OLLIER - MONTCHAMP
+	
+# TODO tester le recouvrement des mandats de la même personne, il y en a probablement plein que j'ai ratés
+# ex: Benoist APPARU : 2007-06-17--2012-06-16 vs 2007-06-17--2009-07-23
+	
 # use Assembly data to correct/complete existing RNE rows
 result <- assembly.update.rne.table(rne.tab, asn.tab, row.conv)
 
