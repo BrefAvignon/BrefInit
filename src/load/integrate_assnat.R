@@ -300,14 +300,14 @@ assembly.load.general.table <- function(cache, data)
 		# normalize last names
 		indiv.last.names <- trimws(normalize.proper.nouns(remove.diacritics(indiv.table[,COL_ATT_ELU_NOM])))
 #indiv.last.names <- trimws(normalize.proper.nouns(remove.diacritics(iconv(x=indiv.table[,COL_ATT_ELU_NOM], from="Latin1", to="UTF8"))))
-		lastname.conv <- senate.load.conversion.file(FILE_ASSEMB_CONV_NOMSFAM)
+		lastname.conv <- load.conversion.file(FILE_ASSEMB_CONV_NOMSFAM)
 		idx <- match(indiv.last.names, lastname.conv[, COL_CORREC_VALAVT])
 		idx2 <- which(!is.na(idx))
 		indiv.last.names[idx2] <- lastname.conv[idx[idx2], COL_CORREC_VALAPR]
 		
 		# normalize first names
 		indiv.first.names <- trimws(normalize.proper.nouns(remove.diacritics(indiv.table[,COL_ATT_ELU_PRENOM])))
-		firstname.conv <- senate.load.conversion.file(FILE_ASSEMB_CONV_PRENOMS)
+		firstname.conv <- load.conversion.file(FILE_ASSEMB_CONV_PRENOMS)
 		idx <- as.integer(firstname.conv[, COL_CORREC_ROW])
 		indiv.first.names[idx] <- firstname.conv[, COL_CORREC_VALAPR]
 		
@@ -329,7 +329,7 @@ assembly.load.general.table <- function(cache, data)
 
 		# normalize department names
 		indiv.dpt.names <- normalize.proper.nouns(remove.diacritics(indiv.table[,COL_ATT_ELU_NAIS_DPT]))
-		dpts.conv <- senate.load.conversion.file(FILE_ASSEMB_CONV_DPTS)
+		dpts.conv <- load.conversion.file(FILE_ASSEMB_CONV_DPTS)
 		idx <- match(indiv.dpt.names, dpts.conv[, COL_CORREC_VALAVT])
 		idx2 <- which(!is.na(idx))
 		indiv.dpt.names[idx2] <- dpts.conv[idx[idx2], COL_CORREC_VALAPR]
@@ -356,7 +356,7 @@ assembly.load.general.table <- function(cache, data)
 		
 		# normalize country names
 		indiv.country.names <- normalize.proper.nouns(remove.diacritics(indiv.table[,COL_ATT_ELU_NAIS_PAYS]))
-		country.conv <- senate.load.conversion.file(FILE_ASSEMB_CONV_PAYS)
+		country.conv <- load.conversion.file(FILE_ASSEMB_CONV_PAYS)
 		idx <- match(indiv.country.names, country.conv[, COL_CORREC_VALAVT])
 		idx2 <- which(!is.na(idx))
 		indiv.country.names[idx2] <- country.conv[idx[idx2], COL_CORREC_VALAPR]
@@ -366,7 +366,7 @@ assembly.load.general.table <- function(cache, data)
 		
 		# retrieve occupations names
 		indiv.occ.names <- trimws(normalize.proper.nouns(remove.diacritics(indiv.table[,COL_ASSEMB_PRO_CAT])))
-#		occup.conv <- senate.load.conversion.file(FILE_ASSEMB_CONV_PRO)
+#		occup.conv <- load.conversion.file(FILE_ASSEMB_CONV_PRO)
 #		idx <- match(indiv.occ.names, occup.conv[, COL_CORREC_VALAVT])
 #		idx2 <- which(!is.na(idx))
 #		indiv.occ.names[idx2] <- occup.conv[idx[idx2], COL_CORREC_VALAPR]
@@ -596,7 +596,7 @@ assembly.convert.mandate.table <- function(general.table, elect.table, data)
 	tlog(4,"Normalizing department names")
 #	region.names <- trimws(normalize.proper.nouns(remove.diacritics(elect.table[,COL_ATT_REG_NOM])))	# we actually don't need regions
 	dpt.names <- trimws(normalize.proper.nouns(remove.diacritics(elect.table[,COL_ATT_DPT_NOM])))
-	dpts.conv <- senate.load.conversion.file(FILE_ASSEMB_CONV_DPTS)
+	dpts.conv <- load.conversion.file(FILE_ASSEMB_CONV_DPTS)
 	idx <- match(dpt.names, dpts.conv[, COL_CORREC_VALAVT])
 	idx2 <- which(!is.na(idx))
 	dpt.names[idx2] <- dpts.conv[idx[idx2], COL_CORREC_VALAPR]
