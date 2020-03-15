@@ -692,7 +692,7 @@ adjust.function.dates <- function(data)
 					tlog(4,"Modifying function end")
 			}
 		}
-		tlog(2, "Total number of corrected function dates: ",nbr.corr, "(",(100*nbr.corr/nrow(data)),"%)")
+		tlog(2, "Total number of corrected function dates: ",nbr.corr, " (",(100*nbr.corr/nrow(data)),"%)")
 		
 		tlog(2, "Number of rows remaining: ",nrow(data))
 	}

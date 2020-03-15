@@ -8,6 +8,34 @@
 
 
 #############################################################################################
+# Reads a standard conversion table from a text file.
+#
+# file: path and name of the file containing the table.
+#
+# returns: the read conversion table.
+#############################################################################################
+load.conversion.file <- function(file)
+{	tlog(6,"Loading conversion file ",file)
+	result <- read.table(
+			file=file,					# name of the data file
+			header=TRUE, 				# look for a header
+			sep="\t", 					# character used to separate columns 
+			check.names=FALSE, 			# don't change the column names from the file
+			comment.char="", 			# ignore possible comments in the content
+			row.names=NULL, 			# don't look for row names in the file
+			quote="", 					# don't expect double quotes "..." around text fields
+			as.is=TRUE,					# don't convert strings to factors
+#		colClasses="character"		# all column originally read as characters, then converted later if needed
+#		fileEncoding="Latin1"		# original tables seem to be encoded in Latin1 (ANSI)
+	)
+	
+	return(result)
+} 
+
+
+
+
+#############################################################################################
 # Loads the specified tables, binds them if there are several ones, convert certain values
 # to appropriate types (dates, integers), and returns the resulting data frame.
 #
@@ -427,6 +455,10 @@ load.d.data <- function(correct.data, complete.data)
 		
 		# assembly database
 		data <- assembly.integrate.data(data, cache=TRUE, compare=FALSE)
+		# clean another time
+		#data <- merge.similar.rows(data) # no effect
+		#data <- fix.mdtfct.dates(data, election.file=FILE_VERIF_DATES_D) # only one operation (below) has an effect
+		data <- adjust.function.dates(data)
 	}
 	
 	return(data)

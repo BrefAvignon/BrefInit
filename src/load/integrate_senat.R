@@ -8,33 +8,6 @@
 
 
 #############################################################################################
-# Reads a standard conversion table from a text file.
-#
-# file: path and name of the file containing the table.
-#
-# returns: the read conversion table.
-#############################################################################################
-senate.load.conversion.file <- function(file)
-{	tlog(6,"Loading Senate conversion file ",file)
-	result <- read.table(
-		file=file,					# name of the data file
-		header=TRUE, 				# look for a header
-		sep="\t", 					# character used to separate columns 
-		check.names=FALSE, 			# don't change the column names from the file
-		comment.char="", 			# ignore possible comments in the content
-		row.names=NULL, 			# don't look for row names in the file
-		quote="", 					# don't expect double quotes "..." around text fields
-		as.is=TRUE,					# don't convert strings to factors
-#		colClasses="character"		# all column originally read as characters, then converted later if needed
-#		fileEncoding="Latin1"		# original tables seem to be encoded in Latin1 (ANSI)
-	)
-	
-	return(result)
-} 
-
-
-
-#############################################################################################
 # Loads the Senate table containing the description of individuals, and converts/normalizes
 # everything that needs to be. This function uses a cache system in order to speed up the process.
 #
@@ -86,14 +59,14 @@ senate.load.general.table <- function(cache)
 		tlog(4,"Normalizing content")
 		# normalize last names
 		indiv.last.names <- trimws(normalize.proper.nouns(remove.diacritics(indiv.table[,COL_SENAT_ELU_NOM])))
-		lastname.conv <- senate.load.conversion.file(FILE_SENAT_CONV_NOMSFAM)
+		lastname.conv <- load.conversion.file(FILE_SENAT_CONV_NOMSFAM)
 		idx <- match(indiv.last.names, lastname.conv[, COL_CORREC_VALAVT])
 		idx2 <- which(!is.na(idx))
 		indiv.last.names[idx2] <- lastname.conv[idx[idx2], COL_CORREC_VALAPR]
 		
 		# normalize first names
 		indiv.first.names <- trimws(normalize.proper.nouns(remove.diacritics(indiv.table[,COL_SENAT_ELU_PRENOM])))
-		firstname.conv <- senate.load.conversion.file(FILE_SENAT_CONV_PRENOMS)
+		firstname.conv <- load.conversion.file(FILE_SENAT_CONV_PRENOMS)
 		idx <- as.integer(firstname.conv[, COL_CORREC_ROW])
 		indiv.first.names[idx] <- firstname.conv[, COL_CORREC_VALAPR]
 		
@@ -112,7 +85,7 @@ senate.load.general.table <- function(cache)
 	
 		# normalize department names
 		indiv.dpt.names <- normalize.proper.nouns(remove.diacritics(indiv.table[,COL_SENAT_DPT_NOM]))
-		dpts.conv <- senate.load.conversion.file(FILE_SENAT_CONV_DPTS)
+		dpts.conv <- load.conversion.file(FILE_SENAT_CONV_DPTS)
 		idx <- match(indiv.dpt.names, dpts.conv[, COL_CORREC_VALAVT])
 		idx2 <- which(!is.na(idx))
 		indiv.dpt.names[idx2] <- dpts.conv[idx[idx2], COL_CORREC_VALAPR]
@@ -139,14 +112,14 @@ senate.load.general.table <- function(cache)
 		# retrieve political group
 		# NOTE: stored in the general table, so associated to each individual by opposition to each *mandate*
 		indiv.pol.nuances <- trimws(normalize.proper.nouns(remove.diacritics(indiv.table[,COL_SENAT_ELU_NUANCE])))
-		nuances.conv <- senate.load.conversion.file(FILE_SENAT_CONV_NUANCES)
+		nuances.conv <- load.conversion.file(FILE_SENAT_CONV_NUANCES)
 		idx <- match(indiv.pol.nuances, nuances.conv[, COL_CORREC_VALAVT])
 		idx2 <- which(!is.na(idx))
 		indiv.pol.nuances[idx2] <- nuances.conv[idx[idx2], COL_CORREC_VALAPR]
 		
 		# retrieve occupations names
 		indiv.occ.names <- trimws(normalize.proper.nouns(remove.diacritics(indiv.table[,COL_SENAT_PRO_NOM])))
-		occup.conv <- senate.load.conversion.file(FILE_SENAT_CONV_PRO)
+		occup.conv <- load.conversion.file(FILE_SENAT_CONV_PRO)
 		idx <- match(indiv.occ.names, occup.conv[, COL_CORREC_VALAVT])
 		idx2 <- which(!is.na(idx))
 		indiv.occ.names[idx2] <- occup.conv[idx[idx2], COL_CORREC_VALAPR]
@@ -459,7 +432,7 @@ senate.convert.mandate.table <- function(general.table, elect.table, type)
 		
 		# clean region names
 		reg.names <- trimws(normalize.proper.nouns(remove.diacritics(elect.table[,COL_SENAT_REG_NOM])))
-		regs.conv <- senate.load.conversion.file(FILE_SENAT_CONV_REGIONS)
+		regs.conv <- load.conversion.file(FILE_SENAT_CONV_REGIONS)
 		idx <- match(reg.names, regs.conv[, COL_CORREC_VALAVT])
 		idx2 <- which(!is.na(idx))
 		reg.names[idx2] <- regs.conv[idx[idx2], COL_CORREC_VALAPR]
@@ -492,7 +465,7 @@ senate.convert.mandate.table <- function(general.table, elect.table, type)
 		
 		# clean department names
 		dpt.names <- trimws(normalize.proper.nouns(remove.diacritics(elect.table[,COL_SENAT_DPT_NOM2])))
-		dpts.conv <- senate.load.conversion.file(FILE_SENAT_CONV_DPTS)
+		dpts.conv <- load.conversion.file(FILE_SENAT_CONV_DPTS)
 		idx <- match(dpt.names, dpts.conv[, COL_CORREC_VALAVT])
 		idx2 <- which(!is.na(idx))
 		dpt.names[idx2] <- dpts.conv[idx[idx2], COL_CORREC_VALAPR]
