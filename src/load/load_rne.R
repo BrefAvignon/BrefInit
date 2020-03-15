@@ -455,6 +455,10 @@ load.d.data <- function(correct.data, complete.data)
 		
 		# assembly database
 		data <- assembly.integrate.data(data, cache=TRUE, compare=FALSE)
+		# clean another time
+		#data <- merge.similar.rows(data) # no effect
+		#data <- fix.mdtfct.dates(data, election.file=FILE_VERIF_DATES_D) # only one operation (below) has an effect
+		data <- adjust.function.dates(data)
 	}
 	
 	return(data)
