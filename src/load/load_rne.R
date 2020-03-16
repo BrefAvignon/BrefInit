@@ -66,7 +66,7 @@ load.data <- function(filenames, col.map, correc.file, correct.data, election.fi
 	data <- convert.col.types(data)
 	
 	# add missing columns
-	data <- add.missing.columns(data)
+	data <- add.missing.columns(data, correct.data)
 	
 	# possibly perform additional corrections
 	if(correct.data)

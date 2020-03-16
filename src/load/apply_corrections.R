@@ -503,10 +503,11 @@ convert.col.types <- function(data)
 # Adds missing column to the normalized table.
 #
 # data: RNE table missing columns.
+# correct.data: whether or not to apply the correction on the data read.
 #
 # returns: same table with the extra columns.
 #############################################################################################
-add.missing.columns <- function(data)
+add.missing.columns <- function(data, correct.data)
 {	# add data source column
 	src.col <- data.frame(rep("RNE",nrow(data)), stringsAsFactors=FALSE)
 	data <- cbind(data, src.col)
@@ -544,33 +545,41 @@ add.missing.columns <- function(data)
 	
 	# possibly add unique canton id column		
 	if(COL_ATT_CANT_NOM %in% colnames(data))
-	{	# load table of canton ids
-		tlog(0,"Loading the table of canton ids (",FILE_CONV_CANTONS,")")
-		equiv.table <- read.table(
-			file=FILE_CONV_CANTONS,		# name of the id file
-			header=TRUE, 				# look for a header
-			sep="\t", 					# character used to separate columns 
-			check.names=FALSE, 			# don't change the column names from the file
-			comment.char="", 			# ignore possible comments in the content
-			row.names=NULL, 			# don't look for row names in the file
-			quote="", 					# don't expect double quotes "..." around text fields
-			as.is=TRUE,					# don't convert strings to factors
-			colClasses="character"		# all column originally read as characters
-#			fileEncoding="Latin1"		# original tables seem to be encoded in Latin1 (ANSI)
-		)
-		
-		# get the appropriate unique ids
-		data.code <- paste(data[,COL_ATT_DPT_CODE],data[,COL_ATT_CANT_NOM],sep=":")
-		conv.code <- paste(equiv.table[,COL_ATT_DPT_CODE],equiv.table[,COL_ATT_CANT_NOM],sep=":")
-		idx <- match(data.code, conv.code)
-		if(any(is.na(idx)))
-		{	idx0 <- which(is.na(idx))
-			print(cbind(data.code[idx0]))
-			stop("Problem when inserting canton ids: cound not find some cantons")
+	{	if(correct.data)
+		{	# load table of canton ids
+			tlog(0,"Loading the table of canton ids (",FILE_CONV_CANTONS,")")
+			equiv.table <- read.table(
+				file=FILE_CONV_CANTONS,		# name of the id file
+				header=TRUE, 				# look for a header
+				sep="\t", 					# character used to separate columns 
+				check.names=FALSE, 			# don't change the column names from the file
+				comment.char="", 			# ignore possible comments in the content
+				row.names=NULL, 			# don't look for row names in the file
+				quote="", 					# don't expect double quotes "..." around text fields
+				as.is=TRUE,					# don't convert strings to factors
+				colClasses="character"		# all column originally read as characters
+#				fileEncoding="Latin1"		# original tables seem to be encoded in Latin1 (ANSI)
+			)
+			
+			# get the appropriate unique ids
+			data.code <- paste(data[,COL_ATT_DPT_CODE],data[,COL_ATT_CANT_NOM],sep=":")
+			conv.code <- paste(equiv.table[,COL_ATT_DPT_CODE],equiv.table[,COL_ATT_CANT_NOM],sep=":")
+			idx <- match(data.code, conv.code)
+			if(any(is.na(idx)))
+			{	idx0 <- which(is.na(idx))
+				print(cbind(data.code[idx0]))
+				stop("Problem when inserting canton ids: cound not find some cantons")
+			}
+			
+			cant.ids <- as.data.frame(x=equiv.table[idx,COL_ATT_CANT_ID], stringsAsFactors=FALSE)
 		}
 		
-		# insert in the table, at the correct location
-		cant.ids <- as.data.frame(x=equiv.table[idx,COL_ATT_CANT_ID], stringsAsFactors=FALSE)
+		else
+			cant.ids  <- as.data.frame(
+					x=paste(data[,COL_ATT_DPT_CODE],data[,COL_ATT_CANT_CODE],sep=":"),
+					stringsAsFactors=FALSE)
+		
+		# insert in the table
 		colnames(cant.ids) <- COL_ATT_CANT_ID
 		data <- cbind(data, cant.ids)
 	}
