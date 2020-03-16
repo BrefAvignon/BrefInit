@@ -1127,7 +1127,7 @@ split.long.mandates <- function(data, election.file, series.file)
 	tlog(2,"Check mandate dates against election dates")
 	nbr.splits <- 0
 	for(r in 1:nrow(data))
-	{	# specific case of CD representatives of people leaving abroad: don't split mandates
+	{	# specific case of Senators representing people leaving abroad: don't split mandates
 		if(!(series.present 
 				&& COL_ATT_DPT_CODE %in% colnames(series.table) 
 				&& data[r,COL_ATT_DPT_CODE]=="ZZ"))
@@ -1269,7 +1269,7 @@ remove.micro.mandates <- function(data, tolerance)
 		{	# look for exceptions
 			exception.idx <- which(data[idx,COL_ATT_ELU_ID_RNE]=="663"
 							& data[idx,COL_ATT_MDT_DBT]==as.Date("2017/9/25") 
-							& data[idx,COL_ATT_MDT_DBT]==as.Date("2017/9/30"))
+							& data[idx,COL_ATT_MDT_FIN]==as.Date("2017/9/30"))
 			tlog(4,"Including ",length(exception.idx)," manually marked exceptions")
 			
 			# log the list of micro-mandates
@@ -1301,7 +1301,8 @@ remove.micro.mandates <- function(data, tolerance)
 				idx <- idx[-exception.idx]
 			
 			# remove micro-mandates
-			data <- data[-idx,]
+			if(length(idx)>0)
+				data <- data[-idx,]
 			nbr.removed <- length(idx)
 		}
 	}

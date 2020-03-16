@@ -55,7 +55,6 @@ Row	Id RNE	Nom	Prenom	Attribut	ValAvt	ValApr	Commentaire
 680	295	MERCIER	Michel	Date debut mandat	26/9/2004	17/6/2012	Date de début fausse (BD Sénat)
 1046	1188252	CONWAY-MOURET	Hélène	Date fin mandat	22/7/2012	21/7/2012	Date de fin fausse (BD Sénat)
 1047	1188252	CONWAY-MOURET	Hélène	Date debut mandat	25/9/2011	3/5/2014	Date de début fausse (BD Sénat)
-535	152132	DESCAMPS	Béatrice	Date debut mandat	19/7/2007	5/6/2017	Date de début fausse (BD Sénat)
 243	164	ROUVIERE	André	Date naissance	22/4/1936	29/04/1936	Date de naissance incorrecte
 31	175	BALARELLO	José	Date naissance	24/12/1926	25/12/1926	Date de naissance incorrecte
 478	355631	PANIS	Jacqueline	Date naissance	18/4/1948	16/04/1948	Date de naissance incorrecte
