@@ -298,6 +298,9 @@ senate.load.elect.table <- function(type)
 	elect.table <- cbind(elect.table, rep(FALSE,nrow(elect.table)), rep(FALSE,nrow(elect.table)))
 	colnames(elect.table)[(ncol(elect.table)-1):ncol(elect.table)] <- c(COL_ATT_CORREC_DATE, COL_ATT_CORREC_INFO)
 	
+	# very ad hoc corrections
+	elect.table[which(elect.table[,COL_SENAT_ELU_MATRI]=="08070Y"),COL_SENAT_MDT_FIN] <- "05/04/2014"	# François Rebsamen
+	
 	return(elect.table)
 }
 
@@ -401,8 +404,8 @@ senate.convert.mandate.table <- function(general.table, elect.table, type)
 		fct.end.dates,								# function end date
 		rep(NA, length(idx)),						# function end motive
 		rep("SENAT", length(idx)),					# data source
-		general.table[idx,COL_ATT_CORREC_DATE],		# date correction
-		general.table[idx,COL_ATT_CORREC_INFO],		# information correction
+		elect.table[idx,COL_ATT_CORREC_DATE],		# date correction
+		elect.table[idx,COL_ATT_CORREC_INFO],		# information correction
 		#
 		check.names=FALSE,
 		stringsAsFactors=FALSE
@@ -664,10 +667,11 @@ senate.convert.mandate.table <- function(general.table, elect.table, type)
 # currently processed Senate table.
 #
 # data: original RNE table.
+# type: nature of the table (CD, CM, CR, D, DE, M, S).
 #
 # returns: adjusted RNE table.
 #############################################################################################
-senate.adjust.rne.table <- function(data)
+senate.adjust.rne.table <- function(data, type)
 {	tlog(2,"Adjusting RNE table")
 	
 	# add missing columns to the RNE table
@@ -689,7 +693,7 @@ senate.adjust.rne.table <- function(data)
 	rne.tab <- rne.tab[,norm.cols]
 	
 	# record temp RNE table
-	out.folder <- file.path(FOLDER_COMP_SRC_ASSEMB, type)
+	out.folder <- file.path(FOLDER_COMP_SRC_SEN, type)
 	dir.create(path=out.folder, showWarnings=FALSE, recursive=TRUE)
 	rne.tab.file <- file.path(out.folder, "data_rne1.txt")
 	tlog(4,"Recording the new RNE table in ",rne.tab.file)
@@ -745,9 +749,9 @@ senate.match.senate.vs.rne.rows <- function(sen.tab, rne.tab, tolerance)
 			tlog(6,"Processing RNE row ",idx1," (",j,"/",length(idx.rne),")")
 			
 			# get the Senate row(s) matching the mandate start date
-			idx2 <- idx.sen[which(sen.tab[idx.sen,COL_ATT_MDT_DBT]==rne.tab[idx1,COL_ATT_MDT_DBT])
+			idx2 <- idx.sen[which(sen.tab[idx.sen,COL_ATT_MDT_DBT]==rne.tab[idx1,COL_ATT_MDT_DBT]
 						& (sen.tab[idx.sen,COL_ATT_MDT_FIN]==rne.tab[idx1,COL_ATT_MDT_FIN]
-							| is.na(sen.tab[idx.sen,COL_ATT_MDT_FIN]) & is.na(rne.tab[idx1,COL_ATT_MDT_FIN]))]
+							| is.na(sen.tab[idx.sen,COL_ATT_MDT_FIN]) & is.na(rne.tab[idx1,COL_ATT_MDT_FIN])))]
 			#rbind(rne.tab[idx1,c(COL_ATT_ELU_ID,COL_ATT_MDT_DBT,COL_ATT_MDT_FIN)], sen.tab[idx2,c(COL_ATT_ELU_ID,COL_ATT_MDT_DBT,COL_ATT_MDT_FIN)])	# for debug
 			
 			# if there is exactly one: match done
@@ -843,7 +847,8 @@ senate.match.senate.vs.rne.rows <- function(sen.tab, rne.tab, tolerance)
 				{	tlog(8,"Did not find any matching Senate row, even with approximate start date or year only")
 					tlog(10,paste(rne.tab[idx1,],collapse=","),",",format(rne.tab[idx1,COL_ATT_MDT_DBT]),",",format(rne.tab[idx1,COL_ATT_MDT_FIN]))
 					for(i2 in idx.sen)
-						tlog(10,paste(sen.tab[i2,],collapse=","),",",format(sen.tab[i2,COL_ATT_MDT_DBT]),",",format(sen.tab[idx2,COL_ATT_MDT_FIN]))
+						tlog(10,paste(sen.tab[i2,],collapse=","),",",format(sen.tab[i2,COL_ATT_MDT_DBT]),",",format(sen.tab[i2,COL_ATT_MDT_FIN]))
+					readline() #stop()
 				}
 			}
 		}
@@ -863,10 +868,11 @@ senate.match.senate.vs.rne.rows <- function(sen.tab, rne.tab, tolerance)
 # rne.tab: RNE table to update.
 # sen.tab: reference Senate table used for updating the RNE table.
 # row.conv: Senate2RNE row map.
+# type: nature of the table (CD, CM, CR, D, DE, M, S).
 #
 # returns: updated RNE table.
 #############################################################################################
-senate.update.rne.table <- function(rne.tab, sen.tab, row.conv)
+senate.update.rne.table <- function(rne.tab, sen.tab, row.conv, type)
 {	tlog(2,"Updating the RNE table")
 	result <- rne.tab
 	
@@ -964,13 +970,13 @@ senate.integrate.data <- function(data, type, cache=TRUE, compare=FALSE)
 	sen.tab <- senate.convert.mandate.table(general.table, elect.table, type)
 	
 	# adjust the RNE table
-	rne.tab <- senate.adjust.rne.table(data)
+	rne.tab <- senate.adjust.rne.table(data, type)
 	
 	# match rows using a tolerance of a few days for dates
 	row.conv <- senate.match.senate.vs.rne.rows(sen.tab, rne.tab, tolerance=14)
 	
 	# use Senate data to correct/complete existing RNE rows
-	result <- senate.update.rne.table(rne.tab, sen.tab, row.conv)
+	result <- senate.update.rne.table(rne.tab, sen.tab, row.conv, type)
 	
 	# compare both tables
 	if(compare)

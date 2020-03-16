@@ -61,6 +61,9 @@ load.data <- function(filenames, col.map, correc.file, correct.data, election.fi
 		# apply systematic corrections
 		data <- apply.systematic.corrections(data)
 	}
+	# ad hoc minimal corrections needed to perform later tests
+	else
+		data <- apply.minimal.adhoc.corrections(data)
 	
 	# convert date and numeric columns
 	data <- convert.col.types(data)

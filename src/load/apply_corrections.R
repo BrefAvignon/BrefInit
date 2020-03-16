@@ -363,6 +363,46 @@ apply.adhoc.corrections <- function(data, col.map, correc.file)
 
 
 #############################################################################################
+# Applies the minimal ad hoc corrections to the raw RNE data, so that later test can
+# still be performed.
+#
+# data: raw data, before applying the corrections.
+#
+# returns: data frame after the corrections.
+#############################################################################################
+apply.minimal.adhoc.corrections <- function(data)
+{	# only for the CD table
+	if(COL_ATT_CANT_CODE %in% colnames(data))
+	{	cant.map <- c()
+		cant.map["LA COTE VERMEILLE"] <- "COTE VERMEILLE"
+		cant.map["LE GOND PONTOUVRE"] <- "GOND PONTOUVRE"
+		cant.map["LE GRAND BOURG"] <- "GRAND BOURG"
+		cant.map["LE TAMPON 1"] <- "TAMPON 1"
+		cant.map["LE TAMPON 2"] <- "TAMPON 2"
+		cant.map["LES ABYMES 1"] <- "ABYMES 1"
+		cant.map["LES ABYMES 2"] <- "ABYMES 2"
+		cant.map["LES ABYMES 3"] <- "ABYMES 3"
+		cant.map["CARCASONNE 2 SUD"] <- "CARCASSONNE 2 SUD"
+		cant.map["SALIGNAC EYVIGNES"] <- "SALIGNAC EYVIGUES"
+		cant.map["MAMOUDZOU 1ER CANTON"] <- "MAMOUDZOU 1"
+		cant.map["MAMOUDZOU 2E CANTON"] <- "MAMOUDZOU 2"
+		cant.map["MAMOUDZOU 3E CANTON"] <- "MAMOUDZOU 3"
+		cant.map["MARSEILLE LA BLANCARDE"] <- "LA BLANCARDE"
+		cant.map["MARSEILLE LES TROIS LUCS"] <- "LES TROIS LUCS"
+		cant.map["MARSEILLE SAINTE MARGUERITE"] <- "SAINTE MARGUERITE"
+		cant.map["MARSEILLE NOTRE DAME LIMITE"] <- "NOTRE DAME LIMITE"
+		cant.map["MARSEILLE VAUBAN"] <- "VAUBAN"
+		for(i in 1:length(cant.map))
+			data[which(data[,COL_ATT_CANT_NOM]==names(cant.map)[i]),COL_ATT_CANT_NOM] <- cant.map[i]
+	}
+	
+	return(data)
+}
+
+
+
+
+#############################################################################################
 # Applies various systematic corrections to the raw RNE data.
 #
 # data: raw data, before applying the corrections.
@@ -1224,11 +1264,19 @@ remove.micro.mandates <- function(data, tolerance)
 		if(!is.na(tolerance))
 			idx <- idx[durations<=tolerance]
 		tlog(2,"Found ",length(idx)," mandate(s) which are too short (<=",tolerance," days)")
+		
 		if(length(idx)>0)
-		{	# log the list of micro-mandates
+		{	# look for exceptions
+			exception.idx <- which(data[idx,COL_ATT_ELU_ID_RNE]=="663"
+							& data[idx,COL_ATT_MDT_DBT]==as.Date("2017/9/25") 
+							& data[idx,COL_ATT_MDT_DBT]==as.Date("2017/9/30"))
+			tlog(4,"Including ",length(exception.idx)," manually marked exceptions")
+			
+			# log the list of micro-mandates
 			tmp <- sapply(1:length(idx), function(i)
 			{	tlog(4, "Row ", idx[i], "(",i,"/",length(idx),"): ",
-					format(data[idx[i],COL_ATT_MDT_DBT]),"--",format(data[idx[i],COL_ATT_MDT_FIN]))
+					format(data[idx[i],COL_ATT_MDT_DBT]),"--",format(data[idx[i],COL_ATT_MDT_FIN]),
+					if(i %in% exception.idx) " (Exception)" else "")
 				tlog(6, paste(data[idx[i],], collapse=","))
 			})
 			
@@ -1247,6 +1295,10 @@ remove.micro.mandates <- function(data, tolerance)
 							,format(data[j,COL_ATT_MDT_DBT]),"--",format(data[j,COL_ATT_MDT_FIN]))
 				})
 			}
+			
+			# remove exceptions
+			if(length(exception.idx)>0)
+				idx <- idx[-exception.idx]
 			
 			# remove micro-mandates
 			data <- data[-idx,]
