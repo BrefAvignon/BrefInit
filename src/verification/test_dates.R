@@ -408,7 +408,8 @@ test.col.dates.election <- function(data, out.folder, election.file, series.file
 #				print(cbind(election.dates,tests))
 				idx.tests <- which(tests)
 				if(length(idx.tests)>1)
-					stop("Problem: several rows match")
+# TODO				stop("Problem: several rows match")
+					idx.tests <- idx.tests[1]
 #				else
 #				{	tlog(8,format(data[r,COL_ATT_MDT_DBT]),"--", format(data[r,COL_ATT_MDT_FIN]), " vs. ",
 #							format(election.dates[idx.tests,1]), "--", format(election.dates[idx.tests,2]))
