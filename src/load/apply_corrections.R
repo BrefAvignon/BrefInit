@@ -96,7 +96,7 @@ retrieve.normalize.data <- function(filenames, col.map)
 	correc.date <- rep(FALSE, nrow(data))
 	correc.info <- rep(FALSE, nrow(data))
 	data <- cbind(data, correc.date, correc.info)
-	colnames(data)[ncol(data)] <- c(COL_ATT_CORREC_DATE, COL_ATT_CORREC_INFO) 
+	colnames(data)[(ncol(data)-1):ncol(data)] <- c(COL_ATT_CORREC_DATE, COL_ATT_CORREC_INFO) 
 	
 	return(data)
 }

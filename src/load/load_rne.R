@@ -454,7 +454,7 @@ load.d.data <- function(correct.data, complete.data)
 		#data <- senate.integrate.data(data, type="D", cache=TRUE, compare=FALSE)
 		
 		# assembly database
-		data <- assembly.integrate.data(data, cache=TRUE, compare=FALSE)
+		data <- assembly.integrate.data(data, cache=FALSE, compare=FALSE)
 		# clean another time
 		#data <- merge.similar.rows(data) # no effect
 		#data <- fix.mdtfct.dates(data, election.file=FILE_VERIF_DATES_D) # only one operation (below) has an effect
@@ -665,7 +665,7 @@ load.s.data <- function(correct.data, complete.data)
 	# correct/complete with secondary sources
 	if(complete.data)
 	{	# senate database
-		data <- senate.integrate.data(data, type="S", cache=TRUE, compare=TRUE)
+		data <- senate.integrate.data(data, type="S", cache=FALSE, compare=TRUE)
 		
 		# assembly database
 		# no S data in the assembly database
