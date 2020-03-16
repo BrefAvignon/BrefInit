@@ -227,7 +227,7 @@ load.cm.data <- function(correct.data, complete.data)
 	vals <- rep("CONSEILLER MUNICIPAL",nrow(data))
 	data <- cbind(data, vals)
 	colnames(data)[ncol(data)] <- COL_ATT_MDT_NOM
-	data <- normalize.col.order()
+	data <- normalize.col.order(data)
 	
 	# correct/complete with secondary sources
 	if(complete.data)
