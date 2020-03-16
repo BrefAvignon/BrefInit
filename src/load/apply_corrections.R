@@ -92,6 +92,12 @@ retrieve.normalize.data <- function(filenames, col.map)
 	}
 	tlog(2,"Now ",nrow(data)," rows and ",ncol(data)," columns in main table")
 	
+	# add columns to store correction flags
+	correc.date <- rep(FALSE, nrow(data))
+	correc.info <- rep(FALSE, nrow(data))
+	data <- cbind(data, correc.date, correc.info)
+	colnames(data)[ncol(data)] <- c(COL_ATT_CORREC_DATE, COL_ATT_CORREC_INFO) 
+	
 	return(data)
 }
 
@@ -137,13 +143,20 @@ fix.id.problems <- function(data)
 		if(length(conv.map)>0)
 		{	# substitute correct ids
 			tlog(0,"Fixing duplicate ids")
-			data[,COL_ATT_ELU_ID_RNE] <- future_sapply(data[,COL_ATT_ELU_ID_RNE], function(id)
-					{	new.id <- conv.map[id]
-						if(is.na(new.id))
-							return(id)
-						else
-							return(new.id)
-					})
+			mat <- t(future_sapply(1:nrow(data), function(i)
+			{	id <- data[i,COL_ATT_ELU_ID_RNE]
+				state <- data[i,COL_ATT_CORREC_INFO]
+				new.id <- conv.map[id]
+				if(is.na(new.id))
+					res <- c(id,state)
+				else
+					res <- c(new.id,TRUE)
+				return(res)
+			}))
+			corrected.ids <- which(data[,COL_ATT_ELU_ID_RNE]!=mat[,1])
+			data[,COL_ATT_ELU_ID_RNE] <- mat[,1]
+			data[,COL_ATT_CORREC_INFO] <- as.logical(mat[,2])
+			tlog(2,"Corrected ",length(corrected.ids)," ids")
 		}
 		tlog(2,"Now ",nrow(data)," rows and ",ncol(data)," columns in main table")
 	}
@@ -240,13 +253,17 @@ apply.adhoc.corrections <- function(data, col.map, correc.file)
 		idx.rm <- c()
 		for(r in 1:nrow(correc.table))
 		{	correc.attr <- correc.table[r,COL_CORREC_ATTR]
+			if(correc.attr %in% c(COL_ATT_MDT_DBT, COL_ATT_MDT_FIN, COL_ATT_FCT_DBT, COL_ATT_FCT_FIN))
+				correc.col <- COL_ATT_CORREC_DATE
+			else
+				correc.col <- COL_ATT_CORREC_INFO
 			row <- as.integer(correc.table[r,COL_CORREC_ROW])
 			
 			# general correction
 			if(all(is.na(correc.table[r,c(COL_CORREC_ID,COL_CORREC_NOM,COL_CORREC_PRENOM)])))
 			{	# identify the targeted rows in the data table
-				idx <- which(data[,correc.table[r,COL_CORREC_ATTR]]==correc.table[r,COL_CORREC_VALAVT]
-								| is.na(data[,correc.table[r,COL_CORREC_ATTR]]) & is.na(correc.table[r,COL_CORREC_VALAVT]))
+				idx <- which(data[,correc.attr]==correc.table[r,COL_CORREC_VALAVT]
+								| is.na(data[,correc.attr]) & is.na(correc.table[r,COL_CORREC_VALAVT]))
 				
 				# there should be at least one
 				if(length(idx)<1)
@@ -266,7 +283,8 @@ apply.adhoc.corrections <- function(data, col.map, correc.file)
 						}
 					}
 					tlog(4,"Replacing ",correc.table[r,COL_CORREC_VALAVT]," by ",correc.table[r,COL_CORREC_VALAPR])
-					data[idx,correc.table[r,COL_CORREC_ATTR]] <- correc.table[r,COL_CORREC_VALAPR]
+					data[idx,correc.attr] <- correc.table[r,COL_CORREC_VALAPR]
+					data[idx,correc.col] <- TRUE 
 				}
 			}
 			
@@ -276,8 +294,8 @@ apply.adhoc.corrections <- function(data, col.map, correc.file)
 				idx <- which(data[,COL_ATT_ELU_ID_RNE]==correc.table[r,COL_CORREC_ID]
 							& data[,COL_ATT_ELU_NOM]==correc.table[r,COL_CORREC_NOM]
 							& data[,COL_ATT_ELU_PRENOM]==correc.table[r,COL_CORREC_PRENOM]
-							& (data[,correc.table[r,COL_CORREC_ATTR]]==correc.table[r,COL_CORREC_VALAVT]
-								| is.na(data[,correc.table[r,COL_CORREC_ATTR]]) & is.na(correc.table[r,COL_CORREC_VALAVT]))
+							& (data[,correc.attr]==correc.table[r,COL_CORREC_VALAVT]
+								| is.na(data[,correc.attr]) & is.na(correc.table[r,COL_CORREC_VALAVT]))
 				)
 				
 				# there should be exactly one
@@ -291,16 +309,17 @@ apply.adhoc.corrections <- function(data, col.map, correc.file)
 						stop(paste0("A correction matches several cases (",paste(idx, collapse=","),"), but no row is specified: ",paste(correc.table[r,], collapse=";")))
 					}
 #						tlog(4,"WARNING: A correction matches several cases: ",paste(correc.table[r,], collapse=";"))
-#						data[idx,correc.table[r,COL_CORREC_ATTR]] <- correc.table[r,COL_CORREC_VALAPR]
+#						data[idx,correc.attr] <- correc.table[r,COL_CORREC_VALAPR]
 					else
 					{	if(row %in% idx)
-						{	if(correc.table[r,COL_CORREC_ATTR]==COL_ATT_ELU_ID_RNE && is.na(correc.table[r,COL_CORREC_VALAPR]))
+						{	if(correc.attr==COL_ATT_ELU_ID_RNE && is.na(correc.table[r,COL_CORREC_VALAPR]))
 							{	tlog(4, "Row ",row," marked for removal")
 								idx.rm <- c(idx.rm, row)
 							}
 							else
 							{	tlog(4,"Correcting entry: ",paste(correc.table[r,], collapse=";"))
-								data[row,correc.table[r,COL_CORREC_ATTR]] <- correc.table[r,COL_CORREC_VALAPR]
+								data[row,correc.attr] <- correc.table[r,COL_CORREC_VALAPR]
+								data[idx,correc.col] <- TRUE
 							}
 						}
 					}
@@ -311,7 +330,7 @@ apply.adhoc.corrections <- function(data, col.map, correc.file)
 						stop(paste0("The specified row (",row,") does not correspond to the one matching the criteria (",idx,")"))
 					}
 					else
-					{	if(correc.table[r,COL_CORREC_ATTR]==COL_ATT_ELU_ID_RNE && is.na(correc.table[r,COL_CORREC_VALAPR]))
+					{	if(correc.attr==COL_ATT_ELU_ID_RNE && is.na(correc.table[r,COL_CORREC_VALAPR]))
 						{	tlog(4, "Row ",idx," marked for removal")
 							idx.rm <- c(idx.rm, idx)
 						}
@@ -320,7 +339,8 @@ apply.adhoc.corrections <- function(data, col.map, correc.file)
 								tlog(4,"Correcting entry (",idx,"): ",paste(correc.table[r,], collapse=";"))
 							else
 								tlog(4,"Correcting entry: ",paste(correc.table[r,], collapse=";"))
-							data[idx,correc.table[r,COL_CORREC_ATTR]] <- correc.table[r,COL_CORREC_VALAPR]
+							data[idx,correc.attr] <- correc.table[r,COL_CORREC_VALAPR]
+							data[idx,correc.col] <- TRUE 
 						}
 					}
 				}
@@ -384,7 +404,9 @@ apply.systematic.corrections <- function(data)
 	{	tlog(0,"Completing missing function start dates using mandate start dates")
 		idx <- which(!is.na(data[,COL_ATT_FCT_NOM]) & is.na(data[,COL_ATT_FCT_DBT]))
 		if(length(idx)>0)
-			data[idx,COL_ATT_FCT_DBT] <- data[idx,COL_ATT_MDT_DBT]
+		{	data[idx,COL_ATT_FCT_DBT] <- data[idx,COL_ATT_MDT_DBT]
+			data[idx,COL_ATT_CORREC_DATE] <- TRUE 
+		}
 		tlog(2,"Fixed ",length(idx)," rows")
 		tlog(2,"Now ",nrow(data)," rows and ",ncol(data)," columns in main table")
 	}
@@ -394,7 +416,9 @@ apply.systematic.corrections <- function(data)
 	{	tlog(0,"Completing missing function end dates using mandate end dates")
 		idx <- which(!is.na(data[,COL_ATT_FCT_NOM]) & is.na(data[,COL_ATT_FCT_FIN]) & !is.na(data[,COL_ATT_MDT_FIN]))
 		if(length(idx)>0)
-			data[idx,COL_ATT_FCT_FIN] <- data[idx,COL_ATT_MDT_FIN]
+		{	data[idx,COL_ATT_FCT_FIN] <- data[idx,COL_ATT_MDT_FIN]
+			data[idx,COL_ATT_CORREC_DATE] <- TRUE 
+		}			
 		tlog(2,"Fixed ",length(idx)," rows")
 		tlog(2,"Now ",nrow(data)," rows and ",ncol(data)," columns in main table")
 	}
@@ -572,6 +596,7 @@ merge.similar.rows <- function(data)
 {	comp.cols <- c(COL_ATT_ELU_ID, COL_ATT_ELU_NOM, COL_ATT_ELU_PRENOM, COL_ATT_ELU_SEXE, COL_ATT_ELU_NAIS_DATE)
 	tlog(0,"Merging compatible rows for compulsory columns \"",paste(comp.cols, collapse="\",\""),"\"")
 	rm.col <- which(colnames(data) %in% comp.cols)
+	date.cols <- which(colnames(data) %in% c(COL_ATT_MDT_DBT,COL_ATT_MDT_FIN,COL_ATT_FCT_DBT,COL_ATT_FCT_FIN))
 	
 	# identify redundant rows
 	concat <- apply(data[,comp.cols], 1, function(row) paste(row, collapse=":"))
@@ -592,7 +617,12 @@ merge.similar.rows <- function(data)
 					{	if(all(is.na(data[r1,-rm.col]) | is.na(data[rs[r2],-rm.col]) | data[r1,-rm.col]==data[rs[r2],-rm.col]))
 						{	idx <- which(is.na(data[r1,]))
 							if(length(idx)>0)
-								data[r1,idx] <<- data[rs[r2],idx]
+							{	data[r1,idx] <<- data[rs[r2],idx]
+								if(length(intersect(idx,date.cols))>0)
+									data[r1,COL_ATT_CORREC_DATE] <- TRUE 
+								if(length(setdiff(idx,date.cols))>0)
+									data[r1,COL_ATT_CORREC_INFO] <- TRUE 
+							}
 							res <- c(res, rs[r2])
 							rs <- rs[-r2]
 						}
@@ -690,6 +720,7 @@ adjust.function.dates <- function(data)
 					tlog(4,"Modifying function start")
 				if(changed.end)
 					tlog(4,"Modifying function end")
+				data[r,COL_ATT_CORREC_DATE] <- TRUE
 			}
 		}
 		tlog(2, "Total number of corrected function dates: ",nbr.corr, " (",(100*nbr.corr/nrow(data)),"%)")
@@ -886,9 +917,7 @@ round.mdtfct.dates <- function(data, election.file, series.file, tolerance)
 				if(has.fct) paste0(" <<>> ", format(data[r,COL_ATT_FCT_DBT]),"--",format(data[r,COL_ATT_FCT_FIN])) else "")
 #			readline()
 			nbr.corrected <- nbr.corrected + 1
-			
-#			if(data[r,COL_ATT_ELU_NOM]=="LEROY")
-#				readline()
+			data[r,COL_ATT_CORREC_DATE] <- TRUE
 		}
 	}
 	tlog(2,"Corrected ",nbr.corrected," rows with election-related issues (",(100*nbr.corrected/nrow(data)),"%)")
@@ -1011,6 +1040,7 @@ merge.overlapping.mandates <- function(data)
 						# update counters
 						nbr.corr <- nbr.corr + 1
 						idx.rmv <- c(idx.rmv, idx[k])
+						data[idx[j],COL_ATT_CORREC_DATE] <- TRUE
 					}
 				}
 			}
@@ -1103,6 +1133,7 @@ split.long.mandates <- function(data, election.file, series.file)
 						tlog(8,"Before: ",format(data[r,COL_ATT_MDT_DBT]),"--", format(data[r,COL_ATT_MDT_FIN]), " <<>> ",
 								if(has.fct) paste0(format(data[r,COL_ATT_FCT_DBT]),"--", format(data[r,COL_ATT_FCT_FIN])) else "", " vs. ",
 								format(election.dates[idx.tests,1]), "--", format(election.dates[idx.tests,2]))
+						data[r,COL_ATT_CORREC_DATE] <- TRUE
 						#readline() #stop()
 						
 						# copy row

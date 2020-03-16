@@ -522,6 +522,10 @@ assembly.load.elect.table <- function()
 	for(c in 1:ncol(elect.table))
 		elect.table[which(elect.table[,c]==""),c] <- NA
 	
+	# add correction columns
+	elect.table <- cbind(elect.table, rep(FALSE,nrow(elect.table)), rep(FALSE,nrow(elect.table)))
+	colnames(elect.table)[(ncol(elect.table)-1):ncol(elect.table)] <- c(COL_ATT_CORREC_DATE, COL_ATT_CORREC_INFO)
+	
 	# make a few corrections
 	tlog(4,"Loading correction table")
 	correc.table <- read.table(
@@ -541,10 +545,17 @@ assembly.load.elect.table <- function()
 	tlog(4,"Applying corrections to the data")
 	for(i in 1:nrow(correc.table))
 	{	tlog(6, "Correction ",i,"/",nrow(correc.table))
+		
+		if(correc.table[i,COL_CORREC_ATTR] %in% c(COL_ATT_MDT_DBT,COL_ATT_MDT_FIN,COL_ATT_FCT_DBT,COL_ATT_FCT_FIN))
+			cor.col <- COL_ATT_CORREC_DATE
+		else
+			cor.col <- COL_ATT_CORREC_INFO
+		
 		idx <- which(elect.table[,COL_ATT_ELU_ID_ASSEMB]==correc.table[i,COL_ATT_ELU_ID_ASSEMB]
 						& elect.table[,COL_ATT_MDT_DBT]==correc.table[i,COL_ATT_MDT_DBT]
 						& (elect.table[,COL_ATT_MDT_FIN]==correc.table[i,COL_ATT_MDT_FIN] 
 							| is.na(elect.table[,COL_ATT_MDT_FIN]) & is.na(correc.table[i,COL_ATT_MDT_FIN])))
+		
 		if(length(idx)!=1)
 		{	tlog(8, "ERROR: found ",length(idx)," matching rows while correcting the table")
 			stop("ERROR: found ",length(idx)," matching rows while correcting the table")
@@ -558,6 +569,7 @@ assembly.load.elect.table <- function()
 				else
 				{	tlog(8, "Replacing \"",correc.table[i,COL_CORREC_VALAVT],"\" by \"",correc.table[i,COL_CORREC_VALAPR],"\"")
 					elect.table[idx,correc.table[i,COL_CORREC_ATTR]] <- correc.table[i,COL_CORREC_VALAPR]
+					elect.table[idx,cor.col] <- TRUE
 				}
 			}
 			else
@@ -657,6 +669,9 @@ assembly.convert.mandate.table <- function(general.table, elect.table, data)
 	idx.mandates <- which(!is.na(dpt.names))
 	idx.functions <- which(is.na(dpt.names))
 	
+	correc.date <- elect.table[,COL_ATT_CORREC_DATE]
+	correc.info <- elect.table[,COL_ATT_CORREC_INFO]
+	
 	# init vectors for new rows
 	new.indiv.idx <- c()
 	new.dpt.names <- c()
@@ -671,6 +686,8 @@ assembly.convert.mandate.table <- function(general.table, elect.table, data)
 	new.fct.start.dates <- c()
 	new.fct.end.dates <- c()
 	new.fct.names <- c()
+	new.correc.date <- c()
+	new.correc.info <- c()
 	
 	# get function dates and names
 	tlog(4,"Processing function dates and names, for each id in the table")
@@ -678,6 +695,7 @@ assembly.convert.mandate.table <- function(general.table, elect.table, data)
 	for(i in 1:length(ids))
 	{	tlog(6,"Processing id ",ids[i]," (",i,"/",length(ids),")")
 		fct.idx <- which(elect.table[,COL_ATT_ELU_ID_ASSEMB]==ids[i] & is.na(dpt.names))
+		
 		if(length(fct.idx)>0)
 		{	for(j in 1:length(fct.idx))
 			{	tlog(8,"Processing function ",j,"/",length(fct.idx))
@@ -697,12 +715,15 @@ assembly.convert.mandate.table <- function(general.table, elect.table, data)
 				}
 				else
 				{	tlog(10,"Found a single matching mandate, now updating it")
+					
 					# if the mandate has no function yet: just update it
 					if(is.na(fct.start.dates[mdt.idx]))
 					{	fct.start.dates[mdt.idx] <- mdt.start.dates[fct.idx[j]]
 						fct.end.dates[mdt.idx] <- mdt.end.dates[fct.idx[j]]
 						fct.names[mdt.idx] <- fct.names[fct.idx[j]]
+						correc.date[mdt.idx] <- TRUE
 					}
+					
 					# else, if it already has a function: must insert new row
 					else
 					{	new.indiv.idx <- c(new.indiv.idx, indiv.idx[mdt.idx])
@@ -718,6 +739,8 @@ assembly.convert.mandate.table <- function(general.table, elect.table, data)
 						new.fct.start.dates <- c(new.fct.start.dates, mdt.start.dates[fct.idx[j]])
 						new.fct.end.dates <- c(new.fct.end.dates, mdt.end.dates[fct.idx[j]])
 						new.fct.names <- c(new.fct.names, fct.names[fct.idx[j]])
+						new.correc.date <- c(new.correc.date, TRUE)
+						new.correc.info <- c(new.correc.info, TRUE)
 					}
 				}
 			}
@@ -741,73 +764,79 @@ assembly.convert.mandate.table <- function(general.table, elect.table, data)
 	fct.start.dates <- c(fct.start.dates[-idx.functions], new.fct.start.dates)
 	fct.end.dates <- c(fct.end.dates[-idx.functions], new.fct.end.dates)
 	fct.names <- c(fct.names[-idx.functions], new.fct.names)
+	correc.date <- c(correc.date[-idx.functions], new.correc.date)
+	correc.info <- c(correc.info[-idx.functions], new.correc.info)
 	
 	# build assembly table
 	tlog(4,"Building new Assembly mandate table")
 	asn.tab <- data.frame(
-			general.table[indiv.idx,COL_ATT_ELU_ID],		# universal id
-			general.table[indiv.idx,COL_ATT_ELU_ID_RNE],	# RNE id
-			general.table[indiv.idx,COL_ATT_ELU_ID_ASSEMB],	# assembly id
-			general.table[indiv.idx,COL_ATT_ELU_NOM],		# last name
-			general.table[indiv.idx,COL_ATT_ELU_PRENOM],	# first name
-			general.table[indiv.idx,COL_ATT_ELU_NAIS_DATE],	# birth date
-			general.table[indiv.idx,COL_ATT_ELU_DDD],		# death date
-			general.table[indiv.idx,COL_ATT_ELU_SEXE],		# sex
-			general.table[indiv.idx,COL_ATT_ELU_NAT],		# country
-			general.table[indiv.idx,COL_ATT_ELU_NAIS_COM],	# birth city
-			general.table[indiv.idx,COL_ATT_ELU_NAIS_DPT],	# birth department
-			general.table[indiv.idx,COL_ATT_ELU_NAIS_PAYS],	# birth country
-			general.table[indiv.idx,COL_ATT_PRO_CODE],		# occupation code
-			general.table[indiv.idx,COL_ATT_PRO_NOM],		# occupation name
-			dpt.ids,										# mandate department id
-			dpt.codes,										# mandate department code
-			dpt.names,										# mandate department name
-			circo.codes,									# circonscription code
-			circo.names,									# circonscription name
-			mdt.names,										# mandate name
-			mdt.start.dates,								# mandate start date
-			mdt.end.dates,									# mandate end date
-			mdt.motives,									# mandate end motive
-			fct.names,										# function name
-			fct.start.dates,								# function start date
-			fct.end.dates,									# function end date
-			as.character(rep(NA, length(indiv.idx))),		# function end motive
-			as.character(rep(NA, length(indiv.idx))),		# political nuance
-			rep("ASSEMBLEE", length(indiv.idx)),			# data source
-			#
-			check.names=FALSE,
-			stringsAsFactors=FALSE
+		general.table[indiv.idx,COL_ATT_ELU_ID],		# universal id
+		general.table[indiv.idx,COL_ATT_ELU_ID_RNE],	# RNE id
+		general.table[indiv.idx,COL_ATT_ELU_ID_ASSEMB],	# assembly id
+		general.table[indiv.idx,COL_ATT_ELU_NOM],		# last name
+		general.table[indiv.idx,COL_ATT_ELU_PRENOM],	# first name
+		general.table[indiv.idx,COL_ATT_ELU_NAIS_DATE],	# birth date
+		general.table[indiv.idx,COL_ATT_ELU_DDD],		# death date
+		general.table[indiv.idx,COL_ATT_ELU_SEXE],		# sex
+		general.table[indiv.idx,COL_ATT_ELU_NAT],		# country
+		general.table[indiv.idx,COL_ATT_ELU_NAIS_COM],	# birth city
+		general.table[indiv.idx,COL_ATT_ELU_NAIS_DPT],	# birth department
+		general.table[indiv.idx,COL_ATT_ELU_NAIS_PAYS],	# birth country
+		general.table[indiv.idx,COL_ATT_PRO_CODE],		# occupation code
+		general.table[indiv.idx,COL_ATT_PRO_NOM],		# occupation name
+		dpt.ids,										# mandate department id
+		dpt.codes,										# mandate department code
+		dpt.names,										# mandate department name
+		circo.codes,									# circonscription code
+		circo.names,									# circonscription name
+		mdt.names,										# mandate name
+		mdt.start.dates,								# mandate start date
+		mdt.end.dates,									# mandate end date
+		mdt.motives,									# mandate end motive
+		fct.names,										# function name
+		fct.start.dates,								# function start date
+		fct.end.dates,									# function end date
+		as.character(rep(NA, length(indiv.idx))),		# function end motive
+		as.character(rep(NA, length(indiv.idx))),		# political nuance
+		rep("ASSEMBLEE", length(indiv.idx)),			# data source
+		correc.date,									# date correction
+		correc.info,									# information correction
+		#
+		check.names=FALSE,
+		stringsAsFactors=FALSE
 	)
 	colnames(asn.tab) <- c(		
-			COL_ATT_ELU_ID,
-			COL_ATT_ELU_ID_RNE,
-			COL_ATT_ELU_ID_ASSEMB,
-			COL_ATT_ELU_NOM,
-			COL_ATT_ELU_PRENOM,
-			COL_ATT_ELU_NAIS_DATE,
-			COL_ATT_ELU_DDD,
-			COL_ATT_ELU_SEXE,
-			COL_ATT_ELU_NAT,
-			COL_ATT_ELU_NAIS_COM,
-			COL_ATT_ELU_NAIS_DPT,
-			COL_ATT_ELU_NAIS_PAYS,
-			COL_ATT_PRO_CODE,
-			COL_ATT_PRO_NOM,
-			COL_ATT_DPT_ID,
-			COL_ATT_DPT_CODE,
-			COL_ATT_DPT_NOM,
-			COL_ATT_CIRC_CODE,
-			COL_ATT_CIRC_NOM,
-			COL_ATT_MDT_NOM,
-			COL_ATT_MDT_DBT,
-			COL_ATT_MDT_FIN,
-			COL_ATT_MDT_MOTIF,
-			COL_ATT_FCT_NOM,
-			COL_ATT_FCT_DBT,
-			COL_ATT_FCT_FIN,
-			COL_ATT_FCT_MOTIF,
-			COL_ATT_ELU_NUANCE,
-			COL_ATT_SOURCES
+		COL_ATT_ELU_ID,
+		COL_ATT_ELU_ID_RNE,
+		COL_ATT_ELU_ID_ASSEMB,
+		COL_ATT_ELU_NOM,
+		COL_ATT_ELU_PRENOM,
+		COL_ATT_ELU_NAIS_DATE,
+		COL_ATT_ELU_DDD,
+		COL_ATT_ELU_SEXE,
+		COL_ATT_ELU_NAT,
+		COL_ATT_ELU_NAIS_COM,
+		COL_ATT_ELU_NAIS_DPT,
+		COL_ATT_ELU_NAIS_PAYS,
+		COL_ATT_PRO_CODE,
+		COL_ATT_PRO_NOM,
+		COL_ATT_DPT_ID,
+		COL_ATT_DPT_CODE,
+		COL_ATT_DPT_NOM,
+		COL_ATT_CIRC_CODE,
+		COL_ATT_CIRC_NOM,
+		COL_ATT_MDT_NOM,
+		COL_ATT_MDT_DBT,
+		COL_ATT_MDT_FIN,
+		COL_ATT_MDT_MOTIF,
+		COL_ATT_FCT_NOM,
+		COL_ATT_FCT_DBT,
+		COL_ATT_FCT_FIN,
+		COL_ATT_FCT_MOTIF,
+		COL_ATT_ELU_NUANCE,
+		COL_ATT_SOURCES,
+		COL_ATT_CORREC_DATE,
+		COL_ATT_CORREC_INFO
 	)
 	
 	# order the Assembly table
@@ -911,7 +940,6 @@ assembly.clean.mandate.table <- function(asn.tab)
 	{	tlog(6,"Removing ",length(idx.rm)," rows from the table")
 		asn.tab <- asn.tab[-idx.rm,]
 	}
-	
 	
 	# record the Assembly table
 	folder <- file.path(FOLDER_COMP_SRC_ASSEMB, "D")
@@ -1240,7 +1268,10 @@ assembly.update.rne.table <- function(rne.tab, asn.tab, row.conv)
 		
 		# overwrite NA values using Assembly data
 		cols <- intersect(colnames(result)[which(is.na(result[idx1,]))], colnames(asn.tab))
-		result[idx1, cols] <- asn.tab[idx2, cols]
+		if(length(cols)>0)
+		{	result[idx1, cols] <- asn.tab[idx2, cols]
+			result[idx1, COL_ATT_CORREC_INFO] <- TRUE
+		}
 		
 		# update source column
 		result[idx1, COL_ATT_SOURCES] <- paste(result[idx1, COL_ATT_SOURCES], asn.tab[idx2, COL_ATT_SOURCES], sep=",")

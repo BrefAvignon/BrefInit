@@ -294,6 +294,10 @@ senate.load.elect.table <- function(type)
 	for(c in 1:ncol(elect.table))
 		elect.table[which(elect.table[,c]==""),c] <- NA
 	
+	# add correction columns
+	elect.table <- cbind(elect.table, rep(FALSE,nrow(elect.table)), rep(FALSE,nrow(elect.table)))
+	colnames(elect.table)[(ncol(elect.table)-1):ncol(elect.table)] <- c(COL_ATT_CORREC_DATE, COL_ATT_CORREC_INFO)
+	
 	return(elect.table)
 }
 
@@ -397,6 +401,8 @@ senate.convert.mandate.table <- function(general.table, elect.table, type)
 		fct.end.dates,								# function end date
 		rep(NA, length(idx)),						# function end motive
 		rep("SENAT", length(idx)),					# data source
+		general.table[idx,COL_ATT_CORREC_DATE],		# date correction
+		general.table[idx,COL_ATT_CORREC_INFO],		# information correction
 		#
 		check.names=FALSE,
 		stringsAsFactors=FALSE
@@ -422,7 +428,9 @@ senate.convert.mandate.table <- function(general.table, elect.table, type)
 		COL_ATT_FCT_DBT,
 		COL_ATT_FCT_FIN,
 		COL_ATT_FCT_MOTIF,
-		COL_ATT_SOURCES
+		COL_ATT_SOURCES,
+		COL_ATT_CORREC_DATE,
+		COL_ATT_CORREC_INFO
 	)
 	
 	# possibly add location columns
@@ -871,23 +879,34 @@ senate.update.rne.table <- function(rne.tab, sen.tab, row.conv)
 		
 		# overwrite NA values using Senate data
 		cols <- which(is.na(result[idx1,]))
-		result[idx1, cols] <- sen.tab[idx2, cols]
+		if(length(cols)>0)
+		{	result[idx1, cols] <- sen.tab[idx2, cols]
+			result[idx1, COL_ATT_CORREC_INFO] <- TRUE
+		}
 		
 		# update source column
 		result[idx1, COL_ATT_SOURCES] <- paste(result[idx1, COL_ATT_SOURCES], sen.tab[idx2, COL_ATT_SOURCES], sep=",")
 		
 # TODO actually, this is true only for the senate mandates, not the others
-# for them, the date may be NA, and only the year may be available (or even nothing at all)
-# This part was not finished as we finally decided not use non-senatorial tables (from the Senate DB)
+#      for them, the date may be NA, and only the year may be available (or even nothing at all)
+# NOTE This part was not finished as we finally decided not use non-senatorial tables (from the Senate DB)
 		# force the mandate/function dates to the Senate ones (considered more reliable)
 		if(!is.na(sen.tab[idx2, COL_ATT_MDT_DBT]))
-			result[idx1, COL_ATT_MDT_DBT] <- sen.tab[idx2, COL_ATT_MDT_DBT]
+		{	result[idx1, COL_ATT_MDT_DBT] <- sen.tab[idx2, COL_ATT_MDT_DBT]
+			result[idx1, COL_ATT_CORREC_DATE] <- TRUE
+		}
 		if(!is.na(sen.tab[idx2, COL_ATT_MDT_FIN]))
-			result[idx1, COL_ATT_MDT_FIN] <- sen.tab[idx2, COL_ATT_MDT_FIN]
+		{	result[idx1, COL_ATT_MDT_FIN] <- sen.tab[idx2, COL_ATT_MDT_FIN]
+			result[idx1, COL_ATT_CORREC_DATE] <- TRUE
+		}
 		if(!is.na(sen.tab[idx2, COL_ATT_FCT_DBT]))
-			result[idx1, COL_ATT_FCT_DBT] <- sen.tab[idx2, COL_ATT_FCT_DBT]
+		{	result[idx1, COL_ATT_FCT_DBT] <- sen.tab[idx2, COL_ATT_FCT_DBT]
+			result[idx1, COL_ATT_CORREC_DATE] <- TRUE
+		}
 		if(!is.na(sen.tab[idx2, COL_ATT_MDT_FIN]))
-			result[idx1, COL_ATT_FCT_FIN] <- sen.tab[idx2, COL_ATT_FCT_FIN]
+		{	result[idx1, COL_ATT_FCT_FIN] <- sen.tab[idx2, COL_ATT_FCT_FIN]
+			result[idx1, COL_ATT_CORREC_DATE] <- TRUE
+		}
 	}
 	
 	# insert new Senate rows into existing RNE table

@@ -56,6 +56,8 @@ COL_ATT_CIRCE_NOM <- "Libelle circo euro"
 COL_ATT_COM_CODE <- "Code Insee commune"
 COL_ATT_COM_NOM <- "Libelle commune"
 COL_ATT_COM_POP <- "Population commune"
+COL_ATT_CORREC_DATE <- "Correction dates"
+COL_ATT_CORREC_INFO <- "Correction autres"
 COL_ATT_DPT_CODE <- "Code departement"
 COL_ATT_DPT_ID <- "ID departement"
 COL_ATT_DPT_NOM <- "Libelle departement"
@@ -136,7 +138,9 @@ COLS_ATT_NORMALIZED <- c(
 	COL_ATT_FCT_DBT,
 	COL_ATT_FCT_FIN,
 	COL_ATT_FCT_MOTIF,
-	COL_ATT_SOURCES
+	COL_ATT_SOURCES,
+	COL_ATT_CORREC_DATE,
+	COL_ATT_CORREC_INFO
 )
 
 # location names
@@ -172,6 +176,8 @@ LONGNAMES[COL_ATT_CIRCE_NOM] <- "Libellé de la circonscription européenne"
 LONGNAMES[COL_ATT_COM_CODE] <- "Code de la commune"
 LONGNAMES[COL_ATT_COM_NOM] <- "Libellé de la commune"
 LONGNAMES[COL_ATT_COM_POP] <- "Population de la commune"
+LONGNAMES[COL_ATT_CORREC_DATE] <- "Modification de date(s)"
+LONGNAMES[COL_ATT_CORREC_INFO] <- "Autres modifications"
 LONGNAMES[COL_ATT_DPT_ID] <- "Id unique du département"
 LONGNAMES[COL_ATT_DPT_CODE] <- "Code du département"
 LONGNAMES[COL_ATT_DPT_NOM] <- "Libellé du département"
@@ -219,6 +225,8 @@ BASENAMES[COL_ATT_CIRCE_NOM] <- "circe_lib"
 BASENAMES[COL_ATT_COM_CODE] <- "commune_code"
 BASENAMES[COL_ATT_COM_NOM] <- "commune_lib"
 BASENAMES[COL_ATT_COM_POP] <- "commune_pop"
+BASENAMES[COL_ATT_CORREC_DATE] <- "correc_date"
+BASENAMES[COL_ATT_CORREC_INFO] <- "correc_info"
 BASENAMES[COL_ATT_DPT_CODE] <- "dept_code"
 BASENAMES[COL_ATT_DPT_ID] <- "dept_id"
 BASENAMES[COL_ATT_DPT_NOM] <- "dept_lib"
@@ -259,13 +267,15 @@ COL_TYPES <- c()
 COL_TYPES[COL_ATT_CANT_CODE] <- "cat"
 COL_TYPES[COL_ATT_CANT_ID] <- "cat"
 COL_TYPES[COL_ATT_CANT_NOM] <- "nom"
-COL_TYPES[COL_ATT_COM_CODE] <- "cat"
-COL_TYPES[COL_ATT_COM_NOM] <- "nom"
-COL_TYPES[COL_ATT_COM_POP] <- "num"
 COL_TYPES[COL_ATT_CIRC_CODE] <- "cat"
 COL_TYPES[COL_ATT_CIRC_NOM] <- "nom"
 COL_TYPES[COL_ATT_CIRCE_CODE] <- "cat"
 COL_TYPES[COL_ATT_CIRCE_NOM] <- "nom"
+COL_TYPES[COL_ATT_COM_CODE] <- "cat"
+COL_TYPES[COL_ATT_COM_NOM] <- "nom"
+COL_TYPES[COL_ATT_COM_POP] <- "num"
+COL_TYPES[COL_ATT_CORREC_DATE] <- "cat"
+COL_TYPES[COL_ATT_CORREC_INFO] <- "cat"
 COL_TYPES[COL_ATT_DPT_ID] <- "nom"
 COL_TYPES[COL_ATT_DPT_CODE] <- "cat"
 COL_TYPES[COL_ATT_DPT_NOM] <- "nom"
