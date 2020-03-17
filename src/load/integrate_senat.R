@@ -879,9 +879,10 @@ senate.update.rne.table <- function(rne.tab, sen.tab, row.conv, type)
 	# process the Senate rows that are matched in the RNE table
 	exist.rows <- which(!is.na(row.conv))
 	tlog(4,"Updating the ",length(exist.rows)," matching rows in the RNE table")
-	for(idx2 in exist.rows)
-	{	idx1 <- row.conv[idx2]
-		tlog(6,"Processing row ",idx1)
+	for(i in 1:length(exist.rows))
+	{	idx2 <- exist.rows[i]
+		idx1 <- row.conv[idx2]
+		tlog(6,"Processing row ",idx1," (",i,"/",length(exist.rows),")")
 		
 		# overwrite NA values using Senate data
 		cols <- which(is.na(result[idx1,]))
@@ -914,17 +915,19 @@ senate.update.rne.table <- function(rne.tab, sen.tab, row.conv, type)
 			result[idx1, COL_ATT_CORREC_DATE] <- TRUE
 		}
 	}
+	tlog(4,"Updated ",length(exist.rows)," rows (",(100*length(exist.rows)/nrow(result)),"%)")
 	
 	# insert new Senate rows into existing RNE table
 	missing.rows <- which(is.na(row.conv))
 	#missing.rows <- which(is.na(row.conv) & get.year(sen.tab[,COL_ATT_MDT_DBT])>=2001)
-	tlog(4,"Inserting ",length(missing.rows)," missing rows in the RNE table")
+	tlog(4,"Inserting ",length(missing.rows)," missing rows (",(100*length(missing.rows)/nrow(result)),"%) in the RNE table")
 	result <- rbind(result, sen.tab[missing.rows,])
 	# sort the resulting table
 	result <- result[order(result[,COL_ATT_DPT_CODE], 
 					result[,COL_ATT_ELU_NOM], result[,COL_ATT_ELU_PRENOM], 
 					result[,COL_ATT_MDT_DBT], result[,COL_ATT_MDT_FIN],
 					result[,COL_ATT_FCT_DBT], result[,COL_ATT_FCT_FIN]) ,]
+	tlog(4,"Table now contains ",nrow(result)," rows")
 	
 	# record the corrected/completed table
 	rne.tab.file <- file.path(FOLDER_COMP_SRC_SEN, type, "data_rne2.txt")

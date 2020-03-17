@@ -156,9 +156,9 @@ fix.id.problems <- function(data)
 			corrected.ids <- which(data[,COL_ATT_ELU_ID_RNE]!=mat[,1])
 			data[,COL_ATT_ELU_ID_RNE] <- mat[,1]
 			data[,COL_ATT_CORREC_INFO] <- as.logical(mat[,2])
-			tlog(2,"Corrected ",length(corrected.ids)," ids")
+			tlog(2,"Corrected ",length(corrected.ids)," ids (",(100*length(corrected.ids)/nrow(data)),"%)")
 		}
-		tlog(2,"Now ",nrow(data)," rows and ",ncol(data)," columns in main table")
+		tlog(2,"Now ",nrow(data)," rows and ",ncol(data)," columns in table")
 	}
 	
 	return(data)
@@ -246,6 +246,7 @@ apply.adhoc.corrections <- function(data, col.map, correc.file)
 	correc.table <- load.correction.table(col.map, correc.file)
 	
 	# apply ad hoc corrections
+	corrected.rows <- c()
 	if(nrow(correc.table)>0)	
 	{	tlog(0,"Applying ad hoc corrections")
 		
@@ -284,7 +285,8 @@ apply.adhoc.corrections <- function(data, col.map, correc.file)
 					}
 					tlog(4,"Replacing ",correc.table[r,COL_CORREC_VALAVT]," by ",correc.table[r,COL_CORREC_VALAPR])
 					data[idx,correc.attr] <- correc.table[r,COL_CORREC_VALAPR]
-					data[idx,correc.col] <- TRUE 
+					data[idx,correc.col] <- TRUE
+					corrected.rows <- union(corrected.rows,idx)
 				}
 			}
 			
@@ -320,6 +322,7 @@ apply.adhoc.corrections <- function(data, col.map, correc.file)
 							{	tlog(4,"Correcting entry: ",paste(correc.table[r,], collapse=";"))
 								data[row,correc.attr] <- correc.table[r,COL_CORREC_VALAPR]
 								data[idx,correc.col] <- TRUE
+								corrected.rows <- union(corrected.rows,idx)
 							}
 						}
 					}
@@ -341,19 +344,21 @@ apply.adhoc.corrections <- function(data, col.map, correc.file)
 								tlog(4,"Correcting entry: ",paste(correc.table[r,], collapse=";"))
 							data[idx,correc.attr] <- correc.table[r,COL_CORREC_VALAPR]
 							data[idx,correc.col] <- TRUE 
+							corrected.rows <- union(corrected.rows,idx)
 						}
 					}
 				}
 			}
 		}
+		tlog(2,"Corrected ",length(corrected.rows)," rows in total (",(100*length(corrected.rows)/nrow(data)),"%)")
 		
 		# remove the marked rows
 		if(length(idx.rm)>0)
-		{	tlog(2,"Removing ",length(idx.rm)," from the table")
+		{	tlog(2,"Removing ",length(idx.rm)," rows from the table (",(100*length(idx.rm)/nrow(data)),"%)")
 			data <- data[-idx.rm,]
 		}
 		
-		tlog(2,"Now ",nrow(data)," rows and ",ncol(data)," columns in main table")
+		tlog(2,"Now ",nrow(data)," rows and ",ncol(data)," columns in table")
 	}
 	
 	return(data)
@@ -415,7 +420,7 @@ apply.systematic.corrections <- function(data)
 	{	tlog(0,"Normalizing municipality ids")
 		# we simply keep the first three characters of the id
 		data[,COL_ATT_COM_CODE] <- substr(x=data[,COL_ATT_COM_CODE], start=1, stop=3)
-		tlog(2,"Now ",nrow(data)," rows and ",ncol(data)," columns in main table")
+		tlog(2,"Now ",nrow(data)," rows and ",ncol(data)," columns in table")
 	}
 	
 	# replace the NC political nuance by proper NAs
@@ -425,7 +430,7 @@ apply.systematic.corrections <- function(data)
 		if(length(idx)>0)
 			data[idx,COL_ATT_ELU_NUANCE] <- NA
 		tlog(2,"Fixed ",length(idx)," rows")
-		tlog(2,"Now ",nrow(data)," rows and ",ncol(data)," columns in main table")
+		tlog(2,"Now ",nrow(data)," rows and ",ncol(data)," columns in table")
 	}
 	
 	# remove rows without mandate dates and without function dates
@@ -433,22 +438,24 @@ apply.systematic.corrections <- function(data)
 	if(COL_ATT_FCT_DBT %in% colnames(data))
 	{	idx <- which(is.na(data[,COL_ATT_MDT_DBT]) & is.na(data[,COL_ATT_MDT_FIN]) 
 						& is.na(data[,COL_ATT_FCT_DBT]) & is.na(data[,COL_ATT_FCT_FIN]))
+		tlog(2,"Removed ",length(idx)," incomplete rows (",(100*length(idx)/nrow(data)),"%)")
 		if(length(idx)>0)
 			data <- data[-idx, ]
-		tlog(2,"Removed ",length(idx)," incomplete rows")
-		tlog(2,"Now ",nrow(data)," rows and ",ncol(data)," columns in main table")
+		tlog(2,"Now ",nrow(data)," rows and ",ncol(data)," columns in table")
 	}
 	
-	# use mandate start date when function start date is missing 
+	# use mandate start date when function start date is missing
+	corr.rows <- c()
 	if(COL_ATT_FCT_NOM %in% colnames(data))
 	{	tlog(0,"Completing missing function start dates using mandate start dates")
 		idx <- which(!is.na(data[,COL_ATT_FCT_NOM]) & is.na(data[,COL_ATT_FCT_DBT]))
 		if(length(idx)>0)
 		{	data[idx,COL_ATT_FCT_DBT] <- data[idx,COL_ATT_MDT_DBT]
-			data[idx,COL_ATT_CORREC_DATE] <- TRUE 
+			data[idx,COL_ATT_CORREC_DATE] <- TRUE
+			corr.rows <- union(corr.rows, idx)
 		}
 		tlog(2,"Fixed ",length(idx)," rows")
-		tlog(2,"Now ",nrow(data)," rows and ",ncol(data)," columns in main table")
+		tlog(2,"Now ",nrow(data)," rows and ",ncol(data)," columns in table")
 	}
 	
 	# use mandate end date when function end date is missing 
@@ -458,10 +465,12 @@ apply.systematic.corrections <- function(data)
 		if(length(idx)>0)
 		{	data[idx,COL_ATT_FCT_FIN] <- data[idx,COL_ATT_MDT_FIN]
 			data[idx,COL_ATT_CORREC_DATE] <- TRUE 
+			corr.rows <- union(corr.rows, idx)
 		}			
 		tlog(2,"Fixed ",length(idx)," rows")
-		tlog(2,"Now ",nrow(data)," rows and ",ncol(data)," columns in main table")
+		tlog(2,"Now ",nrow(data)," rows and ",ncol(data)," columns in table")
 	}
+	tlog(0,"Fixed a total of ",length(corr.rows)," rows (",(100*length(corr.rows)/nrow(data)),"%) for start/end function date using mandate dates")
 	
 	return(data)
 }
@@ -517,7 +526,7 @@ convert.col.types <- function(data)
 		else
 			tlog(2,"Col. \"",col.name,"\": simple string, no conversion")
 	}
-	tlog(2,"Now ",nrow(data)," rows and ",ncol(data)," columns in main table")
+	tlog(2,"Now ",nrow(data)," rows and ",ncol(data)," columns in table")
 	
 	
 	# convert population numbers to actual integers
@@ -644,7 +653,7 @@ merge.similar.rows <- function(data)
 	codes <- names(tt)[which(tt>1)]
 	tlog(2,"Looking for possibly redundant rows: found ",length(codes))
 	
-	# identify compatible rows amongst redundant ones
+	# identify compatible rows against redundant ones
 	tlog(2,"Looking for compatible rows among them")
 	tmp <- lapply(codes, function(code)
 			{	res <- c()
@@ -673,7 +682,8 @@ merge.similar.rows <- function(data)
 				return(res)
 			})
 	
-	# actually remove deleted rows
+	# actually remove the rows marked for deletion
+	nbr.before <- nrow(data)
 	removed.nbr <- 0
 	if(length(tmp)>0)
 	{	idx <- unlist(tmp)
@@ -682,9 +692,9 @@ merge.similar.rows <- function(data)
 			data <- data[-idx,]
 		}
 	}
+	tlog(2,"Done merging compatible rows, removed ",removed.nbr," rows (",(100*removed.nbr/nbr.before),"%)")
 	
-	tlog(2,"Done merging compatible rows, removed ",removed.nbr," rows")
-	tlog(2,"Now ",nrow(data)," rows and ",ncol(data)," columns in main table")
+	tlog(2,"Now ",nrow(data)," rows and ",ncol(data)," columns in table")
 	return(data)
 }
 
@@ -706,7 +716,7 @@ normalize.col.order <- function(data)
 		stop("Problem with the number of columns when loading the table, after reordering")
 	else
 		data <- data[,norm.cols]
-	tlog(2,"Now ",nrow(data)," rows and ",ncol(data)," columns in main table")
+	tlog(2,"Now ",nrow(data)," rows and ",ncol(data)," columns in table")
 	
 	return(data)
 }
@@ -1086,7 +1096,7 @@ merge.overlapping.mandates <- function(data)
 			}
 		}
 	}
-	tlog(2, "Total number of merged overlapping rows: ",nbr.corr*2, " (",100*nbr.corr*2/nrow(data),"%)")
+	tlog(2, "Total number of rows deleted after merges: ",nbr.corr, " (",100*nbr.corr/nrow(data),"%)")
 	
 	if(length(idx.rmv)>0)
 		data <- data[-idx.rmv,]
@@ -1110,6 +1120,7 @@ merge.overlapping.mandates <- function(data)
 split.long.mandates <- function(data, election.file, series.file)
 {	tlog(0,"Split rows spanning several mandates")
 	series.present <- hasArg(series.file)
+	nbr.before <- nrow(data)
 	col.mdt <- c(COL_ATT_MDT_DBT, COL_ATT_MDT_FIN)
 	col.fct <- c(COL_ATT_FCT_DBT, COL_ATT_FCT_FIN)
 	has.fct <- COL_ATT_FCT_DBT %in% colnames(data)
@@ -1230,9 +1241,10 @@ split.long.mandates <- function(data, election.file, series.file)
 			}
 		}
 	}
-	tlog(2,"Found ",nbr.splits," rows spanning several actual mandates and split")
+	tlog(2,"Added ",nbr.splits," rows (",(100*nbr.splits/nbr.before),"%) to the table by splitting periods spanning several actual mandates")
 	
 	data <- rbind(data, new.data)
+	tlog(2, "Table now containing ",nrow(data)," rows")
 	return(data)
 }
 
@@ -1252,6 +1264,7 @@ split.long.mandates <- function(data, election.file, series.file)
 remove.micro.mandates <- function(data, tolerance)
 {	tlog(0,"Removing micro-mandates, for a duration <",tolerance," days")
 	nbr.removed <- 0
+	nbr.before <- nrow(data)
 	
 	# compute duration in number of days
 	idx <- which(!is.na(data[,COL_ATT_MDT_DBT]) & !is.na(data[,COL_ATT_MDT_FIN]))
@@ -1307,7 +1320,8 @@ remove.micro.mandates <- function(data, tolerance)
 		}
 	}
 	
-	tlog(2,"Removed a total of ",nbr.removed," rows corresponding to micro-mandates")
+	tlog(2,"Removed a total of ",nbr.removed," rows (",(100*nbr.removed/nbr.before),"%) corresponding to micro-mandates")
+	tlog(2, "Number of rows remaining: ",nrow(data))
 	return(data)
 }
 
