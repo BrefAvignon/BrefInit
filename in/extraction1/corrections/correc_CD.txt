@@ -97,3 +97,4 @@ NA	NA	NA	NA	Libellé du canton	MARSEILLE VAUBAN	VAUBAN	Nom existant déjà sous 
 11633	1156223	RIGAULT	SOPHIE	Date fin mandat	1/4/2015	NA	Corrigé pour mandat courant
 11646	34161	TOUZET	ALEXANDRE	Date fin mandat	1/4/2015	NA	Corrigé pour mandat courant
 11652	1493742	VERMILLET	BRIGITTE	Date fin mandat	1/4/2015	NA	Corrigé pour mandat courant
+12293	863232	LOUIS-CARABIN	Gabrielle	Date fin mandat	1/4/2011	22/3/2015	Correction (WP)

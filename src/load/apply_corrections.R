@@ -655,8 +655,11 @@ merge.similar.rows <- function(data)
 	
 	# identify compatible rows against redundant ones
 	tlog(2,"Looking for compatible rows among them")
-	tmp <- lapply(codes, function(code)
-			{	res <- c()
+	tmp <- lapply(1:length(codes), function(i)
+			{	code <- codes[i]
+				tlog(4,"Processing code ",code," (",i,"/",length(codes),")")
+				res <- c()
+				
 				rs <- which(concat==code)
 				while(length(rs)>=2)
 				{	r1 <- rs[1]
@@ -664,7 +667,15 @@ merge.similar.rows <- function(data)
 					r2 <- 1
 					while(r2<=length(rs))
 					{	if(all(is.na(data[r1,-rm.col]) | is.na(data[rs[r2],-rm.col]) | data[r1,-rm.col]==data[rs[r2],-rm.col]))
-						{	idx <- which(is.na(data[r1,]))
+						{	tlog(6, "Found a match:")
+							tlog(6, paste(data[r1,],collapse=","),", ", 
+									format(data[r1,COL_ATT_MDT_DBT]),"--",format(data[r1,COL_ATT_MDT_FIN])," <<>> ",
+									format(data[r1,COL_ATT_FCT_DBT]),"--",format(data[r1,COL_ATT_FCT_FIN]))
+							tlog(6, paste(data[rs[r2],],collapse=","),", ",
+									format(data[rs[r2],COL_ATT_MDT_DBT]),"--",format(data[rs[r2],COL_ATT_MDT_FIN])," <<>> ",
+									format(data[rs[r2],COL_ATT_FCT_DBT]),"--",format(data[rs[r2],COL_ATT_FCT_FIN]))
+							
+							idx <- which(is.na(data[r1,]))
 							if(length(idx)>0)
 							{	data[r1,idx] <<- data[rs[r2],idx]
 								if(length(intersect(idx,date.cols))>0)
