@@ -784,11 +784,10 @@ adjust.function.dates <- function(data)
 				data[r,COL_ATT_CORREC_DATE] <- TRUE
 			}
 		}
-		tlog(2, "Total number of corrected function dates: ",nbr.corr, " (",(100*nbr.corr/nrow(data)),"%)")
-		
-		tlog(2, "Number of rows remaining: ",nrow(data))
 	}
 	
+	tlog(2, "Total number of corrected function dates: ",nbr.corr, " (",(100*nbr.corr/nrow(data)),"%)")
+	tlog(2, "Number of rows remaining: ",nrow(data))
 	return(data)
 }
 

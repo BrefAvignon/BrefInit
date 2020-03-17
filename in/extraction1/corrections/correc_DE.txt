@@ -3,5 +3,26 @@ Row	Id RNE	Nom	Prenom	Attribut	ValAvt	ValApr	Commentaire
 88	850	MORANO	Nadine	Date fin mandat	30/6/2014	NA	Correction pour fusion
 97	833186	ALLIOT-MARIE	Michèle	Date fin mandat	30/6/2014	NA	Correction pour fusion
 145	22359	D'ORNANO	Mireille	Date fin mandat	30/6/2014	NA	Correction pour fusion
+147	87	FLEURY VLASTO	Dominique	Date debut mandat	17/6/2004	1/1/2000	Correction (WP)
+41	1083	DE VILLIERS	Philippe	Date debut mandat	9/6/2002	20/7/2004	Correction (WP)
+42	1083	DE VILLIERS	Philippe	Date debut mandat	7/6/2009	20/7/1999	Correction (WP)
+42	1083	DE VILLIERS	Philippe	Date fin mandat	30/6/2014	16/12/1999	Correction (WP)
+4	2553	COTTIGNY	Jean-Louis	Date debut mandat	13/6/2004	17/6/2012	Correction (WP)
+5	2553	COTTIGNY	Jean-Louis	Date debut mandat	7/6/2009	20/7/2004	Correction (WP)
+5	2553	COTTIGNY	Jean-Louis	Date fin mandat	30/6/2014	13/7/2009	Correction (WP)
+52	526701	LE FOLL	Stéphane	Date fin mandat	30/6/2014	6/6/2009	Correction (WP)
+53	526701	LE FOLL	Stéphane	Date fin mandat	30/6/2014	15/5/2012	Correction (WP)
+27	836476	PEILLON	Vincent	Date fin mandat	30/6/2014	6/6/2009	Correction (WP)
+165	836476	PEILLON	Vincent	Date fin mandat	30/6/2014	15/5/2015	Correction (WP)
+166	836476	PEILLON	Vincent	Date fin mandat	NA	1/7/2019	Mise à jour (WP)
+160	837980	LE PEN	Jean-Marie	Date debut mandat	7/6/2009	24/7/1984	Correction (WP)
+160	837980	LE PEN	Jean-Marie	Date fin mandat	30/6/2014	10/4/2003	Correction (WP)
+161	837980	LE PEN	Jean-Marie	Date fin mandat	NA	1/7/2019	Mise à jour (WP)
+205	837987	CAVADA	Jean-Marie	Date fin mandat	NA	1/7/2019	Mise à jour (WP)
+101	962324	ARIF	Kader	Date fin mandat	30/6/2014	6/6/2009	Correction (WP)
+102	962324	ARIF	Kader	Date fin mandat	30/6/2014	15/5/2012	Correction (WP)
+32	1048123	SAÏFI	Tokia	Date fin mandat	NA	1/7/2019	Mise à jour (WP)
+153	1501530	GROSSETÊTE	Françoise	Date debut mandat	13/6/1999	12/6/1994	Correction (WP)
+155	1501530	GROSSETÊTE	Françoise	Date fin mandat	NA	1/7/2019	Mise à jour (WP)
 NA	NA	NA	NA	Date debut mandat	1/7/2014	25/5/2014	Rectifié pour date election
 NA	NA	NA	NA	Date fin mandat	30/6/2014	24/5/2014	Rectifié pour date election
