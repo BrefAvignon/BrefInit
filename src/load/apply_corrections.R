@@ -156,7 +156,7 @@ fix.id.problems <- function(data)
 			corrected.ids <- which(data[,COL_ATT_ELU_ID_RNE]!=mat[,1])
 			data[,COL_ATT_ELU_ID_RNE] <- mat[,1]
 			data[,COL_ATT_CORREC_INFO] <- as.logical(mat[,2])
-			tlog(2,"Corrected ",length(corrected.ids)," ids (",(100*length(corrected.ids)/nrow(data)),"%)")
+			tlog(2,"Corrected ",length(corrected.ids)," rows (",(100*length(corrected.ids)/nrow(data)),"%)")
 		}
 		tlog(2,"Now ",nrow(data)," rows and ",ncol(data)," columns in table")
 	}
