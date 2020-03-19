@@ -458,10 +458,12 @@ load.d.data <- function(correct.data, complete.data)
 		
 		# assembly database
 		data <- assembly.integrate.data(data, cache=FALSE, compare=FALSE)
+		
 		# clean another time
-		#data <- merge.similar.rows(data) # no effect
-		#data <- fix.mdtfct.dates(data, election.file=FILE_VERIF_DATES_D) # only one operation (below) has an effect
-		data <- adjust.function.dates(data)
+		if(correct.data)
+		{	data <- merge.similar.rows(data)
+			data <- fix.mdtfct.dates(data, election.file=FILE_VERIF_DATES_D)
+		}
 	}
 	
 	return(data)
@@ -672,6 +674,12 @@ load.s.data <- function(correct.data, complete.data)
 		
 		# assembly database
 		# no S data in the assembly database
+		
+		# clean another time
+		if(correct.data)
+		{	data <- merge.similar.rows(data)
+			data <- fix.mdtfct.dates(data, election.file=FILE_VERIF_DATES_S, series.file=FILE_VERIF_SERIES_S)
+		}
 	}
 	
 	return(data)

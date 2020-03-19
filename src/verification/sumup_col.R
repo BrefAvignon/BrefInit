@@ -449,27 +449,35 @@ sumup.col.temporal <- function(data, col, basename, ...)
 	axis(1, at=ticks, labels=format(as.Date(ticks, origin="1970-01-01"), format="%d/%m/%Y"), cex.axis=.7, las=2)
 	dev.off()
 	# plot density without NAs
-	file <- paste0(basename,"_dens.",PLOT_FORMAT)
-	tlog(4, "Plotting density in file \"",file,"\"")
-	if(PLOT_FORMAT=="pdf")
-		pdf(file)
-	else if(PLOT_FORMAT=="png")
-		png(file, width=1024, height=1024)
-	plot(density(secs), col="Red", main="Kernel density", xlab=col, xaxt="n")
-	axis(1, at=ticks, labels=format(as.Date(ticks, origin="1970-01-01"), format="%d/%m/%Y"), cex.axis=.7, las=2)
-	dev.off()
-	# plot log-density without NAs
-	file <- paste0(basename,"_logdens.",PLOT_FORMAT)
-	tlog(4, "Plotting log density (only positive for values) in file \"",file,"\"")
-	if(PLOT_FORMAT=="pdf")
-		pdf(file)
-	else if(PLOT_FORMAT=="png")
-		png(file, width=1024, height=1024)
-	suppressWarnings({
-		plot(density(secs), col="Red", main="Log Kernel density", xlab=col, log="y", xaxt="n");
+	if(length(secs)>1)
+	{	file <- paste0(basename,"_dens.",PLOT_FORMAT)
+		tlog(4, "Plotting density in file \"",file,"\"")
+		if(PLOT_FORMAT=="pdf")
+			pdf(file)
+		else if(PLOT_FORMAT=="png")
+			png(file, width=1024, height=1024)
+		plot(density(secs), col="Red", main="Kernel density", xlab=col, xaxt="n")
 		axis(1, at=ticks, labels=format(as.Date(ticks, origin="1970-01-01"), format="%d/%m/%Y"), cex.axis=.7, las=2)
-	})
-	dev.off()
+		dev.off()
+	}
+	else
+		tlog(4, "Not enough points to plot density")
+	# plot log-density without NAs
+	if(length(secs)>1)
+	{	file <- paste0(basename,"_logdens.",PLOT_FORMAT)
+		tlog(4, "Plotting log density (only positive for values) in file \"",file,"\"")
+		if(PLOT_FORMAT=="pdf")
+			pdf(file)
+		else if(PLOT_FORMAT=="png")
+			png(file, width=1024, height=1024)
+		suppressWarnings({
+			plot(density(secs), col="Red", main="Log Kernel density", xlab=col, log="y", xaxt="n");
+			axis(1, at=ticks, labels=format(as.Date(ticks, origin="1970-01-01"), format="%d/%m/%Y"), cex.axis=.7, las=2)
+		})
+		dev.off()
+	}
+	else
+		tlog(4, "Not enough points to plot log density")
 	
 	# plot distribution with NAs
 	file <- paste0(basename,"_bar_NA.",PLOT_FORMAT)

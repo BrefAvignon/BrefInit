@@ -1031,14 +1031,18 @@ merge.overlapping.mandates <- function(data)
 		else
 		{	for(j in 1:(length(idx)-1))
 			{	tlog(4,"Processing row ",j,"/",length(idx))
+				
 				for(k in (j+1):length(idx))
 				{	tlog(6,"Comparing to row ",k,"/",length(idx))
+					
 					if(date.intersect(start1=data[idx[j],COL_ATT_MDT_DBT], 						# overlapping mandates
 									end1=data[idx[j],COL_ATT_MDT_FIN],
 									start2=data[idx[k],COL_ATT_MDT_DBT], 
 									end2=data[idx[k],COL_ATT_MDT_FIN])
 							&& (is.na(fct.att) || 												# either no function specified at all in the table
 								is.na(data[idx[j],fct.att]) || is.na(data[idx[k],fct.att]) 		# or NA function in at least one of the rows
+									|| is.na(data[idx[j],COL_ATT_FCT_DBT])					# or no function date in at least one of the rows 
+									|| is.na(data[idx[k],COL_ATT_FCT_DBT])
 									|| (data[idx[j],fct.att]==data[idx[k],fct.att] && 			# or the same function in both row, in which case
 										date.intersect(start1=data[idx[j],COL_ATT_FCT_DBT],		# their dates must overlap
 												end1=data[idx[j],COL_ATT_FCT_FIN],
@@ -1151,7 +1155,7 @@ split.long.mandates <- function(data, election.file, series.file)
 	{	# specific case of Senators representing people leaving abroad: don't split mandates
 		if(!(series.present 
 				&& COL_ATT_DPT_CODE %in% colnames(series.table) 
-				&& data[r,COL_ATT_DPT_CODE]=="ZZ"))
+				&& data[r,COL_ATT_DPT_NOM]=="FRANCAIS DE L ETRANGER"))
 		{	split.flag <- TRUE
 			
 			while(split.flag)
