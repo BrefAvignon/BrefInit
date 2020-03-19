@@ -23,8 +23,8 @@ test.position.cd <- function(data, out.folder)
 	dir.create(path=folder, showWarnings=FALSE, recursive=TRUE)
 	
 	# identify all unique positions: generated unique code
-	tlog(2,"Identifying all unique positions")
-	unique.pos <- sort(unique(data[,COL_ATT_CANT_ID]))
+	tlog(2,"Identifying all unique positions")	# except specific cantons
+	unique.pos <- sort(unique(data[data[,COL_ATT_CANT_NOM]!="CANTON FICTIF",COL_ATT_CANT_ID]))
 	tlog(4,"Found ",length(unique.pos)," of them")
 	
 	# process each unique position
@@ -79,14 +79,14 @@ test.position.cd <- function(data, out.folder)
 					# check if the periods intersect
 					if(date.intersect(start1, end1, start2, end2))
 					{	# problem only if before 2015 or persons of the same sex
-						if(get.year(start1)<2015  || sex1==sex2)
+						if(get.year(start1)<2015 || get.year(start2)<2015 || sex1==sex2)
 						{	if(get.year(start1)<2015)
 								tlog(6,"Date before 2015")
 							if(sex1==sex2)
 								tlog(6,"Persons of the same sex")
 							# add to the table of problematic cases
 							tab <- rbind(tab, data[c(idx[i],idx[j]),], rep(NA,ncol(data)))
-							# add a row of NAs in order to separate pairs of cases
+							# count the problematic cases
 							count <- count + 1
 							ccount <- ccount + 1
 						}
@@ -95,7 +95,7 @@ test.position.cd <- function(data, out.folder)
 			}
 			
 			# possibly add an empty row to separate cases
-			tlog(4,"Found ",ccount," pair(s) of overlapping mandates of this specific position")
+			tlog(4,"Found ",ccount," overlaps for this specific position")
 			if(ccount>0)
 				tab <- rbind(tab, rep(NA,ncol(data)))
 		}
@@ -107,14 +107,15 @@ test.position.cd <- function(data, out.folder)
 	{	tab.file <- file.path(out.folder,"mandat_problems_overlap.txt")
 		tlog(2,"Recording in file \"",tab.file,"\"")
 		write.table(x=tab,file=tab.file,
-#				fileEncoding="UTF-8",
-				row.names=FALSE, 
-				col.names=TRUE,
-#				quote=TRUE,
-				sep="\t"
+#			fileEncoding="UTF-8",
+			row.names=FALSE, 
+			col.names=TRUE,
+#			quote=TRUE,
+			sep="\t"
 		)
-		tlog(4,"Found a total of ",count," pairs of overlapping mandates for the whole table")
 	}
+
+	tlog(4,"Found a total of ",count," overlaps for the whole table")
 }
 
 
@@ -156,7 +157,7 @@ test.position.cm <- function(data, out.folder)
 		funct <- tmp[3]
 		tlog(4,"Processing function ",p,"/",length(unique.pos)," dpt=",dpt," city=",com," function=",funct)
 		
-		# get the corresponding mandates
+		# get the corresponding functions
 		idx <- which(data[,COL_ATT_DPT_CODE]==dpt & data[,COL_ATT_COM_CODE]==com & data[,COL_ATT_FCT_NOM]==funct)
 		tlog(4,"Found ",length(idx)," function mandates")
 		
@@ -164,7 +165,7 @@ test.position.cm <- function(data, out.folder)
 		{	folder2 <- file.path(folder,dpt)
 			dir.create(path=folder2, showWarnings=FALSE, recursive=TRUE)
 			
-			# record the sequence of mandates for this position
+			# record the sequence of functions for this position
 			idx2 <- idx[order(data[idx,COL_ATT_MDT_DBT], data[idx,COL_ATT_MDT_FIN], 
 							data[idx,COL_ATT_FCT_DBT], data[idx,COL_ATT_FCT_DBT])]
 			tab2 <- cbind(idx2, data[idx2,])
@@ -225,11 +226,11 @@ test.position.cm <- function(data, out.folder)
 	{	tab.file <- file.path(out.folder,"fonction_problems_overlap.txt")
 		tlog(2,"Recording in file \"",tab.file,"\"")
 		write.table(x=tab,file=tab.file,
-#				fileEncoding="UTF-8",
-				row.names=FALSE, 
-				col.names=TRUE,
-#				quote=TRUE,
-				sep="\t"
+#			fileEncoding="UTF-8",
+			row.names=FALSE, 
+			col.names=TRUE,
+#			quote=TRUE,
+			sep="\t"
 		)
 		tlog(4,"Found a total of ",count," pairs of overlapping mandates for the whole table")
 	}
@@ -310,7 +311,6 @@ test.position.cr <- function(data, out.folder)
 #			fileEncoding="Latin1"		# original tables seem to be encoded in Latin1 (ANSI)
 			colClasses=c("character","character","integer","Date","Date")
 	)
-	# TODO should not use region codes, because they changed over time
 	
 	# set up start/end dates
 	start.date <- min(c(data[,COL_ATT_MDT_DBT],data[,COL_ATT_MDT_FIN]),na.rm=TRUE)
@@ -872,7 +872,7 @@ test.position.s <- function(data, out.folder)
 #			fileEncoding="Latin1"		# original tables seem to be encoded in Latin1 (ANSI)
 			colClasses=c("character","character","integer","Date","Date")
 	)
-	# in theory, should not use department codes, because they changed over time
+	# NOTE in theory, should not use department codes, because they changed over time
 	
 	# set up start/end dates
 	start.date <- min(c(data[,COL_ATT_MDT_DBT],data[,COL_ATT_MDT_FIN]),na.rm=TRUE)

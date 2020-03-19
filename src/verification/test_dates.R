@@ -15,8 +15,9 @@
 #
 # data: table containing the data.
 # out.folder: folder where to output the results.
+# tolerance: minimal duration of a mandate.
 #############################################################################################
-test.col.dates.generic <- function(data, out.folder)
+test.col.dates.generic <- function(data, out.folder, tolerance=7)
 {	tlog(2,"Trying to detect problems in date columns")
 	
 	# checking whether each individual date is too early or too late
@@ -115,7 +116,7 @@ test.col.dates.generic <- function(data, out.folder)
 		}
 		
 		# duration in number of days
-		limit <- NA			# minimal duration to consider a mandate is correct
+		tolerance <- NA			# minimal duration to consider a mandate is correct
 		idx <- which(!is.na(data[,COL_ATT_MDT_DBT]) & !is.na(data[,COL_ATT_MDT_FIN]))
 		if(length(idx)>0)
 		{	# compute mandate duration
@@ -132,10 +133,10 @@ test.col.dates.generic <- function(data, out.folder)
 				sep="\t"
 			)
 			
-			# compare to limit
-			if(!is.na(limit))
-				idx <- idx[duration<limit]
-			tlog(6,"Found ",length(idx)," mandate(s) which are too short (<",limit," days)")
+			# compare to tolerance
+			if(!is.na(tolerance))
+				idx <- idx[duration<tolerance]
+			tlog(6,"Found ",length(idx)," mandate(s) which are too short (<",tolerance," days)")
 			if(length(idx)>0)
 			{	tmp <- cbind(1:length(idx),durations,data[idx,])
 				colnames(tmp)[1:2] <- c("Ligne","Duree mandat")
@@ -210,13 +211,13 @@ test.col.dates.generic <- function(data, out.folder)
 		}
 		
 		# duration in number of days
-		limit <- NA			# minimal duration to consider a function is correct
+		tolerance <- NA			# minimal duration to consider a function is correct
 		idx <- which(!is.na(data[,COL_ATT_FCT_DBT]) & !is.na(data[,COL_ATT_FCT_FIN]))
 		if(length(idx)>0)
 		{	durations <- as.integer(data[idx,COL_ATT_FCT_FIN] - data[idx,COL_ATT_FCT_DBT])
-			if(!is.na(limit))
-				idx <- idx[duration<limit]
-			tlog(6,"Found ",length(idx)," function(s) which are too short (<",limit," days)")
+			if(!is.na(tolerance))
+				idx <- idx[duration<tolerance]
+			tlog(6,"Found ",length(idx)," function(s) which are too short (<",tolerance," days)")
 			if(length(idx)>0)
 			{	tmp <- cbind(1:length(idx),durations,data[idx,])
 				colnames(tmp)[1:2] <- c("Ligne","Duree fonction")
@@ -498,7 +499,7 @@ test.col.end.motive <- function(data, out.folder)
 #############################################################################################
 test.col.dates.cd <- function(data, out.folder)
 {	# generic tests
-	test.col.dates.generic(data, out.folder)
+	test.col.dates.generic(data, out.folder, tolerance=7)
 	test.col.dates.pre.rne(data, out.folder)
 	test.col.dates.nofun(data, out.folder)
 	test.col.end.motive(data, out.folder)
@@ -543,7 +544,7 @@ test.col.dates.cd <- function(data, out.folder)
 #############################################################################################
 test.col.dates.cm <- function(data, out.folder)
 {	# generic tests
-	test.col.dates.generic(data, out.folder)
+	test.col.dates.generic(data, out.folder, tolerance=7)
 	test.col.dates.pre.rne(data, out.folder)
 	test.col.dates.nofun(data, out.folder)
 	test.col.end.motive(data, out.folder)
@@ -585,7 +586,7 @@ test.col.dates.cm <- function(data, out.folder)
 #############################################################################################
 test.col.dates.cr <- function(data, out.folder)
 {	# generic tests
-	test.col.dates.generic(data, out.folder)
+	test.col.dates.generic(data, out.folder, tolerance=7)
 	test.col.dates.pre.rne(data, out.folder)
 	test.col.dates.nofun(data, out.folder)
 	test.col.end.motive(data, out.folder)
@@ -629,7 +630,7 @@ test.col.dates.cr <- function(data, out.folder)
 #############################################################################################
 test.col.dates.d <- function(data, out.folder)
 {	# generic tests
-	test.col.dates.generic(data, out.folder)
+	test.col.dates.generic(data, out.folder, tolerance=7)
 	test.col.dates.pre.rne(data, out.folder)
 	test.col.dates.nofun(data, out.folder)
 	test.col.end.motive(data, out.folder)
@@ -680,7 +681,7 @@ test.col.dates.d <- function(data, out.folder)
 #############################################################################################
 test.col.dates.de <- function(data, out.folder)
 {	# generic tests
-	test.col.dates.generic(data, out.folder)
+	test.col.dates.generic(data, out.folder, tolerance=7)
 	test.col.dates.pre.rne(data, out.folder)
 	test.col.end.motive(data, out.folder)
 	
@@ -721,7 +722,7 @@ test.col.dates.de <- function(data, out.folder)
 #############################################################################################
 test.col.dates.epci <- function(data, out.folder)
 {	# generic tests
-	test.col.dates.generic(data, out.folder)
+	test.col.dates.generic(data, out.folder, tolerance=7)
 	test.col.dates.pre.rne(data, out.folder)
 	test.col.dates.nofun(data, out.folder)
 	test.col.end.motive(data, out.folder)
@@ -739,7 +740,7 @@ test.col.dates.epci <- function(data, out.folder)
 #############################################################################################
 test.col.dates.s <- function(data, out.folder)
 {	# generic tests
-	test.col.dates.generic(data, out.folder)
+	test.col.dates.generic(data, out.folder, tolerance=7)
 	test.col.dates.pre.rne(data, out.folder)
 	test.col.dates.nofun(data, out.folder)
 	test.col.end.motive(data, out.folder)

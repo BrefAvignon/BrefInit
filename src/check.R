@@ -7,7 +7,7 @@
 #############################################################################################
 #source("src/verification/check_CD.R")
 #source("src/verification/check_CR.R")
-source("src/verification/check_D.R")
+#source("src/verification/check_D.R")
 #source("src/verification/check_DE.R")
 #source("src/verification/check_M.R")
 #source("src/verification/check_S.R")

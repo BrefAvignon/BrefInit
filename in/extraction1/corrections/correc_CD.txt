@@ -98,3 +98,9 @@ NA	NA	NA	NA	Libellé du canton	MARSEILLE VAUBAN	VAUBAN	Nom existant déjà sous 
 11646	34161	TOUZET	ALEXANDRE	Date fin mandat	1/4/2015	NA	Corrigé pour mandat courant
 11652	1493742	VERMILLET	BRIGITTE	Date fin mandat	1/4/2015	NA	Corrigé pour mandat courant
 12293	863232	LOUIS-CARABIN	Gabrielle	Date fin mandat	1/4/2011	22/3/2015	Correction (WP)
+10964	13050	RETAILLEAU	Bruno	ID RNE	13050	NA	Suppression, mandat inexistant (WP)
+10965	13050	RETAILLEAU	Bruno	Date debut mandat	9/3/2008	3/10/1988	Date incorrecte (WP)
+10965	13050	RETAILLEAU	Bruno	Date debut fonction	31/3/2011	30/11/2010	Date incorrecte (WP)
+8011	916	LEROY	Jean-Claude	Date fin mandat	13/11/2017	NA	Date incorrecte (WP)
+8013	916	LEROY	Jean-Claude	Date debut mandat	9/3/2008	25/9/1988	Date incorrecte (WP)
+7527 33849	MARCHAND	Frédéric	Date fin mandat	23/10/2017	1/10/2017	Date incorrecte (WP)

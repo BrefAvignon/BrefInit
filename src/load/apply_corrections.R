@@ -375,9 +375,9 @@ apply.adhoc.corrections <- function(data, col.map, correc.file)
 #
 # returns: data frame after the corrections.
 #############################################################################################
-apply.minimal.adhoc.corrections <- function(data)
+apply.minimal.adhoc.corrections <- function(data, type)
 {	# only for the CD table
-	if(COL_ATT_CANT_CODE %in% colnames(data))
+	if(type=="CD")
 	{	cant.map <- c()
 		cant.map["LA COTE VERMEILLE"] <- "COTE VERMEILLE"
 		cant.map["LE GOND PONTOUVRE"] <- "GOND PONTOUVRE"
@@ -1335,6 +1335,131 @@ remove.micro.mandates <- function(data, tolerance)
 	}
 	
 	tlog(2,"Removed a total of ",nbr.removed," rows (",(100*nbr.removed/nbr.before),"%) corresponding to micro-mandates")
+	tlog(2,"Number of rows remaining: ",nrow(data))
+	return(data)
+}
+
+
+
+
+#############################################################################################
+# For a given position, detects overlapping mandates and solves the problem by shortening the
+# older one.
+#
+# data: original table.
+# type: type of mandate (CD, CM, etc.).
+# tolerance: maximal overlap (if too long, the overlap is ignored, not solved here).
+#
+# return: same table, without the (minor) overlaps.
+#############################################################################################
+shorten.overlapping.mandates <- function(data, type, tolerance=1)
+{	tlog(0,"Solving mandate overlaps for unique positions")
+	count <- 0
+	
+	# some mandate types don't have unique positions
+	if(!(type %in% c("CR","DE","EPCI","S")))
+	{	# date columns
+		col.start <- COL_ATT_MDT_DBT
+		col.end <- COL_ATT_MDT_FIN
+		
+		# identify all unique position
+		tlog(2,"Identifying all unique positions")
+		if(type=="CD")
+		{	data.pos <- data[data[,COL_ATT_CANT_NOM]!="CANTON FICTIF",COL_ATT_CANT_ID]
+			unique.pos <- sort(unique(data.pos))
+		}
+		else if(type=="CM")
+		{	col.start <- COL_ATT_FCT_DBT
+			col.end <- COL_ATT_FCT_FIN
+			dpts <- data[,COL_ATT_DPT_CODE]
+			coms <- data[,COL_ATT_COM_CODE]
+			functs <- data[,COL_ATT_FCT_NOM]
+			data.pos <- apply(cbind(dpts,coms,functs),1,function(r) paste(r,collapse="_"))
+			idx <- which(is.na(functs))
+			unique.pos <- sort(unique(data.pos[-idx]))
+		}
+		else if(type=="D")
+		{	dpts <- data[,COL_ATT_DPT_CODE]
+			circos <- data[,COL_ATT_CIRC_CODE]
+			data.pos <- apply(cbind(dpts,circos),1,function(r) paste(r,collapse="_"))
+			unique.pos <- sort(unique(data.pos))
+		}
+		else if(type=="M")
+		{	dpts <- data[,COL_ATT_DPT_CODE]
+			coms <- data[,COL_ATT_COM_CODE]
+			data.pos <- apply(cbind(dpts,coms),1,function(r) paste(r,collapse="_"))
+			unique.pos <- sort(unique(data.pos))
+		}
+		tlog(4,"Found ",length(unique.pos)," of them")
+	
+		# process each unique position
+		tlog(2,"Processing each unique position")
+		for(p in 1:length(unique.pos))
+		{	tlog(4,"Processing position ",unique.pos[p], "(",p,"/",length(unique.pos),")")
+			
+			# get the corresponding rows
+			idx <- which(data.pos==unique.pos[p])
+			tlog(4,"Found ",length(idx)," rows")
+			
+			if(length(idx)>1)
+			{	# check if their dates overlap
+				ccount <- 0
+				
+				for(i in 1:(length(idx)-1))
+				{	# get the dates of the first compared mandate
+					start1 <- data[idx[i],col.start]
+					end1 <- data[idx[i],col.end]
+					sex1 <- data[idx[i],COL_ATT_ELU_SEXE]
+					tlog(6,"Considering row ",i,"/",length(idx),": ",format(start1),"--",format(end1)," (",sex1,")")
+					
+					for(j in (i+1):length(idx))
+					{	# get the dates of the second compared mandate
+						start2 <- data[idx[j],col.start]
+						end2 <- data[idx[j],col.end]
+						sex2 <- data[idx[j],COL_ATT_ELU_SEXE]
+						tlog(8,"Comparing to row ",j,"/",length(idx),": ",format(start2),"--",format(end2)," (",sex2,")")
+						
+						# check if the periods intersect
+						if(date.intersect(start1, end1, start2, end2))
+						{	# check if open end date
+							if(is.na(end1) && is.na(end2))
+								tlog(10,"Overlap with unspecified end dates: cannot solve this issue")
+							else
+							{	# check if overlap duration small enough
+								ovlp.duration <- min(end1-start2, end2-start1, na.rm=T) + 1
+								if(ovlp.duration>tolerance)
+									tlog(10,"Overlap above the specified limit (",tolerance," days): issue not solved")
+								else
+								{	if(type=="CM" || type=="D" || type=="M"
+										# for CD: unique positions before 2015, but mixed M/F pairs after 2015
+										|| (type=="CD" && (get.year(start1)<2015 || get.year(start2)<2015 || sex1==sex2)))
+									{	# adjust the end of the older mandate to avoid overlap
+										if(!is.na(end1) && (is.na(end2) || end1<end2))
+										{	end1 <- end1 - ovlp.duration
+											data[idx[i],col.end] <- end1
+											tlog(10,"After correction of the first mandate: ",format(start1),"--",format(end1)," (overlap: ",ovlp.duration," days)")
+										}
+										else
+										{	end2 <- end2 - ovlp.duration
+											data[idx[j],col.end] <- end2
+											tlog(10,"After correction of the second mandate: ",format(start2),"--",format(end2)," (overlap: ",ovlp.duration," days)")
+										}
+										# count the problematic cases
+										count <- count + 1
+										ccount <- ccount + 1
+									}
+								}
+							}
+						}
+					}
+				}
+				tlog(8,"Corrected ",ccount," overlaps for this specific position")
+			}
+		}
+		tlog(4,"Processing over")
+	}
+	
+	tlog(2,"Corrected a total of ",count," overlaps for the whole table")
 	tlog(2, "Number of rows remaining: ",nrow(data))
 	return(data)
 }
@@ -1353,10 +1478,11 @@ remove.micro.mandates <- function(data, tolerance)
 # data: the data table.
 # election.file: name of the file containing the election dates.
 # series.file: name of the file containing the series (optional, depends on the type of mandate).
+# type: type of mandate (CD, CM, etc.).
 #
 # returns: same table, but with corrected dates.
 #############################################################################################
-fix.mdtfct.dates <- function(data, election.file, series.file)
+fix.mdtfct.dates <- function(data, election.file, series.file, type)
 {	# adjust function dates so that they are contained inside the corresponding mandate period
 	data <- adjust.function.dates(data)
 	
@@ -1373,6 +1499,9 @@ fix.mdtfct.dates <- function(data, election.file, series.file)
 	# splits rows containing election dates (other than as a start date)
 	if(hasArg(election.file))
 		data <- split.long.mandates(data, election.file, series.file)
+	
+	# solve mandate intersections (same position)
+	data <- shorten.overlapping.mandates(data, type, tolerance=7)
 	
 	# removes micro-mandates again (in case split created any)
 	data <- remove.micro.mandates(data, tolerance=7)

@@ -228,7 +228,7 @@ normalize.proper.nouns <- function(strings)
 {	result <- strings
 	
 	# remove punctuation
-	result <- gsub(x=result, pattern="[^a-zA-Z1-9]", replacement=" ")
+	result <- gsub(x=result, pattern="[^a-zA-Z0-9]", replacement=" ")
 	# remove consecutive whitespaces
 	result <- gsub(x=result, pattern=" +", replacement=" ")
 	# convert to uppercase
