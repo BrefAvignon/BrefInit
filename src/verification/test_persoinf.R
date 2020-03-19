@@ -106,13 +106,15 @@ test.occupation.col <- function(data, out.folder)
 			tlog(2,"Processing occupation ",unique.code," (",i,"/",length(unique.codes),")")
 			
 			idx <- which(codes==unique.code)
-			ns <- names[idx]
-			if(any(ns!=ns[1]))
-			{	row <- c(unique.code,
-						paste(sort(unique(ns)),collapse=",")
-				)
-#				print(row)
-				tab1 <- rbind(tab1, row)
+			if(length(idx)>0)
+			{	ns <- names[idx]
+				if(any(is.na(cs) | ns!=ns[1]))
+				{	row <- c(unique.code,
+							paste(sort(unique(ns)),collapse=",")
+					)
+#					print(row)
+					tab1 <- rbind(tab1, row)
+				}
 			}
 		}
 		
@@ -160,14 +162,16 @@ test.occupation.col <- function(data, out.folder)
 			tlog(2,"Processing occupation ",unique.name," (",i,"/",length(unique.names),")")
 			
 			idx <- which(names==unique.name)
-			cs <- codes[idx]
-			if(any(cs!=cs[1]))
-			{	row <- c(
-					unique.name,
-					paste(sort(unique(cs)),collapse=",")
-				)
-#				print(row)
-				tab2 <- rbind(tab2, row)
+			if(length(idx)>0)
+			{	cs <- codes[idx]
+				if(any(is.na(cs) | cs!=cs[1]))
+				{	row <- c(
+						unique.name,
+						paste(sort(unique(cs)),collapse=",")
+					)
+#					print(row)
+					tab2 <- rbind(tab2, row)
+				}
 			}
 		}
 		
