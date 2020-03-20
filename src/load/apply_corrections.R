@@ -668,16 +668,13 @@ merge.similar.rows <- function(data)
 					while(r2<=length(rs))
 					{	if(all(is.na(data[r1,-rm.col]) | is.na(data[rs[r2],-rm.col]) | data[r1,-rm.col]==data[rs[r2],-rm.col]))
 						{	tlog(6, "Found a match:")
-							tlog(6, paste(data[r1,],collapse=","),", ", 
-									format(data[r1,COL_ATT_MDT_DBT]),"--",format(data[r1,COL_ATT_MDT_FIN])," <<>> ",
-									format(data[r1,COL_ATT_FCT_DBT]),"--",format(data[r1,COL_ATT_FCT_FIN]))
-							tlog(6, paste(data[rs[r2],],collapse=","),", ",
-									format(data[rs[r2],COL_ATT_MDT_DBT]),"--",format(data[rs[r2],COL_ATT_MDT_FIN])," <<>> ",
-									format(data[rs[r2],COL_ATT_FCT_DBT]),"--",format(data[rs[r2],COL_ATT_FCT_FIN]))
+							tlog(6, format.row(data[r1,]))
+							tlog(6, format.row(data[rs[r2],]))
 							
 							idx <- which(is.na(data[r1,]))
 							if(length(idx)>0)
 							{	data[r1,idx] <<- data[rs[r2],idx]
+								tlog(6, "After: ",format.row(data[r1,]))
 								if(length(intersect(idx,date.cols))>0)
 									data[r1,COL_ATT_CORREC_DATE] <- TRUE 
 								if(length(setdiff(idx,date.cols))>0)
@@ -751,9 +748,7 @@ adjust.function.dates <- function(data)
 	if(COL_ATT_FCT_DBT %in% colnames(data))
 	{	# process each row
 		for(r in 1:nrow(data))
-		{	str <- paste0("Considering (",r,"/",nrow(data),") ",
-					format(data[r,COL_ATT_MDT_DBT]),"--", format(data[r,COL_ATT_MDT_FIN]), " vs. ",
-					format(data[r,COL_ATT_FCT_DBT]), "--", format(data[r,COL_ATT_FCT_FIN]))
+		{	str <- paste0("Considering (",r,"/",nrow(data),") ", format.row.dates(data[r,]))
 			changed.start <- FALSE
 			changed.end <- FALSE
 			
@@ -949,8 +944,7 @@ round.mdtfct.dates <- function(data, election.file, series.file, tolerance)
 		})
 		
 		# possibly update mandate/function dates
-		bef.str <- paste0(format(data[r,COL_ATT_MDT_DBT]),"--",format(data[r,COL_ATT_MDT_FIN]),
-			if(has.fct) paste0(" <<>> ", format(data[r,COL_ATT_FCT_DBT]),"--",format(data[r,COL_ATT_FCT_FIN])) else "")
+		bef.str <- format.row.dates(data[r,])
 		changed <- FALSE
 		for(i in 1:2)
 		{	if(!is.na(idx[i]))
@@ -973,9 +967,8 @@ round.mdtfct.dates <- function(data, election.file, series.file, tolerance)
 		# log changes
 		if(changed)
 		{	tlog(6, "Before: ", bef.str)
-			tlog(6, "After: ", format(data[r,COL_ATT_MDT_DBT]),"--",format(data[r,COL_ATT_MDT_FIN]),
-				if(has.fct) paste0(" <<>> ", format(data[r,COL_ATT_FCT_DBT]),"--",format(data[r,COL_ATT_FCT_FIN])) else "")
-#			readline()
+			tlog(6, "After: ", format.row.dates(data[r,]))
+			#readline()
 			nbr.corrected <- nbr.corrected + 1
 			data[r,COL_ATT_CORREC_DATE] <- TRUE
 		}
@@ -1019,6 +1012,8 @@ merge.overlapping.mandates <- function(data, type)
 		circo.codes <- data[,COL_ATT_CANT_ID]
 	else if(type=="CM" || type=="M")
 		circo.codes <- apply(data[,c(COL_ATT_DPT_CODE,COL_ATT_COM_CODE)], 1, function(r) paste(r,collapse="_"))
+	else if(type=="CR")
+		circo.codes <- data[,COL_ATT_REG_CODE]
 	else if(type=="D")
 		circo.codes <- apply(data[,c(COL_ATT_DPT_CODE,COL_ATT_CIRC_CODE)], 1, function(r) paste(r,collapse="_"))
 	else if(type=="DE")
@@ -1050,9 +1045,9 @@ merge.overlapping.mandates <- function(data, type)
 				for(k in (j+1):length(idx))
 				{	tlog(6,"Comparing to row ",k,"/",length(idx))
 					
-					if((is.empty(circo.codes[idx[i]]) || is.empty(circo.codes[idx[j]])			# at least one NA circonscription, 
+					if((is.na(circo.codes[idx[i]]) || is.na(circo.codes[idx[j]])				# at least one NA circonscription, 
 						|| circo.codes[idx[i]]==circo.codes[idx[j]])							# or same circonscription
-							&& date.intersect(start1=data[idx[j],COL_ATT_MDT_DBT], 				# mandates overlapping temporally
+							&& date.intersect(start1=data[idx[j],COL_ATT_MDT_DBT], 				# mandates must overlap
 									end1=data[idx[j],COL_ATT_MDT_FIN],
 									start2=data[idx[k],COL_ATT_MDT_DBT], 
 									end2=data[idx[k],COL_ATT_MDT_FIN])
@@ -1067,17 +1062,11 @@ merge.overlapping.mandates <- function(data, type)
 												end2=data[idx[k],COL_ATT_FCT_FIN])))
 					)
 					{	# log detected overlap
-						tlog(10, paste(data[idx[j],], collapse=","))
-						tlog(10, paste(data[idx[k],], collapse=","))
+						tlog(10, format.row(data[idx[j],]))
+						tlog(10, format.row(data[idx[k],]))
 						tlog(8, "Overlap detected between")
-						tlog(10, format(data[idx[j],COL_ATT_MDT_DBT]),"--",format(data[idx[j],COL_ATT_MDT_FIN]),
-								if(!is.na(fct.att)) paste0(" <<>> ", 
-									format(data[idx[j],COL_ATT_FCT_DBT]),"--",format(data[idx[j],COL_ATT_FCT_FIN]),
-									" (",data[idx[j],fct.att],")") else "")
-						tlog(10, format(data[idx[k],COL_ATT_MDT_DBT]),"--",format(data[idx[k],COL_ATT_MDT_FIN]),
-								if(!is.na(fct.att)) paste0(" <<>> ",
-									format(data[idx[k],COL_ATT_FCT_DBT]),"--",format(data[idx[k],COL_ATT_FCT_FIN]),
-									" (",data[idx[k],fct.att],")") else "")
+						tlog(10, format.row.dates(data[idx[j],])," (",data[idx[j],fct.att],")")
+						tlog(10, format.row.dates(data[idx[k],])," (",data[idx[k],fct.att],")")
 						
 						# update mandate start date
 						if(is.na(data[idx[j],COL_ATT_MDT_DBT]) || is.na(data[idx[k],COL_ATT_MDT_DBT]))
@@ -1111,12 +1100,9 @@ merge.overlapping.mandates <- function(data, type)
 						
 						# log merged row
 						tlog(8, "After merge:")
-						tlog(10, paste(data[idx[j],], collapse=","))
-						tlog(10, format(data[idx[j],COL_ATT_MDT_DBT]),"--",format(data[idx[j],COL_ATT_MDT_FIN]),
-								if(!is.na(fct.att)) paste0(" <<>> ",
-									format(data[idx[j],COL_ATT_FCT_DBT]),"--",format(data[idx[j],COL_ATT_FCT_FIN]),
-									" (",data[idx[j],fct.att],")") else "")
-#						readline() #stop()
+						tlog(10, format.row(data[idx[j],]))
+						#tlog(10, format.row.dates(data[idx[j],])," (",data[idx[j],fct.att],")")
+						#readline() #stop()
 						
 						# update counters
 						nbr.corr <- nbr.corr + 1
@@ -1176,8 +1162,8 @@ split.long.mandates <- function(data, election.file, series.file)
 		{	split.flag <- TRUE
 			
 			while(split.flag)
-			{	tlog(4,"Processing row ",r,"/",nrow(data),": ",format(data[r,COL_ATT_MDT_DBT]),"--",format(data[r,COL_ATT_MDT_FIN]))
-				tlog(4, paste(data[r,], collapse=","))
+			{	tlog(4,"Processing row ",r,"/",nrow(data),": ",format.row.dates(data[r,]))
+				tlog(4, format.row(data[r,]))
 				split.flag <- FALSE
 				
 				# get election dates
@@ -1207,14 +1193,12 @@ split.long.mandates <- function(data, election.file, series.file)
 				if(res)
 				{	idx.tests <- which(tests)
 					if(length(idx.tests)>1)
-#						stop("ERROR: several elections match")
+						#stop("ERROR: several elections match")
 						idx.tests <- idx.tests[1]
 #					else
 					{	# log event
 						tlog(6,"Splitting overlap detected for election ",format(election.dates[idx.tests,1]),"--",format(election.dates[idx.tests,2]))
-						tlog(8,"Before: ",format(data[r,COL_ATT_MDT_DBT]),"--", format(data[r,COL_ATT_MDT_FIN]), " <<>> ",
-								if(has.fct) paste0(format(data[r,COL_ATT_FCT_DBT]),"--", format(data[r,COL_ATT_FCT_FIN])) else "", " vs. ",
-								format(election.dates[idx.tests,1]), "--", format(election.dates[idx.tests,2]))
+						tlog(8,"Before: ",format.row.dates(data[r,])," vs. ", format(election.dates[idx.tests,1]), "--", format(election.dates[idx.tests,2]))
 						data[r,COL_ATT_CORREC_DATE] <- TRUE
 						#readline() #stop()
 						
@@ -1256,10 +1240,8 @@ split.long.mandates <- function(data, election.file, series.file)
 						}
 						
 						# log modification
-						tlog(8,"After 1: ",format(new.row[1,COL_ATT_MDT_DBT]),"--", format(new.row[1,COL_ATT_MDT_FIN]), 
-								if(has.fct) paste0(" <<>> ", format(new.row[1,COL_ATT_FCT_DBT]),"--", format(new.row[1,COL_ATT_FCT_FIN])) else "")
-						tlog(8,"After 2: ",format(data[r,COL_ATT_MDT_DBT]),"--", format(data[r,COL_ATT_MDT_FIN]), 
-								if(has.fct) paste0(" <<>> ", format(data[r,COL_ATT_FCT_DBT]),"--", format(data[r,COL_ATT_FCT_FIN])) else "")
+						tlog(8,"After 1: ",format.row.dates(new.row[1,]))
+						tlog(8,"After 2: ",format.row.dates(data[r,]))
 #						readline() #stop()
 					
 						# add new row to new data frame
@@ -1318,10 +1300,9 @@ remove.micro.mandates <- function(data, tolerance)
 			
 			# log the list of micro-mandates
 			tmp <- sapply(1:length(idx), function(i)
-			{	tlog(4, "Row ", idx[i], "(",i,"/",length(idx),"): ",
-					format(data[idx[i],COL_ATT_MDT_DBT]),"--",format(data[idx[i],COL_ATT_MDT_FIN]),
+			{	tlog(4, "Row ", idx[i], "(",i,"/",length(idx),"): ",format.row.dates(data[idx[i],]),
 					if(i %in% exception.idx) " (Exception)" else "")
-				tlog(6, paste(data[idx[i],], collapse=","))
+				tlog(6, format.row(data[idx[i],]))
 			})
 			
 			# get the ids associated to a single micro-mandate
@@ -1334,9 +1315,7 @@ remove.micro.mandates <- function(data, tolerance)
 			if(length(nms)>0)
 			{	tmp <- sapply(1:length(nms), function(i)
 				{	j <- which(data[,COL_ATT_ELU_ID]==nms[i])
-					tlog(4, "Row ", j, "(",i,"/",length(idx),"): ",
-							paste(data[j,], collapse=","),","
-							,format(data[j,COL_ATT_MDT_DBT]),"--",format(data[j,COL_ATT_MDT_FIN]))
+					tlog(4, "Row ", j, "(",i,"/",length(idx),"): ", format.row(data[j,]))
 				})
 			}
 			
@@ -1564,7 +1543,7 @@ fix.mdtfct.dates <- function(data, election.file, series.file, type)
 	data <- remove.micro.mandates(data, tolerance=7)
 	
 	# merge rows corresponding to overlapping and compatible mandates
-	data <- merge.overlapping.mandates(data)
+	data <- merge.overlapping.mandates(data, type)
 	
 	# splits rows containing election dates (other than as a start date)
 	if(hasArg(election.file))

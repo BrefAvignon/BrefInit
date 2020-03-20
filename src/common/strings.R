@@ -261,3 +261,40 @@ normalize.location.nouns <- function(strings)
 	
 	return(result)
 }
+
+
+
+
+#############################################################################################
+# Properly formats the specified data frame row.
+#
+# row: data frame row to print.
+# 
+# returns: the resulting string.
+#############################################################################################
+format.row <- function(row)
+{	date.cols <- intersect(colnames(row),c(COL_ATT_ELU_NAIS_DATE, COL_ATT_ELU_DDD, COL_ATT_MDT_DBT, COL_ATT_MDT_FIN, COL_ATT_FCT_DBT, COL_ATT_FCT_FIN))
+	date.idx <- which(colnames(row) %in% date.cols)
+	vect <- rep(NA,ncol(row))
+	vect[-date.idx] <- as.character(row[-date.idx])
+	vect[date.idx] <- format(row[date.idx])
+	result <- paste(vect,collapse=",")
+	return(result)
+}
+
+
+
+
+#############################################################################################
+# Properly formats the specified data frame row, focusing only on the mandate/function dates.
+#
+# row: data frame row to print.
+# 
+# returns: the resulting string.
+#############################################################################################
+format.row.dates <- function(row)
+{	result <- paste0(format(row[,COL_ATT_MDT_DBT]),"--",format(row[,COL_ATT_MDT_FIN]))
+	if(COL_ATT_FCT_DBT %in% colnames(row))
+		result <- paste0(result, " <<>> ", format(row[,COL_ATT_FCT_DBT]),"--",format(row[,COL_ATT_FCT_FIN]))
+	return(result)
+}

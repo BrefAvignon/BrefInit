@@ -352,8 +352,8 @@ test.col.locations.legcirco <- function(data, out.folder)
 			ns <- names[idx]
 			if(any(ns!=ns[1]))
 			{	row <- c(
-						strsplit(x=unique.code, split=":", fixed=TRUE)[[1]],
-						paste(sort(unique(ns)),collapse=",")
+					strsplit(x=unique.code, split=":", fixed=TRUE)[[1]],
+					paste(sort(unique(ns)),collapse=",")
 				)
 #				print(row)
 				tab1 <- rbind(tab1, row)
@@ -450,7 +450,7 @@ test.col.locations.eurocirco <- function(data, out.folder)
 			ns <- names[idx]
 			if(any(ns!=ns[1]))
 			{	row <- c(unique.code,
-						paste(sort(unique(ns)),collapse=",")
+					paste(sort(unique(ns)),collapse=",")
 				)
 #				print(row)
 				tab1 <- rbind(tab1, row)
@@ -485,8 +485,8 @@ test.col.locations.eurocirco <- function(data, out.folder)
 			cs <- codes[idx]
 			if(any(cs!=cs[1]))
 			{	row <- c(
-						unique.name,
-						paste(sort(unique(cs)),collapse=",")
+					unique.name,
+					paste(sort(unique(cs)),collapse=",")
 				)
 #				print(row)
 				tab2 <- rbind(tab2, row)
@@ -546,8 +546,8 @@ test.col.locations.epci <- function(data, out.folder)
 			ns <- names[idx]
 			if(any(ns!=ns[1]))
 			{	row <- c(
-						unique.code,
-						paste(sort(unique(ns)),collapse=",")
+					unique.code,
+					paste(sort(unique(ns)),collapse=",")
 				)
 #				print(row)
 				tab1 <- rbind(tab1, row)
@@ -582,8 +582,8 @@ test.col.locations.epci <- function(data, out.folder)
 			cs <- codes[idx]
 			if(any(cs!=cs[1]))
 			{	row <- c(
-						unique.name,
-						paste(sort(unique(cs)),collapse=",")
+					unique.name,
+					paste(sort(unique(cs)),collapse=",")
 				)
 #				print(row)
 				tab2 <- rbind(tab2, row)
@@ -643,8 +643,8 @@ test.col.locations.department <- function(data, out.folder)
 			ns <- names[idx]
 			if(any(ns!=ns[1]))
 			{	row <- c(
-						unique.code,
-						paste(sort(unique(ns)),collapse=",")
+					unique.code,
+					paste(sort(unique(ns)),collapse=",")
 				)
 #				print(row)
 				tab1 <- rbind(tab1, row)
@@ -679,8 +679,8 @@ test.col.locations.department <- function(data, out.folder)
 			cs <- codes[idx]
 			if(any(cs!=cs[1]))
 			{	row <- c(
-						unique.name,
-						paste(sort(unique(cs)),collapse=",")
+					unique.name,
+					paste(sort(unique(cs)),collapse=",")
 				)
 #				print(row)
 				tab2 <- rbind(tab2, row)
@@ -740,8 +740,8 @@ test.col.locations.region <- function(data, out.folder)
 			ns <- names[idx]
 			if(any(ns!=ns[1]))
 			{	row <- c(
-						unique.code,
-						paste(sort(unique(ns)),collapse=",")
+					unique.code,
+					paste(sort(unique(ns)),collapse=",")
 				)
 #				print(row)
 				tab1 <- rbind(tab1, row)
@@ -776,8 +776,8 @@ test.col.locations.region <- function(data, out.folder)
 			cs <- codes[idx]
 			if(any(cs!=cs[1]))
 			{	row <- c(
-						unique.name,
-						paste(sort(unique(cs)),collapse=",")
+					unique.name,
+					paste(sort(unique(cs)),collapse=",")
 				)
 #				print(row)
 				tab2 <- rbind(tab2, row)

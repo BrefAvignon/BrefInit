@@ -366,7 +366,7 @@ test.col.dates.election <- function(data, out.folder, election.file, series.file
 	# compare mandate and election dates
 	tlog(4,"Check mandate dates against election dates")
 	idx <- which(sapply(1:nrow(data), function(r)
-	{	tlog(6,"Processing row ",r,"/",nrow(data),": ",format(data[r,COL_ATT_MDT_DBT]),"--",format(data[r,COL_ATT_MDT_FIN]))
+	{	tlog(6,"Processing row ",r,"/",nrow(data),": ",format.row.dates(data[r,]))
 		
 		# specific case of CD representatives of people leaving abroad: don't split mandates
 		if(!(series.present 
@@ -412,8 +412,7 @@ test.col.dates.election <- function(data, out.folder, election.file, series.file
 # TODO				stop("Problem: several rows match")
 					idx.tests <- idx.tests[1]
 #				else
-#				{	tlog(8,format(data[r,COL_ATT_MDT_DBT]),"--", format(data[r,COL_ATT_MDT_FIN]), " vs. ",
-#							format(election.dates[idx.tests,1]), "--", format(election.dates[idx.tests,2]))
+#				{	tlog(8,format.row.dates(data[r,]), " vs. ", format(election.dates[idx.tests,1]), "--", format(election.dates[idx.tests,2]))
 #					readline() #stop()
 #				}
 			}
