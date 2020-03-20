@@ -145,7 +145,7 @@ test.position.cm <- function(data, out.folder)
 	unique.pos <- sort(unique(pos[!is.na(functs)]))
 	tlog(4,"Found ",length(unique.pos)," of them")
 	
-	# process each unique function
+	# process each unique function 
 	tlog(2,"Processing each unique function")
 	for(p in 1:length(unique.pos))
 	{	# retrieve the city code and function name
