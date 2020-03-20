@@ -142,7 +142,7 @@ test.position.cm <- function(data, out.folder)
 	functs <- data[,COL_ATT_FCT_NOM]
 	pos <- apply(cbind(dpts,coms,functs),1,function(r) paste(r,collapse="_"))
 	unique.pos <- sort(unique(pos))
-	idx <- which(substr(unique.pos,nchar(unique.pos)-2,nchar(unique.pos))==":NA")
+	idx <- which(substr(unique.pos,nchar(unique.pos)-2,nchar(unique.pos))=="_NA")
 	unique.pos <- unique.pos[-idx]
 	tlog(4,"Found ",length(unique.pos)," of them")
 	
