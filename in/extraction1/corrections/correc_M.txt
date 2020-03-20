@@ -63,3 +63,30 @@ Row	Id RNE	Nom	Prenom	Attribut	ValAvt	ValApr	Commentaire
 111445	5565	DESSENNE	Brigitte	Date début fonction	14/3/2008	23/3/2001	Date incorrecte
 111463	17532	BERNARD	Jacques	Date début fonction	14/3/2008	24/3/2001	Date incorrecte
 113279	33812	FRUTEAU	Eric	Date début fonction	16/3/2008	18/3/2001	Date incorrecte
+57430	156775	BERTIN	Guy	ID RNE	156775	NA	Suppression, mandat inexistant (WP)
+27971	143259	BILLOD	Marc	Nom elu	BILLOD	BILLOT	Typo dans le nom
+27971	143259	BILLOT	Marc	Date debut mandat	9/3/2008	11/3/2001	Date début incorrecte (WP)
+27971	143259	BILLOT	Marc	Date fin mandat	9/3/2008	22/3/2014	Date fin incorrecte (WP)
+29124	142884	PEUGOT	Jean-Pierre	ID RNE	142884	NA	Suppression, mandat inexistant (WP)
+40471	161968	BESPE-CASTANT	Josie	ID RNE	161968	NA	Suppression, mandat inexistant (WP)
+40978	161817	ZAGHET	Francis	ID RNE	161817	NA	Suppression, mandat inexistant (WP)
+51731	1001706	DOLAMAZON	Laurent	ID RNE	1001706	NA	Suppression, mandat inexistant (WP)
+51783	1002115	ANDRE	Lydie	ID RNE	1002115	NA	Suppression, mandat inexistant (WP)
+77746	173186	HILMOINE	Guy	ID RNE	173186	NA	Suppression, mandat inexistant (WP)
+83065	171568	BRUZEAUD-SOUCAZE	Anne-Marie	ID RNE	171568	NA	Suppression, mandat inexistant (WP)
+83066	171568	SOUCAZE-BRUZEAUD	Anne-Marie	Nom elu	SOUCAZE-BRUZEAUD	BRUZEAUD	Typo dans le nom
+84852	171019	LE GENTIL	Francis	ID RNE	171019	NA	Suppression, mandat inexistant (WP)
+89479	169576	BUISSON	Frédérique	Prenom elu	Frédérique	Frédéric	Typo prénom
+89479	169576	BUISSON	Frédéric	Code sexe	F	M	Typo sexe
+89479	169576	BUISSON	Frédéric	Date debut mandat	9/3/2008	11/6/1995	Date de début incorrecte
+89479	169576	BUISSON	Frédéric	Date fin mandat	9/3/2008	10/3/2001	Date de fin incorrecte
+89479	169576	BUISSON	Frédéric	Date debut fonction	21/3/2008	11/6/1995	Date de début incorrecte
+89479	169576	BUISSON	Frédéric	Date fin fonction	22/3/2014	10/3/2001	Date de fin incorrecte
+113159	151270	CRUSOL	Jean	Prenom elu	Jean	Louis	Typo prénom
+113159	151270	CRUSOL	Louis	Date debut mandat	16/3/2008	1/7/1990	Date de début incorrecte
+113159	151270	CRUSOL	Louis	Date fin mandat	16/3/2008	3/3/2003	Date de fin incorrecte
+113159	151270	CRUSOL	Louis	Date debut fonction	16/3/2008	1/7/1990	Date de début incorrecte
+113159	151270	CRUSOL	Louis	Date fin fonction	16/3/2008	3/3/2003	Date de fin incorrecte
+113171	1180775	MAYER-ROSSIGNOL	Nicolas	ID RNE	1180775	NA	Suppression, mandat inexistant (WP)
+83469	678147	LAFFONT	François	ID RNE	678147	NA	Suppression, mandat inexistant (WP)
+98475	540150	FARENZENA ÉPOUSE WALLEZ	Lydie	ID RNE	540150	NA	Suppression, mandat inexistant (WP)

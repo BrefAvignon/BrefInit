@@ -64,7 +64,7 @@ test.duplicates(data=data, loc.col=COL_ATT_DPT_CODE, out.folder=out.folder)
 # plots the number of persons over time
 tlog(0,"Ploting the number of simultaneously hold positions over time")
 #plot.pers.time(data=data, out.folder=out.folder, daily=TRUE)
-#plot.pers.time2(data=data, out.folder=out.folder)
+plot.pers.time2(data=data, out.folder=out.folder)
 
 # close the log file
 tlog(0,"Done")

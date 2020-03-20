@@ -204,5 +204,8 @@ source("src/common/include.R")
 #		- autant de lignes que de fonctions
 #		- chacune avec les mêmes infos sauf fonction (y compris dates mandat)
 
-# TODO
-# Rajouter des marqueurs dans les sources pour indiquer les modifications effectuées lors du nettoyage du RNE
+# TODO Check in the merged table
+# - sumup.cols
+# - test.compatible.rows
+# - test.personal.info
+# - 

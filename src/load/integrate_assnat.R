@@ -1257,20 +1257,23 @@ assembly.match.assembly.vs.rne.rows <- function(asn.tab, rne.tab, tolerance)
 #############################################################################################
 assembly.update.rne.table <- function(rne.tab, asn.tab, row.conv)
 {	tlog(2,"Updating the RNE table")
+	nbr.updated <- 0
 	result <- rne.tab
 	
 	# process the Assembly rows that are matched in the RNE table
 	exist.rows <- which(!is.na(row.conv))
 	tlog(4,"Updating the ",length(exist.rows)," matching rows in the RNE table")
-	for(idx2 in exist.rows)
-	{	idx1 <- row.conv[idx2]
-		tlog(6,"Processing row ",idx1)
+	for(i in 1:length(exist.rows))
+	{	idx2 <- exist.rows[i]
+		idx1 <- row.conv[idx2]
+		tlog(6,"Processing row ",idx1," (",i,"/",length(exist.rows),")")
 		
 		# overwrite NA values using Assembly data
 		cols <- intersect(colnames(result)[which(is.na(result[idx1,]))], colnames(asn.tab))
 		if(length(cols)>0)
 		{	result[idx1, cols] <- asn.tab[idx2, cols]
 			result[idx1, COL_ATT_CORREC_INFO] <- TRUE
+			nbr.updated <- nbr.updated + 1
 		}
 		
 		# update source column
@@ -1287,17 +1290,19 @@ assembly.update.rne.table <- function(rne.tab, asn.tab, row.conv)
 #		if(!is.na(asn.tab[idx2, COL_ATT_MDT_FIN]))
 #			result[idx1, COL_ATT_MDT_FIN] <- asn.tab[idx2, COL_ATT_MDT_FIN]
 	}
+	tlog(4,"Updated ",nbr.updated," rows (",(100*nbr.updated/nrow(result)),"%)")
 	
 	# insert new Assembly rows into existing RNE table
 	missing.rows <- which(is.na(row.conv))
 	#missing.rows <- which(is.na(row.conv) & get.year(asn.tab[,COL_ATT_MDT_DBT])>=2001)
-	tlog(4,"Inserting ",length(missing.rows)," missing rows in the RNE table")
+	tlog(4,"Inserting ",length(missing.rows)," missing rows (",(100*length(missing.rows)/nrow(result)),"%) in the RNE table")
 	result <- rbind(result, asn.tab[missing.rows,])
 	# sort the resulting table
 	result <- result[order(result[,COL_ATT_DPT_CODE], 
 					result[,COL_ATT_ELU_NOM], result[,COL_ATT_ELU_PRENOM], 
 					result[,COL_ATT_MDT_DBT], result[,COL_ATT_MDT_FIN],
 					result[,COL_ATT_FCT_DBT], result[,COL_ATT_FCT_FIN]) ,]
+	tlog(4,"Table now contains ",nrow(result)," rows")
 	
 	# record the corrected/completed table
 	rne.tab.file <- file.path(FOLDER_COMP_SRC_ASSEMB, "D", "data_rne2.txt")

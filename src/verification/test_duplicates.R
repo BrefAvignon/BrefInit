@@ -48,12 +48,14 @@ test.compatible.rows <- function(data, out.folder=NA)
 			})
 	
 	# merge the list of tables and record them
-	tlog(2,"Merging the ",length(mats)," result tables")
+	tlog(2,"Gathering the ",length(mats)," result tables")
 	tab <- cbind(rep(NA,nrow(data)),data)[-(1:nrow(data)),]
 	colnames(tab)[1]<- "Ligne"
 	for(m in 1:length(mats))
 		tab <- rbind(tab, mats[[m]])
-	if(!is.na(out.folder) && nrow(tab)>0)
+	if(nrow(tab)==0)
+		tlog(2,"Nothing found, nothing to record")
+	else if(!is.na(out.folder))
 	{	tab.file <- file.path(out.folder,"compatible_rows.txt")
 		tlog(2,"Recording in file \"",tab.file,"\"")
 		write.table(x=tab, file=tab.file,
