@@ -656,39 +656,39 @@ merge.similar.rows <- function(data)
 	# identify compatible rows against redundant ones
 	tlog(2,"Looking for compatible rows among them")
 	tmp <- lapply(1:length(codes), function(i)
-			{	code <- codes[i]
-				tlog(4,"Processing code ",code," (",i,"/",length(codes),")")
-				res <- c()
-				
-				rs <- which(concat==code)
-				while(length(rs)>=2)
-				{	r1 <- rs[1]
-					rs <- rs[-1]
-					r2 <- 1
-					while(r2<=length(rs))
-					{	if(all(is.na(data[r1,-rm.col]) | is.na(data[rs[r2],-rm.col]) | data[r1,-rm.col]==data[rs[r2],-rm.col]))
-						{	tlog(6, "Found a match:")
-							tlog(6, format.row(data[r1,]))
-							tlog(6, format.row(data[rs[r2],]))
-							
-							idx <- which(is.na(data[r1,]))
-							if(length(idx)>0)
-							{	data[r1,idx] <<- data[rs[r2],idx]
-								tlog(6, "After: ",format.row(data[r1,]))
-								if(length(intersect(idx,date.cols))>0)
-									data[r1,COL_ATT_CORREC_DATE] <- TRUE 
-								if(length(setdiff(idx,date.cols))>0)
-									data[r1,COL_ATT_CORREC_INFO] <- TRUE 
-							}
-							res <- c(res, rs[r2])
-							rs <- rs[-r2]
-						}
-						else
-							r2 <- r2 + 1
+	{	code <- codes[i]
+		tlog(4,"Processing code ",code," (",i,"/",length(codes),")")
+		res <- c()
+		
+		rs <- which(concat==code)
+		while(length(rs)>=2)
+		{	r1 <- rs[1]
+			rs <- rs[-1]
+			r2 <- 1
+			while(r2<=length(rs))
+			{	if(all(is.na(data[r1,-rm.col]) | is.na(data[rs[r2],-rm.col]) | data[r1,-rm.col]==data[rs[r2],-rm.col]))
+				{	tlog(6, "Found a match:")
+					tlog(6, format.row(data[r1,]))
+					tlog(6, format.row(data[rs[r2],]))
+					
+					idx <- which(is.na(data[r1,]))
+					if(length(idx)>0)
+					{	data[r1,idx] <<- data[rs[r2],idx]
+						tlog(6, "After: ",format.row(data[r1,]))
+						if(length(intersect(idx,date.cols))>0)
+							data[r1,COL_ATT_CORREC_DATE] <- TRUE 
+						if(length(setdiff(idx,date.cols))>0)
+							data[r1,COL_ATT_CORREC_INFO] <- TRUE 
 					}
+					res <- c(res, rs[r2])
+					rs <- rs[-r2]
 				}
-				return(res)
-			})
+				else
+					r2 <- r2 + 1
+			}
+		}
+		return(res)
+	})
 	
 	# actually remove the rows marked for deletion
 	nbr.before <- nrow(data)
@@ -749,6 +749,8 @@ adjust.function.dates <- function(data)
 	{	# process each row
 		for(r in 1:nrow(data))
 		{	str <- paste0("Considering (",r,"/",nrow(data),") ", format.row.dates(data[r,]))
+			str2 <- format.row(data[r,])
+			
 			changed.start <- FALSE
 			changed.end <- FALSE
 			
@@ -771,12 +773,13 @@ adjust.function.dates <- function(data)
 			if(changed.start || changed.end)
 			{	#print(data[r,])
 				tlog(2,str)
-				tlog(2,data[r,COL_ATT_DPT_NOM])
+				tlog(4,"Before: ",str2)
 				if(changed.start)
-					tlog(4,"Modifying function start")
+					tlog(6,"Modifying function start")
 				if(changed.end)
-					tlog(4,"Modifying function end")
+					tlog(6,"Modifying function end")
 				data[r,COL_ATT_CORREC_DATE] <- TRUE
+				tlog(4,"After: ",format.row(data[r,]))
 			}
 		}
 	}
@@ -902,7 +905,7 @@ round.mdtfct.dates <- function(data, election.file, series.file, tolerance)
 	tlog(2,"Check mandate dates against election dates")
 	nbr.corrected <- 0
 	for(r in 1:nrow(data))
-	{	tlog(4,"Processing row ",r,"/",nrow(data))
+	{	tlog(4,"Processing row ",r,"/",nrow(data),": ",format.row.dates(data[r,]))
 		
 		# get election dates
 		election.dates <- election.table
@@ -944,7 +947,8 @@ round.mdtfct.dates <- function(data, election.file, series.file, tolerance)
 		})
 		
 		# possibly update mandate/function dates
-		bef.str <- format.row.dates(data[r,])
+		#bef.str <- format.row.dates(data[r,])
+		bef.str <- format.row(data[r,])
 		changed <- FALSE
 		for(i in 1:2)
 		{	if(!is.na(idx[i]))
@@ -967,7 +971,8 @@ round.mdtfct.dates <- function(data, election.file, series.file, tolerance)
 		# log changes
 		if(changed)
 		{	tlog(6, "Before: ", bef.str)
-			tlog(6, "After: ", format.row.dates(data[r,]))
+			#tlog(6, "After: ", format.row.dates(data[r,]))
+			tlog(6, "After: ", format.row(data[r,]))
 			#readline()
 			nbr.corrected <- nbr.corrected + 1
 			data[r,COL_ATT_CORREC_DATE] <- TRUE
@@ -1163,7 +1168,7 @@ split.long.mandates <- function(data, election.file, series.file)
 			
 			while(split.flag)
 			{	tlog(4,"Processing row ",r,"/",nrow(data),": ",format.row.dates(data[r,]))
-				tlog(4, format.row(data[r,]))
+				tlog(6, format.row(data[r,]))
 				split.flag <- FALSE
 				
 				# get election dates
@@ -1407,6 +1412,7 @@ shorten.overlapping.mandates <- function(data, type, tolerance=1)
 					end1 <- data[idx[i],col.end]
 					sex1 <- data[idx[i],COL_ATT_ELU_SEXE]
 					tlog(6,"Considering row ",i,"/",length(idx),": ",format(start1),"--",format(end1)," (",sex1,")")
+					tlog(6, format.row(data[idx[i],]))
 					
 					for(j in (i+1):length(idx))
 					{	# get the dates of the second compared mandate
@@ -1414,6 +1420,7 @@ shorten.overlapping.mandates <- function(data, type, tolerance=1)
 						end2 <- data[idx[j],col.end]
 						sex2 <- data[idx[j],COL_ATT_ELU_SEXE]
 						tlog(8,"Comparing to row ",j,"/",length(idx),": ",format(start2),"--",format(end2)," (",sex2,")")
+						tlog(8, format.row(data[idx[j],]))
 						
 						# check if the periods intersect
 						if(date.intersect(start1, end1, start2, end2)
@@ -1433,7 +1440,9 @@ shorten.overlapping.mandates <- function(data, type, tolerance=1)
 										if(is.na(end1) || !is.na(end2) && end1>end2)
 										{	start1 <- end2 + 1
 											data[idx[i],col.start] <- start1
+											data[idx[i],COL_ATT_CORREC_DATE] <- TRUE
 											tlog(14,"After correction of the first mandate: ",format(start1),"--",format(end1)," (overlap: ",ovlp.duration," days)")
+											tlog(14, format.row(data[idx[i],]))
 											# count the problematic cases
 											count <- count + 1
 											ccount <- ccount + 1
@@ -1441,14 +1450,17 @@ shorten.overlapping.mandates <- function(data, type, tolerance=1)
 										else if(is.na(end2) || !is.na(end1) && end2>end1)
 										{	start2 <- end1 + 1
 											data[idx[j],col.start] <- start2
+											data[idx[j],COL_ATT_CORREC_DATE] <- TRUE
 											tlog(14,"After correction of the second mandate: ",format(start2),"--",format(end2)," (overlap: ",ovlp.duration," days)")
+											tlog(14, format.row(data[idx[j],]))
 											# count the problematic cases
 											count <- count + 1
 											ccount <- ccount + 1
 										}
 										else
 										{	tlog(14,"Same start and end dates, is that even possible?")
-											print(data[idx[c(i,j)],])
+											tlog(14, format.row(data[idx[i],]))
+											tlog(14, format.row(data[idx[j],]))
 											#stop("Same start and end dates, is that even possible?")
 											readline()						
 										}
@@ -1458,7 +1470,9 @@ shorten.overlapping.mandates <- function(data, type, tolerance=1)
 										if(start1>start2)
 										{	end2 <- start1 - 1
 											data[idx[j],col.end] <- end2
+											data[idx[j],COL_ATT_CORREC_DATE] <- TRUE
 											tlog(14,"After correction of the second mandate: ",format(start2),"--",format(end2)," (overlap: ",ovlp.duration," days)")
+											tlog(14, format.row(data[idx[j],]))
 											# count the problematic cases
 											count <- count + 1
 											ccount <- ccount + 1
@@ -1466,14 +1480,17 @@ shorten.overlapping.mandates <- function(data, type, tolerance=1)
 										else if(start2>start1)
 										{	end1 <- start2 - 1
 											data[idx[i],col.end] <- end1
+											data[idx[i],COL_ATT_CORREC_DATE] <- TRUE
 											tlog(14,"After correction of the first mandate: ",format(start1),"--",format(end1)," (overlap: ",ovlp.duration," days)")
+											tlog(14, format.row(data[idx[i],]))
 											# count the problematic cases
 											count <- count + 1
 											ccount <- ccount + 1
 										}
 										else
 										{	tlog(14,"This should not be possible")
-											print(data[idx[c(i,j)],])
+											tlog(14, format.row(data[idx[i],]))
+											tlog(14, format.row(data[idx[j],]))
 											#stop("This should not be possible")
 											readline()
 										}
@@ -1487,12 +1504,16 @@ shorten.overlapping.mandates <- function(data, type, tolerance=1)
 									if(!is.na(end1) && (is.na(end2) || end1<end2))
 									{	end1 <- end1 - ovlp.duration
 										data[idx[i],col.end] <- end1
+										data[idx[i],COL_ATT_CORREC_DATE] <- TRUE
 										tlog(12,"After correction of the first mandate: ",format(start1),"--",format(end1)," (overlap: ",ovlp.duration," days)")
+										tlog(12, format.row(data[idx[i],]))
 									}
 									else
 									{	end2 <- end2 - ovlp.duration
 										data[idx[j],col.end] <- end2
+										data[idx[j],COL_ATT_CORREC_DATE] <- TRUE
 										tlog(12,"After correction of the second mandate: ",format(start2),"--",format(end2)," (overlap: ",ovlp.duration," days)")
+										tlog(12, format.row(data[idx[j],]))
 									}
 									# count the problematic cases
 									count <- count + 1
