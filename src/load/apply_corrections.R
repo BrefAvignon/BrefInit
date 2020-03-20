@@ -1365,8 +1365,8 @@ shorten.overlapping.mandates <- function(data, type, tolerance=1)
 		# identify all unique position
 		tlog(2,"Identifying all unique positions")
 		if(type=="CD")
-		{	data.pos <- data[data[,COL_ATT_CANT_NOM]!="CANTON FICTIF",COL_ATT_CANT_ID]
-			unique.pos <- sort(unique(data.pos))
+		{	data.pos <- data[,COL_ATT_CANT_ID]
+			unique.pos <- sort(unique(data.pos[data[,COL_ATT_CANT_NOM]!="CANTON FICTIF"]))
 		}
 		else if(type=="CM")
 		{	col.start <- COL_ATT_FCT_DBT
@@ -1420,7 +1420,10 @@ shorten.overlapping.mandates <- function(data, type, tolerance=1)
 						tlog(8,"Comparing to row ",j,"/",length(idx),": ",format(start2),"--",format(end2)," (",sex2,")")
 						
 						# check if the periods intersect
-						if(date.intersect(start1, end1, start2, end2))
+						if(date.intersect(start1, end1, start2, end2)
+							&& (type=="CM" || type=="D" || type=="M"
+									# for CD: unique positions before 2015, but mixed M/F pairs after 2015
+									|| (type=="CD" && (get.year(start1)<2015 || get.year(start2)<2015 || sex1==sex2))))
 						{	# check if open end date
 							if(is.na(end1) && is.na(end2))
 								tlog(10,"Overlap with unspecified end dates: cannot solve this issue")
@@ -1428,26 +1431,76 @@ shorten.overlapping.mandates <- function(data, type, tolerance=1)
 							{	# check if overlap duration small enough
 								ovlp.duration <- min(end1-start2, end2-start1, na.rm=T) + 1
 								if(ovlp.duration>tolerance)
-									tlog(10,"Overlap above the specified limit (",tolerance," days): issue not solved")
-								else
-								{	if(type=="CM" || type=="D" || type=="M"
-										# for CD: unique positions before 2015, but mixed M/F pairs after 2015
-										|| (type=="CD" && (get.year(start1)<2015 || get.year(start2)<2015 || sex1==sex2)))
-									{	# adjust the end of the older mandate to avoid overlap
-										if(!is.na(end1) && (is.na(end2) || end1<end2))
-										{	end1 <- end1 - ovlp.duration
-											data[idx[i],col.end] <- end1
-											tlog(10,"After correction of the first mandate: ",format(start1),"--",format(end1)," (overlap: ",ovlp.duration," days)")
+								{	tlog(10,"Major overlap (above the specified limit of ",tolerance," days)")
+									if(start1==start2)
+									{	tlog(12,"Start dates match, adjusting the start date associated to the latest end date")
+										if(is.na(end1) || !is.na(end2) && end1>end2)
+										{	start1 <- end2 + 1
+											data[idx[i],col.start] <- start1
+											tlog(14,"After correction of the first mandate: ",format(start1),"--",format(end1)," (overlap: ",ovlp.duration," days)")
+											# count the problematic cases
+											count <- count + 1
+											ccount <- ccount + 1
+										}
+										else if(is.na(end2) || !is.na(end1) && end2>end1)
+										{	start2 <- end1 + 1
+											data[idx[j],col.start] <- start2
+											tlog(14,"After correction of the second mandate: ",format(start2),"--",format(end2)," (overlap: ",ovlp.duration," days)")
+											# count the problematic cases
+											count <- count + 1
+											ccount <- ccount + 1
 										}
 										else
-										{	end2 <- end2 - ovlp.duration
-											data[idx[j],col.end] <- end2
-											tlog(10,"After correction of the second mandate: ",format(start2),"--",format(end2)," (overlap: ",ovlp.duration," days)")
+										{	tlog(14,"Same start and end dates, is that even possible?")
+											print(data[idx[c(i,j)],])
+											#stop("Same start and end dates, is that even possible?")
+											readline()						
 										}
-										# count the problematic cases
-										count <- count + 1
-										ccount <- ccount + 1
 									}
+									else if(is.na(end1) && is.na(end2) || (!is.na(end1) && !is.na(end2) && end1==end2))
+									{	tlog(12,"End dates match, adjusting the end date associated to the earliest start date")
+										if(start1>start2)
+										{	end2 <- start1 - 1
+											data[idx[j],col.end] <- end2
+											tlog(14,"After correction of the second mandate: ",format(start2),"--",format(end2)," (overlap: ",ovlp.duration," days)")
+											# count the problematic cases
+											count <- count + 1
+											ccount <- ccount + 1
+										}
+										else if(start2>start1)
+										{	end1 <- start2 - 1
+											data[idx[i],col.end] <- end1
+											tlog(14,"After correction of the first mandate: ",format(start1),"--",format(end1)," (overlap: ",ovlp.duration," days)")
+											# count the problematic cases
+											count <- count + 1
+											ccount <- ccount + 1
+										}
+										else
+										{	tlog(14,"This should not be possible")
+											print(data[idx[c(i,j)],])
+											#stop("This should not be possible")
+											readline()
+										}
+									}
+									else
+										tlog(12,"End and start dates do not match, cannot solve the issue")
+								}
+								else
+								{	tlog(10,"Minor overlap, correcting the end date of the older mandate")
+									# adjust the end of the older mandate to avoid overlap
+									if(!is.na(end1) && (is.na(end2) || end1<end2))
+									{	end1 <- end1 - ovlp.duration
+										data[idx[i],col.end] <- end1
+										tlog(12,"After correction of the first mandate: ",format(start1),"--",format(end1)," (overlap: ",ovlp.duration," days)")
+									}
+									else
+									{	end2 <- end2 - ovlp.duration
+										data[idx[j],col.end] <- end2
+										tlog(12,"After correction of the second mandate: ",format(start2),"--",format(end2)," (overlap: ",ovlp.duration," days)")
+									}
+									# count the problematic cases
+									count <- count + 1
+									ccount <- ccount + 1
 								}
 							}
 						}
@@ -1501,7 +1554,7 @@ fix.mdtfct.dates <- function(data, election.file, series.file, type)
 		data <- split.long.mandates(data, election.file, series.file)
 	
 	# solve mandate intersections (same position)
-	data <- shorten.overlapping.mandates(data, type, tolerance=7)
+	data <- shorten.overlapping.mandates(data, type, tolerance=8)
 	
 	# removes micro-mandates again (in case split created any)
 	data <- remove.micro.mandates(data, tolerance=7)

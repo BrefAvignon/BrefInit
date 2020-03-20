@@ -209,3 +209,8 @@ source("src/common/include.R")
 # - test.compatible.rows
 # - test.personal.info
 # - 
+
+# TODO
+# - ne pas fusionner les mandats si circo différente
+# - spliter les mandats de la même personne qui se recouvrent
+

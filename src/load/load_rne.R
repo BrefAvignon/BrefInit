@@ -470,7 +470,9 @@ load.d.data <- function(correct.data, complete.data)
 		# clean another time
 		if(correct.data)
 		{	data <- merge.similar.rows(data)
-			data <- fix.mdtfct.dates(data, election.file=FILE_VERIF_DATES_D)
+			data <- fix.mdtfct.dates(data, 
+					election.file=FILE_VERIF_DATES_D,
+					type="D")
 		}
 	}
 	
@@ -690,7 +692,9 @@ load.s.data <- function(correct.data, complete.data)
 		# clean another time
 		if(correct.data)
 		{	data <- merge.similar.rows(data)
-			data <- fix.mdtfct.dates(data, election.file=FILE_VERIF_DATES_S, series.file=FILE_VERIF_SERIES_S)
+			data <- fix.mdtfct.dates(data, 
+					election.file=FILE_VERIF_DATES_S, series.file=FILE_VERIF_SERIES_S,
+					type="S")
 		}
 	}
 	
