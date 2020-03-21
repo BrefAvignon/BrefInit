@@ -116,7 +116,6 @@ test.col.dates.generic <- function(data, out.folder, tolerance=7)
 		}
 		
 		# duration in number of days
-		tolerance <- NA			# minimal duration to consider a mandate is correct
 		idx <- which(!is.na(data[,COL_ATT_MDT_DBT]) & !is.na(data[,COL_ATT_MDT_FIN]))
 		if(length(idx)>0)
 		{	# compute mandate duration
@@ -211,7 +210,6 @@ test.col.dates.generic <- function(data, out.folder, tolerance=7)
 		}
 		
 		# duration in number of days
-		tolerance <- NA			# minimal duration to consider a function is correct
 		idx <- which(!is.na(data[,COL_ATT_FCT_DBT]) & !is.na(data[,COL_ATT_FCT_FIN]))
 		if(length(idx)>0)
 		{	durations <- as.integer(data[idx,COL_ATT_FCT_FIN] - data[idx,COL_ATT_FCT_DBT])
