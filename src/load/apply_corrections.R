@@ -876,8 +876,7 @@ load.election.data <- function(data, election.file, series.file)
 #############################################################################################
 # Adjusts the start/end of mandates/functions so that they match election dates whenever possible.
 # If the start/end date of a mandate is approximately equal to the closest election date, it is
-# set to this date. If it contains function dates, these are set to the same date. This holds only 
-# for mandates of the same person, obviously.
+# set to this date. If it contains function dates, these are set to the same date.
 #
 # data: original table.
 # election.file: name of the file containing the election dates.
@@ -936,7 +935,7 @@ round.mdtfct.dates <- function(data, election.file, series.file, tolerance)
 					NA
 			})
 		}))
-		date.diffs[,2] <- date.diffs[,2] + 1
+		date.diffs[,2] <- date.diffs[,2] + 1	# we want to end one day before the election
 		
 		# get the closest date for each election
 		idx <- apply(date.diffs, 2, function(dates)
@@ -949,15 +948,20 @@ round.mdtfct.dates <- function(data, election.file, series.file, tolerance)
 		# possibly update mandate/function dates
 		#bef.str <- format.row.dates(data[r,])
 		bef.str <- format.row(data[r,])
-		changed <- FALSE
+		mdt.changed <- c(FALSE,FALSE)
+		fct.changed <- c(FALSE,FALSE)
+		date.diff <- c(NA,NA)
 		for(i in 1:2)
 		{	if(!is.na(idx[i]))
-			{	date.diff <- date.diffs[idx[i],i]
-				if(abs(date.diff)>0 && abs(date.diff)<tolerance)
+			{	date.diff[i] <- date.diffs[idx[i],i]
+				if(abs(date.diff[i])>0 && abs(date.diff[i])<tolerance)
 				{	if(has.fct && !is.na(data[r,col.fct[i]]) && !is.na(data[r,col.mdt[i]]) && data[r,col.fct[i]]==data[r,col.mdt[i]])
-						data[r,col.fct[i]] <- data[r,col.fct[i]] - date.diff
-					data[r,col.mdt[i]] <- data[r,col.mdt[i]] - date.diff
-					changed <- TRUE
+					{	data[r,col.fct[i]] <- data[r,col.fct[i]] - date.diff[i]
+						fct.changed[i] <- TRUE
+					}
+					data[r,col.mdt[i]] <- data[r,col.mdt[i]] - date.diff[i]
+					data[r,COL_ATT_CORREC_DATE] <- TRUE
+					mdt.changed[i] <- TRUE
 				}
 			}
 		}
@@ -967,16 +971,37 @@ round.mdtfct.dates <- function(data, election.file, series.file, tolerance)
 			data[r,COL_ATT_MDT_FIN] <- data[r,COL_ATT_MDT_DBT]
 		if(has.fct && !is.na(data[r,COL_ATT_FCT_DBT]) && !is.na(data[r,COL_ATT_FCT_FIN]) && data[r,COL_ATT_FCT_FIN]<data[r,COL_ATT_FCT_DBT])
 			data[r,COL_ATT_FCT_FIN] <- data[r,COL_ATT_FCT_DBT]
+
+		# possibly update mandate and/or function motives
+		motive.changed <- FALSE
+		if(mdt.changed[2] || (!is.na(date.diff[2]) && abs(date.diff[2])==0))	# if the mandate end was aligned, or already aligned
+		{	# missing mandate end motive
+			if(is.na(data[r,COL_ATT_MDT_MOTIF]))
+			{	data[r,COL_ATT_MDT_MOTIF] <- "FM"	# regular motive for mandate end
+				data[r,COL_ATT_CORREC_INFO] <- TRUE
+				motive.changed <- TRUE
+			}
+			# end fonction aligned, and missing mandate end motive
+			if(!is.na(data[r,COL_ATT_FCT_FIN]) && data[r,COL_ATT_FCT_FIN]==data[r,COL_ATT_MDT_FIN] && is.na(data[r,COL_ATT_FCT_MOTIF]))
+			{	data[r,COL_ATT_FCT_MOTIF] <- "FM"	# regular motive for function end
+				data[r,COL_ATT_CORREC_INFO] <- TRUE
+				motive.changed <- TRUE
+			}
+		}
 		
 		# log changes
-		if(changed)
+		if(any(c(mdt.changed,fct.changed,motive.changed)))
 		{	tlog(6, "Before: ", bef.str)
+			nbr.corrected <- nbr.corrected + 1
+			# log changes
 			#tlog(6, "After: ", format.row.dates(data[r,]))
 			tlog(6, "After: ", format.row(data[r,]))
 			#readline()
-			nbr.corrected <- nbr.corrected + 1
-			data[r,COL_ATT_CORREC_DATE] <- TRUE
 		}
+		
+		# debug
+		#if(motive.changed)
+		#	readline()		
 	}
 	tlog(2,"Corrected ",nbr.corrected," rows with election-related issues (",(100*nbr.corrected/nrow(data)),"%)")
 	
@@ -1213,6 +1238,7 @@ split.long.mandates <- function(data, election.file, series.file)
 						# update mandate start date in existing row and end date in new row
 						data[r,COL_ATT_MDT_DBT] <- election.dates[idx.tests,COL_VERIF_DATE_TOUR2]
 						new.row[1,COL_ATT_MDT_FIN] <- election.dates[idx.tests,COL_VERIF_DATE_TOUR2] - 1
+						new.row[1,COL_ATT_MDT_MOTIF] <- "FM"	# regular motive for mandate end
 						
 						# possibly update similarly function dates
 						if(has.fct && !is.na(data[r,COL_ATT_FCT_DBT]))
@@ -1222,6 +1248,7 @@ split.long.mandates <- function(data, election.file, series.file)
 									|| data[r,COL_ATT_FCT_FIN]>=election.dates[idx.tests,COL_VERIF_DATE_TOUR2]))
 							{	data[r,COL_ATT_FCT_DBT] <- election.dates[idx.tests,COL_VERIF_DATE_TOUR2]
 								new.row[1,COL_ATT_FCT_FIN] <- election.dates[idx.tests,COL_VERIF_DATE_TOUR2] - 1
+								new.row[1,COL_ATT_FCT_MOTIF] <- "FM"	# regular motive for function end
 							}
 							
 							# case where the function starts after the 1st mandate
@@ -1550,6 +1577,44 @@ shorten.overlapping.mandates <- function(data, type, tolerance=1)
 
 
 #############################################################################################
+# Removes the mandate and function motives associated to missing en dates.
+#
+# data: table to process.
+#
+# returns: same table, but after the correction.
+#############################################################################################
+remove.superfluous.motives <- function(data)
+{	tlog(0,"Removing end motives associated to no end date")
+	
+	# correct mandate motives
+	idx <- which(is.na(data[,COL_ATT_MDT_FIN]) & !is.na(data[,COL_ATT_MDT_MOTIF]))
+	tlog(2,"Found ",length(idx)," superfluous mandate end motives")
+	if(length(idx)>0)
+		data[idx,COL_ATT_MDT_MOTIF] <- NA
+	
+	# possibly correct function motives
+	if(COL_ATT_FCT_MOTIF %in% colnames(data))
+	{	idx.fct <- which(is.na(data[,COL_ATT_FCT_FIN]) & !is.na(data[,COL_ATT_FCT_MOTIF]))
+		tlog(2,"Found ",length(idx.fct)," superfluous function end motives")
+		if(length(idx.fct)>0)
+			data[idx.fct,COL_ATT_FCT_MOTIF] <- NA
+		idx <- sort(union(idx, idx.fct))
+	}
+	
+	# log changes
+	tlog(2,"List of corrected rows: ")
+	for(i in idx)
+		tlog(4, format.row(data[i,]))
+	
+	tlog(2,"Corrected a total of ",length(idx)," rows for the whole table")
+	tlog(2, "Number of rows remaining: ",nrow(data))
+	return(data)
+}
+
+
+
+
+#############################################################################################
 # Performs various corrections on the dates defining mandates and functions: 
 # 1) Adjusts function dates so that they are contained inside the corresponding mandate period.
 # 2) Rounds mandate and function dates to match election dates, when approximately equal.
@@ -1585,8 +1650,11 @@ fix.mdtfct.dates <- function(data, election.file, series.file, type)
 	# solve mandate intersections (same position)
 	data <- shorten.overlapping.mandates(data, type, tolerance=8)
 	
-	# removes micro-mandates again (in case split created any)
+	# remove micro-mandates again (in case split created any)
 	data <- remove.micro.mandates(data, tolerance=7)
+	
+	# remove superfluous motives
+	data <- remove.superfluous.motives(data)
 	
 #	stop()
 	return(data)
