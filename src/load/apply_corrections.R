@@ -1440,6 +1440,8 @@ shorten.overlapping.mandates <- function(data, type, tolerance=1)
 										if(is.na(end1) || !is.na(end2) && end1>end2)
 										{	start1 <- end2 + 1
 											data[idx[i],col.start] <- start1
+											if(col.start==COL_ATT_MDT_DBT)
+												data[idx[i],COL_ATT_FCT_DBT] <- max(start1,data[idx[i],COL_ATT_FCT_DBT],na.rm=TRUE)
 											data[idx[i],COL_ATT_CORREC_DATE] <- TRUE
 											tlog(14,"After correction of the first mandate: ",format(start1),"--",format(end1)," (overlap: ",ovlp.duration," days)")
 											tlog(14, format.row(data[idx[i],]))
@@ -1450,6 +1452,8 @@ shorten.overlapping.mandates <- function(data, type, tolerance=1)
 										else if(is.na(end2) || !is.na(end1) && end2>end1)
 										{	start2 <- end1 + 1
 											data[idx[j],col.start] <- start2
+											if(col.start==COL_ATT_MDT_DBT)
+												data[idx[j],COL_ATT_FCT_DBT] <- max(start2,data[idx[j],COL_ATT_FCT_DBT],na.rm=TRUE)
 											data[idx[j],COL_ATT_CORREC_DATE] <- TRUE
 											tlog(14,"After correction of the second mandate: ",format(start2),"--",format(end2)," (overlap: ",ovlp.duration," days)")
 											tlog(14, format.row(data[idx[j],]))
@@ -1470,6 +1474,8 @@ shorten.overlapping.mandates <- function(data, type, tolerance=1)
 										if(start1>start2)
 										{	end2 <- start1 - 1
 											data[idx[j],col.end] <- end2
+											if(col.end==COL_ATT_MDT_FIN)
+												data[idx[j],COL_ATT_FCT_FIN] <- min(end2,data[idx[j],COL_ATT_FCT_FIN],na.rm=TRUE)
 											data[idx[j],COL_ATT_CORREC_DATE] <- TRUE
 											tlog(14,"After correction of the second mandate: ",format(start2),"--",format(end2)," (overlap: ",ovlp.duration," days)")
 											tlog(14, format.row(data[idx[j],]))
@@ -1480,6 +1486,8 @@ shorten.overlapping.mandates <- function(data, type, tolerance=1)
 										else if(start2>start1)
 										{	end1 <- start2 - 1
 											data[idx[i],col.end] <- end1
+											if(col.end==COL_ATT_MDT_FIN)
+												data[idx[i],COL_ATT_FCT_FIN] <- min(end1,data[idx[i],COL_ATT_FCT_FIN],na.rm=TRUE)
 											data[idx[i],COL_ATT_CORREC_DATE] <- TRUE
 											tlog(14,"After correction of the first mandate: ",format(start1),"--",format(end1)," (overlap: ",ovlp.duration," days)")
 											tlog(14, format.row(data[idx[i],]))
