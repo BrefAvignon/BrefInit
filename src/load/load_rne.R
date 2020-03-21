@@ -72,6 +72,9 @@ load.data <- function(filenames, col.map, correc.file, correct.data, election.fi
 	# add missing columns
 	data <- add.missing.columns(data)
 	
+	# normalize columns order
+	data <- normalize.col.order(data)
+	
 	# possibly perform additional corrections
 	if(correct.data)
 	{	# merge rows considered as compatible
@@ -79,9 +82,6 @@ load.data <- function(filenames, col.map, correc.file, correct.data, election.fi
 		# fix mandate/function dates
 		data <- fix.mdtfct.dates(data, election.file, series.file, type)
 	}
-	
-	# normalize columns order
-	data <- normalize.col.order(data)
 	
 	return(data)
 }

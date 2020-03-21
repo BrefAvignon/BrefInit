@@ -38,11 +38,11 @@ test.col.dates.generic <- function(data, out.folder, tolerance=7)
 				tab.file <- file.path(out.folder,paste0(col.basename,"_problems_too_early.txt"))
 				tlog(8,"Recording in file \"",tab.file,"\"")
 				write.table(x=tmp, file=tab.file,
-#						fileEncoding="UTF-8",
-						row.names=FALSE,
-						col.names=TRUE,
-#						quote=TRUE,
-						sep="\t"
+#					fileEncoding="UTF-8",
+					row.names=FALSE,
+					col.names=TRUE,
+#					quote=TRUE,
+					sep="\t"
 				)
 			}
 			
@@ -55,11 +55,11 @@ test.col.dates.generic <- function(data, out.folder, tolerance=7)
 				tab.file <- file.path(out.folder,paste0(col.basename,"_problems_too_late.txt"))
 				tlog(8,"Recording in file \"",tab.file,"\"")
 				write.table(x=tmp, file=tab.file,
-#						fileEncoding="UTF-8",
-						row.names=FALSE,
-						col.names=TRUE,
-#						quote=TRUE,
-						sep="\t"
+#					fileEncoding="UTF-8",
+					row.names=FALSE,
+					col.names=TRUE,
+#					quote=TRUE,
+					sep="\t"
 				)
 			}
 		}
@@ -76,8 +76,8 @@ test.col.dates.generic <- function(data, out.folder, tolerance=7)
 			tab.file <- file.path(out.folder,paste0("mandat_dates_problems_missing.txt"))
 			tlog(8,"Recording in file \"",tab.file,"\"")
 			write.table(x=tmp, file=tab.file,
-#					fileEncoding="UTF-8",
-					row.names=FALSE,col.names=TRUE)
+#				fileEncoding="UTF-8",
+				row.names=FALSE,col.names=TRUE)
 		}
 		
 		# start after end, or no start at all (=NA)
@@ -90,11 +90,11 @@ test.col.dates.generic <- function(data, out.folder, tolerance=7)
 			tab.file <- file.path(out.folder,paste0("mandat_dates_problems_bounds.txt"))
 			tlog(8,"Recording in file \"",tab.file,"\"")
 			write.table(x=tmp, file=tab.file,
-#					fileEncoding="UTF-8",
-					row.names=FALSE,
-					col.names=TRUE,
-#					quote=TRUE,
-					sep="\t"
+#				fileEncoding="UTF-8",
+				row.names=FALSE,
+				col.names=TRUE,
+#				quote=TRUE,
+				sep="\t"
 			)
 		}
 		
@@ -107,11 +107,11 @@ test.col.dates.generic <- function(data, out.folder, tolerance=7)
 			tab.file <- file.path(out.folder,paste0("mandat_dates_problems_birthdate.txt"))
 			tlog(8,"Recording in file \"",tab.file,"\"")
 			write.table(x=tmp, file=tab.file,
-#					fileEncoding="UTF-8",
-					row.names=FALSE,
-					col.names=TRUE,
-#					quote=TRUE,
-					sep="\t"
+#				fileEncoding="UTF-8",
+				row.names=FALSE,
+				col.names=TRUE,
+#				quote=TRUE,
+				sep="\t"
 			)
 		}
 		
@@ -135,10 +135,10 @@ test.col.dates.generic <- function(data, out.folder, tolerance=7)
 			
 			# compare to tolerance
 			if(!is.na(tolerance))
-				idx <- idx[duration<tolerance]
+				idx <- idx[durations<tolerance]
 			tlog(6,"Found ",length(idx)," mandate(s) which are too short (<",tolerance," days)")
 			if(length(idx)>0)
-			{	tmp <- cbind(1:length(idx),durations,data[idx,])
+			{	tmp <- cbind(idx,durations,data[idx,])
 				colnames(tmp)[1:2] <- c("Ligne","Duree mandat")
 				tmp <- tmp[order(durations),]
 				tab.file <- file.path(out.folder,paste0("mandat_dates_problems_short.txt"))
@@ -168,11 +168,11 @@ test.col.dates.generic <- function(data, out.folder, tolerance=7)
 			tab.file <- file.path(out.folder,paste0("fonction_dates_problems_bounds.txt"))
 			tlog(8,"Recording in file \"",tab.file,"\"")
 			write.table(x=tmp,file=tab.file,
-#					fileEncoding="UTF-8",
-					row.names=FALSE,
-					col.names=TRUE,
-#					quote=TRUE,
-					sep="\t"
+#				fileEncoding="UTF-8",
+				row.names=FALSE,
+				col.names=TRUE,
+#				quote=TRUE,
+				sep="\t"
 			)
 		}
 		
@@ -185,11 +185,11 @@ test.col.dates.generic <- function(data, out.folder, tolerance=7)
 			tab.file <- file.path(out.folder,paste0("fonction_dates_problems_mandate.txt"))
 			tlog(8,"Recording in file \"",tab.file,"\"")
 			write.table(x=tmp,file=tab.file,
-#					fileEncoding="UTF-8",
-					row.names=FALSE,
-					col.names=TRUE,
-#					quote=TRUE,
-					sep="\t"
+#				fileEncoding="UTF-8",
+				row.names=FALSE,
+				col.names=TRUE,
+#				quote=TRUE,
+				sep="\t"
 			)
 		}
 		
@@ -202,11 +202,11 @@ test.col.dates.generic <- function(data, out.folder, tolerance=7)
 			tab.file <- file.path(out.folder,paste0("fonction_dates_problems_birthdate.txt"))
 			tlog(8,"Recording in file \"",tab.file,"\"")
 			write.table(x=tmp,file=tab.file,
-#					fileEncoding="UTF-8",
-					row.names=FALSE,
-					col.names=TRUE,
-#					quote=TRUE,
-					sep="\t"
+#				fileEncoding="UTF-8",
+				row.names=FALSE,
+				col.names=TRUE,
+#				quote=TRUE,
+				sep="\t"
 			)
 		}
 		
@@ -216,10 +216,10 @@ test.col.dates.generic <- function(data, out.folder, tolerance=7)
 		if(length(idx)>0)
 		{	durations <- as.integer(data[idx,COL_ATT_FCT_FIN] - data[idx,COL_ATT_FCT_DBT])
 			if(!is.na(tolerance))
-				idx <- idx[duration<tolerance]
+				idx <- idx[durations<tolerance]
 			tlog(6,"Found ",length(idx)," function(s) which are too short (<",tolerance," days)")
 			if(length(idx)>0)
-			{	tmp <- cbind(1:length(idx),durations,data[idx,])
+			{	tmp <- cbind(idx,durations,data[idx,])
 				colnames(tmp)[1:2] <- c("Ligne","Duree fonction")
 				tmp <- tmp[order(durations),]
 				tab.file <- file.path(out.folder,paste0("fonction_dates_problems_short.txt"))
