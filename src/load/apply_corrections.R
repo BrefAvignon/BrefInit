@@ -90,7 +90,7 @@ retrieve.normalize.data <- function(filenames, col.map)
 		# replace "NA"s by actual NAs
 		data[which(data[,c]=="NA"),c] <- NA	
 	}
-	tlog(2,"Now ",nrow(data)," rows and ",ncol(data)," columns in main table")
+	tlog(2,"CHECKPOINT: Now ",nrow(data)," rows and ",ncol(data)," columns in main table")
 	
 	# add columns to store correction flags
 	correc.date <- rep(FALSE, nrow(data))
@@ -156,7 +156,7 @@ fix.id.problems <- function(data)
 			corrected.ids <- which(data[,COL_ATT_ELU_ID_RNE]!=mat[,1])
 			data[,COL_ATT_ELU_ID_RNE] <- mat[,1]
 			data[,COL_ATT_CORREC_INFO] <- as.logical(mat[,2])
-			tlog(2,"Corrected ",length(corrected.ids)," rows (",(100*length(corrected.ids)/nrow(data)),"%)")
+			tlog(2,"CHECKPOINT: Corrected ",length(corrected.ids)," rows (",(100*length(corrected.ids)/nrow(data)),"%)")
 		}
 		tlog(2,"Now ",nrow(data)," rows and ",ncol(data)," columns in table")
 	}
@@ -350,7 +350,7 @@ apply.adhoc.corrections <- function(data, col.map, correc.file)
 				}
 			}
 		}
-		tlog(2,"Corrected ",length(corrected.rows)," rows in total (",(100*length(corrected.rows)/nrow(data)),"%)")
+		tlog(2,"CHECKPOINT: Corrected ",length(corrected.rows)," rows in total (",(100*length(corrected.rows)/nrow(data)),"%)")
 		
 		# remove the marked rows
 		if(length(idx.rm)>0)
@@ -438,7 +438,7 @@ apply.systematic.corrections <- function(data)
 	if(COL_ATT_FCT_DBT %in% colnames(data))
 	{	idx <- which(is.na(data[,COL_ATT_MDT_DBT]) & is.na(data[,COL_ATT_MDT_FIN]) 
 						& is.na(data[,COL_ATT_FCT_DBT]) & is.na(data[,COL_ATT_FCT_FIN]))
-		tlog(2,"Removed ",length(idx)," incomplete rows (",(100*length(idx)/nrow(data)),"%)")
+		tlog(2,"CHECKPOINT: Removed ",length(idx)," incomplete rows (",(100*length(idx)/nrow(data)),"%)")
 		if(length(idx)>0)
 			data <- data[-idx, ]
 		tlog(2,"Now ",nrow(data)," rows and ",ncol(data)," columns in table")
@@ -457,7 +457,6 @@ apply.systematic.corrections <- function(data)
 		tlog(2,"Fixed ",length(idx)," rows")
 		tlog(2,"Now ",nrow(data)," rows and ",ncol(data)," columns in table")
 	}
-	
 	# use mandate end date when function end date is missing 
 	if(COL_ATT_FCT_NOM %in% colnames(data))
 	{	tlog(0,"Completing missing function end dates using mandate end dates")
@@ -470,7 +469,7 @@ apply.systematic.corrections <- function(data)
 		tlog(2,"Fixed ",length(idx)," rows")
 		tlog(2,"Now ",nrow(data)," rows and ",ncol(data)," columns in table")
 	}
-	tlog(0,"Fixed a total of ",length(corr.rows)," rows (",(100*length(corr.rows)/nrow(data)),"%) for start/end function date using mandate dates")
+	tlog(0,"CHECKPOINT: Fixed a total of ",length(corr.rows)," rows (",(100*length(corr.rows)/nrow(data)),"%) for start/end function date using mandate dates")
 	
 	return(data)
 }
@@ -700,7 +699,7 @@ merge.similar.rows <- function(data)
 			data <- data[-idx,]
 		}
 	}
-	tlog(2,"Done merging compatible rows, removed ",removed.nbr," rows (",(100*removed.nbr/nbr.before),"%)")
+	tlog(2,"CHECKPOINT: Done merging compatible rows, removed ",removed.nbr," rows (",(100*removed.nbr/nbr.before),"%)")
 	
 	tlog(2,"Now ",nrow(data)," rows and ",ncol(data)," columns in table")
 	return(data)
@@ -784,7 +783,7 @@ adjust.function.dates <- function(data)
 		}
 	}
 	
-	tlog(2, "Total number of corrected function dates: ",nbr.corr, " (",(100*nbr.corr/nrow(data)),"%)")
+	tlog(2, "CHECKPOINT: Total number of corrected function dates: ",nbr.corr, " (",(100*nbr.corr/nrow(data)),"%)")
 	tlog(2, "Number of rows remaining: ",nrow(data))
 	return(data)
 }
@@ -1003,7 +1002,7 @@ round.mdtfct.dates <- function(data, election.file, series.file, tolerance)
 		#if(motive.changed)
 		#	readline()		
 	}
-	tlog(2,"Corrected ",nbr.corrected," rows with election-related issues (",(100*nbr.corrected/nrow(data)),"%)")
+	tlog(2,"CHECKPOINT: Corrected ",nbr.corrected," rows with election-related issues (",(100*nbr.corrected/nrow(data)),"%)")
 	
 	return(data)
 }
@@ -1143,7 +1142,7 @@ merge.overlapping.mandates <- function(data, type)
 			}
 		}
 	}
-	tlog(2, "Total number of rows deleted after merges: ",nbr.corr, " (",100*nbr.corr/nrow(data),"%)")
+	tlog(2, "CHECKPOINT: Total number of rows deleted after merges: ",nbr.corr, " (",100*nbr.corr/nrow(data),"%)")
 	
 	if(length(idx.rmv)>0)
 		data <- data[-idx.rmv,]
@@ -1286,7 +1285,7 @@ split.long.mandates <- function(data, election.file, series.file)
 			}
 		}
 	}
-	tlog(2,"Added ",nbr.splits," rows (",(100*nbr.splits/nbr.before),"%) to the table by splitting periods spanning several actual mandates")
+	tlog(2,"CHECKPOINT: Added ",nbr.splits," rows (",(100*nbr.splits/nbr.before),"%) to the table by splitting periods spanning several actual mandates")
 	
 	data <- rbind(data, new.data)
 	tlog(2, "Table now containing ",nrow(data)," rows")
@@ -1362,7 +1361,7 @@ remove.micro.mandates <- function(data, tolerance)
 		}
 	}
 	
-	tlog(2,"Removed a total of ",nbr.removed," rows (",(100*nbr.removed/nbr.before),"%) corresponding to micro-mandates")
+	tlog(2,"CHECKPOINT: Removed a total of ",nbr.removed," rows (",(100*nbr.removed/nbr.before),"%) corresponding to micro-mandates")
 	tlog(2,"Number of rows remaining: ",nrow(data))
 	return(data)
 }
@@ -1568,7 +1567,7 @@ shorten.overlapping.mandates <- function(data, type, tolerance=1)
 		tlog(4,"Processing over")
 	}
 	
-	tlog(2,"Corrected a total of ",count," overlaps for the whole table")
+	tlog(2,"CHECKPOINT: Corrected a total of ",count," overlaps for the whole table (",(100*count/nrow(data)),"%)")
 	tlog(2, "Number of rows remaining: ",nrow(data))
 	return(data)
 }
@@ -1606,8 +1605,10 @@ remove.superfluous.motives <- function(data)
 	for(i in idx)
 		tlog(4, format.row(data[i,]))
 	
-	tlog(2,"Corrected a total of ",length(idx)," rows for the whole table")
+	tlog(2,"CHECKPOINT: Corrected a total of ",length(idx)," rows (motives) for the whole table (",(100*length(idx)/nrow(data)),"%)")
 	tlog(2, "Number of rows remaining: ",nrow(data))
+	#readline()
+	
 	return(data)
 }
 
@@ -1618,9 +1619,12 @@ remove.superfluous.motives <- function(data)
 # Performs various corrections on the dates defining mandates and functions: 
 # 1) Adjusts function dates so that they are contained inside the corresponding mandate period.
 # 2) Rounds mandate and function dates to match election dates, when approximately equal.
-# 3) Merges rows corresponding to overlapping compatible mandates.
-# 4) Splits rows containing election dates (other than as a start date).
-# 5) Removes micro-mandates.
+# 3) Removes mandates deemed too short.
+# 4) Merges rows corresponding to overlapping compatible mandates.
+# 5) Splits rows spanning election dates.
+# 6) Shorten overlapping rows (for a given position).
+# 7) Removes short mandates (again).
+# 8) Fix motives (for the end of mandates/functions).
 # 
 # data: the data table.
 # election.file: name of the file containing the election dates.
