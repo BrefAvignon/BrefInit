@@ -107,7 +107,8 @@ senate.load.general.table <- function(cache)
 		for(r in 1:nrow(dpt.table))
 		{	# retrieve info
 			id <- dpt.table[r,COL_ATT_DPT_ID]
-			code <- strsplit(dpt.table[r,COL_ATT_DPT_CODE], ",", fixed=TRUE)[[1]][1]
+			codes <- strsplit(dpt.table[r,COL_ATT_DPT_CODE], ",", fixed=TRUE)[[1]]
+			code <- codes[length(codes)]
 			names <- strsplit(dpt.table[r,COL_ATT_DPT_NOM], ",", fixed=TRUE)[[1]]
 			# add to table
 			for(name in names)
@@ -115,11 +116,14 @@ senate.load.general.table <- function(cache)
 				dpt.table.copy <- rbind(dpt.table.copy,df)
 			}
 		}
+		colnames(dpt.table.copy) <- colnames(dpt.table)
+		# get the info
 		indiv.dpt.idx <- match(indiv.dpt.names, dpt.table.copy[,COL_ATT_DPT_NOM])
 		indiv.dpt.codes <- dpt.table.copy[indiv.dpt.idx,COL_ATT_DPT_CODE]
 		indiv.dpt.ids <- dpt.table.copy[indiv.dpt.idx,COL_ATT_DPT_ID]
-		print(sort(unique(indiv.dpt.names[which(is.na(indiv.dpt.idx))])))	# for debug
-readline()		
+		#print(sort(unique(indiv.dpt.names[which(is.na(indiv.dpt.idx))])))	# for debug
+		#print(cbind(indiv.dpt.ids,indiv.dpt.codes,indiv.dpt.names))
+		#readline()		
 		
 		# retrieve political group
 		# NOTE: stored in the general table, so associated to each individual by opposition to each *mandate*
@@ -510,7 +514,8 @@ senate.convert.mandate.table <- function(general.table, elect.table, type)
 		for(r in 1:nrow(dpt.table))
 		{	# retrieve info
 			id <- dpt.table[r,COL_ATT_DPT_ID]
-			code <- strsplit(dpt.table[r,COL_ATT_DPT_CODE], ",", fixed=TRUE)[[1]][1]
+			codes <- strsplit(dpt.table[r,COL_ATT_DPT_CODE], ",", fixed=TRUE)[[1]]
+			code <- codes[length(codes)]
 			names <- strsplit(dpt.table[r,COL_ATT_DPT_NOM], ",", fixed=TRUE)[[1]]
 			# add to table
 			for(name in names)
@@ -518,11 +523,14 @@ senate.convert.mandate.table <- function(general.table, elect.table, type)
 				dpt.table.copy <- rbind(dpt.table.copy,df)
 			}
 		}
+		colnames(dpt.table.copy) <- colnames(dpt.table)
+		# get the info
 		dpt.idx <- match(dpt.names, dpt.table.copy[,COL_ATT_DPT_NOM])
 		dpt.codes <- dpt.table.copy[dpt.idx, COL_ATT_DPT_CODE]
 		dpt.ids <- dpt.table.copy[dpt.idx, COL_ATT_DPT_ID]
-		print(sort(unique(dpt.names[which(is.na(dpt.idx))])))	# for debug
-readline()	
+		#print(sort(unique(dpt.names[which(is.na(dpt.idx))])))	# for debug
+		#print(cbind(dpt.ids,dpt.codes,dpt.names))
+		#readline()	
 		
 		# add departments to table
 		departments <- data.frame(dpt.ids, dpt.codes, dpt.names, stringsAsFactors=FALSE)

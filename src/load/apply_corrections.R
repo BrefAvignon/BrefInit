@@ -586,7 +586,8 @@ add.missing.columns <- function(data)
 		for(r in 1:nrow(dpt.table))
 		{	# retrieve info
 			id <- dpt.table[r,COL_ATT_DPT_ID]
-			code <- strsplit(dpt.table[r,COL_ATT_DPT_CODE], ",", fixed=TRUE)[[1]][1]
+			codes <- strsplit(dpt.table[r,COL_ATT_DPT_CODE], ",", fixed=TRUE)[[1]]
+			code <- codes[length(codes)]
 			names <- strsplit(dpt.table[r,COL_ATT_DPT_NOM], ",", fixed=TRUE)[[1]]
 			# add to table
 			for(name in names)
@@ -594,6 +595,7 @@ add.missing.columns <- function(data)
 				dpt.table.copy <- rbind(dpt.table.copy,df)
 			}
 		}
+		colnames(dpt.table.copy) <- colnames(dpt.table)
 		
 		# get the appropriate unique ids
 		dpt.idx <- match(data[,COL_ATT_DPT_NOM], dpt.table.copy[,COL_ATT_DPT_NOM])

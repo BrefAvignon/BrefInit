@@ -351,7 +351,8 @@ assembly.load.general.table <- function(cache, data)
 		for(r in 1:nrow(dpt.table))
 		{	# retrieve info
 			id <- dpt.table[r,COL_ATT_DPT_ID]
-			code <- strsplit(dpt.table[r,COL_ATT_DPT_CODE], ",", fixed=TRUE)[[1]][1]
+			codes <- strsplit(dpt.table[r,COL_ATT_DPT_CODE], ",", fixed=TRUE)[[1]]
+			code <- codes[length(codes)]
 			names <- strsplit(dpt.table[r,COL_ATT_DPT_NOM], ",", fixed=TRUE)[[1]]
 			# add to table
 			for(name in names)
@@ -359,11 +360,14 @@ assembly.load.general.table <- function(cache, data)
 				dpt.table.copy <- rbind(dpt.table.copy,df)
 			}
 		}
+		colnames(dpt.table.copy) <- colnames(dpt.table)
+		# get the info
 		indiv.dpt.idx <- match(indiv.dpt.names, dpt.table.copy[,COL_ATT_DPT_NOM])
 		indiv.dpt.codes <- dpt.table.copy[indiv.dpt.idx,COL_ATT_DPT_CODE]
 		indiv.dpt.ids <- dpt.table.copy[indiv.dpt.idx,COL_ATT_DPT_ID]
-		print(sort(unique(indiv.dpt.names[which(is.na(indiv.dpt.idx))])))	# for debug
-readline()		
+		#print(sort(unique(indiv.dpt.names[which(is.na(indiv.dpt.idx))])))	# for debug
+		#print(cbind(indiv.dpt.ids,indiv.dpt.codes,indiv.dpt.names))
+		#readline()		
 		
 		# normalize country names
 		indiv.country.names <- normalize.proper.nouns(remove.diacritics(indiv.table[,COL_ATT_ELU_NAIS_PAYS]))
@@ -641,7 +645,8 @@ assembly.convert.mandate.table <- function(general.table, elect.table, data)
 	for(r in 1:nrow(dpt.table))
 	{	# retrieve info
 		id <- dpt.table[r,COL_ATT_DPT_ID]
-		code <- strsplit(dpt.table[r,COL_ATT_DPT_CODE], ",", fixed=TRUE)[[1]][1]
+		codes <- strsplit(dpt.table[r,COL_ATT_DPT_CODE], ",", fixed=TRUE)[[1]]
+		code <- codes[length(codes)]
 		names <- strsplit(dpt.table[r,COL_ATT_DPT_NOM], ",", fixed=TRUE)[[1]]
 		# add to table
 		for(name in names)
@@ -649,11 +654,14 @@ assembly.convert.mandate.table <- function(general.table, elect.table, data)
 			dpt.table.copy <- rbind(dpt.table.copy,df)
 		}
 	}
+	colnames(dpt.table.copy) <- colnames(dpt.table)
+	# get the info
 	dpt.idx <- match(dpt.names, dpt.table.copy[,COL_ATT_DPT_NOM])
 	dpt.codes <- dpt.table.copy[dpt.idx,COL_ATT_DPT_CODE]
 	dpt.ids <- dpt.table.copy[dpt.idx,COL_ATT_DPT_ID]
-	print(sort(unique(dpt.names[which(is.na(dpt.idx))])))	# for debug
-readline()		
+	#print(sort(unique(dpt.names[which(is.na(dpt.idx))])))	# for debug
+	#print(cbind(dpt.ids,dpt.codes,dpt.names))
+	#readline()		
 	
 	# clean circonscription codes
 	circo.codes <- sprintf("%02d", as.integer(trimws(elect.table[,COL_ATT_CIRC_CODE])))
