@@ -137,7 +137,7 @@ test.col.dates.generic <- function(data, out.folder, tolerance=7)
 				idx <- idx[durations<tolerance]
 			tlog(6,"Found ",length(idx)," mandate(s) which are too short (<",tolerance," days)")
 			if(length(idx)>0)
-			{	tmp <- cbind(idx,durations,data[idx,])
+			{	tmp <- cbind(idx,durations[idx],data[idx,])
 				colnames(tmp)[1:2] <- c("Ligne","Duree mandat")
 				tmp <- tmp[order(durations),]
 				tab.file <- file.path(out.folder,paste0("mandat_dates_problems_short.txt"))
@@ -217,7 +217,7 @@ test.col.dates.generic <- function(data, out.folder, tolerance=7)
 				idx <- idx[durations<tolerance]
 			tlog(6,"Found ",length(idx)," function(s) which are too short (<",tolerance," days)")
 			if(length(idx)>0)
-			{	tmp <- cbind(idx,durations,data[idx,])
+			{	tmp <- cbind(idx,durations[idx],data[idx,])
 				colnames(tmp)[1:2] <- c("Ligne","Duree fonction")
 				tmp <- tmp[order(durations),]
 				tab.file <- file.path(out.folder,paste0("fonction_dates_problems_short.txt"))

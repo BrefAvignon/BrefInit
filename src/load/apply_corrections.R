@@ -981,7 +981,7 @@ round.mdtfct.dates <- function(data, election.file, series.file, tolerance)
 				motive.changed <- TRUE
 			}
 			# end fonction aligned, and missing mandate end motive
-			if(!is.na(data[r,COL_ATT_FCT_FIN]) && data[r,COL_ATT_FCT_FIN]==data[r,COL_ATT_MDT_FIN] && is.na(data[r,COL_ATT_FCT_MOTIF]))
+			if(has.fct && !is.na(data[r,COL_ATT_FCT_FIN]) && data[r,COL_ATT_FCT_FIN]==data[r,COL_ATT_MDT_FIN] && is.na(data[r,COL_ATT_FCT_MOTIF]))
 			{	data[r,COL_ATT_FCT_MOTIF] <- "FM"	# regular motive for function end
 				data[r,COL_ATT_CORREC_INFO] <- TRUE
 				motive.changed <- TRUE
@@ -1094,8 +1094,8 @@ merge.overlapping.mandates <- function(data, type)
 						tlog(10, format.row(data[idx[j],]))
 						tlog(10, format.row(data[idx[k],]))
 						tlog(8, "Overlap detected between")
-						tlog(10, format.row.dates(data[idx[j],])," (",data[idx[j],fct.att],")")
-						tlog(10, format.row.dates(data[idx[k],])," (",data[idx[k],fct.att],")")
+						tlog(10, format.row.dates(data[idx[j],]),if(has.fct) paste0(" (",data[idx[j],fct.att],")") else "")
+						tlog(10, format.row.dates(data[idx[k],]),if(has.fct) paste0(" (",data[idx[k],fct.att],")") else "")
 						
 						# update mandate start date
 						if(is.na(data[idx[j],COL_ATT_MDT_DBT]) || is.na(data[idx[k],COL_ATT_MDT_DBT]))
@@ -1381,6 +1381,7 @@ remove.micro.mandates <- function(data, tolerance)
 #############################################################################################
 shorten.overlapping.mandates <- function(data, type, tolerance=1)
 {	tlog(0,"Solving mandate overlaps for unique positions")
+	has.fct <- COL_ATT_FCT_DBT %in% colnames(data)
 	count <- 0
 	
 	# some mandate types don't have unique positions
@@ -1466,7 +1467,7 @@ shorten.overlapping.mandates <- function(data, type, tolerance=1)
 										if(is.na(end1) || !is.na(end2) && end1>end2)
 										{	start1 <- end2 + 1
 											data[idx[i],col.start] <- start1
-											if(col.start==COL_ATT_MDT_DBT)
+											if(col.start==COL_ATT_MDT_DBT && has.fct)
 												data[idx[i],COL_ATT_FCT_DBT] <- max(start1,data[idx[i],COL_ATT_FCT_DBT])
 											data[idx[i],COL_ATT_CORREC_DATE] <- TRUE
 											tlog(14,"After correction of the first mandate: ",format(start1),"--",format(end1)," (overlap: ",ovlp.duration," days)")
@@ -1478,7 +1479,7 @@ shorten.overlapping.mandates <- function(data, type, tolerance=1)
 										else if(is.na(end2) || !is.na(end1) && end2>end1)
 										{	start2 <- end1 + 1
 											data[idx[j],col.start] <- start2
-											if(col.start==COL_ATT_MDT_DBT)
+											if(col.start==COL_ATT_MDT_DBT && has.fct)
 												data[idx[j],COL_ATT_FCT_DBT] <- max(start2,data[idx[j],COL_ATT_FCT_DBT])
 											data[idx[j],COL_ATT_CORREC_DATE] <- TRUE
 											tlog(14,"After correction of the second mandate: ",format(start2),"--",format(end2)," (overlap: ",ovlp.duration," days)")
@@ -1492,7 +1493,7 @@ shorten.overlapping.mandates <- function(data, type, tolerance=1)
 											tlog(14, format.row(data[idx[i],]))
 											tlog(14, format.row(data[idx[j],]))
 											#stop("Same start and end dates, is that even possible?")
-											readline()						
+											#readline()						
 										}
 									}
 									else if(is.na(end1) && is.na(end2) || (!is.na(end1) && !is.na(end2) && end1==end2))
@@ -1500,7 +1501,7 @@ shorten.overlapping.mandates <- function(data, type, tolerance=1)
 										if(start1>start2)
 										{	end2 <- start1 - 1
 											data[idx[j],col.end] <- end2
-											if(col.end==COL_ATT_MDT_FIN)
+											if(col.end==COL_ATT_MDT_FIN && has.fct)
 												data[idx[j],COL_ATT_FCT_FIN] <- min(end2,data[idx[j],COL_ATT_FCT_FIN])
 											data[idx[j],COL_ATT_CORREC_DATE] <- TRUE
 											tlog(14,"After correction of the second mandate: ",format(start2),"--",format(end2)," (overlap: ",ovlp.duration," days)")
@@ -1512,7 +1513,7 @@ shorten.overlapping.mandates <- function(data, type, tolerance=1)
 										else if(start2>start1)
 										{	end1 <- start2 - 1
 											data[idx[i],col.end] <- end1
-											if(col.end==COL_ATT_MDT_FIN)
+											if(col.end==COL_ATT_MDT_FIN && has.fct)
 												data[idx[i],COL_ATT_FCT_FIN] <- min(end1,data[idx[i],COL_ATT_FCT_FIN])
 											data[idx[i],COL_ATT_CORREC_DATE] <- TRUE
 											tlog(14,"After correction of the first mandate: ",format(start1),"--",format(end1)," (overlap: ",ovlp.duration," days)")
@@ -1526,7 +1527,7 @@ shorten.overlapping.mandates <- function(data, type, tolerance=1)
 											tlog(14, format.row(data[idx[i],]))
 											tlog(14, format.row(data[idx[j],]))
 											#stop("This should not be possible")
-											readline()
+											#readline()
 										}
 									}
 									else
@@ -1538,7 +1539,7 @@ shorten.overlapping.mandates <- function(data, type, tolerance=1)
 									if(!is.na(end1) && (is.na(end2) || end1<end2))
 									{	end1 <- end1 - ovlp.duration
 										data[idx[i],col.end] <- end1
-										if(col.end==COL_ATT_MDT_FIN)
+										if(col.end==COL_ATT_MDT_FIN && has.fct)
 											data[idx[i],COL_ATT_FCT_FIN] <- min(end1,data[idx[i],COL_ATT_FCT_FIN])
 										data[idx[i],COL_ATT_CORREC_DATE] <- TRUE
 										tlog(12,"After correction of the first mandate: ",format(start1),"--",format(end1)," (overlap: ",ovlp.duration," days)")
@@ -1547,7 +1548,7 @@ shorten.overlapping.mandates <- function(data, type, tolerance=1)
 									else
 									{	end2 <- end2 - ovlp.duration
 										data[idx[j],col.end] <- end2
-										if(col.end==COL_ATT_MDT_FIN)
+										if(col.end==COL_ATT_MDT_FIN && has.fct)
 											data[idx[j],COL_ATT_FCT_FIN] <- min(end2,data[idx[j],COL_ATT_FCT_FIN])
 										data[idx[j],COL_ATT_CORREC_DATE] <- TRUE
 										tlog(12,"After correction of the second mandate: ",format(start2),"--",format(end2)," (overlap: ",ovlp.duration," days)")
