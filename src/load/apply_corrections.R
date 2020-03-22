@@ -156,7 +156,7 @@ fix.id.problems <- function(data)
 			corrected.ids <- which(data[,COL_ATT_ELU_ID_RNE]!=mat[,1])
 			data[,COL_ATT_ELU_ID_RNE] <- mat[,1]
 			data[,COL_ATT_CORREC_INFO] <- as.logical(mat[,2])
-			tlog(2,"CHECKPOINT: Corrected ",length(corrected.ids)," rows (",(100*length(corrected.ids)/nrow(data)),"%)")
+			tlog(2,"CHECKPOINT: Fixed ",length(corrected.ids)," rows (",(100*length(corrected.ids)/nrow(data)),"%)")
 		}
 		tlog(2,"Now ",nrow(data)," rows and ",ncol(data)," columns in table")
 	}
@@ -783,7 +783,7 @@ adjust.function.dates <- function(data)
 		}
 	}
 	
-	tlog(2, "CHECKPOINT: Total number of corrected function dates: ",nbr.corr, " (",(100*nbr.corr/nrow(data)),"%)")
+	tlog(2, "CHECKPOINT: Total number of adjusted function dates: ",nbr.corr, " (",(100*nbr.corr/nrow(data)),"%)")
 	tlog(2, "Number of rows remaining: ",nrow(data))
 	return(data)
 }
@@ -1002,7 +1002,7 @@ round.mdtfct.dates <- function(data, election.file, series.file, tolerance)
 		#if(motive.changed)
 		#	readline()		
 	}
-	tlog(2,"CHECKPOINT: Corrected ",nbr.corrected," rows with election-related issues (",(100*nbr.corrected/nrow(data)),"%)")
+	tlog(2,"CHECKPOINT: Rounded ",nbr.corrected," rows with election-related issues (",(100*nbr.corrected/nrow(data)),"%)")
 	
 	return(data)
 }
@@ -1142,7 +1142,7 @@ merge.overlapping.mandates <- function(data, type)
 			}
 		}
 	}
-	tlog(2, "CHECKPOINT: Total number of rows deleted after merges: ",nbr.corr, " (",100*nbr.corr/nrow(data),"%)")
+	tlog(2, "CHECKPOINT: Total number of rows deleted after merging: ",nbr.corr, " (",100*nbr.corr/nrow(data),"%)")
 	
 	if(length(idx.rmv)>0)
 		data <- data[-idx.rmv,]
@@ -1568,7 +1568,7 @@ shorten.overlapping.mandates <- function(data, type, tolerance=1)
 		tlog(4,"Processing over")
 	}
 	
-	tlog(2,"CHECKPOINT: Corrected a total of ",count," overlaps for the whole table (",(100*count/nrow(data)),"%)")
+	tlog(2,"CHECKPOINT: Shortened a total of ",count," mandates du to overlap, for the whole table (",(100*count/nrow(data)),"%)")
 	tlog(2, "Number of rows remaining: ",nrow(data))
 	return(data)
 }
@@ -1583,7 +1583,7 @@ shorten.overlapping.mandates <- function(data, type, tolerance=1)
 #
 # returns: same table, but after the correction.
 #############################################################################################
-remove.superfluous.motives <- function(data)
+delete.superfluous.motives <- function(data)
 {	tlog(0,"Removing end motives associated to no end date")
 	
 	# correct mandate motives
@@ -1606,7 +1606,7 @@ remove.superfluous.motives <- function(data)
 	for(i in idx)
 		tlog(4, format.row(data[i,]))
 	
-	tlog(2,"CHECKPOINT: Corrected a total of ",length(idx)," rows (motives) for the whole table (",(100*length(idx)/nrow(data)),"%)")
+	tlog(2,"CHECKPOINT: Deleted a total of ",length(idx)," superfluous motives, for the whole table (",(100*length(idx)/nrow(data)),"%)")
 	tlog(2, "Number of rows remaining: ",nrow(data))
 	#readline()
 	
@@ -1658,8 +1658,8 @@ fix.mdtfct.dates <- function(data, election.file, series.file, type)
 	# remove micro-mandates again (in case split created any)
 	data <- remove.micro.mandates(data, tolerance=7)
 	
-	# remove superfluous motives
-	data <- remove.superfluous.motives(data)
+	# delete superfluous motives
+	data <- delete.superfluous.motives(data)
 	
 #	stop()
 	return(data)
