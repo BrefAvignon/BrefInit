@@ -581,11 +581,25 @@ add.missing.columns <- function(data)
 #			fileEncoding="Latin1"		# original tables seem to be encoded in Latin1 (ANSI)
 		)
 		
+		# convert to handle multiple codes/names
+		dpt.table.copy <- dpt.table[-(1:nrow(dpt.table)),]
+		for(r in 1:nrow(dpt.table))
+		{	# retrieve info
+			id <- dpt.table[r,COL_ATT_DPT_ID]
+			code <- strsplit(dpt.table[r,COL_ATT_DPT_CODE], ",", fixed=TRUE)[[1]][1]
+			names <- strsplit(dpt.table[r,COL_ATT_DPT_NOM], ",", fixed=TRUE)[[1]]
+			# add to table
+			for(name in names)
+			{	df <- data.frame(id,code,name, stringsAsFactors=FALSE)
+				dpt.table.copy <- rbind(dpt.table.copy,df)
+			}
+		}
+		
 		# get the appropriate unique ids
-		dpt.idx <- match(data[,COL_ATT_DPT_NOM], dpt.table[,COL_ATT_DPT_NOM])
+		dpt.idx <- match(data[,COL_ATT_DPT_NOM], dpt.table.copy[,COL_ATT_DPT_NOM])
 		
 		# insert in the table
-		dpt.ids <- data.frame(dpt.table[dpt.idx, COL_ATT_DPT_ID], stringsAsFactors=FALSE)
+		dpt.ids <- data.frame(dpt.table.copy[dpt.idx, COL_ATT_DPT_ID], stringsAsFactors=FALSE)
 		colnames(dpt.ids) <- COL_ATT_DPT_ID
 		data <- cbind(data, dpt.ids)
 	}

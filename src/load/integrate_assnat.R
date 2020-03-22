@@ -346,13 +346,24 @@ assembly.load.general.table <- function(cache, data)
 			as.is=TRUE					# don't convert strings to factors
 #			fileEncoding="Latin1"		# original tables seem to be encoded in Latin1 (ANSI)
 		)
-		indiv.dpt.idx <- match(indiv.dpt.names, dpt.table[,COL_ATT_DPT_NOM])
-		indiv.dpt.codes <- sapply(dpt.table[indiv.dpt.idx,COL_ATT_DPT_CODE], function(x) 
-				{	str <- strsplit(x, ",", fixed=TRUE)[[1]]
-					str[length(str)]
-				})
-		indiv.dpt.ids <- dpt.table[indiv.dpt.idx,COL_ATT_DPT_ID]
-		#sort(unique(indiv.dpt.names[which(is.na(indiv.dpt.idx))]))	# for debug
+		# convert to handle multiple codes/names
+		dpt.table.copy <- dpt.table[-(1:nrow(dpt.table)),]
+		for(r in 1:nrow(dpt.table))
+		{	# retrieve info
+			id <- dpt.table[r,COL_ATT_DPT_ID]
+			code <- strsplit(dpt.table[r,COL_ATT_DPT_CODE], ",", fixed=TRUE)[[1]][1]
+			names <- strsplit(dpt.table[r,COL_ATT_DPT_NOM], ",", fixed=TRUE)[[1]]
+			# add to table
+			for(name in names)
+			{	df <- data.frame(id,code,name, stringsAsFactors=FALSE)
+				dpt.table.copy <- rbind(dpt.table.copy,df)
+			}
+		}
+		indiv.dpt.idx <- match(indiv.dpt.names, dpt.table.copy[,COL_ATT_DPT_NOM])
+		indiv.dpt.codes <- dpt.table.copy[indiv.dpt.idx,COL_ATT_DPT_CODE]
+		indiv.dpt.ids <- dpt.table.copy[indiv.dpt.idx,COL_ATT_DPT_ID]
+		print(sort(unique(indiv.dpt.names[which(is.na(indiv.dpt.idx))])))	# for debug
+readline()		
 		
 		# normalize country names
 		indiv.country.names <- normalize.proper.nouns(remove.diacritics(indiv.table[,COL_ATT_ELU_NAIS_PAYS]))
@@ -625,13 +636,24 @@ assembly.convert.mandate.table <- function(general.table, elect.table, data)
 			as.is=TRUE					# don't convert strings to factors
 #			fileEncoding="Latin1"		# original tables seem to be encoded in Latin1 (ANSI)
 	)
-	dpt.idx <- match(dpt.names, dpt.table[,COL_ATT_DPT_NOM])
-#	dpt.codes <- trimws(elect.table[,COL_ATT_DPT_CODE])		# better to force using the codes from the RNE, as long as the names match
-	dpt.codes <- sapply(dpt.table[dpt.idx,COL_ATT_DPT_CODE], function(x) 
-			{	str <- strsplit(x, ",", fixed=TRUE)[[1]]
-				str[length(str)]
-			})
-	dpt.ids <- dpt.table[dpt.idx,COL_ATT_DPT_ID]
+	# convert to handle multiple codes/names
+	dpt.table.copy <- dpt.table[-(1:nrow(dpt.table)),]
+	for(r in 1:nrow(dpt.table))
+	{	# retrieve info
+		id <- dpt.table[r,COL_ATT_DPT_ID]
+		code <- strsplit(dpt.table[r,COL_ATT_DPT_CODE], ",", fixed=TRUE)[[1]][1]
+		names <- strsplit(dpt.table[r,COL_ATT_DPT_NOM], ",", fixed=TRUE)[[1]]
+		# add to table
+		for(name in names)
+		{	df <- data.frame(id,code,name, stringsAsFactors=FALSE)
+			dpt.table.copy <- rbind(dpt.table.copy,df)
+		}
+	}
+	dpt.idx <- match(dpt.names, dpt.table.copy[,COL_ATT_DPT_NOM])
+	dpt.codes <- dpt.table.copy[dpt.idx,COL_ATT_DPT_CODE]
+	dpt.ids <- dpt.table.copy[dpt.idx,COL_ATT_DPT_ID]
+	print(sort(unique(dpt.names[which(is.na(dpt.idx))])))	# for debug
+readline()		
 	
 	# clean circonscription codes
 	circo.codes <- sprintf("%02d", as.integer(trimws(elect.table[,COL_ATT_CIRC_CODE])))
