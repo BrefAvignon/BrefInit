@@ -66,10 +66,12 @@ retrieve.normalize.data <- function(filenames, col.map)
 	for(c in 1:ncol(data))
 	{	col.name <- colnames(data)[c]
 		col.type <- COL_TYPES[col.name]
+		tlog(2,"Processing column \"",col.name,"\" (",c,"/",ncol(data),")")
 		
 		# the column is an actual string
 		if(col.type %in% c("cat","nom"))
-		{	tlog(2,"Processing column \"",col.name,"\" (",c,"/",ncol(data),")")
+		{	tlog(4,"Column \"",col.name,"\" treated as a string")
+			
 			# convert encoding
 			##			data[,c] <- iconv(x=data[,c], from="Latin1", to="UTF8")
 #			data[,c] <- iconv(x=data[,c], to="UTF8")
@@ -78,15 +80,15 @@ retrieve.normalize.data <- function(filenames, col.map)
 			data[,c] <- remove.diacritics(data[,c])
 			
 			# normalize proper nouns
-			if(colnames(data)[c] %in% COLS_ATT_PROPER_NOUNS)
+			if(col.name %in% COLS_ATT_PROPER_NOUNS)
 				data[,c] <- normalize.proper.nouns(data[,c])
-			if(colnames(data)[c] %in% COLS_ATT_LOCATION_NOUNS)
+			if(col.name %in% COLS_ATT_LOCATION_NOUNS)
 				data[,c] <- normalize.location.nouns(data[,c])
 		}
 		
 		# the column is not a string
 		else
-			tlog(2,"Col. \"",colnames(data)[c],"\": not a string")
+			tlog(4,"Column \"",col.name,"\": not a string")
 		
 		# trim leading/ending whitespace
 		data[,c] <- trimws(data[,c])
@@ -95,7 +97,7 @@ retrieve.normalize.data <- function(filenames, col.map)
 		data[which(data[,c]==""),c] <- NA
 		
 		# replace "NA"s by actual NAs
-		data[which(data[,c]=="NA"),c] <- NA	
+		data[which(data[,c]=="NA"),c] <- NA
 	}
 	tlog(2,"CHECKPOINT 0: Now ",nrow(data)," rows and ",ncol(data)," columns in main table")
 	
@@ -430,6 +432,7 @@ apply.systematic.corrections <- function(data)
 		# we simply keep the first three characters of the id
 		data[,COL_ATT_COM_CODE] <- substr(x=data[,COL_ATT_COM_CODE], start=1, stop=3)
 		idx <- which(data[,COL_ATT_COM_CODE]!=tmp)
+		data[idx,COL_ATT_CORREC_INFO] <- TRUE 
 		corr.rows <- union(corr.rows,idx)
 		tlog(2,"Adjusted ",length(idx)," municipality ids")
 	}
@@ -439,6 +442,7 @@ apply.systematic.corrections <- function(data)
 		idx <- which(data[,COL_ATT_ELU_NUANCE]=="NC")
 		if(length(idx)>0)
 		{	data[idx,COL_ATT_ELU_NUANCE] <- NA
+			data[idx,COL_ATT_CORREC_INFO] <- TRUE 
 			corr.rows <- union(corr.rows,idx)
 		}
 		tlog(2,"Fixed ",length(idx)," political nuances")
@@ -450,6 +454,7 @@ apply.systematic.corrections <- function(data)
 		idx <- which(data[,COL_ATT_DPT_CODE]=="0" | data[,COL_ATT_DPT_CODE]=="00")
 		if(length(idx)>0)
 		{	data[idx,COL_ATT_DPT_CODE] <- NA
+			data[idx,COL_ATT_CORREC_INFO] <- TRUE 
 			corr.rows <- union(corr.rows,idx)
 		}
 		tlog(2,"Cleaned ",length(idx)," rows")
@@ -459,6 +464,7 @@ apply.systematic.corrections <- function(data)
 		idx <- which(data[,COL_ATT_COM_CODE]=="0" | data[,COL_ATT_COM_CODE]=="00")
 		if(length(idx)>0)
 		{	data[idx,COL_ATT_COM_CODE] <- NA
+			data[idx,COL_ATT_CORREC_INFO] <- TRUE 
 			corr.rows <- union(corr.rows,idx)
 		}
 		tlog(2,"Cleaned ",length(idx)," rows")
@@ -472,11 +478,13 @@ apply.systematic.corrections <- function(data)
 			locs <- cbind(apply(cbind(data[,COL_ATT_DPT_CODE],data[,COL_ATT_COM_CODE]),1,function(r) paste(r,collapse="_")),data[,COL_ATT_COM_NOM])
 			idx2 <- match(locs[idx,1],locs[-idx,1])
 			idx3 <- which(!is.na(idx2))
-			idx <- idx[idx3]
+			idx1 <- idx[idx3]
 			idx2 <- idx2[idx3]
 			if(length(idx2)>0)
-			{	data[idx,COL_ATT_COM_NOM] <- locs[-idx,2][idx2]
-				corr.rows <- union(corr.rows,idx)
+			{	data[idx1,COL_ATT_COM_NOM] <- locs[-idx,2][idx2]
+				data[idx1,COL_ATT_CORREC_INFO] <- TRUE 
+				corr.rows <- union(corr.rows,idx1)
+				idx <- idx1
 			}
 		}		
 		tlog(2,"Fixed ",length(idx)," rows")

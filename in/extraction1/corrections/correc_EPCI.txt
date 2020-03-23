@@ -130,7 +130,6 @@ NA	NA	NA	NA	Numero SIREN	200034023	248100521	EPCI avec plusieurs SIREN successif
 NA	NA	NA	NA	Numero SIREN	200040863	200072064	EPCI avec plusieurs SIREN successifs, on garde le dernier
 NA	NA	NA	NA	Numero SIREN	213204266	243200300	EPCI avec plusieurs SIREN successifs, on garde le dernier
 NA	NA	NA	NA	Numero SIREN	160126365	200041465	EPCI avec plusieurs SIREN successifs, on garde le dernier
-#NA	NA	NA	NA	NA	NA	NA	NA
 NA	NA	NA	NA	Numero SIREN	20006393	200006393	numéro SIREN incorrect (syntaxiquement), on remplace par le bon
 NA	NA	NA	NA	Numero SIREN	20006971	200006971	numéro SIREN incorrect (syntaxiquement), on remplace par le bon
 7943	1219300	CHABAL	JEAN PAUL	Date fin mandat	31/12/2016	NA	Corrigé pour mandat en cours
@@ -309,6 +308,8 @@ NA	NA	NA	NA	Numero SIREN	20006971	200006971	numéro SIREN incorrect (syntaxiquem
 106350	540026	TABUY	Gérard	Date debut fonction	14/6/2015	NA	Fonction déjà présente
 121038	3612	BIDEAU	Robert	Libelle fonction	Vice-président d'EPCI	NA	Fonction déjà présente
 121038	3612	BIDEAU	Robert	Date debut fonction	1/1/2017	NA	Fonction déjà présente
+126707	834127	ETZOL	Maryse	Date debut mandat	28/6/2015	2/5/2014	Date incohérente
+126707	834127	ETZOL	Maryse	Date fin mandat	NA	27/6/2015	Date incohérente
 1	106921	DELARUELLE	Yves	Libelle commune	NA	ANDERT-ET-CONDON	Commune manquante
 1	106921	DELARUELLE	Yves	Code Insee commune	NA	009	Commune manquante
 1	106921	DELARUELLE	Yves	Code departement	0	01	Commune manquante
@@ -410,7 +411,7 @@ NA	NA	NA	NA	Numero SIREN	20006971	200006971	numéro SIREN incorrect (syntaxiquem
 1484	878228	CAMBRAYE	Olivier	Code departement	0	02	Commune manquante
 3280	1251494	BERÇON	Guy	Libelle commune	NA	Saint-Vitte	Commune manquante
 3280	1251494	BERÇON	Guy	Code Insee commune	NA	238	Commune manquante
-3280	1251494	BERÇON	Guy	Code departement	0	03	Commune manquante
+3280	1251494	BERÇON	Guy	Code departement	0	18	Commune manquante
 3281	150289	DE LAMARLIERE	Thierry	Libelle commune	NA	Louroux-Hodement	Commune manquante
 3281	150289	DE LAMARLIERE	Thierry	Code Insee commune	NA	153	Commune manquante
 3281	150289	DE LAMARLIERE	Thierry	Code departement	0	03	Commune manquante
@@ -420,6 +421,3 @@ NA	NA	NA	NA	Numero SIREN	20006971	200006971	numéro SIREN incorrect (syntaxiquem
 3283	150340	LAPRUGNE	Jean-Michel	Libelle commune	NA	Haut-Bocage	Commune manquante
 3283	150340	LAPRUGNE	Jean-Michel	Code Insee commune	NA	158	Commune manquante
 3283	150340	LAPRUGNE	Jean-Michel	Code departement	0	03	Commune manquante
-#xxxx	xxxx	xxxx	xxxx	Libelle commune	NA	xxxx	Commune manquante
-#xxxx	xxxx	xxxx	xxxx	Code Insee commune	NA	xxxx	Commune manquante
-#xxxx	xxxx	xxxx	xxxx	Code departement	NA	xxxx	Commune manquante

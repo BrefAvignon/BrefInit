@@ -106,6 +106,8 @@ test.col.locations.municipality <- function(data, out.folder)
 			
 			idx <- which(codes==unique.code)
 			ns <- names[idx]
+			ns[is.na(ns)] <- "NA"
+			
 			if(any(ns!=ns[1]))
 			{	row <- c(
 					strsplit(x=unique.code, split=":", fixed=TRUE)[[1]],
@@ -115,7 +117,7 @@ test.col.locations.municipality <- function(data, out.folder)
 				tab1 <- rbind(tab1, row)
 			}
 		}
-			
+		
 		# found codes associated to multiple names
 		if(nrow(tab1)>0)
 		{	tab.file <- file.path(out.folder,paste0(BASENAMES[COL_ATT_COM_CODE],"_problems_multiple_names.txt"))

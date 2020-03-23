@@ -161,6 +161,6 @@ source("src/common/include.R")
 # - spliter les mandats de la même personne qui se recouvrent (déjà fait, non ?)
 
 # TODO
-# - passer en revue les fichiers de problèmes
-# - passer en revue les logs
+# - passer en revue les fichiers de problèmes: M, S, CM
+# - passer en revue les logs: D, S, DE, EPCI, CM, CM
 # - traiter la comparaison approchée des noms
