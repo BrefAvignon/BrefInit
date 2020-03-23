@@ -47,7 +47,7 @@ test.col.dates.generic <- function(data, out.folder, tolerance=7)
 			}
 			
 			# too late
-			idx <- which(data[,col.name]>=as.Date("2020/01/01"))			
+			idx <- which(data[,col.name]>=Sys.Date())	#as.Date("2020/01/01"))	# NOTE could alernatively be the date of extraction of the DB
 			tlog(8,"Found ",length(idx)," date(s) that seem too late")
 			if(length(idx)>0)
 			{	tmp <- cbind(idx,data[idx,])
@@ -139,7 +139,7 @@ test.col.dates.generic <- function(data, out.folder, tolerance=7)
 			if(length(idx)>0)
 			{	tmp <- cbind(idx,durations[idx],data[idx,])
 				colnames(tmp)[1:2] <- c("Ligne","Duree mandat")
-				tmp <- tmp[order(durations),]
+				tmp <- tmp[order(durations[idx]),]
 				tab.file <- file.path(out.folder,paste0("mandat_dates_problems_short.txt"))
 				tlog(8,"Recording in file \"",tab.file,"\"")
 				write.table(x=tmp, file=tab.file,
@@ -219,7 +219,7 @@ test.col.dates.generic <- function(data, out.folder, tolerance=7)
 			if(length(idx)>0)
 			{	tmp <- cbind(idx,durations[idx],data[idx,])
 				colnames(tmp)[1:2] <- c("Ligne","Duree fonction")
-				tmp <- tmp[order(durations),]
+				tmp <- tmp[order(durations[idx]),]
 				tab.file <- file.path(out.folder,paste0("fonction_dates_problems_short.txt"))
 				tlog(8,"Recording in file \"",tab.file,"\"")
 				write.table(x=tmp, file=tab.file,

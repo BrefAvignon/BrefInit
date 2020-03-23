@@ -214,3 +214,5 @@ source("src/common/include.R")
 # - ne pas fusionner les mandats si circo différente
 # - spliter les mandats de la même personne qui se recouvrent
 
+# TODO
+# check si un mandat = plusieurs fonctions est respecté

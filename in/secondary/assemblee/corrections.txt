@@ -76,3 +76,5 @@ PA643069	2012-06-20	2017-03-27	Date debut mandat	2012-06-20	2014-05-10	Date inco
 PA643196	2012-06-20	2017-06-17	Date debut mandat	2012-06-20	2016-03-12	Date incorrecte
 PA721560	2017-06-18	NA	Date debut mandat	2017-06-18	2019-04-28	Date incorrecte
 PA717167	2017-06-18	NA	Date debut mandat	2017-06-18	2019-04-28	Date incorrecte
+PA267801	2018-01-17	2018-01-17	ID Assemblee	PA267801	NA	Suppression ligne redondante (et incorrecte)
+PA324	2007-06-20	2012-06-19	Date debut mandat	2007-06-20	2012-05-20	Date incorrecte

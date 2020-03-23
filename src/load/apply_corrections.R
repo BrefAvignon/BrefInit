@@ -70,6 +70,12 @@ retrieve.normalize.data <- function(filenames, col.map)
 			# remove diacritics
 			data[,c] <- remove.diacritics(data[,c])
 			
+			# clean CC names
+			if(COL_ATT_EPCI_NOM %in% colnames(data))
+			{	data[,COL_ATT_EPCI_NOM] <- gsub(pattern=" (archivé)",replacement="",x=data[,COL_ATT_EPCI_NOM],fixed=TRUE)
+				data[,COL_ATT_EPCI_NOM] <- gsub(pattern=" - archivé",replacement="",x=data[,COL_ATT_EPCI_NOM],fixed=TRUE)
+			}
+			
 			# normalize proper nouns
 			if(colnames(data)[c] %in% COLS_ATT_PROPER_NOUNS)
 				data[,c] <- normalize.proper.nouns(data[,c])
@@ -90,7 +96,7 @@ retrieve.normalize.data <- function(filenames, col.map)
 		# replace "NA"s by actual NAs
 		data[which(data[,c]=="NA"),c] <- NA	
 	}
-	tlog(2,"CHECKPOINT: Now ",nrow(data)," rows and ",ncol(data)," columns in main table")
+	tlog(2,"CHECKPOINT 0: Now ",nrow(data)," rows and ",ncol(data)," columns in main table")
 	
 	# add columns to store correction flags
 	correc.date <- rep(FALSE, nrow(data))
@@ -156,7 +162,7 @@ fix.id.problems <- function(data)
 			corrected.ids <- which(data[,COL_ATT_ELU_ID_RNE]!=mat[,1])
 			data[,COL_ATT_ELU_ID_RNE] <- mat[,1]
 			data[,COL_ATT_CORREC_INFO] <- as.logical(mat[,2])
-			tlog(2,"CHECKPOINT: Fixed ",length(corrected.ids)," rows (",(100*length(corrected.ids)/nrow(data)),"%)")
+			tlog(2,"CHECKPOINT 1: Fixed ",length(corrected.ids)," rows (",(100*length(corrected.ids)/nrow(data)),"%)")
 		}
 		tlog(2,"Now ",nrow(data)," rows and ",ncol(data)," columns in table")
 	}
@@ -350,7 +356,7 @@ apply.adhoc.corrections <- function(data, col.map, correc.file)
 				}
 			}
 		}
-		tlog(2,"CHECKPOINT: Corrected ",length(corrected.rows)," rows in total (",(100*length(corrected.rows)/nrow(data)),"%)")
+		tlog(2,"CHECKPOINT 2: Corrected ",length(corrected.rows)," rows in total (",(100*length(corrected.rows)/nrow(data)),"%)")
 		
 		# remove the marked rows
 		if(length(idx.rm)>0)
@@ -438,7 +444,7 @@ apply.systematic.corrections <- function(data)
 	if(COL_ATT_FCT_DBT %in% colnames(data))
 	{	idx <- which(is.na(data[,COL_ATT_MDT_DBT]) & is.na(data[,COL_ATT_MDT_FIN]) 
 						& is.na(data[,COL_ATT_FCT_DBT]) & is.na(data[,COL_ATT_FCT_FIN]))
-		tlog(2,"CHECKPOINT: Removed ",length(idx)," incomplete rows (",(100*length(idx)/nrow(data)),"%)")
+		tlog(2,"CHECKPOINT 3: Removed ",length(idx)," incomplete rows (",(100*length(idx)/nrow(data)),"%)")
 		if(length(idx)>0)
 			data <- data[-idx, ]
 		tlog(2,"Now ",nrow(data)," rows and ",ncol(data)," columns in table")
@@ -469,7 +475,7 @@ apply.systematic.corrections <- function(data)
 		tlog(2,"Fixed ",length(idx)," rows")
 		tlog(2,"Now ",nrow(data)," rows and ",ncol(data)," columns in table")
 	}
-	tlog(0,"CHECKPOINT: Fixed a total of ",length(corr.rows)," rows (",(100*length(corr.rows)/nrow(data)),"%) for start/end function date using mandate dates")
+	tlog(0,"CHECKPOINT 4: Fixed a total of ",length(corr.rows)," rows (",(100*length(corr.rows)/nrow(data)),"%) for start/end function date using mandate dates")
 	
 	return(data)
 }
@@ -715,7 +721,7 @@ merge.similar.rows <- function(data)
 			data <- data[-idx,]
 		}
 	}
-	tlog(2,"CHECKPOINT: Done merging compatible rows, removed ",removed.nbr," rows (",(100*removed.nbr/nbr.before),"%)")
+	tlog(2,"CHECKPOINT 5: Done merging compatible rows, removed ",removed.nbr," rows (",(100*removed.nbr/nbr.before),"%)")
 	
 	tlog(2,"Now ",nrow(data)," rows and ",ncol(data)," columns in table")
 	return(data)
@@ -799,7 +805,7 @@ adjust.function.dates <- function(data)
 		}
 	}
 	
-	tlog(2, "CHECKPOINT: Total number of adjusted function dates: ",nbr.corr, " (",(100*nbr.corr/nrow(data)),"%)")
+	tlog(2, "CHECKPOINT 6: Total number of adjusted function dates: ",nbr.corr, " (",(100*nbr.corr/nrow(data)),"%)")
 	tlog(2, "Number of rows remaining: ",nrow(data))
 	return(data)
 }
@@ -1018,7 +1024,7 @@ round.mdtfct.dates <- function(data, election.file, series.file, tolerance)
 		#if(motive.changed)
 		#	readline()		
 	}
-	tlog(2,"CHECKPOINT: Rounded ",nbr.corrected," rows with election-related issues (",(100*nbr.corrected/nrow(data)),"%)")
+	tlog(2,"CHECKPOINT 7: Rounded ",nbr.corrected," rows with election-related issues (",(100*nbr.corrected/nrow(data)),"%)")
 	
 	return(data)
 }
@@ -1158,7 +1164,7 @@ merge.overlapping.mandates <- function(data, type)
 			}
 		}
 	}
-	tlog(2, "CHECKPOINT: Total number of rows deleted after merging: ",nbr.corr, " (",100*nbr.corr/nrow(data),"%)")
+	tlog(2, "CHECKPOINT 9: Total number of rows deleted after merging: ",nbr.corr, " (",100*nbr.corr/nrow(data),"%)")
 	
 	if(length(idx.rmv)>0)
 		data <- data[-idx.rmv,]
@@ -1301,7 +1307,7 @@ split.long.mandates <- function(data, election.file, series.file)
 			}
 		}
 	}
-	tlog(2,"CHECKPOINT: Added ",nbr.splits," rows (",(100*nbr.splits/nbr.before),"%) to the table by splitting periods spanning several actual mandates")
+	tlog(2,"CHECKPOINT 10: Added ",nbr.splits," rows (",(100*nbr.splits/nbr.before),"%) to the table by splitting periods spanning several actual mandates")
 	
 	data <- rbind(data, new.data)
 	tlog(2, "Table now containing ",nrow(data)," rows")
@@ -1377,7 +1383,7 @@ remove.micro.mandates <- function(data, tolerance)
 		}
 	}
 	
-	tlog(2,"CHECKPOINT: Removed a total of ",nbr.removed," rows (",(100*nbr.removed/nbr.before),"%) corresponding to micro-mandates")
+	tlog(2,"CHECKPOINT 8: Removed a total of ",nbr.removed," rows (",(100*nbr.removed/nbr.before),"%) corresponding to micro-mandates")
 	tlog(2,"Number of rows remaining: ",nrow(data))
 	return(data)
 }
@@ -1584,7 +1590,7 @@ shorten.overlapping.mandates <- function(data, type, tolerance=1)
 		tlog(4,"Processing over")
 	}
 	
-	tlog(2,"CHECKPOINT: Shortened a total of ",count," mandates du to overlap, for the whole table (",(100*count/nrow(data)),"%)")
+	tlog(2,"CHECKPOINT 11: Shortened a total of ",count," mandates due to self-overlap, for the whole table (",(100*count/nrow(data)),"%)")
 	tlog(2, "Number of rows remaining: ",nrow(data))
 	return(data)
 }
@@ -1622,7 +1628,7 @@ delete.superfluous.motives <- function(data)
 	for(i in idx)
 		tlog(4, format.row(data[i,]))
 	
-	tlog(2,"CHECKPOINT: Deleted a total of ",length(idx)," superfluous motives, for the whole table (",(100*length(idx)/nrow(data)),"%)")
+	tlog(2,"CHECKPOINT 13: emptied a total of ",length(idx)," superfluous motives, for the whole table (",(100*length(idx)/nrow(data)),"%)")
 	tlog(2, "Number of rows remaining: ",nrow(data))
 	#readline()
 	

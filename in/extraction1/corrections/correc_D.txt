@@ -191,6 +191,7 @@ Row	Id RNE	Nom	Prenom	Attribut	ValAvt	ValApr	Commentaire
 1907	867025	BATHO	Delphine	Date debut mandat	20/6/2012	2/8/2013	Erreur date de début (BD Assemblée)
 1963	867297	PINEL	Sylvia	Date debut mandat	20/6/2012	12/3/2016	Erreur date de début (BD Assemblée)
 1730	867298	PAU-LANGEVIN	George	Date debut mandat	20/6/2012	1/10/2016	Erreur date de début (BD Assemblée)
+1750	867298	PAU-LANGEVIN	George	Date fin mandat	19/6/2012	19/5/2012	Erreur date de fin (WP)
 1812	166899	MILLET	Gérard	Date debut mandat	19/4/2008	20/3/2008	Erreur date de début (BD Assemblée)
 2215	336140	TRIGANCE	Yannick	Date fin mandat	23/3/2017	21/4/2017	Erreur date de fin (BD Assemblée)
 451	946592	LE MAIRE	Bruno	ID RNE	946592	NA	Suppression, mandat inexistant (BD Assemblée)
@@ -216,3 +217,4 @@ Row	Id RNE	Nom	Prenom	Attribut	ValAvt	ValApr	Commentaire
 818	994407	DELAUNAY	Florence	Date debut mandat	17/6/2012	27/9/2014	Erreur date de début (BD Assemblée)
 1689	1159065	DUFLOT	Cécile	Date debut mandat	20/6/2012	3/5/2014	Erreur date de début (BD Assemblée)
 2469	1192035	LEMAIRE	Axelle	Date debut mandat	20/6/2012	27/3/2017	Erreur date de début (BD Assemblée)
+2205	85407	DEVEDJIAN	Patrick	Date debut mandat	17/6/2010	15/12/2010	Erreur date de début (WP)
