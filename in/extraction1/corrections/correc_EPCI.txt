@@ -7,7 +7,7 @@ Row	Id RNE	Nom	Prenom	Attribut	ValAvt	ValApr	Commentaire
 117351	741190	REBY	Franck	Date de début de la fonction	14/4/0201	14/4/2014	Complètement arbitraire, a verifier
 104957	842417	GBIORCZYK	Anne	Date de début de la fonction	19/10/1017	19/10/2014	Completement arbitraire, a verifier
 104961	842425	OUKAS	Vanessa	Date de début de la fonction	19/10/1017	23/3/2014	A verifier
-1473	1178260	PENICHON	Bruno	Date de fin de la fonction	12/9/0009	12/9/2009	Typo dans la date
+1473	875539	PENICHON	Bruno	Date de fin de la fonction	12/9/0009	12/9/2009	Typo dans la date
 105318	1454255	DANILOFF	Véronique	Date de début de la fonction	19/10/1017	23/3/2014	A verifier
 49766	28252	PERAZIO	Bernard	Date de début de la fonction	1/3/2016	9/4/2014	Date incorrecte, estimation
 NA	NA	NA	NA	Libelle commune	MARSEILLE ARRVILL 02	MARSEILLE	On ignore les subdivisions de Marseille
@@ -64,10 +64,75 @@ NA	NA	NA	NA	Numero SIREN	241200880	247200595	EPCI avec plusieurs SIREN successif
 NA	NA	NA	NA	Numero SIREN	246100465	247700024	EPCI avec plusieurs SIREN successifs, on garde le dernier
 NA	NA	NA	NA	Numero SIREN	200040772	244100715	EPCI avec plusieurs SIREN successifs, on garde le dernier
 NA	NA	NA	NA	Numero SIREN	200070787	246500797	EPCI avec plusieurs SIREN successifs, on garde le dernier
-NA	NA	NA	NA	Numero SIREN	20006393	200006393	numéro SIREN incorrect (syntaxiquement), on remplace par le bon
 NA	NA	NA	NA	Numero SIREN	241200633	248100703	EPCI avec plusieurs SIREN successifs, on garde le dernier
 NA	NA	NA	NA	Numero SIREN	200006880	244900627	EPCI avec plusieurs SIREN successifs, on garde le dernier
 NA	NA	NA	NA	Numero SIREN	241100643	248400145	EPCI avec plusieurs SIREN successifs, on garde le dernier
+NA	NA	NA	NA	Numero SIREN	200034361	200068757	EPCI avec plusieurs SIREN successifs, on garde le dernier
+NA	NA	NA	NA	Numero SIREN	200033025	245500061	EPCI avec plusieurs SIREN successifs, on garde le dernier
+NA	NA	NA	NA	Numero SIREN	200043008	200066876	EPCI avec plusieurs SIREN successifs, on garde le dernier
+NA	NA	NA	NA	Numero SIREN	200067114	248900532	EPCI avec plusieurs SIREN successifs, on garde le dernier
+NA	NA	NA	NA	Numero SIREN	200042190	245901145	EPCI avec plusieurs SIREN successifs, on garde le dernier
+NA	NA	NA	NA	Numero SIREN	200044170	200068666	EPCI avec plusieurs SIREN successifs, on garde le dernier
+NA	NA	NA	NA	Numero SIREN	200067999	246000830	EPCI avec plusieurs SIREN successifs, on garde le dernier
+NA	NA	NA	NA	Numero SIREN	200040277	242852440	EPCI avec plusieurs SIREN successifs, on garde le dernier
+NA	NA	NA	NA	Numero SIREN	200073419	244300018	EPCI avec plusieurs SIREN successifs, on garde le dernier
+NA	NA	NA	NA	Numero SIREN	200065928	242200798	EPCI avec plusieurs SIREN successifs, on garde le dernier
+NA	NA	NA	NA	Numero SIREN	200065886	244200796	EPCI avec plusieurs SIREN successifs, on garde le dernier
+NA	NA	NA	NA	Numero SIREN	200043396	245901087	EPCI avec plusieurs SIREN successifs, on garde le dernier
+NA	NA	NA	NA	Numero SIREN	200038933	200071413	EPCI avec plusieurs SIREN successifs, on garde le dernier
+NA	NA	NA	NA	Numero SIREN	200073344	247800600	EPCI avec plusieurs SIREN successifs, on garde le dernier
+NA	NA	NA	NA	Numero SIREN	200043370	200066389	EPCI avec plusieurs SIREN successifs, on garde le dernier
+NA	NA	NA	NA	Numero SIREN	200058782	247800451	EPCI avec plusieurs SIREN successifs, on garde le dernier
+NA	NA	NA	NA	Numero SIREN	200030674	244700522	EPCI avec plusieurs SIREN successifs, on garde le dernier
+NA	NA	NA	NA	Numero SIREN	200040251	247700099	EPCI avec plusieurs SIREN successifs, on garde le dernier
+NA	NA	NA	NA	Numero SIREN	200073013	249500471	EPCI avec plusieurs SIREN successifs, on garde le dernier
+NA	NA	NA	NA	Numero SIREN	200067841	246700942	EPCI avec plusieurs SIREN successifs, on garde le dernier
+NA	NA	NA	NA	Numero SIREN	200034205	242000479	EPCI avec plusieurs SIREN successifs, on garde le dernier
+NA	NA	NA	NA	Numero SIREN	200037059	248000721	EPCI avec plusieurs SIREN successifs, on garde le dernier
+NA	NA	NA	NA	Numero SIREN	200040657	243801123	EPCI avec plusieurs SIREN successifs, on garde le dernier
+NA	NA	NA	NA	Numero SIREN	200042463	241100494	EPCI avec plusieurs SIREN successifs, on garde le dernier
+NA	NA	NA	NA	Numero SIREN	200039196	246500516	EPCI avec plusieurs SIREN successifs, on garde le dernier
+NA	NA	NA	NA	Numero SIREN	200069136	244800496	EPCI avec plusieurs SIREN successifs, on garde le dernier
+NA	NA	NA	NA	Numero SIREN	243700713	248200016	EPCI avec plusieurs SIREN successifs, on garde le dernier
+NA	NA	NA	NA	Numero SIREN	200040194	248719346	EPCI avec plusieurs SIREN successifs, on garde le dernier
+NA	NA	NA	NA	Numero SIREN	200040061	200067239	EPCI avec plusieurs SIREN successifs, on garde le dernier
+NA	NA	NA	NA	Numero SIREN	200066553	243400389	EPCI avec plusieurs SIREN successifs, on garde le dernier
+NA	NA	NA	NA	Numero SIREN	242852572	244500419	EPCI avec plusieurs SIREN successifs, on garde le dernier
+NA	NA	NA	NA	Numero SIREN	200073393	244301073	EPCI avec plusieurs SIREN successifs, on garde le dernier
+NA	NA	NA	NA	Numero SIREN	200069730	241000496	EPCI avec plusieurs SIREN successifs, on garde le dernier
+NA	NA	NA	NA	Numero SIREN	245100946	247600679	EPCI avec plusieurs SIREN successifs, on garde le dernier
+NA	NA	NA	NA	Numero SIREN	246201164	247000649	EPCI avec plusieurs SIREN successifs, on garde le dernier
+NA	NA	NA	NA	Numero SIREN	200017267	200044253	EPCI avec plusieurs SIREN successifs, on garde le dernier
+NA	NA	NA	NA	Numero SIREN	200043982	243301272	EPCI avec plusieurs SIREN successifs, on garde le dernier
+NA	NA	NA	NA	Numero SIREN	200007425	246500623	EPCI avec plusieurs SIREN successifs, on garde le dernier
+NA	NA	NA	NA	Numero SIREN	200023539	200030633	EPCI avec plusieurs SIREN successifs, on garde le dernier
+NA	NA	NA	NA	Numero SIREN	200039634	248900953	EPCI avec plusieurs SIREN successifs, on garde le dernier
+NA	NA	NA	NA	Numero SIREN	200070530	247104102	EPCI avec plusieurs SIREN successifs, on garde le dernier
+NA	NA	NA	NA	Numero SIREN	200035954	200072999	EPCI avec plusieurs SIREN successifs, on garde le dernier
+NA	NA	NA	NA	Numero SIREN	200030716	200070977	EPCI avec plusieurs SIREN successifs, on garde le dernier
+NA	NA	NA	NA	Numero SIREN	200023026	200069441	EPCI avec plusieurs SIREN successifs, on garde le dernier
+NA	NA	NA	NA	Numero SIREN	200041226	246500771	EPCI avec plusieurs SIREN successifs, on garde le dernier
+NA	NA	NA	NA	Numero SIREN	200005130	246500342	EPCI avec plusieurs SIREN successifs, on garde le dernier
+NA	NA	NA	NA	Numero SIREN	242200624	247400724	EPCI avec plusieurs SIREN successifs, on garde le dernier
+NA	NA	NA	NA	Numero SIREN	200071819	242401172	EPCI avec plusieurs SIREN successifs, on garde le dernier
+NA	NA	NA	NA	Numero SIREN	243100898	243200599	EPCI avec plusieurs SIREN successifs, on garde le dernier
+NA	NA	NA	NA	Numero SIREN	200042349	245400213	EPCI avec plusieurs SIREN successifs, on garde le dernier
+NA	NA	NA	NA	Numero SIREN	246500201	246508010	EPCI avec plusieurs SIREN successifs, on garde le dernier
+NA	NA	NA	NA	Numero SIREN	245400924	248800377	EPCI avec plusieurs SIREN successifs, on garde le dernier
+NA	NA	NA	NA	Numero SIREN	200066819	243100658	EPCI avec plusieurs SIREN successifs, on garde le dernier
+NA	NA	NA	NA	Numero SIREN	200068914	241600295	EPCI avec plusieurs SIREN successifs, on garde le dernier
+NA	NA	NA	NA	Numero SIREN	200073401	244300232	EPCI avec plusieurs SIREN successifs, on garde le dernier
+NA	NA	NA	NA	Numero SIREN	200066777	245614342	EPCI avec plusieurs SIREN successifs, on garde le dernier
+NA	NA	NA	NA	Numero SIREN	200035566	245804455	EPCI avec plusieurs SIREN successifs, on garde le dernier
+NA	NA	NA	NA	Numero SIREN	200041366	240700872	EPCI avec plusieurs SIREN successifs, on garde le dernier
+NA	NA	NA	NA	Numero SIREN	200040541	200067817	EPCI avec plusieurs SIREN successifs, on garde le dernier
+NA	NA	NA	NA	Numero SIREN	200034023	248100521	EPCI avec plusieurs SIREN successifs, on garde le dernier
+NA	NA	NA	NA	Numero SIREN	200040863	200072064	EPCI avec plusieurs SIREN successifs, on garde le dernier
+NA	NA	NA	NA	Numero SIREN	213204266	243200300	EPCI avec plusieurs SIREN successifs, on garde le dernier
+NA	NA	NA	NA	Numero SIREN	160126365	200041465	EPCI avec plusieurs SIREN successifs, on garde le dernier
+#NA	NA	NA	NA	NA	NA	NA	NA
+NA	NA	NA	NA	Numero SIREN	20006393	200006393	numéro SIREN incorrect (syntaxiquement), on remplace par le bon
+NA	NA	NA	NA	Numero SIREN	20006971	200006971	numéro SIREN incorrect (syntaxiquement), on remplace par le bon
 7943	1219300	CHABAL	JEAN PAUL	Date fin mandat	31/12/2016	NA	Corrigé pour mandat en cours
 8183	1219747	COIRATON	EMMANUEL	Date fin mandat	31/12/2016	NA	Corrigé pour mandat en cours
 8781	891142	FOUGEIROL	JULIEN	Date fin mandat	31/12/2016	NA	Corrigé pour mandat en cours
@@ -222,3 +287,139 @@ NA	NA	NA	NA	Numero SIREN	241100643	248400145	EPCI avec plusieurs SIREN successif
 125598	538780	AUBRY	Alain	Date fin mandat	1/1/2016	NA	Mise en cohérence avec fonction
 125600	1180675	BLANDIOT-FARIDE	Charlotte	Date fin mandat	1/1/2016	NA	Mise en cohérence avec fonction
 125644	1114604	TOUGUET	Hervé	Date fin mandat	1/1/2016	NA	Mise en cohérence avec fonction
+70951	94168	PANCHER	Bertrand	Date debut fonction	18/4/2014	30/3/2014	Mise en cohérence avec mandat
+70951	94168	PANCHER	Bertrand	Date fin fonction	NA	17/4/2014	Mise en cohérence avec mandat
+90812	1166106	CASES	Juliette	Libelle fonction	Vice-président d'EPCI	NA	Fonction déjà présente
+90812	1166106	CASES	Juliette	Date debut fonction	1/1/2015	NA	Fonction déjà présente
+90895	1079988	AMBRIGOT	André	Libelle fonction	Vice-président d'EPCI	NA	Fonction déjà présente
+90895	1079988	AMBRIGOT	André	Date debut fonction	1/1/2015	NA	Fonction déjà présente
+91018	171080	ARGILES	André	Libelle fonction	Vice-président d'EPCI	NA	Fonction déjà présente
+91018	171080	ARGILES	André	Date debut fonction	1/1/2015	NA	Fonction déjà présente
+91200	171061	MAURY	Jean	Libelle fonction	Vice-président d'EPCI	NA	Fonction déjà présente
+91200	171061	MAURY	Jean	Date debut fonction	1/1/2015	NA	Fonction déjà présente
+106331	1114168	BORD	Gilles	Libelle fonction	Vice-président d'EPCI	NA	Fonction déjà présente
+106331	1114168	BORD	Gilles	Date debut fonction	14/6/2015	NA	Fonction déjà présente
+106335	540030	GANDRILLE	Jean-Claude	Date debut fonction	14/6/2015	30/3/2014	Date incorrecte
+106335	540030	GANDRILLE	Jean-Claude	Date fin fonction	NA	21/5/2015	Date incorrecte
+106336	540044	GAUTHIER	Danielle	Libelle fonction	Vice-président d'EPCI	NA	Fonction déjà présente
+106336	540044	GAUTHIER	Danielle	Date debut fonction	14/6/2015	NA	Fonction déjà présente
+106346	1167689	ROUSSEAU	Pascal	Libelle fonction	Vice-président d'EPCI	NA	Fonction déjà présente
+106346	1167689	ROUSSEAU	Pascal	Date debut fonction	14/6/2015	NA	Fonction déjà présente
+106350	540026	TABUY	Gérard	Libelle fonction	Vice-président d'EPCI	NA	Fonction déjà présente
+106350	540026	TABUY	Gérard	Date debut fonction	14/6/2015	NA	Fonction déjà présente
+121038	3612	BIDEAU	Robert	Libelle fonction	Vice-président d'EPCI	NA	Fonction déjà présente
+121038	3612	BIDEAU	Robert	Date debut fonction	1/1/2017	NA	Fonction déjà présente
+1	106921	DELARUELLE	Yves	Libelle commune	NA	ANDERT-ET-CONDON	Commune manquante
+1	106921	DELARUELLE	Yves	Code Insee commune	NA	009	Commune manquante
+1	106921	DELARUELLE	Yves	Code departement	0	01	Commune manquante
+2	875061	SOULLIAERT	Eric	Libelle commune	NA	Marchamp	Commune manquante
+2	875061	SOULLIAERT	Eric	Code Insee commune	NA	233	Commune manquante
+2	875061	SOULLIAERT	Eric	Code departement	0	01	Commune manquante
+3	875651	BOURGUIGNON	Marie Noële	Libelle commune	NA	Revonnas	Commune manquante
+3	875651	BOURGUIGNON	Marie Noële	Code Insee commune	NA	321	Commune manquante
+3	875651	BOURGUIGNON	Marie Noële	Code departement	0	01	Commune manquante
+4	874582	MOREL	Pierre	Libelle commune	NA	Lélex	Commune manquante
+4	874582	MOREL	Pierre	Code Insee commune	NA	210	Commune manquante
+4	874582	MOREL	Pierre	Code departement	0	01	Commune manquante
+1454	693487	CHARVERIAT	Guy	Libelle commune	NA	Chaneins	Commune manquante
+1454	693487	CHARVERIAT	Guy	Code Insee commune	0	083	Commune manquante
+1454	693487	CHARVERIAT	Guy	Code departement	NA	01	Commune manquante
+1455	106734	GOIFFON	Denis	Libelle commune	NA	Lalleyriat	Commune manquante
+1455	106734	GOIFFON	Denis	Code Insee commune	0	204	Commune manquante
+1455	106734	GOIFFON	Denis	Code departement	NA	01	Commune manquante
+1456	1203941	ROLANDEZ	Jean-Paul	Libelle commune	NA	Chevillard	Commune manquante
+1456	1203941	ROLANDEZ	Jean-Paul	Code Insee commune	0	101	Commune manquante
+1456	1203941	ROLANDEZ	Jean-Paul	Code departement	NA	01	Commune manquante
+1457	689595	BRANCHU	Gilbert	Libelle commune	NA	Vieu	Commune manquante
+1457	689595	BRANCHU	Gilbert	Code Insee commune	0	442	Commune manquante
+1457	689595	BRANCHU	Gilbert	Code departement	NA	01	Commune manquante
+1458	1205864	PILLARD	Eric	Libelle commune	NA	Ruffieu	Commune manquante
+1458	1205864	PILLARD	Eric	Code Insee commune	0	330	Commune manquante
+1458	1205864	PILLARD	Eric	Code departement	NA	01	Commune manquante
+1459	691596	BOUCLIER	Henriette	Libelle commune	NA	Hostiaz	Commune manquante
+1459	691596	BOUCLIER	Henriette	Code Insee commune	0	186	Commune manquante
+1459	691596	BOUCLIER	Henriette	Code departement	NA	01	Commune manquante
+1460	106720	DURAND	François-Xavier	Libelle commune	NA	Lompnas	Commune manquante
+1460	106720	DURAND	François-Xavier	Code Insee commune	0	219	Commune manquante
+1460	106720	DURAND	François-Xavier	Code departement	NA	01	Commune manquante
+1461	873989	RICHARD	Anne-Laure	Libelle commune	NA	Corlier	Commune manquante
+1461	873989	RICHARD	Anne-Laure	Code Insee commune	0	121	Commune manquante
+1461	873989	RICHARD	Anne-Laure	Code departement	NA	01	Commune manquante
+1462	689915	STEYAERT	Franck	Libelle commune	NA	Thézillieu	Commune manquante
+1462	689915	STEYAERT	Franck	Code Insee commune	0	417	Commune manquante
+1462	689915	STEYAERT	Franck	Code departement	NA	01	Commune manquante
+1463	690190	ROUILLER	Pascale	Libelle commune	NA	Villemotier	Commune manquante
+1463	690190	ROUILLER	Pascale	Code Insee commune	0	445	Commune manquante
+1463	690190	ROUILLER	Pascale	Code departement	NA	01	Commune manquante
+1464	1203952	BENOIT	Jean-Pierre	Libelle commune	NA	Chevroux	Commune manquante
+1464	1203952	BENOIT	Jean-Pierre	Code Insee commune	0	102	Commune manquante
+1464	1203952	BENOIT	Jean-Pierre	Code departement	NA	01	Commune manquante
+1465	693804	GIRAUD	Alain	Libelle commune	NA	Boz	Commune manquante
+1465	693804	GIRAUD	Alain	Code Insee commune	0	057	Commune manquante
+1465	693804	GIRAUD	Alain	Code departement	NA	01	Commune manquante
+1466	1205834	SYLVESTRE-BARON	Alain	Libelle commune	NA	Reyssouze	Commune manquante
+1466	1205834	SYLVESTRE-BARON	Alain	Code Insee commune	0	323	Commune manquante
+1466	1205834	SYLVESTRE-BARON	Alain	Code departement	NA	01	Commune manquante
+1467	875614	JACQUET	Philippe	Libelle commune	NA	Ramasse	Commune manquante
+1467	875614	JACQUET	Philippe	Code Insee commune	0	317	Commune manquante
+1467	875614	JACQUET	Philippe	Code departement	NA	01	Commune manquante
+1468	875650	ZITTEL	Caroline	Libelle commune	NA	Revonnas	Commune manquante
+1468	875650	ZITTEL	Caroline	Code Insee commune	0	321	Commune manquante
+1468	875650	ZITTEL	Caroline	Code departement	NA	01	Commune manquante
+1469	689814	MOREL	Alain	Libelle commune	NA	La Tranclière	Commune manquante
+1469	689814	MOREL	Alain	Code Insee commune	0	425	Commune manquante
+1469	689814	MOREL	Alain	Code departement	NA	01	Commune manquante
+1470	106631	VUILLEROD	René	Libelle commune	NA	Belley	Commune manquante
+1470	106631	VUILLEROD	René	Code departement	NA	01	Commune manquante
+1471	106681	MORANDAS	Patrice	Libelle commune	NA	Châtillon-sur-Chalaronne	Commune manquante
+1471	106681	MORANDAS	Patrice	Code departement	NA	01	Commune manquante
+1472	1161868	GAILLARD	Jean-Claude	Libelle commune	NA	Nivigne et Suran	Commune manquante
+1472	1161868	GAILLARD	Jean-Claude	Code departement	NA	01	Commune manquante
+1473	875539	PENICHON	Bruno	Libelle commune	NA	Nivigne et Suran	Commune manquante
+1473	875539	PENICHON	Bruno	Code departement	NA	01	Commune manquante
+1473	875539	PENICHON	Bruno	Date naissance	1/1/1940	29/6/1957	Erreur ddn
+1473	875539	PENICHON	Bruno	Code profession	40	19	Erreur profession
+1473	875539	PENICHON	Bruno	Libelle profession	Etudiants	Autres cadres (secteur privé)	Erreur profession
+1474	875539	PENICHON	Bruno	ID RNE	875539	NA	Suppression, mandat redondant
+1475	876035	PERDRIX	Jean-Michel	Libelle commune	NA	Nivigne et Suran	Commune manquante
+1475	876035	PERDRIX	Jean-Michel	Code departement	NA	01	Commune manquante
+1476	537766	TACHDJIAN	Alexandre	Libelle commune	NA	Oyonnax	Commune manquante
+1476	537766	TACHDJIAN	Alexandre	Code departement	NA	01	Commune manquante
+1477	106547	RAYMOND	Michel	Libelle commune	NA	Trévoux	Commune manquante
+1477	106547	RAYMOND	Michel	Code departement	NA	01	Commune manquante
+1478	1205746	LEBRETON	Alessandra	Libelle commune	NA	Priay	Commune manquante
+1478	1205746	LEBRETON	Alessandra	Code Insee commune	NA	314	Commune manquante
+1478	1205746	LEBRETON	Alessandra	Code departement	NA	01	Commune manquante
+1479	1206631	FERNANDEZ GONZALEZ	José	Libelle commune	NA	Talissieu	Commune manquante
+1479	1206631	FERNANDEZ GONZALEZ	José	Code Insee commune	NA	415	Commune manquante
+1479	1206631	FERNANDEZ GONZALEZ	José	Code departement	NA	01	Commune manquante
+1480	106890	ZAMBELLI	Jean-Baptiste	Libelle commune	NA	Champagne-en-Valromey	Commune manquante
+1480	106890	ZAMBELLI	Jean-Baptiste	Code Insee commune	NA	079	Commune manquante
+1480	106890	ZAMBELLI	Jean-Baptiste	Code departement	NA	01	Commune manquante
+1481	873355	CORSAIN	Isabelle	Libelle commune	NA	Villemotier	Commune manquante
+1481	873355	CORSAIN	Isabelle	Code Insee commune	NA	445	Commune manquante
+1481	873355	CORSAIN	Isabelle	Code departement	NA	01	Commune manquante
+1482	875794	BONOD	Jean-Pierre	Libelle commune	NA	Châtillon-la-Palud	Commune manquante
+1482	875794	BONOD	Jean-Pierre	Code Insee commune	NA	092	Commune manquante
+1482	875794	BONOD	Jean-Pierre	Code departement	NA	01	Commune manquante
+1483	875803	ROYER	Hervé	Libelle commune	NA	Saint-Nizier-le-Désert	Commune manquante
+1483	875803	ROYER	Hervé	Code Insee commune	NA	381	Commune manquante
+1483	875803	ROYER	Hervé	Code departement	NA	01	Commune manquante
+1484	878228	CAMBRAYE	Olivier	Libelle commune	NA	Dorengt	Commune manquante
+1484	878228	CAMBRAYE	Olivier	Code Insee commune	NA	269	Commune manquante
+1484	878228	CAMBRAYE	Olivier	Code departement	0	02	Commune manquante
+3280	1251494	BERÇON	Guy	Libelle commune	NA	Saint-Vitte	Commune manquante
+3280	1251494	BERÇON	Guy	Code Insee commune	NA	238	Commune manquante
+3280	1251494	BERÇON	Guy	Code departement	0	03	Commune manquante
+3281	150289	DE LAMARLIERE	Thierry	Libelle commune	NA	Louroux-Hodement	Commune manquante
+3281	150289	DE LAMARLIERE	Thierry	Code Insee commune	NA	153	Commune manquante
+3281	150289	DE LAMARLIERE	Thierry	Code departement	0	03	Commune manquante
+3282	883653	GAUDIN	Yves	Libelle commune	NA	Haut-Bocage	Commune manquante
+3282	883653	GAUDIN	Yves	Code Insee commune	NA	158	Commune manquante
+3282	883653	GAUDIN	Yves	Code departement	0	03	Commune manquante
+3283	150340	LAPRUGNE	Jean-Michel	Libelle commune	NA	Haut-Bocage	Commune manquante
+3283	150340	LAPRUGNE	Jean-Michel	Code Insee commune	NA	158	Commune manquante
+3283	150340	LAPRUGNE	Jean-Michel	Code departement	0	03	Commune manquante
+#xxxx	xxxx	xxxx	xxxx	Libelle commune	NA	xxxx	Commune manquante
+#xxxx	xxxx	xxxx	xxxx	Code Insee commune	NA	xxxx	Commune manquante
+#xxxx	xxxx	xxxx	xxxx	Code departement	NA	xxxx	Commune manquante

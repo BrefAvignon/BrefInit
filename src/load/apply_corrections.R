@@ -54,6 +54,13 @@ retrieve.normalize.data <- function(filenames, col.map)
 	else
 		colnames(data) <- norm.names
 	
+	# EPCI-specific cleaning
+	if(COL_ATT_EPCI_NOM %in% colnames(data))
+	{	# clean CC names
+		data[,COL_ATT_EPCI_NOM] <- gsub(pattern=" (archivé)",replacement="",x=data[,COL_ATT_EPCI_NOM],fixed=TRUE)
+		data[,COL_ATT_EPCI_NOM] <- gsub(pattern=" - archivé",replacement="",x=data[,COL_ATT_EPCI_NOM],fixed=TRUE)
+	}
+	
 	# setting appropriate encoding of string columns, replace "" by NAs, and normalize proper nouns
 	tlog(0,"Cleaning/encoding/normalizing strings")
 	for(c in 1:ncol(data))
@@ -69,12 +76,6 @@ retrieve.normalize.data <- function(filenames, col.map)
 			
 			# remove diacritics
 			data[,c] <- remove.diacritics(data[,c])
-			
-			# clean CC names
-			if(COL_ATT_EPCI_NOM %in% colnames(data))
-			{	data[,COL_ATT_EPCI_NOM] <- gsub(pattern=" (archivé)",replacement="",x=data[,COL_ATT_EPCI_NOM],fixed=TRUE)
-				data[,COL_ATT_EPCI_NOM] <- gsub(pattern=" - archivé",replacement="",x=data[,COL_ATT_EPCI_NOM],fixed=TRUE)
-			}
 			
 			# normalize proper nouns
 			if(colnames(data)[c] %in% COLS_ATT_PROPER_NOUNS)
@@ -422,29 +423,72 @@ apply.minimal.adhoc.corrections <- function(data, type)
 #############################################################################################
 apply.systematic.corrections <- function(data)
 {	# possibly normalize municipality ids
+	corr.rows <- c()
 	if(COL_ATT_COM_CODE %in% colnames(data))
 	{	tlog(0,"Normalizing municipality ids")
+		tmp <- data[,COL_ATT_COM_CODE]
 		# we simply keep the first three characters of the id
 		data[,COL_ATT_COM_CODE] <- substr(x=data[,COL_ATT_COM_CODE], start=1, stop=3)
-		tlog(2,"Now ",nrow(data)," rows and ",ncol(data)," columns in table")
+		idx <- which(data[,COL_ATT_COM_CODE]!=tmp)
+		corr.rows <- union(corr.rows,idx)
+		tlog(2,"Adjusted ",length(idx)," municipality ids")
 	}
-	
 	# replace the NC political nuance by proper NAs
 	if(COL_ATT_ELU_NUANCE %in% colnames(data))
 	{	tlog(0,"Normalizing political nuance labels")
 		idx <- which(data[,COL_ATT_ELU_NUANCE]=="NC")
 		if(length(idx)>0)
-			data[idx,COL_ATT_ELU_NUANCE] <- NA
-		tlog(2,"Fixed ",length(idx)," rows")
-		tlog(2,"Now ",nrow(data)," rows and ",ncol(data)," columns in table")
+		{	data[idx,COL_ATT_ELU_NUANCE] <- NA
+			corr.rows <- union(corr.rows,idx)
+		}
+		tlog(2,"Fixed ",length(idx)," political nuances")
 	}
+	# EPCI-specific cleaning
+	if(COL_ATT_EPCI_NOM %in% colnames(data))
+	{	# clean missing department codes
+		tlog(0,"Cleaning missing department codes")
+		idx <- which(data[,COL_ATT_DPT_CODE]=="0" | data[,COL_ATT_DPT_CODE]=="00")
+		if(length(idx)>0)
+		{	data[idx,COL_ATT_DPT_CODE] <- NA
+			corr.rows <- union(corr.rows,idx)
+		}
+		tlog(2,"Cleaned ",length(idx)," rows")
+		
+		# clean missing municipality codes
+		tlog(0,"Cleaning missing municipality codes")
+		idx <- which(data[,COL_ATT_COM_CODE]=="0" | data[,COL_ATT_COM_CODE]=="00")
+		if(length(idx)>0)
+		{	data[idx,COL_ATT_COM_CODE] <- NA
+			corr.rows <- union(corr.rows,idx)
+		}
+		tlog(2,"Cleaned ",length(idx)," rows")
+		
+		# complete missing municipality names (when code is available)
+		idx <- which(is.na(data[,COL_ATT_COM_NOM]) & !is.na(data[,COL_ATT_COM_CODE]))
+		if(length(idx)>0)
+		{	idx2 <- idx[is.na(data[idx,COL_ATT_DPT_CODE])]
+			if(length(idx2)>0)
+				data[idx2,COL_ATT_DPT_CODE] <- data[idx2,COL_ATT_EPCI_DPT]
+			locs <- cbind(apply(cbind(data[,COL_ATT_DPT_CODE],data[,COL_ATT_COM_CODE]),1,function(r) paste(r,collapse="_")),data[,COL_ATT_COM_NOM])
+			idx2 <- match(locs[idx,1],locs[-idx,1])
+			idx3 <- which(!is.na(idx2))
+			idx <- idx[idx3]
+			idx2 <- idx2[idx3]
+			if(length(idx2)>0)
+			{	data[idx,COL_ATT_COM_NOM] <- locs[-idx,2][idx2]
+				corr.rows <- union(corr.rows,idx)
+			}
+		}		
+		tlog(2,"Fixed ",length(idx)," rows")
+	}
+	tlog(0,"CHECKPOINT 3: Fixed a total of ",length(corr.rows)," rows (",(100*length(corr.rows)/nrow(data)),"%) for various (non-date-related) issues")
 	
 	# remove rows without mandate dates and without function dates
 	tlog(0,"Removing rows with no mandate and no function date")
 	if(COL_ATT_FCT_DBT %in% colnames(data))
 	{	idx <- which(is.na(data[,COL_ATT_MDT_DBT]) & is.na(data[,COL_ATT_MDT_FIN]) 
 						& is.na(data[,COL_ATT_FCT_DBT]) & is.na(data[,COL_ATT_FCT_FIN]))
-		tlog(2,"CHECKPOINT 3: Removed ",length(idx)," incomplete rows (",(100*length(idx)/nrow(data)),"%)")
+		tlog(2,"CHECKPOINT 4: Removed ",length(idx)," incomplete rows (",(100*length(idx)/nrow(data)),"%)")
 		if(length(idx)>0)
 			data <- data[-idx, ]
 		tlog(2,"Now ",nrow(data)," rows and ",ncol(data)," columns in table")
@@ -475,7 +519,7 @@ apply.systematic.corrections <- function(data)
 		tlog(2,"Fixed ",length(idx)," rows")
 		tlog(2,"Now ",nrow(data)," rows and ",ncol(data)," columns in table")
 	}
-	tlog(0,"CHECKPOINT 4: Fixed a total of ",length(corr.rows)," rows (",(100*length(corr.rows)/nrow(data)),"%) for start/end function date using mandate dates")
+	tlog(0,"CHECKPOINT 5: Fixed a total of ",length(corr.rows)," rows (",(100*length(corr.rows)/nrow(data)),"%) for start/end function date using mandate dates")
 	
 	return(data)
 }
@@ -721,7 +765,7 @@ merge.similar.rows <- function(data)
 			data <- data[-idx,]
 		}
 	}
-	tlog(2,"CHECKPOINT 5: Done merging compatible rows, removed ",removed.nbr," rows (",(100*removed.nbr/nbr.before),"%)")
+	tlog(2,"CHECKPOINT 6: Done merging compatible rows, removed ",removed.nbr," rows (",(100*removed.nbr/nbr.before),"%)")
 	
 	tlog(2,"Now ",nrow(data)," rows and ",ncol(data)," columns in table")
 	return(data)
@@ -805,7 +849,7 @@ adjust.function.dates <- function(data)
 		}
 	}
 	
-	tlog(2, "CHECKPOINT 6: Total number of adjusted function dates: ",nbr.corr, " (",(100*nbr.corr/nrow(data)),"%)")
+	tlog(2, "CHECKPOINT 7: Total number of adjusted function dates: ",nbr.corr, " (",(100*nbr.corr/nrow(data)),"%)")
 	tlog(2, "Number of rows remaining: ",nrow(data))
 	return(data)
 }
@@ -1024,7 +1068,7 @@ round.mdtfct.dates <- function(data, election.file, series.file, tolerance)
 		#if(motive.changed)
 		#	readline()		
 	}
-	tlog(2,"CHECKPOINT 7: Rounded ",nbr.corrected," rows with election-related issues (",(100*nbr.corrected/nrow(data)),"%)")
+	tlog(2,"CHECKPOINT 8: Rounded ",nbr.corrected," rows with election-related issues (",(100*nbr.corrected/nrow(data)),"%)")
 	
 	return(data)
 }
@@ -1164,7 +1208,7 @@ merge.overlapping.mandates <- function(data, type)
 			}
 		}
 	}
-	tlog(2, "CHECKPOINT 9: Total number of rows deleted after merging: ",nbr.corr, " (",100*nbr.corr/nrow(data),"%)")
+	tlog(2, "CHECKPOINT 10: Total number of rows deleted after merging: ",nbr.corr, " (",100*nbr.corr/nrow(data),"%)")
 	
 	if(length(idx.rmv)>0)
 		data <- data[-idx.rmv,]
@@ -1307,7 +1351,7 @@ split.long.mandates <- function(data, election.file, series.file)
 			}
 		}
 	}
-	tlog(2,"CHECKPOINT 10: Added ",nbr.splits," rows (",(100*nbr.splits/nbr.before),"%) to the table by splitting periods spanning several actual mandates")
+	tlog(2,"CHECKPOINT 11: Added ",nbr.splits," rows (",(100*nbr.splits/nbr.before),"%) to the table by splitting periods spanning several actual mandates")
 	
 	data <- rbind(data, new.data)
 	tlog(2, "Table now containing ",nrow(data)," rows")
@@ -1383,7 +1427,7 @@ remove.micro.mandates <- function(data, tolerance)
 		}
 	}
 	
-	tlog(2,"CHECKPOINT 8: Removed a total of ",nbr.removed," rows (",(100*nbr.removed/nbr.before),"%) corresponding to micro-mandates")
+	tlog(2,"CHECKPOINT 9: Removed a total of ",nbr.removed," rows (",(100*nbr.removed/nbr.before),"%) corresponding to micro-mandates")
 	tlog(2,"Number of rows remaining: ",nrow(data))
 	return(data)
 }
@@ -1590,7 +1634,7 @@ shorten.overlapping.mandates <- function(data, type, tolerance=1)
 		tlog(4,"Processing over")
 	}
 	
-	tlog(2,"CHECKPOINT 11: Shortened a total of ",count," mandates due to self-overlap, for the whole table (",(100*count/nrow(data)),"%)")
+	tlog(2,"CHECKPOINT 12: Shortened a total of ",count," mandates due to self-overlap, for the whole table (",(100*count/nrow(data)),"%)")
 	tlog(2, "Number of rows remaining: ",nrow(data))
 	return(data)
 }
@@ -1628,7 +1672,7 @@ delete.superfluous.motives <- function(data)
 	for(i in idx)
 		tlog(4, format.row(data[i,]))
 	
-	tlog(2,"CHECKPOINT 13: emptied a total of ",length(idx)," superfluous motives, for the whole table (",(100*length(idx)/nrow(data)),"%)")
+	tlog(2,"CHECKPOINT 14: emptied a total of ",length(idx)," superfluous motives, for the whole table (",(100*length(idx)/nrow(data)),"%)")
 	tlog(2, "Number of rows remaining: ",nrow(data))
 	#readline()
 	

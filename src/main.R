@@ -117,20 +117,7 @@ source("src/common/include.R")
 # 3. mandat prend fin avant la fin normale, et la fonction va au bout
 #    >> à vérifier manuellement
 		
-# remarques étudiants BI
-# - Certaines positions sont laissées inoccupées, par ex. commune de Saline n'a pas de maire pdt plusieurs semaines
-#   et en même temps, la commune présente un recouvrement du type: plusieurs maires à la fois
-#   >> détecter ces vacances et les exploiter pour résoudre ce type de recouvrement ?
-
-# Problèmes détectés
 # - Dates de la forme 01/01/xxxx représentant apparemment une absence d'information plus précise
-# - Période de fonction pas incluse dans la date de mandat
-# - Date de naissance postérieure au début de la fonction/mandat
-# - Date de début de la fonction/mandat postérieure à sa date de fin, ou bien pas de date de début alors qu’il y a une date de fin
-# - Dates antérieures à 01/01/1900 ou postérieures à 01/01/2020
-
-# la normalisation des noms propres rend certaines corrections inutiles (surtout pour les lieux)
-# >> à enlever
 
 # analyse de séquences
 # - gestion temps/evts
@@ -151,6 +138,7 @@ source("src/common/include.R")
 
 # A faire par Emilie
 # - Explorer plus profondément la version postgresql de la BD du Sénat
+# - Finir de corriger les noms manquants de communautés dans EPCI
 
 # TODO
 # possible que certains sénateurs apparaissent pas dans RNE sénat (trop vieux) 
@@ -162,57 +150,17 @@ source("src/common/include.R")
 # >> peut être que la correction dans le script de comparaison a résolu le pb ?
 # (traitement en cours sur PC LIA)
 
-# TODO
-# certaines lignes non trouvées lors de l'intégration BD sénat sont dues aux mandats "intégrés", 
-# i.e. une ligne recouvrant plusieurs mandats
-# >> solution:
-#    - découper systématiquement toutes les lignes en fonction des dates d'élection, sans se soucier des micro-mandats
-#      (mais en respectant les changement de fonctions (=1 ligne distincte par fonction, même si même mandat).
-#    - faire ça pour le RNE mais aussi pour le sénat
-#	 - faire l'intégration, et là on aura des dates compatibles
-#
-# difficulté : S et CD ont des dates d'élection ambigües.
-#
-# algo pour fusion des lignes : on réunit les lignes qui s'intersectent, i.e. qui ont au moins un jour en commun
-# - on détecte deux lignes dont les mandats s'intersectent (pas strictement consécutifs, attention !)
-#   - si au plus l'une des deux contient une fonction, on peut les fusionner
-#     >> on met à jour les dates, on supprime la ligne superflue
-#   - si les deux ont une fonction
-#     - si les dates de mandat sont les mêmes et celles de fonction ne se recouvrent pas >> on garde comme ça
-#     - sinon, on a un problème >> traitement manuel
-# 
-# hypothèses:
-# - on suppose que les fonctions sont contenues dans les mandats 
-#   sinon: on raccourcit la fonction pour qu'elle tienne dans le mandat
-# - on suppose qu'il n'y a pas d'intersections entre les mandats
-#   - car on vient de fusionner les lignes quand c'était possible
-#   - les lignes non-fusionnées restantes sont à traiter manuellement 
-#
-# algo pour découpage:
-# - dans une table donnée, pour chaque élu, on récupère ses lignes
-# - pour chacune de ces lignes
-# - prendre la date de début de mandat, puis la date de la première élection suivante
-#   - si elle précède la fin du mandat >> découpage en deux lignes distinctes
-#     - la nouvelle fin de mandat est la veille de la date d'élection
-#     - s'il y a une fonction et que l'élection précède sa fin >> pareil
-#     - la nouvelle ligne démarre le jour de l'élection 
-#       (mandat, et fonction le cas échéant)
-# - on prend la ligne créée et on continue avec la date de l'élection suivante
-# - dès qu'on a une date d'élection ultérieure à la fin de mandat, on s'arrête
-#
-# Fonctions: si plusieurs fonctions dans mandat:
-#		- autant de lignes que de fonctions
-#		- chacune avec les mêmes infos sauf fonction (y compris dates mandat)
-
 # TODO Check in the merged table
 # - sumup.cols
 # - test.compatible.rows
 # - test.personal.info
-# - 
 
 # TODO
+# - check si un mandat = plusieurs fonctions est respecté
 # - ne pas fusionner les mandats si circo différente
-# - spliter les mandats de la même personne qui se recouvrent
+# - spliter les mandats de la même personne qui se recouvrent (déjà fait, non ?)
 
 # TODO
-# check si un mandat = plusieurs fonctions est respecté
+# - passer en revue les fichiers de problèmes
+# - passer en revue les logs
+# - traiter la comparaison approchée des noms
