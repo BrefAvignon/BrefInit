@@ -601,6 +601,11 @@ senate.convert.mandate.table <- function(general.table, elect.table, type)
 		sen.tab <- cbind(sen.tab, dpt.ids, dpt.codes, dpt.names)
 		colnames(sen.tab)[(ncol(sen.tab)-2):ncol(sen.tab)] <- c(COL_ATT_DPT_ID, COL_ATT_DPT_CODE, COL_ATT_DPT_NOM)
 		
+		# specific correction for Edgar Faure (got 2 distinct senatorial circonscriptions)
+		i <- which(sen.tab[,COL_ATT_ELU_ID]=="SEN_0000197" 
+			& sen.tab[,COL_ATT_MDT_DBT]==as.Date("1959/04/28") & sen.tab[,COL_ATT_MDT_FIN]==as.Date("1965/10/01"))
+		sen.tab[i,c(COL_ATT_DPT_ID,COL_ATT_DPT_CODE,COL_ATT_DPT_NOM)] <- c("1790_38","39","JURA")
+		
 		# use to order table, later
 		place.order <- sen.tab[,COL_ATT_DPT_CODE]
 	}

@@ -1701,7 +1701,7 @@ Matricule	Qualite	Nom usuel	Prenom usuel	Etat	Date naissance	Date de deces	Group
 19749K	Mme	Vérien	Dominique	ACTIF	29/08/1965		UC		commission de la culture	Yonne		d.verien@senat.fr	Ingenieurs et cadres techniques d'entreprise	Salariés (Ingénieurs)	Ingénieure
 58048D	M.	Verillon	Maurice	ANCIEN	14/10/1906	08/06/2001	SOCR		commission de la culture	Drôme			Pharmaciens libéraux	Professions médicales (Pharmaciens)	Pharmacien
 19479G	Mme	Vermeillet	Sylvie	ACTIF	10/06/1967		UC		commission des finances	Jura		s.vermeillet@senat.fr	Cadres administratifs et commerciaux d'entreprise	Salariés (Cadres divers)	Comptable
-000770	M.	Verneuil	Jacques	ANCIEN	29/09/1999	09/03/1982	G.D.S.R.G.		commission des affaires sociales	Charente-Maritime			Agriculteurs exploitants	Professions agricoles	Ingénieur agricole, agriculteur
+000770	M.	Verneuil	Jacques	ANCIEN	29/09/1899	09/03/1982	G.D.S.R.G.		commission des affaires sociales	Charente-Maritime			Agriculteurs exploitants	Professions agricoles	Ingénieur agricole, agriculteur
 08036W	M.	Vestri	René	ANCIEN	25/10/1938	06/02/2013	Les Républicains		commission de l'aménagement du territoire et du développement durable	Alpes-Maritimes		r.vestri@senat.fr	Chefs d'entreprise de 10 salaries ou plus	Commerce et industrie (Chefs d'entreprises)	Entrepreneur de travaux publics
 89043T	M.	Vézinhet	André	ANCIEN	07/09/1939		SOCR		commission de l'économie	Hérault		andre.vezinhet@wanadoo.fr	Cadres d'entreprise	Salariés (Cadres divers)	Directeur de recherches
 95067Q	M.	Vial	Jean-Pierre	ACTIF	17/02/1951		Les Républicains		commission des affaires étrangères	Savoie		jp.vial@senat.fr	Avocats	Professions judiciaires et libérales (Avocats)	Avocat
