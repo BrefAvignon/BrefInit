@@ -161,6 +161,15 @@ source("src/common/include.R")
 # - spliter les mandats de la même personne qui se recouvrent (déjà fait, non ?)
 
 # TODO
-# - passer en revue les fichiers de problèmes: M, S, CM
+# - passer en revue les fichiers de problèmes: *M, CM
 # - passer en revue les logs: D, S, DE, EPCI, CM, CM
 # - traiter la comparaison approchée des noms
+
+# M:
+# - fonction_dates_problems_bounds
+# - fonction_dates_problems_mandate 
+#   >> comment résoudre ça automatiquement ? 
+#      >> virer déjà les fonctions courtes de maire ?
+#      >> les erreurs semblent particulièrement arriver dans certains départements
+# - fonction_problems_overlap
+#   >> lié au précédent, en partie du moins (il y en a bien moins)

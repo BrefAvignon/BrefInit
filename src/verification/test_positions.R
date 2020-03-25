@@ -44,7 +44,8 @@ test.position.cd <- function(data, out.folder)
 			colnames(tab2) <- "Ligne"
 			tab.file <- file.path(folder,paste0(unique.pos[p],"_details.txt"))
 			tlog(4,"Recording in file \"",tab.file,"\"")
-			write.table(x=tab2,file=tab.file,
+			write.table(x=tab2,
+				file=tab.file,
 #				fileEncoding="UTF-8",
 				row.names=FALSE, 
 				col.names=TRUE,
@@ -54,7 +55,8 @@ test.position.cd <- function(data, out.folder)
 			tab2 <- data[idx2,c(COL_ATT_MDT_DBT,COL_ATT_MDT_FIN,COL_ATT_ELU_NOM,COL_ATT_ELU_PRENOM,COL_ATT_ELU_ID)]
 			tab.file <- file.path(folder,paste0(unique.pos[p],".txt"))
 			tlog(4,"Recording in file \"",tab.file,"\"")
-			write.table(x=tab2,file=tab.file,
+			write.table(x=tab2,
+				file=tab.file,
 #				fileEncoding="UTF-8",
 				row.names=FALSE, 
 				col.names=TRUE,
@@ -106,7 +108,8 @@ test.position.cd <- function(data, out.folder)
 	if(nrow(tab)>0)
 	{	tab.file <- file.path(out.folder,"mandat_problems_overlap.txt")
 		tlog(2,"Recording in file \"",tab.file,"\"")
-		write.table(x=tab,file=tab.file,
+		write.table(x=tab,
+			file=tab.file,
 #			fileEncoding="UTF-8",
 			row.names=FALSE, 
 			col.names=TRUE,
@@ -157,7 +160,7 @@ test.position.cm <- function(data, out.folder)
 		
 		# get the corresponding functions
 		idx <- which(data[,COL_ATT_DPT_CODE]==dpt & data[,COL_ATT_COM_CODE]==com & data[,COL_ATT_FCT_NOM]==funct)
-		tlog(4,"Found ",length(idx)," function mandates")
+		tlog(4,"Found ",length(idx)," function/mandates")
 		
 		if(length(idx)>1)
 		{	folder2 <- file.path(folder,dpt)
@@ -170,17 +173,19 @@ test.position.cm <- function(data, out.folder)
 			colnames(tab2) <- "Ligne"
 			tab.file <- file.path(folder2,paste0(com,"_details.txt"))
 			tlog(4,"Recording in file \"",tab.file,"\"")
-			write.table(x=tab2,file=tab.file,
+			write.table(x=tab2,
+				file=tab.file,
 #				fileEncoding="UTF-8",
 				row.names=FALSE, 
 				col.names=TRUE,
 #				quote=TRUE,
 				sep="\t"
 			)
-			tab2 <- data[idx2,c(COL_ATT_MDT_DBT,COL_ATT_MDT_FIN,COL_ATT_ELU_NOM,COL_ATT_ELU_PRENOM,COL_ATT_ELU_ID)]
+			tab2 <- data[idx2,c(COL_ATT_MDT_DBT,COL_ATT_MDT_FIN,COL_ATT_FCT_DBT,COL_ATT_FCT_FIN,COL_ATT_ELU_NOM,COL_ATT_ELU_PRENOM,COL_ATT_ELU_ID)]
 			tab.file <- file.path(folder2,paste0(com,".txt"))
 			tlog(4,"Recording in file \"",tab.file,"\"")
-			write.table(x=tab2,file=tab.file,
+			write.table(x=tab2,
+				file=tab.file,
 #				fileEncoding="UTF-8",
 				row.names=FALSE, 
 				col.names=TRUE,
@@ -223,7 +228,8 @@ test.position.cm <- function(data, out.folder)
 	if(nrow(tab)>0)
 	{	tab.file <- file.path(out.folder,"fonction_problems_overlap.txt")
 		tlog(2,"Recording in file \"",tab.file,"\"")
-		write.table(x=tab,file=tab.file,
+		write.table(x=tab,
+			file=tab.file,
 #			fileEncoding="UTF-8",
 			row.names=FALSE, 
 			col.names=TRUE,
@@ -274,7 +280,8 @@ test.position.cr <- function(data, out.folder)
 			colnames(tab2) <- "Ligne"
 			tab.file <- file.path(folder,paste0(unique.pos[p],"_details.txt"))
 			tlog(4,"Recording in file \"",tab.file,"\"")
-			write.table(x=tab2,file=tab.file,
+			write.table(x=tab2,
+				file=tab.file,
 #				fileEncoding="UTF-8",
 				row.names=FALSE, 
 				col.names=TRUE,
@@ -284,7 +291,8 @@ test.position.cr <- function(data, out.folder)
 			tab2 <- data[idx2,c(COL_ATT_MDT_DBT,COL_ATT_MDT_FIN,COL_ATT_ELU_NOM,COL_ATT_ELU_PRENOM,COL_ATT_ELU_ID)]
 			tab.file <- file.path(folder,paste0(unique.pos[p],".txt"))
 			tlog(4,"Recording in file \"",tab.file,"\"")
-			write.table(x=tab2,file=tab.file,
+			write.table(x=tab2,
+				file=tab.file,
 #				fileEncoding="UTF-8",
 				row.names=FALSE, 
 				col.names=TRUE,
@@ -367,12 +375,13 @@ test.position.cr <- function(data, out.folder)
 	if(nrow(tab)>0)
 	{	tab.file <- file.path(out.folder,"mandat_problems_overlap.txt")
 		tlog(2,"Recording in file \"",tab.file,"\"")
-		write.table(x=tab,file=tab.file,
-#				fileEncoding="UTF-8",
-				row.names=FALSE, 
-				col.names=TRUE,
-#				quote=TRUE,
-				sep="\t"
+		write.table(x=tab,
+			file=tab.file,
+#			fileEncoding="UTF-8",
+			row.names=FALSE, 
+			col.names=TRUE,
+#			quote=TRUE,
+			sep="\t"
 		)
 	}
 }
@@ -417,7 +426,8 @@ test.position.de <- function(data, out.folder)
 			colnames(tab2) <- "Ligne"
 			tab.file <- file.path(folder,paste0(reg.name,"_details.txt"))
 			tlog(4,"Recording in file \"",tab.file,"\"")
-			write.table(x=tab2,file=tab.file,
+			write.table(x=tab2,
+				file=tab.file,
 #				fileEncoding="UTF-8",
 				row.names=FALSE, 
 				col.names=TRUE,
@@ -427,7 +437,8 @@ test.position.de <- function(data, out.folder)
 			tab2 <- data[idx2,c(COL_ATT_MDT_DBT,COL_ATT_MDT_FIN,COL_ATT_ELU_NOM,COL_ATT_ELU_PRENOM,COL_ATT_ELU_ID)]
 			tab.file <- file.path(folder,paste0(reg.name,".txt"))
 			tlog(4,"Recording in file \"",tab.file,"\"")
-			write.table(x=tab2,file=tab.file,
+			write.table(x=tab2,
+				file=tab.file,
 #				fileEncoding="UTF-8",
 				row.names=FALSE, 
 				col.names=TRUE,
@@ -511,12 +522,13 @@ test.position.de <- function(data, out.folder)
 	if(nrow(tab)>0)
 	{	tab.file <- file.path(out.folder,"mandat_problems_overlap.txt")
 		tlog(2,"Recording in file \"",tab.file,"\"")
-		write.table(x=tab,file=tab.file,
-#				fileEncoding="UTF-8",
-				row.names=FALSE, 
-				col.names=TRUE,
-#				quote=TRUE,
-				sep="\t"
+		write.table(x=tab,
+			file=tab.file,
+#			fileEncoding="UTF-8",
+			row.names=FALSE, 
+			col.names=TRUE,
+#			quote=TRUE,
+			sep="\t"
 		)
 	}
 }
@@ -568,7 +580,8 @@ test.position.d <- function(data, out.folder)
 			colnames(tab2) <- "Ligne"
 			tab.file <- file.path(folder,paste0(unique.pos[p],"_details.txt"))
 			tlog(4,"Recording in file \"",tab.file,"\"")
-			write.table(x=tab2,file=tab.file,
+			write.table(x=tab2,
+				file=tab.file,
 #				fileEncoding="UTF-8",
 				row.names=FALSE, 
 				col.names=TRUE,
@@ -578,7 +591,8 @@ test.position.d <- function(data, out.folder)
 			tab2 <- data[idx2,c(COL_ATT_MDT_DBT,COL_ATT_MDT_FIN,COL_ATT_ELU_NOM,COL_ATT_ELU_PRENOM,COL_ATT_ELU_ID)]
 			tab.file <- file.path(folder,paste0(unique.pos[p],".txt"))
 			tlog(4,"Recording in file \"",tab.file,"\"")
-			write.table(x=tab2,file=tab.file,
+			write.table(x=tab2,
+				file=tab.file,
 #				fileEncoding="UTF-8",
 				row.names=FALSE, 
 				col.names=TRUE,
@@ -621,12 +635,13 @@ test.position.d <- function(data, out.folder)
 	if(nrow(tab)>0)
 	{	tab.file <- file.path(out.folder,"mandat_problems_overlap.txt")
 		tlog(2,"Recording in file \"",tab.file,"\"")
-		write.table(x=tab,file=tab.file,
-#				fileEncoding="UTF-8",
-				row.names=FALSE, 
-				col.names=TRUE,
-#				quote=TRUE,
-				sep="\t"
+		write.table(x=tab,
+			file=tab.file,
+#			fileEncoding="UTF-8",
+			row.names=FALSE, 
+			col.names=TRUE,
+#			quote=TRUE,
+			sep="\t"
 		)
 		tlog(4,"Found a total of ",count," pairs of overlapping mandates for the whole table")
 	}
@@ -644,8 +659,7 @@ test.position.d <- function(data, out.folder)
 test.position.m <- function(data, out.folder)
 {	tlog(0,"Trying to detect problems in mayoral positions")
 	count <- 0
-	tab.m <- data[FALSE,]
-	tab.f <- data[FALSE,]
+	tab <- data[FALSE,]
 	
 	# possibly create folder to output detailed position chronology
 	folder <- file.path(out.folder,"positions")
@@ -672,29 +686,31 @@ test.position.m <- function(data, out.folder)
 		idx <- which(data[,COL_ATT_DPT_CODE]==dpt & data[,COL_ATT_COM_CODE]==com)
 		tlog(4,"Found ",length(idx)," rows")
 		
-		tlog(4,"Checking mandate overlaps")
+		tlog(4,"Checking function overlaps")
 		if(length(idx)>1)
 		{	folder2 <- file.path(folder,dpt)
 			dir.create(path=folder2, showWarnings=FALSE, recursive=TRUE)
 			
-			# record the sequence of mandates for this position
+			# record the sequence of functions for this position
 			idx2 <- idx[order(data[idx,COL_ATT_MDT_DBT], data[idx,COL_ATT_MDT_FIN], 
 							data[idx,COL_ATT_FCT_DBT], data[idx,COL_ATT_FCT_DBT])]
 			tab2 <- cbind(idx2, data[idx2,])
 			colnames(tab2) <- "Ligne"
 			tab.file <- file.path(folder2,paste0(com,"_details.txt"))
 			tlog(4,"Recording in file \"",tab.file,"\"")
-			write.table(x=tab2,file=tab.file,
+			write.table(x=tab2,
+				file=tab.file,
 #				fileEncoding="UTF-8",
 				row.names=FALSE, 
 				col.names=TRUE,
 #				quote=TRUE,
 				sep="\t"
 			)
-			tab2 <- data[idx2,c(COL_ATT_MDT_DBT,COL_ATT_MDT_FIN,COL_ATT_ELU_NOM,COL_ATT_ELU_PRENOM,COL_ATT_ELU_ID)]
+			tab2 <- data[idx2,c(COL_ATT_MDT_DBT,COL_ATT_MDT_FIN,COL_ATT_FCT_DBT,COL_ATT_FCT_FIN,COL_ATT_ELU_NOM,COL_ATT_ELU_PRENOM,COL_ATT_ELU_ID)]
 			tab.file <- file.path(folder2,paste0(com,".txt"))
 			tlog(4,"Recording in file \"",tab.file,"\"")
-			write.table(x=tab2,file=tab.file,
+			write.table(x=tab2,
+				file=tab.file,
 #				fileEncoding="UTF-8",
 				row.names=FALSE, 
 				col.names=TRUE,
@@ -702,34 +718,6 @@ test.position.m <- function(data, out.folder)
 				sep="\t"
 			)
 			
-			# check if the mandate dates overlap
-			ccount <- 0
-			for(i in 1:(length(idx)-1))
-			{	# get the dates of the first compared mandate
-				start1 <- data[idx[i],COL_ATT_MDT_DBT]
-				end1 <- data[idx[i],COL_ATT_MDT_FIN]
-				
-				for(j in (i+1):length(idx))
-				{	# get the dates of the second compared mandate
-					start2 <- data[idx[j],COL_ATT_MDT_DBT]
-					end2 <- data[idx[j],COL_ATT_MDT_FIN]
-					
-					# check if the periods intersect
-					if(date.intersect(start1, end1, start2, end2))
-					{	# add to the table of problematic cases
-						tab.m <- rbind(tab.m, data[c(idx[i],idx[j]),], rep(NA,ncol(data)))
-						# add a row of NAs in order to separate pairs of cases
-						count <- count + 1
-						ccount <- ccount + 1
-					}
-				}
-			}
-			
-			# possibly add an empty row to separate cases
-			tlog(6,"Found ",ccount," pairs of overlapping mandates of this specific position")
-			if(ccount>0)
-				tab.m <- rbind(tab.m, rep(NA,ncol(data)))
-		
 			# check if the function dates overlap
 			tlog(4,"Checking function overlaps")
 			ccount <- 0
@@ -749,7 +737,7 @@ test.position.m <- function(data, out.folder)
 						{	tlog(6, "Comparing ",format(start1),"--",format(end1)," vs. ",format(start2),"--",format(end2))
 							if(date.intersect(start1, end1, start2, end2))
 							{	# add to the table of problematic cases
-								tab.f <- rbind(tab.f, data[c(idx[i],idx[j]),], rep(NA,ncol(data)))
+								tab <- rbind(tab, data[c(idx[i],idx[j]),], rep(NA,ncol(data)))
 								# add a row of NAs in order to separate pairs of cases
 								count <- count + 1
 								ccount <- ccount + 1
@@ -762,34 +750,22 @@ test.position.m <- function(data, out.folder)
 			# possibly add an empty row to separate cases
 			tlog(6,"Found ",ccount," pairs of overlapping functions of this specific position")
 			if(ccount>0)
-				tab.f <- rbind(tab.f, rep(NA,ncol(data)))
+				tab <- rbind(tab, rep(NA,ncol(data)))
 		}
 	}
 	tlog(2,"Processing over")
 	
-	# possibly record the tables of problematic mandate cases
-	if(nrow(tab.m)>0)
-	{	tab.file <- file.path(out.folder,"mandat_problems_overlap.txt")
-		tlog(2,"Recording in file \"",tab.file,"\"")
-		write.table(x=tab.m,file=tab.file,
-#				fileEncoding="UTF-8",
-				row.names=FALSE,
-				col.names=TRUE,
-#				quote=TRUE,
-				sep="\t"
-		)
-		tlog(4,"Found a total of ",count," pairs of overlapping mandates for the whole table")
-	}
 	# possibly record the tables of problematic function cases
-	if(nrow(tab.f)>0)
+	if(nrow(tab)>0)
 	{	tab.file <- file.path(out.folder,"fonction_problems_overlap.txt")
 		tlog(2,"Recording in file \"",tab.file,"\"")
-		write.table(x=tab.f,file=tab.file,
-#				fileEncoding="UTF-8",
-				row.names=FALSE, 
-				col.names=TRUE,
-#				quote=TRUE,
-				sep="\t"
+		write.table(x=tab, 
+			file=tab.file,
+			#fileEncoding="UTF-8",
+			row.names=FALSE, 
+			col.names=TRUE,
+			#quote=TRUE,
+			sep="\t"
 		)
 		tlog(4,"Found a total of ",count," pairs of overlapping functions for the whole table")
 	}
@@ -835,7 +811,8 @@ test.position.s <- function(data, out.folder)
 			colnames(tab2) <- "Ligne"
 			tab.file <- file.path(folder,paste0(unique.pos[p],"_details.txt"))
 			tlog(4,"Recording in file \"",tab.file,"\"")
-			write.table(x=tab2,file=tab.file,
+			write.table(x=tab2,
+				file=tab.file,
 #				fileEncoding="UTF-8",
 				row.names=FALSE, 
 				col.names=TRUE,
@@ -845,7 +822,8 @@ test.position.s <- function(data, out.folder)
 			tab2 <- data[idx2,c(COL_ATT_MDT_DBT,COL_ATT_MDT_FIN,COL_ATT_ELU_NOM,COL_ATT_ELU_PRENOM,COL_ATT_ELU_ID)]
 			tab.file <- file.path(folder,paste0(unique.pos[p],".txt"))
 			tlog(4,"Recording in file \"",tab.file,"\"")
-			write.table(x=tab2,file=tab.file,
+			write.table(x=tab2,
+				file=tab.file,
 #				fileEncoding="UTF-8",
 				row.names=FALSE, 
 				col.names=TRUE,
@@ -929,12 +907,13 @@ test.position.s <- function(data, out.folder)
 	if(nrow(tab)>0)
 	{	tab.file <- file.path(out.folder,"mandat_problems_overlap.txt")
 		tlog(2,"Recording in file \"",tab.file,"\"")
-		write.table(x=tab,file=tab.file,
-#				fileEncoding="UTF-8",
-				row.names=FALSE, 
-				col.names=TRUE,
-#				quote=TRUE,
-				sep="\t"
+		write.table(x=tab,
+			file=tab.file,
+#			fileEncoding="UTF-8",
+			row.names=FALSE, 
+			col.names=TRUE,
+#			quote=TRUE,
+			sep="\t"
 		)
 	}
 }

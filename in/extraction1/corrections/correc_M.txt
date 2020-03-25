@@ -83,6 +83,7 @@ Row	Id RNE	Nom	Prenom	Attribut	ValAvt	ValApr	Commentaire
 89479	169576	BUISSON	Frédéric	Date debut fonction	21/3/2008	11/6/1995	Date de début incorrecte
 89479	169576	BUISSON	Frédéric	Date fin fonction	22/3/2014	10/3/2001	Date de fin incorrecte
 113159	151270	CRUSOL	Jean	Prenom elu	Jean	Louis	Typo prénom
+113159	151270	CRUSOL	Louis	Date naissance	20/9/1943	1/7/1942	Typo ddn
 113159	151270	CRUSOL	Louis	Date debut mandat	16/3/2008	1/7/1990	Date de début incorrecte
 113159	151270	CRUSOL	Louis	Date fin mandat	16/3/2008	3/3/2003	Date de fin incorrecte
 113159	151270	CRUSOL	Louis	Date debut fonction	16/3/2008	1/7/1990	Date de début incorrecte
@@ -90,3 +91,20 @@ Row	Id RNE	Nom	Prenom	Attribut	ValAvt	ValApr	Commentaire
 113171	1180775	MAYER-ROSSIGNOL	Nicolas	ID RNE	1180775	NA	Suppression, mandat inexistant (WP)
 83469	678147	LAFFONT	François	ID RNE	678147	NA	Suppression, mandat inexistant (WP)
 98475	540150	FARENZENA ÉPOUSE WALLEZ	Lydie	ID RNE	540150	NA	Suppression, mandat inexistant (WP)
+4148	882661	BROUTET	Chantal	ID RNE	882661	NA	Suppression, mandat redondant (WP)
+13352	672745	GAYRAUD	Didier	ID RNE	672745	NA	Suppression, mandat inexistant (WP)
+15612	147241	BARATTE	Guy	ID RNE	147241	NA	Suppression, mandat inexistant (WP)
+30778	947930	TREHARD	Frédéric	Date fin mandat	26/2/2017	NA	Date incorrecte (WP)
+30779	849661	WOHLSCHLEGEL	Eric	ID RNE	849661	NA	Suppression, mandat inexistant (WP)
+113184	817494	SALIBER	Lucien	ID RNE	817494	NA	Suppression, mandat inexistant (WP)
+101734	220028	BAILLET	Alain	ID RNE	220028	NA	Suppression, mandat inexistant (WP)
+93247	168415	MIGUET	Roger	Date debut mandat	11/3/2003	11/3/2001	Date de début incorrecte (WP)
+93249	743394	MIGUET	Vincent	ID RNE	743394	NA	Suppression, mandat inexistant (WP)
+83920	676816	RAYNAL	Yannick	ID RNE	676816	NA	Suppression, mandat inexistant (WP)
+90939	172250	TROQUET	Bernadette	ID RNE	172250	NA	Suppression, mandat redondant (WP)
+90941	172250	TROQUET	Bernadette	ID RNE	172250	NA	Suppression, mandat inexistant (WP)
+71247	37707	KOWALCZYK	Patrick	ID RNE	37707	NA	Suppression, mandat inexistant (WP)
+68220	1041503	GENET-MAINCION	Katia	ID RNE	1041503	NA	Suppression, mandat inexistant (WP)
+39665	700377	BARTHE	Pascal	ID RNE	700377	NA	Suppression, mandat inexistant (WP)
+7874	892207	PROTIN	Francis	ID RNE	892207	NA	Suppression, mandat inexistant (WP)
+7448	50132	PATE	Cédric	ID RNE	50132	NA	Suppression, mandat inexistant (WP)
