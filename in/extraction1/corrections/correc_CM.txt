@@ -86,7 +86,6 @@ NA	NA	NA	NA	Libelle commune	TEVA I UTA SECTION 01 MATAIEA	TEVA I UTA	On ignore l
 807367	92587	LEFEBVRE	Alain	Date debut fonction	14/3/2008	21/3/2001	Date incorrecte
 810012	81452	DAGBERT	Michel	Date debut fonction	14/3/2008	21/3/2001	Date incorrecte
 810778	21837	KRAJEWSKI	Jean-Marie	Date debut fonction	21/3/2008	21/3/2001	Date incorrecte
-816347	2763	ROSSIGNOL	Françoise	Date debut fonction	14/3/2008	14/3/2001	Date incorrecte
 828900	96501	CORBISEZ	Jean-Pierre	Date debut fonction	14/3/2008	21/3/2001	Date incorrecte
 829158	61255	GUILBERT	Thérèse	Date debut fonction	14/3/2008	21/3/2001	Date incorrecte
 887833	818995	RAYMOND	Alain	Date debut fonction	15/3/2008	21/3/2001	Date incorrecte
@@ -224,8 +223,8 @@ NA	NA	NA	NA	Libelle commune	TEVA I UTA SECTION 01 MATAIEA	TEVA I UTA	On ignore l
 1228979	151270	CRUSOL	Louis	Date fin mandat	16/3/2008	3/3/2003	Date de fin incorrecte
 1228979	151270	CRUSOL	Louis	Date debut fonction	16/3/2008	1/7/1990	Date de début incorrecte
 1228979	151270	CRUSOL	Louis	Date fin fonction	16/3/2008	3/3/2003	Date de fin incorrecte
-1228980	151270	CRUSOL	Louis	ID RNE	151270	NA	Suppression, ligne redondante
-1229244	1180775	MAYER-ROSSIGNOL	Nicolas	ID RNE	1180775	NA	Suppression, mandat inexistant (WP)
+1228980	151270	CRUSOL	Jean	ID RNE	151270	NA	Suppression, ligne redondante
+1229242	1180775	MAYER-ROSSIGNOL	Nicolas	ID RNE	1180775	NA	Suppression, mandat inexistant (WP)
 874478	678147	LAFFONT	François	ID RNE	678147	NA	Suppression, mandat inexistant (WP)
 1043927	540150	FARENZENA ÉPOUSE WALLEZ	Lydie	ID RNE	540150	NA	Suppression, mandat redondant (WP)
 39917	882661	BROUTET	Chantal	ID RNE	882661	NA	Suppression, mandat redondant (WP)
@@ -238,8 +237,8 @@ NA	NA	NA	NA	Libelle commune	TEVA I UTA SECTION 01 MATAIEA	TEVA I UTA	On ignore l
 300876	947930	TREHARD	Frédéric	Date fin mandat	26/2/2017	NA	Date incorrecte (WP)
 300882	849661	WOHLSCHLEGEL	Eric	ID RNE	849661	NA	Suppression, mandat inexistant (WP)
 1229593	817494	SALIBER	Lucien	Libelle fonction	Maire	NA	Fonction incorrecte
-1229593	817494	SALIBER	Lucien	Date debut fonction	22/3/2014	NA	Fonction incorrecte
-1229593	817494	SALIBER	Lucien	Date fin fonction	3/4/2013	NA	Fonction incorrecte
+1229593	817494	SALIBER	Lucien	Date debut fonction	3/4/2013	NA	Fonction incorrecte
+1229593	817494	SALIBER	Lucien	Date fin fonction	22/3/2014	NA	Fonction incorrecte
 1229593	817494	SALIBER	Lucien	Motif fin fonction	FM	NA	Fonction incorrecte
 1083538	220028	BAILLET	Alain	Libelle fonction	Maire	NA	Fonction incorrecte
 1083538	220028	BAILLET	Alain	Date debut fonction	30/5/2011	NA	Fonction incorrecte
@@ -271,3 +270,160 @@ NA	NA	NA	NA	Libelle commune	TEVA I UTA SECTION 01 MATAIEA	TEVA I UTA	On ignore l
 74251	50132	PATE	Cédric	Date debut fonction	4/12/2011	NA	Fonction incorrecte
 74251	50132	PATE	Cédric	Date fin fonction	22/3/2014	NA	Fonction incorrecte
 74251	50132	PATE	Cédric	Motif fin fonction	FM	NA	Fonction incorrecte
+647885	155308	HUOT	René	Date fin mandat	27/2/2013	22/3/2014	Date incorrecte
+647885	155308	HUOT	René	Date debut fonction	14/3/2013	9/3/2008	Date incorrecte
+1044296	4676	DELESSARD	Monique	Date debut fonction	26/6/2015	30/3/2014	Date incorrecte (WP)
+1044296	4676	DELESSARD	Monique	Date fin fonction	NA	21/5/2015	Date incorrecte (WP)
+1044297	4676	DELESSARD	Monique	Libelle fonction	NA	Maire	Fonction manquante (WP)
+1044297	4676	DELESSARD	Monique	Date debut fonction	NA	26/6/2015	Date manquante (WP)
+1044297	4676	DELESSARD	Monique	Date fin fonction	NA	15/1/2018	Fonction manquante (WP)
+1044297	4676	DELESSARD	Monique	Motif fin fonction	NA	DV	Fonction manquante (WP)
+1143452	85417	PICHEREAU	Françoise	Libelle fonction	Maire	NA	Fonction incorrecte (WP)
+1143452	85417	PICHEREAU	Françoise	Date debut fonction	2/9/2012	NA	Fonction incorrecte
+1143452	85417	PICHEREAU	Françoise	Date fin fonction	22/3/2014	NA	Fonction incorrecte
+1143452	85417	PICHEREAU	Françoise	Motif fin fonction	FM	NA	Fonction incorrecte
+40507	1194847	LOUBRY	David	Date debut fonction	19/12/2016	21/10/2017	Date incorrecte (WP)
+49380	1508946	DUFOUR	Claire	Date debut fonction	13/9/2015	22/9/2015	Date incorrecte (WP)
+74887	149542	LAMBERT	Claude	Date fin mandat	23/9/2011	22/3/2014	Date incorrecte (WP)
+74896	595940	SEMBENI	Anne	Libelle fonction	Maire	NA	Fonction incorrecte (WP)
+74896	595940	SEMBENI	Anne	Date debut fonction	16/11/2010	NA	Fonction incorrecte (WP)
+74896	595940	SEMBENI	Anne	Date fin fonction	22/3/2014	NA	Fonction incorrecte (WP)
+74896	595940	SEMBENI	Anne	Motif fin fonction	FM	NA	Fonction incorrecte (WP)
+81088	599145	PONCIN	Paul	Date debut fonction	23/3/2009	23/9/2009	Date incorrecte
+166229	912390	LEVET	Nadia	Date fin mandat	6/2/2011	22/3/2014	Date incorrecte (WP)
+166239	745028	TESTUD	Gabriel	Libelle fonction	Maire	NA	Fonction incorrecte (WP)
+166239	745028	TESTUD	Gabriel	Date debut fonction	27/3/2010	NA	Fonction incorrecte (WP)
+166239	745028	TESTUD	Gabriel	Date fin fonction	22/3/2014	NA	Fonction incorrecte (WP)
+166239	745028	TESTUD	Gabriel	Motif fin fonction	FM	NA	Fonction incorrecte (WP)
+187441	30523	GIRAUDEAU	Patrick	Date debut fonction	16/5/2017	5/9/2017	Date incorrecte (WP)
+196619	41887	GIRARD	André	Date debut fonction	9/3/2008	18/2/2009	Date incorrecte (WP)
+201209	63910	MENIGON	Jean-Jacques	Libelle fonction	Maire	NA	Fonction incorrecte (WP)
+201209	63910	MENIGON	Jean-Jacques	Date debut fonction	21/3/2008	NA	Fonction incorrecte (WP)
+201209	63910	MENIGON	Jean-Jacques	Date fin fonction	21/3/2008	NA	Fonction incorrecte (WP)
+201240	38005	PETIT	Yves	Date debut fonction	1/7/2011	14/7/2011	Date incorrecte
+246020	144203	ROUFFET	Gérard	Date fin mandat	10/12/2011	22/3/2014	Date incorrecte
+246020	144203	ROUFFET	Gérard	Date fin fonction	22/3/2014	28/1/2011	Date incorrecte
+248466	934206	PUYCHEVRIER	Françoise	Date debut fonction	30/3/2014	4/9/2017	Date incorrecte
+248470	934201	VITTE	Jean-Claude	Date debut fonction	30/4/2015	30/4/2014	Date incorrecte
+248470	934201	VITTE	Jean-Claude	Date fin fonction	NA	3/9/2017	Date incorrecte
+250205	144031	FARGES	Jacques	Date fin fonction	22/3/2014	10/10/2011	Echange dates fin
+250205	144031	FARGES	Jacques	Date fin mandat	10/10/2011	22/3/2014	Echange dates fin
+250211	782995	LEGER	Jean-Luc	Date debut fonction	9/3/2011	11/10/2011	Echange dates fin
+250417	934879	MATHIVET	Mireille	Date debut fonction	9/3/2008	1/2/2011	Date incorrecte
+259910	810341	VEYSSIERE	Jean-Claude	Date fin mandat	20/12/2009	22/3/2014	Date incorrecte
+259910	810341	VEYSSIERE	Jean-Claude	Date fin fonction	20/12/2009	22/3/2014	Date incorrecte
+259912	810341	VEYSSIERE	Jean-Claude	ID RNE	810341	NA	Suppression, mandat redondant (WP)
+262164	1176560	MARECAUX	Yves	Date fin fonction	3/5/2010	9/4/2010	Date incorrecte (WP)
+264070	938026	MOUCHE	Virginie	Date debut fonction	23/3/2014	10/5/2016	Date incorrecte (WP)
+267529	809634	BRONDEL	Claude	Date debut fonction	21/3/2008	1/1/2010	Date incorrecte (WP)
+279052	1273648	OLSZAK	Anne	Date debut fonction	24/1/2016	1/1/2018	Date incorrecte (WP)
+288248	943656	TRIAIRE	Gérard	Date debut fonction	9/3/2008	9/3/2011	Date incorrecte (WP)
+299646	842307	BEURIOT	Valéry	Date debut fonction	11/3/2015	11/5/2015	Date incorrecte (WP)
+344810	787321	PAOLINI	François	Date debut fonction	8/1/2012	8/2/2012	Date incorrecte (WP)
+345860	792334	LECCIA	Jean-Baptiste	Date debut fonction	7/1/2012	8/2/2012	Date incorrecte (WP)
+358375	869721	TORREILLES	Eric	Date debut fonction	19/2/2010	19/3/2010	Date incorrecte (WP)
+369669	436180	CASSAN	Jean	Prenom elu	Jean	Jean-Clément	Prénom incomplet
+369670	436180	CASSAN	Jean-Clément	Date debut fonction	9/1/2011	4/11/2011	Date incorrecte (WP)
+428151	486549	COUSTOL	Michel	Date debut fonction	12/2/2009	12/3/2009	Date incorrecte (WP)
+436332	815192	MALLET	Sylvie	Date debut fonction	23/1/2010	11/3/2010	Date incorrecte (WP)
+477492	448561	GIRARD	Thierry	Date debut fonction	23/10/2010	23/12/2010	Date incorrecte (WP)
+489882	1191796	BONDIER	Marie Thérèse	Libelle fonction	Maire	NA	Fonction incorrecte (WP)
+489882	1191796	BONDIER	Marie Thérèse	Date debut fonction	13/5/2012	NA	Fonction incorrecte (WP)
+489882	1191796	BONDIER	Marie Thérèse	Date fin fonction	22/3/2014	NA	Fonction incorrecte (WP)
+489882	1191796	BONDIER	Marie Thérèse	Motif fin fonction	FM	NA	Fonction incorrecte (WP)
+497048	992498	LOTTE	Serge	Date debut fonction	12/2/2011	12/9/2012	Date incorrecte (WP)
+539642	1002638	DEFAY	Martine	Date debut fonction	17/4/2014	6/1/2018	Date incorrecte (WP)
+539642	1002638	DEFAY	Martine	Date fin mandat	17/4/2018	NA	Date incorrecte (WP)
+548820	1338097	LEVANT	Claude	Date debut fonction	23/3/2014	16/9/2016	Date incorrecte (WP)
+564184	1008493	LLOPIS	Christophe	Date debut fonction	9/6/2016	9/11/2016	Date incorrecte (WP)
+587705	1013752	CHARBONNEAUX	Eddy	Libelle fonction	Maire	NA	Fonction incorrecte (WP)
+587705	1013752	CHARBONNEAUX	Eddy	Date debut fonction	28/3/2014	NA	Fonction incorrecte (WP)
+593497	270550	DUVEAU	Alain	Date debut fonction	16/3/2008	14/6/2013	Date incorrecte (WP)
+594655	156679	MARTIN	André	Date debut fonction	15/12/2015	1/1/2016	Date incorrecte (WP)
+595587	156776	DILE	Christophe	Date debut fonction	15/12/2015	1/1/2016	Date incorrecte (WP)
+600254	83553	MAILLET	Christian	ID RNE	83553	NA	Suppression, mandat inexistant
+601909	1350163	BOURGET	Jean-Claude	Date debut fonction	15/12/2015	1/1/2016	Date incorrecte (WP)
+602577	272336	ROBIN	Jean-Luc	Date debut fonction	21/3/2008	19/1/2012	Date incorrecte
+602659	156750	MANCEAU	Yves	ID RNE	156750	NA	Suppression, mandat inexistant
+604590	272297	HUCHON	Didier	Date debut fonction	15/12/2015	1/1/2016	Date incorrecte
+605308	158455	VINCENT	Louis	ID RNE	158455	NA	Suppression, mandat inexistant
+607040	156655	AUGEREAU	Bernard	ID RNE	156655	NA	Suppression, mandat inexistant
+620050	1355776	LEFORESTIER	Noëlle	Date debut fonction	25/2/2015	26/2/2016	Date incorrecte
+623150	326053	CARNET	Monique	Date fin mandat	19/5/2011	22/3/2014	Date incorrecte
+623150	326053	CARNET	Monique	Date fin fonction	22/3/2014	12/9/2008	Date incorrecte
+624481	325559	MILCENT	Xavier	Date debut fonction	16/2/2011	15/6/2011	Date incorrecte
+627651	1357397	BATY	Hélène	Date debut fonction	23/3/2014	1/1/2016	Date incorrecte
+641408	73774	DE GRAMMONT	Jean-Marie	Date debut fonction	28/3/2014	16/4/2014	Date incorrecte
+642058	742540	POTISEK	Annie	Date debut fonction	9/3/2008	10/9/2013	Date incorrecte
+670190	154543	LABBE	Bernard	Date fin fonction	22/3/2014	4/9/2013	Date incorrecte
+687005	1187539	VERGNE	Raymond	Date fin fonction	13/11/2012	29/9/2012	Date incorrecte
+691956	1371762	DERÊME	Céline	Libelle fonction	Maire	NA	Fonction incorrecte (WP)
+691956	1371762	DERÊME	Céline	Date debut fonction	15/10/2015	NA	Fonction incorrecte (WP)
+691956	1371762	DERÊME	Céline	Date fin fonction	29/12/2017	NA	Fonction incorrecte (WP)
+691960	1371764	FAURE	Frédérique	Libelle fonction	Maire	NA	Fonction incorrecte (WP)
+691960	1371764	FAURE	Frédérique	Date debut fonction	4/4/2014	NA	Fonction incorrecte (WP)
+691960	1371764	FAURE	Frédérique	Date fin fonction	18/7/2015	NA	Fonction incorrecte (WP)
+727998	152845	LALLEMENT	Claude	ID RNE	152845	NA	Suppression, mandat inexistant
+748287	84392	ROUSSEL	Didier	Date debut fonction	8/11/2014	11/8/2015	Date incorrecte
+768088	1389786	BOS	Alain	Date debut fonction	23/3/2014	13/6/2015	Date incorrecte
+778447	1180744	BAECKELANDT	Josiane	Date fin mandat	18/3/2013	22/3/2014	Echange dates de fin
+778447	1180744	BAECKELANDT	Josiane	Date fin fonction	22/3/2014	18/3/2013	Echange dates de fin
+778467	1180914	LEBOUTEUX	Geneviève	Libelle fonction	Maire	NA	Fonction incorrecte
+778467	1180914	LEBOUTEUX	Geneviève	Date debut fonction	21/3/2008	NA	Fonction incorrecte
+778467	1180914	LEBOUTEUX	Geneviève	Date fin fonction	22/3/2014	NA	Fonction incorrecte
+778467	1180914	LEBOUTEUX	Geneviève	Motif fin fonction	FM	NA	Fonction incorrecte
+778467	1180914	LEBOUTEUX	Geneviève	Date fin mandat	1/9/2011	22/3/2014	Date incorrecte
+793705	173836	TEISSEDRE	Christian	Date fin mandat	4/10/2011	22/3/2014	Echange dates de fin
+793705	173836	TEISSEDRE	Christian	Date fin fonction	22/3/2014	14/9/2011	Echange dates de fin
+805914	1188696	FARAULT	Gilles	Date debut fonction	7/7/2012	15/10/2012	Date incorrecte
+816347	2763	ROSSIGNOL	Françoise	Libelle fonction	Maire	NA	Fonction incorrecte
+816347	2763	ROSSIGNOL	Françoise	Date debut fonction	14/3/2008	NA	Fonction incorrecte
+816347	2763	ROSSIGNOL	Françoise	Date fin fonction	8/3/2008	NA	Fonction incorrecte
+816347	2763	ROSSIGNOL	Françoise	Motif fin fonction	FM	NA	Fonction incorrecte
+820335	32428	DELDIQUE	Marcel	ID RNE	32428	NA	Suppression, mandat inexistant
+820975	1402353	DE LE VALLÉE	Louis	Date debut fonction	1/7/2017	11/7/2017	Date incorrecte
+842546	1069036	SERIN	Jean-Noël	Date debut fonction	5/5/2009	17/9/2009	Date incorrecte
+844056	372076	GENILLIER	Juliette	ID RNE	372076	NA	Suppression, mandat redondant
+852310	47234	BLANCHET	Roland	ID RNE	47234	NA	Suppression, mandat redondant
+852311	47234	BLANCHET	Roland	ID RNE	47234	NA	Suppression, mandat redondant
+852313	47234	BLANCHET	Roland	Date naissance	22/11/1939	21/11/1939	Date de naissance incorrecte
+852314	47234	BLANCHET	Roland	Date naissance	22/11/1939	21/11/1939	Date de naissance incorrecte
+896177	585888	FROEHLY	Claude	Date debut fonction	15/12/2014	15/12/2017	Date incorrecte
+896972	587101	ROBITZER	Georges	Date debut fonction	14/3/2008	14/7/2013	Date incorrecte
+896979	170769	WANDHAMMER	Gérard	Date fin fonction	22/3/2014	13/7/2013	Date incorrecte
+903447	584214	HENTZ	Jean	Date debut fonction	17/1/2015	18/1/2016	Date incorrecte
+959483	1436017	GALLIEN	Jean-Pierre	Date debut fonction	27/11/2016	27/12/2016	Date incorrecte
+982396	1102884	BARBAZ	Damien	Libelle fonction	Maire	NA	Fonction incorrecte
+982396	1102884	BARBAZ	Damien	Date debut fonction	21/3/2008	NA	Fonction incorrecte
+982396	1102884	BARBAZ	Damien	Date fin fonction	21/3/2008	NA	Fonction incorrecte
+983696	168351	VALLIER	Claude	Date fin mandat	3/6/2008	22/3/2014	Echange dates de fin
+983696	168351	VALLIER	Claude	Date fin fonction	22/3/2014	3/5/2008	Echange dates de fin
+984451	753499	COVAREL	Bernard	Date debut fonction	4/8/2014	22/6/2017	Date incorrecte
+996235	1107037	VANDERBRECHT	Patricia	Date debut fonction	12/1/2016	22/1/2016	Date incorrecte
+1028188	839394	SCHABOWSKI	Jean-Luc	Date debut fonction	3/2/2011	13/2/2011	Date incorrecte
+1028932	1453239	ROBERT	Bruno	Date debut fonction	6/6/2017	6/7/2017	Date incorrecte
+1098612	1129644	BROUSSE	Marie-José	Date debut fonction	23/3/2014	6/11/2016	Date incorrecte
+1099141	1130148	DELORI	Hugues	Date debut fonction	24/3/2014	3/12/2015	Date incorrecte
+1101456	1470508	ICHARD	Xavier	Date debut fonction	28/3/2014	3/2/2015	Date incorrecte
+1103475	1130346	TALMANT	Jean-Michel	Date debut fonction	23/3/2014	1/4/2015	Date incorrecte
+1103526	618261	VIDAL	Myriam	Date debut fonction	23/3/2014	12/4/2016	Date incorrecte
+1103781	618907	CAYRE	Jean-Christophe	Date debut fonction	23/3/2014	3/3/2017	Date incorrecte
+1104207	1471235	DOUZAL	Thierry	Date debut fonction	23/3/2014	11/8/2015	Date incorrecte
+1127996	1477022	ROY	Franck	Date debut fonction	7/7/2017	30/8/2017	Date incorrecte
+1128231	1477474	GIRAUD	Joël	Libelle fonction	Maire	NA	Fonction incorrecte
+1128231	1477474	GIRAUD	Joël	Date debut fonction	23/4/2014	NA	Date incorrecte
+1128231	1477474	GIRAUD	Joël	Date fin fonction	31/12/2016	NA	Date incorrecte
+1128497	76089	GROUSSIN	Claude	Date debut fonction	6/11/2015	6/11/2017	Date incorrecte
+1131454	826199	CHAMARD	Jean-Marie	Date debut fonction	2/4/2014	11/4/2015	Date incorrecte
+1140025	1480130	TARDIF	Jean-Michel	Date debut fonction	23/3/2014	12/11/2016	Date incorrecte
+1140385	1480222	POUPEAU	Anita	Date debut fonction	23/3/2014	19/10/2015	Date incorrecte
+1143467	1481001	BARDEAU	Claude	Date debut fonction	23/3/2014	17/1/2015	Date incorrecte
+1145341	349877	SAUVAGE	Corinne	Date debut fonction	14/3/2008	10/10/2013	Date incorrecte
+1148156	1482213	RIGNAULT	André	Date debut fonction	23/3/2014	5/4/2016	Date incorrecte
+1148892	1140535	GAILLARD	Michel	ID RNE	1140535	NA	Suppression, mandat inexistant
+1198966	1494676	CLODONG	Olivier	Date debut fonction	2/7/2017	19/7/2017	Date incorrecte
+1205587	163119	BOURGAIN	Michel	Date fin fonction	NA	28/6/2016	Date incorrecte
+1222739	684092	PERONNET	Annie	Date debut fonction	27/3/2017	16/3/2018	Date incorrecte
+1222739	684092	PERONNET	Annie	Date fin fonction	NA	16/12/2018	Date manquante
+1229162	1199867	VATENAR	René	Date fin fonction	NA	8/10/2017	Date manquante
+1231848	33812	FRUTEAU	Eric	ID RNE	33812	NA	Suppression, mandat inexistant

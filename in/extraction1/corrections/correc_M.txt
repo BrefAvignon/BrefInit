@@ -101,10 +101,133 @@ Row	Id RNE	Nom	Prenom	Attribut	ValAvt	ValApr	Commentaire
 93247	168415	MIGUET	Roger	Date debut mandat	11/3/2003	11/3/2001	Date de début incorrecte (WP)
 93249	743394	MIGUET	Vincent	ID RNE	743394	NA	Suppression, mandat inexistant (WP)
 83920	676816	RAYNAL	Yannick	ID RNE	676816	NA	Suppression, mandat inexistant (WP)
-90939	172250	TROQUET	Bernadette	ID RNE	172250	NA	Suppression, mandat redondant (WP)
-90941	172250	TROQUET	Bernadette	ID RNE	172250	NA	Suppression, mandat inexistant (WP)
+80939	172250	TROQUET	Bernadette	ID RNE	172250	NA	Suppression, mandat redondant (WP)
+80941	172250	TROQUET	Bernadette	ID RNE	172250	NA	Suppression, mandat inexistant (WP)
 71247	37707	KOWALCZYK	Patrick	ID RNE	37707	NA	Suppression, mandat inexistant (WP)
-68220	1041503	GENET-MAINCION	Katia	ID RNE	1041503	NA	Suppression, mandat inexistant (WP)
+68222	1041503	GENET-MAINCION	Katia	ID RNE	1041503	NA	Suppression, mandat inexistant (WP)
 39665	700377	BARTHE	Pascal	ID RNE	700377	NA	Suppression, mandat inexistant (WP)
 7874	892207	PROTIN	Francis	ID RNE	892207	NA	Suppression, mandat inexistant (WP)
 7448	50132	PATE	Cédric	ID RNE	50132	NA	Suppression, mandat inexistant (WP)
+62151	155308	HUOT	René	Date fin mandat	27/2/2013	22/3/2014	Date incorrecte (WP)
+62151	155308	HUOT	René	Date debut fonction	14/3/2013	9/3/2008	Date incorrecte (WP)
+98511	4676	DELESSARD	Monique	Date debut fonction	26/6/2015	30/3/2014	Date incorrecte (WP)
+98511	4676	DELESSARD	Monique	Date fin fonction	NA	21/5/2015	Date incorrecte (WP)
+106906	85417	PICHEREAU	Françoise	ID RNE	85417	NA	Suppression, mandat inexistant (WP)
+4210	1194847	LOUBRY	David	Date debut fonction	19/12/2016	21/10/2017	Date incorrecte (WP)
+5118	1508946	DUFOUR	Claire	Date debut fonction	13/9/2015	22/9/2015	Date incorrecte (WP)
+7538	149542	LAMBERT	Claude	Date fin mandat	23/9/2011	22/3/2014	Date incorrecte (WP)
+7539	595940	SEMBENI	Anne	ID RNE	595940	NA	Suppression, mandat inexistant (WP)
+8291	599145	PONCIN	Paul	Date debut fonction	23/3/2009	23/9/2009	Date incorrecte
+16774	912390	LEVET	Nadia	Date fin mandat	6/2/2011	22/3/2014	Date incorrecte (WP)
+16775	745028	TESTUD	Gabriel	ID RNE	745028	NA	Suppression, mandat inexistant (WP)
+18925	30523	GIRAUDEAU	Patrick	Date debut fonction	16/5/2017	5/9/2017	Date incorrecte (WP)
+19770	41887	GIRARD	André	Date debut fonction	9/3/2008	18/2/2009	Date incorrecte (WP)
+20248	63910	MENIGON	Jean-Jacques	ID RNE	63910	NA	Suppression, mandat inexistant (WP)
+20251	38005	PETIT	Yves	Date debut fonction	1/7/2011	14/7/2011	Date incorrecte
+24934	144203	ROUFFET	Gérard	Date fin mandat	10/12/2011	22/3/2014	Echange dates fin
+24934	144203	ROUFFET	Gérard	Date fin fonction	22/3/2014	28/1/2011	Echange dates fin
+25225	934206	PUYCHEVRIER	Françoise	Date debut fonction	30/3/2014	4/9/2017	Date incorrecte
+25226	934201	VITTE	Jean-Claude	Date debut fonction	30/4/2015	30/4/2014	Date incorrecte
+25226	934201	VITTE	Jean-Claude	Date fin fonction	NA	3/9/2017	Date incorrecte
+25433	144031	FARGES	Jacques	Date fin fonction	22/3/2014	10/10/2011	Echange dates fin
+25433	144031	FARGES	Jacques	Date fin mandat	10/10/2011	22/3/2014	Echange dates fin
+25434	782995	LEGER	Jean-Luc	Date debut fonction	9/3/2011	11/10/2011	Date incorrecte
+25460	934879	MATHIVET	Mireille	Date debut fonction	9/3/2008	1/2/2011	Date incorrecte
+26478	810341	VEYSSIERE	Jean-Claude	Date fin mandat	20/12/2009	22/3/2014	Date incorrecte
+26478	810341	VEYSSIERE	Jean-Claude	Date fin fonction	20/12/2009	22/3/2014	Date incorrecte
+26480	810341	VEYSSIERE	Jean-Claude	ID RNE	810341	NA	Suppression, mandat redondant (WP)
+26692	1176560	MARECAUX	Yves	Date fin fonction	3/5/2010	9/4/2010	Date incorrecte (WP)
+26924	938026	MOUCHE	Virginie	Date debut fonction	23/3/2014	10/5/2016	Date incorrecte (WP)
+27305	809634	BRONDEL	Claude	Date debut fonction	21/3/2008	1/1/2010	Date incorrecte (WP)
+28559	1273648	OLSZAK	Anne	Date debut fonction	24/1/2016	1/1/2018	Date incorrecte (WP)
+29535	943656	TRIAIRE	Gérard	Date debut fonction	9/3/2008	9/3/2011	Date incorrecte (WP)
+30645	842307	BEURIOT	Valéry	Date debut fonction	11/3/2015	11/5/2015	Date incorrecte (WP)
+34674	787321	PAOLINI	François	Date debut fonction	8/1/2012	8/2/2012	Date incorrecte (WP)
+34798	792334	LECCIA	Jean-Baptiste	Date debut fonction	7/1/2012	8/2/2012	Date incorrecte (WP)
+36087	869721	TORREILLES	Eric	Date debut fonction	19/2/2010	19/3/2010	Date incorrecte (WP)
+37069	436180	CASSAN	Jean	Prenom elu	Jean	Jean-Clément	Prénom incomplet
+37070	436180	CASSAN	Jean-Clément	Date debut fonction	9/1/2011	4/11/2011	Date incorrecte (WP)
+42399	486549	COUSTOL	Michel	Date debut fonction	12/2/2009	12/3/2009	Date incorrecte (WP)
+42987	815192	MALLET	Sylvie	Date debut fonction	23/1/2010	11/3/2010	Date incorrecte (WP)
+46331	448561	GIRARD	Thierry	Date debut fonction	23/10/2010	23/12/2010	Date incorrecte (WP)
+47372	1191796	BONDIER	Marie Thérèse	ID RNE	1191796	NA	Suppression, mandat inexistant (WP)
+48227	992498	LOTTE	Serge	Date debut fonction	12/2/2011	12/9/2012	Date incorrecte (WP)
+52238	1002638	DEFAY	Martine	Date debut fonction	17/4/2014	6/1/2018	Date incorrecte (WP)
+52238	1002638	DEFAY	Martine	Date fin mandat	17/4/2018	NA	Date incorrecte (WP)
+52824	1338097	LEVANT	Claude	Date debut fonction	23/3/2014	16/9/2016	Date incorrecte (WP)
+53914	1008493	LLOPIS	Christophe	Date debut fonction	9/6/2016	9/11/2016	Date incorrecte (WP)
+56368	1013752	CHARBONNEAUX	Eddy	ID RNE	1013752	NA	Suppression, mandat inexistant
+56902	270550	DUVEAU	Alain	Date debut fonction	16/3/2008	14/6/2013	Date incorrecte (WP)
+56975	156679	MARTIN	André	Date debut fonction	15/12/2015	1/1/2016	Date incorrecte (WP)
+57045	156776	DILE	Christophe	Date debut fonction	15/12/2015	1/1/2016	Date incorrecte (WP)
+57391	83553	MAILLET	Christian	ID RNE	83553	NA	Suppression, mandat inexistant
+57492	1350163	BOURGET	Jean-Claude	Date debut fonction	15/12/2015	1/1/2016	Date incorrecte (WP)
+57517	272336	ROBIN	Jean-Luc	Date debut fonction	21/3/2008	19/1/2012	Date incorrecte
+57525	156750	MANCEAU	Yves	ID RNE	156750	NA	Suppression, mandat inexistant
+57653	272297	HUCHON	Didier	Date debut fonction	15/12/2015	1/1/2016	Date incorrecte
+57701	158455	VINCENT	Louis	ID RNE	158455	NA	Suppression, mandat inexistant
+57805	156655	AUGEREAU	Bernard	ID RNE	156655	NA	Suppression, mandat inexistant
+58356	1354272	MARTIN	Serge	Date debut fonction	14/1/2017	28/11/2017	Date incorrecte
+59042	1355776	LEFORESTIER	Noëlle	Date debut fonction	25/2/2015	26/2/2016	Date incorrecte
+59334	326053	CARNET	Monique	Date fin mandat	19/5/2011	22/3/2014	Date incorrecte
+59334	326053	CARNET	Monique	Date fin fonction	22/3/2014	12/9/2008	Date incorrecte
+59464	325559	MILCENT	Xavier	Date debut fonction	16/2/2011	15/6/2011	Date incorrecte
+59765	1357397	BATY	Hélène	Date debut fonction	23/3/2014	1/1/2016	Date incorrecte
+61364	73774	DE GRAMMONT	Jean-Marie	Date debut fonction	28/3/2014	16/4/2014	Date incorrecte
+61428	742540	POTISEK	Annie	Date debut fonction	9/3/2008	10/9/2013	Date incorrecte
+64593	154543	LABBE	Bernard	Date fin fonction	22/3/2014	4/9/2013	Date incorrecte
+66370	1187539	VERGNE	Raymond	Date fin fonction	13/11/2012	29/9/2012	Date incorrecte
+67031	1371762	DERÊME	Céline	ID RNE	1371762	NA	Suppression, mandat inexistant
+67033	1371764	FAURE	Frédérique	ID RNE	1371764	NA	Suppression, mandat inexistant
+68706	1042102	SCHUTZ	Robert	Date debut fonction	2/3/2011	24/1/2012	Date incorrecte
+70089	152845	LALLEMENT	Claude	ID RNE	152845	NA	Suppression, mandat inexistant
+71865	84392	ROUSSEL	Didier	Date debut fonction	8/11/2014	11/8/2015	Date incorrecte
+73105	1389786	BOS	Alain	Date debut fonction	23/3/2014	13/6/2015	Date incorrecte
+74042	1180744	BAECKELANDT	Josiane	Date fin mandat	18/3/2013	22/3/2014	Echange dates de fin
+74042	1180744	BAECKELANDT	Josiane	Date fin fonction	22/3/2014	18/3/2013	Echange dates de fin
+74043	1180914	LEBOUTEUX	Geneviève	ID RNE	1180914	NA	Suppression, mandat inexistant
+75561	173836	TEISSEDRE	Christian	Date fin mandat	4/10/2011	22/3/2014	Echange dates de fin
+75561	173836	TEISSEDRE	Christian	Date fin fonction	22/3/2014	14/9/2011	Echange dates de fin
+76841	1188696	FARAULT	Gilles	Date debut fonction	7/7/2012	15/10/2012	Date incorrecte
+77721	2763	ROSSIGNOL	Françoise	ID RNE	2763	NA	Suppression, mandat inexistant
+78099	32428	DELDIQUE	Marcel	ID RNE	32428	NA	Suppression, mandat inexistant
+78153	1402353	DE LE VALLÉE	Louis	Date debut fonction	1/7/2017	11/7/2017	Date incorrecte
+80059	1069036	SERIN	Jean-Noël	Date debut fonction	5/5/2009	17/9/2009	Date incorrecte
+80221	372076	GENILLIER	Juliette	ID RNE	372076	NA	Suppression, mandat redondant
+81074	47234	BLANCHET	Roland	ID RNE	47234	NA	Suppression, mandat redondant
+81076	47234	BLANCHET	Roland	Date naissance	22/11/1939	21/11/1939	Date de naissance incorrecte
+85582	585888	FROEHLY	Claude	Date debut fonction	15/12/2014	15/12/2017	Date incorrecte
+85652	587101	ROBITZER	Georges	Date debut fonction	14/3/2008	14/7/2013	Date incorrecte
+85655	170769	WANDHAMMER	Gérard	Date fin fonction	22/3/2014	13/7/2013	Date incorrecte
+86199	584214	HENTZ	Jean	Date debut fonction	17/1/2015	18/1/2016	Date incorrecte
+91196	1436017	GALLIEN	Jean-Pierre	Date debut fonction	27/11/2016	27/12/2016	Date incorrecte
+93380	1102884	BARBAZ	Damien	ID RNE	1102884	NA	Suppression, mandat redondant
+93486	168351	VALLIER	Claude	Date fin mandat	3/6/2008	22/3/2014	Echange dates de fin
+93486	168351	VALLIER	Claude	Date fin fonction	22/3/2014	3/5/2008	Echange dates de fin
+93575	753499	COVAREL	Bernard	Date debut fonction	4/8/2014	22/6/2017	Date incorrecte
+94557	1107037	VANDERBRECHT	Patricia	Date debut fonction	12/1/2016	22/1/2016	Date incorrecte
+97286	839394	SCHABOWSKI	Jean-Luc	Date debut fonction	3/2/2011	13/2/2011	Date incorrecte
+97367	1453239	ROBERT	Bruno	Date debut fonction	6/6/2017	6/7/2017	Date incorrecte
+103428	1129644	BROUSSE	Marie-José	Date debut fonction	23/3/2014	6/11/2016	Date incorrecte
+103486	1130148	DELORI	Hugues	Date debut fonction	24/3/2014	3/12/2015	Date incorrecte
+103714	1470508	ICHARD	Xavier	Date debut fonction	28/3/2014	3/2/2015	Date incorrecte
+103930	1130346	TALMANT	Jean-Michel	Date debut fonction	23/3/2014	1/4/2015	Date incorrecte
+103937	618261	VIDAL	Myriam	Date debut fonction	23/3/2014	12/4/2016	Date incorrecte
+103962	618907	CAYRE	Jean-Christophe	Date debut fonction	23/3/2014	3/3/2017	Date incorrecte
+104005	1471235	DOUZAL	Thierry	Date debut fonction	23/3/2014	11/8/2015	Date incorrecte
+105714	1477022	ROY	Franck	Date debut fonction	7/7/2017	30/8/2017	Date incorrecte
+105729	1477474	GIRAUD	Joël	ID RNE	1477474	NA	Suppression, mandat inexistant
+105752	76089	GROUSSIN	Claude	Date debut fonction	6/11/2015	6/11/2017	Date incorrecte
+105963	826199	CHAMARD	Jean-Marie	Date debut fonction	2/4/2014	11/4/2015	Date incorrecte
+106589	1480130	TARDIF	Jean-Michel	Date debut fonction	23/3/2014	12/11/2016	Date incorrecte
+106631	1480222	POUPEAU	Anita	Date debut fonction	23/3/2014	19/10/2015	Date incorrecte
+106910	1481001	BARDEAU	Claude	Date debut fonction	23/3/2014	17/1/2015	Date incorrecte
+107073	349877	SAUVAGE	Corinne	Date debut fonction	14/3/2008	10/10/2013	Date incorrecte
+107321	1482213	RIGNAULT	André	Date debut fonction	23/3/2014	5/4/2016	Date incorrecte
+107396	1140535	GAILLARD	Michel	ID RNE	1140535	NA	Suppression, mandat inexistant
+112015	1494676	CLODONG	Olivier	Date debut fonction	2/7/2017	19/7/2017	Date incorrecte
+112187	163119	BOURGAIN	Michel	Date fin fonction	NA	28/6/2016	Date incorrecte
+112902	684092	PERONNET	Annie	Date debut fonction	27/3/2017	16/3/2018	Date incorrecte
+112902	684092	PERONNET	Annie	Date fin fonction	NA	16/12/2018	Date manquante
+113167	1199867	VATENAR	René	Date fin fonction	NA	8/10/2017	Date manquante
+113279	33812	FRUTEAU	Eric	ID RNE	33812	NA	Suppression, mandat inexistant
