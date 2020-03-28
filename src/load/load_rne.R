@@ -52,15 +52,19 @@ load.conversion.file <- function(file)
 load.data <- function(filenames, col.map, correc.file, correct.data, election.file, series.file, type)
 {	# load and normalize the data as strings
 	data <- retrieve.normalize.data(filenames, col.map)
+#data0 <- data
 	
 	# possibly apply the corrections
 	if(correct.data)
 	{	# fix id duplicates and other id-related issues
 		data <- fix.id.problems(data)
+#data1 <- data
 		# apply ad hoc corrections
 		data <- apply.adhoc.corrections(data, col.map, correc.file)
+#data2 <- data
 		# apply systematic corrections
-		data <- apply.systematic.corrections(data)
+		data <- apply.systematic.corrections(data, type)
+#data3 <- data
 	}
 	# ad hoc minimal corrections needed to perform later tests
 	else
@@ -68,17 +72,21 @@ load.data <- function(filenames, col.map, correc.file, correct.data, election.fi
 	
 	# convert date and numeric columns
 	data <- convert.col.types(data)
+#data4 <- data
 	
 	# add missing columns
 	data <- add.missing.columns(data)
+#data5 <- data
 	
 	# normalize columns order
 	data <- normalize.col.order(data)
+#data6 <- data
 	
 	# possibly perform additional corrections
 	if(correct.data)
 	{	# merge rows considered as compatible
 		data <- merge.similar.rows(data)
+#data7 <- data
 		# fix mandate/function dates
 		data <- fix.mdtfct.dates(data, election.file, series.file, type)
 	}

@@ -251,7 +251,8 @@ load.correction.table <- function(col.map, correc.file)
 # returns: data frame after the corrections.
 #############################################################################################
 apply.adhoc.corrections <- function(data, col.map, correc.file)
-{	# load the correction table
+{	nbr.rows <- nrow(data)
+	# load the correction table
 	correc.table <- load.correction.table(col.map, correc.file)
 	
 	# apply ad hoc corrections
@@ -262,7 +263,9 @@ apply.adhoc.corrections <- function(data, col.map, correc.file)
 		# apply each correction one after the other
 		idx.rm <- c()
 		for(r in 1:nrow(correc.table))
-		{	correc.attr <- correc.table[r,COL_CORREC_ATTR]
+		{	tlog(2,"Correction ",r,"/",nrow(correc.table))
+			
+			correc.attr <- correc.table[r,COL_CORREC_ATTR]
 			if(correc.attr %in% c(COL_ATT_MDT_DBT, COL_ATT_MDT_FIN, COL_ATT_FCT_DBT, COL_ATT_FCT_FIN))
 				correc.col <- COL_ATT_CORREC_DATE
 			else
@@ -334,6 +337,10 @@ apply.adhoc.corrections <- function(data, col.map, correc.file)
 								corrected.rows <- union(corrected.rows,idx)
 							}
 						}
+						else
+						{	tlog(4,"The specified row (",row,") does not correspond to any of the matching rows (",paste(idx,collapse=","),")")
+							stop("The specified row (",row,") does not correspond to any of the matching rows (",paste(idx,collapse=","),")")
+						}
 					}
 				}
 				else
@@ -359,7 +366,7 @@ apply.adhoc.corrections <- function(data, col.map, correc.file)
 				}
 			}
 		}
-		tlog(2,"CHECKPOINT 2: Corrected ",length(corrected.rows)," rows in total (",(100*length(corrected.rows)/nrow(data)),"%)")
+		tlog(2,"Corrected ",length(corrected.rows)," rows in total (",(100*length(corrected.rows)/nrow(data)),"%)")
 		
 		# remove the marked rows
 		if(length(idx.rm)>0)
@@ -367,6 +374,8 @@ apply.adhoc.corrections <- function(data, col.map, correc.file)
 			data <- data[-idx.rm,]
 		}
 		
+		total <- length(corrected.rows)+length(idx.rm)
+		tlog(2,"CHECKPOINT 2: corrected/removed ",total," rows (",(100*total/nbr.rows),"%)")
 		tlog(2,"Now ",nrow(data)," rows and ",ncol(data)," columns in table")
 	}
 	
@@ -420,10 +429,11 @@ apply.minimal.adhoc.corrections <- function(data, type)
 # Applies various systematic corrections to the raw RNE data.
 #
 # data: raw data, before applying the corrections.
+# type: type of mandate (CD, CM, etc.).
 #
 # returns: data frame after the corrections.
 #############################################################################################
-apply.systematic.corrections <- function(data)
+apply.systematic.corrections <- function(data, type)
 {	# possibly normalize municipality ids
 	corr.rows <- c()
 	if(COL_ATT_COM_CODE %in% colnames(data))
@@ -448,7 +458,7 @@ apply.systematic.corrections <- function(data)
 		tlog(2,"Fixed ",length(idx)," political nuances")
 	}
 	# EPCI-specific cleaning
-	if(COL_ATT_EPCI_NOM %in% colnames(data))
+	if(type=="EPCI")
 	{	# clean missing department codes
 		tlog(0,"Cleaning missing department codes")
 		idx <- which(data[,COL_ATT_DPT_CODE]=="0" | data[,COL_ATT_DPT_CODE]=="00")
@@ -489,6 +499,17 @@ apply.systematic.corrections <- function(data)
 		}		
 		tlog(2,"Fixed ",length(idx)," rows")
 	}
+	# M-specific cleaning
+	if(type=="M")
+	{	tlog(0,"Align dates that are systematically wrong (by a few days) for certain departments and elections")
+		#
+		idx <- which(data[,COL_ATT_DPT_NOM]=="CREUSE" & data[,COL_ATT_MDT_DBT]==as.Date("3/3/2001"))
+		if(length(idx)>0)
+		{	data[idx,COL_ATT_MDT_DBT] <- "11/3/2001"
+			tlog(2,"Fixed ",length(idx)," rows for CREUSE 03/03/2001--")
+			corr.rows <- union(corr.rows,idx)
+		}
+	}
 	tlog(0,"CHECKPOINT 3: Fixed a total of ",length(corr.rows)," rows (",(100*length(corr.rows)/nrow(data)),"%) for various (non-date-related) issues")
 	
 	# remove rows without mandate dates and without function dates
@@ -496,11 +517,12 @@ apply.systematic.corrections <- function(data)
 	if(COL_ATT_FCT_DBT %in% colnames(data))
 	{	idx <- which(is.na(data[,COL_ATT_MDT_DBT]) & is.na(data[,COL_ATT_MDT_FIN]) 
 						& is.na(data[,COL_ATT_FCT_DBT]) & is.na(data[,COL_ATT_FCT_FIN]))
-		tlog(2,"CHECKPOINT 4: Removed ",length(idx)," incomplete rows (",(100*length(idx)/nrow(data)),"%)")
 		if(length(idx)>0)
 			data <- data[-idx, ]
+		tlog(0,"Removed ",length(idx)," incomplete rows")
 		tlog(2,"Now ",nrow(data)," rows and ",ncol(data)," columns in table")
 	}
+	tlog(0,"CHECKPOINT 4: Removed ",length(idx)," incomplete rows (",(100*length(idx)/nrow(data)),"%)")
 	
 	# use mandate start date when function start date is missing
 	corr.rows <- c()
@@ -1034,8 +1056,10 @@ round.mdtfct.dates <- function(data, election.file, series.file, tolerance)
 		{	if(!is.na(idx[i]))
 			{	date.diff[i] <- date.diffs[idx[i],i]
 				if(abs(date.diff[i])>0 && abs(date.diff[i])<tolerance)
-				{	if(has.fct && !is.na(data[r,col.fct[i]]) && !is.na(data[r,col.mdt[i]]) && data[r,col.fct[i]]==data[r,col.mdt[i]])
-					{	data[r,col.fct[i]] <- data[r,col.fct[i]] - date.diff[i]
+				{	if(has.fct && !is.na(data[r,col.fct[i]]) && !is.na(data[r,col.mdt[i]]) 
+							&& ((i==1 && data[r,col.fct[i]]<=(data[r,col.mdt[i]]-date.diff[i]))
+								|| (i==2 && data[r,col.fct[i]]>=(data[r,col.mdt[i]]-date.diff[i]))))
+					{	data[r,col.fct[i]] <- data[r,col.mdt[i]] - date.diff[i]
 						fct.changed[i] <- TRUE
 					}
 					data[r,col.mdt[i]] <- data[r,col.mdt[i]] - date.diff[i]
@@ -1045,9 +1069,11 @@ round.mdtfct.dates <- function(data, election.file, series.file, tolerance)
 			}
 		}
 		
-		# adjustments, probably for micro-mandates anyways
+		# post-adjustments, probably for micro-mandates anyways
 		if(!is.na(data[r,COL_ATT_MDT_FIN]) && data[r,COL_ATT_MDT_FIN]<data[r,COL_ATT_MDT_DBT])
 			data[r,COL_ATT_MDT_FIN] <- data[r,COL_ATT_MDT_DBT]
+#		if(has.fct && !is.na(data[r,COL_ATT_FCT_DBT]) && data[r,COL_ATT_FCT_DBT]<data[r,COL_ATT_MDT_DBT])
+#			data[r,COL_ATT_FCT_DBT] <- data[r,COL_ATT_MDT_DBT]
 		if(has.fct && !is.na(data[r,COL_ATT_FCT_DBT]) && !is.na(data[r,COL_ATT_FCT_FIN]) && data[r,COL_ATT_FCT_FIN]<data[r,COL_ATT_FCT_DBT])
 			data[r,COL_ATT_FCT_FIN] <- data[r,COL_ATT_FCT_DBT]
 
@@ -1322,7 +1348,7 @@ split.long.mandates <- function(data, election.file, series.file)
 						# possibly update similarly function dates
 						if(has.fct && !is.na(data[r,COL_ATT_FCT_DBT]))
 						{	# case where the function overlaps two consecutive mandates
-							if(data[r,COL_ATT_FCT_DBT]<election.dates[idx.tests,COL_VERIF_DATE_TOUR1] 
+							if(data[r,COL_ATT_FCT_DBT]<election.dates[idx.tests,COL_VERIF_DATE_TOUR2] 
 								&& (is.na(data[r,COL_ATT_FCT_FIN]) 
 									|| data[r,COL_ATT_FCT_FIN]>=election.dates[idx.tests,COL_VERIF_DATE_TOUR2]))
 							{	data[r,COL_ATT_FCT_DBT] <- election.dates[idx.tests,COL_VERIF_DATE_TOUR2]
@@ -1450,8 +1476,8 @@ remove.micro.mandates <- function(data, tolerance)
 
 
 #############################################################################################
-# For a given position, detects overlapping mandates and solves the problem by shortening the
-# older one.
+# For a given position, detects overlapping mandates or functions and solves the problem by 
+# shortening the older one.
 #
 # data: original table.
 # type: type of mandate (CD, CM, etc.).
@@ -1501,7 +1527,7 @@ shorten.overlapping.mandates <- function(data, type, tolerance=1)
 			unique.pos <- sort(unique(data.pos))
 		}
 		tlog(4,"Found ",length(unique.pos)," of them")
-	
+		
 		# process each unique position
 		tlog(2,"Processing each unique position")
 		for(p in 1:length(unique.pos))
@@ -1516,7 +1542,7 @@ shorten.overlapping.mandates <- function(data, type, tolerance=1)
 				ccount <- 0
 				
 				for(i in 1:(length(idx)-1))
-				{	# get the dates of the first compared mandate
+				{	# get the dates of the first compared mandate/function
 					start1 <- data[idx[i],col.start]
 					end1 <- data[idx[i],col.end]
 					sex1 <- data[idx[i],COL_ATT_ELU_SEXE]
@@ -1734,30 +1760,40 @@ delete.superfluous.motives <- function(data)
 fix.mdtfct.dates <- function(data, election.file, series.file, type)
 {	# adjust function dates so that they are contained inside the corresponding mandate period
 	data <- adjust.function.dates(data)
+#data8 <- data	
 	
 	# round mandate and function dates to match election dates, when approximately equal
 	if(hasArg(election.file))
 		data <- round.mdtfct.dates(data, election.file, series.file, tolerance=7)
+#data <- round.mdtfct.dates(data, election.file, tolerance=7)	#debug: data9
+#data9 <- data
 	
 	# removes micro-mandates
 	data <- remove.micro.mandates(data, tolerance=7)
+#data10 <- data
 	
 	# merge rows corresponding to overlapping and compatible mandates
 	data <- merge.overlapping.mandates(data, type)
+#data11 <- data
 	
 	# splits rows containing election dates (other than as a start date)
 	if(hasArg(election.file))
 		data <- split.long.mandates(data, election.file, series.file)
+#data <- split.long.mandates(data, election.file)
+#data12 <- data
 	
 	# solve mandate intersections (same position)
 	data <- shorten.overlapping.mandates(data, type, tolerance=8)
+#data13 <- data
 	
 	# remove micro-mandates again (in case split created any)
 	data <- remove.micro.mandates(data, tolerance=7)
+#data14 <- data
 	
 	# delete superfluous motives
 	data <- delete.superfluous.motives(data)
+#data15 <- data
 	
-#	stop()
+	#stop()
 	return(data)
 }

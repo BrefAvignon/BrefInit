@@ -161,8 +161,9 @@ source("src/common/include.R")
 # - spliter les mandats de la même personne qui se recouvrent (déjà fait, non ?)
 
 # TODO
-# - passer en revue les fichiers de problèmes: *M, CM
+# - passer en revue les fichiers de problèmes: CM
 # - passer en revue les logs: D, S, DE, EPCI, CM, CM
+# - faire la fusion et re-tester
 # - traiter la comparaison approchée des noms
 
 # M:
@@ -173,3 +174,9 @@ source("src/common/include.R")
 #      >> les erreurs semblent particulièrement arriver dans certains départements
 # - fonction_problems_overlap
 #   >> lié au précédent, en partie du moins (il y en a bien moins)
+# CM:
+# - fonction de "maire délégué" à traiter différemment des autres (possiblité de cumul)
+
+# il existe une BD recensant les EPCI (SIREN)
+# https://www.data.gouv.fr/fr/datasets/base-nationale-sur-linter-communalite/
+# https://www.collectivites-locales.gouv.fr/liste-et-composition-des-epci-a-fiscalite-propre

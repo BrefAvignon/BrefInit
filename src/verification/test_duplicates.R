@@ -24,7 +24,7 @@ test.compatible.rows <- function(data, out.folder=NA)
 	concat <- apply(data[,comp.cols], 1, function(row) paste(row, collapse=":"))
 	tt <- table(concat)
 	codes <- names(tt)[which(tt>1)]
-	tlog(2,"Looking for redundant rows: found ",length(codes))
+	tlog(2,"Looking for possibly redundant rows: found ",length(codes))
 	
 	# identify compatible rows amongst redundant ones
 	tlog(2,"Looking for compatible rows among them")
@@ -329,7 +329,7 @@ test.multiple.id <- function(data, loc.col=NA, out.folder)
 #############################################################################################
 test.duplicates <- function(data, loc.col=NA, out.folder)
 {	# look for IDs associated to several distinct pieces of personal information
-#	test.id.reuse(data, out.folder) 
+	test.id.reuse(data, out.folder) 
 	
 	# look for persons seemingly associated to different IDs
 	test.multiple.id(data, loc.col, out.folder)
