@@ -21,7 +21,8 @@ source("src/verification/test_duplicates.R")
 #############################################################################################
 # set up parameters
 extraction <- 1 # 1 or 2
-correct.data <- TRUE
+correct.data <- FALSE
+complete.data <- FALSE	# only for D and S
 
 # start logging
 start.rec.log(text="MERGE")
@@ -49,7 +50,7 @@ tlog(4,"Dimensions of the table: ",paste(dim(cr.data),collapse="x"))
 
 # load the parliamentary table
 tlog(2,"Loading parliamentary data")
-d.data <- load.d.data(correct.data, complete.data=TRUE)
+d.data <- load.d.data(correct.data, complete.data)
 tlog(4,"Dimensions of the table: ",paste(dim(d.data),collapse="x"))
 
 # load the European parliamentary table
@@ -69,7 +70,7 @@ tlog(4,"Dimensions of the table: ",paste(dim(m.data),collapse="x"))
 
 # load the senator table
 tlog(2,"Loading senatorial data")
-s.data <- load.s.data(correct.data, complete.data=TRUE)
+s.data <- load.s.data(correct.data, complete.data)
 tlog(4,"Dimensions of the table: ",paste(dim(s.data),collapse="x"))
 
 
