@@ -19,8 +19,10 @@ source("src/verification/test_duplicates.R")
 
 
 #############################################################################################
-# set up the extraction
+# set up parameters
 extraction <- 1 # 1 or 2
+correct.data <- TRUE
+
 # start logging
 start.rec.log(text="MERGE")
 
@@ -29,46 +31,45 @@ start.rec.log(text="MERGE")
 
 #############################################################################################
 tlog(0,"Loading all the data tables")
-correct.data <- TRUE
 
 # load the departmental councilor table
 tlog(2,"Loading departmental data")
-cd.data <- load.cd.data(correct.data)
+cd.data <- if(extraction==1) load.cd.data(correct.data, complete.data=FALSE) else load.cd2.data(correct.data, complete.data=FALSE) 
 tlog(4,"Dimensions of the table: ",paste(dim(cd.data),collapse="x"))
 
 # load the municipal councilor tables
 tlog(2,"Loading municipal data")
-cm.data <- load.cm.data(correct.data)
+cm.data <- if(extraction==1) load.cm.data(correct.data, complete.data=FALSE) else load.cm2.data(correct.data, complete.data=FALSE)
 tlog(4,"Dimensions of the table: ",paste(dim(cm.data),collapse="x"))
 
 # load the regional councilor table
 tlog(2,"Loading regional data")
-cr.data <- load.cr.data(correct.data)
+cr.data <- if(extraction==1) load.cr.data(correct.data, complete.data=FALSE) else load.cr2.data(correct.data, complete.data=FALSE)
 tlog(4,"Dimensions of the table: ",paste(dim(cr.data),collapse="x"))
 
 # load the parliamentary table
 tlog(2,"Loading parliamentary data")
-d.data <- load.d.data(correct.data)
+d.data <- load.d.data(correct.data, complete.data=TRUE)
 tlog(4,"Dimensions of the table: ",paste(dim(d.data),collapse="x"))
 
 # load the European parliamentary table
 tlog(2,"Loading European parliamentary data")
-de.data <- load.de.data(correct.data)
+de.data <- load.de.data(correct.data, complete.data=FALSE)
 tlog(4,"Dimensions of the table: ",paste(dim(de.data),collapse="x"))
 
 # load the EPCI councilor table
 tlog(2,"Loading EPCI data")
-epci.data <- load.epci.data(correct.data)
+epci.data <- load.epci.data(correct.data, complete.data=FALSE)
 tlog(4,"Dimensions of the table: ",paste(dim(epci.data),collapse="x"))
 
 # load the mayor table
 tlog(2,"Loading mayoral data")
-m.data <- load.m.data(correct.data)
+m.data <- load.m.data(correct.data, complete.data=FALSE)
 tlog(4,"Dimensions of the table: ",paste(dim(m.data),collapse="x"))
 
 # load the senator table
 tlog(2,"Loading senatorial data")
-s.data <- load.s.data(correct.data)
+s.data <- load.s.data(correct.data, complete.data=TRUE)
 tlog(4,"Dimensions of the table: ",paste(dim(s.data),collapse="x"))
 
 
@@ -78,55 +79,14 @@ tlog(4,"Dimensions of the table: ",paste(dim(s.data),collapse="x"))
 # merge the appropriate columns
 tlog(0,"Start merging the partial tables")
 tlog(2,"Init main table")
-#cols <- c(
-#	COL_ATT_CIRCE_CODE,
-#	COL_ATT_CIRCE_NOM,
-#	COL_ATT_REG_CODE,
-#	COL_ATT_REG_NOM,
-#	COL_ATT_DPT_ID,
-#	COL_ATT_DPT_CODE,
-#	COL_ATT_DPT_NOM,
-#	COL_ATT_CIRC_CODE,
-#	COL_ATT_CIRC_NOM,
-#	COL_ATT_CANT_ID,
-#	COL_ATT_CANT_CODE,
-#	COL_ATT_CANT_NOM,
-#	COL_ATT_COM_CODE,
-#	COL_ATT_COM_NOM,
-#	COL_ATT_COM_POP,
-#	COL_ATT_EPCI_SIREN,
-#	COL_ATT_EPCI_NOM,
-#	COL_ATT_EPCI_DPT,
-#	COL_ATT_ELU_ID,
-#	COL_ATT_ELU_ID_RNE,
-#	COL_ATT_ELU_ID_SENAT,
-#	COL_ATT_ELU_NOM,
-#	COL_ATT_ELU_PRENOM,
-#	COL_ATT_ELU_NAIS_DATE,
-#	COL_ATT_ELU_DDD,
-#	COL_ATT_ELU_SEXE,
-#	COL_ATT_ELU_NAT,
-#	COL_ATT_ELU_NUANCE,
-#	COL_ATT_PRO_CODE,
-#	COL_ATT_PRO_NOM,
-#	COL_ATT_MDT_NOM,
-#	COL_ATT_MDT_DBT,
-#	COL_ATT_MDT_FIN,
-#	COL_ATT_MDT_MOTIF,
-#	COL_ATT_FCT_NOM,
-#	COL_ATT_FCT_DBT,
-#	COL_ATT_FCT_FIN,
-#	COL_ATT_FCT_MOTIF,
-#	COL_ATT_SOURCES
-#)
 cols <- COLS_ATT_NORMALIZED
 		
 # create empty data frame
 data <- data.frame(
-			matrix(vector(), 0, length(cols), dimnames=list(c(), cols)),
-			check.names=FALSE,
-			stringsAsFactors=FALSE
-	)
+	matrix(vector(), 0, length(cols), dimnames=list(c(), cols)),
+	check.names=FALSE,
+	stringsAsFactors=FALSE
+)
 
 # add departmental data
 tlog(2,"Merge departmental data")
@@ -232,57 +192,19 @@ tlog(2,"Actual dimensions of the full table: ",paste(dim(data),collapse="x"))
 
 
 #############################################################################################
-# record everything in a new single table
 dir.create(path=FOLDER_OUT_ALL, showWarnings=FALSE, recursive=TRUE)
-table.file <- file.path(FOLDER_OUT_ALL, "merged_data.txt")
-tlog(0,"Recording the full table in file \"",table.file,"\"")
-write.table(x=data,
-	file=table.file,		# name of file containing the new table
-	quote=TRUE,				# put double quotes around strings
-	sep="\t",				# use tabulations as separators
-#	fileEncoding="UTF-8",	# character encoding
-	row.names=FALSE,		# no names for rows
-	col.names=TRUE			# record table headers
-)
-tlog(0,"Recording over")
-
-# record the table sorted by id then mandate date
-table.file <- file.path(FOLDER_OUT_ALL, "merged_data_byperson.txt")
-tlog(0,"Sorting full table by person, then recording in file \"",table.file,"\"")
+tlog(0,"Recording the full table in file \"",FILES_TAB_ALL,"\"")
 idx <- order(data[,COL_ATT_ELU_NOM], data[,COL_ATT_ELU_PRENOM], data[,COL_ATT_ELU_ID],
 		data[,COL_ATT_MDT_DBT], data[,COL_ATT_MDT_FIN], data[,COL_ATT_FCT_DBT], data[,COL_ATT_FCT_FIN])
 write.table(x=data[idx,],		# sorted data
-	file=table.file,		# name of file containing the new table
-	quote=TRUE,				# put double quotes around strings
-	sep="\t",				# use tabulations as separators
-#	fileEncoding="UTF-8",	# character encoding
-	row.names=FALSE,		# no names for rows
-	col.names=TRUE			# record table headers
+	file=FILES_TAB_ALL,			# name of file containing the new table
+	quote=TRUE,					# put double quotes around strings
+	sep="\t",					# use tabulations as separators
+#	fileEncoding="UTF-8",		# character encoding
+	row.names=FALSE,			# no names for rows
+	col.names=TRUE				# record table headers
 )
 tlog(0,"Recording over")
-
-
-
-#############################################################################################
-out.folder <- FOLDER_OUT_ALL
-
-# look for duplicate rows
-test.duplicate.rows(data=data, out.folder=out.folder)
-
-# check personal information
-test.personal.info(data=data, out.folder=out.folder)
-
-# check dates
-test.col.dates.cm(data=data, out.folder=out.folder)
-
-# check locations
-test.col.locations(data=data, out.folder=out.folder, merged=TRUE)
-
-# check overlapping mandates for the same position
-###test.position.cm(data=data, out.folder=out.folder)
-
-# check for ID duplicates (different persons with the same id)
-test.duplicates(data=data, out.folder=out.folder)
 
 
 

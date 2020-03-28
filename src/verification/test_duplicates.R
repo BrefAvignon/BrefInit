@@ -146,11 +146,11 @@ test.id.reuse <- function(data, out.folder)
 	{	tab.file <- file.path(out.folder,"elu_id_problems_reuse.txt")
 		tlog(2,"Recording in file \"",tab.file,"\"")
 		write.table(x=tab,file=tab.file,
-#				fileEncoding="UTF-8",
-				row.names=FALSE,
-				col.names=TRUE,
-#				quote=TRUE,
-				sep="\t"
+#			fileEncoding="UTF-8",
+			row.names=FALSE,
+			col.names=TRUE,
+#			quote=TRUE,
+			sep="\t"
 		)
 	}
 	tlog(4,"Found a total of ",count," IDs associated with different personal information")
@@ -289,11 +289,11 @@ test.multiple.id <- function(data, loc.col=NA, out.folder)
 		tab.file <- file.path(out.folder,"elu_name_problems_multiple_ids.txt")
 		tlog(2,"Recording in file \"",tab.file,"\"")
 		write.table(x=tab, file=tab.file,
-#				fileEncoding="UTF-8",
-				row.names=FALSE, 
-				col.names=TRUE,
-#				quote=TRUE,
-				sep="\t"
+#			fileEncoding="UTF-8",
+			row.names=FALSE, 
+			col.names=TRUE,
+#			quote=TRUE,
+			sep="\t"
 		)
 		
 		# update the table of equivalent ids (but in the output folder)
@@ -304,11 +304,11 @@ test.multiple.id <- function(data, loc.col=NA, out.folder)
 		colnames(tab) <- c("Main Id","Other ids")
 		idx <- order(as.integer(main.ids))
 		write.table(x=tab[idx,], file=tab.file,
-#				fileEncoding="UTF-8",
-				row.names=FALSE, 
-				col.names=TRUE,
-				quote=FALSE, 
-				sep="\t"
+#			fileEncoding="UTF-8",
+			row.names=FALSE, 
+			col.names=TRUE,
+			quote=FALSE, 
+			sep="\t"
 		)
 	}
 	

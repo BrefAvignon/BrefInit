@@ -819,6 +819,10 @@ test.col.locations <- function(data, out.folder, merged=FALSE)
 	# checks whether the same name appears with and without article
 	#test.locations.articles(data, out.folder)	# not necessary anymore
 	
+	# NOTE we don't check certain locations in the merged table,
+	# as they appear only in a single mandate-related table, 
+	# and have therefore already been tested
+	
 	# check municipality names
 	test.col.locations.municipality(data, out.folder)
 	
@@ -827,17 +831,21 @@ test.col.locations <- function(data, out.folder, merged=FALSE)
 		test.col.locations.canton(data, out.folder)
 	
 	# check legislative circonscription names
-	test.col.locations.legcirco(data, out.folder)
+	if(!merged)
+		test.col.locations.legcirco(data, out.folder)
 	
 	# check european circonscription names
-	test.col.locations.eurocirco(data, out.folder)
+	if(!merged)
+		test.col.locations.eurocirco(data, out.folder)
 	
 	# check EPCI names
-	test.col.locations.epci(data, out.folder)
+	if(!merged)
+		test.col.locations.epci(data, out.folder)
 	
 	# check department names
 	test.col.locations.department(data, out.folder)
 	
 	# check region names
-	test.col.locations.region(data, out.folder)
+	if(!merged)
+		test.col.locations.region(data, out.folder)
 }

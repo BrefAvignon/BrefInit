@@ -769,3 +769,21 @@ test.col.dates.s <- function(data, out.folder)
 		)
 	}
 }
+
+
+
+
+#############################################################################################
+# Performs a series of tests on date columns, for the the merged table, and records the 
+# detected problems in text files.
+#
+# data: table containing the data.
+# out.folder: folder where to output the results.
+#############################################################################################
+test.col.dates.all <- function(data, out.folder)
+{	# generic tests
+	test.col.dates.generic(data, out.folder, tolerance=7)
+	test.col.dates.pre.rne(data, out.folder)
+	test.col.dates.nofun(data, out.folder)
+	test.col.end.motive(data, out.folder)
+}

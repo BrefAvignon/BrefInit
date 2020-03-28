@@ -1,9 +1,9 @@
 #############################################################################################
-# Checks the departmental councilor table. 
+# Checks the merged table. 
 # 
-# 07/2019 Vincent Labatut
+# 03/2020 Vincent Labatut
 #
-# source("src/verification/check_CD.R")
+# source("src/verification/check_ALL.R")
 #############################################################################################
 source("src/common/include.R")
 source("src/verification/evolution_plot.R")
@@ -19,26 +19,33 @@ source("src/verification/test_duplicates.R")
 
 # set up the extraction
 extraction <- 1 # 1 or 2
-correct.data <- TRUE
-complete.data <- FALSE
 
 # start logging
-start.rec.log(text=paste0("CD",extraction))
+start.rec.log(text=paste0("ALL",extraction))
 
 # create output folder
-out.folder <- if(extraction==1) FOLDER_OUT_CD else FOLDER_OUT_CD2
+out.folder <- FOLDER_OUT_ALL
 dir.create(path=out.folder, showWarnings=FALSE, recursive=TRUE)
 
 # load the data
-data <- if(extraction==1) load.cd.data(correct.data, complete.data) else load.cd2.data(correct.data, complete.data)
+tlog(0,"Reading the merged table")
+data <- read.table(
+	file=FILES_TAB_ALL,			# name of the data file
+	header=TRUE, 				# look for a header
+	sep="\t", 					# character used to separate columns 
+	check.names=FALSE, 			# don't change the column names from the file
+	comment.char="", 			# ignore possible comments in the content
+	row.names=NULL, 			# don't look for row names in the file
+	quote="" 					# don't expect double quotes "..." around text fields
+#	as.is=TRUE,					# don't convert strings to factors
+#	colClasses="character"		# all column originally read as characters, then converted later if needed
+)
+tlog(2,"Read ",nrow(data)," rows and ",ncol(data)," columns")
+# TODO check the column classes are ok
 
 # summarizes each column separately
 tlog(0,"Examining each column separately")
 sumup.cols(data=data, out.folder=out.folder)
-
-# look for duplicate rows
-tlog(0,"Looking for duplicate rows")
-test.compatible.rows(data=data, out.folder=out.folder)
 
 # check personal information
 tlog(0,"Checking personal information consistency")
@@ -46,24 +53,15 @@ test.personal.info(data=data, out.folder=out.folder)
 
 # check dates
 tlog(0,"Checking dates")
-test.col.dates.cd(data=data, out.folder=out.folder)
+test.col.dates.all(data=data, out.folder=out.folder)
 
 # check locations
 tlog(0,"Checking locations")
-test.col.locations(data=data, out.folder=out.folder, merged=FALSE)
+test.col.locations(data=data, out.folder=out.folder, merged=TRUE)
 
-# check overlapping mandates for the same position
-tlog(0,"Checking overlapping mandates for the same position")
-test.position.cd(data=data, out.folder=out.folder)
-
-# look for duplicates (not really necessary to do that here, better after the merge)
+# look for duplicates
 tlog(0,"Looking for duplicates")
 test.duplicates(data=data, loc.col=COL_ATT_DPT_CODE, out.folder=out.folder)
-
-# plots the number of persons over time
-tlog(0,"Ploting the number of simultaneously hold positions over time")
-#plot.pers.time(data=data, out.folder=out.folder, daily=TRUE)
-plot.pers.time2(data=data, out.folder=out.folder)
 
 # close the log file
 tlog(0,"Done")

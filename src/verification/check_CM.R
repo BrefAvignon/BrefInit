@@ -31,7 +31,7 @@ out.folder <- if(extraction==1) FOLDER_OUT_CM else FOLDER_OUT_CM2
 dir.create(path=out.folder, showWarnings=FALSE, recursive=TRUE)
 
 # load the data
-data <- if(extraction==1) load.cm.data(correct.data, complete.data) else load.cm2.data(correct.data, complete.data) 
+data <- if(extraction==1) load.cm.data(correct.data, complete.data) else load.cm2.data(correct.data, complete.data)
 
 # summarizes each column separately
 tlog(0,"Examining each column separately")
@@ -64,7 +64,7 @@ test.duplicates(data=data, loc.col=COL_ATT_DPT_CODE, out.folder=out.folder)
 # plots the number of persons over time
 tlog(0,"Ploting the number of simultaneously hold positions over time")
 #plot.pers.time(data=data, out.folder=out.folder, daily=TRUE)
-plot.pers.time2(data=data, out.folder=out.folder)
+#plot.pers.time2(data=data, out.folder=out.folder)
 
 # close the log file
 tlog(0,"Done")

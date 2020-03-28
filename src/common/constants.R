@@ -484,6 +484,7 @@ FOLDER_OUT <- "out"
 		FOLDER_OUT_M <- file.path(FOLDER_EXTRACT1, "M")
 		FOLDER_OUT_S <- file.path(FOLDER_EXTRACT1, "S")
 		FOLDER_OUT_ALL <- file.path(FOLDER_EXTRACT1, "_All")
+		FILES_TAB_ALL <- file.path(FOLDER_OUT_ALL, "_data.txt")
 	# second extraction folders
 	FOLDER_EXTRACT2 <- file.path(FOLDER_OUT,"extraction2")
 		# table-specific output folders
@@ -496,6 +497,7 @@ FOLDER_OUT <- "out"
 		FOLDER_OUT_M2 <- file.path(FOLDER_EXTRACT2, "M")
 		FOLDER_OUT_S2 <- file.path(FOLDER_EXTRACT2, "S")
 		FOLDER_OUT_ALL2 <- file.path(FOLDER_EXTRACT2, "_All")
+		FILES_TAB_ALL2 <- file.path(FOLDER_OUT_ALL2, "_data.txt")
 	# comparison folders
 	FOLDER_COMPARISON <- file.path(FOLDER_OUT,"comparison")
 		# same table in 2 version
