@@ -3,7 +3,7 @@
 # 
 # 03/2020 Vincent Labatut
 #
-# source("src/verification/check_ALL.R")
+# source("src/verification/check_All.R")
 #############################################################################################
 source("src/common/include.R")
 source("src/verification/evolution_plot.R")
@@ -29,6 +29,9 @@ dir.create(path=out.folder, showWarnings=FALSE, recursive=TRUE)
 
 # load the data
 tlog(0,"Reading the merged table")
+types <- rep("character",length(COLS_ATT_NORMALIZED))
+types[which(COL_TYPES[COLS_ATT_NORMALIZED]=="dat")] <- "Date"
+types[which(COL_TYPES[COLS_ATT_NORMALIZED]=="num")] <- "integer"
 data <- read.table(
 	file=FILES_TAB_ALL,			# name of the data file
 	header=TRUE, 				# look for a header
@@ -36,16 +39,20 @@ data <- read.table(
 	check.names=FALSE, 			# don't change the column names from the file
 	comment.char="", 			# ignore possible comments in the content
 	row.names=NULL, 			# don't look for row names in the file
-	quote="" 					# don't expect double quotes "..." around text fields
+#	quote="", 					# don't expect double quotes "..." around text fields
 #	as.is=TRUE,					# don't convert strings to factors
-#	colClasses="character"		# all column originally read as characters, then converted later if needed
+	colClasses=types			# force column types
 )
 tlog(2,"Read ",nrow(data)," rows and ",ncol(data)," columns")
-# TODO check the column classes are ok
+#print(sapply(1:ncol(data),function(col) class(data[,col])))
 
 # summarizes each column separately
 tlog(0,"Examining each column separately")
 sumup.cols(data=data, out.folder=out.folder)
+
+# look for duplicate rows
+tlog(0,"Looking for duplicate rows")
+test.compatible.rows(data=data, out.folder=out.folder)
 
 # check personal information
 tlog(0,"Checking personal information consistency")
@@ -62,6 +69,10 @@ test.col.locations(data=data, out.folder=out.folder, merged=TRUE)
 # look for duplicates
 tlog(0,"Looking for duplicates")
 test.duplicates(data=data, loc.col=COL_ATT_DPT_CODE, out.folder=out.folder)
+
+# plots the number of persons over time
+tlog(0,"Ploting the number of simultaneously hold positions over time")
+plot.pers.time2(data=data, out.folder=out.folder)
 
 # close the log file
 tlog(0,"Done")

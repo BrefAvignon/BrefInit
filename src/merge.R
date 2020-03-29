@@ -20,9 +20,9 @@ source("src/verification/test_duplicates.R")
 
 #############################################################################################
 # set up parameters
-extraction <- 1 # 1 or 2
-correct.data <- FALSE
-complete.data <- FALSE	# only for D and S
+extraction <- 1 		# 1 or 2
+correct.data <- TRUE	# load raw or corrected data
+complete.data <- TRUE	# only for D and S
 
 # start logging
 start.rec.log(text="MERGE")
@@ -194,9 +194,10 @@ tlog(2,"Actual dimensions of the full table: ",paste(dim(data),collapse="x"))
 
 #############################################################################################
 dir.create(path=FOLDER_OUT_ALL, showWarnings=FALSE, recursive=TRUE)
-tlog(0,"Recording the full table in file \"",FILES_TAB_ALL,"\"")
+tlog(0,"Ordering the full table")
 idx <- order(data[,COL_ATT_ELU_NOM], data[,COL_ATT_ELU_PRENOM], data[,COL_ATT_ELU_ID],
 		data[,COL_ATT_MDT_DBT], data[,COL_ATT_MDT_FIN], data[,COL_ATT_FCT_DBT], data[,COL_ATT_FCT_FIN])
+tlog(0,"Recording the full table in file \"",FILES_TAB_ALL,"\"")
 write.table(x=data[idx,],		# sorted data
 	file=FILES_TAB_ALL,			# name of file containing the new table
 	quote=TRUE,					# put double quotes around strings
