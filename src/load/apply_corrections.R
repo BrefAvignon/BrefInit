@@ -99,7 +99,6 @@ retrieve.normalize.data <- function(filenames, col.map)
 		# replace "NA"s by actual NAs
 		data[which(data[,c]=="NA"),c] <- NA
 	}
-	tlog(2,"CHECKPOINT 0: Now ",nrow(data)," rows and ",ncol(data)," columns in main table")
 	
 	# add columns to store correction flags
 	correc.date <- rep(FALSE, nrow(data))
@@ -107,6 +106,7 @@ retrieve.normalize.data <- function(filenames, col.map)
 	data <- cbind(data, correc.date, correc.info)
 	colnames(data)[(ncol(data)-1):ncol(data)] <- c(COL_ATT_CORREC_DATE, COL_ATT_CORREC_INFO) 
 	
+	tlog(2,"CHECKPOINT 0: Now ",nrow(data)," rows and ",ncol(data)," columns in main table")
 	return(data)
 }
 
@@ -434,8 +434,43 @@ apply.minimal.adhoc.corrections <- function(data, type)
 # returns: data frame after the corrections.
 #############################################################################################
 apply.systematic.corrections <- function(data, type)
-{	# possibly normalize municipality ids
-	corr.rows <- c()
+{	corr.rows <- c()
+	# normalise usage names
+	tlog(0,"Normalizing usage names")
+	old.names <- data[,COL_ATT_ELU_NOM]
+	idx <- which(grepl(pattern="(.+)( EP | EPOUSE )(.+)", x=data[,COL_ATT_ELU_NOM]))
+	if(length(idx)>0)
+	{	tlog(0,"Found ",length(idx)," spouse names")
+		# update names explicitly containing "spouse" 
+		birth.names <- gsub(x=data[idx,COL_ATT_ELU_NOM], pattern="(.+)( EP | EPOUSE )(.+)",replacement="\\3")
+		new.names <- gsub(x=data[idx,COL_ATT_ELU_NOM], pattern="(.+)( EP | EPOUSE )(.+)",replacement="\\3 \\1")
+		#head(cbind(old.names[idx], birth.names, new.names))
+		data[idx,COL_ATT_ELU_NOM] <- new.names
+		# possibly update other names
+		for(r in 1:length(idx))
+		{	tlog(2, "Processing name ",data[idx[r],COL_ATT_ELU_NOM]," (",r,"/",length(idx),")")
+			idx2 <- which(data[,COL_ATT_ELU_PRENOM]==data[idx[r],COL_ATT_ELU_PRENOM]				# same first name
+						& data[,COL_ATT_ELU_NAIS_DATE]==data[idx[r],COL_ATT_ELU_NAIS_DATE]			# same birthdate
+						& data[,COL_ATT_ELU_NOM]!=data[idx[r],COL_ATT_ELU_NOM]						# different last names
+						& grepl(pattern=birth.names[r], x=data[,COL_ATT_ELU_NOM], fixed=TRUE))		# but includes birth name
+			if(length(idx2)>0)
+			{	data[idx2,COL_ATT_ELU_NOM] <- new.names[r]
+				tlog(4, "Updating other rows based on the first below")
+				tlog(6, format.row(data[idx[r],]))
+				for(r2 in idx2)
+					tlog(6, format.row(data[r2,]))
+				ids <- union(data[idx[r],COL_ATT_ELU_ID_RNE], data[idx2,COL_ATT_ELU_ID_RNE])
+				if(length(ids)>1)
+					tlog(4, "WARNING: consider merging RNE ids ",paste(ids,collapse=","))
+			}
+			
+		}
+		# log result
+		idx <- which(old.names!=data[,COL_ATT_ELU_NOM])
+		corr.rows <- union(corr.rows,idx)
+		tlog(2,"Normalized ",length(idx)," last names")
+	}
+	# possibly normalize municipality ids
 	if(COL_ATT_COM_CODE %in% colnames(data))
 	{	tlog(0,"Normalizing municipality ids")
 		tmp <- data[,COL_ATT_COM_CODE]
