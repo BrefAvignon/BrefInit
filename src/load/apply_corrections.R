@@ -405,6 +405,10 @@ apply.adhoc.corrections <- function(data, col.map, correc.file)
 		tlog(2,"Now ",nrow(data)," rows and ",ncol(data)," columns in table")
 	}
 	
+	# debug
+#	idx <- which(is.na(data[,COL_ATT_ELU_NAIS_DATE]))
+#	print(data[idx,])
+	
 	return(data)
 }
 
