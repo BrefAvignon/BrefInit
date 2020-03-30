@@ -298,10 +298,10 @@ test.col.dates.pre.rne <- function(data, out.folder)
 test.col.dates.nofun <- function(data, out.folder)
 {	tlog(2,"Identifying functions without dates")
 	
-	# retrieve all rows with a function name but no start date
-	idx <- which(!is.na(data[,COL_ATT_FCT_NOM])
+	# retrieve all rows with a function name or end date or end motive, but no start date
+	idx <- which((!is.na(data[,COL_ATT_FCT_NOM]) | !is.na(data[,COL_ATT_FCT_FIN]) | !is.na(data[,COL_ATT_FCT_MOTIF]))
 					& is.na(data[,COL_ATT_FCT_DBT]))
-	tlog(4,"Found ",length(idx)," rows with a function name but no start date")
+	tlog(4,"Found ",length(idx)," rows with a function name or end motive or end date, but no function start date")
 	# build the table and write it
 	if(length(idx)>0)
 	{	tmp <- cbind(idx, data[idx,])
@@ -317,10 +317,10 @@ test.col.dates.nofun <- function(data, out.folder)
 		)
 	}
 	
-	# retrieve all rows with a function name and a mandate end, but no function end
-	idx <- which(!is.na(data[,COL_ATT_FCT_NOM])
-					& is.na(data[,COL_ATT_FCT_FIN]) & !is.na(data[,COL_ATT_MDT_FIN]))
-	tlog(4,"Found ",length(idx)," rows with a function name and mandate end, but no function end")
+	# retrieve all rows with a function name or start date or end motive, and a mandate end or end motive, but no function end
+	idx <- which((!is.na(data[,COL_ATT_FCT_NOM]) | !is.na(data[,COL_ATT_FCT_DBT]) | !is.na(data[,COL_ATT_FCT_MOTIF]))
+					& is.na(data[,COL_ATT_FCT_FIN]) & (!is.na(data[,COL_ATT_MDT_FIN]) | !is.na(data[,COL_ATT_FCT_MOTIF])))
+	tlog(4,"Found ",length(idx)," rows with a function name or start date or end motive, and a function end motive or mandate end date, but no function end date")
 	# build the table and write it
 	if(length(idx)>0)
 	{	tmp <- cbind(idx, data[idx,])
@@ -335,6 +335,56 @@ test.col.dates.nofun <- function(data, out.folder)
 			sep="\t"
 		)
 	}
+
+	# retrieve all rows with a function start date or end date or end motive, but no function name
+	idx <- which((!is.na(data[,COL_ATT_FCT_DBT]) | !is.na(data[,COL_ATT_FCT_FIN]) | !is.na(data[,COL_ATT_FCT_MOTIF]))
+					& is.na(data[,COL_ATT_FCT_NOM]))
+	tlog(4,"Found ",length(idx)," rows with a function start date or end date or end motive, but no function name")
+	# build the table and write it
+	if(length(idx)>0)
+	{	tmp <- cbind(idx, data[idx,])
+		colnames(tmp)[1] <- "Ligne"
+		tab.file <- file.path(out.folder,"fonction_lib_problems_missing.txt")
+		tlog(4,"Recording in file \"",tab.file,"\"")
+		write.table(x=tmp,file=tab.file,
+#			fileEncoding="UTF-8",
+			row.names=FALSE, 
+			col.names=TRUE,
+#			quote=TRUE,
+			sep="\t"
+		)
+	}
+	
+	# retrieve all rows with a function end date or mandate end date or mandate end motive, but no function end motive
+	idx <- which((!is.na(data[,COL_ATT_FCT_FIN]) | !is.na(data[,COL_ATT_MDT_FIN]) | !is.na(data[,COL_ATT_MDT_MOTIF]))
+					& is.na(data[,COL_ATT_FCT_NOM]))
+	tlog(4,"Found ",length(idx)," rows with a function start date or end date or end motive, but no function name")
+	# build the table and write it
+	if(length(idx)>0)
+	{	tmp <- cbind(idx, data[idx,])
+		colnames(tmp)[1] <- "Ligne"
+		tab.file <- file.path(out.folder,"fonction_motif_problems_missing.txt")
+		tlog(4,"Recording in file \"",tab.file,"\"")
+		write.table(x=tmp,file=tab.file,
+#			fileEncoding="UTF-8",
+			row.names=FALSE, 
+			col.names=TRUE,
+#			quote=TRUE,
+			sep="\t"
+		)
+	}
+# TODO tout reprendre ces tests au propre
+# un test pr : est ce que la fonction a démarré ?
+#    >> plein de ou, mettre dans un vecteur
+# un test pr : a t elle stopé ?
+#    >> pareil, mettre dans un vecteur
+# un dernier pr : manque t il l'info nécessaire ?
+#    >> test ad hoc suivant le champ à testr
+
+# TODO
+# transformer la fonction ciblant le motif pour l'adapter seulement aux mandats
+# procéder pareil que pour les fonctions (en plus simple)
+# voir si ça n'amène pas à simplifier la fonction générique
 }
 
 

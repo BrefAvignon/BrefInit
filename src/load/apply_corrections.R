@@ -472,6 +472,7 @@ apply.systematic.corrections <- function(data, type)
 	if(length(idx)>0)
 	{	tlog(0,"Found ",length(idx)," spouse names")
 		# update names explicitly containing "spouse" 
+		usage.names <- gsub(x=data[idx,COL_ATT_ELU_NOM], pattern="(.+)( EP | EPOUSE )(.+)",replacement="\\1")
 		birth.names <- gsub(x=data[idx,COL_ATT_ELU_NOM], pattern="(.+)( EP | EPOUSE )(.+)",replacement="\\3")
 		new.names <- gsub(x=data[idx,COL_ATT_ELU_NOM], pattern="(.+)( EP | EPOUSE )(.+)",replacement="\\3 \\1")
 		#head(cbind(old.names[idx], birth.names, new.names))
@@ -482,7 +483,8 @@ apply.systematic.corrections <- function(data, type)
 			idx2 <- which(data[,COL_ATT_ELU_PRENOM]==data[idx[r],COL_ATT_ELU_PRENOM]				# same first name
 						& data[,COL_ATT_ELU_NAIS_DATE]==data[idx[r],COL_ATT_ELU_NAIS_DATE]			# same birthdate
 						& data[,COL_ATT_ELU_NOM]!=data[idx[r],COL_ATT_ELU_NOM]						# different last names
-						& grepl(pattern=birth.names[r], x=data[,COL_ATT_ELU_NOM], fixed=TRUE))		# but includes birth name
+						& (grepl(pattern=birth.names[r], x=data[,COL_ATT_ELU_NOM], fixed=TRUE)		# but includes birth or usage name
+							|| grepl(pattern=usage.names[r], x=data[,COL_ATT_ELU_NOM], fixed=TRUE)))
 			if(length(idx2)>0)
 			{	data[idx2,COL_ATT_ELU_NOM] <- new.names[r]
 				tlog(4, "Updating other rows based on the first below")

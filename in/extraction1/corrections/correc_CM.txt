@@ -1,4 +1,37 @@
 Row	Id RNE	Nom	Prenom	Attribut	ValAvt	ValApr	Commentaire
+50111	14132	ALLIX	NA	Prenom elu	NA	Marie-Danielle	Prénom manquant
+64697	889027	ESPENEL	NA	Prenom elu	NA	Marie-Danielle	Prénom manquant
+143026	1239530	DUPONT	NA	Prenom elu	NA	Marie-Danielle	Prénom manquant
+153527	909541	DUPONT	NA	Prenom elu	NA	Marie-Danielle	Prénom manquant
+184894	146336	GIRAUDEAU	NA	Prenom elu	NA	Marie-Danielle	Prénom manquant
+289859	631701	DUBOULE	NA	Prenom elu	NA	Marie-Danielle	Prénom manquant
+292728	944964	ARNAUD	NA	Prenom elu	NA	Marie-Danielle	Prénom manquant
+339909	956279	RIOU	NA	Prenom elu	NA	Marie-Danielle	Prénom manquant
+358976	959113	DUBERGEY	NA	Prenom elu	NA	Marie-Danielle	Prénom manquant
+358984	959113	LOPEZ DUBERGEY	NA	Prenom elu	NA	Marie-Danielle	Prénom manquant
+373157	963011	PINON	NA	Prenom elu	NA	Marie-Danielle	Prénom manquant
+408488	659771	MIGAYRON	NA	Prenom elu	NA	Marie-Danielle	Prénom manquant
+439132	977368	BOUVET	NA	Prenom elu	NA	Marie-Danielle	Prénom manquant
+478393	1320731	TROUILLET	NA	Prenom elu	NA	Marie-Danielle	Prénom manquant
+548217	853458	HOGREL	NA	Prenom elu	NA	Marie-Danielle	Prénom manquant
+551177	1006177	PIERRELEE	NA	Prenom elu	NA	Marie-Danielle	Prénom manquant
+562976	1006614	ROCHERIEUX	NA	Prenom elu	NA	Marie-Danielle	Prénom manquant
+643861	797158	GOFFART	NA	Prenom elu	NA	Marie-Danielle	Prénom manquant
+743085	20292	RICHART SAGNIEZ	NA	Prenom elu	NA	Marie-Danielle	Prénom manquant
+750250	1052072	CHEVALIER	NA	Prenom elu	NA	Marie-Danièle	Prénom manquant
+788461	45814	HUBART ÉPOUSE PENISSON	NA	Prenom elu	NA	Marie-Danielle	Prénom manquant
+788469	45814	PENISSON	NA	Prenom elu	NA	Marie-Danielle	Prénom manquant
+788974	55779	WARGNIER	NA	Prenom elu	NA	Marie-Danielle	Prénom manquant
+931898	1429364	PILLARD	NA	Prenom elu	NA	Marie-Danielle	Prénom manquant
+934053	1505592	BRUYERE	NA	Prenom elu	NA	Marie-Danielle	Prénom manquant
+981878	1441891	DURAND	NA	Prenom elu	NA	Marie-Danielle	Prénom manquant
+992532	1444831	MASSON	NA	Prenom elu	NA	Marie-Danielle	Prénom manquant
+1028438	1113415	DE DOMAHIDY	NA	Prenom elu	NA	Marie-Danielle	Prénom manquant
+1071983	1463236	SECHET	NA	Prenom elu	NA	Marie-Danielle	Prénom manquant
+1073153	1123117	GUILLEMET	NA	Prenom elu	NA	Marie-Danièle	Prénom manquant
+1129786	825819	MAYET	NA	Prenom elu	NA	Marie-Danièle	Prénom manquant
+1236455	1188475	ARAMOTO	NA	Prenom elu	NA	Marie-Danielle	Prénom manquant
+301652	947546	DERREY EPOUSE DEBAISIEUX	Chantale	Prenom elu	Chantale	Chantal	Typo dans le prénom
 333441	671	TANGUY	Hélène	Date de fin de la fonction	1/7/0012	1/7/2012	Typo dans la date
 844385	47125	BOYER	Jean-Marc	Date de fin de la fonction	20/10/0017	20/10/2017	Typo dans la date
 1143147	80360	SENECHAULT	Jean-Paul	Date de fin de la fonction	22/3/0013	22/3/2013	Typo dans la date
@@ -427,3 +460,13 @@ NA	NA	NA	NA	Libelle commune	TEVA I UTA SECTION 01 MATAIEA	TEVA I UTA	On ignore l
 1222739	684092	PERONNET	Annie	Date fin fonction	NA	16/12/2018	Date manquante
 1229162	1199867	VATENAR	René	Date fin fonction	NA	8/10/2017	Date manquante
 1231848	33812	FRUTEAU	Eric	ID RNE	33812	NA	Suppression, mandat inexistant
+98954	897861	GERARD	David	Date naissance NA	3/8/1972	Date naissance manquante
+1124503	47917	GIARDINI	Marc	Date naissance NA	27/9/1950	Date naissance manquante
+421208	338474	GUERIN	Stéphanie	Date naissance NA	3/2/1975	Date naissance manquante
+121309	77440	HUBERT	Françoise	Date naissance NA	1/1/1966	Date naissance manquante
+833588	172776	LAGACHE	Claude	Date naissance NA	1/1/1936	Date naissance manquante
+670054	154538	PETIT	Jean-Michel	Date naissance NA	31/8/1958	Date naissance manquante
+815845	154538	PETIT	Jean-Michel	Id RNE	154538 1165263	Confusion d'homonymes
+815845	1165263	PETIT	Jean-Michel	Date naissance NA	31/10/1970	Date naissance manquante
+815845	1165263	PETIT	Jean-Michel	Code profession 61	42	Confusion d'homonymes
+815845	1165263	PETIT	Jean-Michel	Libelle profession Retraités salariés privés	Professeurs du secondaire et techn.	Confusion d'homonymes
