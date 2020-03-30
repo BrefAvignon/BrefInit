@@ -139,7 +139,7 @@ fix.id.problems <- function(data)
 	# fix dupplicate ids
 	if(nrow(equiv.table)>0)
 	{	# convert to map
-		tlog(0,"Convert table of equivalent ids to map")
+		tlog(0,"Converting table of equivalent ids to map")
 		unique.ids <- unique(data[,COL_ATT_ELU_ID_RNE])
 		conv.map <- c()
 		for(r in 1:nrow(equiv.table))
@@ -169,6 +169,32 @@ fix.id.problems <- function(data)
 		}
 		tlog(2,"Now ",nrow(data)," rows and ",ncol(data)," columns in table")
 	}
+	
+	# debug
+#	tlog(0,"Comparing personal info of equivalent ids")
+#	for(i in 1:length(conv.map))
+#	{	id1 <- names(conv.map)[i]
+#		id2 <- conv.map[i]
+#		r1 <- which(data[,COL_ATT_ELU_ID_RNE]==id1)[1]
+#		r2 <- which(data[,COL_ATT_ELU_ID_RNE]==id2)[1]
+#		
+#		lastname1 <- data[r1,COL_ATT_ELU_NOM]
+#		lastname2 <- data[r2,COL_ATT_ELU_NOM]
+#		firstname1 <- data[r1,COL_ATT_ELU_PRENOM]
+#		firstname2 <- data[r2,COL_ATT_ELU_PRENOM]
+#		birthdate1 <- data[r1,COL_ATT_ELU_NAIS_DATE]
+#		birthdate2 <- data[r2,COL_ATT_ELU_NAIS_DATE]
+#		
+#		if(lastname1!=lastname2 || firstname1!=firstname2 || birthdate1!=birthdate2)
+#		{	tlog(2, "Ids ",names(conv.map)[i]," and ",conv.map[i],": ")
+#			if(lastname1!=lastname2)
+#				tlog(4,"Different lastnames: ",lastname1," vs. ",lastname2)
+#			if(firstname1!=firstname2)
+#				tlog(4,"Different firstnames: ",firstname1," vs. ",firstname2)
+#			if(birthdate1!=birthdate2)
+#				tlog(4,"Different birthdates: ",format(birthdate1)," vs. ",format(birthdate2))
+#		}
+#	}
 	
 	return(data)
 }
