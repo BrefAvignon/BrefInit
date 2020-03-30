@@ -2,6 +2,8 @@
 # Functions performing various tests on location names.
 # 
 # 12/2019 Vincent Labatut
+#
+# source("src/verification/test_locations.R")
 #############################################################################################
 
 
@@ -643,6 +645,7 @@ test.col.locations.department <- function(data, out.folder)
 			
 			idx <- which(codes==unique.code)
 			ns <- names[idx]
+			ns[is.na(ns)] <- "NA"
 			if(any(ns!=ns[1]))
 			{	row <- c(
 					unique.code,
