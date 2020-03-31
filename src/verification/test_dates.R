@@ -68,7 +68,7 @@ test.col.dates.generic <- function(data, out.folder, tolerance=7)
 	# comparing mandate boundaries
 	{	tlog(4,"Comparing start/end dates for mandates")
 		
-		# no mandate dates at all
+		# no mandate dates at all			# NOTE now quite redundant with the new tests in test.col.incomplete.mandates
 		idx <- which(is.na(data[,COL_ATT_MDT_DBT]) & is.na(data[,COL_ATT_MDT_FIN]))
 		if(length(idx)>0)
 		{	tmp <- cbind(idx,data[idx,])
@@ -379,18 +379,6 @@ test.col.incomplete.funtions <- function(data, out.folder)
 			sep="\t"
 		)
 	}
-# TODO tout reprendre ces tests au propre
-# un test pr : est ce que la fonction a démarré ?
-#    >> plein de ou, mettre dans un vecteur
-# un test pr : a t elle stopé ?
-#    >> pareil, mettre dans un vecteur
-# un dernier pr : manque t il l'info nécessaire ?
-#    >> test ad hoc suivant le champ à testr
-
-# TODO
-# transformer la fonction ciblant le motif pour l'adapter seulement aux mandats
-# procéder pareil que pour les fonctions (en plus simple)
-# voir si ça n'amène pas à simplifier la fonction générique
 }
 
 
@@ -601,8 +589,8 @@ test.col.dates.cd <- function(data, out.folder)
 {	# generic tests
 	test.col.dates.generic(data, out.folder, tolerance=7)
 	test.col.dates.pre.rne(data, out.folder)
-	test.col.incomplete.funtions(data, out.folder)
 	test.col.incomplete.mandates(data, out.folder)
+	test.col.incomplete.funtions(data, out.folder)
 	
 	# election dates
 	test.col.dates.election(data, out.folder, election.file=FILE_VERIF_DATES_CD, series.file=FILE_VERIF_SERIES_CD)
@@ -646,8 +634,8 @@ test.col.dates.cm <- function(data, out.folder)
 {	# generic tests
 	test.col.dates.generic(data, out.folder, tolerance=7)
 	test.col.dates.pre.rne(data, out.folder)
-	test.col.incomplete.funtions(data, out.folder)
 	test.col.incomplete.mandates(data, out.folder)
+	test.col.incomplete.funtions(data, out.folder)
 	
 	# election dates
 	test.col.dates.election(data, out.folder, election.file=FILE_VERIF_DATES_CM)
@@ -688,8 +676,8 @@ test.col.dates.cr <- function(data, out.folder)
 {	# generic tests
 	test.col.dates.generic(data, out.folder, tolerance=7)
 	test.col.dates.pre.rne(data, out.folder)
-	test.col.incomplete.funtions(data, out.folder)
 	test.col.incomplete.mandates(data, out.folder)
+	test.col.incomplete.funtions(data, out.folder)
 	
 	# election dates
 	test.col.dates.election(data, out.folder, election.file=FILE_VERIF_DATES_CR)
@@ -732,8 +720,8 @@ test.col.dates.d <- function(data, out.folder)
 {	# generic tests
 	test.col.dates.generic(data, out.folder, tolerance=7)
 	test.col.dates.pre.rne(data, out.folder)
-	test.col.incomplete.funtions(data, out.folder)
 	test.col.incomplete.mandates(data, out.folder)
+	test.col.incomplete.funtions(data, out.folder)
 	
 	# election dates
 	test.col.dates.election(data, out.folder, election.file=FILE_VERIF_DATES_D)
@@ -783,8 +771,8 @@ test.col.dates.de <- function(data, out.folder)
 {	# generic tests
 	test.col.dates.generic(data, out.folder, tolerance=7)
 	test.col.dates.pre.rne(data, out.folder)
-	#test.col.incomplete.funtions(data, out.folder)	# no functions described in DE
 	test.col.incomplete.mandates(data, out.folder)
+	#test.col.incomplete.funtions(data, out.folder)	# no functions described in DE
 	
 	# election dates
 	test.col.dates.election(data, out.folder, election.file=FILE_VERIF_DATES_DE)
@@ -825,8 +813,8 @@ test.col.dates.epci <- function(data, out.folder)
 {	# generic tests
 	test.col.dates.generic(data, out.folder, tolerance=7)
 	test.col.dates.pre.rne(data, out.folder)
-	test.col.incomplete.funtions(data, out.folder)
 	test.col.incomplete.mandates(data, out.folder)
+	test.col.incomplete.funtions(data, out.folder)
 }
 
 
@@ -843,8 +831,8 @@ test.col.dates.s <- function(data, out.folder)
 {	# generic tests
 	test.col.dates.generic(data, out.folder, tolerance=7)
 	test.col.dates.pre.rne(data, out.folder)
-	test.col.incomplete.funtions(data, out.folder)
 	test.col.incomplete.mandates(data, out.folder)
+	test.col.incomplete.funtions(data, out.folder)
 		
 	# election dates
 	test.col.dates.election(data, out.folder, election.file=FILE_VERIF_DATES_S, series.file=FILE_VERIF_SERIES_S)
@@ -888,6 +876,6 @@ test.col.dates.all <- function(data, out.folder)
 {	# generic tests
 	test.col.dates.generic(data, out.folder, tolerance=7)
 	test.col.dates.pre.rne(data, out.folder)
-	test.col.incomplete.funtions(data, out.folder)
 	test.col.incomplete.mandates(data, out.folder)
+	test.col.incomplete.funtions(data, out.folder)
 }
