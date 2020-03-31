@@ -1190,9 +1190,9 @@ round.mdtfct.dates <- function(data, election.file, series.file, tolerance)
 
 
 #############################################################################################
-# Merges the mandates that strictly overlap and have compatible data. Compatible data means 
-# that besides the personal info and mandate dates, for the rest of the columns, one value must 
-# be NA or both values must be exactly identical.
+# Merges the mandates that overlap (or are consecutive) and have compatible data. Compatible data 
+# means that besides the personal info and mandate dates, for the rest of the columns, one value 
+# must be NA or both values must be exactly identical.
 #
 # data: original table.
 # type: type of the considered mandate (CD, CM, etc.).
@@ -1204,9 +1204,9 @@ merge.overlapping.mandates <- function(data, type)
 	has.fct <- COL_ATT_FCT_DBT %in% colnames(data)
 	
 	# set the attributes used to test for compatibility
-	atts <- setdiff(colnames(data), c(COL_ATT_ELU_ID, 
-					COL_ATT_MDT_DBT, COL_ATT_MDT_FIN, 
-					COL_ATT_FCT_DBT, COL_ATT_FCT_FIN))
+	atts <- setdiff(colnames(data), c(COL_ATT_ELU_ID, 	# person ID
+				COL_ATT_MDT_DBT, COL_ATT_MDT_FIN, 		# mandate dates
+				COL_ATT_FCT_DBT, COL_ATT_FCT_FIN))		# function dates
 	
 	# set the attribute used to represent the function
 	fct.att <- NA
@@ -1254,20 +1254,22 @@ merge.overlapping.mandates <- function(data, type)
 				{	tlog(6,"Comparing to row ",k,"/",length(idx))
 					
 					if((is.na(circo.codes[idx[i]]) || is.na(circo.codes[idx[j]])				# at least one NA circonscription, 
-						|| circo.codes[idx[i]]==circo.codes[idx[j]])							# or same circonscription
-							&& date.intersect(start1=data[idx[j],COL_ATT_MDT_DBT], 				# mandates must overlap
-									end1=data[idx[j],COL_ATT_MDT_FIN],
-									start2=data[idx[k],COL_ATT_MDT_DBT], 
-									end2=data[idx[k],COL_ATT_MDT_FIN])
-							&& (is.na(fct.att) || 												# either no function specified at all in the table
-								is.na(data[idx[j],fct.att]) || is.na(data[idx[k],fct.att]) 		# or NA function in at least one of the rows
-									|| is.na(data[idx[j],COL_ATT_FCT_DBT])						# or no function date in at least one of the rows 
-									|| is.na(data[idx[k],COL_ATT_FCT_DBT])
-									|| (data[idx[j],fct.att]==data[idx[k],fct.att] && 			# or the same function in both row, in which case
-										date.intersect(start1=data[idx[j],COL_ATT_FCT_DBT],		# the function dates must overlap too
-												end1=data[idx[j],COL_ATT_FCT_FIN],
-												start2=data[idx[k],COL_ATT_FCT_DBT], 
-												end2=data[idx[k],COL_ATT_FCT_FIN])))
+							|| circo.codes[idx[i]]==circo.codes[idx[j]])						# or same circonscription
+						&& (date.intersect(start1=data[idx[j],COL_ATT_MDT_DBT], 				# mandates must overlap
+								end1=data[idx[j],COL_ATT_MDT_FIN],
+								start2=data[idx[k],COL_ATT_MDT_DBT], 
+								end2=data[idx[k],COL_ATT_MDT_FIN])
+							|| data[idx[j],COL_ATT_MDT_DBT]==(data[idx[k],COL_ATT_MDT_FIN]+1)	# or mandates must be consecutive
+							|| data[idx[k],COL_ATT_MDT_DBT]==(data[idx[j],COL_ATT_MDT_FIN]+1))
+						&& (is.na(fct.att) || 													# either no function specified at all in the table
+							is.na(data[idx[j],fct.att]) || is.na(data[idx[k],fct.att]) 			# or NA function in at least one of the rows
+								|| is.na(data[idx[j],COL_ATT_FCT_DBT])							# or no function date in at least one of the rows 
+								|| is.na(data[idx[k],COL_ATT_FCT_DBT])
+								|| (data[idx[j],fct.att]==data[idx[k],fct.att] && 				# or the same function in both row, in which case
+									date.intersect(start1=data[idx[j],COL_ATT_FCT_DBT],			# the function dates must overlap too
+											end1=data[idx[j],COL_ATT_FCT_FIN],
+											start2=data[idx[k],COL_ATT_FCT_DBT], 
+											end2=data[idx[k],COL_ATT_FCT_FIN])))
 					)
 					{	# log detected overlap
 						tlog(10, format.row(data[idx[j],]))

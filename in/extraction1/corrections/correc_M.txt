@@ -233,5 +233,5 @@ Row	Id RNE	Nom	Prenom	Attribut	ValAvt	ValApr	Commentaire
 112902	684092	PERONNET	Annie	Date fin fonction	NA	16/12/2018	Date manquante
 113167	1199867	VATENAR	René	Date fin fonction	NA	8/10/2017	Date manquante
 113279	33812	FRUTEAU	Eric	ID RNE	33812	NA	Suppression, mandat inexistant
-79247	172776	LAGACHE	Claude	Date naissance NA	1/1/1936	Date naissance manquante
-64576	154538	PETIT	Jean-Michel	Date naissance NA	31/8/1958	Date naissance manquante
+79247	172776	LAGACHE	Claude	Date naissance	NA	1/1/1936	Date naissance manquante
+64576	154538	PETIT	Jean-Michel	Date naissance	NA	31/8/1958	Date naissance manquante

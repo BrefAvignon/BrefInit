@@ -273,6 +273,7 @@ NA	NA	NA	NA	Libelle commune	TEVA I UTA SECTION 01 MATAIEA	TEVA I UTA	On ignore l
 1229593	817494	SALIBER	Lucien	Date debut fonction	3/4/2013	NA	Fonction incorrecte
 1229593	817494	SALIBER	Lucien	Date fin fonction	22/3/2014	NA	Fonction incorrecte
 1229593	817494	SALIBER	Lucien	Motif fin fonction	FM	NA	Fonction incorrecte
+1083537	220028	BAILLET	Alain	Date naissance	21/12/1954	31/12/1954	Date incohérente
 1083538	220028	BAILLET	Alain	Libelle fonction	Maire	NA	Fonction incorrecte
 1083538	220028	BAILLET	Alain	Date debut fonction	30/5/2011	NA	Fonction incorrecte
 1083538	220028	BAILLET	Alain	Date fin fonction	22/3/2014	NA	Fonction incorrecte
@@ -460,13 +461,90 @@ NA	NA	NA	NA	Libelle commune	TEVA I UTA SECTION 01 MATAIEA	TEVA I UTA	On ignore l
 1222739	684092	PERONNET	Annie	Date fin fonction	NA	16/12/2018	Date manquante
 1229162	1199867	VATENAR	René	Date fin fonction	NA	8/10/2017	Date manquante
 1231848	33812	FRUTEAU	Eric	ID RNE	33812	NA	Suppression, mandat inexistant
-98954	897861	GERARD	David	Date naissance NA	3/8/1972	Date naissance manquante
-1124503	47917	GIARDINI	Marc	Date naissance NA	27/9/1950	Date naissance manquante
-421208	338474	GUERIN	Stéphanie	Date naissance NA	3/2/1975	Date naissance manquante
-121309	77440	HUBERT	Françoise	Date naissance NA	1/1/1966	Date naissance manquante
-833588	172776	LAGACHE	Claude	Date naissance NA	1/1/1936	Date naissance manquante
-670054	154538	PETIT	Jean-Michel	Date naissance NA	31/8/1958	Date naissance manquante
-815845	154538	PETIT	Jean-Michel	Id RNE	154538 1165263	Confusion d'homonymes
-815845	1165263	PETIT	Jean-Michel	Date naissance NA	31/10/1970	Date naissance manquante
-815845	1165263	PETIT	Jean-Michel	Code profession 61	42	Confusion d'homonymes
-815845	1165263	PETIT	Jean-Michel	Libelle profession Retraités salariés privés	Professeurs du secondaire et techn.	Confusion d'homonymes
+98954	897861	GERARD	David	Date naissance	NA	3/8/1972	Date naissance manquante
+1124503	47917	GIARDINI	Marc	Date naissance	NA	27/9/1950	Date naissance manquante
+421208	338474	GUERIN	Stéphanie	Date naissance	NA	3/2/1975	Date naissance manquante
+121309	77440	HUBERT	Françoise	Date naissance	NA	1/1/1966	Date naissance manquante
+833588	172776	LAGACHE	Claude	Date naissance	NA	1/1/1936	Date naissance manquante
+670054	154538	PETIT	Jean-Michel	Date naissance	NA	31/8/1958	Date naissance manquante
+815845	154538	PETIT	Jean-Michel	Id RNE	154538	1165263	Confusion d'homonymes
+815845	1165263	PETIT	Jean-Michel	Date naissance	NA	31/10/1970	Date naissance manquante
+815845	1165263	PETIT	Jean-Michel	Code profession	61	42	Confusion d'homonymes
+815845	1165263	PETIT	Jean-Michel	Libelle profession	Retraités salariés privés	Professeurs du secondaire et techn.	Confusion d'homonymes
+564183	1008493	LLOBIS	Christophe	Nom elu	LLOBIS	LLOPIS	Coquille dans le nom
+1046739	173684	TURPIN	Jean	ID RNE	173684	541703	Confusion d'homonymes
+154912	909612	VAY	Bruno	ID RNE	909612	NA	Ligne redondante
+158867	906446	ANGOT	Geneviève	Libelle fonction	Troisième adjoint au maire	NA	Fonction incorrecte
+158867	906446	ANGOT	Geneviève	Date debut fonction	21/4/2018	NA	Fonction incorrecte
+158873	1240629	BERTHAUX	Thierry	Libelle fonction	Quatrième adjoint au maire	NA	Fonction incorrecte
+158873	1240629	BERTHAUX	Thierry	Date debut fonction	21/4/2018	NA	Fonction incorrecte
+158925	906053	GERAULT	Franck	Libelle fonction	Huitième adjoint au maire	NA	Fonction incorrecte
+158925	906053	GERAULT	Franck	Date debut fonction	21/4/2018	NA	Fonction incorrecte
+158930	732062	GILLES	Valérie	Libelle fonction	Premier adjoint au maire	NA	Fonction incorrecte
+158930	732062	GILLES	Valérie	Date debut fonction	21/4/2018	NA	Fonction incorrecte
+158978	906445	LETRESOR	Maurice	ID RNE	906445	NA	Ligne redondante
+158978	906445	LETRESOR	Maurice	Libelle fonction	Second adjoint au maire	NA	Fonction incorrecte
+158978	906445	LETRESOR	Maurice	Date debut fonction	21/4/2018	NA	Fonction incorrecte
+174905	1505037	LABROUSSE	Christine	Libelle fonction	Premier adjoint au maire	NA	Fonction incorrecte
+174905	1505037	LABROUSSE	Christine	Date debut fonction	28/3/2014	NA	Fonction incorrecte
+177455	637060	PARNAUDEAU	Christophe	Date fin fonction	NA	1/1/2017	Date manquante
+176750	1244921	PIVETEAU	Béatrice	Date fin fonction	NA	1/1/2017	Date manquante
+177456	637067	SALLE	Patrick	Nom elu	SALLE	SALLEE	Coquille dans le nom de famille
+177457	637067	SALLEE	Patrick	Date fin fonction	NA	1/1/2017	Date manquante
+176757	767629	SIMONNET	Didier	Date fin fonction	NA	1/1/2017	Date manquante
+404258	970985	PICHARDIE	Bernard	Libelle fonction	Troisième adjoint au maire	NA	Fonction incorrecte
+404258	970985	PICHARDIE	Bernard	Date debut fonction	6/2/2015	NA	Fonction incorrecte
+493934	991789	VINCENT	Raymond	Date fin fonction	NA	9/1/2017	Date manquante
+738664	37748	CACHERA	Marc	Libelle fonction	Second adjoint au maire	NA	Fonction incorrecte
+738664	37748	CACHERA	Marc	Date debut fonction	3/1/2017	NA	Fonction incorrecte
+756737	1387117	ROCHER	Sophie	Libelle fonction	Premier adjoint au maire	NA	Fonction incorrecte
+756737	1387117	ROCHER	Sophie	Date debut fonction	1/4/2014	NA	Fonction incorrecte
+795123	1396606	ROCHETEAU	Stéphane	Libelle fonction	Maire délégué	NA	Fonction incorrecte
+795123	1396606	ROCHETEAU	Stéphane	Date debut fonction	26/6/2016	NA	Fonction incorrecte
+813867	1400636	FOURMEAUX	Didier	Libelle fonction	Cinquième adjoint au maire	NA	Fonction incorrecte
+813867	1400636	FOURMEAUX	Didier	Date debut fonction	13/10/2017	NA	Fonction incorrecte
+827635	1403903	LEROY	Annick	Libelle fonction	Second adjoint au maire	NA	Fonction incorrecte
+827635	1403903	LEROY	Annick	Date debut fonction	4/4/2014	NA	Fonction incorrecte
+962026	38683	PRONCHERY	Michel	ID RNE	38683	NA	Ligne redondante, function incorrecte
+671660	1439188	BATARD	Gérard	ID RNE	1439188	NA	Ligne redondante, function incorrecte
+671662	1439188	BATARD	Gérard	ID RNE	1439188	NA	Ligne redondante, function incorrecte
+1185375	1491716	BERGER	Serge	Libelle fonction	Second adjoint au maire	NA	Fonction incorrecte
+1185375	1491716	BERGER	Serge	Date debut fonction	10/10/2014	NA	Fonction incorrecte
+1185390	1491719	PETIT	Josiane	Libelle fonction	Premier adjoint au maire	NA	Fonction incorrecte
+1185390	1491719	PETIT	Josiane	Date debut fonction	10/10/2014	NA	Fonction incorrecte
+1237486	1153444	DROLLET	Jacqui	Date fin mandat	15/6/2014	14/6/2014	Date incohérente
+1237486	1153444	DROLLET	Jacqui	Date fin fonction	NA	14/6/2014	Date manquante
+1237547	1202362	TERITO	Jeanine	Date fin mandat	15/6/2014	14/6/2014	Date incohérente
+1237547	1202362	TERITO	Jeanine	Date fin fonction	NA	14/6/2014	Date manquante
+1238445	1202725	MAHAA	Jarvis	Date fin fonction	NA	13/8/2017	Date manquante
+766622	1053712	MONTAGNER EPOUSE MILLIOT	Patricia	ID RNE	1053712	Ligne redondante
+300849	331789	LOUVARD	Evelyne	Libelle fonction	Premier adjoint au maire	NA	Fonction incorrecte
+300849	331789	LOUVARD	Evelyne	Date fin fonction	3/3/2017	NA	Fonction incorrecte
+300864	275948	RENARD	Denise	Libelle fonction	Maire délégué	NA	Fonction incorrecte
+300864	275948	RENARD	Denise	Date fin fonction	3/3/2017	NA	Fonction incorrecte
+710192	1376276	HOUVER	Laurent	Libelle fonction	Second adjoint au maire	NA	Fonction incorrecte
+710192	1376276	HOUVER	Laurent	Date fin fonction	17/4/2017	NA	Fonction incorrecte
+795099	17072	GERONDEAU	Jean-Pierre	Libelle fonction	Sixième adjoint au maire	NA	Fonction incorrecte
+795099	17072	GERONDEAU	Jean-Pierre	Date fin fonction	26/6/2016	NA	Fonction incorrecte
+1044256	1114226	BECQUART	Dominique	Libelle fonction	Cinquième adjoint au maire	NA	Fonction incorrecte
+1044256	1114226	BECQUART	Dominique	Date fin fonction	26/6/2015	NA	Fonction incorrecte
+1044268	1114168	BORD	Gilles	Libelle fonction	Premier adjoint au maire	NA	Fonction incorrecte
+1044268	1114168	BORD	Gilles	Date fin fonction	26/6/2015	NA	Fonction incorrecte
+1044278	540013	CABUCHE	Patrick	Libelle fonction	Troisième adjoint au maire	NA	Fonction incorrecte
+1044278	540013	CABUCHE	Patrick	Date fin fonction	26/6/2015	NA	Fonction incorrecte
+1044315	1456770	GHOZELANE	Sofiane	Libelle fonction	Onzième adjoint au maire	NA	Fonction incorrecte
+1044315	1456770	GHOZELANE	Sofiane	Date fin fonction	26/6/2015	NA	Fonction incorrecte
+1044354	1114222	LOPES	Nadine	Libelle fonction	Quatrième adjoint au maire	NA	Fonction incorrecte
+1044354	1114222	LOPES	Nadine	Date fin fonction	26/6/2015	NA	Fonction incorrecte
+1044357	1456768	MARTIN	Elsa	Libelle fonction	Dixième adjoint au maire	NA	Fonction incorrecte
+1044357	1456768	MARTIN	Elsa	Date fin fonction	26/6/2015	NA	Fonction incorrecte
+1044365	1456772	MONDIERE	Anne-Sophie	Libelle fonction	Huitième adjoint au maire	NA	Fonction incorrecte
+1044365	1456772	MONDIERE	Anne-Sophie	Date fin fonction	26/6/2015	NA	Fonction incorrecte
+1044373	1191640	OUMARI	Hocine	Libelle fonction	Septième adjoint au maire	NA	Fonction incorrecte
+1044373	1191640	OUMARI	Hocine	Date fin fonction	26/6/2015	NA	Fonction incorrecte
+1044397	1456765	SHORT-FERJULE	Sara	Libelle fonction	Sixième adjoint au maire	NA	Fonction incorrecte
+1044397	1456765	SHORT-FERJULE	Sara	Date fin fonction	26/6/2015	NA	Fonction incorrecte
+1044405	1114225	TASD'HOMME	Thierry	Libelle fonction	Neuvième adjoint au maire	NA	Fonction incorrecte
+1044405	1114225	TASD'HOMME	Thierry	Date fin fonction	26/6/2015	NA	Fonction incorrecte
+1044414	606681	VERGNAUD	Brigitte	Libelle fonction	Second adjoint au maire	NA	Fonction incorrecte
+1044414	606681	VERGNAUD	Brigitte	Date fin fonction	26/6/2015	NA	Fonction incorrecte
