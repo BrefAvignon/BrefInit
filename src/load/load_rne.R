@@ -51,7 +51,7 @@ load.conversion.file <- function(file)
 #############################################################################################
 load.data <- function(filenames, col.map, correc.file, correct.data, election.file, series.file, type)
 {	# load and normalize the data as strings
-	data <- retrieve.normalize.data(filenames, col.map)
+	data <- retrieve.normalize.data(filenames, col.map, correct.data)
 #data0 <- data
 	
 	# possibly apply the corrections

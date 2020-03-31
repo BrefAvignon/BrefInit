@@ -13,10 +13,11 @@
 #
 # filenames: list of files to read.
 # col.map: how to convert column names.
+# correct.data: whether or not to apply the correction on the data read.
 #
 # returns: data frame containing only (clean) strings.
 #############################################################################################
-retrieve.normalize.data <- function(filenames, col.map)
+retrieve.normalize.data <- function(filenames, col.map, correct.data)
 {	# load the data table(s)
 	data <- NULL
 	for(filename in filenames)
@@ -55,8 +56,8 @@ retrieve.normalize.data <- function(filenames, col.map)
 		colnames(data) <- norm.names
 	
 	# EPCI-specific cleaning
-	if(COL_ATT_EPCI_NOM %in% colnames(data))
-	{	# clean CC names
+	if(correct.data && COL_ATT_EPCI_NOM %in% colnames(data))
+	{	# clean CC names (must be done before normalization)
 		data[,COL_ATT_EPCI_NOM] <- gsub(pattern=" (archivé)",replacement="",x=data[,COL_ATT_EPCI_NOM],fixed=TRUE)
 		data[,COL_ATT_EPCI_NOM] <- gsub(pattern=" - archivé",replacement="",x=data[,COL_ATT_EPCI_NOM],fixed=TRUE)
 	}
@@ -528,7 +529,7 @@ apply.systematic.corrections <- function(data, type)
 	if(type=="EPCI")
 	{	# clean missing department codes
 		tlog(0,"Cleaning missing department codes")
-		idx <- which(data[,COL_ATT_DPT_CODE]=="0" | data[,COL_ATT_DPT_CODE]=="00")
+		idx <- which(data[,COL_ATT_DPT_CODE]=="0" | data[,COL_ATT_DPT_CODE]=="00")	# TODO add these zeroes to the count in the report
 		if(length(idx)>0)
 		{	data[idx,COL_ATT_DPT_CODE] <- NA
 			data[idx,COL_ATT_CORREC_INFO] <- TRUE 
@@ -568,7 +569,7 @@ apply.systematic.corrections <- function(data, type)
 	}
 	# M-specific cleaning
 	if(type=="M")
-	{	tlog(0,"Align dates that are systematically wrong (by a few days) for certain departments and elections")
+	{	tlog(0,"Align dates that are systematically wrong (by a few days) for certain departments and elections") # NOTE this is very ad hoc
 		#
 		idx <- which(data[,COL_ATT_DPT_NOM]=="CREUSE" & data[,COL_ATT_MDT_DBT]==as.Date("3/3/2001"))
 		if(length(idx)>0)
