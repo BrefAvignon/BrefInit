@@ -61,6 +61,11 @@ retrieve.normalize.data <- function(filenames, col.map, correct.data)
 		data[,COL_ATT_EPCI_NOM] <- gsub(pattern=" (archivé)",replacement="",x=data[,COL_ATT_EPCI_NOM],fixed=TRUE)
 		data[,COL_ATT_EPCI_NOM] <- gsub(pattern=" - archivé",replacement="",x=data[,COL_ATT_EPCI_NOM],fixed=TRUE)
 	}
+	# municipality-specific cleaning
+	if(correct.data && COL_ATT_EPCI_NOM %in% colnames(data))
+	{	# clean municipality names (must be done before normalization)
+		data[,COL_ATT_COM_NOM] <- gsub(pattern=" (archivée)",replacement="",x=data[,COL_ATT_COM_NOM],fixed=TRUE)
+	}
 	
 	# setting appropriate encoding of string columns, replace "" by NAs, and normalize proper nouns
 	tlog(0,"Cleaning/encoding/normalizing strings")
