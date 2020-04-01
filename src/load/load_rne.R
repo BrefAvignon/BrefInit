@@ -2,6 +2,8 @@
 # Functions used to load each table, and apply specific corrections to them.
 # 
 # 09/2019 Vincent Labatut
+#
+# source("src/load/load_rne.R")
 #############################################################################################
 
 

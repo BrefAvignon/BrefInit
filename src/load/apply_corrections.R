@@ -2,6 +2,8 @@
 # Functions used to correct the RNE data.
 # 
 # 03/2020 Vincent Labatut
+#
+# source("src/load/apply_corrections.R")
 #############################################################################################
 
 
@@ -339,7 +341,8 @@ apply.adhoc.corrections <- function(data, col.map, correc.file)
 			{	# identify the targeted row in the data table
 				idx <- which(data[,COL_ATT_ELU_ID_RNE]==correc.table[r,COL_CORREC_ID]
 							& data[,COL_ATT_ELU_NOM]==correc.table[r,COL_CORREC_NOM]
-							& data[,COL_ATT_ELU_PRENOM]==correc.table[r,COL_CORREC_PRENOM]
+							& (data[,COL_ATT_ELU_PRENOM]==correc.table[r,COL_CORREC_PRENOM]
+								| is.na(data[,COL_ATT_ELU_PRENOM]) & is.na(correc.table[r,COL_CORREC_PRENOM]))
 							& (data[,correc.attr]==correc.table[r,COL_CORREC_VALAVT]
 								| is.na(data[,correc.attr]) & is.na(correc.table[r,COL_CORREC_VALAVT]))
 				)
@@ -1217,13 +1220,13 @@ merge.overlapping.mandates <- function(data, type)
 	
 	# list of circonscription codes
 	if(type=="CD")
-		circo.codes <- apply(data[,c(COL_ATT_DPT_CODE,COL_ATT_CANT_ID)], 1, function(r) paste(r,collapse="_"))
+		circo.codes <- data[,COL_ATT_CANT_ID]
 	else if(type=="CM" || type=="M")
-		circo.codes <- apply(data[,c(COL_ATT_DPT_CODE,COL_ATT_COM_CODE)], 1, function(r) paste(r,collapse="_"))
+		circo.codes <- sapply(1:nrow(data), function(r) paste(data[r,COL_ATT_DPT_CODE],data[r,COL_ATT_COM_CODE],collapse="_"))
 	else if(type=="CR")
 		circo.codes <- data[,COL_ATT_REG_CODE]
 	else if(type=="D")
-		circo.codes <- apply(data[,c(COL_ATT_DPT_CODE,COL_ATT_CIRC_CODE)], 1, function(r) paste(r,collapse="_"))
+		circo.codes <- sapply(1:nrow(data), function(r) paste(data[r,COL_ATT_DPT_CODE],data[r,COL_ATT_CIRC_CODE],collapse="_"))
 	else if(type=="DE")
 		circo.codes <- data[,COL_ATT_CIRCE_NOM]
 	else if(type=="EPCI")
@@ -1255,7 +1258,18 @@ merge.overlapping.mandates <- function(data, type)
 				else 
 				{	for(k in (j+1):length(idx))
 					{	tlog(6,"Comparing to row ",k,"/",length(idx))
-						
+
+print(j)
+print(k)
+print(idx[j])
+print(idx[k])
+print(circo.codes[idx[j]])
+print(circo.codes[idx[k]])
+print(circo.codes[idx[j]]==circo.codes[idx[k]])
+print(is.na(circo.codes[idx[j]]))
+print(is.na(circo.codes[idx[k]]))
+print(is.na(circo.codes[idx[j]]) || is.na(circo.codes[idx[k]]) || circo.codes[idx[j]]==circo.codes[idx[k]])
+
 						# check if row not already removed
 						if(idx[k] %in% idx.rmv)
 							tlog(8,"Row already removed, nothing to compare to")
@@ -1267,17 +1281,21 @@ merge.overlapping.mandates <- function(data, type)
 										end1=data[idx[j],COL_ATT_MDT_FIN],
 										start2=data[idx[k],COL_ATT_MDT_DBT], 
 										end2=data[idx[k],COL_ATT_MDT_FIN])
-									|| data[idx[j],COL_ATT_MDT_DBT]==(data[idx[k],COL_ATT_MDT_FIN]+1)	# or mandates must be consecutive
-									|| data[idx[k],COL_ATT_MDT_DBT]==(data[idx[j],COL_ATT_MDT_FIN]+1))
+									|| (!is.na(data[idx[j],COL_ATT_MDT_DBT])							# or mandates must be consecutive
+										&& !is.na(data[idx[k],COL_ATT_MDT_FIN])
+										&& data[idx[j],COL_ATT_MDT_DBT]==(data[idx[k],COL_ATT_MDT_FIN]+1))	
+									|| (!is.na(data[idx[k],COL_ATT_MDT_DBT])							# (another way of being consecutive)
+										&& !is.na(data[idx[j],COL_ATT_MDT_FIN])
+										&& data[idx[k],COL_ATT_MDT_DBT]==(data[idx[j],COL_ATT_MDT_FIN]+1)))
 								&& (is.na(fct.att) || 													# either no function specified at all in the table
 									is.na(data[idx[j],fct.att]) || is.na(data[idx[k],fct.att]) 			# or NA function in at least one of the rows
 										|| is.na(data[idx[j],COL_ATT_FCT_DBT])							# or no function date in at least one of the rows 
 										|| is.na(data[idx[k],COL_ATT_FCT_DBT])
 										|| (data[idx[j],fct.att]==data[idx[k],fct.att] && 				# or the same function in both row, in which case
 											date.intersect(start1=data[idx[j],COL_ATT_FCT_DBT],			# the function dates must overlap too
-													end1=data[idx[j],COL_ATT_FCT_FIN],
-													start2=data[idx[k],COL_ATT_FCT_DBT], 
-													end2=data[idx[k],COL_ATT_FCT_FIN])))
+												end1=data[idx[j],COL_ATT_FCT_FIN],
+												start2=data[idx[k],COL_ATT_FCT_DBT], 
+												end2=data[idx[k],COL_ATT_FCT_FIN])))
 							)
 							{	# log detected overlap
 								tlog(10, format.row(data[idx[j],]))
