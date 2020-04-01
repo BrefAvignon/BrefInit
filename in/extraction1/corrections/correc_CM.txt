@@ -1,7 +1,7 @@
 Row	Id RNE	Nom	Prenom	Attribut	ValAvt	ValApr	Commentaire
 50111	14132	ALLIX	NA	Prenom elu	NA	Marie-Danielle	Prénom manquant
 64697	889027	ESPENEL	NA	Prenom elu	NA	Marie-Danielle	Prénom manquant
-143026	1239530	DUPONT	NA	Prenom elu	NA	Marie-Danielle	Prénom manquant
+143024	909541	DUPONT	NA	Prenom elu	NA	Marie-Danielle	Prénom manquant
 153527	909541	DUPONT	NA	Prenom elu	NA	Marie-Danielle	Prénom manquant
 184894	146336	GIRAUDEAU	NA	Prenom elu	NA	Marie-Danielle	Prénom manquant
 289859	631701	DUBOULE	NA	Prenom elu	NA	Marie-Danielle	Prénom manquant
@@ -32,50 +32,50 @@ Row	Id RNE	Nom	Prenom	Attribut	ValAvt	ValApr	Commentaire
 1129786	825819	MAYET	NA	Prenom elu	NA	Marie-Danièle	Prénom manquant
 1236455	1188475	ARAMOTO	NA	Prenom elu	NA	Marie-Danielle	Prénom manquant
 301652	947546	DERREY EPOUSE DEBAISIEUX	Chantale	Prenom elu	Chantale	Chantal	Typo dans le prénom
-333441	671	TANGUY	Hélène	Date de fin de la fonction	1/7/0012	1/7/2012	Typo dans la date
-844385	47125	BOYER	Jean-Marc	Date de fin de la fonction	20/10/0017	20/10/2017	Typo dans la date
-1143147	80360	SENECHAULT	Jean-Paul	Date de fin de la fonction	22/3/0013	22/3/2013	Typo dans la date
-1143919	90614	BRIE	Simon	Date de début de la fonction	25/3/0201	25/3/2001	Typo dans la date
-14239	106532	BOLON	André	Date de fin de la fonction	20/9/0014	20/9/2014	Typo dans la date
-12819	106573	JANIER	Jacques	Date de fin de la fonction	27/2/0013	27/2/2013	Typo dans la date
-152847	147305	MULLOIS	Dominique	Date de fin de la fonction	20/3/0015	20/3/2015	Typo dans la date
-750418	152251	MUSELET	Bernard	Date de début de la fonction	16/3/0020	16/3/2001	Typo dans la date
-708523	153412	GERARD	Jean-Claude	Date de début de la fonction	13/3/0983	13/03/1983	Typo dans la date
-665930	154678	JACQUEL	Denis	Date de fin du mandat	14/10/0201	14/10/2010	Ou est-ce plutôt 2014 ?
-560462	157950	ARRETEAU	Paula	Date de fin de la fonction	15/1/0012	15/1/2012	Typo dans la date
-1186786	163176	MANG	Jean-Jacques	Date de début de la fonction	16/3/0200	16/3/2001	Typo dans la date
-1154380	164229	CHABRIER	Yves	Date de début de la fonction	25/3/0201	25/3/2001	Typo dans la date
-1127341	164780	AUPHAN	Philippe	Date de début de la fonction	1/2/3003	1/2/2003	Typo dans la date
-1022319	167343	DUBOS	René	Date de début de la fonction	16/3/0201	16/3/2001	Typo dans la date
-1018420	167452	DUCROCQ	Christian	Date de début de la fonction	24/3/0201	24/3/2001	Typo dans la date
-1016279	167508	MAILLARD	Philippe	Date de début de la fonction	16/3/0200	16/3/2001	Typo dans la date
-1013500	167575	NOEL	François-Mary	Date de début de la fonction	17/3/0201	17/3/2001	Typo dans la date
-1013579	167578	PLAILLY	Christian	Date de début de la fonction	23/3/0201	23/3/2001	Typo dans la date
-877798	171311	DULHOSTE	Jean-Pierre	Date de fin de la fonction	7/7/0016	7/7/2016	Typo dans la date
-877376	171319	FARET	Gabriel	Date de fin de la fonction	30/5/0015	30/5/2015	Typo dans la date
-872105	171548	BRUN	Jean	Date de fin de la fonction	4/12/0017	4/12/2017	Typo dans la date
-557028	469570	RIHOUAY	Gilles	Date de fin de la fonction	24/2/0013	24/2/2013	Typo dans la date
-294634	630327	HERNANDEZ	Jean	Date de début de la fonction	6/11/0207	6/11/2017	Typo dans la date
-294400	630700	TRIBOULET	Guy	Date de début de la fonction	8/1/0018	23/03/2014	Pas sûr, à voir
-140601	738771	LEBOUCHER	Dominique	Date de fin de la fonction	23/5/0014	23/5/2014	Typo dans la date
-188569	767803	LAFAURIE	Jacky	Date de fin du mandat	3/5/1938	3/5/2008	Pas sûr du tout, à vérifier
-878202	869169	SASTRE	Serge	Date de fin de la fonction	14/3/0014	14/3/2014	Typo dans la date
-5891	872810	MACLET	Bernard	Date de fin de la fonction	17/7/0013	17/7/2013	Typo dans la date
-9935	875576	MABILLARD	René	Date de fin de la fonction	6/6/0013	6/6/2013	Typo dans la date
-57247	887794	BORNET	Pierre	Date de fin de la fonction	10/7/0014	10/7/2014	Typo dans la date
-188576	917437	QUEYREAU	Joël	Date de fin du mandat	20/10/0201	20/10/2010	Arbitraire, à vérifier
-294393	944908	QUENARDEL	Françoise	Date de début de la fonction	8/1/0018	23/03/2014	Pas sûr, à voir
-839819	1068960	BRUT	Eric	Date de fin de la fonction	21/11/0017	21/11/2017	Typo dans la date
-873112	1077631	BOUR	Marguerite	Date de fin de la fonction	23/10/0015	23/10/2015	Typo dans la date
-872327	1077876	DASTUGUE	Gilbert	Date de fin de la fonction	12/6/0014	12/6/2014	Typo dans la date
-879616	1079145	BOSC	Marie-Claude	Date de fin de la fonction	20/7/0012	20/7/2012	Typo dans la date
+333441	671	TANGUY	Hélène	Date fin fonction	1/7/0012	1/7/2012	Typo dans la date
+844385	47125	BOYER	Jean-Marc	Date fin fonction	20/10/0017	20/10/2017	Typo dans la date
+1143147	80360	SENECHAULT	Jean-Paul	Date fin fonction	22/3/0013	22/3/2013	Typo dans la date
+1143919	90614	BRIE	Simon	Date debut fonction	25/3/0201	25/3/2001	Typo dans la date
+14239	106532	BOLON	André	Date fin fonction	20/9/0014	20/9/2014	Typo dans la date
+12819	106573	JANIER	Jacques	Date fin fonction	27/2/0013	27/2/2013	Typo dans la date
+152847	147305	MULLOIS	Dominique	Date fin fonction	20/3/0015	20/3/2015	Typo dans la date
+750418	152251	MUSELET	Bernard	Date debut fonction	16/3/0020	16/3/2001	Typo dans la date
+708523	153412	GERARD	Jean-Claude	Date debut fonction	13/3/0983	13/03/1983	Typo dans la date
+665930	154678	JACQUEL	Denis	Date fin mandat	14/10/0201	14/10/2010	Ou est-ce plutôt 2014 ?
+560462	157950	ARRETEAU	Paula	Date fin fonction	15/1/0012	15/1/2012	Typo dans la date
+1186786	163176	MANG	Jean-Jacques	Date debut fonction	16/3/0200	16/3/2001	Typo dans la date
+1154380	164229	CHABRIER	Yves	Date debut fonction	25/3/0201	25/3/2001	Typo dans la date
+1127341	164780	AUPHAN	Philippe	Date debut fonction	1/2/3003	1/2/2003	Typo dans la date
+1022319	167343	DUBOS	René	Date debut fonction	16/3/0201	16/3/2001	Typo dans la date
+1018420	167452	DUCROCQ	Christian	Date debut fonction	24/3/0201	24/3/2001	Typo dans la date
+1016279	167508	MAILLARD	Philippe	Date debut fonction	16/3/0200	16/3/2001	Typo dans la date
+1013500	167575	NOEL	François-Mary	Date debut fonction	17/3/0201	17/3/2001	Typo dans la date
+1013579	167578	PLAILLY	Christian	Date debut fonction	23/3/0201	23/3/2001	Typo dans la date
+877798	171311	DULHOSTE	Jean-Pierre	Date fin fonction	7/7/0016	7/7/2016	Typo dans la date
+877376	171319	FARET	Gabriel	Date fin fonction	30/5/0015	30/5/2015	Typo dans la date
+872105	171548	BRUN	Jean	Date fin fonction	4/12/0017	4/12/2017	Typo dans la date
+557028	469570	RIHOUAY	Gilles	Date fin fonction	24/2/0013	24/2/2013	Typo dans la date
+294634	630327	HERNANDEZ	Jean	Date debut fonction	6/11/0207	6/11/2017	Typo dans la date
+294400	630700	TRIBOULET	Guy	Date debut fonction	8/1/0018	23/03/2014	Pas sûr, à voir
+140601	738771	LEBOUCHER	Dominique	Date fin fonction	23/5/0014	23/5/2014	Typo dans la date
+188569	767803	LAFAURIE	Jacky	Date fin mandat	3/5/1938	3/5/2008	Pas sûr du tout, à vérifier
+878202	869169	SASTRE	Serge	Date fin fonction	14/3/0014	14/3/2014	Typo dans la date
+5891	872810	MACLET	Bernard	Date fin fonction	17/7/0013	17/7/2013	Typo dans la date
+9935	875576	MABILLARD	René	Date fin fonction	6/6/0013	6/6/2013	Typo dans la date
+57247	887794	BORNET	Pierre	Date fin fonction	10/7/0014	10/7/2014	Typo dans la date
+188576	917437	QUEYREAU	Joël	Date fin mandat	20/10/0201	20/10/2010	Arbitraire, à vérifier
+294393	944908	QUENARDEL	Françoise	Date debut fonction	8/1/0018	23/03/2014	Pas sûr, à voir
+839819	1068960	BRUT	Eric	Date fin fonction	21/11/0017	21/11/2017	Typo dans la date
+873112	1077631	BOUR	Marguerite	Date fin fonction	23/10/0015	23/10/2015	Typo dans la date
+872327	1077876	DASTUGUE	Gilbert	Date fin fonction	12/6/0014	12/6/2014	Typo dans la date
+879616	1079145	BOSC	Marie-Claude	Date fin fonction	20/7/0012	20/7/2012	Typo dans la date
 1162579	1144788	TROUY	Noël	Date de naissance	1/1/1900	27/2/1949	Typo dans la date, et il est en double, cf id 1486017
-294373	1277552	DRAY	Bernadette	Date de début de la fonction	8/1/0018	23/03/2014	Pas sûr, à voir
-294386	1277554	MOULIN	Geneviève	Date de début de la fonction	8/1/0018	23/03/2014	Pas sûr, à voir
-467611	1317870	FAVRE	Aurélie	Date de début de la fonction	28/8/0014	28/8/2014	Typo dans la date
-592851	1352560	COCHONNEAU	Virginie	Date de fin du mandat	29/1/0201	29/1/2016	Arbitraire, à vérifier
-1230602	151263	ROZE	Eric	Date de fin de la fonction	28/3/2020	NA	Date incorrecte, située dans le futur
-1230811	871717	JACARIA	Véronique	Date de fin de la fonction	28/3/2020	NA	Date incorrecte, située dans le futur
+294373	1277552	DRAY	Bernadette	Date debut fonction	8/1/0018	23/03/2014	Pas sûr, à voir
+294386	1277554	MOULIN	Geneviève	Date debut fonction	8/1/0018	23/03/2014	Pas sûr, à voir
+467611	1317870	FAVRE	Aurélie	Date debut fonction	28/8/0014	28/8/2014	Typo dans la date
+592851	1352560	COCHONNEAU	Virginie	Date fin mandat	29/1/0201	29/1/2016	Arbitraire, à vérifier
+1230602	151263	ROZE	Eric	Date fin fonction	28/3/2020	NA	Date incorrecte, située dans le futur
+1230811	871717	JACARIA	Véronique	Date fin fonction	28/3/2020	NA	Date incorrecte, située dans le futur
 NA	NA	NA	NA	Libelle commune	LANTOSQUE PELASQUE SECTION 02	LANTOSQUE	On ignore les subdivisions de la commune
 NA	NA	NA	NA	Libelle commune	CHAUVINCOURT PROVEMONT SECTION 01	CHAUVINCOURT PROVEMONT	On ignore les subdivisions de la commune
 NA	NA	NA	NA	Libelle commune	CHAUVINCOURT PROVEMONT SECTION 02	CHAUVINCOURT PROVEMONT	On ignore les subdivisions de la commune
@@ -467,7 +467,7 @@ NA	NA	NA	NA	Libelle commune	TEVA I UTA SECTION 01 MATAIEA	TEVA I UTA	On ignore l
 121309	77440	HUBERT	Françoise	Date naissance	NA	1/1/1966	Date naissance manquante
 833588	172776	LAGACHE	Claude	Date naissance	NA	1/1/1936	Date naissance manquante
 670054	154538	PETIT	Jean-Michel	Date naissance	NA	31/8/1958	Date naissance manquante
-815845	154538	PETIT	Jean-Michel	Id RNE	154538	1165263	Confusion d'homonymes
+815845	154538	PETIT	Jean-Michel	ID RNE	154538	1165263	Confusion d'homonymes
 815845	1165263	PETIT	Jean-Michel	Date naissance	NA	31/10/1970	Date naissance manquante
 815845	1165263	PETIT	Jean-Michel	Code profession	61	42	Confusion d'homonymes
 815845	1165263	PETIT	Jean-Michel	Libelle profession	Retraités salariés privés	Professeurs du secondaire et techn.	Confusion d'homonymes
@@ -482,14 +482,15 @@ NA	NA	NA	NA	Libelle commune	TEVA I UTA SECTION 01 MATAIEA	TEVA I UTA	On ignore l
 158925	906053	GERAULT	Franck	Date debut fonction	21/4/2018	NA	Fonction incorrecte
 158930	732062	GILLES	Valérie	Libelle fonction	Premier adjoint au maire	NA	Fonction incorrecte
 158930	732062	GILLES	Valérie	Date debut fonction	21/4/2018	NA	Fonction incorrecte
-158978	906445	LETRESOR	Maurice	ID RNE	906445	NA	Ligne redondante
-158978	906445	LETRESOR	Maurice	Libelle fonction	Second adjoint au maire	NA	Fonction incorrecte
-158978	906445	LETRESOR	Maurice	Date debut fonction	21/4/2018	NA	Fonction incorrecte
+158978	906445	LETRESOR	Maurice	Date debut fonction	21/4/2018	1/1/2017	Fonction incorrecte
+158978	906445	LETRESOR	Maurice	Date fin fonction	NA	8/4/2018	Fonction incorrecte
+158979	906445	LETRESOR	Maurice	ID RNE	906445	NA	Ligne redondante
 174905	1505037	LABROUSSE	Christine	Libelle fonction	Premier adjoint au maire	NA	Fonction incorrecte
 174905	1505037	LABROUSSE	Christine	Date debut fonction	28/3/2014	NA	Fonction incorrecte
 177455	637060	PARNAUDEAU	Christophe	Date fin fonction	NA	1/1/2017	Date manquante
 176750	1244921	PIVETEAU	Béatrice	Date fin fonction	NA	1/1/2017	Date manquante
-177456	637067	SALLE	Patrick	Nom elu	SALLE	SALLEE	Coquille dans le nom de famille
+177456	637067	SALLE	Partick	Nom elu	SALLE	SALLEE	Coquille dans le nom de famille
+177456	637067	SALLEE	Partick	Prenom elu	Partick	Patrick	Coquille dans le prénom
 177457	637067	SALLEE	Patrick	Date fin fonction	NA	1/1/2017	Date manquante
 176757	767629	SIMONNET	Didier	Date fin fonction	NA	1/1/2017	Date manquante
 404258	970985	PICHARDIE	Bernard	Libelle fonction	Troisième adjoint au maire	NA	Fonction incorrecte
@@ -506,8 +507,8 @@ NA	NA	NA	NA	Libelle commune	TEVA I UTA SECTION 01 MATAIEA	TEVA I UTA	On ignore l
 827635	1403903	LEROY	Annick	Libelle fonction	Second adjoint au maire	NA	Fonction incorrecte
 827635	1403903	LEROY	Annick	Date debut fonction	4/4/2014	NA	Fonction incorrecte
 962026	38683	PRONCHERY	Michel	ID RNE	38683	NA	Ligne redondante, function incorrecte
-671660	1439188	BATARD	Gérard	ID RNE	1439188	NA	Ligne redondante, function incorrecte
-671662	1439188	BATARD	Gérard	ID RNE	1439188	NA	Ligne redondante, function incorrecte
+971660	1439188	BATARD	Gérard	ID RNE	1439188	NA	Ligne redondante, function incorrecte
+971662	1439188	BATARD	Gérard	ID RNE	1439188	NA	Ligne redondante, function incorrecte
 1185375	1491716	BERGER	Serge	Libelle fonction	Second adjoint au maire	NA	Fonction incorrecte
 1185375	1491716	BERGER	Serge	Date debut fonction	10/10/2014	NA	Fonction incorrecte
 1185390	1491719	PETIT	Josiane	Libelle fonction	Premier adjoint au maire	NA	Fonction incorrecte
@@ -517,34 +518,34 @@ NA	NA	NA	NA	Libelle commune	TEVA I UTA SECTION 01 MATAIEA	TEVA I UTA	On ignore l
 1237547	1202362	TERITO	Jeanine	Date fin mandat	15/6/2014	14/6/2014	Date incohérente
 1237547	1202362	TERITO	Jeanine	Date fin fonction	NA	14/6/2014	Date manquante
 1238445	1202725	MAHAA	Jarvis	Date fin fonction	NA	13/8/2017	Date manquante
-766622	1053712	MONTAGNER EPOUSE MILLIOT	Patricia	ID RNE	1053712	Ligne redondante
+766622	1053712	MONTAGNER EPOUSE MILLIOT	Patricia	ID RNE	1053712	NA	Ligne redondante
 300849	331789	LOUVARD	Evelyne	Libelle fonction	Premier adjoint au maire	NA	Fonction incorrecte
-300849	331789	LOUVARD	Evelyne	Date fin fonction	3/3/2017	NA	Fonction incorrecte
+300849	331789	LOUVARD	Evelyne	Date debut fonction	3/3/2017	NA	Fonction incorrecte
 300864	275948	RENARD	Denise	Libelle fonction	Maire délégué	NA	Fonction incorrecte
-300864	275948	RENARD	Denise	Date fin fonction	3/3/2017	NA	Fonction incorrecte
+300864	275948	RENARD	Denise	Date debut fonction	3/3/2017	NA	Fonction incorrecte
 710192	1376276	HOUVER	Laurent	Libelle fonction	Second adjoint au maire	NA	Fonction incorrecte
-710192	1376276	HOUVER	Laurent	Date fin fonction	17/4/2017	NA	Fonction incorrecte
+710192	1376276	HOUVER	Laurent	Date debut fonction	17/4/2017	NA	Fonction incorrecte
 795099	17072	GERONDEAU	Jean-Pierre	Libelle fonction	Sixième adjoint au maire	NA	Fonction incorrecte
-795099	17072	GERONDEAU	Jean-Pierre	Date fin fonction	26/6/2016	NA	Fonction incorrecte
+795099	17072	GERONDEAU	Jean-Pierre	Date debut fonction	26/6/2016	NA	Fonction incorrecte
 1044256	1114226	BECQUART	Dominique	Libelle fonction	Cinquième adjoint au maire	NA	Fonction incorrecte
-1044256	1114226	BECQUART	Dominique	Date fin fonction	26/6/2015	NA	Fonction incorrecte
+1044256	1114226	BECQUART	Dominique	Date debut fonction	26/6/2015	NA	Fonction incorrecte
 1044268	1114168	BORD	Gilles	Libelle fonction	Premier adjoint au maire	NA	Fonction incorrecte
-1044268	1114168	BORD	Gilles	Date fin fonction	26/6/2015	NA	Fonction incorrecte
+1044268	1114168	BORD	Gilles	Date debut fonction	26/6/2015	NA	Fonction incorrecte
 1044278	540013	CABUCHE	Patrick	Libelle fonction	Troisième adjoint au maire	NA	Fonction incorrecte
-1044278	540013	CABUCHE	Patrick	Date fin fonction	26/6/2015	NA	Fonction incorrecte
+1044278	540013	CABUCHE	Patrick	Date debut fonction	26/6/2015	NA	Fonction incorrecte
 1044315	1456770	GHOZELANE	Sofiane	Libelle fonction	Onzième adjoint au maire	NA	Fonction incorrecte
-1044315	1456770	GHOZELANE	Sofiane	Date fin fonction	26/6/2015	NA	Fonction incorrecte
+1044315	1456770	GHOZELANE	Sofiane	Date debut fonction	26/6/2015	NA	Fonction incorrecte
 1044354	1114222	LOPES	Nadine	Libelle fonction	Quatrième adjoint au maire	NA	Fonction incorrecte
-1044354	1114222	LOPES	Nadine	Date fin fonction	26/6/2015	NA	Fonction incorrecte
+1044354	1114222	LOPES	Nadine	Date debut fonction	26/6/2015	NA	Fonction incorrecte
 1044357	1456768	MARTIN	Elsa	Libelle fonction	Dixième adjoint au maire	NA	Fonction incorrecte
-1044357	1456768	MARTIN	Elsa	Date fin fonction	26/6/2015	NA	Fonction incorrecte
+1044357	1456768	MARTIN	Elsa	Date debut fonction	26/6/2015	NA	Fonction incorrecte
 1044365	1456772	MONDIERE	Anne-Sophie	Libelle fonction	Huitième adjoint au maire	NA	Fonction incorrecte
-1044365	1456772	MONDIERE	Anne-Sophie	Date fin fonction	26/6/2015	NA	Fonction incorrecte
+1044365	1456772	MONDIERE	Anne-Sophie	Date debut fonction	26/6/2015	NA	Fonction incorrecte
 1044373	1191640	OUMARI	Hocine	Libelle fonction	Septième adjoint au maire	NA	Fonction incorrecte
-1044373	1191640	OUMARI	Hocine	Date fin fonction	26/6/2015	NA	Fonction incorrecte
+1044373	1191640	OUMARI	Hocine	Date debut fonction	26/6/2015	NA	Fonction incorrecte
 1044397	1456765	SHORT-FERJULE	Sara	Libelle fonction	Sixième adjoint au maire	NA	Fonction incorrecte
-1044397	1456765	SHORT-FERJULE	Sara	Date fin fonction	26/6/2015	NA	Fonction incorrecte
+1044397	1456765	SHORT-FERJULE	Sara	Date debut fonction	26/6/2015	NA	Fonction incorrecte
 1044405	1114225	TASD'HOMME	Thierry	Libelle fonction	Neuvième adjoint au maire	NA	Fonction incorrecte
-1044405	1114225	TASD'HOMME	Thierry	Date fin fonction	26/6/2015	NA	Fonction incorrecte
+1044405	1114225	TASD'HOMME	Thierry	Date debut fonction	26/6/2015	NA	Fonction incorrecte
 1044414	606681	VERGNAUD	Brigitte	Libelle fonction	Second adjoint au maire	NA	Fonction incorrecte
-1044414	606681	VERGNAUD	Brigitte	Date fin fonction	26/6/2015	NA	Fonction incorrecte
+1044414	606681	VERGNAUD	Brigitte	Date debut fonction	26/6/2015	NA	Fonction incorrecte
