@@ -2,6 +2,8 @@
 # Functions used to correct the RNE data.
 # 
 # 03/2020 Vincent Labatut
+#
+# source("src/load/apply_corrections.R")
 #############################################################################################
 
 
@@ -13,10 +15,11 @@
 #
 # filenames: list of files to read.
 # col.map: how to convert column names.
+# correct.data: whether or not to apply the correction on the data read.
 #
 # returns: data frame containing only (clean) strings.
 #############################################################################################
-retrieve.normalize.data <- function(filenames, col.map)
+retrieve.normalize.data <- function(filenames, col.map, correct.data)
 {	# load the data table(s)
 	data <- NULL
 	for(filename in filenames)
@@ -55,10 +58,15 @@ retrieve.normalize.data <- function(filenames, col.map)
 		colnames(data) <- norm.names
 	
 	# EPCI-specific cleaning
-	if(COL_ATT_EPCI_NOM %in% colnames(data))
-	{	# clean CC names
+	if(correct.data && COL_ATT_EPCI_NOM %in% colnames(data))
+	{	# clean CC names (must be done before normalization)
 		data[,COL_ATT_EPCI_NOM] <- gsub(pattern=" (archivé)",replacement="",x=data[,COL_ATT_EPCI_NOM],fixed=TRUE)
 		data[,COL_ATT_EPCI_NOM] <- gsub(pattern=" - archivé",replacement="",x=data[,COL_ATT_EPCI_NOM],fixed=TRUE)
+	}
+	# municipality-specific cleaning
+	if(correct.data && COL_ATT_EPCI_NOM %in% colnames(data))
+	{	# clean municipality names (must be done before normalization)
+		data[,COL_ATT_COM_NOM] <- gsub(pattern=" (archivée)",replacement="",x=data[,COL_ATT_COM_NOM],fixed=TRUE)
 	}
 	
 	# setting appropriate encoding of string columns, replace "" by NAs, and normalize proper nouns
@@ -333,7 +341,8 @@ apply.adhoc.corrections <- function(data, col.map, correc.file)
 			{	# identify the targeted row in the data table
 				idx <- which(data[,COL_ATT_ELU_ID_RNE]==correc.table[r,COL_CORREC_ID]
 							& data[,COL_ATT_ELU_NOM]==correc.table[r,COL_CORREC_NOM]
-							& data[,COL_ATT_ELU_PRENOM]==correc.table[r,COL_CORREC_PRENOM]
+							& (data[,COL_ATT_ELU_PRENOM]==correc.table[r,COL_CORREC_PRENOM]
+								| is.na(data[,COL_ATT_ELU_PRENOM]) & is.na(correc.table[r,COL_CORREC_PRENOM]))
 							& (data[,correc.attr]==correc.table[r,COL_CORREC_VALAVT]
 								| is.na(data[,correc.attr]) & is.na(correc.table[r,COL_CORREC_VALAVT]))
 				)
@@ -472,17 +481,20 @@ apply.systematic.corrections <- function(data, type)
 	if(length(idx)>0)
 	{	tlog(0,"Found ",length(idx)," spouse names")
 		# update names explicitly containing "spouse" 
+		usage.names <- gsub(x=data[idx,COL_ATT_ELU_NOM], pattern="(.+)( EP | EPOUSE )(.+)",replacement="\\1")
 		birth.names <- gsub(x=data[idx,COL_ATT_ELU_NOM], pattern="(.+)( EP | EPOUSE )(.+)",replacement="\\3")
 		new.names <- gsub(x=data[idx,COL_ATT_ELU_NOM], pattern="(.+)( EP | EPOUSE )(.+)",replacement="\\3 \\1")
 		#head(cbind(old.names[idx], birth.names, new.names))
 		data[idx,COL_ATT_ELU_NOM] <- new.names
+		tmp <- matrix(ncol=2,nrow=0)
 		# possibly update other names
 		for(r in 1:length(idx))
 		{	tlog(2, "Processing name ",data[idx[r],COL_ATT_ELU_NOM]," (",r,"/",length(idx),")")
 			idx2 <- which(data[,COL_ATT_ELU_PRENOM]==data[idx[r],COL_ATT_ELU_PRENOM]				# same first name
 						& data[,COL_ATT_ELU_NAIS_DATE]==data[idx[r],COL_ATT_ELU_NAIS_DATE]			# same birthdate
 						& data[,COL_ATT_ELU_NOM]!=data[idx[r],COL_ATT_ELU_NOM]						# different last names
-						& grepl(pattern=birth.names[r], x=data[,COL_ATT_ELU_NOM], fixed=TRUE))		# but includes birth name
+						& (grepl(pattern=birth.names[r], x=data[,COL_ATT_ELU_NOM], fixed=TRUE)		# but includes birth or usage name
+							|| grepl(pattern=usage.names[r], x=data[,COL_ATT_ELU_NOM], fixed=TRUE)))
 			if(length(idx2)>0)
 			{	data[idx2,COL_ATT_ELU_NOM] <- new.names[r]
 				tlog(4, "Updating other rows based on the first below")
@@ -491,10 +503,15 @@ apply.systematic.corrections <- function(data, type)
 					tlog(6, format.row(data[r2,]))
 				ids <- union(data[idx[r],COL_ATT_ELU_ID_RNE], data[idx2,COL_ATT_ELU_ID_RNE])
 				if(length(ids)>1)
-					tlog(4, "WARNING: consider merging RNE ids ",paste(ids,collapse=","))
+				{	tlog(4, "WARNING: consider merging RNE ids ",paste(ids,collapse=","))
+					ids <- sort(as.integer(ids))
+					row <- c(ids[1],paste(ids[-1],collapse=","))
+					tmp <- rbind(tmp, row)
+				}
 			}
-			
 		}
+		tmp <- tmp[order(tmp[,1]),]
+		#print(tmp)		# debug
 		# log result
 		idx <- which(old.names!=data[,COL_ATT_ELU_NOM])
 		corr.rows <- union(corr.rows,idx)
@@ -526,7 +543,7 @@ apply.systematic.corrections <- function(data, type)
 	if(type=="EPCI")
 	{	# clean missing department codes
 		tlog(0,"Cleaning missing department codes")
-		idx <- which(data[,COL_ATT_DPT_CODE]=="0" | data[,COL_ATT_DPT_CODE]=="00")
+		idx <- which(data[,COL_ATT_DPT_CODE]=="0" | data[,COL_ATT_DPT_CODE]=="00")	# TODO add these zeroes to the count in the report
 		if(length(idx)>0)
 		{	data[idx,COL_ATT_DPT_CODE] <- NA
 			data[idx,COL_ATT_CORREC_INFO] <- TRUE 
@@ -566,7 +583,7 @@ apply.systematic.corrections <- function(data, type)
 	}
 	# M-specific cleaning
 	if(type=="M")
-	{	tlog(0,"Align dates that are systematically wrong (by a few days) for certain departments and elections")
+	{	tlog(0,"Align dates that are systematically wrong (by a few days) for certain departments and elections") # NOTE this is very ad hoc
 		#
 		idx <- which(data[,COL_ATT_DPT_NOM]=="CREUSE" & data[,COL_ATT_MDT_DBT]==as.Date("3/3/2001"))
 		if(length(idx)>0)
@@ -1182,9 +1199,9 @@ round.mdtfct.dates <- function(data, election.file, series.file, tolerance)
 
 
 #############################################################################################
-# Merges the mandates that strictly overlap and have compatible data. Compatible data means 
-# that besides the personal info and mandate dates, for the rest of the columns, one value must 
-# be NA or both values must be exactly identical.
+# Merges the mandates that overlap (or are consecutive) and have compatible data. Compatible data 
+# means that besides the personal info and mandate dates, for the rest of the columns, one value 
+# must be NA or both values must be exactly identical.
 #
 # data: original table.
 # type: type of the considered mandate (CD, CM, etc.).
@@ -1196,9 +1213,9 @@ merge.overlapping.mandates <- function(data, type)
 	has.fct <- COL_ATT_FCT_DBT %in% colnames(data)
 	
 	# set the attributes used to test for compatibility
-	atts <- setdiff(colnames(data), c(COL_ATT_ELU_ID, 
-					COL_ATT_MDT_DBT, COL_ATT_MDT_FIN, 
-					COL_ATT_FCT_DBT, COL_ATT_FCT_FIN))
+	atts <- setdiff(colnames(data), c(COL_ATT_ELU_ID, 	# person ID
+				COL_ATT_MDT_DBT, COL_ATT_MDT_FIN, 		# mandate dates
+				COL_ATT_FCT_DBT, COL_ATT_FCT_FIN))		# function dates
 	
 	# set the attribute used to represent the function
 	fct.att <- NA
@@ -1211,11 +1228,11 @@ merge.overlapping.mandates <- function(data, type)
 	if(type=="CD")
 		circo.codes <- data[,COL_ATT_CANT_ID]
 	else if(type=="CM" || type=="M")
-		circo.codes <- apply(data[,c(COL_ATT_DPT_CODE,COL_ATT_COM_CODE)], 1, function(r) paste(r,collapse="_"))
+		circo.codes <- sapply(1:nrow(data), function(r) paste(data[r,COL_ATT_DPT_CODE],data[r,COL_ATT_COM_CODE],collapse="_"))
 	else if(type=="CR")
 		circo.codes <- data[,COL_ATT_REG_CODE]
 	else if(type=="D")
-		circo.codes <- apply(data[,c(COL_ATT_DPT_CODE,COL_ATT_CIRC_CODE)], 1, function(r) paste(r,collapse="_"))
+		circo.codes <- sapply(1:nrow(data), function(r) paste(data[r,COL_ATT_DPT_CODE],data[r,COL_ATT_CIRC_CODE],collapse="_"))
 	else if(type=="DE")
 		circo.codes <- data[,COL_ATT_CIRCE_NOM]
 	else if(type=="EPCI")
@@ -1232,9 +1249,7 @@ merge.overlapping.mandates <- function(data, type)
 		tlog(2,"Processing id ",unique.ids[i]," (",i,"/",length(unique.ids),"): found ",length(idx)," rows")
 		
 		# nothing to do
-		if(i %in% idx.rmv)
-			tlog(6,"Row already removed, nothing to compare to")
-		else if(length(idx)<2)
+		if(length(idx)<2)
 			tlog(6,"Unique row, nothing to compare to")
 		
 		# comparing the to the subsequent rows
@@ -1242,72 +1257,101 @@ merge.overlapping.mandates <- function(data, type)
 		{	for(j in 1:(length(idx)-1))
 			{	tlog(4,"Processing row ",j,"/",length(idx))
 				
-				for(k in (j+1):length(idx))
-				{	tlog(6,"Comparing to row ",k,"/",length(idx))
-					
-					if((is.na(circo.codes[idx[i]]) || is.na(circo.codes[idx[j]])				# at least one NA circonscription, 
-						|| circo.codes[idx[i]]==circo.codes[idx[j]])							# or same circonscription
-							&& date.intersect(start1=data[idx[j],COL_ATT_MDT_DBT], 				# mandates must overlap
-									end1=data[idx[j],COL_ATT_MDT_FIN],
-									start2=data[idx[k],COL_ATT_MDT_DBT], 
-									end2=data[idx[k],COL_ATT_MDT_FIN])
-							&& (is.na(fct.att) || 												# either no function specified at all in the table
-								is.na(data[idx[j],fct.att]) || is.na(data[idx[k],fct.att]) 		# or NA function in at least one of the rows
-									|| is.na(data[idx[j],COL_ATT_FCT_DBT])						# or no function date in at least one of the rows 
-									|| is.na(data[idx[k],COL_ATT_FCT_DBT])
-									|| (data[idx[j],fct.att]==data[idx[k],fct.att] && 			# or the same function in both row, in which case
-										date.intersect(start1=data[idx[j],COL_ATT_FCT_DBT],		# the function dates must overlap too
+				# check if row not already removed
+				if(idx[j] %in% idx.rmv)
+					tlog(6,"Row already removed, nothing to compare to")
+				# row not removed, we go on
+				else 
+				{	for(k in (j+1):length(idx))
+					{	tlog(6,"Comparing to row ",k,"/",length(idx))
+
+print(j)
+print(k)
+print(idx[j])
+print(idx[k])
+print(circo.codes[idx[j]])
+print(circo.codes[idx[k]])
+print(circo.codes[idx[j]]==circo.codes[idx[k]])
+print(is.na(circo.codes[idx[j]]))
+print(is.na(circo.codes[idx[k]]))
+print(is.na(circo.codes[idx[j]]) || is.na(circo.codes[idx[k]]) || circo.codes[idx[j]]==circo.codes[idx[k]])
+
+						# check if row not already removed
+						if(idx[k] %in% idx.rmv)
+							tlog(8,"Row already removed, nothing to compare to")
+						# row not removed, we go on
+						else 
+						{	if((is.na(circo.codes[idx[j]]) || is.na(circo.codes[idx[k]])				# at least one NA circonscription, 
+									|| circo.codes[idx[j]]==circo.codes[idx[k]])						# or same circonscription
+								&& (date.intersect(start1=data[idx[j],COL_ATT_MDT_DBT], 				# mandates must overlap
+										end1=data[idx[j],COL_ATT_MDT_FIN],
+										start2=data[idx[k],COL_ATT_MDT_DBT], 
+										end2=data[idx[k],COL_ATT_MDT_FIN])
+									|| (!is.na(data[idx[j],COL_ATT_MDT_DBT])							# or mandates must be consecutive
+										&& !is.na(data[idx[k],COL_ATT_MDT_FIN])
+										&& data[idx[j],COL_ATT_MDT_DBT]==(data[idx[k],COL_ATT_MDT_FIN]+1))	
+									|| (!is.na(data[idx[k],COL_ATT_MDT_DBT])							# (another way of being consecutive)
+										&& !is.na(data[idx[j],COL_ATT_MDT_FIN])
+										&& data[idx[k],COL_ATT_MDT_DBT]==(data[idx[j],COL_ATT_MDT_FIN]+1)))
+								&& (is.na(fct.att) || 													# either no function specified at all in the table
+									is.na(data[idx[j],fct.att]) || is.na(data[idx[k],fct.att]) 			# or NA function in at least one of the rows
+										|| is.na(data[idx[j],COL_ATT_FCT_DBT])							# or no function date in at least one of the rows 
+										|| is.na(data[idx[k],COL_ATT_FCT_DBT])
+										|| (data[idx[j],fct.att]==data[idx[k],fct.att] && 				# or the same function in both row, in which case
+											date.intersect(start1=data[idx[j],COL_ATT_FCT_DBT],			# the function dates must overlap too
 												end1=data[idx[j],COL_ATT_FCT_FIN],
 												start2=data[idx[k],COL_ATT_FCT_DBT], 
 												end2=data[idx[k],COL_ATT_FCT_FIN])))
-					)
-					{	# log detected overlap
-						tlog(10, format.row(data[idx[j],]))
-						tlog(10, format.row(data[idx[k],]))
-						tlog(8, "Overlap detected between")
-						tlog(10, format.row.dates(data[idx[j],]),if(has.fct) paste0(" (",data[idx[j],fct.att],")") else "")
-						tlog(10, format.row.dates(data[idx[k],]),if(has.fct) paste0(" (",data[idx[k],fct.att],")") else "")
-						
-						# update mandate start date
-						if(is.na(data[idx[j],COL_ATT_MDT_DBT]) || is.na(data[idx[k],COL_ATT_MDT_DBT]))
-							stop("ERROR: empty mandate start date")
-						else 
-							data[idx[j],COL_ATT_MDT_DBT] <- min(data[idx[j],COL_ATT_MDT_DBT], data[idx[k],COL_ATT_MDT_DBT])
-						# update mandate end date
-						if(is.na(data[idx[j],COL_ATT_MDT_FIN]) || is.na(data[idx[k],COL_ATT_MDT_FIN]))
-							data[idx[j],COL_ATT_MDT_FIN] <- NA
-						else
-							data[idx[j],COL_ATT_MDT_FIN] <- max(data[idx[j],COL_ATT_MDT_FIN], data[idx[k],COL_ATT_MDT_FIN])
-						
-						# possibly update function dates
-						if(!is.na(fct.att))
-						{	if(is.na(data[idx[j],COL_ATT_FCT_DBT]))			# the end date should also be NA (first row)
-								data[idx[j],c(COL_ATT_FCT_DBT,COL_ATT_FCT_FIN)] <- data[idx[k],c(COL_ATT_FCT_DBT,COL_ATT_FCT_FIN)]
-							else if(!is.na(data[idx[k],COL_ATT_FCT_DBT]))	# both start dates are not NA (second row)
-							{	data[idx[j],COL_ATT_FCT_DBT] <- min(data[idx[j],COL_ATT_FCT_DBT], data[idx[k],COL_ATT_FCT_DBT])
-								if(!is.na(data[idx[j],COL_ATT_FCT_FIN]) && !is.na(data[idx[k],COL_ATT_FCT_FIN]))
-									data[idx[j],COL_ATT_FCT_FIN] <- max(data[idx[j],COL_ATT_FCT_FIN], data[idx[k],COL_ATT_FCT_FIN])
+							)
+							{	# log detected overlap
+								tlog(10, format.row(data[idx[j],]))
+								tlog(10, format.row(data[idx[k],]))
+								tlog(8, "Overlap detected between")
+								tlog(10, format.row.dates(data[idx[j],]),if(has.fct) paste0(" (",data[idx[j],fct.att],")") else "")
+								tlog(10, format.row.dates(data[idx[k],]),if(has.fct) paste0(" (",data[idx[k],fct.att],")") else "")
+								
+								# update mandate start date
+								if(is.na(data[idx[j],COL_ATT_MDT_DBT]) || is.na(data[idx[k],COL_ATT_MDT_DBT]))
+									stop("ERROR: empty mandate start date")
+								else 
+									data[idx[j],COL_ATT_MDT_DBT] <- min(data[idx[j],COL_ATT_MDT_DBT], data[idx[k],COL_ATT_MDT_DBT])
+								# update mandate end date
+								if(is.na(data[idx[j],COL_ATT_MDT_FIN]) || is.na(data[idx[k],COL_ATT_MDT_FIN]))
+									data[idx[j],COL_ATT_MDT_FIN] <- NA
 								else
-									data[idx[j],COL_ATT_FCT_FIN] <- NA
+									data[idx[j],COL_ATT_MDT_FIN] <- max(data[idx[j],COL_ATT_MDT_FIN], data[idx[k],COL_ATT_MDT_FIN])
+								
+								# possibly update function dates
+								if(!is.na(fct.att))
+								{	if(is.na(data[idx[j],COL_ATT_FCT_DBT]))			# the end date should also be NA (first row)
+										data[idx[j],c(COL_ATT_FCT_DBT,COL_ATT_FCT_FIN)] <- data[idx[k],c(COL_ATT_FCT_DBT,COL_ATT_FCT_FIN)]
+									else if(!is.na(data[idx[k],COL_ATT_FCT_DBT]))	# both start dates are not NA (second row)
+									{	data[idx[j],COL_ATT_FCT_DBT] <- min(data[idx[j],COL_ATT_FCT_DBT], data[idx[k],COL_ATT_FCT_DBT])
+										if(!is.na(data[idx[j],COL_ATT_FCT_FIN]) && !is.na(data[idx[k],COL_ATT_FCT_FIN]))
+											data[idx[j],COL_ATT_FCT_FIN] <- max(data[idx[j],COL_ATT_FCT_FIN], data[idx[k],COL_ATT_FCT_FIN])
+										else
+											data[idx[j],COL_ATT_FCT_FIN] <- NA
+									}
+								}
+								
+								# update the rest of the columns
+								for(c in 1:length(atts))
+								{	if(is.na(data[idx[j],atts[c]]))
+										data[idx[j],atts[c]] <- data[idx[k],atts[c]]
+								}
+								
+								# log merged row
+								tlog(8, "After merge:")
+								tlog(10, format.row(data[idx[j],]))
+								#tlog(10, format.row.dates(data[idx[j],])," (",data[idx[j],fct.att],")")
+								#readline() #stop()
+								
+								# update counters
+								nbr.corr <- nbr.corr + 1
+								idx.rmv <- c(idx.rmv, idx[k])
+								data[idx[j],COL_ATT_CORREC_DATE] <- TRUE
 							}
 						}
-						
-						# update the rest of the columns
-						for(c in 1:length(atts))
-						{	if(is.na(data[idx[j],atts[c]]))
-								data[idx[j],atts[c]] <- data[idx[k],atts[c]]
-						}
-						
-						# log merged row
-						tlog(8, "After merge:")
-						tlog(10, format.row(data[idx[j],]))
-						#tlog(10, format.row.dates(data[idx[j],])," (",data[idx[j],fct.att],")")
-						#readline() #stop()
-						
-						# update counters
-						nbr.corr <- nbr.corr + 1
-						idx.rmv <- c(idx.rmv, idx[k])
-						data[idx[j],COL_ATT_CORREC_DATE] <- TRUE
 					}
 				}
 			}
