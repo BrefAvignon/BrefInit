@@ -145,7 +145,7 @@ test.position.cm <- function(data, out.folder)
 	coms <- data[,COL_ATT_COM_CODE]
 	functs <- data[,COL_ATT_FCT_NOM]
 	pos <- apply(cbind(dpts,coms,functs),1,function(r) paste(r,collapse="_"))
-	unique.pos <- sort(unique(pos[!is.na(functs)]))
+	unique.pos <- sort(unique(pos[!is.na(functs) & pos!="MAIRE DELEGUE"]))	# ignore the function of deputee mayor
 	tlog(4,"Found ",length(unique.pos)," of them")
 	
 	# process each unique function 

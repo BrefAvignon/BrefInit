@@ -68,7 +68,7 @@ test.col.dates.generic <- function(data, out.folder, tolerance=7)
 	# comparing mandate boundaries
 	{	tlog(4,"Comparing start/end dates for mandates")
 		
-		# no mandate dates at all
+		# no mandate dates at all			# NOTE now quite redundant with the new tests in test.col.incomplete.mandates
 		idx <- which(is.na(data[,COL_ATT_MDT_DBT]) & is.na(data[,COL_ATT_MDT_FIN]))
 		if(length(idx)>0)
 		{	tmp <- cbind(idx,data[idx,])
@@ -289,19 +289,46 @@ test.col.dates.pre.rne <- function(data, out.folder)
 
 
 #############################################################################################
-# Detects rows where the function is specified, but without any associated dates, or the mandate
-# has an end date but not the function.
+# Detects rows where the function is specified, but misses certain fields, such as no start 
+# date, or no name, or no end date, or no end motive.
 #
 # data: table containing the data.
 # out.folder: folder where to output the results.
 #############################################################################################
-test.col.dates.nofun <- function(data, out.folder)
-{	tlog(2,"Identifying functions without dates")
+test.col.incomplete.funtions <- function(data, out.folder)
+{	tlog(2,"Identifying rows with incomplete function info")
 	
-	# retrieve all rows with a function name but no start date
-	idx <- which(!is.na(data[,COL_ATT_FCT_NOM])
-					& is.na(data[,COL_ATT_FCT_DBT]))
-	tlog(4,"Found ",length(idx)," rows with a function name but no start date")
+	# the mandate has ended if there is a mandate end date or end motive
+	ended.mdt <- (!is.na(data[,COL_ATT_MDT_FIN]) | !is.na(data[,COL_ATT_MDT_MOTIF]))
+	
+	# we have a function if there is a name, start date, end date, or end motive
+	exist.fct <- (!is.na(data[,COL_ATT_FCT_NOM]) | !is.na(data[,COL_ATT_FCT_MOTIF])
+				| !is.na(data[,COL_ATT_FCT_DBT]) | !is.na(data[,COL_ATT_FCT_FIN]))
+	# the function has ended if there is a function end date or end motive, or if the function exists and the mandate has ended
+	ended.fct <- (!is.na(data[,COL_ATT_FCT_FIN]) | !is.na(data[,COL_ATT_FCT_MOTIF])
+				| (exist.fct & ended.mdt))
+	
+	# retrieve all rows missing the function name
+	idx <- which(exist.fct & is.na(data[,COL_ATT_FCT_NOM]))
+	tlog(4,"Found ",length(idx)," rows where the function name is missing")
+	# build the table and write it
+	if(length(idx)>0)
+	{	tmp <- cbind(idx, data[idx,])
+		colnames(tmp)[1] <- "Ligne"
+		tab.file <- file.path(out.folder,"fonction_lib_problems_missing.txt")
+		tlog(4,"Recording in file \"",tab.file,"\"")
+		write.table(x=tmp,file=tab.file,
+#			fileEncoding="UTF-8",
+			row.names=FALSE, 
+			col.names=TRUE,
+#			quote=TRUE,
+			sep="\t"
+		)
+	}
+	
+	# retrieve all rows missing the function start date
+	idx <- which(exist.fct & is.na(data[,COL_ATT_FCT_DBT]))
+	tlog(4,"Found ",length(idx)," rows where the function start date is missing")
 	# build the table and write it
 	if(length(idx)>0)
 	{	tmp <- cbind(idx, data[idx,])
@@ -317,15 +344,123 @@ test.col.dates.nofun <- function(data, out.folder)
 		)
 	}
 	
-	# retrieve all rows with a function name and a mandate end, but no function end
-	idx <- which(!is.na(data[,COL_ATT_FCT_NOM])
-					& is.na(data[,COL_ATT_FCT_FIN]) & !is.na(data[,COL_ATT_MDT_FIN]))
-	tlog(4,"Found ",length(idx)," rows with a function name and mandate end, but no function end")
+	# retrieve all rows missing the function end date
+	idx <- which(ended.fct & is.na(data[,COL_ATT_FCT_FIN]))
+	tlog(4,"Found ",length(idx)," rows where the function end date is missing")
 	# build the table and write it
 	if(length(idx)>0)
 	{	tmp <- cbind(idx, data[idx,])
 		colnames(tmp)[1] <- "Ligne"
 		tab.file <- file.path(out.folder,"fonction_fin_problems_missing.txt")
+		tlog(4,"Recording in file \"",tab.file,"\"")
+		write.table(x=tmp,file=tab.file,
+#			fileEncoding="UTF-8",
+			row.names=FALSE, 
+			col.names=TRUE,
+#			quote=TRUE,
+			sep="\t"
+		)
+	}
+	
+	# retrieve all rows missing the function end motive
+	idx <- which(ended.fct & is.na(data[,COL_ATT_FCT_MOTIF]))
+	tlog(4,"Found ",length(idx)," rows where the function end motive is missing")
+	# build the table and write it
+	if(length(idx)>0)
+	{	tmp <- cbind(idx, data[idx,])
+		colnames(tmp)[1] <- "Ligne"
+		tab.file <- file.path(out.folder,"fonction_motif_problems_missing.txt")
+		tlog(4,"Recording in file \"",tab.file,"\"")
+		write.table(x=tmp,file=tab.file,
+#			fileEncoding="UTF-8",
+			row.names=FALSE, 
+			col.names=TRUE,
+#			quote=TRUE,
+			sep="\t"
+		)
+	}
+}
+
+
+
+
+#############################################################################################
+# Detects rows where the mandate misses certain fields, such as no start date, or no name, or 
+# no end date, or no end motive.
+#
+# data: table containing the data.
+# out.folder: folder where to output the results.
+#############################################################################################
+test.col.incomplete.mandates <- function(data, out.folder)
+{	tlog(2,"Identifying rows with incomplete mandate info")
+	
+	# the mandate has ended if there is a mandate end date or end motive
+	ended.mdt <- (!is.na(data[,COL_ATT_MDT_FIN]) | !is.na(data[,COL_ATT_MDT_MOTIF]))
+	
+	# retrieve all rows missing the mandate name
+	if(COL_ATT_MDT_NOM %in% colnames(data))
+	{	idx <- which(is.na(data[,COL_ATT_MDT_NOM]))
+		tlog(4,"Found ",length(idx)," rows where the mandate name is missing")
+		# build the table and write it
+		if(length(idx)>0)
+		{	tmp <- cbind(idx, data[idx,])
+			colnames(tmp)[1] <- "Ligne"
+			tab.file <- file.path(out.folder,"mandat_lib_problems_missing.txt")
+			tlog(4,"Recording in file \"",tab.file,"\"")
+			write.table(x=tmp,file=tab.file,
+#				fileEncoding="UTF-8",
+				row.names=FALSE, 
+				col.names=TRUE,
+#				quote=TRUE,
+				sep="\t"
+			)
+		}
+	}
+	
+	# retrieve all rows missing the mandate start date
+	idx <- which(is.na(data[,COL_ATT_MDT_DBT]))
+	tlog(4,"Found ",length(idx)," rows where the mandate start date is missing")
+	# build the table and write it
+	if(length(idx)>0)
+	{	tmp <- cbind(idx, data[idx,])
+		colnames(tmp)[1] <- "Ligne"
+		tab.file <- file.path(out.folder,"mandat_debut_problems_missing.txt")
+		tlog(4,"Recording in file \"",tab.file,"\"")
+		write.table(x=tmp,file=tab.file,
+#			fileEncoding="UTF-8",
+			row.names=FALSE, 
+			col.names=TRUE,
+#			quote=TRUE,
+			sep="\t"
+		)
+	}
+	
+	# retrieve all rows missing the mandate end date
+	idx <- which(ended.mdt & is.na(data[,COL_ATT_MDT_FIN]))
+	tlog(4,"Found ",length(idx)," rows where the mandate end date is missing")
+	# build the table and write it
+	if(length(idx)>0)
+	{	tmp <- cbind(idx, data[idx,])
+		colnames(tmp)[1] <- "Ligne"
+		tab.file <- file.path(out.folder,"mandat_fin_problems_missing.txt")
+		tlog(4,"Recording in file \"",tab.file,"\"")
+		write.table(x=tmp,file=tab.file,
+#			fileEncoding="UTF-8",
+			row.names=FALSE, 
+			col.names=TRUE,
+#			quote=TRUE,
+			sep="\t"
+		)
+	}
+	
+	# retrieve all rows missing the mandate end motive
+	idx <- which(ended.mdt & is.na(data[,COL_ATT_MDT_MOTIF]))
+	tlog(4,"Found ",length(idx)," rows where the mandate end motive is missing")
+	# build the table and write it
+	if(length(idx)>0)
+	{	tmp <- cbind(idx, data[idx,])
+		colnames(tmp)[1] <- "Ligne"
+		tab.file <- file.path(out.folder,"mandat_motif_problems_missing.txt")
 		tlog(4,"Recording in file \"",tab.file,"\"")
 		write.table(x=tmp,file=tab.file,
 #			fileEncoding="UTF-8",
@@ -444,50 +579,6 @@ test.col.dates.election <- function(data, out.folder, election.file, series.file
 
 
 #############################################################################################
-# Tests whether some mandate or function have an end motive but no end date, or the opposite.
-#
-# data: table containing the data.
-# out.folder: folder where to output the results.
-#############################################################################################
-test.col.end.motive <- function(data, out.folder)
-{	end.cols <- c(COL_ATT_MDT_FIN, COL_ATT_FCT_FIN)
-	motive.cols <- c(COL_ATT_MDT_MOTIF, COL_ATT_FCT_MOTIF)
-	
-	for(i in 1:length(end.cols))
-	{	end.col <- end.cols[i]
-		motive.col <- motive.cols[i]
-		tlog(2,"Identifying \"",motive.col,"\" motives without end date (",i,"/",length(end.cols),")")
-		
-		if(end.col %in% colnames(data) && motive.col %in% colnames(data))
-		{	# retrieve all rows with an end motive but no end date
-			idx <- which(!is.na(data[,motive.col])
-							& is.na(data[,end.col]))
-			tlog(4,"Found ",length(idx)," rows with a motive name but no end date (",motive.col,")")
-			# build the table and write it
-			if(length(idx)>0)
-			{	tmp <- cbind(idx, data[idx,])
-				colnames(tmp)[1] <- "Ligne"
-				tab.file <- file.path(out.folder,paste0(BASENAMES[motive.col],"_problems_missing_date.txt"))
-				tlog(4,"Recording in file \"",tab.file,"\"")
-				write.table(x=tmp,file=tab.file,
-#					fileEncoding="UTF-8",
-					row.names=FALSE, 
-					col.names=TRUE,
-#					quote=TRUE,
-					sep="\t"
-				)
-			}
-		}
-		
-		else
-			tlog(4,"No test because the required columns are missing from this table")
-	}
-}
-
-
-
-
-#############################################################################################
 # Performs a series of tests on date columns, for the departmental tables, and records the 
 # detected problems in text files.
 #
@@ -498,8 +589,8 @@ test.col.dates.cd <- function(data, out.folder)
 {	# generic tests
 	test.col.dates.generic(data, out.folder, tolerance=7)
 	test.col.dates.pre.rne(data, out.folder)
-	test.col.dates.nofun(data, out.folder)
-	test.col.end.motive(data, out.folder)
+	test.col.incomplete.mandates(data, out.folder)
+	test.col.incomplete.funtions(data, out.folder)
 	
 	# election dates
 	test.col.dates.election(data, out.folder, election.file=FILE_VERIF_DATES_CD, series.file=FILE_VERIF_SERIES_CD)
@@ -543,8 +634,8 @@ test.col.dates.cm <- function(data, out.folder)
 {	# generic tests
 	test.col.dates.generic(data, out.folder, tolerance=7)
 	test.col.dates.pre.rne(data, out.folder)
-	test.col.dates.nofun(data, out.folder)
-	test.col.end.motive(data, out.folder)
+	test.col.incomplete.mandates(data, out.folder)
+	test.col.incomplete.funtions(data, out.folder)
 	
 	# election dates
 	test.col.dates.election(data, out.folder, election.file=FILE_VERIF_DATES_CM)
@@ -585,8 +676,8 @@ test.col.dates.cr <- function(data, out.folder)
 {	# generic tests
 	test.col.dates.generic(data, out.folder, tolerance=7)
 	test.col.dates.pre.rne(data, out.folder)
-	test.col.dates.nofun(data, out.folder)
-	test.col.end.motive(data, out.folder)
+	test.col.incomplete.mandates(data, out.folder)
+	test.col.incomplete.funtions(data, out.folder)
 	
 	# election dates
 	test.col.dates.election(data, out.folder, election.file=FILE_VERIF_DATES_CR)
@@ -629,8 +720,8 @@ test.col.dates.d <- function(data, out.folder)
 {	# generic tests
 	test.col.dates.generic(data, out.folder, tolerance=7)
 	test.col.dates.pre.rne(data, out.folder)
-	test.col.dates.nofun(data, out.folder)
-	test.col.end.motive(data, out.folder)
+	test.col.incomplete.mandates(data, out.folder)
+	test.col.incomplete.funtions(data, out.folder)
 	
 	# election dates
 	test.col.dates.election(data, out.folder, election.file=FILE_VERIF_DATES_D)
@@ -680,7 +771,8 @@ test.col.dates.de <- function(data, out.folder)
 {	# generic tests
 	test.col.dates.generic(data, out.folder, tolerance=7)
 	test.col.dates.pre.rne(data, out.folder)
-	test.col.end.motive(data, out.folder)
+	test.col.incomplete.mandates(data, out.folder)
+	#test.col.incomplete.funtions(data, out.folder)	# no functions described in DE
 	
 	# election dates
 	test.col.dates.election(data, out.folder, election.file=FILE_VERIF_DATES_DE)
@@ -721,8 +813,8 @@ test.col.dates.epci <- function(data, out.folder)
 {	# generic tests
 	test.col.dates.generic(data, out.folder, tolerance=7)
 	test.col.dates.pre.rne(data, out.folder)
-	test.col.dates.nofun(data, out.folder)
-	test.col.end.motive(data, out.folder)
+	test.col.incomplete.mandates(data, out.folder)
+	test.col.incomplete.funtions(data, out.folder)
 }
 
 
@@ -739,8 +831,8 @@ test.col.dates.s <- function(data, out.folder)
 {	# generic tests
 	test.col.dates.generic(data, out.folder, tolerance=7)
 	test.col.dates.pre.rne(data, out.folder)
-	test.col.dates.nofun(data, out.folder)
-	test.col.end.motive(data, out.folder)
+	test.col.incomplete.mandates(data, out.folder)
+	test.col.incomplete.funtions(data, out.folder)
 		
 	# election dates
 	test.col.dates.election(data, out.folder, election.file=FILE_VERIF_DATES_S, series.file=FILE_VERIF_SERIES_S)
@@ -784,6 +876,6 @@ test.col.dates.all <- function(data, out.folder)
 {	# generic tests
 	test.col.dates.generic(data, out.folder, tolerance=7)
 	test.col.dates.pre.rne(data, out.folder)
-	test.col.dates.nofun(data, out.folder)
-	test.col.end.motive(data, out.folder)
+	test.col.incomplete.mandates(data, out.folder)
+	test.col.incomplete.funtions(data, out.folder)
 }

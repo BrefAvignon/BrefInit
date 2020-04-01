@@ -1,4 +1,6 @@
 Row	Id RNE	Nom	Prenom	Attribut	ValAvt	ValApr	Commentaire
+5210	14132	ALLIX	NA	Prenom elu	NA	Marie-Danielle	Prénom manquant
+18690	146336	GIRAUDEAU	NA	Prenom elu	NA	Marie-Danielle	Prénom manquant
 33874	671	TANGUY	Hélène	Date de fin de la fonction	1/7/0012	1/7/2012	Typo dans la date
 80256	47125	BOYER	Jean-Marc	Date de fin de la fonction	20/10/0017	20/10/2017	Typo dans la date
 106878	80360	SENECHAULT	Jean-Paul	Date de fin de la fonction	22/3/0013	22/3/2013	Typo dans la date
@@ -231,3 +233,5 @@ Row	Id RNE	Nom	Prenom	Attribut	ValAvt	ValApr	Commentaire
 112902	684092	PERONNET	Annie	Date fin fonction	NA	16/12/2018	Date manquante
 113167	1199867	VATENAR	René	Date fin fonction	NA	8/10/2017	Date manquante
 113279	33812	FRUTEAU	Eric	ID RNE	33812	NA	Suppression, mandat inexistant
+79247	172776	LAGACHE	Claude	Date naissance	NA	1/1/1936	Date naissance manquante
+64576	154538	PETIT	Jean-Michel	Date naissance	NA	31/8/1958	Date naissance manquante

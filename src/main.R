@@ -136,24 +136,14 @@ source("src/common/include.R")
 # mais même une id donnée peut avoir plusieurs mandats incompatibles, à cause des erreurs présentes dans la BD
 # >> corriger d'abord ces erreurs ? 
 
-# A faire par Emilie
+# A faire par Émilie
 # - Explorer plus profondément la version postgresql de la BD du Sénat
 # - Finir de corriger les noms manquants de communautés dans EPCI
-
-# TODO
-# possible que certains sénateurs apparaissent pas dans RNE sénat (trop vieux) 
-# mais dans une autre table oui (mandat de fin de carrière)
-# >> chercher les homonymes/ddn dans la table fusionnée
 
 # TODO
 # voir pq il y a autant de lignes supprimées dans CM vs. CM2
 # >> peut être que la correction dans le script de comparaison a résolu le pb ?
 # (traitement en cours sur PC LIA)
-
-# TODO Check in the merged table
-# - sumup.cols
-# - test.compatible.rows
-# - test.personal.info
 
 # TODO
 # - check si un mandat = plusieurs fonctions est respecté
@@ -161,22 +151,24 @@ source("src/common/include.R")
 # - spliter les mandats de la même personne qui se recouvrent (déjà fait, non ?)
 
 # TODO
-# - passer en revue les fichiers de problèmes: CM
+# - passer en revue les fichiers de problèmes: *CM
 # - passer en revue les logs: D, S, DE, EPCI, CM, CM
 # - faire la fusion et re-tester
 # - traiter la comparaison approchée des noms
 
-# M:
-# - fonction_dates_problems_bounds
-# - fonction_dates_problems_mandate 
-#   >> comment résoudre ça automatiquement ? 
-#      >> virer déjà les fonctions courtes de maire ?
-#      >> les erreurs semblent particulièrement arriver dans certains départements
-# - fonction_problems_overlap
-#   >> lié au précédent, en partie du moins (il y en a bien moins)
-# CM:
+# CM: TODO
 # - fonction de "maire délégué" à traiter différemment des autres (possiblité de cumul)
+# - TESTER LE CHARGEMENT DES CORRECS AD HOC (pour gagner du temps)
 
 # il existe une BD recensant les EPCI (SIREN)
 # https://www.data.gouv.fr/fr/datasets/base-nationale-sur-linter-communalite/
 # https://www.collectivites-locales.gouv.fr/liste-et-composition-des-epci-a-fiscalite-propre
+
+# TODO sur ZB3
+# 1) charger la conversion d'ids
+# 2) l'appliquer aux données déjà chargées (=tout)
+# 3) appliquer le script pour chercher les noms de jeunes filles
+# 4) il doit y avoir plein d'ids à fusionner
+
+# TODO parcourir manuellement la liste de prénoms et voir ceux qui paraissent mal écrits
+# chercher dans les données, faire la correction manuelle
