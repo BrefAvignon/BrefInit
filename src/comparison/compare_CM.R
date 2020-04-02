@@ -6,7 +6,7 @@
 # source("src/comparison/compare_CM.R")
 # nohup R --vanilla < src/comparison/compare_CM.R > termout.comparison.txt &
 #############################################################################################
-source("src/comparison/compare_tables.R")
+source("src/common/include.R")
 
 
 

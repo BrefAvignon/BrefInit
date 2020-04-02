@@ -5,7 +5,7 @@
 #
 # source("src/comparison/compare_CR.R")
 #############################################################################################
-source("src/comparison/compare_tables.R")
+source("src/common/include.R")
 
 
 

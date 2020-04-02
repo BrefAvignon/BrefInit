@@ -48,6 +48,8 @@ source("src/common/strings.R")
 source("src/common/logging.R")
 source("src/common/stats.R")
 
+source("src/comparison/compare_tables.R")
+
 source("src/load/apply_corrections.R")
 source("src/load/integrate_assnat.R")
 source("src/load/integrate_senat.R")
