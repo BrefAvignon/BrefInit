@@ -34,7 +34,7 @@ test.position.cd <- function(data, out.folder)
 		
 		# get the corresponding mandates
 		idx <- which(data[,COL_ATT_CANT_ID]==unique.pos[p])
-		tlog(4,"Found ",length(idx)," mandates")
+		tlog(6,"Found ",length(idx)," mandates")
 		
 		if(length(idx)>1)
 		{	# record the sequence of mandates for this position
@@ -43,7 +43,7 @@ test.position.cd <- function(data, out.folder)
 			tab2 <- cbind(idx2, data[idx2,])
 			colnames(tab2) <- "Ligne"
 			tab.file <- file.path(folder,paste0(unique.pos[p],"_details.txt"))
-			tlog(4,"Recording in file \"",tab.file,"\"")
+			tlog(6,"Recording in file \"",tab.file,"\"")
 			write.table(x=tab2,
 				file=tab.file,
 #				fileEncoding="UTF-8",
@@ -54,7 +54,7 @@ test.position.cd <- function(data, out.folder)
 			)
 			tab2 <- data[idx2,c(COL_ATT_MDT_DBT,COL_ATT_MDT_FIN,COL_ATT_ELU_NOM,COL_ATT_ELU_PRENOM,COL_ATT_ELU_ID)]
 			tab.file <- file.path(folder,paste0(unique.pos[p],".txt"))
-			tlog(4,"Recording in file \"",tab.file,"\"")
+			tlog(6,"Recording in file \"",tab.file,"\"")
 			write.table(x=tab2,
 				file=tab.file,
 #				fileEncoding="UTF-8",
@@ -83,9 +83,9 @@ test.position.cd <- function(data, out.folder)
 					{	# problem only if before 2015 or persons of the same sex
 						if(get.year(start1)<2015 || get.year(start2)<2015 || sex1==sex2)
 						{	if(get.year(start1)<2015)
-								tlog(6,"Date before 2015")
+								tlog(8,"Date before 2015")
 							if(sex1==sex2)
-								tlog(6,"Persons of the same sex")
+								tlog(8,"Persons of the same sex")
 							# add to the table of problematic cases
 							tab <- rbind(tab, data[c(idx[i],idx[j]),], rep(NA,ncol(data)))
 							# count the problematic cases
@@ -97,7 +97,7 @@ test.position.cd <- function(data, out.folder)
 			}
 			
 			# possibly add an empty row to separate cases
-			tlog(4,"Found ",ccount," overlaps for this specific position")
+			tlog(6,"Found ",ccount," overlaps for this specific position")
 			if(ccount>0)
 				tab <- rbind(tab, rep(NA,ncol(data)))
 		}
@@ -160,7 +160,7 @@ test.position.cm <- function(data, out.folder)
 		
 		# get the corresponding functions
 		idx <- which(data[,COL_ATT_DPT_CODE]==dpt & data[,COL_ATT_COM_CODE]==com & data[,COL_ATT_FCT_NOM]==funct)
-		tlog(4,"Found ",length(idx)," function/mandates")
+		tlog(6,"Found ",length(idx)," function/mandates")
 		
 		if(length(idx)>1)
 		{	folder2 <- file.path(folder,dpt)
@@ -172,7 +172,7 @@ test.position.cm <- function(data, out.folder)
 			tab2 <- cbind(idx2, data[idx2,])
 			colnames(tab2) <- "Ligne"
 			tab.file <- file.path(folder2,paste0(com,"_details.txt"))
-			tlog(4,"Recording in file \"",tab.file,"\"")
+			tlog(6,"Recording in file \"",tab.file,"\"")
 			write.table(x=tab2,
 				file=tab.file,
 #				fileEncoding="UTF-8",
@@ -183,7 +183,7 @@ test.position.cm <- function(data, out.folder)
 			)
 			tab2 <- data[idx2,c(COL_ATT_MDT_DBT,COL_ATT_MDT_FIN,COL_ATT_FCT_DBT,COL_ATT_FCT_FIN,COL_ATT_ELU_NOM,COL_ATT_ELU_PRENOM,COL_ATT_ELU_ID)]
 			tab.file <- file.path(folder2,paste0(com,".txt"))
-			tlog(4,"Recording in file \"",tab.file,"\"")
+			tlog(6,"Recording in file \"",tab.file,"\"")
 			write.table(x=tab2,
 				file=tab.file,
 #				fileEncoding="UTF-8",
@@ -217,7 +217,7 @@ test.position.cm <- function(data, out.folder)
 			}
 			
 			# possibly add an empty row to separate cases
-			tlog(4,"Found ",ccount," pairs of overlapping mandates of this specific function")
+			tlog(6,"Found ",ccount," pairs of overlapping mandates of this specific function")
 			if(ccount>0)
 				tab <- rbind(tab, rep(NA,ncol(data)))
 		}
@@ -270,7 +270,7 @@ test.position.cr <- function(data, out.folder)
 		
 		# get the corresponding rows
 		idx <- which(data[,COL_ATT_REG_CODE]==unique.pos[p])
-		tlog(4,"Found ",length(idx)," rows")
+		tlog(6,"Found ",length(idx)," rows")
 		
 		if(length(idx)>1)
 		{	# record the sequence of mandates for this position
@@ -279,7 +279,7 @@ test.position.cr <- function(data, out.folder)
 			tab2 <- cbind(idx2, data[idx2,])
 			colnames(tab2) <- "Ligne"
 			tab.file <- file.path(folder,paste0(unique.pos[p],"_details.txt"))
-			tlog(4,"Recording in file \"",tab.file,"\"")
+			tlog(6,"Recording in file \"",tab.file,"\"")
 			write.table(x=tab2,
 				file=tab.file,
 #				fileEncoding="UTF-8",
@@ -290,7 +290,7 @@ test.position.cr <- function(data, out.folder)
 			)
 			tab2 <- data[idx2,c(COL_ATT_MDT_DBT,COL_ATT_MDT_FIN,COL_ATT_ELU_NOM,COL_ATT_ELU_PRENOM,COL_ATT_ELU_ID)]
 			tab.file <- file.path(folder,paste0(unique.pos[p],".txt"))
-			tlog(4,"Recording in file \"",tab.file,"\"")
+			tlog(6,"Recording in file \"",tab.file,"\"")
 			write.table(x=tab2,
 				file=tab.file,
 #				fileEncoding="UTF-8",
@@ -416,7 +416,7 @@ test.position.de <- function(data, out.folder)
 		
 		# get the corresponding rows
 		idx <- which(data[,COL_ATT_CIRCE_NOM]==unique.pos[p])
-		tlog(4,"Found ",length(idx)," rows")
+		tlog(6,"Found ",length(idx)," rows")
 		
 		if(length(idx)>1)
 		{	reg.name <- chartr(old=" ",new="_",	x=unique.pos[p]) # replace spaces by underscores
@@ -425,7 +425,7 @@ test.position.de <- function(data, out.folder)
 			tab2 <- cbind(idx2, data[idx2,])
 			colnames(tab2) <- "Ligne"
 			tab.file <- file.path(folder,paste0(reg.name,"_details.txt"))
-			tlog(4,"Recording in file \"",tab.file,"\"")
+			tlog(6,"Recording in file \"",tab.file,"\"")
 			write.table(x=tab2,
 				file=tab.file,
 #				fileEncoding="UTF-8",
@@ -436,7 +436,7 @@ test.position.de <- function(data, out.folder)
 			)
 			tab2 <- data[idx2,c(COL_ATT_MDT_DBT,COL_ATT_MDT_FIN,COL_ATT_ELU_NOM,COL_ATT_ELU_PRENOM,COL_ATT_ELU_ID)]
 			tab.file <- file.path(folder,paste0(reg.name,".txt"))
-			tlog(4,"Recording in file \"",tab.file,"\"")
+			tlog(6,"Recording in file \"",tab.file,"\"")
 			write.table(x=tab2,
 				file=tab.file,
 #				fileEncoding="UTF-8",
@@ -570,7 +570,7 @@ test.position.d <- function(data, out.folder)
 		
 		# get the corresponding mandates
 		idx <- which(data[,COL_ATT_DPT_CODE]==dpt & data[,COL_ATT_CIRC_CODE]==circo)
-		tlog(4,"Found ",length(idx)," mandates")
+		tlog(6,"Found ",length(idx)," mandates")
 		
 		if(length(idx)>1)
 		{	# record the sequence of mandates for this position
@@ -579,7 +579,7 @@ test.position.d <- function(data, out.folder)
 			tab2 <- cbind(idx2, data[idx2,])
 			colnames(tab2) <- "Ligne"
 			tab.file <- file.path(folder,paste0(unique.pos[p],"_details.txt"))
-			tlog(4,"Recording in file \"",tab.file,"\"")
+			tlog(6,"Recording in file \"",tab.file,"\"")
 			write.table(x=tab2,
 				file=tab.file,
 #				fileEncoding="UTF-8",
@@ -590,7 +590,7 @@ test.position.d <- function(data, out.folder)
 			)
 			tab2 <- data[idx2,c(COL_ATT_MDT_DBT,COL_ATT_MDT_FIN,COL_ATT_ELU_NOM,COL_ATT_ELU_PRENOM,COL_ATT_ELU_ID)]
 			tab.file <- file.path(folder,paste0(unique.pos[p],".txt"))
-			tlog(4,"Recording in file \"",tab.file,"\"")
+			tlog(6,"Recording in file \"",tab.file,"\"")
 			write.table(x=tab2,
 				file=tab.file,
 #				fileEncoding="UTF-8",
@@ -684,9 +684,9 @@ test.position.m <- function(data, out.folder)
 		
 		# get the corresponding rows
 		idx <- which(data[,COL_ATT_DPT_CODE]==dpt & data[,COL_ATT_COM_CODE]==com)
-		tlog(4,"Found ",length(idx)," rows")
+		tlog(6,"Found ",length(idx)," rows")
 		
-		tlog(4,"Checking function overlaps")
+		tlog(6,"Checking function overlaps")
 		if(length(idx)>1)
 		{	folder2 <- file.path(folder,dpt)
 			dir.create(path=folder2, showWarnings=FALSE, recursive=TRUE)
@@ -697,7 +697,7 @@ test.position.m <- function(data, out.folder)
 			tab2 <- cbind(idx2, data[idx2,])
 			colnames(tab2) <- "Ligne"
 			tab.file <- file.path(folder2,paste0(com,"_details.txt"))
-			tlog(4,"Recording in file \"",tab.file,"\"")
+			tlog(6,"Recording in file \"",tab.file,"\"")
 			write.table(x=tab2,
 				file=tab.file,
 #				fileEncoding="UTF-8",
@@ -708,7 +708,7 @@ test.position.m <- function(data, out.folder)
 			)
 			tab2 <- data[idx2,c(COL_ATT_MDT_DBT,COL_ATT_MDT_FIN,COL_ATT_FCT_DBT,COL_ATT_FCT_FIN,COL_ATT_ELU_NOM,COL_ATT_ELU_PRENOM,COL_ATT_ELU_ID)]
 			tab.file <- file.path(folder2,paste0(com,".txt"))
-			tlog(4,"Recording in file \"",tab.file,"\"")
+			tlog(6,"Recording in file \"",tab.file,"\"")
 			write.table(x=tab2,
 				file=tab.file,
 #				fileEncoding="UTF-8",
@@ -719,7 +719,7 @@ test.position.m <- function(data, out.folder)
 			)
 			
 			# check if the function dates overlap
-			tlog(4,"Checking function overlaps")
+			tlog(6,"Checking function overlaps")
 			ccount <- 0
 			for(i in 1:(length(idx)-1))
 			{	# get the dates of the first compared function
@@ -734,7 +734,7 @@ test.position.m <- function(data, out.folder)
 						
 						# check if the periods intersect
 						if(!(is.na(start2) && is.na(end2)))
-						{	tlog(6, "Comparing ",format(start1),"--",format(end1)," vs. ",format(start2),"--",format(end2))
+						{	tlog(8, "Comparing ",format(start1),"--",format(end1)," vs. ",format(start2),"--",format(end2))
 							if(date.intersect(start1, end1, start2, end2))
 							{	# add to the table of problematic cases
 								tab <- rbind(tab, data[c(idx[i],idx[j]),], rep(NA,ncol(data)))
@@ -801,7 +801,7 @@ test.position.s <- function(data, out.folder)
 		
 		# get the corresponding rows
 		idx <- which(data[,COL_ATT_DPT_CODE]==unique.pos[p])
-		tlog(4,"Found ",length(idx)," rows")
+		tlog(6,"Found ",length(idx)," rows")
 		
 		if(length(idx)>1)
 		{	# record the sequence of mandates for this position
@@ -810,7 +810,7 @@ test.position.s <- function(data, out.folder)
 			tab2 <- cbind(idx2, data[idx2,])
 			colnames(tab2) <- "Ligne"
 			tab.file <- file.path(folder,paste0(unique.pos[p],"_details.txt"))
-			tlog(4,"Recording in file \"",tab.file,"\"")
+			tlog(6,"Recording in file \"",tab.file,"\"")
 			write.table(x=tab2,
 				file=tab.file,
 #				fileEncoding="UTF-8",
@@ -821,7 +821,7 @@ test.position.s <- function(data, out.folder)
 			)
 			tab2 <- data[idx2,c(COL_ATT_MDT_DBT,COL_ATT_MDT_FIN,COL_ATT_ELU_NOM,COL_ATT_ELU_PRENOM,COL_ATT_ELU_ID)]
 			tab.file <- file.path(folder,paste0(unique.pos[p],".txt"))
-			tlog(4,"Recording in file \"",tab.file,"\"")
+			tlog(6,"Recording in file \"",tab.file,"\"")
 			write.table(x=tab2,
 				file=tab.file,
 #				fileEncoding="UTF-8",
@@ -837,16 +837,16 @@ test.position.s <- function(data, out.folder)
 	fn <- FILE_VERIF_NBR_S
 	tlog(0,"Loading verification file \"",fn,"\"")
 	verif.table <- read.table(
-			file=fn, 					# name of the data file
-			header=TRUE, 				# look for a header
-			sep="\t", 					# character used to separate columns 
-			check.names=FALSE, 			# don't change the column names from the file
-			comment.char="", 			# ignore possible comments in the content
-			row.names=NULL, 			# don't look for row names in the file
-			quote="", 					# don't expect double quotes "..." around text fields
-			as.is=TRUE,					# don't convert strings to factors
-#			fileEncoding="Latin1"		# original tables seem to be encoded in Latin1 (ANSI)
-			colClasses=c("character","character","integer","Date","Date")
+		file=fn, 					# name of the data file
+		header=TRUE, 				# look for a header
+		sep="\t", 					# character used to separate columns 
+		check.names=FALSE, 			# don't change the column names from the file
+		comment.char="", 			# ignore possible comments in the content
+		row.names=NULL, 			# don't look for row names in the file
+		quote="", 					# don't expect double quotes "..." around text fields
+		as.is=TRUE,					# don't convert strings to factors
+#		fileEncoding="Latin1"		# original tables seem to be encoded in Latin1 (ANSI)
+		colClasses=c("character","character","integer","Date","Date")
 	)
 	# NOTE in theory, should not use department codes, because they changed over time
 	
