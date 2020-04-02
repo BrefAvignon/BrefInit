@@ -204,6 +204,30 @@ fix.id.problems <- function(data)
 #		}
 #	}
 	
+	# debug: merge two tables of equivalent ids
+#	head(main.tab)
+#	head(sec.tab)
+#	colnames(sec.tab) <- colnames(main.tab)
+#	# check names
+#	names1 <- data0[match(sec.tab[,1],data0[,COL_ATT_ELU_ID_RNE]),COL_ATT_ELU_NOM]
+#	names2 <- data0[match(sec.tab[,2],data0[,COL_ATT_ELU_ID_RNE]),COL_ATT_ELU_NOM]
+#	print(cbind(names1,names2))
+#	# check ids common to both tables
+#	map <- match(sec.tab[,1],main.tab[,1])
+#	com.ids <- which(!is.na(map))
+#	div.ids <- com.ids[sec.tab[com.ids,2]!=main.tab[map[com.ids],2]]
+#	print(cbind(sec.tab[div.ids,],main.tab[map[div.ids],2]))
+#	# compare with verified homonyms
+#	map2 <- match(sec.tab[,1], homon.table[,1])
+#	com.ids1 <- which(!is.na(map2))
+#	print(length(com.ids1))
+#	# add ids present only in secundary table
+#	diff.ids <- which(is.na(map))
+#	main.tab <- rbind(main.tab, sec.tab[diff.ids,])
+#	main.tab <- main.tab[order(as.integer(main.tab[,1])),]
+#	# record file
+#	write.table(x=main.tab, file=file.path(FOLDER_LOG,"new_equiv_map.txt"), quote=F, sep="\t", row.names=F, col.names=F)
+	
 	return(data)
 }
 
@@ -494,7 +518,7 @@ apply.systematic.corrections <- function(data, type)
 						& data[,COL_ATT_ELU_NAIS_DATE]==data[idx[r],COL_ATT_ELU_NAIS_DATE]			# same birthdate
 						& data[,COL_ATT_ELU_NOM]!=data[idx[r],COL_ATT_ELU_NOM]						# different last names
 						& (grepl(pattern=birth.names[r], x=data[,COL_ATT_ELU_NOM], fixed=TRUE)		# but includes birth or usage name
-							|| grepl(pattern=usage.names[r], x=data[,COL_ATT_ELU_NOM], fixed=TRUE)))
+							| grepl(pattern=usage.names[r], x=data[,COL_ATT_ELU_NOM], fixed=TRUE)))
 			if(length(idx2)>0)
 			{	data[idx2,COL_ATT_ELU_NOM] <- new.names[r]
 				tlog(4, "Updating other rows based on the first below")
@@ -511,7 +535,7 @@ apply.systematic.corrections <- function(data, type)
 			}
 		}
 		tmp <- tmp[order(tmp[,1]),]
-		#print(tmp)		# debug
+		print(tmp)		# debug
 		# log result
 		idx <- which(old.names!=data[,COL_ATT_ELU_NOM])
 		corr.rows <- union(corr.rows,idx)
