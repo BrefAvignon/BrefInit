@@ -152,23 +152,12 @@ source("src/common/include.R")
 
 # TODO
 # - passer en revue les fichiers de problèmes: *CM
-# - passer en revue les logs: D, S, DE, EPCI, CM, CM
+# - passer en revue les logs: CD, CM, CR, D, DE, EPCI, M, S
 # - faire la fusion et re-tester
 # - traiter la comparaison approchée des noms
-
-# CM: TODO
-# - fonction de "maire délégué" à traiter différemment des autres (possiblité de cumul)
-# - TESTER LE CHARGEMENT DES CORRECS AD HOC (pour gagner du temps)
+# - S: readline=erreur à l'intégration de la base du sénat, à voir
+# - D: p-ê même situation ? à voir
 
 # il existe une BD recensant les EPCI (SIREN)
 # https://www.data.gouv.fr/fr/datasets/base-nationale-sur-linter-communalite/
 # https://www.collectivites-locales.gouv.fr/liste-et-composition-des-epci-a-fiscalite-propre
-
-# TODO sur ZB3
-# 1) charger la conversion d'ids
-# 2) l'appliquer aux données déjà chargées (=tout)
-# 3) appliquer le script pour chercher les noms de jeunes filles
-# 4) il doit y avoir plein d'ids à fusionner
-
-# TODO parcourir manuellement la liste de prénoms et voir ceux qui paraissent mal écrits
-# chercher dans les données, faire la correction manuelle

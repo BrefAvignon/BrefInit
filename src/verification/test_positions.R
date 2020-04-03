@@ -23,18 +23,18 @@ test.position.cd <- function(data, out.folder)
 	dir.create(path=folder, showWarnings=FALSE, recursive=TRUE)
 	
 	# identify all unique positions: generated unique code
-	tlog(2,"Identifying all unique positions")	# except specific cantons
+	tlog(2,"Identifying all unique mandate positions")	# except specific cantons
 	unique.pos <- sort(unique(data[data[,COL_ATT_CANT_NOM]!="CANTON FICTIF",COL_ATT_CANT_ID]))
 	tlog(4,"Found ",length(unique.pos)," of them")
 	
 	# process each unique position
-	tlog(2,"Processing each unique position")
+	tlog(2,"Processing each unique mandate position")
 	for(p in 1:length(unique.pos))
-	{	tlog(4,"Processing position ",unique.pos[p]," (",p,"/",length(unique.pos),")")
+	{	tlog(4,"Processing mandate position ",unique.pos[p]," (",p,"/",length(unique.pos),")")
 		
 		# get the corresponding mandates
 		idx <- which(data[,COL_ATT_CANT_ID]==unique.pos[p])
-		tlog(6,"Found ",length(idx)," mandates")
+		tlog(6,"Found ",length(idx)," mandate positions")
 		
 		if(length(idx)>1)
 		{	# record the sequence of mandates for this position
@@ -97,12 +97,12 @@ test.position.cd <- function(data, out.folder)
 			}
 			
 			# possibly add an empty row to separate cases
-			tlog(6,"Found ",ccount," overlapping mandates for this specific position")
+			tlog(6,"Found ",ccount," overlapping mandate posotions for this specific position")
 			if(ccount>0)
 				tab <- rbind(tab, rep(NA,ncol(data)))
 		}
 	}
-	tlog(2,"Processing over: ound a total of ",count," overlapping mandates for the whole table")
+	tlog(2,"Processing over: found a total of ",count," overlapping mandate positions for the whole table")
 	
 	# possibly record the table of problematic cases
 	if(nrow(tab)>0)
@@ -137,8 +137,8 @@ test.position.cm <- function(data, out.folder)
 	folder <- file.path(out.folder,"positions")
 	dir.create(path=folder, showWarnings=FALSE, recursive=TRUE)
 	
-	# identify all unique functions: city + function
-	tlog(2,"Identifying all unique functions")
+	# identify all unique functions: departement code + city code + function name
+	tlog(2,"Identifying all unique function positions")
 	dpts <- data[,COL_ATT_DPT_CODE]
 	coms <- data[,COL_ATT_COM_CODE]
 	functs <- data[,COL_ATT_FCT_NOM]
@@ -147,7 +147,7 @@ test.position.cm <- function(data, out.folder)
 	tlog(4,"Found ",length(unique.pos)," of them")
 	
 	# process each unique function
-	tlog(2,"Processing each unique function")
+	tlog(2,"Processing each unique function position")
 	for(p in 1:length(unique.pos))
 	{	# retrieve the city code and function name
 		tmp <- strsplit(unique.pos[p],"_")[[1]]
@@ -158,7 +158,7 @@ test.position.cm <- function(data, out.folder)
 		
 		# get the corresponding functions
 		idx <- which(data[,COL_ATT_DPT_CODE]==dpt & data[,COL_ATT_COM_CODE]==com & data[,COL_ATT_FCT_NOM]==funct)
-		tlog(6,"Found ",length(idx)," function/mandates")
+		tlog(6,"Found ",length(idx)," function positions")
 		
 		if(length(idx)>1)
 		{	folder2 <- file.path(folder,dpt)
@@ -215,12 +215,12 @@ test.position.cm <- function(data, out.folder)
 			}
 			
 			# possibly add an empty row to separate cases
-			tlog(6,"Found ",ccount," pairs of overlapping rows for this specific function")
+			tlog(6,"Found ",ccount," pairs of overlapping rows for this specific function position")
 			if(ccount>0)
 				tab <- rbind(tab, rep(NA,ncol(data)))
 		}
 	}
-	tlog(2,"Processing over: found a total of ",count," pairs of overlapping functions for the whole table")
+	tlog(2,"Processing over: found a total of ",count," pairs of overlapping function positions for the whole table")
 	
 	# possibly record the table of problematic cases
 	if(nrow(tab)>0)
@@ -406,14 +406,14 @@ test.position.de <- function(data, out.folder)
 	dir.create(path=folder, showWarnings=FALSE, recursive=TRUE)
 	
 	# identify all unique circonscriptions
-	tlog(2,"Identifying all unique circonscriptions")
+	tlog(2,"Identifying all unique european circonscriptions")
 	unique.pos <- sort(unique(data[,COL_ATT_CIRCE_NOM]))
 	tlog(4,"Found ",length(unique.pos)," of them")
 	
 	# process each unique circonscriptions
-	tlog(2,"Processing each unique circonscriptions")
+	tlog(2,"Processing each unique european circonscriptions")
 	for(p in 1:length(unique.pos))
-	{	tlog(4,"Processing circonscriptions ",unique.pos[p], "(",p,"/",length(unique.pos),")")
+	{	tlog(4,"Processing european circonscription ",unique.pos[p], "(",p,"/",length(unique.pos),")")
 		
 		# get the corresponding rows
 		idx <- which(data[,COL_ATT_CIRCE_NOM]==unique.pos[p])
@@ -558,8 +558,8 @@ test.position.d <- function(data, out.folder)
 	folder <- file.path(out.folder,"positions")
 	dir.create(path=folder, showWarnings=FALSE, recursive=TRUE)
 	
-	# identify all unique positions: department + circonscription
-	tlog(2,"Identifying all unique positions")
+	# identify all unique positions: department code + circonscription code
+	tlog(2,"Identifying all unique mandate positions")
 	dpts <- data[,COL_ATT_DPT_CODE]
 	circos <- data[,COL_ATT_CIRC_CODE]
 	pos <- apply(cbind(dpts,circos),1,function(r) paste(r,collapse="_"))
@@ -567,17 +567,17 @@ test.position.d <- function(data, out.folder)
 	tlog(4,"Found ",length(unique.pos)," of them")
 	
 	# process each unique position
-	tlog(2,"Processing each unique position")
+	tlog(2,"Processing each unique mandate position")
 	for(p in 1:length(unique.pos))
 	{	# retrieve the department and circonscription codes
 		tmp <- strsplit(unique.pos[p],"_")[[1]]
 		dpt <- tmp[1]
 		circo <- as.integer(tmp[2])
-		tlog(4,"Processing position ",p,"/",length(unique.pos)," dpt=",dpt," circo=",circo)
+		tlog(4,"Processing mandate position ",p,"/",length(unique.pos)," dpt=",dpt," circo=",circo)
 		
 		# get the corresponding mandates
 		idx <- which(data[,COL_ATT_DPT_CODE]==dpt & data[,COL_ATT_CIRC_CODE]==circo)
-		tlog(6,"Found ",length(idx)," mandates")
+		tlog(6,"Found ",length(idx)," mandate positions")
 		
 		if(length(idx)>1)
 		{	# record the sequence of mandates for this position
@@ -631,12 +631,12 @@ test.position.d <- function(data, out.folder)
 			}
 			
 			# possibly add an empty row to separate cases
-			tlog(4,"Found ",ccount," pairs of overlapping mandates for this specific position")
+			tlog(4,"Found ",ccount," pairs of overlapping mandate positions for this specific position")
 			if(ccount>0)
 				tab <- rbind(tab, rep(NA,ncol(data)))
 		}
 	}
-	tlog(2,"Processing over: found a total of ",count," pairs of overlapping mandates for the whole table")
+	tlog(2,"Processing over: found a total of ",count," pairs of overlapping mandate positions for the whole table")
 	
 	# possibly record the table of problematic cases
 	if(nrow(tab)>0)
@@ -672,7 +672,7 @@ test.position.m <- function(data, out.folder)
 	dir.create(path=folder, showWarnings=FALSE, recursive=TRUE)
 	
 	# identify all unique positions: department + circonscription
-	tlog(2,"Identifying all unique positions")
+	tlog(2,"Identifying all unique function positions")
 	dpts <- data[,COL_ATT_DPT_CODE]
 	coms <- data[,COL_ATT_COM_CODE]
 	pos <- apply(cbind(dpts,coms),1,function(r) paste(r,collapse="_"))
@@ -680,19 +680,19 @@ test.position.m <- function(data, out.folder)
 	tlog(4,"Found ",length(unique.pos)," of them")
 	
 	# process each unique position
-	tlog(2,"Processing each unique position")
+	tlog(2,"Processing each unique function position")
 	for(p in 1:length(unique.pos))
 	{	# retrieve the department and circonscription codes
 		tmp <- strsplit(unique.pos[p],"_")[[1]]
 		dpt <- tmp[1]
 		com <- tmp[2]
-		tlog(4,"Processing position ",p,"/",length(unique.pos)," dpt=",dpt," city=",com)
+		tlog(4,"Processing function position ",p,"/",length(unique.pos)," dpt=",dpt," city=",com)
 		
 		# get the corresponding rows
 		idx <- which(data[,COL_ATT_DPT_CODE]==dpt & data[,COL_ATT_COM_CODE]==com)
 		tlog(6,"Found ",length(idx)," rows")
 		
-		tlog(6,"Checking function overlaps")
+		tlog(6,"Checking function position overlaps")
 		if(length(idx)>1)
 		{	folder2 <- file.path(folder,dpt)
 			dir.create(path=folder2, showWarnings=FALSE, recursive=TRUE)
@@ -725,7 +725,7 @@ test.position.m <- function(data, out.folder)
 			)
 			
 			# check if the function dates overlap
-			tlog(6,"Checking function overlaps")
+			tlog(6,"Checking function position overlaps")
 			ccount <- 0
 			for(i in 1:(length(idx)-1))
 			{	# get the dates of the first compared function
@@ -754,12 +754,12 @@ test.position.m <- function(data, out.folder)
 			}
 			
 			# possibly add an empty row to separate cases
-			tlog(6,"Found ",ccount," pairs of overlapping functions for this specific position")
+			tlog(6,"Found ",ccount," pairs of overlapping function positions for this specific position")
 			if(ccount>0)
 				tab <- rbind(tab, rep(NA,ncol(data)))
 		}
 	}
-	tlog(2,"Processing over: found a total of ",count," pairs of overlapping functions for the whole table")
+	tlog(2,"Processing over: found a total of ",count," pairs of overlapping function positions for the whole table")
 	
 	# possibly record the tables of problematic function cases
 	if(nrow(tab)>0)
@@ -911,7 +911,7 @@ test.position.s <- function(data, out.folder)
 		if(found)
 			tab <- rbind(tab, rep(NA,ncol(data)))
 	}
-	tlog(4,"Processing over: found a total of ",count," pairs of overlapping mandates for the whole table")
+	tlog(4,"Processing over: found a total of ",count," pairs of overlapping mandate positionss for the whole table")
 	
 	# possibly record the table of problematic cases
 	if(nrow(tab)>0)
