@@ -484,7 +484,16 @@ FOLDER_OUT <- "out"
 		FOLDER_OUT_M <- file.path(FOLDER_EXTRACT1, "M")
 		FOLDER_OUT_S <- file.path(FOLDER_EXTRACT1, "S")
 		FOLDER_OUT_ALL <- file.path(FOLDER_EXTRACT1, "_All")
-		FILES_TAB_ALL <- file.path(FOLDER_OUT_ALL, "_data.txt")
+		# first extraction cache files	
+		FILE_CACHE_CD <- file.path(FOLDER_OUT_CD, "_data.txt")
+		FILE_CACHE_CM <- file.path(FOLDER_OUT_CM, "_data.txt")
+		FILE_CACHE_CR <- file.path(FOLDER_OUT_CR, "_data.txt")
+		FILE_CACHE_D <- file.path(FOLDER_OUT_D, "_data.txt")
+		FILE_CACHE_DE <- file.path(FOLDER_OUT_DE, "_data.txt")
+		FILE_CACHE_EPCI <- file.path(FOLDER_OUT_EPCI, "_data.txt")
+		FILE_CACHE_M <- file.path(FOLDER_OUT_M, "_data.txt")
+		FILE_CACHE_S <- file.path(FOLDER_OUT_S, "_data.txt")
+		FILE_CACHE_ALL <- file.path(FOLDER_OUT_ALL, "_data.txt")
 	# second extraction folders
 	FOLDER_EXTRACT2 <- file.path(FOLDER_OUT,"extraction2")
 		# table-specific output folders
@@ -497,7 +506,16 @@ FOLDER_OUT <- "out"
 		FOLDER_OUT_M2 <- file.path(FOLDER_EXTRACT2, "M")
 		FOLDER_OUT_S2 <- file.path(FOLDER_EXTRACT2, "S")
 		FOLDER_OUT_ALL2 <- file.path(FOLDER_EXTRACT2, "_All")
-		FILES_TAB_ALL2 <- file.path(FOLDER_OUT_ALL2, "_data.txt")
+		# second extraction cache files	
+		FILE_CACHE_CD2 <- file.path(FOLDER_OUT_CD2, "_data.txt")
+		FILE_CACHE_CM2 <- file.path(FOLDER_OUT_CM2, "_data.txt")
+		FILE_CACHE_CR2 <- file.path(FOLDER_OUT_CR2, "_data.txt")
+		FILE_CACHE_D2 <- file.path(FOLDER_OUT_D2, "_data.txt")
+		FILE_CACHE_DE2 <- file.path(FOLDER_OUT_DE2, "_data.txt")
+		FILE_CACHE_EPCI2 <- file.path(FOLDER_OUT_EPCI2, "_data.txt")
+		FILE_CACHE_M2 <- file.path(FOLDER_OUT_M2, "_data.txt")
+		FILE_CACHE_S2 <- file.path(FOLDER_OUT_S2, "_data.txt")
+		FILE_CACHE_ALL2 <- file.path(FOLDER_OUT_ALL2, "_data.txt")
 	# comparison folders
 	FOLDER_COMPARISON <- file.path(FOLDER_OUT,"comparison")
 		# same table in 2 version

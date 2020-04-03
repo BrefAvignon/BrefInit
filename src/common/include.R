@@ -11,6 +11,7 @@
 
 #############################################################################################
 # handling of warnings
+
 #options(warn=1)			# as they happen
 options(warn=2)				# as errors
 #options(error=recover)		# debug
@@ -41,6 +42,7 @@ library("methods")
 
 #############################################################################################
 # source code
+
 source("src/common/constants.R")
 source("src/common/dates.R")
 source("src/common/stats.R")
@@ -54,6 +56,15 @@ source("src/load/apply_corrections.R")
 source("src/load/integrate_assnat.R")
 source("src/load/integrate_senat.R")
 source("src/load/load_rne.R")
+
+
+
+
+#############################################################################################
+# global options
+
+# whether or not to cache cleaned data tables
+CACHE_DATA <- TRUE
 
 #options(future.globals.maxSize=650*1024^2)	# max limit for future global env is 650 MB
 plan(multiprocess, workers=CORE.NBR/2)		# set the number of processor cores used
