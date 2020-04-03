@@ -598,26 +598,27 @@ test.col.dates.cd <- function(data, out.folder)
 	# specific tests
 	tlog(2,"Checking mandate durations")
 	
-	# mandate duration not in the legal interval
-	durations <- as.numeric(difftime(data[,COL_ATT_MDT_DBT], data[,COL_ATT_MDT_FIN], unit="weeks"))/52.25
-	idx <- which(data[,COL_ATT_MDT_DBT]<as.Date("1985/1/1") & durations>6
-					| data[,COL_ATT_MDT_DBT]>=as.Date("1985/1/1") & data[,COL_ATT_MDT_FIN]<as.Date("1992/1/1") & durations>7
-					| data[,COL_ATT_MDT_DBT]>=as.Date("1992/1/1") & data[,COL_ATT_MDT_FIN]<as.Date("2001/1/1") & durations>6
-					| data[,COL_ATT_MDT_DBT]>=as.Date("2001/1/1") & durations>7)
-	tlog(4,"Found ",length(idx)," mandate(s) longer than expected")
-	if(length(idx)>0)
-	{	tmp <- cbind(idx,data[idx,])
-		colnames(tmp)[1] <- "Ligne"
-		tab.file <- file.path(out.folder,paste0("mandat_dates_problems_duration.txt"))
-		tlog(6,"Recording in file \"",tab.file,"\"")
-		write.table(x=tmp,file=tab.file,
-#				fileEncoding="UTF-8",
-				row.names=FALSE,
-				col.names=TRUE,
-#				quote=TRUE,
-				sep="\t"
-		)
-	}
+# NOTE this is subsumed by the tests on election dates, no use anymore
+#	# mandate duration not in the legal interval
+#	durations <- as.numeric(difftime(data[,COL_ATT_MDT_DBT], data[,COL_ATT_MDT_FIN], unit="weeks"))/52.25
+#	idx <- which(data[,COL_ATT_MDT_DBT]<as.Date("1985/1/1") & durations>6
+#					| data[,COL_ATT_MDT_DBT]>=as.Date("1985/1/1") & data[,COL_ATT_MDT_FIN]<as.Date("1992/1/1") & durations>7
+#					| data[,COL_ATT_MDT_DBT]>=as.Date("1992/1/1") & data[,COL_ATT_MDT_FIN]<as.Date("2001/1/1") & durations>6
+#					| data[,COL_ATT_MDT_DBT]>=as.Date("2001/1/1") & durations>7)
+#	tlog(4,"Found ",length(idx)," mandate(s) longer than expected")
+#	if(length(idx)>0)
+#	{	tmp <- cbind(idx,data[idx,])
+#		colnames(tmp)[1] <- "Ligne"
+#		tab.file <- file.path(out.folder,paste0("mandat_dates_problems_duration.txt"))
+#		tlog(6,"Recording in file \"",tab.file,"\"")
+#		write.table(x=tmp,file=tab.file,
+##				fileEncoding="UTF-8",
+#				row.names=FALSE,
+#				col.names=TRUE,
+##				quote=TRUE,
+#				sep="\t"
+#		)
+#	}
 }
 
 
@@ -640,26 +641,27 @@ test.col.dates.cm <- function(data, out.folder)
 	# election dates
 	test.col.dates.election(data, out.folder, election.file=FILE_VERIF_DATES_CM)
 	
-	# specific tests
-	tlog(2,"Checking mandate durations")
-	
-	# mandate duration not in the legal interval
-	durations <- as.numeric(difftime(data[,COL_ATT_MDT_DBT], data[,COL_ATT_MDT_FIN], unit="weeks"))/52.25
-	idx <- which(durations > 6)
-	tlog(4,"Found ",length(idx)," mandate(s) longer than expected")
-	if(length(idx)>0)
-	{	tmp <- cbind(idx,data[idx,])
-		colnames(tmp)[1] <- "Ligne"
-		tab.file <- file.path(out.folder,paste0("mandat_dates_problems_duration.txt"))
-		tlog(6,"Recording in file \"",tab.file,"\"")
-		write.table(x=tmp,file=tab.file,
-#				fileEncoding="UTF-8",
-				row.names=FALSE,
-				col.names=TRUE,
-#				quote=TRUE,
-				sep="\t"
-		)
-	}
+# NOTE this is subsumed by the tests on election dates, no use anymore
+#	# specific tests
+#	tlog(2,"Checking mandate durations")
+#	
+#	# mandate duration not in the legal interval
+#	durations <- as.numeric(difftime(data[,COL_ATT_MDT_DBT], data[,COL_ATT_MDT_FIN], unit="weeks"))/52.25
+#	idx <- which(durations > 6)
+#	tlog(4,"Found ",length(idx)," mandate(s) longer than expected")
+#	if(length(idx)>0)
+#	{	tmp <- cbind(idx,data[idx,])
+#		colnames(tmp)[1] <- "Ligne"
+#		tab.file <- file.path(out.folder,paste0("mandat_dates_problems_duration.txt"))
+#		tlog(6,"Recording in file \"",tab.file,"\"")
+#		write.table(x=tmp,file=tab.file,
+##				fileEncoding="UTF-8",
+#				row.names=FALSE,
+#				col.names=TRUE,
+##				quote=TRUE,
+#				sep="\t"
+#		)
+#	}
 }
 
 
@@ -685,25 +687,26 @@ test.col.dates.cr <- function(data, out.folder)
 	# specific tests
 	tlog(2,"Checking mandate durations")
 	
-	# mandate duration not in the legal interval
-	durations <- as.numeric(difftime(data[,COL_ATT_MDT_DBT], data[,COL_ATT_MDT_FIN], unit="weeks"))/52.25
-	idx <- which(data[,COL_ATT_MDT_DBT]<as.Date("2010/1/1") & durations>6
-					| data[,COL_ATT_MDT_DBT]>=as.Date("2010/1/1") & data[,COL_ATT_MDT_FIN]<as.Date("2015/1/1") & durations>5
-					| data[,COL_ATT_MDT_DBT]>=as.Date("2015/1/1") & durations>6)
-	tlog(4,"Found ",length(idx)," mandate(s) longer than expected")
-	if(length(idx)>0)
-	{	tmp <- cbind(idx,data[idx,])
-		colnames(tmp)[1] <- "Ligne"
-		tab.file <- file.path(out.folder,paste0("mandat_dates_problems_duration.txt"))
-		tlog(6,"Recording in file \"",tab.file,"\"")
-		write.table(x=tmp,file=tab.file,
-#				fileEncoding="UTF-8",
-				row.names=FALSE,
-				col.names=TRUE,
-#				quote=TRUE,
-				sep="\t"
-		)
-	}
+# NOTE this is subsumed by the tests on election dates, no use anymore
+#	# mandate duration not in the legal interval
+#	durations <- as.numeric(difftime(data[,COL_ATT_MDT_DBT], data[,COL_ATT_MDT_FIN], unit="weeks"))/52.25
+#	idx <- which(data[,COL_ATT_MDT_DBT]<as.Date("2010/1/1") & durations>6
+#					| data[,COL_ATT_MDT_DBT]>=as.Date("2010/1/1") & data[,COL_ATT_MDT_FIN]<as.Date("2015/1/1") & durations>5
+#					| data[,COL_ATT_MDT_DBT]>=as.Date("2015/1/1") & durations>6)
+#	tlog(4,"Found ",length(idx)," mandate(s) longer than expected")
+#	if(length(idx)>0)
+#	{	tmp <- cbind(idx,data[idx,])
+#		colnames(tmp)[1] <- "Ligne"
+#		tab.file <- file.path(out.folder,paste0("mandat_dates_problems_duration.txt"))
+#		tlog(6,"Recording in file \"",tab.file,"\"")
+#		write.table(x=tmp,file=tab.file,
+##				fileEncoding="UTF-8",
+#				row.names=FALSE,
+#				col.names=TRUE,
+##				quote=TRUE,
+#				sep="\t"
+#		)
+#	}
 }
 
 
@@ -729,32 +732,33 @@ test.col.dates.d <- function(data, out.folder)
 	# specific tests
 	tlog(2,"Checking mandate durations")
 	
-	# mandate duration not in the legal interval
-	durations <- as.numeric(difftime(data[,COL_ATT_MDT_DBT], data[,COL_ATT_MDT_FIN], unit="weeks"))/52.25
-	idx <- which(data[,COL_ATT_MDT_DBT]<as.Date("1962/1/1") & durations>4
-			| data[,COL_ATT_MDT_DBT]>=as.Date("1962/1/1") & data[,COL_ATT_MDT_FIN]<as.Date("1967/1/1") & durations>5
-			| data[,COL_ATT_MDT_DBT]>=as.Date("1967/1/1") & data[,COL_ATT_MDT_FIN]<as.Date("1968/1/1") & durations>1
-			| data[,COL_ATT_MDT_DBT]>=as.Date("1968/1/1") & data[,COL_ATT_MDT_FIN]<as.Date("1978/1/1") & durations>5
-			| data[,COL_ATT_MDT_DBT]>=as.Date("1978/1/1") & data[,COL_ATT_MDT_FIN]<as.Date("1981/1/1") & durations>3
-			| data[,COL_ATT_MDT_DBT]>=as.Date("1981/1/1") & data[,COL_ATT_MDT_FIN]<as.Date("1986/1/1") & durations>5
-			| data[,COL_ATT_MDT_DBT]>=as.Date("1986/1/1") & data[,COL_ATT_MDT_FIN]<as.Date("1988/1/1") & durations>2
-			| data[,COL_ATT_MDT_DBT]>=as.Date("1988/1/1") & data[,COL_ATT_MDT_FIN]<as.Date("1993/1/1") & durations>5
-			| data[,COL_ATT_MDT_DBT]>=as.Date("1993/1/1") & data[,COL_ATT_MDT_FIN]<as.Date("1997/1/1") & durations>4
-			| data[,COL_ATT_MDT_DBT]>=as.Date("1997/1/1") & durations>5)
-	tlog(4,"Found ",length(idx)," mandate(s) longer than expected")
-	if(length(idx)>0)
-	{	tmp <- cbind(idx,data[idx,])
-		colnames(tmp)[1] <- "Ligne"
-		tab.file <- file.path(out.folder,paste0("mandat_dates_problems_duration.txt"))
-		tlog(6,"Recording in file \"",tab.file,"\"")
-		write.table(x=tmp,file=tab.file,
-#				fileEncoding="UTF-8",
-				row.names=FALSE,
-				col.names=TRUE,
-#				quote=TRUE,
-				sep="\t"
-		)
-	}
+# NOTE this is subsumed by the tests on election dates, no use anymore
+#	# mandate duration not in the legal interval
+#	durations <- as.numeric(difftime(data[,COL_ATT_MDT_DBT], data[,COL_ATT_MDT_FIN], unit="weeks"))/52.25
+#	idx <- which(data[,COL_ATT_MDT_DBT]<as.Date("1962/1/1") & durations>4
+#			| data[,COL_ATT_MDT_DBT]>=as.Date("1962/1/1") & data[,COL_ATT_MDT_FIN]<as.Date("1967/1/1") & durations>5
+#			| data[,COL_ATT_MDT_DBT]>=as.Date("1967/1/1") & data[,COL_ATT_MDT_FIN]<as.Date("1968/1/1") & durations>1
+#			| data[,COL_ATT_MDT_DBT]>=as.Date("1968/1/1") & data[,COL_ATT_MDT_FIN]<as.Date("1978/1/1") & durations>5
+#			| data[,COL_ATT_MDT_DBT]>=as.Date("1978/1/1") & data[,COL_ATT_MDT_FIN]<as.Date("1981/1/1") & durations>3
+#			| data[,COL_ATT_MDT_DBT]>=as.Date("1981/1/1") & data[,COL_ATT_MDT_FIN]<as.Date("1986/1/1") & durations>5
+#			| data[,COL_ATT_MDT_DBT]>=as.Date("1986/1/1") & data[,COL_ATT_MDT_FIN]<as.Date("1988/1/1") & durations>2
+#			| data[,COL_ATT_MDT_DBT]>=as.Date("1988/1/1") & data[,COL_ATT_MDT_FIN]<as.Date("1993/1/1") & durations>5
+#			| data[,COL_ATT_MDT_DBT]>=as.Date("1993/1/1") & data[,COL_ATT_MDT_FIN]<as.Date("1997/1/1") & durations>4
+#			| data[,COL_ATT_MDT_DBT]>=as.Date("1997/1/1") & durations>5)
+#	tlog(4,"Found ",length(idx)," mandate(s) longer than expected")
+#	if(length(idx)>0)
+#	{	tmp <- cbind(idx,data[idx,])
+#		colnames(tmp)[1] <- "Ligne"
+#		tab.file <- file.path(out.folder,paste0("mandat_dates_problems_duration.txt"))
+#		tlog(6,"Recording in file \"",tab.file,"\"")
+#		write.table(x=tmp,file=tab.file,
+##				fileEncoding="UTF-8",
+#				row.names=FALSE,
+#				col.names=TRUE,
+##				quote=TRUE,
+#				sep="\t"
+#		)
+#	}
 }
 
 
@@ -780,23 +784,24 @@ test.col.dates.de <- function(data, out.folder)
 	# specific tests
 	tlog(2,"Checking mandate durations")
 	
-	# mandate duration not in the legal interval
-	durations <- as.numeric(difftime(data[,COL_ATT_MDT_DBT], data[,COL_ATT_MDT_FIN], unit="weeks"))/52.25
-	idx <- which(durations > 5)
-	tlog(4,"Found ",length(idx)," mandate(s) longer than expected")
-	if(length(idx)>0)
-	{	tmp <- cbind(idx,data[idx,])
-		colnames(tmp)[1] <- "Ligne"
-		tab.file <- file.path(out.folder,paste0("mandat_dates_problems_duration.txt"))
-		tlog(6,"Recording in file \"",tab.file,"\"")
-		write.table(x=tmp,file=tab.file,
-#				fileEncoding="UTF-8",
-				row.names=FALSE,
-				col.names=TRUE,
-#				quote=TRUE,
-				sep="\t"
-		)
-	}
+# NOTE this is subsumed by the tests on election dates, no use anymore
+#	# mandate duration not in the legal interval
+#	durations <- as.numeric(difftime(data[,COL_ATT_MDT_DBT], data[,COL_ATT_MDT_FIN], unit="weeks"))/52.25
+#	idx <- which(durations > 5)
+#	tlog(4,"Found ",length(idx)," mandate(s) longer than expected")
+#	if(length(idx)>0)
+#	{	tmp <- cbind(idx,data[idx,])
+#		colnames(tmp)[1] <- "Ligne"
+#		tab.file <- file.path(out.folder,paste0("mandat_dates_problems_duration.txt"))
+#		tlog(6,"Recording in file \"",tab.file,"\"")
+#		write.table(x=tmp,file=tab.file,
+##				fileEncoding="UTF-8",
+#				row.names=FALSE,
+#				col.names=TRUE,
+##				quote=TRUE,
+#				sep="\t"
+#		)
+#	}
 }
 
 
@@ -840,26 +845,27 @@ test.col.dates.s <- function(data, out.folder)
 	# specific tests
 	tlog(2,"Checking mandate durations")
 	
-	# mandate duration not in the legal interval
-	durations <- as.numeric(difftime(data[,COL_ATT_MDT_DBT], data[,COL_ATT_MDT_FIN], unit="weeks"))/52.25
-	idx <- which(data[,COL_ATT_MDT_DBT]<as.Date("1998/1/1") & durations>9
-					| data[,COL_ATT_MDT_DBT]>=as.Date("1998/1/1") & data[,COL_ATT_MDT_FIN]<as.Date("2014/1/1") & durations>10
-					| data[,COL_ATT_MDT_DBT]>=as.Date("2014/1/1") & data[,COL_ATT_MDT_FIN]<as.Date("2017/1/1") & durations>9
-					| data[,COL_ATT_MDT_DBT]>=as.Date("2017/1/1") & durations>6)
-	tlog(4,"Found ",length(idx)," mandate(s) longer than expected")
-	if(length(idx)>0)
-	{	tmp <- cbind(idx,data[idx,])
-		colnames(tmp)[1] <- "Ligne"
-		tab.file <- file.path(out.folder,paste0("mandat_dates_problems_duration.txt"))
-		tlog(6,"Recording in file \"",tab.file,"\"")
-		write.table(x=tmp,file=tab.file,
-#				fileEncoding="UTF-8",
-				row.names=FALSE,
-				col.names=TRUE,
-#				quote=TRUE,
-				sep="\t"
-		)
-	}
+# NOTE this is subsumed by the tests on election dates, no use anymore
+#	# mandate duration not in the legal interval
+#	durations <- as.numeric(difftime(data[,COL_ATT_MDT_DBT], data[,COL_ATT_MDT_FIN], unit="weeks"))/52.25
+#	idx <- which(data[,COL_ATT_MDT_DBT]<as.Date("1998/1/1") & durations>9
+#					| data[,COL_ATT_MDT_DBT]>=as.Date("1998/1/1") & data[,COL_ATT_MDT_FIN]<as.Date("2014/1/1") & durations>10
+#					| data[,COL_ATT_MDT_DBT]>=as.Date("2014/1/1") & data[,COL_ATT_MDT_FIN]<as.Date("2017/1/1") & durations>9
+#					| data[,COL_ATT_MDT_DBT]>=as.Date("2017/1/1") & durations>6)
+#	tlog(4,"Found ",length(idx)," mandate(s) longer than expected")
+#	if(length(idx)>0)
+#	{	tmp <- cbind(idx,data[idx,])
+#		colnames(tmp)[1] <- "Ligne"
+#		tab.file <- file.path(out.folder,paste0("mandat_dates_problems_duration.txt"))
+#		tlog(6,"Recording in file \"",tab.file,"\"")
+#		write.table(x=tmp,file=tab.file,
+##				fileEncoding="UTF-8",
+#				row.names=FALSE,
+#				col.names=TRUE,
+##				quote=TRUE,
+#				sep="\t"
+#		)
+#	}
 }
 
 

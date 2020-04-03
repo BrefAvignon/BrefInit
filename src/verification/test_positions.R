@@ -97,12 +97,12 @@ test.position.cd <- function(data, out.folder)
 			}
 			
 			# possibly add an empty row to separate cases
-			tlog(6,"Found ",ccount," overlaps for this specific position")
+			tlog(6,"Found ",ccount," overlapping mandates for this specific position")
 			if(ccount>0)
 				tab <- rbind(tab, rep(NA,ncol(data)))
 		}
 	}
-	tlog(2,"Processing over")
+	tlog(2,"Processing over: ound a total of ",count," overlapping mandates for the whole table")
 	
 	# possibly record the table of problematic cases
 	if(nrow(tab)>0)
@@ -117,8 +117,6 @@ test.position.cd <- function(data, out.folder)
 			sep="\t"
 		)
 	}
-
-	tlog(4,"Found a total of ",count," overlaps for the whole table")
 }
 
 
@@ -148,7 +146,7 @@ test.position.cm <- function(data, out.folder)
 	unique.pos <- sort(unique(pos[!is.na(functs) & pos!="MAIRE DELEGUE"]))	# ignore the function of deputee mayor
 	tlog(4,"Found ",length(unique.pos)," of them")
 	
-	# process each unique function 
+	# process each unique function
 	tlog(2,"Processing each unique function")
 	for(p in 1:length(unique.pos))
 	{	# retrieve the city code and function name
@@ -217,12 +215,12 @@ test.position.cm <- function(data, out.folder)
 			}
 			
 			# possibly add an empty row to separate cases
-			tlog(6,"Found ",ccount," pairs of overlapping mandates of this specific function")
+			tlog(6,"Found ",ccount," pairs of overlapping rows for this specific function")
 			if(ccount>0)
 				tab <- rbind(tab, rep(NA,ncol(data)))
 		}
 	}
-	tlog(2,"Processing over")
+	tlog(2,"Processing over: found a total of ",count," pairs of overlapping functions for the whole table")
 	
 	# possibly record the table of problematic cases
 	if(nrow(tab)>0)
@@ -236,7 +234,6 @@ test.position.cm <- function(data, out.folder)
 #			quote=TRUE,
 			sep="\t"
 		)
-		tlog(4,"Found a total of ",count," pairs of overlapping mandates for the whole table")
 	}
 }
 
@@ -252,7 +249,6 @@ test.position.cm <- function(data, out.folder)
 #############################################################################################
 test.position.cr <- function(data, out.folder)
 {	tlog(0,"Trying to detect problems in regional positions")
-	tab <- data[FALSE,]
 	
 	# possibly create folder to output detailed position chronology
 	folder <- file.path(out.folder,"positions")
@@ -275,7 +271,7 @@ test.position.cr <- function(data, out.folder)
 		if(length(idx)>1)
 		{	# record the sequence of mandates for this position
 			idx2 <- idx[order(data[idx,COL_ATT_MDT_DBT], data[idx,COL_ATT_MDT_FIN], 
-							data[idx,COL_ATT_FCT_DBT], data[idx,COL_ATT_FCT_DBT])]
+						data[idx,COL_ATT_FCT_DBT], data[idx,COL_ATT_FCT_DBT])]
 			tab2 <- cbind(idx2, data[idx2,])
 			colnames(tab2) <- "Ligne"
 			tab.file <- file.path(folder,paste0(unique.pos[p],"_details.txt"))
@@ -325,6 +321,8 @@ test.position.cr <- function(data, out.folder)
 	tlog(4,"End date: ",format(end.date))
 	
 	# loop over each day in the period
+	tab <- data[FALSE,]
+	count <- 0
 	cur.day <- start.date
 	old.regs <- c()
 	tlog(4,"Looping over time by 1-day increments")
@@ -335,41 +333,45 @@ test.position.cr <- function(data, out.folder)
 		
 		# get all mandates containing the current day
 		day.idx <- which(sapply(1:nrow(data), function(r)
-							date.intersect(data[r,COL_ATT_MDT_DBT], data[r,COL_ATT_MDT_FIN], cur.day, cur.day)
+					date.intersect(data[r,COL_ATT_MDT_DBT], data[r,COL_ATT_MDT_FIN], cur.day, cur.day)
 				))
-		if(day==1)
-			tlog(6,"Processing day ",format(cur.day),": ",length(day.idx)," occurrence(s)")
 		if(length(day.idx)>0)
 		{	# count the number of mandates by region
 			tt <- table(data[day.idx,COL_ATT_REG_NOM])
 			# get the verification values (upper bounds) for the current day 
 			per.idx <- which(sapply(1:nrow(verif.table), function(r)
-								date.intersect(verif.table[r,COL_VERIF_MDT_DBT], verif.table[r,COL_VERIF_MDT_FIN], cur.day, cur.day)
+						date.intersect(verif.table[r,COL_VERIF_MDT_DBT], verif.table[r,COL_VERIF_MDT_FIN], cur.day, cur.day)
 					))
-			# match to the departments names
+			# match to the region names
 			midx <- match(names(tt),verif.table[per.idx, COL_ATT_REG_NOM])
 			# compare the mandate counts and upper bounds
 			ridx <- which(tt > verif.table[per.idx[midx], COL_VERIF_MDT_NBR])
 			# record the problematic departments
 			for(r in ridx)
 			{	if(!(names(tt)[r] %in% old.regs))
-				{	tlog(8,"Problem with ",names(tt)[r],": ",tt[r],"/",verif.table[per.idx[midx[r]],COL_VERIF_MDT_NBR]," mandates found")
+				{	if(!found)
+						tlog(6,"Processing day ",format(cur.day),": ",length(day.idx)," occurrence(s)")
+					tlog(8,"Problem with ",names(tt)[r],": ",tt[r],"/",verif.table[per.idx[midx[r]],COL_VERIF_MDT_NBR]," mandates found")
+					count <- count + (tt[r]-verif.table[per.idx[midx[r]],COL_VERIF_MDT_NBR])
 					zidx <- which(data[day.idx,COL_ATT_REG_NOM]==names(tt)[r])
 					tab <- rbind(tab, data[day.idx[zidx],], rep(NA,ncol(data)))
 					found <- TRUE
 				}
 			}
-			old.regs <- names(tt)
+			old.regs <- names(tt)[ridx]
 		}
 		else
 			old.regs <- c()
+		
+		if(day==1 && !found)
+			tlog(6,"Processing day ",format(cur.day),": ",length(day.idx)," occurrence(s)")
 		
 		# update current date
 		cur.day <- next.day
 		if(found)
 			tab <- rbind(tab, rep(NA,ncol(data)))
 	}
-	tlog(4,"Looping over")
+	tlog(4,"Processing over: found a total of ",count," pairs of overlapping mandates for the whole table")
 	
 	# possibly record the table of problematic cases
 	if(nrow(tab)>0)
@@ -398,7 +400,6 @@ test.position.cr <- function(data, out.folder)
 #############################################################################################
 test.position.de <- function(data, out.folder)
 {	tlog(0,"Trying to detect problems in European positions")
-	tab <- data[FALSE,]
 	
 	# possibly create folder to output detailed position chronology
 	folder <- file.path(out.folder,"positions")
@@ -452,16 +453,16 @@ test.position.de <- function(data, out.folder)
 	fn <- FILE_VERIF_NBR_DE
 	tlog(0,"Loading verification file \"",fn,"\"")
 	verif.table <- read.table(
-			file=fn, 					# name of the data file
-			header=TRUE, 				# look for a header
-			sep="\t", 					# character used to separate columns 
-			check.names=FALSE, 			# don't change the column names from the file
-			comment.char="", 			# ignore possible comments in the content
-			row.names=NULL, 			# don't look for row names in the file
-			quote="", 					# don't expect double quotes "..." around text fields
-			as.is=TRUE,					# don't convert strings to factors
-#			fileEncoding="Latin1"		# original tables seem to be encoded in Latin1 (ANSI)
-			colClasses=c("character","character","integer","Date","Date")
+		file=fn, 					# name of the data file
+		header=TRUE, 				# look for a header
+		sep="\t", 					# character used to separate columns 
+		check.names=FALSE, 			# don't change the column names from the file
+		comment.char="", 			# ignore possible comments in the content
+		row.names=NULL, 			# don't look for row names in the file
+		quote="", 					# don't expect double quotes "..." around text fields
+		as.is=TRUE,					# don't convert strings to factors
+#		fileEncoding="Latin1"		# original tables seem to be encoded in Latin1 (ANSI)
+		colClasses=c("character","character","integer","Date","Date")
 	)
 	
 	# set up start/end dates
@@ -471,8 +472,10 @@ test.position.de <- function(data, out.folder)
 	tlog(4,"End date: ",format(end.date))
 	
 	# loop over each day in the period
+	tab <- data[FALSE,]
+	count <- 0
 	cur.day <- start.date
-	old.circo <- c()
+	old.circos <- c()
 	tlog(4,"Looping over time by 1-day increments")
 	while(cur.day <= end.date)
 	{	day <- as.integer(format(cur.day,format="%d"))
@@ -481,42 +484,46 @@ test.position.de <- function(data, out.folder)
 		
 		# get all mandates containing the current day
 		day.idx <- which(sapply(1:nrow(data), function(r)
-							date.intersect(data[r,COL_ATT_MDT_DBT], data[r,COL_ATT_MDT_FIN], cur.day, cur.day)
+					date.intersect(data[r,COL_ATT_MDT_DBT], data[r,COL_ATT_MDT_FIN], cur.day, cur.day)
 				))
-		if(day==1)
-			tlog(6,"Processing day ",format(cur.day),": ",length(day.idx)," occurrence(s)")
 		if(length(day.idx)>0)
-		{	# count the number of mandates by subdivision
-			# TODO: no subdivision before 2004, we should use a different approach if we get the data for this period
+		{	# count the number of mandates by circonscription
+			# TODO: no circonscription before 2004, we should use a different approach if we get the data for this period
 			tt <- table(data[day.idx,COL_ATT_CIRCE_NOM])
 			# get the verification values (upper bounds) for the current day 
 			per.idx <- which(sapply(1:nrow(verif.table), function(r)
-								date.intersect(verif.table[r,COL_VERIF_MDT_DBT], verif.table[r,COL_VERIF_MDT_FIN], cur.day, cur.day)
+						date.intersect(verif.table[r,COL_VERIF_MDT_DBT], verif.table[r,COL_VERIF_MDT_FIN], cur.day, cur.day)
 					))
-			# match to the departments names
+			# match to the circonscriptions names
 			midx <- match(names(tt),verif.table[per.idx, COL_ATT_CIRCE_NOM])
 			# compare the mandate counts and upper bounds
 			ridx <- which(tt > verif.table[per.idx[midx], COL_VERIF_MDT_NBR])
 			# record the problematic circonscriptions
 			for(r in ridx)
-			{	if(!(names(tt)[r] %in% old.circo))
-				{	tlog(8,"Problem with ",names(tt)[r],": ",tt[r],"/",verif.table[per.idx[midx[r]],COL_VERIF_MDT_NBR]," mandates found")
+			{	if(!(names(tt)[r] %in% old.circos))
+				{	if(!found)
+						tlog(6,"Processing day ",format(cur.day),": ",length(day.idx)," occurrence(s)")
+					tlog(8,"Problem with ",names(tt)[r],": ",tt[r],"/",verif.table[per.idx[midx[r]],COL_VERIF_MDT_NBR]," mandates found")
+					count <- count + (tt[r]-verif.table[per.idx[midx[r]],COL_VERIF_MDT_NBR])
 					zidx <- which(data[day.idx,COL_ATT_CIRCE_NOM]==names(tt)[r])
 					tab <- rbind(tab, data[day.idx[zidx],], rep(NA,ncol(data)))
 					found <- TRUE
 				}
 			}
-			old.circo <- names(tt)
+			old.circos <- names(tt)[ridx]
 		}
 		else
-			old.circo <- c()
+			old.circos <- c()
+		
+		if(day==1 && !found)
+			tlog(6,"Processing day ",format(cur.day),": ",length(day.idx)," occurrence(s)")
 		
 		# update current date
 		cur.day <- next.day
 		if(found)
 			tab <- rbind(tab, rep(NA,ncol(data)))
 	}
-	tlog(4,"Looping over")
+	tlog(4,"Processing over: found a total of ",count," pairs of overlapping mandates for the whole table")
 	
 	# possibly record the table of problematic cases
 	if(nrow(tab)>0)
@@ -624,12 +631,12 @@ test.position.d <- function(data, out.folder)
 			}
 			
 			# possibly add an empty row to separate cases
-			tlog(4,"Found ",ccount," pairs of overlapping mandates of this specific position")
+			tlog(4,"Found ",ccount," pairs of overlapping mandates for this specific position")
 			if(ccount>0)
 				tab <- rbind(tab, rep(NA,ncol(data)))
 		}
 	}
-	tlog(2,"Processing over")
+	tlog(2,"Processing over: found a total of ",count," pairs of overlapping mandates for the whole table")
 	
 	# possibly record the table of problematic cases
 	if(nrow(tab)>0)
@@ -643,7 +650,6 @@ test.position.d <- function(data, out.folder)
 #			quote=TRUE,
 			sep="\t"
 		)
-		tlog(4,"Found a total of ",count," pairs of overlapping mandates for the whole table")
 	}
 }
 
@@ -748,12 +754,12 @@ test.position.m <- function(data, out.folder)
 			}
 			
 			# possibly add an empty row to separate cases
-			tlog(6,"Found ",ccount," pairs of overlapping functions of this specific position")
+			tlog(6,"Found ",ccount," pairs of overlapping functions for this specific position")
 			if(ccount>0)
 				tab <- rbind(tab, rep(NA,ncol(data)))
 		}
 	}
-	tlog(2,"Processing over")
+	tlog(2,"Processing over: found a total of ",count," pairs of overlapping functions for the whole table")
 	
 	# possibly record the tables of problematic function cases
 	if(nrow(tab)>0)
@@ -767,7 +773,6 @@ test.position.m <- function(data, out.folder)
 			#quote=TRUE,
 			sep="\t"
 		)
-		tlog(4,"Found a total of ",count," pairs of overlapping functions for the whole table")
 	}
 }
 
@@ -783,7 +788,6 @@ test.position.m <- function(data, out.folder)
 #############################################################################################
 test.position.s <- function(data, out.folder)
 {	tlog(0,"Trying to detect problems in senatorial positions")
-	tab <- data[FALSE,]
 	
 	# possibly create folder to output detailed position chronology
 	folder <- file.path(out.folder,"positions")
@@ -857,6 +861,8 @@ test.position.s <- function(data, out.folder)
 	tlog(4,"End date: ",format(end.date))
 	
 	# loop over each day in the period
+	tab <- data[FALSE,]
+	count <- 0
 	cur.day <- start.date
 	old.dpts <- c()
 	tlog(4,"Looping over time by 1-day increments")
@@ -867,17 +873,15 @@ test.position.s <- function(data, out.folder)
 		
 		# get all mandates containing the current day
 		day.idx <- which(sapply(1:nrow(data), function(r)
-							date.intersect(data[r,COL_ATT_MDT_DBT], data[r,COL_ATT_MDT_FIN], cur.day, cur.day)
+					date.intersect(data[r,COL_ATT_MDT_DBT], data[r,COL_ATT_MDT_FIN], cur.day, cur.day)
 				))
-		if(day==1)
-			tlog(6,"Processing day ",format(cur.day),": ",length(day.idx)," occurrence(s)")
 		if(length(day.idx)>0)
 		{	# count the number of mandates by department
 			tt <- table(data[day.idx,COL_ATT_DPT_NOM])
 			# get the verification values (upper bounds) for the current day 
 			per.idx <- which(sapply(1:nrow(verif.table), function(r)
-								date.intersect(verif.table[r,COL_VERIF_MDT_DBT], verif.table[r,COL_VERIF_MDT_FIN], cur.day, cur.day)
-						))
+						date.intersect(verif.table[r,COL_VERIF_MDT_DBT], verif.table[r,COL_VERIF_MDT_FIN], cur.day, cur.day)
+					))
 			# match to the departments names
 			midx <- match(names(tt),verif.table[per.idx, COL_ATT_DPT_NOM])
 			# compare the mandate counts and upper bounds
@@ -885,23 +889,29 @@ test.position.s <- function(data, out.folder)
 			# record the problematic departments
 			for(d in didx)
 			{	if(!(names(tt)[d] %in% old.dpts))
-				{	tlog(8,"Problem with ",names(tt)[d],": ",tt[d],"/",verif.table[per.idx[midx[d]],COL_VERIF_MDT_NBR]," mandates found")
+				{	if(!found)
+						tlog(6,"Processing day ",format(cur.day),": ",length(day.idx)," occurrence(s)")
+					tlog(8,"Problem with ",names(tt)[d],": ",tt[d],"/",verif.table[per.idx[midx[d]],COL_VERIF_MDT_NBR]," mandates found")
+					count <- count + (tt[d]-verif.table[per.idx[midx[d]],COL_VERIF_MDT_NBR])
 					zidx <- which(data[day.idx,COL_ATT_DPT_NOM]==names(tt)[d])
 					tab <- rbind(tab, data[day.idx[zidx],], rep(NA,ncol(data)))
 					found <- TRUE
 				}
 			}
-			old.dpts <- names(tt)
+			old.dpts <- names(tt)[didx]
 		}
 		else
 			old.dpts <- c()
+		
+		if(day==1 && !found)
+			tlog(6,"Processing day ",format(cur.day),": ",length(day.idx)," occurrence(s)")
 		
 		# update current date
 		cur.day <- next.day
 		if(found)
 			tab <- rbind(tab, rep(NA,ncol(data)))
 	}
-	tlog(4,"Looping over")
+	tlog(4,"Processing over: found a total of ",count," pairs of overlapping mandates for the whole table")
 	
 	# possibly record the table of problematic cases
 	if(nrow(tab)>0)
@@ -917,3 +927,6 @@ test.position.s <- function(data, out.folder)
 		)
 	}
 }
+
+# TODO compute fonction stuff each time possible: 
+# CD + CR + D + M + S

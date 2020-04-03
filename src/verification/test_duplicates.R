@@ -55,16 +55,19 @@ test.compatible.rows <- function(data, out.folder=NA)
 		tab <- rbind(tab, mats[[m]])
 	if(nrow(tab)==0)
 		tlog(2,"Nothing found, nothing to record")
-	else if(!is.na(out.folder))
-	{	tab.file <- file.path(out.folder,"compatible_rows.txt")
-		tlog(2,"Recording in file \"",tab.file,"\"")
-		write.table(x=tab, file=tab.file,
-#			fileEncoding="UTF-8",
-			row.names=FALSE, 
-			col.names=TRUE,
-#			quote=TRUE,
-			sep="\t"
-		)
+	else
+	{	tlog(2,"Found ",length(which(is.na(tab[,1])))," groups of compatible rows")
+		if(!is.na(out.folder))
+		{	tab.file <- file.path(out.folder,"compatible_rows.txt")
+			tlog(2,"Recording in file \"",tab.file,"\"")
+			write.table(x=tab, file=tab.file,
+#				fileEncoding="UTF-8",
+				row.names=FALSE, 
+				col.names=TRUE,
+#				quote=TRUE,
+				sep="\t"
+			)
+		}
 	}
 	
 	tlog(2,"Done searching for compatible rows")
