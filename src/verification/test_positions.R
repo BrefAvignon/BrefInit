@@ -358,7 +358,7 @@ test.position.cr <- function(data, out.folder)
 					found <- TRUE
 				}
 			}
-			old.regs <- names(tt)
+			old.regs <- names(tt)[ridx]
 		}
 		else
 			old.regs <- c()
@@ -510,7 +510,7 @@ test.position.de <- function(data, out.folder)
 					found <- TRUE
 				}
 			}
-			old.circos <- names(tt)
+			old.circos <- names(tt)[ridx]
 		}
 		else
 			old.circos <- c()
@@ -898,7 +898,7 @@ test.position.s <- function(data, out.folder)
 					found <- TRUE
 				}
 			}
-			old.dpts <- names(tt)
+			old.dpts <- names(tt)[didx]
 		}
 		else
 			old.dpts <- c()
