@@ -249,8 +249,6 @@ test.position.cm <- function(data, out.folder)
 #############################################################################################
 test.position.cr <- function(data, out.folder)
 {	tlog(0,"Trying to detect problems in regional positions")
-	tab <- data[FALSE,]
-	count <- 0
 	
 	# possibly create folder to output detailed position chronology
 	folder <- file.path(out.folder,"positions")
@@ -323,6 +321,8 @@ test.position.cr <- function(data, out.folder)
 	tlog(4,"End date: ",format(end.date))
 	
 	# loop over each day in the period
+	tab <- data[FALSE,]
+	count <- 0
 	cur.day <- start.date
 	old.regs <- c()
 	tlog(4,"Looping over time by 1-day increments")
@@ -335,8 +335,6 @@ test.position.cr <- function(data, out.folder)
 		day.idx <- which(sapply(1:nrow(data), function(r)
 					date.intersect(data[r,COL_ATT_MDT_DBT], data[r,COL_ATT_MDT_FIN], cur.day, cur.day)
 				))
-		if(day==1)
-			tlog(6,"Processing day ",format(cur.day),": ",length(day.idx)," occurrence(s)")
 		if(length(day.idx)>0)
 		{	# count the number of mandates by region
 			tt <- table(data[day.idx,COL_ATT_REG_NOM])
@@ -351,7 +349,9 @@ test.position.cr <- function(data, out.folder)
 			# record the problematic departments
 			for(r in ridx)
 			{	if(!(names(tt)[r] %in% old.regs))
-				{	tlog(8,"Problem with ",names(tt)[r],": ",tt[r],"/",verif.table[per.idx[midx[r]],COL_VERIF_MDT_NBR]," mandates found")
+				{	if(!found)
+						tlog(6,"Processing day ",format(cur.day),": ",length(day.idx)," occurrence(s)")
+					tlog(8,"Problem with ",names(tt)[r],": ",tt[r],"/",verif.table[per.idx[midx[r]],COL_VERIF_MDT_NBR]," mandates found")
 					count <- count + (tt[r]-verif.table[per.idx[midx[r]],COL_VERIF_MDT_NBR])
 					zidx <- which(data[day.idx,COL_ATT_REG_NOM]==names(tt)[r])
 					tab <- rbind(tab, data[day.idx[zidx],], rep(NA,ncol(data)))
@@ -362,6 +362,9 @@ test.position.cr <- function(data, out.folder)
 		}
 		else
 			old.regs <- c()
+		
+		if(day==1 && !found)
+			tlog(6,"Processing day ",format(cur.day),": ",length(day.idx)," occurrence(s)")
 		
 		# update current date
 		cur.day <- next.day
@@ -397,8 +400,6 @@ test.position.cr <- function(data, out.folder)
 #############################################################################################
 test.position.de <- function(data, out.folder)
 {	tlog(0,"Trying to detect problems in European positions")
-	tab <- data[FALSE,]
-	count <- 0
 	
 	# possibly create folder to output detailed position chronology
 	folder <- file.path(out.folder,"positions")
@@ -471,6 +472,8 @@ test.position.de <- function(data, out.folder)
 	tlog(4,"End date: ",format(end.date))
 	
 	# loop over each day in the period
+	tab <- data[FALSE,]
+	count <- 0
 	cur.day <- start.date
 	old.circos <- c()
 	tlog(4,"Looping over time by 1-day increments")
@@ -483,8 +486,6 @@ test.position.de <- function(data, out.folder)
 		day.idx <- which(sapply(1:nrow(data), function(r)
 					date.intersect(data[r,COL_ATT_MDT_DBT], data[r,COL_ATT_MDT_FIN], cur.day, cur.day)
 				))
-		if(day==1)
-			tlog(6,"Processing day ",format(cur.day),": ",length(day.idx)," occurrence(s)")
 		if(length(day.idx)>0)
 		{	# count the number of mandates by circonscription
 			# TODO: no circonscription before 2004, we should use a different approach if we get the data for this period
@@ -500,7 +501,9 @@ test.position.de <- function(data, out.folder)
 			# record the problematic circonscriptions
 			for(r in ridx)
 			{	if(!(names(tt)[r] %in% old.circos))
-				{	tlog(8,"Problem with ",names(tt)[r],": ",tt[r],"/",verif.table[per.idx[midx[r]],COL_VERIF_MDT_NBR]," mandates found")
+				{	if(!found)
+						tlog(6,"Processing day ",format(cur.day),": ",length(day.idx)," occurrence(s)")
+					tlog(8,"Problem with ",names(tt)[r],": ",tt[r],"/",verif.table[per.idx[midx[r]],COL_VERIF_MDT_NBR]," mandates found")
 					count <- count + (tt[r]-verif.table[per.idx[midx[r]],COL_VERIF_MDT_NBR])
 					zidx <- which(data[day.idx,COL_ATT_CIRCE_NOM]==names(tt)[r])
 					tab <- rbind(tab, data[day.idx[zidx],], rep(NA,ncol(data)))
@@ -511,6 +514,9 @@ test.position.de <- function(data, out.folder)
 		}
 		else
 			old.circos <- c()
+		
+		if(day==1 && !found)
+			tlog(6,"Processing day ",format(cur.day),": ",length(day.idx)," occurrence(s)")
 		
 		# update current date
 		cur.day <- next.day
@@ -782,8 +788,6 @@ test.position.m <- function(data, out.folder)
 #############################################################################################
 test.position.s <- function(data, out.folder)
 {	tlog(0,"Trying to detect problems in senatorial positions")
-	tab <- data[FALSE,]
-	count <- 0
 	
 	# possibly create folder to output detailed position chronology
 	folder <- file.path(out.folder,"positions")
@@ -857,6 +861,8 @@ test.position.s <- function(data, out.folder)
 	tlog(4,"End date: ",format(end.date))
 	
 	# loop over each day in the period
+	tab <- data[FALSE,]
+	count <- 0
 	cur.day <- start.date
 	old.dpts <- c()
 	tlog(4,"Looping over time by 1-day increments")
@@ -869,8 +875,6 @@ test.position.s <- function(data, out.folder)
 		day.idx <- which(sapply(1:nrow(data), function(r)
 					date.intersect(data[r,COL_ATT_MDT_DBT], data[r,COL_ATT_MDT_FIN], cur.day, cur.day)
 				))
-		if(day==1)
-			tlog(6,"Processing day ",format(cur.day),": ",length(day.idx)," occurrence(s)")
 		if(length(day.idx)>0)
 		{	# count the number of mandates by department
 			tt <- table(data[day.idx,COL_ATT_DPT_NOM])
@@ -885,7 +889,9 @@ test.position.s <- function(data, out.folder)
 			# record the problematic departments
 			for(d in didx)
 			{	if(!(names(tt)[d] %in% old.dpts))
-				{	tlog(8,"Problem with ",names(tt)[d],": ",tt[d],"/",verif.table[per.idx[midx[d]],COL_VERIF_MDT_NBR]," mandates found")
+				{	if(!found)
+						tlog(6,"Processing day ",format(cur.day),": ",length(day.idx)," occurrence(s)")
+					tlog(8,"Problem with ",names(tt)[d],": ",tt[d],"/",verif.table[per.idx[midx[d]],COL_VERIF_MDT_NBR]," mandates found")
 					count <- count + (tt[d]-verif.table[per.idx[midx[d]],COL_VERIF_MDT_NBR])
 					zidx <- which(data[day.idx,COL_ATT_DPT_NOM]==names(tt)[d])
 					tab <- rbind(tab, data[day.idx[zidx],], rep(NA,ncol(data)))
@@ -896,6 +902,9 @@ test.position.s <- function(data, out.folder)
 		}
 		else
 			old.dpts <- c()
+		
+		if(day==1 && !found)
+			tlog(6,"Processing day ",format(cur.day),": ",length(day.idx)," occurrence(s)")
 		
 		# update current date
 		cur.day <- next.day
