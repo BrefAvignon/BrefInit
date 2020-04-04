@@ -140,7 +140,7 @@ NA	NA	NA	NA	Numero SIREN	20006971	200006971	numéro SIREN incorrect (syntaxiquem
 14918	1233774	CAMPREDON	GENEVIEVE	Date fin mandat	5/11/2015	NA	Corrigé pour mandat en cours
 14926	1233775	COLIN	LAURE	Date fin mandat	5/11/2015	NA	Corrigé pour mandat en cours
 17005	737948	GAUTIER	LAURENT	Date fin mandat	31/12/2016	NA	Corrigé pour mandat en cours
-30744	1271966	NEVERS EPOUSE CHOULET	DANIELE	Date fin mandat	1/1/2017	NA	Corrigé pour mandat en cours
+30744	143295	NEVERS EPOUSE CHOULET	DANIELE	Date fin mandat	1/1/2017	NA	Corrigé pour mandat en cours
 31940	630098	BARBE	MARC ANDRE	Date fin mandat	31/12/2013	NA	Corrigé pour mandat en cours
 31942	944178	BERNARD	SOPHIE	Date fin mandat	31/12/2013	NA	Corrigé pour mandat en cours
 31944	1275257	BOUVIER	ERIC	Date fin mandat	31/12/2013	NA	Corrigé pour mandat en cours
