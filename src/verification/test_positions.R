@@ -128,7 +128,7 @@ test.position.cd <- function(data, out.folder)
 	# ignore the following (non-unique) functions
 	ign.functs <- c(
 		"VICE PRESIDENT DU CONSEIL DEPARTEMENTAL",			# several of them, but not distinguished
-		"VICE PRESIDENT DELEGUE DU CONSEIL DÉPARTEMENTAL",	# several of them, but not distinguished
+		"VICE PRESIDENT DELEGUE DU CONSEIL DEPARTEMENTAL",	# several of them, but not distinguished
 		"QUESTEUR",											# several of them, but not distinguished
 		"PRESIDENT DE GROUPE",								# several of them, but not distinguished
 		"PRESIDENT DE COMMISSION",							# several of them, but not distinguished
