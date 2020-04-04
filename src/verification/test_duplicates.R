@@ -84,7 +84,7 @@ test.compatible.rows <- function(data, out.folder=NA)
 # out.folder: folder where to output the results.
 #############################################################################################
 test.id.reuse <- function(data, out.folder)
-{	tlog(0,"Trying to detect ID duplicate")
+{	tlog(0,"Detecting IDs associated to several different persons")
 	tab <- data[FALSE,]
 	count <- 0
 	
@@ -171,23 +171,23 @@ test.id.reuse <- function(data, out.folder)
 # out.folder: folder where to output the results.
 #############################################################################################
 test.multiple.id <- function(data, loc.col=NA, out.folder)
-{	tlog(0,"Trying to detect ID duplicates")
+{	tlog(0,"Trying to detect persons associated to several different IDs")
 	tab <- data[FALSE,]
 	count <- 0
 	
 	# load table of equivalent ids
 	tlog(2,"Loading the table of equivalent ids (",FILE_CONV_IDS,")")
 	equiv.table <- read.table(
-			file=FILE_CONV_IDS,			# name of the equivalence file
-			header=TRUE, 				# look for a header
-			sep="\t", 					# character used to separate columns 
-			check.names=FALSE, 			# don't change the column names from the file
-			comment.char="", 			# ignore possible comments in the content
-			row.names=NULL, 			# don't look for row names in the file
-			quote="", 					# don't expect double quotes "..." around text fields
-			as.is=TRUE,					# don't convert strings to factors
-			colClasses="character"		# all column originally read as characters
-#			fileEncoding="Latin1"		# original tables seem to be encoded in Latin1 (ANSI)
+		file=FILE_CONV_IDS,			# name of the equivalence file
+		header=TRUE, 				# look for a header
+		sep="\t", 					# character used to separate columns 
+		check.names=FALSE, 			# don't change the column names from the file
+		comment.char="", 			# ignore possible comments in the content
+		row.names=NULL, 			# don't look for row names in the file
+		quote="", 					# don't expect double quotes "..." around text fields
+		as.is=TRUE,					# don't convert strings to factors
+		colClasses="character"		# all column originally read as characters
+#		fileEncoding="Latin1"		# original tables seem to be encoded in Latin1 (ANSI)
 	)
 	# convert to map
 	conv.map <- list()
