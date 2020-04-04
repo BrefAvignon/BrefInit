@@ -395,6 +395,10 @@ senate.convert.mandate.table <- function(general.table, elect.table, type)
 		else if(type=="D")
 			function.names[which(function.names=="DEPUTE")] <- NA
 	}
+	else
+	{	# no sexism here, it's jut to ease the comparison later!
+		function.names[function.names=="VICE PRESIDENTE DU SENAT"] <- "VICE PRESIDENT DU SENAT"
+	}
 	
 	# build senate table
 	tlog(4,"Building new Senate mandate table")

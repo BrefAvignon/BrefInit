@@ -693,6 +693,12 @@ assembly.convert.mandate.table <- function(general.table, elect.table, data)
 	# set up function names
 	fct.names <- trimws(normalize.proper.nouns(remove.diacritics(elect.table[,COL_ATT_FCT_NOM])))
 	fct.names[fct.names=="MEMBRE"] <- NA		# member is not a function in the RNE
+	fct.names[fct.names=="PRESIDENT"] <- "PRESIDENT DE L ASSEMBLEE NATIONALE"
+	fct.names[fct.names=="PRESIDENT D AGE"] <- "PRESIDENT D AGE DE L ASSEMBLEE NATIONALE"
+	fct.names[fct.names=="QUESTEUR"] <- "QUESTEUR DE L ASSEMBLEE NATIONALE"
+	fct.names[fct.names=="SECRETAIRE"] <- "SECRETAIRE DE L ASSEMBLEE NATIONALE"
+	fct.names[fct.names=="SECRETAIRE D AGE"] <- "SECRETAIRE D AGE DE L ASSEMBLEE NATIONALE"
+	fct.names[fct.names=="VICE PRESIDENT"] <- "VICE PRESIDENT DE L ASSEMBLEE NATIONALE"
 	
 	# distinguish mandate rows from function rows
 	# (the latter do not have any territorial information)

@@ -1081,6 +1081,69 @@ load.election.data <- function(data, election.file, series.file)
 
 
 #############################################################################################
+# Ugly fix used to get the election series of senators that represent people leaving abroad.
+# This senatorial circonscription is not treated like the others, and is not associated to
+# a single series. But all of them. So we distinguish people instead.
+#
+# name: last name of the concerned senator.
+# 
+# returns: the election series of this senator.
+#############################################################################################
+get.adhoc.senator.series.fix <- function(name)
+{	if(name=="ANGO ELA PAVLOPULOS") series <- "b"
+	else if(name=="ARMENGAUD") series <- "c1"
+	else if(name=="BANSARD") series <- "b"
+	else if(name=="BARRAS") series <- "c1"
+	else if(name=="BAYLE") series <- "b"
+	else if(name=="BETHOUART") series <- "a"
+	else if(name=="BIARNES") series <- "a"
+	else if(name=="BRISEPIERRE") series <- "a"
+	else if(name=="CADIC") series <- "a"
+	else if(name=="CANTEGRIT") series <- "b"
+	else if(name=="CARRIER") series <- "b"
+	else if(name=="CERISIER BEN GUIGA") series <- "b"
+	else if(name=="COINTAT") series <- "c2"
+	else if(name=="CONWAY MOURET") series <- "c1"
+	else if(name=="CROZE") series <- "a"
+	else if(name=="D ORNANO") series <- "c1"
+	else if(name=="DE CUTTOLI") series <- "b"
+	else if(name=="DE VILLEPIN") series <- "c1"
+	else if(name=="DEL PICCHIA") series <- "a"
+	else if(name=="DEROMEDI") series <- "a"
+	else if(name=="DURAND CHASTEL") series <- "c1"
+	else if(name=="DUVERNOIS") series <- "b"
+	else if(name=="FERRAND") series <- "a"
+	else if(name=="FRASSA") series <- "a"
+	else if(name=="GARRIAUD MAYLAM") series <- "c1"
+	else if(name=="GASPARD") series <- "a"
+	else if(name=="GROS") series <- "b"
+	else if(name=="GUERRY") series <- "b"
+	else if(name=="HABERT") series <- "a"
+	else if(name=="KAMMERMANN") series <- "c1"
+	else if(name=="LE GLEUT") series <- "b"
+	else if(name=="LECONTE") series <- "b"
+	else if(name=="LEPAGE") series <- "a"
+	else if(name=="LONGCHAMBON") series <- "a"
+	else if(name=="MAMAN") series <- "b"
+	else if(name=="MOTAIS DE NARBONNE") series <- "c1"
+	else if(name=="PENNE") series <- "c1"
+	else if(name=="REGNARD") series <- "b"
+	else if(name=="RENAUD GARABEDIAN") series <- "b"
+	else if(name=="ROSSELLI") series <- "c1"
+	else if(name=="ROUX") series <- "b"
+	else if(name=="SAUVAGEOT") series <- "b"
+	else if(name=="WIRTH") series <- "c1"
+	else if(name=="YUNG") series <- "c2"
+	
+	else stop("Could not find Senator ",name)
+	
+	return(series)
+}
+
+
+
+
+#############################################################################################
 # Adjusts the start/end of mandates/functions so that they match election dates whenever possible.
 # If the start/end date of a mandate is approximately equal to the closest election date, it is
 # set to this date. If it contains function dates, these are set to the same date.
@@ -1122,10 +1185,17 @@ round.mdtfct.dates <- function(data, election.file, series.file, tolerance)
 					& series.table[,COL_ATT_CANT_NOM]==data[r,COL_ATT_CANT_NOM])
 			# S table
 			else 
-				idx <- which(series.table[,COL_ATT_DPT_CODE]==data[r,COL_ATT_DPT_CODE])
-			# retrieve the series corresponding to the position
-			series <- series.table[idx,COL_VERIF_SERIE]
-			# and the election dates corresponding to the series
+			{	# very ugly ad hoc fix for Senators representing people leaving abroad
+				if(data[r,COL_ATT_DPT_NOM]=="FRANCAIS DE L ETRANGER")
+				{	series <- get.adhoc.senator.series.fix(name=data[r,COL_ATT_ELU_NOM])
+				}
+				# retrieve the series corresponding to the position
+				else
+				{	idx <- which(series.table[,COL_ATT_DPT_CODE]==data[r,COL_ATT_DPT_CODE])
+					series <- series.table[idx,COL_VERIF_SERIE]
+				}
+			}
+			# retrieve the election dates corresponding to the series
 			idx <- sapply(series.list, function(s) is.na(series) || series %in% s)
 			election.dates <- election.table[idx,]
 		}
@@ -1423,103 +1493,105 @@ split.long.mandates <- function(data, election.file, series.file)
 	tlog(2,"Check mandate dates against election dates")
 	nbr.splits <- 0
 	for(r in 1:nrow(data))
-	{	# specific case of Senators representing people leaving abroad: don't split mandates
-		if(!(series.present 
-				&& COL_ATT_DPT_CODE %in% colnames(series.table) 
-				&& data[r,COL_ATT_DPT_NOM]=="FRANCAIS DE L ETRANGER"))
-		{	split.flag <- TRUE
+	{	split.flag <- TRUE
 			
-			while(split.flag)
-			{	tlog(4,"Processing row ",r,"/",nrow(data),": ",format.row.dates(data[r,]))
-				tlog(6, format.row(data[r,]))
-				split.flag <- FALSE
-				
-				# get election dates
-				election.dates <- election.table
-				if(series.present)
-				{	# CD table
-					if(COL_ATT_CANT_CODE %in% colnames(series.table))
-						idx <- which(series.table[,COL_ATT_DPT_CODE]==data[r,COL_ATT_DPT_CODE]
-										& series.table[,COL_ATT_CANT_NOM]==data[r,COL_ATT_CANT_NOM])
-					# S table
-					else 
-						idx <- which(series.table[,COL_ATT_DPT_CODE]==data[r,COL_ATT_DPT_CODE])
+		while(split.flag)
+		{	tlog(4,"Processing row ",r,"/",nrow(data),": ",format.row.dates(data[r,]))
+			tlog(6, format.row(data[r,]))
+			split.flag <- FALSE
+			
+			# get election dates
+			election.dates <- election.table
+			if(series.present)
+			{	# CD table
+				if(COL_ATT_CANT_CODE %in% colnames(series.table))
+					idx <- which(series.table[,COL_ATT_DPT_CODE]==data[r,COL_ATT_DPT_CODE]
+									& series.table[,COL_ATT_CANT_NOM]==data[r,COL_ATT_CANT_NOM])
+				# S table
+				else 
+				{	# very ugly ad hoc fix for Senators representing people leaving abroad
+					if(data[r,COL_ATT_DPT_NOM]=="FRANCAIS DE L ETRANGER")
+					{	series <- get.adhoc.senator.series.fix(name=data[r,COL_ATT_ELU_NOM])
+					}
 					# retrieve the series corresponding to the position
-					series <- series.table[idx,COL_VERIF_SERIE]
-					# and the election dates corresponding to the series
-					idx <- sapply(series.list, function(s) is.na(series) || series %in% s)
-					election.dates <- election.table[idx,]
+					else
+					{	idx <- which(series.table[,COL_ATT_DPT_CODE]==data[r,COL_ATT_DPT_CODE])
+						series <- series.table[idx,COL_VERIF_SERIE]
+					}
 				}
-				
-				# look for mandates containing election dates
-				tests <- (data[r,COL_ATT_MDT_DBT]<election.dates[,COL_VERIF_DATE_TOUR1] 
-							& (is.na(data[r,COL_ATT_MDT_FIN]) 
-								| data[r,COL_ATT_MDT_FIN]>=election.dates[,COL_VERIF_DATE_TOUR2]))
-				res <- any(tests)
-				
-				# possibly split the row
-				if(res)
-				{	idx.tests <- which(tests)
-					if(length(idx.tests)>1)
-						#stop("ERROR: several elections match")
-						idx.tests <- idx.tests[1]
-#					else
-					{	# log event
-						tlog(6,"Splitting overlap detected for election ",format(election.dates[idx.tests,1]),"--",format(election.dates[idx.tests,2]))
-						tlog(8,"Before: ",format.row.dates(data[r,])," vs. ", format(election.dates[idx.tests,1]), "--", format(election.dates[idx.tests,2]))
-						data[r,COL_ATT_CORREC_DATE] <- TRUE
-						#readline() #stop()
-						
-						# copy row
-						new.row <- data[r,]
-				
-						# update mandate start date in existing row and end date in new row
-						data[r,COL_ATT_MDT_DBT] <- election.dates[idx.tests,COL_VERIF_DATE_TOUR2]
-						new.row[1,COL_ATT_MDT_FIN] <- election.dates[idx.tests,COL_VERIF_DATE_TOUR2] - 1
-						new.row[1,COL_ATT_MDT_MOTIF] <- "FM"	# regular motive for mandate end
-						
-						# possibly update similarly function dates
-						if(has.fct && !is.na(data[r,COL_ATT_FCT_DBT]))
-						{	# case where the function overlaps two consecutive mandates
-							if(data[r,COL_ATT_FCT_DBT]<election.dates[idx.tests,COL_VERIF_DATE_TOUR2] 
-								&& (is.na(data[r,COL_ATT_FCT_FIN]) 
-									|| data[r,COL_ATT_FCT_FIN]>=election.dates[idx.tests,COL_VERIF_DATE_TOUR2]))
-							{	data[r,COL_ATT_FCT_DBT] <- election.dates[idx.tests,COL_VERIF_DATE_TOUR2]
-								new.row[1,COL_ATT_FCT_FIN] <- election.dates[idx.tests,COL_VERIF_DATE_TOUR2] - 1
-								new.row[1,COL_ATT_FCT_MOTIF] <- "FM"	# regular motive for function end
-							}
-							
-							# case where the function starts after the 1st mandate
-							else if(data[r,COL_ATT_FCT_DBT]>=election.dates[idx.tests,COL_VERIF_DATE_TOUR2])
-							{	new.row[1,COL_ATT_FCT_DBT] <- NA
-								new.row[1,COL_ATT_FCT_FIN] <- NA
-								if(COL_ATT_FCT_CODE %in% colnames(data))
-									new.row[1,COL_ATT_FCT_CODE] <- NA
-								if(COL_ATT_FCT_NOM %in% colnames(data))
-									new.row[1,COL_ATT_FCT_NOM] <- NA
-							}
-							# case where the function ends before the 2nd mandate
-							else
-							{	data[r,COL_ATT_FCT_DBT] <- NA
-								data[r,COL_ATT_FCT_FIN] <- NA
-								if(COL_ATT_FCT_CODE %in% colnames(data))
-									data[r,COL_ATT_FCT_CODE] <- NA
-								if(COL_ATT_FCT_NOM %in% colnames(data))
-									data[r,COL_ATT_FCT_NOM] <- NA
-							}
+				# retrieve the election dates corresponding to the series
+				idx <- sapply(series.list, function(s) is.na(series) || series %in% s)
+				election.dates <- election.table[idx,]
+			}
+			
+			# look for mandates containing election dates
+			tests <- (data[r,COL_ATT_MDT_DBT]<election.dates[,COL_VERIF_DATE_TOUR1] 
+						& (is.na(data[r,COL_ATT_MDT_FIN]) 
+							| data[r,COL_ATT_MDT_FIN]>=election.dates[,COL_VERIF_DATE_TOUR2]))
+			res <- any(tests)
+			
+			# possibly split the row
+			if(res)
+			{	idx.tests <- which(tests)
+				if(length(idx.tests)>1)
+					#stop("ERROR: several elections match")
+					idx.tests <- idx.tests[1]
+#				else
+				{	# log event
+					tlog(6,"Splitting overlap detected for election ",format(election.dates[idx.tests,1]),"--",format(election.dates[idx.tests,2]))
+					tlog(8,"Before: ",format.row.dates(data[r,])," vs. ", format(election.dates[idx.tests,1]), "--", format(election.dates[idx.tests,2]))
+					data[r,COL_ATT_CORREC_DATE] <- TRUE
+					#readline() #stop()
+					
+					# copy row
+					new.row <- data[r,]
+			
+					# update mandate start date in existing row and end date in new row
+					data[r,COL_ATT_MDT_DBT] <- election.dates[idx.tests,COL_VERIF_DATE_TOUR2]
+					new.row[1,COL_ATT_MDT_FIN] <- election.dates[idx.tests,COL_VERIF_DATE_TOUR2] - 1
+					new.row[1,COL_ATT_MDT_MOTIF] <- "FM"	# regular motive for mandate end
+					
+					# possibly update similarly function dates
+					if(has.fct && !is.na(data[r,COL_ATT_FCT_DBT]))
+					{	# case where the function overlaps two consecutive mandates
+						if(data[r,COL_ATT_FCT_DBT]<election.dates[idx.tests,COL_VERIF_DATE_TOUR2] 
+							&& (is.na(data[r,COL_ATT_FCT_FIN]) 
+								|| data[r,COL_ATT_FCT_FIN]>=election.dates[idx.tests,COL_VERIF_DATE_TOUR2]))
+						{	data[r,COL_ATT_FCT_DBT] <- election.dates[idx.tests,COL_VERIF_DATE_TOUR2]
+							new.row[1,COL_ATT_FCT_FIN] <- election.dates[idx.tests,COL_VERIF_DATE_TOUR2] - 1
+							new.row[1,COL_ATT_FCT_MOTIF] <- "FM"	# regular motive for function end
 						}
 						
-						# log modification
-						tlog(8,"After 1: ",format.row.dates(new.row[1,]))
-						tlog(8,"After 2: ",format.row.dates(data[r,]))
-#						readline() #stop()
-					
-						# add new row to new data frame
-						new.data <- rbind(new.data, new.row)
-						
-						nbr.splits <- nbr.splits + 1
-						split.flag <- TRUE
+						# case where the function starts after the 1st mandate
+						else if(data[r,COL_ATT_FCT_DBT]>=election.dates[idx.tests,COL_VERIF_DATE_TOUR2])
+						{	new.row[1,COL_ATT_FCT_DBT] <- NA
+							new.row[1,COL_ATT_FCT_FIN] <- NA
+							if(COL_ATT_FCT_CODE %in% colnames(data))
+								new.row[1,COL_ATT_FCT_CODE] <- NA
+							if(COL_ATT_FCT_NOM %in% colnames(data))
+								new.row[1,COL_ATT_FCT_NOM] <- NA
+						}
+						# case where the function ends before the 2nd mandate
+						else
+						{	data[r,COL_ATT_FCT_DBT] <- NA
+							data[r,COL_ATT_FCT_FIN] <- NA
+							if(COL_ATT_FCT_CODE %in% colnames(data))
+								data[r,COL_ATT_FCT_CODE] <- NA
+							if(COL_ATT_FCT_NOM %in% colnames(data))
+								data[r,COL_ATT_FCT_NOM] <- NA
+						}
 					}
+					
+					# log modification
+					tlog(8,"After 1: ",format.row.dates(new.row[1,]))
+					tlog(8,"After 2: ",format.row.dates(data[r,]))
+#					readline() #stop()
+				
+					# add new row to new data frame
+					new.data <- rbind(new.data, new.row)
+					
+					nbr.splits <- nbr.splits + 1
+					split.flag <- TRUE
 				}
 			}
 		}
