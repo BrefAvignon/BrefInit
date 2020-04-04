@@ -602,7 +602,16 @@ apply.systematic.corrections <- function(data, type)
 				corr.rows <- union(corr.rows,idx1)
 				idx <- idx1
 			}
-		}		
+		}
+		
+		# fix typo in function name
+		idx <- which(!is.na(data[,COL_ATT_FCT_NOM]) & data[,COL_ATT_FCT_NOM]=="PRESIDENT")
+		if(length(idx)>0)
+		{	data[idx,COL_ATT_FCT_NOM] <- "PRESIDENT D EPCI"
+			tlog(2,"Fixed ",length(idx)," rows (function)")
+			corr.rows <- union(corr.rows,idx)
+		}
+		
 		tlog(2,"Fixed ",length(idx)," rows")
 	}
 	# M-specific cleaning
@@ -613,6 +622,17 @@ apply.systematic.corrections <- function(data, type)
 		if(length(idx)>0)
 		{	data[idx,COL_ATT_MDT_DBT] <- "11/3/2001"
 			tlog(2,"Fixed ",length(idx)," rows for CREUSE 03/03/2001--")
+			corr.rows <- union(corr.rows,idx)
+		}
+	}
+	# D-specific cleaning
+	if(type=="D")
+	{	tlog(0,"Fix a typo in the Preseident function")
+		#
+		idx <- which(!is.na(data[,COL_ATT_FCT_NOM]) & data[,COL_ATT_FCT_NOM]=="PRESIDENT DE ASSEMBLEE NATIONALE")
+		if(length(idx)>0)
+		{	data[idx,COL_ATT_FCT_NOM] <- "PRESIDENT DE L ASSEMBLEE NATIONALE"
+			tlog(2,"Fixed ",length(idx)," rows (function)")
 			corr.rows <- union(corr.rows,idx)
 		}
 	}

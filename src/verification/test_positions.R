@@ -30,18 +30,23 @@ test.position.cd <- function(data, out.folder)
 	tab <- data[FALSE,]
 	count <- 0
 	for(p in 1:length(unique.pos))
-	{	tlog(4,"Processing mandate position ",unique.pos[p]," (",p,"/",length(unique.pos),")")
+	{	tmp <- strsplit(unique.pos[p],"_")[[1]]
+		dpt <- tmp[1]
+		tlog(4,"Processing mandate position ",unique.pos[p]," (",dpt,") (",p,"/",length(unique.pos),")")
 		
 		# get the corresponding rows
 		idx <- which(data[,COL_ATT_CANT_ID]==unique.pos[p])
 		tlog(6,"Found ",length(idx)," rows")
+		
+		folder2 <- file.path(folder,dpt)
+		dir.create(path=folder2, showWarnings=FALSE, recursive=TRUE)
 		
 		# record the sequence of mandates for this position
 		idx2 <- idx[order(data[idx,COL_ATT_MDT_DBT], data[idx,COL_ATT_MDT_FIN], 
 						data[idx,COL_ATT_FCT_DBT], data[idx,COL_ATT_FCT_DBT])]
 		tab2 <- cbind(idx2, data[idx2,])
 		colnames(tab2) <- "Ligne"
-		tab.file <- file.path(folder,paste0(unique.pos[p],"_details.txt"))
+		tab.file <- file.path(folder2,paste0(unique.pos[p],"_details.txt"))
 		tlog(6,"Recording in file \"",tab.file,"\"")
 		write.table(x=tab2,
 			file=tab.file,
@@ -52,7 +57,7 @@ test.position.cd <- function(data, out.folder)
 			sep="\t"
 		)
 		tab2 <- data[idx2,c(COL_ATT_MDT_DBT,COL_ATT_MDT_FIN,COL_ATT_ELU_NOM,COL_ATT_ELU_PRENOM,COL_ATT_ELU_ID)]
-		tab.file <- file.path(folder,paste0(unique.pos[p],".txt"))
+		tab.file <- file.path(folder2,paste0(unique.pos[p],".txt"))
 		tlog(6,"Recording in file \"",tab.file,"\"")
 		write.table(x=tab2,
 			file=tab.file,
@@ -154,12 +159,15 @@ test.position.cd <- function(data, out.folder)
 		idx <- which(data[,COL_ATT_DPT_CODE]==dpt & data[,COL_ATT_FCT_NOM]==funct)
 		tlog(6,"Found ",length(idx)," rows")
 		
+		folder2 <- file.path(folder,dpt)
+		dir.create(path=folder2, showWarnings=FALSE, recursive=TRUE)
+		
 		# record the sequence of functions for this position
 		idx2 <- idx[order(data[idx,COL_ATT_MDT_DBT], data[idx,COL_ATT_MDT_FIN], 
 						data[idx,COL_ATT_FCT_DBT], data[idx,COL_ATT_FCT_DBT])]
 		tab2 <- cbind(idx2, data[idx2,])
 		colnames(tab2) <- "Ligne"
-		tab.file <- file.path(folder,paste0(dpt,"_",funct,"_details.txt"))
+		tab.file <- file.path(folder2,paste0(dpt,"_",funct,"_details.txt"))
 		tlog(6,"Recording in file \"",tab.file,"\"")
 		write.table(x=tab2,
 			file=tab.file,
@@ -170,7 +178,7 @@ test.position.cd <- function(data, out.folder)
 			sep="\t"
 		)
 		tab2 <- data[idx2,c(COL_ATT_MDT_DBT,COL_ATT_MDT_FIN,COL_ATT_FCT_DBT,COL_ATT_FCT_FIN,COL_ATT_ELU_NOM,COL_ATT_ELU_PRENOM,COL_ATT_ELU_ID)]
-		tab.file <- file.path(folder,paste0(dpt,"_",funct,".txt"))
+		tab.file <- file.path(folder2,paste0(dpt,"_",funct,".txt"))
 		tlog(6,"Recording in file \"",tab.file,"\"")
 		write.table(x=tab2,
 			file=tab.file,
@@ -809,12 +817,15 @@ test.position.d <- function(data, out.folder)
 		idx <- which(data[,COL_ATT_DPT_CODE]==dpt & data[,COL_ATT_CIRC_CODE]==circo)
 		tlog(6,"Found ",length(idx)," rows")
 		
+		folder2 <- file.path(folder,dpt)
+		dir.create(path=folder2, showWarnings=FALSE, recursive=TRUE)
+		
 		# record the sequence of mandates for this position
 		idx2 <- idx[order(data[idx,COL_ATT_MDT_DBT], data[idx,COL_ATT_MDT_FIN], 
 						data[idx,COL_ATT_FCT_DBT], data[idx,COL_ATT_FCT_DBT])]
 		tab2 <- cbind(idx2, data[idx2,])
 		colnames(tab2) <- "Ligne"
-		tab.file <- file.path(folder,paste0(unique.pos[p],"_details.txt"))
+		tab.file <- file.path(folder2,paste0(circo,"_details.txt"))
 		tlog(6,"Recording in file \"",tab.file,"\"")
 		write.table(x=tab2,
 			file=tab.file,
@@ -825,7 +836,7 @@ test.position.d <- function(data, out.folder)
 			sep="\t"
 		)
 		tab2 <- data[idx2,c(COL_ATT_MDT_DBT,COL_ATT_MDT_FIN,COL_ATT_ELU_NOM,COL_ATT_ELU_PRENOM,COL_ATT_ELU_ID)]
-		tab.file <- file.path(folder,paste0(unique.pos[p],".txt"))
+		tab.file <- file.path(folder2,paste0(circo,".txt"))
 		tlog(6,"Recording in file \"",tab.file,"\"")
 		write.table(x=tab2,
 			file=tab.file,
@@ -893,7 +904,7 @@ test.position.d <- function(data, out.folder)
 		"VICE PRESIDENT DE L ASSEMBLEE NATIONALE"		# several but not distinguished
 	)
 	
-	# identify all unique functions: departement code + city code + function name
+	# identify all unique functions: function name
 	tlog(2,"Identifying all unique function positions")
 	functs <- data[,COL_ATT_FCT_NOM]
 	unique.pos <- sort(unique(functs[!is.na(functs)]))	# ignore certain functions
@@ -939,6 +950,132 @@ test.position.d <- function(data, out.folder)
 			sep="\t"
 		)
 			
+		if(length(idx)>1)
+		{	# check if their dates overlap
+			if(funct %in% ign.functs)
+				tlog(6,"Function not uniquely identified: not checking date overlaps")			
+			else
+			{	tlog(6,"Checking date overlaps")
+				ccount <- 0
+				for(i in 1:(length(idx)-1))
+				{	# get the dates of the first compared rows
+					start1 <- data[idx[i],COL_ATT_FCT_DBT]
+					end1 <- data[idx[i],COL_ATT_FCT_FIN]
+					
+					for(j in (i+1):length(idx))
+					{	# get the dates of the second compared rows
+						start2 <- data[idx[j],COL_ATT_FCT_DBT]
+						end2 <- data[idx[j],COL_ATT_FCT_FIN]
+						
+						# check if the periods intersect
+						if(date.intersect(start1, end1, start2, end2))
+						{	# add to the table of problematic cases
+							tab <- rbind(tab, data[c(idx[i],idx[j]),], rep(NA,ncol(data)))
+							# add a row of NAs in order to separate pairs of cases
+							count <- count + 1
+							ccount <- ccount + 1
+						}
+					}
+				}
+				
+				# possibly add an empty row to separate cases
+				tlog(6,"Found ",ccount," pairs of overlapping rows for this specific function position")
+				if(ccount>0)
+					tab <- rbind(tab, rep(NA,ncol(data)))
+			}
+		}
+	}
+	tlog(2,"Processing over: found a total of ",count," pairs of overlapping function positions for the whole table")
+	
+	# possibly record the table of problematic cases
+	if(nrow(tab)>0)
+	{	tab.file <- file.path(out.folder,"fonction_problems_overlap.txt")
+		tlog(2,"Recording in file \"",tab.file,"\"")
+		write.table(x=tab,
+			file=tab.file,
+#			fileEncoding="UTF-8",
+			row.names=FALSE, 
+			col.names=TRUE,
+#			quote=TRUE,
+			sep="\t"
+		)
+	}
+}
+
+
+
+
+#############################################################################################
+# Checks that two EPCI councilors do not hold the exact same unique function at the same time.
+#
+# data: table containing the municipal data.
+# out.folder: folder where to output the results.
+#############################################################################################
+test.position.epci <- function(data, out.folder)
+{	tlog(0,"Trying to detect problems in EPCI functions")
+	
+	# ignore the following (non-unique) functions
+	ign.functs <- c("VICE PRESIDENT D EPCI")
+	
+	# possibly create folder to output detailed position chronology
+	folder <- file.path(out.folder,"positions")
+	dir.create(path=folder, showWarnings=FALSE, recursive=TRUE)
+	
+	# identify all unique functions: departement code + city code + function name
+	tlog(2,"Identifying all unique function positions")
+	dpts <- data[,COL_ATT_DPT_CODE]
+	siren <- data[,COL_ATT_EPCI_SIREN]
+	functs <- data[,COL_ATT_FCT_NOM]
+	pos <- apply(cbind(dpts,siren,functs),1,function(r) paste(r,collapse="_"))
+	unique.pos <- sort(unique(pos[!is.na(functs)]))
+	tlog(4,"Found ",length(unique.pos)," of them")
+	
+	# process each unique function
+	tlog(2,"Processing each unique function position")
+	tab <- data[FALSE,]
+	count <- 0
+	for(p in 1:length(unique.pos))
+	{	# retrieve the city code and function name
+		tmp <- strsplit(unique.pos[p],"_")[[1]]
+		dpt <- tmp[1]
+		siren <- tmp[2]
+		funct <- tmp[3]
+		tlog(4,"Processing function ",p,"/",length(unique.pos)," dpt=",dpt," siren=",siren," function=",funct)
+		
+		# get the corresponding rows
+		idx <- which(data[,COL_ATT_DPT_CODE]==dpt & data[,COL_ATT_EPCI_SIREN]==siren & data[,COL_ATT_FCT_NOM]==funct)
+		tlog(6,"Found ",length(idx)," rows")
+		
+		folder2 <- file.path(folder,dpt)
+		dir.create(path=folder2, showWarnings=FALSE, recursive=TRUE)
+		
+		# record the sequence of functions for this position
+		idx2 <- idx[order(data[idx,COL_ATT_MDT_DBT], data[idx,COL_ATT_MDT_FIN], 
+						data[idx,COL_ATT_FCT_DBT], data[idx,COL_ATT_FCT_DBT])]
+		tab2 <- cbind(idx2, data[idx2,])
+		colnames(tab2) <- "Ligne"
+		tab.file <- file.path(folder2,paste0(siren,"_details.txt"))
+		tlog(6,"Recording in file \"",tab.file,"\"")
+		write.table(x=tab2,
+			file=tab.file,
+#			fileEncoding="UTF-8",
+			row.names=FALSE, 
+			col.names=TRUE,
+#			quote=TRUE,
+			sep="\t"
+		)
+		tab2 <- data[idx2,c(COL_ATT_MDT_DBT,COL_ATT_MDT_FIN,COL_ATT_FCT_DBT,COL_ATT_FCT_FIN,COL_ATT_ELU_NOM,COL_ATT_ELU_PRENOM,COL_ATT_ELU_ID)]
+		tab.file <- file.path(folder2,paste0(siren,".txt"))
+		tlog(6,"Recording in file \"",tab.file,"\"")
+		write.table(x=tab2,
+			file=tab.file,
+#			fileEncoding="UTF-8",
+			row.names=FALSE, 
+			col.names=TRUE,
+			quote=FALSE,
+			sep="\t"
+		)
+		
 		if(length(idx)>1)
 		{	# check if their dates overlap
 			if(funct %in% ign.functs)
