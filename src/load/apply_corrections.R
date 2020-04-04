@@ -1201,8 +1201,10 @@ round.mdtfct.dates <- function(data, election.file, series.file, tolerance)
 		if(series.present)
 		{	# CD table
 			if(COL_ATT_CANT_CODE %in% colnames(series.table))
-				idx <- which(series.table[,COL_ATT_DPT_CODE]==data[r,COL_ATT_DPT_CODE]
+			{	idx <- which(series.table[,COL_ATT_DPT_CODE]==data[r,COL_ATT_DPT_CODE]
 					& series.table[,COL_ATT_CANT_NOM]==data[r,COL_ATT_CANT_NOM])
+				series <- series.table[idx,COL_VERIF_SERIE]
+			}
 			# S table
 			else 
 			{	# very ugly ad hoc fix for Senators representing people leaving abroad
@@ -1525,8 +1527,10 @@ split.long.mandates <- function(data, election.file, series.file)
 			if(series.present)
 			{	# CD table
 				if(COL_ATT_CANT_CODE %in% colnames(series.table))
-					idx <- which(series.table[,COL_ATT_DPT_CODE]==data[r,COL_ATT_DPT_CODE]
+				{	idx <- which(series.table[,COL_ATT_DPT_CODE]==data[r,COL_ATT_DPT_CODE]
 									& series.table[,COL_ATT_CANT_NOM]==data[r,COL_ATT_CANT_NOM])
+					series <- series.table[idx,COL_VERIF_SERIE]
+				}
 				# S table
 				else 
 				{	# very ugly ad hoc fix for Senators representing people leaving abroad
