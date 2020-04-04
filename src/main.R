@@ -161,3 +161,20 @@ source("src/common/include.R")
 # il existe une BD recensant les EPCI (SIREN)
 # https://www.data.gouv.fr/fr/datasets/base-nationale-sur-linter-communalite/
 # https://www.collectivites-locales.gouv.fr/liste-et-composition-des-epci-a-fiscalite-propre
+
+#CM caching >> en cours
+
+#finir de vérifier que test_position marche bien pr CR (fini, à éval) + D + S 
+#>> autres ? EPCI ??
+
+#################################
+# Desktop
+# C1=testing positions *D/S
+# C2=caching CM
+# C3=testing positions *CR/CM
+#################################
+# Zenbook S:
+# C1=analyse de All
+# C2=
+# C3=
+#################################
