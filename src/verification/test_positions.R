@@ -167,7 +167,7 @@ test.position.cd <- function(data, out.folder)
 						data[idx,COL_ATT_FCT_DBT], data[idx,COL_ATT_FCT_DBT])]
 		tab2 <- cbind(idx2, data[idx2,])
 		colnames(tab2) <- "Ligne"
-		tab.file <- file.path(folder2,paste0(dpt,"_",funct,"_details.txt"))
+		tab.file <- file.path(folder2,paste0(funct,"_details.txt"))
 		tlog(6,"Recording in file \"",tab.file,"\"")
 		write.table(x=tab2,
 			file=tab.file,
@@ -178,7 +178,7 @@ test.position.cd <- function(data, out.folder)
 			sep="\t"
 		)
 		tab2 <- data[idx2,c(COL_ATT_MDT_DBT,COL_ATT_MDT_FIN,COL_ATT_FCT_DBT,COL_ATT_FCT_FIN,COL_ATT_ELU_NOM,COL_ATT_ELU_PRENOM,COL_ATT_ELU_ID)]
-		tab.file <- file.path(folder2,paste0(dpt,"_",funct,".txt"))
+		tab.file <- file.path(folder2,paste0(funct,".txt"))
 		tlog(6,"Recording in file \"",tab.file,"\"")
 		write.table(x=tab2,
 			file=tab.file,
