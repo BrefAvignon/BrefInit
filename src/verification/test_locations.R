@@ -102,9 +102,10 @@ test.col.locations.municipality <- function(data, out.folder)
 		
 		# check that each code is associated to a unique name
 		unique.codes <- sort(unique(codes[!is.na(names)]))
+		tlog.start.loop(2,length(unique.codes),"Processing each municipality")
 		for(i in 1:length(unique.codes))
 		{	unique.code <- unique.codes[i]
-			tlog(2,"Processing municipality ",unique.code," (",i,"/",length(unique.codes),")")
+			tlog.loop(4,i,"Processing municipality ",unique.code," (",i,"/",length(unique.codes),")")
 			
 			idx <- which(codes==unique.code)
 			ns <- names[idx]
@@ -119,6 +120,7 @@ test.col.locations.municipality <- function(data, out.folder)
 				tab1 <- rbind(tab1, row)
 			}
 		}
+		tlog.end.loop(2,"Loop over")
 		
 		# found codes associated to multiple names
 		if(nrow(tab1)>0)
@@ -226,9 +228,10 @@ test.col.locations.canton <- function(data, out.folder)
 		
 		# check that each code is associated to a unique name
 		unique.codes <- sort(unique(codes[!is.na(names)]))
+		tlog.start.loop(2,length(unique.codes),"Processing each canton")
 		for(i in 1:length(unique.codes))
 		{	unique.code <- unique.codes[i]
-			tlog(2,"Processing canton ",unique.code," (",i,"/",length(unique.codes),")")
+			tlog.loop(2,i,"Processing canton ",unique.code," (",i,"/",length(unique.codes),")")
 			
 			idx <- which(codes==unique.code)
 			ns <- names[idx]
@@ -241,6 +244,7 @@ test.col.locations.canton <- function(data, out.folder)
 				tab1 <- rbind(tab1, row)
 			}
 		}
+		tlog.end.loop(2,"Loop over")
 		
 		# found codes associated to multiple names
 		if(nrow(tab1)>0)
@@ -348,9 +352,10 @@ test.col.locations.legcirco <- function(data, out.folder)
 		
 		# check that each code is associated to a unique name
 		unique.codes <- sort(unique(codes[!is.na(names)]))
+		tlog.start.loop(2,length(unique.codes),"Processing each circonscription")
 		for(i in 1:length(unique.codes))
 		{	unique.code <- unique.codes[i]
-			tlog(2,"Processing circonscription ",unique.code," (",i,"/",length(unique.codes),")")
+			tlog.loop(4,i,"Processing circonscription ",unique.code," (",i,"/",length(unique.codes),")")
 			
 			idx <- which(codes==unique.code)
 			ns <- names[idx]
@@ -363,6 +368,7 @@ test.col.locations.legcirco <- function(data, out.folder)
 				tab1 <- rbind(tab1, row)
 			}
 		}
+		tlog.end.loop(2,"Loop over")
 		
 		# found codes associated to multiple names
 		if(nrow(tab1)>0)

@@ -552,9 +552,10 @@ sumup.cols <- function(data, out.folder, ...)
 	rownames(stats) <- colnames(data)
 	
 	# process each column separately
+	tlog.start.loop(2,ncol(data),"Process each column")
 	for(c in 1:ncol(data))
 	{	col <- colnames(data)[c]
-		tlog(2,"Considering column \"",col,"\"")
+		tlog.loop(2,c,"Considering column \"",col,"\"")
 		
 		# process the column
 		res <- sumup.col(
@@ -571,6 +572,7 @@ sumup.cols <- function(data, out.folder, ...)
 				stats[c,names(res)[i]] <- res[i]
 		}
 	}
+	tlog.end.loop(2,"Loop over")
 	
 	# record the stats table
 	file <- file.path(out.folder,"stats.txt")

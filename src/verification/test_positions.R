@@ -26,13 +26,13 @@ test.position.cd <- function(data, out.folder)
 	tlog(4,"Found ",length(unique.pos)," of them")
 	
 	# process each unique position
-	tlog(2,"Processing each unique mandate position")
+	tlog.start.loop(2,length(unique.pos),"Processing each unique mandate position")
 	tab <- data[FALSE,]
 	count <- 0
 	for(p in 1:length(unique.pos))
 	{	tmp <- strsplit(unique.pos[p],"_")[[1]]
 		dpt <- tmp[1]
-		tlog(4,"Processing mandate position ",unique.pos[p]," (",dpt,") (",p,"/",length(unique.pos),")")
+		tlog.loop(4,p,"Processing mandate position ",unique.pos[p]," (",dpt,") (",p,"/",length(unique.pos),")")
 		
 		# get the corresponding rows
 		idx <- which(data[,COL_ATT_CANT_ID]==unique.pos[p])
@@ -107,7 +107,7 @@ test.position.cd <- function(data, out.folder)
 				tab <- rbind(tab, rep(NA,ncol(data)))
 		}
 	}
-	tlog(2,"Processing over: found a total of ",count," overlapping mandate positions for the whole table")
+	tlog.end.loop(2,"Processing over: found a total of ",count," overlapping mandate positions for the whole table")
 	
 	# possibly record the table of problematic cases
 	if(nrow(tab)>0)
@@ -145,7 +145,7 @@ test.position.cd <- function(data, out.folder)
 	tlog(4,"Found ",length(unique.pos)," of them")
 	
 	# process each unique function
-	tlog(2,"Processing each unique function position")
+	tlog.start.loop(2,length(unique.pos),"Processing each unique function position")
 	tab <- data[FALSE,]
 	count <- 0
 	for(p in 1:length(unique.pos))
@@ -153,7 +153,7 @@ test.position.cd <- function(data, out.folder)
 		tmp <- strsplit(unique.pos[p],"_")[[1]]
 		dpt <- tmp[1]
 		funct <- tmp[2]
-		tlog(4,"Processing function ",p,"/",length(unique.pos)," dpt=",dpt," function=",funct)
+		tlog.loop(4,p,"Processing function ",p,"/",length(unique.pos)," dpt=",dpt," function=",funct)
 		
 		# get the corresponding rows
 		idx <- which(data[,COL_ATT_DPT_CODE]==dpt & data[,COL_ATT_FCT_NOM]==funct)
@@ -224,7 +224,7 @@ test.position.cd <- function(data, out.folder)
 			}
 		}
 	}
-	tlog(2,"Processing over: found a total of ",count," pairs of overlapping function positions for the whole table")
+	tlog.end.loop(2,"Processing over: found a total of ",count," pairs of overlapping function positions for the whole table")
 	
 	# possibly record the table of problematic cases
 	if(nrow(tab)>0)
@@ -270,7 +270,7 @@ test.position.cm <- function(data, out.folder)
 	tlog(4,"Found ",length(unique.pos)," of them")
 	
 	# process each unique function
-	tlog(2,"Processing each unique function position")
+	tlog.start.loop(2,length(unique.pos),"Processing each unique function position")
 	tab <- data[FALSE,]
 	count <- 0
 	for(p in 1:length(unique.pos))
@@ -279,7 +279,7 @@ test.position.cm <- function(data, out.folder)
 		dpt <- tmp[1]
 		com <- tmp[2]
 		funct <- tmp[3]
-		tlog(4,"Processing function ",p,"/",length(unique.pos)," dpt=",dpt," city=",com," function=",funct)
+		tlog.loop(4,p,"Processing function ",p,"/",length(unique.pos)," dpt=",dpt," city=",com," function=",funct)
 		
 		# get the corresponding rows
 		idx <- which(data[,COL_ATT_DPT_CODE]==dpt & data[,COL_ATT_COM_CODE]==com & data[,COL_ATT_FCT_NOM]==funct)
@@ -350,7 +350,7 @@ test.position.cm <- function(data, out.folder)
 			}
 		}
 	}
-	tlog(2,"Processing over: found a total of ",count," pairs of overlapping function positions for the whole table")
+	tlog.end.loop(2,"Processing over: found a total of ",count," pairs of overlapping function positions for the whole table")
 	
 	# possibly record the table of problematic cases
 	if(nrow(tab)>0)
@@ -390,9 +390,9 @@ test.position.cr <- function(data, out.folder)
 	tlog(4,"Found ",length(unique.pos)," of them")
 	
 	# process each unique region
-	tlog(2,"Processing each unique region")
+	tlog.start.loop(2,length(unique.pos),"Processing each unique region")
 	for(p in 1:length(unique.pos))
-	{	tlog(4,"Processing region ",unique.pos[p], "(",p,"/",length(unique.pos),")")
+	{	tlog.loop(4,p,"Processing region ",unique.pos[p], "(",p,"/",length(unique.pos),")")
 		
 		# get the corresponding rows
 		idx <- which(data[,COL_ATT_REG_CODE]==unique.pos[p])
@@ -533,7 +533,7 @@ test.position.cr <- function(data, out.folder)
 	tlog(4,"Found ",length(unique.pos)," of them")
 	
 	# process each unique function
-	tlog(2,"Processing each unique function position")
+	tlog.start.loop(2,length(unique.pos),"Processing each unique function position")
 	tab <- data[FALSE,]
 	count <- 0
 	for(p in 1:length(unique.pos))
@@ -541,7 +541,7 @@ test.position.cr <- function(data, out.folder)
 		tmp <- strsplit(unique.pos[p],"_")[[1]]
 		reg <- tmp[1]
 		funct <- tmp[2]
-		tlog(4,"Processing function ",p,"/",length(unique.pos)," region=",reg," function=",funct)
+		tlog.loop(4,p,"Processing function ",p,"/",length(unique.pos)," region=",reg," function=",funct)
 		
 		# get the corresponding rows
 		idx <- which(data[,COL_ATT_REG_CODE]==reg & data[,COL_ATT_FCT_NOM]==funct)
@@ -609,7 +609,7 @@ test.position.cr <- function(data, out.folder)
 			}
 		}
 	}
-	tlog(2,"Processing over: found a total of ",count," pairs of overlapping function positions for the whole table")
+	tlog.end.loop(2,"Processing over: found a total of ",count," pairs of overlapping function positions for the whole table")
 	
 	# possibly record the table of problematic cases
 	if(nrow(tab)>0)
@@ -649,9 +649,9 @@ test.position.de <- function(data, out.folder)
 	tlog(4,"Found ",length(unique.pos)," of them")
 	
 	# process each unique circonscriptions
-	tlog(2,"Processing each unique european circonscriptions")
+	tlog.start.loop(2,length(unique.pos),"Processing each unique european circonscriptions")
 	for(p in 1:length(unique.pos))
-	{	tlog(4,"Processing european circonscription ",unique.pos[p], "(",p,"/",length(unique.pos),")")
+	{	tlog.loop(4,p,"Processing european circonscription ",unique.pos[p], "(",p,"/",length(unique.pos),")")
 		
 		# get the corresponding rows
 		idx <- which(data[,COL_ATT_CIRCE_NOM]==unique.pos[p])
@@ -803,7 +803,7 @@ test.position.d <- function(data, out.folder)
 	tlog(4,"Found ",length(unique.pos)," of them")
 	
 	# process each unique position
-	tlog(2,"Processing each unique mandate position")
+	tlog.start.loop(2,length(unique.pos),"Processing each unique mandate position")
 	tab <- data[FALSE,]
 	count <- 0
 	for(p in 1:length(unique.pos))
@@ -811,7 +811,7 @@ test.position.d <- function(data, out.folder)
 		tmp <- strsplit(unique.pos[p],"_")[[1]]
 		dpt <- tmp[1]
 		circo <- as.integer(tmp[2])
-		tlog(4,"Processing mandate position ",p,"/",length(unique.pos)," dpt=",dpt," circo=",circo)
+		tlog.loop(4,p,"Processing mandate position ",p,"/",length(unique.pos)," dpt=",dpt," circo=",circo)
 		
 		# get the corresponding rows
 		idx <- which(data[,COL_ATT_DPT_CODE]==dpt & data[,COL_ATT_CIRC_CODE]==circo)
@@ -877,7 +877,7 @@ test.position.d <- function(data, out.folder)
 				tab <- rbind(tab, rep(NA,ncol(data)))
 		}
 	}
-	tlog(2,"Processing over: found a total of ",count," pairs of overlapping mandate positions for the whole table")
+	tlog.end.loop(2,"Processing over: found a total of ",count," pairs of overlapping mandate positions for the whole table")
 	
 	# possibly record the table of problematic cases
 	if(nrow(tab)>0)
@@ -911,13 +911,13 @@ test.position.d <- function(data, out.folder)
 	tlog(4,"Found ",length(unique.pos)," of them")
 	
 	# process each unique function
-	tlog(2,"Processing each unique function position")
+	tlog.start.loop(2,length(unique.pos),"Processing each unique function position")
 	tab <- data[FALSE,]
 	count <- 0
 	for(p in 1:length(unique.pos))
 	{	# retrieve the function name
 		funct <- unique.pos[p]
-		tlog(4,"Processing function ",funct," (",p,"/",length(unique.pos),")")
+		tlog.loop(4,p,"Processing function ",funct," (",p,"/",length(unique.pos),")")
 		
 		# get the corresponding rows
 		idx <- which(data[,COL_ATT_FCT_NOM]==funct)
@@ -985,7 +985,7 @@ test.position.d <- function(data, out.folder)
 			}
 		}
 	}
-	tlog(2,"Processing over: found a total of ",count," pairs of overlapping function positions for the whole table")
+	tlog.end.loop(2,"Processing over: found a total of ",count," pairs of overlapping function positions for the whole table")
 	
 	# possibly record the table of problematic cases
 	if(nrow(tab)>0)
@@ -1031,7 +1031,7 @@ test.position.epci <- function(data, out.folder)
 	tlog(4,"Found ",length(unique.pos)," of them")
 	
 	# process each unique function
-	tlog(2,"Processing each unique function position")
+	tlog.start.loop(2,length(unique.pos),"Processing each unique function position")
 	tab <- data[FALSE,]
 	count <- 0
 	for(p in 1:length(unique.pos))
@@ -1040,7 +1040,7 @@ test.position.epci <- function(data, out.folder)
 		dpt <- tmp[1]
 		siren <- tmp[2]
 		funct <- tmp[3]
-		tlog(4,"Processing function ",p,"/",length(unique.pos)," dpt=",dpt," siren=",siren," function=",funct)
+		tlog.loop(4,p,"Processing function ",p,"/",length(unique.pos)," dpt=",dpt," siren=",siren," function=",funct)
 		
 		# get the corresponding rows
 		idx <- which(data[,COL_ATT_DPT_CODE]==dpt & data[,COL_ATT_EPCI_SIREN]==siren & data[,COL_ATT_FCT_NOM]==funct)
@@ -1111,7 +1111,7 @@ test.position.epci <- function(data, out.folder)
 			}
 		}
 	}
-	tlog(2,"Processing over: found a total of ",count," pairs of overlapping function positions for the whole table")
+	tlog.end.loop(2,"Processing over: found a total of ",count," pairs of overlapping function positions for the whole table")
 	
 	# possibly record the table of problematic cases
 	if(nrow(tab)>0)
@@ -1153,7 +1153,7 @@ test.position.m <- function(data, out.folder)
 	tlog(4,"Found ",length(unique.pos)," of them")
 	
 	# process each unique position
-	tlog(2,"Processing each unique function position")
+	tlog.start.loop(2,length(unique.pos),"Processing each unique function position")
 	count <- 0
 	tab <- data[FALSE,]
 	for(p in 1:length(unique.pos))
@@ -1161,7 +1161,7 @@ test.position.m <- function(data, out.folder)
 		tmp <- strsplit(unique.pos[p],"_")[[1]]
 		dpt <- tmp[1]
 		com <- tmp[2]
-		tlog(4,"Processing function position ",p,"/",length(unique.pos)," dpt=",dpt," city=",com)
+		tlog.loop(4,p,"Processing function position ",p,"/",length(unique.pos)," dpt=",dpt," city=",com)
 		
 		# get the corresponding rows
 		idx <- which(data[,COL_ATT_DPT_CODE]==dpt & data[,COL_ATT_COM_CODE]==com)
@@ -1235,7 +1235,7 @@ test.position.m <- function(data, out.folder)
 				tab <- rbind(tab, rep(NA,ncol(data)))
 		}
 	}
-	tlog(2,"Processing over: found a total of ",count," pairs of overlapping function positions for the whole table")
+	tlog.end.loop(2,"Processing over: found a total of ",count," pairs of overlapping function positions for the whole table")
 	
 	# possibly record the tables of problematic function cases
 	if(nrow(tab)>0)
@@ -1275,9 +1275,9 @@ test.position.s <- function(data, out.folder)
 	tlog(4,"Found ",length(unique.pos)," of them")
 	
 	# process each unique department
-	tlog(2,"Processing each unique department")
+	tlog.start.loop(2,length(unique.pos),"Processing each unique department")
 	for(p in 1:length(unique.pos))
-	{	tlog(4,"Processing department ",p,"/",length(unique.pos)," dpt=",unique.pos[p])
+	{	tlog.loop(4,p,"Processing department ",p,"/",length(unique.pos)," dpt=",unique.pos[p])
 		
 		# get the corresponding rows
 		idx <- which(data[,COL_ATT_DPT_CODE]==unique.pos[p])
@@ -1421,11 +1421,11 @@ test.position.s <- function(data, out.folder)
 	# process each unique function
 	tab <- data[FALSE,]
 	count <- 0
-	tlog(2,"Processing each unique function position")
+	tlog.start.loop(2,length(unique.pos),"Processing each unique function position")
 	for(p in 1:length(unique.pos))
 	{	# retrieve the function name
 		funct <- unique.pos[p]
-		tlog(4,"Processing function ",funct,"(",p,"/",length(unique.pos),")")
+		tlog.loop(4,p,"Processing function ",funct,"(",p,"/",length(unique.pos),")")
 		
 		# get the corresponding rows
 		idx <- which(data[,COL_ATT_FCT_NOM]==funct)
@@ -1493,7 +1493,7 @@ test.position.s <- function(data, out.folder)
 			}
 		}
 	}
-	tlog(2,"Processing over: found a total of ",count," pairs of overlapping function positions for the whole table")
+	tlog.end.loop(2,"Processing over: found a total of ",count," pairs of overlapping function positions for the whole table")
 	
 	# possibly record the table of problematic cases
 	if(nrow(tab)>0)

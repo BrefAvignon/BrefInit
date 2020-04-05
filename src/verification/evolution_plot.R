@@ -234,10 +234,10 @@ plot.pers.time2 <- function(data, out.folder)
 	day.idx <- start.date:end.date
 	day.dates <- as.Date(day.idx,origin="1970-01-01")
 	day.vals <- rep(0, length(day.idx))
-	tlog(4,"Looping over the data row by row")
+	tlog.start.loop(4,nrow(data),"Looping over the data row by row")
 	for(r in 1:nrow(data))
 	{	if(r %% 10000==0)
-			tlog(8,r,"/",nrow(data)," rows processed")
+			tlog.loop(8,r,r,"/",nrow(data)," rows processed")
 		sdate <- data[r,COL_ATT_MDT_DBT]
 		edate <- data[r,COL_ATT_MDT_FIN]
 		if(!(is.na(sdate) && is.na(edate)))
@@ -250,6 +250,7 @@ plot.pers.time2 <- function(data, out.folder)
 			day.vals[idx] <- day.vals[idx] + rep(1,length(idx))
 		}
 	}
+	tlog.end.loop(4,"Loop over")
 	
 	# record data in a text file
 	file <- file.path(out.folder,"persons_by_day.txt")

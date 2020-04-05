@@ -94,11 +94,11 @@ test.id.reuse <- function(data, out.folder)
 	tlog(4,"Found ",length(ids)," of them")
 	
 	# process each unique ID
-	tlog(2,"Processing each unique ID")
+	tlog.start.loop(2,length(ids),"Processing each unique ID")
 	count <- 0
 	for(i in 1:length(ids))
 	{	id <- ids[i]
-		tlog(4,"Processing ID ",i,"/",length(ids))
+		tlog.loop(4,i,"Processing ID ",i,"/",length(ids))
 		
 		# get the corresponding mandates
 		idx <- which(data[,COL_ATT_ELU_ID]==id)
@@ -142,7 +142,7 @@ test.id.reuse <- function(data, out.folder)
 			}
 		}
 	}
-	tlog(2,"Processing of unique IDs over")
+	tlog.end.loop(2,"Processing of unique IDs over")
 	
 	# possibly record the table of problematic cases
 	if(nrow(tab)>0)
@@ -233,11 +233,11 @@ test.multiple.id <- function(data, loc.col=NA, out.folder)
 	tlog(4,"Found ",length(unique.indivs)," of them")
 	
 	# process each unique individidual
-	tlog(2,"Processing each unique individual")
+	tlog.start.loop(2,length(unique.indivs),"Processing each unique individual")
 	count <- 0
 	for(i in 1:length(unique.indivs))
 	{	indiv <- unique.indivs[i]
-		tlog(4,"Processing individual ",i,"/",length(unique.indivs),": ",indiv)
+		tlog.loop(4,i,"Processing individual ",i,"/",length(unique.indivs),": ",indiv)
 		
 		# get the corresponding mandates
 		idx <- which(indivs[]==indiv)
@@ -284,7 +284,7 @@ test.multiple.id <- function(data, loc.col=NA, out.folder)
 			}
 		}
 	}
-	tlog(2,"Processing of unique individuals over")
+	tlog.end.loop(2,"Processing of unique individuals over")
 	
 	# only if some duplicates were found:
 	if(nrow(tab)>0)

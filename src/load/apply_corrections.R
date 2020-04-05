@@ -70,11 +70,11 @@ retrieve.normalize.data <- function(filenames, col.map, correct.data)
 	}
 	
 	# setting appropriate encoding of string columns, replace "" by NAs, and normalize proper nouns
-	tlog(0,"Cleaning/encoding/normalizing strings")
+	tlog.start.loop(0,ncol(data),"Cleaning/encoding/normalizing strings")
 	for(c in 1:ncol(data))
 	{	col.name <- colnames(data)[c]
 		col.type <- COL_TYPES[col.name]
-		tlog(2,"Processing column \"",col.name,"\" (",c,"/",ncol(data),")")
+		tlog.loop(2,c,"Processing column \"",col.name,"\" (",c,"/",ncol(data),")")
 		
 		# the column is an actual string
 		if(col.type %in% c("cat","nom"))
@@ -107,6 +107,7 @@ retrieve.normalize.data <- function(filenames, col.map, correct.data)
 		# replace "NA"s by actual NAs
 		data[which(data[,c]=="NA"),c] <- NA
 	}
+	tlog.end.loop(0,"Done with the cleaning/encoding/normalizing of strings")
 	
 	# add columns to store correction flags
 	correc.date <- rep(FALSE, nrow(data))
@@ -316,12 +317,11 @@ apply.adhoc.corrections <- function(data, col.map, correc.file)
 	# apply ad hoc corrections
 	corrected.rows <- c()
 	if(nrow(correc.table)>0)	
-	{	tlog(0,"Applying ad hoc corrections")
-		
-		# apply each correction one after the other
+	{	# apply each correction one after the other
+		tlog.start.loop(0,nrow(correc.table),"Applying ad hoc corrections")
 		idx.rm <- c()
 		for(r in 1:nrow(correc.table))
-		{	tlog(2,"Correction ",r,"/",nrow(correc.table))
+		{	tlog.loop(2,r,"Correction ",r,"/",nrow(correc.table))
 			
 			correc.attr <- correc.table[r,COL_CORREC_ATTR]
 			if(correc.attr %in% c(COL_ATT_MDT_DBT, COL_ATT_MDT_FIN, COL_ATT_FCT_DBT, COL_ATT_FCT_FIN))
@@ -425,7 +425,7 @@ apply.adhoc.corrections <- function(data, col.map, correc.file)
 				}
 			}
 		}
-		tlog(2,"Corrected ",length(corrected.rows)," rows in total (",(100*length(corrected.rows)/nrow(data)),"%)")
+		tlog.end.loop(2,"Corrected ",length(corrected.rows)," rows in total (",(100*length(corrected.rows)/nrow(data)),"%)")
 		
 		# remove the marked rows
 		if(length(idx.rm)>0)
@@ -691,14 +691,14 @@ apply.systematic.corrections <- function(data, type)
 # returns: same data frame, but with converted columns.
 #############################################################################################
 convert.col.types <- function(data)
-{	tlog(0,"Converting date and numeric columns")
+{	tlog.start.loop(0,ncol(data),"Converting date and numeric columns")
 	for(c in 1:ncol(data))
 	{	col.name <- colnames(data)[c]
 		col.type <- COL_TYPES[col.name]
 		
 		# dealing with dates
 		if(col.type=="dat")
-		{	tlog(2,"Col. \"",col.name,"\": converting to date")
+		{	tlog.loop(2,c,"Column \"",col.name,"\": converting to date")
 			vals <- as.Date(data[,col.name], "%d/%m/%Y")
 			
 			#format(x, format="%Y/%m/%d")
@@ -715,7 +715,7 @@ convert.col.types <- function(data)
 # actually, this is done later if needed 
 # (as there's only one such column which requires more specific processing)
 #		else if(col$tp=="num")
-#		{	tlog(2,"Col. \"",col$name,"\": converting to numbers")
+#		{	tlog.loop(2,c,"Column \"",col$name,"\": converting to numbers")
 #			vals <- suppressWarnings(as.numeric(data[,col$name]))
 #			if(c==1)
 #				data <- cbind(vals,data[,2:ncol(data),drop=FALSE])
@@ -729,9 +729,9 @@ convert.col.types <- function(data)
 		
 		# the other columns stay strings
 		else
-			tlog(2,"Col. \"",col.name,"\": simple string, no conversion")
+			tlog.loop(2,c,"Column \"",col.name,"\": simple string, no conversion")
 	}
-	tlog(2,"Now ",nrow(data)," rows and ",ncol(data)," columns in table")
+	tlog.end.loop(2,"Now ",nrow(data)," rows and ",ncol(data)," columns in table")
 	
 	
 	# convert population numbers to actual integers
@@ -875,10 +875,10 @@ merge.similar.rows <- function(data)
 	tlog(2,"Looking for possibly redundant rows: found ",length(codes))
 	
 	# identify compatible rows against redundant ones
-	tlog(2,"Looking for compatible rows among them")
+	tlog.start.loop(2,length(codes),"Looking for compatible rows among them")
 	tmp <- lapply(1:length(codes), function(i)
 	{	code <- codes[i]
-		tlog(4,"Processing code ",code," (",i,"/",length(codes),")")
+		tlog.loop(4,i,"Processing code ",code," (",i,"/",length(codes),")")
 		res <- c()
 		
 		rs <- which(concat==code)
@@ -910,7 +910,8 @@ merge.similar.rows <- function(data)
 		}
 		return(res)
 	})
-	
+	tlog.end.loop(2,"Loop over")
+
 	# actually remove the rows marked for deletion
 	nbr.before <- nrow(data)
 	removed.nbr <- 0
@@ -1191,10 +1192,10 @@ round.mdtfct.dates <- function(data, election.file, series.file, tolerance)
 	}
 	
 	# compare mandate and election dates
-	tlog(2,"Check mandate dates against election dates")
+	tlog.start.loop(2,nrow(data),"Check mandate dates against election dates")
 	nbr.corrected <- 0
 	for(r in 1:nrow(data))
-	{	tlog(4,"Processing row ",r,"/",nrow(data),": ",format.row.dates(data[r,]))
+	{	tlog.loop(4,r,"Processing row ",r,"/",nrow(data),": ",format.row.dates(data[r,]))
 		
 		# get election dates
 		election.dates <- election.table
@@ -1306,7 +1307,7 @@ round.mdtfct.dates <- function(data, election.file, series.file, tolerance)
 		#if(motive.changed)
 		#	readline()		
 	}
-	tlog(2,"CHECKPOINT 8: Rounded ",nbr.corrected," rows with election-related issues (",(100*nbr.corrected/nrow(data)),"%)")
+	tlog.end.loop(2,"CHECKPOINT 8: Rounded ",nbr.corrected," rows with election-related issues (",(100*nbr.corrected/nrow(data)),"%)")
 	
 	return(data)
 }
@@ -1360,9 +1361,10 @@ merge.overlapping.mandates <- function(data, type)
 	unique.ids <- sort(unique(data[,COL_ATT_ELU_ID]))
 	nbr.corr <- 0
 	idx.rmv <- c()
+	tlog.start.loop(2,length(unique.ids),"Processing each unique id")
 	for(i in 1:length(unique.ids))
 	{	idx <- which(data[,COL_ATT_ELU_ID]==unique.ids[i])
-		tlog(2,"Processing id ",unique.ids[i]," (",i,"/",length(unique.ids),"): found ",length(idx)," rows")
+		tlog.loop(4,i,"Processing id ",unique.ids[i]," (",i,"/",length(unique.ids),"): found ",length(idx)," rows")
 		
 		# nothing to do
 		if(length(idx)<2)
@@ -1371,30 +1373,18 @@ merge.overlapping.mandates <- function(data, type)
 		# comparing the to the subsequent rows
 		else
 		{	for(j in 1:(length(idx)-1))
-			{	tlog(4,"Processing row ",j,"/",length(idx))
+			{	tlog(6,"Processing row ",j,"/",length(idx))
 				
 				# check if row not already removed
 				if(idx[j] %in% idx.rmv)
-					tlog(6,"Row already removed, nothing to compare to")
+					tlog(8,"Row already removed, nothing to compare to")
 				# row not removed, we go on
 				else 
 				{	for(k in (j+1):length(idx))
-					{	tlog(6,"Comparing to row ",k,"/",length(idx))
-
-#print(j)
-#print(k)
-#print(idx[j])
-#print(idx[k])
-#print(circo.codes[idx[j]])
-#print(circo.codes[idx[k]])
-#print(circo.codes[idx[j]]==circo.codes[idx[k]])
-#print(is.na(circo.codes[idx[j]]))
-#print(is.na(circo.codes[idx[k]]))
-#print(is.na(circo.codes[idx[j]]) || is.na(circo.codes[idx[k]]) || circo.codes[idx[j]]==circo.codes[idx[k]])
-
+					{	tlog(8,"Comparing to row ",k,"/",length(idx))
 						# check if row not already removed
 						if(idx[k] %in% idx.rmv)
-							tlog(8,"Row already removed, nothing to compare to")
+							tlog(10,"Row already removed, nothing to compare to")
 						# row not removed, we go on
 						else 
 						{	if((is.na(circo.codes[idx[j]]) || is.na(circo.codes[idx[k]])				# at least one NA circonscription, 
@@ -1420,11 +1410,11 @@ merge.overlapping.mandates <- function(data, type)
 												end2=data[idx[k],COL_ATT_FCT_FIN])))
 							)
 							{	# log detected overlap
-								tlog(10, format.row(data[idx[j],]))
-								tlog(10, format.row(data[idx[k],]))
-								tlog(8, "Overlap detected between")
-								tlog(10, format.row.dates(data[idx[j],]),if(has.fct) paste0(" (",data[idx[j],fct.att],")") else "")
-								tlog(10, format.row.dates(data[idx[k],]),if(has.fct) paste0(" (",data[idx[k],fct.att],")") else "")
+								tlog(12, format.row(data[idx[j],]))
+								tlog(12, format.row(data[idx[k],]))
+								tlog(10, "Overlap detected between")
+								tlog(12, format.row.dates(data[idx[j],]),if(has.fct) paste0(" (",data[idx[j],fct.att],")") else "")
+								tlog(12, format.row.dates(data[idx[k],]),if(has.fct) paste0(" (",data[idx[k],fct.att],")") else "")
 								
 								# update mandate start date
 								if(is.na(data[idx[j],COL_ATT_MDT_DBT]) || is.na(data[idx[k],COL_ATT_MDT_DBT]))
@@ -1457,9 +1447,9 @@ merge.overlapping.mandates <- function(data, type)
 								}
 								
 								# log merged row
-								tlog(8, "After merge:")
-								tlog(10, format.row(data[idx[j],]))
-								#tlog(10, format.row.dates(data[idx[j],])," (",data[idx[j],fct.att],")")
+								tlog(10, "After merge:")
+								tlog(12, format.row(data[idx[j],]))
+								#tlog(12, format.row.dates(data[idx[j],])," (",data[idx[j],fct.att],")")
 								#readline() #stop()
 								
 								# update counters
@@ -1473,7 +1463,7 @@ merge.overlapping.mandates <- function(data, type)
 			}
 		}
 	}
-	tlog(2, "CHECKPOINT 10: Total number of rows deleted after merging: ",nbr.corr, " (",100*nbr.corr/nrow(data),"%)")
+	tlog.end.loop(2, "CHECKPOINT 10: Total number of rows deleted after merging: ",nbr.corr, " (",100*nbr.corr/nrow(data),"%)")
 	
 	if(length(idx.rmv)>0)
 		data <- data[-idx.rmv,]
@@ -1512,13 +1502,13 @@ split.long.mandates <- function(data, election.file, series.file)
 	}
 	
 	# compare mandate and election dates
-	tlog(2,"Check mandate dates against election dates")
+	tlog.start.loop(2,nrow(data),"Check mandate dates against election dates")
 	nbr.splits <- 0
 	for(r in 1:nrow(data))
 	{	split.flag <- TRUE
-			
+		
 		while(split.flag)
-		{	tlog(4,"Processing row ",r,"/",nrow(data),": ",format.row.dates(data[r,]))
+		{	tlog.loop(4,r,"Processing row ",r,"/",nrow(data),": ",format.row.dates(data[r,]))
 			tlog(6, format.row(data[r,]))
 			split.flag <- FALSE
 			
@@ -1620,7 +1610,7 @@ split.long.mandates <- function(data, election.file, series.file)
 			}
 		}
 	}
-	tlog(2,"CHECKPOINT 11: Added ",nbr.splits," rows (",(100*nbr.splits/nbr.before),"%) to the table by splitting periods spanning several actual mandates")
+	tlog.end.loop(2,"CHECKPOINT 11: Added ",nbr.splits," rows (",(100*nbr.splits/nbr.before),"%) to the table by splitting periods spanning several actual mandates")
 	
 	data <- rbind(data, new.data)
 	tlog(2, "Table now containing ",nrow(data)," rows")
@@ -1758,9 +1748,9 @@ shorten.overlapping.mandates <- function(data, type, tolerance=1)
 		tlog(4,"Found ",length(unique.pos)," of them")
 		
 		# process each unique position
-		tlog(2,"Processing each unique position")
+		tlog.start.loop(2,length(unique.pos),"Processing each unique position")
 		for(p in 1:length(unique.pos))
-		{	tlog(4,"Processing position ",unique.pos[p], "(",p,"/",length(unique.pos),")")
+		{	tlog.loop(4,p,"Processing position ",unique.pos[p], "(",p,"/",length(unique.pos),")")
 			
 			# get the corresponding rows
 			idx <- which(data.pos==unique.pos[p])
@@ -1916,10 +1906,10 @@ shorten.overlapping.mandates <- function(data, type, tolerance=1)
 				tlog(6,"Corrected ",ccount," overlaps for this specific position")
 			}
 		}
-		tlog(4,"Processing over")
+		tlog.end.loop(4,"Processing over")
 		
 		tlog(2,"CHECKPOINT 12: Shortened a total of ",count," mandates due to self-overlap, for the whole table (",(100*count/nrow(data)),"%)")
-		tlog(2, "Number of rows remaining: ",nrow(data))
+		tlog(2,"Number of rows remaining: ",nrow(data))
 	}
 	
 	return(data)
