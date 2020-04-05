@@ -21,13 +21,13 @@ test.col.dates.generic <- function(data, out.folder, tolerance=7)
 {	tlog(2,"Trying to detect problems in date columns")
 	
 	# checking whether each individual date is too early or too late
-	tlog(4,"Detecting early/late dates")
+	tlog.start.loop(4,ncol(data),"Detecting early/late dates")
 	for(c in 1:ncol(data))
 	{	col.name <- colnames(data)[c]
 		col.type <- COL_TYPES[col.name]
 		col.basename <- BASENAMES[col.name]
 		if(col.type=="dat")
-		{	tlog(6,"Processing column \"",col.name,"\"")
+		{	tlog.loop(6,c,"Processing column \"",col.name,"\"")
 			
 			# too early
 			idx <- which(data[,col.name]<as.Date("1900/01/01"))
@@ -64,6 +64,7 @@ test.col.dates.generic <- function(data, out.folder, tolerance=7)
 			}
 		}
 	}
+	tlog.end.loop(4,"Loop over")
 	
 	# comparing mandate boundaries
 	{	tlog(4,"Comparing start/end dates for mandates")
@@ -497,9 +498,9 @@ test.col.dates.election <- function(data, out.folder, election.file, series.file
 	}
 	
 	# compare mandate and election dates
-	tlog(4,"Check mandate dates against election dates")
+	tlog.start.loop(4,nrow(data),"Check mandate dates against election dates")
 	idx <- which(sapply(1:nrow(data), function(r)
-	{	tlog(6,"Processing row ",r,"/",nrow(data),": ",format.row.dates(data[r,]))
+	{	tlog.loop(6,r,"Processing row ",r,"/",nrow(data),": ",format.row.dates(data[r,]))
 		
 		# get election dates
 		election.dates <- election.table
@@ -561,7 +562,7 @@ test.col.dates.election <- function(data, out.folder, election.file, series.file
 		
 		return(res)
 	}))
-	tlog(6,"Found ",length(idx)," rows with election-related issues")
+	tlog.end.loop(6,"Found ",length(idx)," rows with election-related issues")
 	
 	if(length(idx)>0)
 	{	# build the table and write it

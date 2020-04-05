@@ -228,10 +228,10 @@ test.col.locations.canton <- function(data, out.folder)
 		
 		# check that each code is associated to a unique name
 		unique.codes <- sort(unique(codes[!is.na(names)]))
-		tlog.start.loop(2,length(unique.codes),"Processing each canton")
+		tlog.start.loop(2,length(unique.codes),"Processing each canton code")
 		for(i in 1:length(unique.codes))
 		{	unique.code <- unique.codes[i]
-			tlog.loop(2,i,"Processing canton ",unique.code," (",i,"/",length(unique.codes),")")
+			tlog.loop(4,i,"Processing canton ",unique.code," (",i,"/",length(unique.codes),")")
 			
 			idx <- which(codes==unique.code)
 			ns <- names[idx]
@@ -267,9 +267,10 @@ test.col.locations.canton <- function(data, out.folder)
 		
 		# check that each name is associated to a unique code
 		unique.names <- sort(unique(names[!is.na(codes)]))
+		tlog.start.loop(2,length(unique.names),"Processing each canton name")
 		for(i in 1:length(unique.names))
 		{	unique.name <- unique.names[i]
-			tlog(2,"Processing canton ",unique.name," (",i,"/",length(unique.names),")")
+			tlog.loop(4,i,"Processing canton ",unique.name," (",i,"/",length(unique.names),")")
 			
 			idx <- which(names==unique.name)
 			cs <- codes[idx]
@@ -282,6 +283,7 @@ test.col.locations.canton <- function(data, out.folder)
 				tab2 <- rbind(tab2, row)
 			}
 		}
+		tlog.end.loop(2,"Loop over")
 		
 		# found names associated to multiple codes
 		if(nrow(tab2)>0)

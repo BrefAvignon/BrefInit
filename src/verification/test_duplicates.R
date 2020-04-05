@@ -27,9 +27,12 @@ test.compatible.rows <- function(data, out.folder=NA)
 	tlog(2,"Looking for possibly redundant rows: found ",length(codes))
 	
 	# identify compatible rows amongst redundant ones
-	tlog(2,"Looking for compatible rows among them")
-	mats <- lapply(codes, function(code)
-			{	res <- matrix(nrow=0,ncol=ncol(data)+1)
+	tlog.start.loop(2,length(codes),"Looking for compatible rows among them")
+	mats <- lapply(1:length(codes), function(i)
+			{	code <- codes[i]
+				if(i==length(codes) || i%%10000==0)
+					tlog.loop(4,i,"Processing code ",i,"/",length(codes))
+				res <- matrix(nrow=0,ncol=ncol(data)+1)
 				rs <- which(concat==code)
 				for(r1 in 1:(length(rs)-1))
 				{	row1 <- data[rs[r1], -rm.col]
@@ -46,13 +49,17 @@ test.compatible.rows <- function(data, out.folder=NA)
 					res <- rbind(res, rep(NA,ncol(res)))
 				return(res)
 			})
+	tlog.end.loop(2,"Loop over")
 	
 	# merge the list of tables and record them
-	tlog(2,"Gathering the ",length(mats)," result tables")
+	tlog.start.loop(2,length(mats),"Gathering the ",length(mats)," result tables")
 	tab <- cbind(rep(NA,nrow(data)),data)[-(1:nrow(data)),]
 	colnames(tab)[1]<- "Ligne"
 	for(m in 1:length(mats))
+	{	if(m==length(mats) || m%%10000==0)
+			tlog.loop(4,m,"Processing table ",m,"/",length(mats))
 		tab <- rbind(tab, mats[[m]])
+	}
 	if(nrow(tab)==0)
 		tlog(2,"Nothing found, nothing to record")
 	else
