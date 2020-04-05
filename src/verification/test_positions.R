@@ -1476,7 +1476,8 @@ test.position.s <- function(data, out.folder)
 						end2 <- data[idx[j],COL_ATT_FCT_FIN]
 						
 						# check if the periods intersect
-						if(date.intersect(start1, end1, start2, end2))
+						if(!is.na(start1) && !is.na(start2)
+							&& date.intersect(start1, end1, start2, end2))
 						{	# add to the table of problematic cases
 							tab <- rbind(tab, data[c(idx[i],idx[j]),], rep(NA,ncol(data)))
 							# add a row of NAs in order to separate pairs of cases
