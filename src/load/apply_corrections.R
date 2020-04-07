@@ -512,8 +512,9 @@ apply.systematic.corrections <- function(data, type)
 		data[idx,COL_ATT_ELU_NOM] <- new.names
 		tmp <- matrix(ncol=2,nrow=0)
 		# possibly update other names
+		tlog.start.loop(2,length(idx),"Processing each name")
 		for(r in 1:length(idx))
-		{	tlog(2, "Processing name ",data[idx[r],COL_ATT_ELU_NOM]," (",r,"/",length(idx),")")
+		{	tlog.loop(4,r,"Processing name ",data[idx[r],COL_ATT_ELU_NOM]," (",r,"/",length(idx),")")
 			idx2 <- which(data[,COL_ATT_ELU_PRENOM]==data[idx[r],COL_ATT_ELU_PRENOM]				# same first name
 						& data[,COL_ATT_ELU_NAIS_DATE]==data[idx[r],COL_ATT_ELU_NAIS_DATE]			# same birthdate
 						& data[,COL_ATT_ELU_NOM]!=data[idx[r],COL_ATT_ELU_NOM]						# different last names
@@ -521,19 +522,20 @@ apply.systematic.corrections <- function(data, type)
 							| grepl(pattern=usage.names[r], x=data[,COL_ATT_ELU_NOM], fixed=TRUE)))
 			if(length(idx2)>0)
 			{	data[idx2,COL_ATT_ELU_NOM] <- new.names[r]
-				tlog(4, "Updating other rows based on the first below")
-				tlog(6, format.row(data[idx[r],]))
+				tlog(6, "Updating other rows based on the first below")
+				tlog(8, format.row(data[idx[r],]))
 				for(r2 in idx2)
 					tlog(6, format.row(data[r2,]))
 				ids <- union(data[idx[r],COL_ATT_ELU_ID_RNE], data[idx2,COL_ATT_ELU_ID_RNE])
 				if(length(ids)>1)
-				{	tlog(4, "WARNING: consider merging RNE ids ",paste(ids,collapse=","))
+				{	tlog(6, "WARNING: consider merging RNE ids ",paste(ids,collapse=","))
 					ids <- sort(as.integer(ids))
 					row <- c(ids[1],paste(ids[-1],collapse=","))
 					tmp <- rbind(tmp, row)
 				}
 			}
 		}
+		tlog.end.loop(2,"Loop over")
 		tmp <- tmp[order(tmp[,1]),]
 		print(tmp)		# debug
 		# log result
@@ -969,6 +971,7 @@ adjust.function.dates <- function(data)
 	
 	if(COL_ATT_FCT_DBT %in% colnames(data))
 	{	# process each row
+		tlog.start.loop(2,nrow(data),"Processing each row")
 		for(r in 1:nrow(data))
 		{	str <- paste0("Considering (",r,"/",nrow(data),") ", format.row.dates(data[r,]))
 			str2 <- format.row(data[r,])
@@ -999,17 +1002,18 @@ adjust.function.dates <- function(data)
 			# log changes
 			if(changed.start || changed.end)
 			{	#print(data[r,])
-				tlog(2,str)
-				tlog(4,"Before: ",str2)
+				tlog.loop(4,r,str)
+				tlog(6,"Before: ",str2)
 				if(changed.start)
-					tlog(6,"Modifying function start")
+					tlog(8,"Modifying function start")
 				if(changed.end)
-					tlog(6,"Modifying function end")
+					tlog(8,"Modifying function end")
 				data[r,COL_ATT_CORREC_DATE] <- TRUE
-				tlog(4,"After: ",format.row(data[r,]))
+				tlog(6,"After: ",format.row(data[r,]))
 				nbr.corr <- nbr.corr + 1
 			}
 		}
+		tlog.end.loop(2,"Loop over")
 	}
 	
 	tlog(2, "CHECKPOINT 7: Total number of adjusted function dates: ",nbr.corr, " (",(100*nbr.corr/nrow(data)),"%)")
@@ -1621,21 +1625,21 @@ split.long.mandates <- function(data, election.file, series.file)
 	
 	
 #############################################################################################
-# Deletes the rows corresponding to micro-mandates, i.e. mandates of only a few days, which
-# correspond to errors (or sometimes missing mandates impossible to recover through alternative
-# means).
+# Deletes the rows corresponding to micro-mandates and micro-functions, i.e. mandates or functions 
+# of only a few days, which correspond to errors (or sometimes missing mandates impossible to 
+# recover through alternative means).
 #
 # data: original table.
-# tolerance: minimal length of a mandate (expressed in days).
+# tolerance: minimal length of a mandate/function (expressed in days).
 #
-# return: same table, without the micro-mandates.
+# return: same table, without the micro-mandates and micro-functions.
 #############################################################################################
-remove.micro.mandates <- function(data, tolerance)
-{	tlog(0,"Removing micro-mandates, for a duration <",tolerance," days")
-	nbr.removed <- 0
-	nbr.before <- nrow(data)
+remove.micro.mdtfcts <- function(data, tolerance)
+{	tlog(0,"Removing micro-mandates and micro-functions, for a duration <",tolerance," days")
 	
 	# compute duration in number of days
+	mdt.removed <- 0
+	mdt.before <- nrow(data)
 	idx <- which(!is.na(data[,COL_ATT_MDT_DBT]) & !is.na(data[,COL_ATT_MDT_FIN]))
 	tlog(2,"Found ",length(idx)," rows with both start and end mandate dates")
 	if(length(idx)>0)
@@ -1645,33 +1649,35 @@ remove.micro.mandates <- function(data, tolerance)
 		# compare to limit
 		if(!is.na(tolerance))
 			idx <- idx[durations<=tolerance]
-		tlog(2,"Found ",length(idx)," mandate(s) which are too short (<=",tolerance," days)")
+		tlog(4,"Found ",length(idx)," mandate(s) which are too short (<=",tolerance," days)")
 		
 		if(length(idx)>0)
 		{	# look for exceptions
 			exception.idx <- which(data[idx,COL_ATT_ELU_ID_RNE]=="663"
 							& data[idx,COL_ATT_MDT_DBT]==as.Date("2017/9/25") 
 							& data[idx,COL_ATT_MDT_FIN]==as.Date("2017/9/30"))
-			tlog(4,"Including ",length(exception.idx)," manually marked exceptions")
+			tlog(6,"Including ",length(exception.idx)," manually marked exceptions")
 			
 			# log the list of micro-mandates
+			tlog.start.loop(4,length(idx),"List of concerned rows:")
 			tmp <- sapply(1:length(idx), function(i)
-			{	tlog(4, "Row ", idx[i], "(",i,"/",length(idx),"): ",format.row.dates(data[idx[i],]),
+			{	tlog.loop(6,i,"Row ", idx[i], "(",i,"/",length(idx),"): ",format.row.dates(data[idx[i],]),
 					if(i %in% exception.idx) " (Exception)" else "")
-				tlog(6, format.row(data[idx[i],]))
+				tlog(8, format.row(data[idx[i],]))
 			})
-			
+			tlog.end.loop(4,"Loop over")
+	
 			# get the ids associated to a single micro-mandate
 			nms1 <- names(which(table(data[,COL_ATT_ELU_ID])==1))
 			nms2 <- unique(data[idx,COL_ATT_ELU_ID])
 			nms <- intersect(nms1,nms2)
-			tlog(2,"Among them, ",length(nms)," correspond to persons with only this very mandate")
+			tlog(4,"Among them, ",length(nms)," correspond to persons with only this very mandate")
 			
 			# log the mandates associated to these ids
 			if(length(nms)>0)
 			{	tmp <- sapply(1:length(nms), function(i)
 				{	j <- which(data[,COL_ATT_ELU_ID]==nms[i])
-					tlog(4, "Row ", j, "(",i,"/",length(idx),"): ", format.row(data[j,]))
+					tlog(6, "Row ", j, "(",i,"/",length(idx),"): ", format.row(data[j,]))
 				})
 			}
 			
@@ -1682,11 +1688,74 @@ remove.micro.mandates <- function(data, tolerance)
 			# remove micro-mandates
 			if(length(idx)>0)
 				data <- data[-idx,]
-			nbr.removed <- length(idx)
+			mdt.removed <- length(idx)
 		}
 	}
 	
-	tlog(2,"CHECKPOINT 9: Removed a total of ",nbr.removed," rows (",(100*nbr.removed/nbr.before),"%) corresponding to micro-mandates")
+	# compute duration in number of days
+	fct.removed <- 0
+	fct.before <- nrow(data)
+	idx <- which(!is.na(data[,COL_ATT_FCT_DBT]) & !is.na(data[,COL_ATT_FCT_FIN]))
+	tlog(2,"Found ",length(idx)," rows with both start and end function dates")
+	if(length(idx)>0)
+	{	# compute mandate duration
+		durations <- as.integer(data[idx,COL_ATT_FCT_FIN] - data[idx,COL_ATT_FCT_DBT])
+		
+		# compare to limit
+		if(!is.na(tolerance))
+			idx <- idx[durations<=tolerance]
+		tlog(4,"Found ",length(idx)," function(s) which are too short (<=",tolerance," days)")
+		
+		if(length(idx)>0)
+		{	# look for exceptions
+			exception.idx <- c()
+			tlog(6,"Including ",length(exception.idx)," manually marked exceptions")
+			
+			# log the list of micro-mandates
+			tlog.start.loop(4,length(idx),"List of concerned rows:")
+			tmp <- sapply(1:length(idx), function(i)
+			{	tlog.loop(6,i,"Row ", idx[i], "(",i,"/",length(idx),"): ",format.row.dates(data[idx[i],]),
+						if(i %in% exception.idx) " (Exception)" else "")
+				tlog(8, format.row(data[idx[i],]))
+			})
+			tlog.end.loop(4,"Loop over")
+	
+			# get the ids associated to a single micro-function
+			nms1 <- names(which(table(data[,COL_ATT_ELU_ID])==1))
+			nms2 <- unique(data[idx,COL_ATT_ELU_ID])
+			nms <- intersect(nms1,nms2)
+			tlog(4,"Among them, ",length(nms)," correspond to persons with only this very mandate")
+			
+			# log the mandates associated to these ids
+			if(length(nms)>0)
+			{	tmp <- sapply(1:length(nms), function(i)
+				{	j <- which(data[,COL_ATT_ELU_ID]==nms[i])
+					tlog(6, "Row ", j, "(",i,"/",length(idx),"): ", format.row(data[j,]))
+				})
+			}
+			
+			# remove exceptions
+			if(length(exception.idx)>0)
+				idx <- idx[-exception.idx]
+			
+			# remove micro-functions
+			if(length(idx)>0)
+			{	data[idx,COL_ATT_FCT_CODE] <- NA
+				data[idx,COL_ATT_FCT_DBT] <- NA
+				data[idx,COL_ATT_FCT_FIN] <- NA
+				data[idx,COL_ATT_FCT_MOTIF] <- NA
+				data[idx,COL_ATT_FCT_NOM] <- NA
+				data[idx,COL_ATT_CORREC_DATE] <- TRUE
+				data[idx,COL_ATT_CORREC_INFO] <- TRUE
+			}
+			fct.removed <- length(idx)
+		}
+	}
+	
+	tot.removed <- mdt.removed + fct.removed
+	tlog(2,"CHECKPOINT 9: Removed a total of ",tot.removed," rows (",(100*tot.removed/mdt.before),"%) corresponding to micro-mandates and/or functions")
+	tlog(4,"Removed ",mdt.removed," rows (",(100*mdt.removed/mdt.before),"%) corresponding to micro-mandates")
+	tlog(4,"Removed ",fct.removed," rows (",(100*fct.removed/fct.before),"%) corresponding to micro-functions")
 	tlog(2,"Number of rows remaining: ",nrow(data))
 	return(data)
 }
@@ -1988,7 +2057,7 @@ fix.mdtfct.dates <- function(data, election.file, series.file, type)
 #data9 <- data
 	
 	# removes micro-mandates
-	data <- remove.micro.mandates(data, tolerance=7)
+	data <- remove.micro.mdtfcts(data, tolerance=7)
 #data10 <- data
 	
 	# merge rows corresponding to overlapping and compatible mandates
@@ -2006,7 +2075,7 @@ fix.mdtfct.dates <- function(data, election.file, series.file, type)
 #data13 <- data
 	
 	# remove micro-mandates again (in case split created any)
-	data <- remove.micro.mandates(data, tolerance=7)
+	data <- remove.micro.mdtfcts(data, tolerance=7)
 #data14 <- data
 	
 	# delete superfluous motives
