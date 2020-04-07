@@ -1757,8 +1757,8 @@ remove.micro.mdtfcts <- function(data, tolerance)
 
 
 #############################################################################################
-# For a given position, detects overlapping mandates or functions and solves the problem by 
-# shortening the older one.
+# For a given position, detects overlapping mandates and solves the problem by shortening the 
+# older one.
 #
 # data: original table.
 # type: type of mandate (CD, CM, etc.).
@@ -1768,30 +1768,15 @@ remove.micro.mdtfcts <- function(data, tolerance)
 #############################################################################################
 shorten.overlapping.mandates <- function(data, type, tolerance=1)
 {	tlog(0,"Solving mandate overlaps for unique positions")
-	has.fct <- COL_ATT_FCT_DBT %in% colnames(data)
 	count <- 0
 	
 	# some mandate types don't have unique positions
-	if((type %in% c("CD","CM","D","M")))
-	{	# date columns
-		col.start <- COL_ATT_MDT_DBT
-		col.end <- COL_ATT_MDT_FIN
-		
-		# identify all unique position
+	if((type %in% c("CD","D")))
+	{	# identify all unique position
 		tlog(2,"Identifying all unique positions")
 		if(type=="CD")
 		{	data.pos <- data[,COL_ATT_CANT_ID]
 			unique.pos <- sort(unique(data.pos[data[,COL_ATT_CANT_NOM]!="CANTON FICTIF"]))
-		}
-		else if(type=="CM")
-		{	col.start <- COL_ATT_FCT_DBT
-			col.end <- COL_ATT_FCT_FIN
-			dpts <- data[,COL_ATT_DPT_CODE]
-			coms <- data[,COL_ATT_COM_CODE]
-			functs <- data[,COL_ATT_FCT_NOM]
-			data.pos <- apply(cbind(dpts,coms,functs),1,function(r) paste(r,collapse="_"))
-			idx <- which(is.na(functs))
-			unique.pos <- sort(unique(data.pos[-idx]))
 		}
 		else if(type=="D")
 		{	dpts <- data[,COL_ATT_DPT_CODE]
@@ -1799,13 +1784,246 @@ shorten.overlapping.mandates <- function(data, type, tolerance=1)
 			data.pos <- apply(cbind(dpts,circos),1,function(r) paste(r,collapse="_"))
 			unique.pos <- sort(unique(data.pos))
 		}
-		else if(type=="M")
-		{	col.start <- COL_ATT_FCT_DBT
-			col.end <- COL_ATT_FCT_FIN
+		tlog(4,"Found ",length(unique.pos)," of them")
+		
+		# process each unique position
+		tlog.start.loop(2,length(unique.pos),"Processing each unique mandate position")
+		for(p in 1:length(unique.pos))
+		{	tlog.loop(4,p,"Processing mandate position ",unique.pos[p], "(",p,"/",length(unique.pos),")")
+			
+			# get the corresponding rows
+			idx <- which(data.pos==unique.pos[p])
+			tlog(4,"Found ",length(idx)," rows")
+			
+			if(length(idx)>1)
+			{	# check if their dates overlap
+				ccount <- 0
+				
+				for(i in 1:(length(idx)-1))
+				{	# get the dates of the first compared mandate
+					start1 <- data[idx[i],COL_ATT_MDT_DBT]
+					end1 <- data[idx[i],COL_ATT_MDT_FIN]
+					sex1 <- data[idx[i],COL_ATT_ELU_SEXE]
+					tlog(6,"Considering row ",i,"/",length(idx),": ",format(start1),"--",format(end1)," (",sex1,")")
+					tlog(6, format.row(data[idx[i],]))
+					
+					# we suppose there is a start date for all mandates (at this stage of the process)
+					for(j in (i+1):length(idx))
+					{	# get the dates of the second compared mandate
+						start2 <- data[idx[j],COL_ATT_MDT_DBT]
+						end2 <- data[idx[j],COL_ATT_MDT_FIN]
+						sex2 <- data[idx[j],COL_ATT_ELU_SEXE]
+						tlog(8,"Comparing to row ",j,"/",length(idx),": ",format(start2),"--",format(end2)," (",sex2,")")
+						tlog(8, format.row(data[idx[j],]))
+						
+						# check if the periods intersect
+						if(date.intersect(start1, end1, start2, end2)
+							&& (type=="D" 
+									# for CD: unique positions before 2015, but mixed M/F pairs after 2015
+									|| (type=="CD" && (get.year(start1)<2015 || get.year(start2)<2015 || sex1==sex2))))
+						{	# check if open end date
+							if(is.na(end1) && is.na(end2))
+								tlog(10,"Overlap with unspecified end dates: cannot solve this issue")
+							else
+							{	# check if overlap duration small enough
+								ovlp.duration <- min(end1-start2, end2-start1, na.rm=TRUE) + 1
+								if(ovlp.duration>tolerance)
+								{	tlog(10,"Major overlap (above the specified limit of ",tolerance," days)")
+									if(start1==start2)
+									{	tlog(12,"Start dates match, adjusting the start date associated to the latest end date")
+										if(is.na(end1) || !is.na(end2) && end1>end2)
+										{	start1 <- end2 + 1
+											data[idx[i],COL_ATT_MDT_DBT] <- start1
+											data[idx[i],COL_ATT_FCT_DBT] <- max(start1,data[idx[i],COL_ATT_FCT_DBT])
+											data[idx[i],COL_ATT_CORREC_DATE] <- TRUE
+											tlog(14,"After correction of the first mandate: ",format(start1),"--",format(end1)," (overlap: ",ovlp.duration," days)")
+											tlog(14, format.row(data[idx[i],]))
+											# count the problematic cases
+											count <- count + 1
+											ccount <- ccount + 1
+										}
+										else if(is.na(end2) || !is.na(end1) && end2>end1)
+										{	start2 <- end1 + 1
+											data[idx[j],COL_ATT_MDT_DBT] <- start2
+											data[idx[j],COL_ATT_FCT_DBT] <- max(start2,data[idx[j],COL_ATT_FCT_DBT])
+											data[idx[j],COL_ATT_CORREC_DATE] <- TRUE
+											tlog(14,"After correction of the second mandate: ",format(start2),"--",format(end2)," (overlap: ",ovlp.duration," days)")
+											tlog(14, format.row(data[idx[j],]))
+											# count the problematic cases
+											count <- count + 1
+											ccount <- ccount + 1
+										}
+										else
+										{	tlog(14,"Same start and end dates: probably an error, handle manually")
+											tlog(14, format.row(data[idx[i],]))
+											tlog(14, format.row(data[idx[j],]))
+											#stop("Same start and end dates, is that even possible?")
+											#readline()						
+										}
+									}
+									else if(is.na(end1) && is.na(end2) || (!is.na(end1) && !is.na(end2) && end1==end2))
+									{	tlog(12,"End dates match, adjusting the end date associated to the earliest start date")
+										if(start1>start2)
+										{	end2 <- start1 - 1
+											data[idx[j],COL_ATT_MDT_FIN] <- end2
+											data[idx[j],COL_ATT_FCT_FIN] <- min(end2,data[idx[j],COL_ATT_FCT_FIN])
+											data[idx[j],COL_ATT_CORREC_DATE] <- TRUE
+											tlog(14,"After correction of the second mandate: ",format(start2),"--",format(end2)," (overlap: ",ovlp.duration," days)")
+											tlog(14, format.row(data[idx[j],]))
+											# count the problematic cases
+											count <- count + 1
+											ccount <- ccount + 1
+										}
+										else if(start2>start1)
+										{	end1 <- start2 - 1
+											data[idx[i],COL_ATT_MDT_FIN] <- end1
+											data[idx[i],COL_ATT_FCT_FIN] <- min(end1,data[idx[i],COL_ATT_FCT_FIN])
+											data[idx[i],COL_ATT_CORREC_DATE] <- TRUE
+											tlog(14,"After correction of the first mandate: ",format(start1),"--",format(end1)," (overlap: ",ovlp.duration," days)")
+											tlog(14, format.row(data[idx[i],]))
+											# count the problematic cases
+											count <- count + 1
+											ccount <- ccount + 1
+										}
+										else
+										{	tlog(14,"This should not be possible")
+											tlog(14, format.row(data[idx[i],]))
+											tlog(14, format.row(data[idx[j],]))
+											#stop("This should not be possible")
+											#readline()
+										}
+									}
+									else
+										tlog(12,"End and start dates do not match, cannot solve the issue")
+								}
+								else
+								{	tlog(10,"Minor overlap, correcting the end date of the older mandate")
+									# adjust the end of the older mandate to avoid overlap
+									if(!is.na(end1) && (is.na(end2) || end1<end2))
+									{	end1 <- end1 - ovlp.duration
+										data[idx[i],COL_ATT_MDT_FIN] <- end1
+										data[idx[i],COL_ATT_FCT_FIN] <- min(end1,data[idx[i],COL_ATT_FCT_FIN])
+										data[idx[i],COL_ATT_CORREC_DATE] <- TRUE
+										tlog(12,"After correction of the first mandate: ",format(start1),"--",format(end1)," (overlap: ",ovlp.duration," days)")
+										tlog(12, format.row(data[idx[i],]))
+									}
+									else
+									{	end2 <- end2 - ovlp.duration
+										data[idx[j],COL_ATT_MDT_FIN] <- end2
+										data[idx[j],COL_ATT_FCT_FIN] <- min(end2,data[idx[j],COL_ATT_FCT_FIN])
+										data[idx[j],COL_ATT_CORREC_DATE] <- TRUE
+										tlog(12,"After correction of the second mandate: ",format(start2),"--",format(end2)," (overlap: ",ovlp.duration," days)")
+										tlog(12, format.row(data[idx[j],]))
+									}
+									# count the problematic cases
+									count <- count + 1
+									ccount <- ccount + 1
+								}
+							}
+						}
+					}
+				}
+				tlog(6,"Corrected ",ccount," overlaps for this specific position")
+			}
+		}
+		tlog.end.loop(4,"Processing over")
+		
+		tlog(2,"CHECKPOINT 12: Shortened a total of ",count," mandates due to self-overlap, for the whole table (",(100*count/nrow(data)),"%)")
+		tlog(2,"Number of rows remaining: ",nrow(data))
+	}
+	
+	return(data)
+}
+
+
+
+
+#############################################################################################
+# For a given position, detects overlapping functions and solves the problem by shortening 
+# the older one.
+#
+# data: original table.
+# type: type of mandate (CD, CM, etc.).
+# tolerance: maximal overlap (if too long, the overlap is ignored, not solved here).
+#
+# return: same table, without the (minor) overlaps.
+#############################################################################################
+shorten.overlapping.functions <- function(data, type, tolerance=1)
+{	tlog(0,"Solving function overlaps for unique positions")
+	count <- 0
+	
+	# skip if no function in the table
+	if(COL_ATT_FCT_DBT %in% colnames(data))
+	{	# identify all unique position
+		tlog(2,"Identifying all unique positions")
+		if(type=="CD")
+		{	ign.functs <- c(
+				"VICE PRESIDENT DU CONSEIL DEPARTEMENTAL",			# several of them, but not distinguished
+				"VICE PRESIDENT DELEGUE DU CONSEIL DEPARTEMENTAL",	# several of them, but not distinguished
+				"QUESTEUR",											# several of them, but not distinguished
+				"PRESIDENT DE GROUPE",								# several of them, but not distinguished
+				"PRESIDENT DE COMMISSION",							# several of them, but not distinguished
+				"AUTRE MEMBRE COMMISSION PERMANENTE",				# several of them, but not distinguished
+				"AUTRE MEMBRE"										# many
+			)
 			dpts <- data[,COL_ATT_DPT_CODE]
+			functs <- data[,COL_ATT_FCT_NOM]
+			data.pos <- apply(cbind(dpts,functs),1,function(r) paste(r,collapse="_"))
+			unique.pos <- sort(unique(data.pos[!is.na(functs)]))
+		}
+		else if(type=="CM")
+		{	ign.functs <- c("MAIRE DELEGUE")
+			dpts <- data[,COL_ATT_DPT_CODE]
+			coms <- data[,COL_ATT_COM_CODE]
+			functs <- data[,COL_ATT_FCT_NOM]
+			data.pos <- apply(cbind(dpts,coms,functs),1,function(r) paste(r,collapse="_"))
+			unique.pos <- sort(unique(data.pos[!is.na(functs)]))
+		}
+		else if(type=="CR")
+		{	ign.functs <- c(
+				"PRESIDENT DE COMMISSION",
+				"AUTRE MEMBRE COMMISSION PERMANENTE"
+			)
+			regs <- data[,COL_ATT_REG_CODE]
+			functs <- data[,COL_ATT_FCT_NOM]
+			data.pos <- apply(cbind(regs,functs),1,function(r) paste(r,collapse="_"))
+			unique.pos <- sort(unique(data.pos[!is.na(functs)]))
+		}
+		else if(type=="D")
+		{	ign.functs <- c(
+				#"MEMBRE",										# many of them (actually should be removed at AN integration)
+				"QUESTEUR DE L ASSEMBLEE NATIONALE",			# several but not distinguished
+				"SECRETAIRE DE L ASSEMBLEE NATIONALE",			# several but not distinguished
+				"SECRETAIRE D AGE DE L ASSEMBLEE NATIONALE",	# several but not distinguished
+				"VICE PRESIDENT DE L ASSEMBLEE NATIONALE"		# several but not distinguished
+			)
+			functs <- data[,COL_ATT_FCT_NOM]
+			data.pos <- functs
+			unique.pos <- sort(unique(data.pos[!is.na(functs)]))
+		}
+		else if(type=="EPCI")
+		{	ign.functs <- c("VICE PRESIDENT D EPCI")
+			siren <- data[,COL_ATT_EPCI_SIREN]
+			functs <- data[,COL_ATT_FCT_NOM]
+			data.pos <- apply(cbind(siren,functs),1,function(r) paste(r,collapse="_"))
+			unique.pos <- sort(unique(data.pos[!is.na(functs)]))
+			
+		}
+		else if(type=="M")
+		{	dpts <- data[,COL_ATT_DPT_CODE]
 			coms <- data[,COL_ATT_COM_CODE]
 			data.pos <- apply(cbind(dpts,coms),1,function(r) paste(r,collapse="_"))
 			unique.pos <- sort(unique(data.pos))
+		}
+		else if(type=="S")
+		{	ign.functs <- c(
+				"QUESTEUR DU SENAT",		# several but not distinguished
+				"SECRETAIRE DU SENAT",		# several but not distinguished
+				"VICE PRESIDENT DU SENAT"	# several but not distinguished
+			)
+			functs <- data[,COL_ATT_FCT_NOM]
+			data.pos <- functs
+			unique.pos <- sort(unique(data.pos[!is.na(functs)]))
 		}
 		tlog(4,"Found ",length(unique.pos)," of them")
 		
@@ -1823,38 +2041,33 @@ shorten.overlapping.mandates <- function(data, type, tolerance=1)
 				ccount <- 0
 				
 				for(i in 1:(length(idx)-1))
-				{	# get the dates of the first compared mandate/function
-					start1 <- data[idx[i],col.start]
-					end1 <- data[idx[i],col.end]
-					sex1 <- data[idx[i],COL_ATT_ELU_SEXE]
-					tlog(6,"Considering row ",i,"/",length(idx),": ",format(start1),"--",format(end1)," (",sex1,")")
+				{	# get the dates of the first compared function
+					start1 <- data[idx[i],COL_ATT_FCT_DBT]
+					end1 <- data[idx[i],COL_ATT_FCT_FIN]
+					tlog(6,"Considering row ",i,"/",length(idx),": ",format(start1),"--",format(end1))
 					tlog(6, format.row(data[idx[i],]))
 					
-					# check if there is at least a start date  (for functions, not mandates which must have one)
+					# check if there is at least a start date
 					if(is.na(start1))
 						tlog(8, "Missing start date: can't do anything")
 					
 					# otherwise, we have a first start date
 					else
 					{	for(j in (i+1):length(idx))
-						{	# get the dates of the second compared mandate
-							start2 <- data[idx[j],col.start]
-							end2 <- data[idx[j],col.end]
-							sex2 <- data[idx[j],COL_ATT_ELU_SEXE]
-							tlog(8,"Comparing to row ",j,"/",length(idx),": ",format(start2),"--",format(end2)," (",sex2,")")
+						{	# get the dates of the second compared function
+							start2 <- data[idx[j],COL_ATT_FCT_DBT]
+							end2 <- data[idx[j],COL_ATT_FCT_FIN]
+							tlog(8,"Comparing to row ",j,"/",length(idx),": ",format(start2),"--",format(end2))
 							tlog(8, format.row(data[idx[j],]))
 							
-							# check if there is at least a start date  (for functions, not mandates which must have one)
+							# check if there is at least a start date
 							if(is.na(start2))
 								tlog(8, "Missing start date: can't do anything")
 							
 							# otherwise, we have a second start date
 							else
 							{	# check if the periods intersect
-								if(date.intersect(start1, end1, start2, end2)
-									&& (type=="CM" || type=="D" || type=="M"
-											# for CD: unique positions before 2015, but mixed M/F pairs after 2015
-											|| (type=="CD" && (get.year(start1)<2015 || get.year(start2)<2015 || sex1==sex2))))
+								if(date.intersect(start1, end1, start2, end2))
 								{	# check if open end date
 									if(is.na(end1) && is.na(end2))
 										tlog(10,"Overlap with unspecified end dates: cannot solve this issue")
@@ -1867,11 +2080,9 @@ shorten.overlapping.mandates <- function(data, type, tolerance=1)
 											{	tlog(12,"Start dates match, adjusting the start date associated to the latest end date")
 												if(is.na(end1) || !is.na(end2) && end1>end2)
 												{	start1 <- end2 + 1
-													data[idx[i],col.start] <- start1
-													if(col.start==COL_ATT_MDT_DBT && has.fct)
-														data[idx[i],COL_ATT_FCT_DBT] <- max(start1,data[idx[i],COL_ATT_FCT_DBT])
+													data[idx[i],COL_ATT_FCT_DBT] <- start1
 													data[idx[i],COL_ATT_CORREC_DATE] <- TRUE
-													tlog(14,"After correction of the first mandate: ",format(start1),"--",format(end1)," (overlap: ",ovlp.duration," days)")
+													tlog(14,"After correction of the first function: ",format(start1),"--",format(end1)," (overlap: ",ovlp.duration," days)")
 													tlog(14, format.row(data[idx[i],]))
 													# count the problematic cases
 													count <- count + 1
@@ -1879,18 +2090,16 @@ shorten.overlapping.mandates <- function(data, type, tolerance=1)
 												}
 												else if(is.na(end2) || !is.na(end1) && end2>end1)
 												{	start2 <- end1 + 1
-													data[idx[j],col.start] <- start2
-													if(col.start==COL_ATT_MDT_DBT && has.fct)
-														data[idx[j],COL_ATT_FCT_DBT] <- max(start2,data[idx[j],COL_ATT_FCT_DBT])
+													data[idx[j],COL_ATT_FCT_DBT] <- start2
 													data[idx[j],COL_ATT_CORREC_DATE] <- TRUE
-													tlog(14,"After correction of the second mandate: ",format(start2),"--",format(end2)," (overlap: ",ovlp.duration," days)")
+													tlog(14,"After correction of the second function: ",format(start2),"--",format(end2)," (overlap: ",ovlp.duration," days)")
 													tlog(14, format.row(data[idx[j],]))
 													# count the problematic cases
 													count <- count + 1
 													ccount <- ccount + 1
 												}
 												else
-												{	tlog(14,"Same start and end dates, is that even possible?")
+												{	tlog(14,"Same start and end dates: probably an error, handle manually")
 													tlog(14, format.row(data[idx[i],]))
 													tlog(14, format.row(data[idx[j],]))
 													#stop("Same start and end dates, is that even possible?")
@@ -1901,11 +2110,9 @@ shorten.overlapping.mandates <- function(data, type, tolerance=1)
 											{	tlog(12,"End dates match, adjusting the end date associated to the earliest start date")
 												if(start1>start2)
 												{	end2 <- start1 - 1
-													data[idx[j],col.end] <- end2
-													if(col.end==COL_ATT_MDT_FIN && has.fct)
-														data[idx[j],COL_ATT_FCT_FIN] <- min(end2,data[idx[j],COL_ATT_FCT_FIN])
+													data[idx[j],COL_ATT_FCT_FIN] <- end2
 													data[idx[j],COL_ATT_CORREC_DATE] <- TRUE
-													tlog(14,"After correction of the second mandate: ",format(start2),"--",format(end2)," (overlap: ",ovlp.duration," days)")
+													tlog(14,"After correction of the second function: ",format(start2),"--",format(end2)," (overlap: ",ovlp.duration," days)")
 													tlog(14, format.row(data[idx[j],]))
 													# count the problematic cases
 													count <- count + 1
@@ -1913,11 +2120,9 @@ shorten.overlapping.mandates <- function(data, type, tolerance=1)
 												}
 												else if(start2>start1)
 												{	end1 <- start2 - 1
-													data[idx[i],col.end] <- end1
-													if(col.end==COL_ATT_MDT_FIN && has.fct)
-														data[idx[i],COL_ATT_FCT_FIN] <- min(end1,data[idx[i],COL_ATT_FCT_FIN])
+													data[idx[i],COL_ATT_FCT_FIN] <- end1
 													data[idx[i],COL_ATT_CORREC_DATE] <- TRUE
-													tlog(14,"After correction of the first mandate: ",format(start1),"--",format(end1)," (overlap: ",ovlp.duration," days)")
+													tlog(14,"After correction of the first function: ",format(start1),"--",format(end1)," (overlap: ",ovlp.duration," days)")
 													tlog(14, format.row(data[idx[i],]))
 													# count the problematic cases
 													count <- count + 1
@@ -1935,24 +2140,20 @@ shorten.overlapping.mandates <- function(data, type, tolerance=1)
 												tlog(12,"End and start dates do not match, cannot solve the issue")
 										}
 										else
-										{	tlog(10,"Minor overlap, correcting the end date of the older mandate")
-											# adjust the end of the older mandate to avoid overlap
+										{	tlog(10,"Minor overlap, correcting the end date of the earlier function")
+											# adjust the end of the older function to avoid overlap
 											if(!is.na(end1) && (is.na(end2) || end1<end2))
 											{	end1 <- end1 - ovlp.duration
-												data[idx[i],col.end] <- end1
-												if(col.end==COL_ATT_MDT_FIN && has.fct)
-													data[idx[i],COL_ATT_FCT_FIN] <- min(end1,data[idx[i],COL_ATT_FCT_FIN])
+												data[idx[i],COL_ATT_FCT_FIN] <- end1
 												data[idx[i],COL_ATT_CORREC_DATE] <- TRUE
-												tlog(12,"After correction of the first mandate: ",format(start1),"--",format(end1)," (overlap: ",ovlp.duration," days)")
+												tlog(12,"After correction of the first function: ",format(start1),"--",format(end1)," (overlap: ",ovlp.duration," days)")
 												tlog(12, format.row(data[idx[i],]))
 											}
 											else
 											{	end2 <- end2 - ovlp.duration
-												data[idx[j],col.end] <- end2
-												if(col.end==COL_ATT_MDT_FIN && has.fct)
-													data[idx[j],COL_ATT_FCT_FIN] <- min(end2,data[idx[j],COL_ATT_FCT_FIN])
+												data[idx[j],COL_ATT_FCT_FIN] <- end2
 												data[idx[j],COL_ATT_CORREC_DATE] <- TRUE
-												tlog(12,"After correction of the second mandate: ",format(start2),"--",format(end2)," (overlap: ",ovlp.duration," days)")
+												tlog(12,"After correction of the second function: ",format(start2),"--",format(end2)," (overlap: ",ovlp.duration," days)")
 												tlog(12, format.row(data[idx[j],]))
 											}
 											# count the problematic cases
@@ -1965,12 +2166,12 @@ shorten.overlapping.mandates <- function(data, type, tolerance=1)
 						}
 					}
 				}
-				tlog(6,"Corrected ",ccount," overlaps for this specific position")
+				tlog(6,"Corrected ",ccount," function overlaps for this specific position")
 			}
 		}
 		tlog.end.loop(4,"Processing over")
 		
-		tlog(2,"CHECKPOINT 12: Shortened a total of ",count," mandates due to self-overlap, for the whole table (",(100*count/nrow(data)),"%)")
+		tlog(2,"CHECKPOINT 14: Shortened a total of ",count," functions due to overlap, for the whole table (",(100*count/nrow(data)),"%)")
 		tlog(2,"Number of rows remaining: ",nrow(data))
 	}
 	
@@ -2095,7 +2296,7 @@ adjust.end.motives <- function(data, election.file, series.file)
 			tlog(4, format.row(data[i,]))
 	}
 	
-	tlog(2,"CHECKPOINT 14: adjusted a total of ",length(treated.rows)," rows for the whole table (",(100*length(treated.rows)/nrow(data)),"%)")
+	tlog(2,"CHECKPOINT 16: adjusted a total of ",length(treated.rows)," rows for the whole table (",(100*length(treated.rows)/nrow(data)),"%)")
 	tlog(4,"Motives deleted: ",nbr.removed," rows (",(100*nbr.removed/nrow(data)),"%)")
 	tlog(4,"Motives added: ",nbr.added," rows (",(100*nbr.added/nrow(data)),"%)")
 	tlog(2, "Number of rows remaining: ",nrow(data))

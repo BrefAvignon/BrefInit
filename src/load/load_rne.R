@@ -756,8 +756,8 @@ load.epci.data <- function(correct.data, complete.data)
 		# load the data
 		data <- load.data(filenames=FILES_TAB_EPCI, col.map=col.map, 
 				correc.file=FILE_CORREC_EPCI, correct.data,
+				election.file=FILE_VERIF_DATES_CM,
 				type="EPCI")
-		# TODO should we use CM election dates for EPCI?
 		
 		# add mandate name
 		vals <- rep("CONSEILLER EPCI",nrow(data))
