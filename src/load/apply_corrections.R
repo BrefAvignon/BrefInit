@@ -1169,6 +1169,56 @@ get.adhoc.senator.series.fix <- function(name)
 
 
 #############################################################################################
+# Retrieves the election dates associated to the specified series, or all of them if there
+# is no specified series.
+#
+# data: the full data table.
+# r: number of the considered row in the data table.
+# election.data: previously loaded election-related data.
+# series.file: just there to indicate whether we should look for a series.
+#
+# returns: table containing the appropriate election dates (possibly all of them).
+#############################################################################################
+retrieve.series.election.dates <- function(data, r, election.data, series.file)
+{	# set up variables
+	election.table <- election.data$election.table
+	election.dates <- election.table
+	
+	# get the dates
+	if(hasArg(series.file))
+	{	series.table <- election.data$series.table
+		series.list <- election.data$series.list
+		
+		# CD table
+		if(COL_ATT_CANT_CODE %in% colnames(series.table))
+		{	idx <- which(series.table[,COL_ATT_DPT_CODE]==data[r,COL_ATT_DPT_CODE]
+							& series.table[,COL_ATT_CANT_NOM]==data[r,COL_ATT_CANT_NOM])
+			series <- series.table[idx,COL_VERIF_SERIE]
+		}
+		# S table
+		else 
+		{	# very ugly ad hoc fix for Senators representing people leaving abroad
+			if(data[r,COL_ATT_DPT_NOM]=="FRANCAIS DE L ETRANGER")
+			{	series <- get.adhoc.senator.series.fix(name=data[r,COL_ATT_ELU_NOM])
+			}
+			# retrieve the series corresponding to the position
+			else
+			{	idx <- which(series.table[,COL_ATT_DPT_CODE]==data[r,COL_ATT_DPT_CODE])
+				series <- series.table[idx,COL_VERIF_SERIE]
+			}
+		}
+		# retrieve the election dates corresponding to the series
+		idx <- sapply(series.list, function(s) is.na(series) || series %in% s)
+		election.dates <- election.table[idx,]
+	}
+	
+	return(election.dates)
+}
+
+
+
+
+#############################################################################################
 # Adjusts the start/end of mandates/functions so that they match election dates whenever possible.
 # If the start/end date of a mandate is approximately equal to the closest election date, it is
 # set to this date. If it contains function dates, these are set to the same date.
@@ -1182,18 +1232,12 @@ get.adhoc.senator.series.fix <- function(name)
 #############################################################################################
 round.mdtfct.dates <- function(data, election.file, series.file, tolerance)
 {	tlog(0,"Rounding start/end dates when approximately equal to election dates")
-	series.present <- hasArg(series.file)
 	col.mdt <- c(COL_ATT_MDT_DBT, COL_ATT_MDT_FIN)
 	col.fct <- c(COL_ATT_FCT_DBT, COL_ATT_FCT_FIN)
 	has.fct <- COL_ATT_FCT_DBT %in% colnames(data)
 	
 	# load election-related data
-	tmp <- load.election.data(data, election.file, series.file)
-	election.table <- tmp$election.table
-	if(series.present)
-	{	series.table <- tmp$series.table
-		series.list <- tmp$series.list
-	}
+	election.data <- load.election.data(data, election.file, series.file)
 	
 	# compare mandate and election dates
 	tlog.start.loop(2,nrow(data),"Check mandate dates against election dates")
@@ -1201,31 +1245,8 @@ round.mdtfct.dates <- function(data, election.file, series.file, tolerance)
 	for(r in 1:nrow(data))
 	{	tlog.loop(4,r,"Processing row ",r,"/",nrow(data),": ",format.row.dates(data[r,]))
 		
-		# get election dates
-		election.dates <- election.table
-		if(series.present)
-		{	# CD table
-			if(COL_ATT_CANT_CODE %in% colnames(series.table))
-			{	idx <- which(series.table[,COL_ATT_DPT_CODE]==data[r,COL_ATT_DPT_CODE]
-					& series.table[,COL_ATT_CANT_NOM]==data[r,COL_ATT_CANT_NOM])
-				series <- series.table[idx,COL_VERIF_SERIE]
-			}
-			# S table
-			else 
-			{	# very ugly ad hoc fix for Senators representing people leaving abroad
-				if(data[r,COL_ATT_DPT_NOM]=="FRANCAIS DE L ETRANGER")
-				{	series <- get.adhoc.senator.series.fix(name=data[r,COL_ATT_ELU_NOM])
-				}
-				# retrieve the series corresponding to the position
-				else
-				{	idx <- which(series.table[,COL_ATT_DPT_CODE]==data[r,COL_ATT_DPT_CODE])
-					series <- series.table[idx,COL_VERIF_SERIE]
-				}
-			}
-			# retrieve the election dates corresponding to the series
-			idx <- sapply(series.list, function(s) is.na(series) || series %in% s)
-			election.dates <- election.table[idx,]
-		}
+		# get the appropriate election dates
+		election.dates <- retrieve.series.election.dates(data, r, election.data, series.file)
 		
 		# process the smallest election difference for each mandate and election date
 		date.diffs <- t(sapply(1:nrow(election.dates), function(e)
@@ -1498,12 +1519,7 @@ split.long.mandates <- function(data, election.file, series.file)
 	new.data <- data[-(1:nrow(data)),]
 	
 	# load election-related data
-	tmp <- load.election.data(data, election.file, series.file)
-	election.table <- tmp$election.table
-	if(series.present)
-	{	series.table <- tmp$series.table
-		series.list <- tmp$series.list
-	}
+	election.data <- load.election.data(data, election.file, series.file)
 	
 	# compare mandate and election dates
 	tlog.start.loop(2,nrow(data),"Check mandate dates against election dates")
@@ -1516,31 +1532,8 @@ split.long.mandates <- function(data, election.file, series.file)
 			tlog(6, format.row(data[r,]))
 			split.flag <- FALSE
 			
-			# get election dates
-			election.dates <- election.table
-			if(series.present)
-			{	# CD table
-				if(COL_ATT_CANT_CODE %in% colnames(series.table))
-				{	idx <- which(series.table[,COL_ATT_DPT_CODE]==data[r,COL_ATT_DPT_CODE]
-									& series.table[,COL_ATT_CANT_NOM]==data[r,COL_ATT_CANT_NOM])
-					series <- series.table[idx,COL_VERIF_SERIE]
-				}
-				# S table
-				else 
-				{	# very ugly ad hoc fix for Senators representing people leaving abroad
-					if(data[r,COL_ATT_DPT_NOM]=="FRANCAIS DE L ETRANGER")
-					{	series <- get.adhoc.senator.series.fix(name=data[r,COL_ATT_ELU_NOM])
-					}
-					# retrieve the series corresponding to the position
-					else
-					{	idx <- which(series.table[,COL_ATT_DPT_CODE]==data[r,COL_ATT_DPT_CODE])
-						series <- series.table[idx,COL_VERIF_SERIE]
-					}
-				}
-				# retrieve the election dates corresponding to the series
-				idx <- sapply(series.list, function(s) is.na(series) || series %in% s)
-				election.dates <- election.table[idx,]
-			}
+			# get the appropriate election dates
+			election.dates <- retrieve.series.election.dates(data, r, election.data, series.file)
 			
 			# look for mandates containing election dates
 			tests <- (data[r,COL_ATT_MDT_DBT]<election.dates[,COL_VERIF_DATE_TOUR1] 
@@ -1988,36 +1981,124 @@ shorten.overlapping.mandates <- function(data, type, tolerance=1)
 
 
 #############################################################################################
-# Removes the mandate and function motives associated to missing en dates.
+# Removes the mandate and function motives associated to missing en dates, adds FM when the
+# motive is missing and the end date is aligned with election dates.
 #
 # data: table to process.
 #
 # returns: same table, but after the correction.
 #############################################################################################
-delete.superfluous.motives <- function(data)
+adjust.end.motives <- function(data, election.file, series.file)
 {	tlog(0,"Removing end motives associated to no end date")
+	treated.rows <- c()
+	nbr.removed <- 0
+	nbr.added <- 0
 	
-	# correct mandate motives
+	##############################
+	
+	# correct superfluous mandate motives
 	idx <- which(is.na(data[,COL_ATT_MDT_FIN]) & !is.na(data[,COL_ATT_MDT_MOTIF]))
 	tlog(2,"Found ",length(idx)," superfluous mandate end motives")
 	if(length(idx)>0)
-		data[idx,COL_ATT_MDT_MOTIF] <- NA
+	{	data[idx,COL_ATT_MDT_MOTIF] <- NA
+		nbr.removed <- nbr.removed + length(idx)
+		treated.rows <- union(treated.rows, idx)
+	}
 	
 	# possibly correct function motives
 	if(COL_ATT_FCT_MOTIF %in% colnames(data))
-	{	idx.fct <- which(is.na(data[,COL_ATT_FCT_FIN]) & !is.na(data[,COL_ATT_FCT_MOTIF]))
-		tlog(2,"Found ",length(idx.fct)," superfluous function end motives")
-		if(length(idx.fct)>0)
-			data[idx.fct,COL_ATT_FCT_MOTIF] <- NA
-		idx <- sort(union(idx, idx.fct))
+	{	# correct superfluous function motives
+		idx <- which(is.na(data[,COL_ATT_FCT_FIN]) & !is.na(data[,COL_ATT_FCT_MOTIF]))
+		tlog(2,"Found ",length(idx)," superfluous function end motives")
+		if(length(idx)>0)
+		{	data[idx,COL_ATT_FCT_MOTIF] <- NA
+			nbr.removed <- nbr.removed + length(idx)
+			treated.rows <- union(treated.rows, idx)
+		}
 	}
 	
-	# log changes
-	tlog(2,"List of corrected rows: ")
-	for(i in idx)
-		tlog(4, format.row(data[i,]))
+	##############################
+
+	# load election-related data
+	election.data <- load.election.data(data, election.file, series.file)
 	
-	tlog(2,"CHECKPOINT 14: emptied a total of ",length(idx)," superfluous motives, for the whole table (",(100*length(idx)/nrow(data)),"%)")
+	# correct missing mandate motives
+	idx <- which(!is.na(data[,COL_ATT_MDT_FIN]) & is.na(data[,COL_ATT_MDT_MOTIF]))
+	tlog.start.loop(2,length(idx),"Found ",length(idx)," rows with mandate end date but no motive, trying to complete them")
+	nbr.added <- 0
+	if(length(idx)>0)
+	{	for(i in 1:length(idx))
+		{	r <- idx[i]
+			print(data[r,])
+			tlog.loop(4,i,"Processing case ",i,"/",length(idx)," (row ",r,")")
+			tlog(6,format.row(data[r,]))
+			
+			# get the appropriate election dates
+			election.dates <- retrieve.series.election.dates(data, r, election.data, series.file)
+			election.dates <- c(election.dates[,1], election.dates[,2])
+			election.dates <- election.dates[!is.na(election.dates)]
+			
+			# check if the end date matches the day before an election date
+			matches <- which(election.dates-1==data[r,COL_ATT_MDT_FIN])
+			
+			# update the end motive
+			if(length(matches)>0)
+			{	tlog(6,"Mandate end date matches election ",format(election.dates[matches]))
+				data[r,COL_ATT_MDT_FIN] <- "FM"
+				data[r,COL_ATT_CORREC_INFO] <- TRUE
+				nbr.added <- nbr.added + 1
+				treated.rows <- union(treated.rows, r)
+			}
+			else
+				tlog(6,"No election match")
+		}
+		tlog.end.loop(2,"Loop over")
+	}
+	
+	# correct missing function motives
+	idx <- which(!is.na(data[,COL_ATT_FCT_FIN]) & is.na(data[,COL_ATT_FCT_MOTIF]))
+	tlog.start.loop(2,length(idx),"Found ",length(idx)," rows with function end date but no motive, trying to complete them")
+	nbr.added <- 0
+	if(length(idx)>0)
+	{	for(i in 1:length(idx))
+		{	r <- idx[i]
+			tlog.loop(4,i,"Processing case ",i,"/",length(idx)," (row ",r,")")
+			tlog(6,format.row(data[r,]))
+			
+			# get the appropriate election dates
+			election.dates <- retrieve.series.election.dates(data, r, election.data, series.file)
+			election.dates <- c(election.dates[,1], election.dates[,2])
+			election.dates <- election.dates[!is.na(election.dates)]
+			
+			# check if the end date matches the day before an election date
+			matches <- which(election.dates-1==data[r,COL_ATT_FCT_FIN])
+			
+			# update the end motive
+			if(length(matches)>0)
+			{	tlog(6,"Function end date matches election ",format(election.dates[matches]))
+				data[r,COL_ATT_FCT_FIN] <- "FM"
+				data[r,COL_ATT_CORREC_INFO] <- TRUE
+				nbr.added <- nbr.added + 1
+				treated.rows <- union(treated.rows, r)
+			}
+			else
+				tlog(6,"No election match")
+		}
+		tlog.end.loop(2,"Loop over")
+	}
+	
+	##############################
+	
+	# log changes
+	if(length(treated.rows)>0)
+	{	tlog(2,"List of corrected rows: ")
+		for(i in treated.rows)
+			tlog(4, format.row(data[i,]))
+	}
+	
+	tlog(2,"CHECKPOINT 14: adjusted a total of ",length(treated.rows)," rows for the whole table (",(100*length(treated.rows)/nrow(data)),"%)")
+	tlog(4,"Motives deleted: ",nbr.removed," rows (",(100*nbr.removed/nrow(data)),"%)")
+	tlog(4,"Motives added: ",nbr.added," rows (",(100*nbr.added/nrow(data)),"%)")
 	tlog(2, "Number of rows remaining: ",nrow(data))
 	#readline()
 	
@@ -2078,8 +2159,8 @@ fix.mdtfct.dates <- function(data, election.file, series.file, type)
 	data <- remove.micro.mdtfcts(data, tolerance=7)
 #data14 <- data
 	
-	# delete superfluous motives
-	data <- delete.superfluous.motives(data)
+	# adjust end of mandate or function motives
+	data <- adjust.end.motives(data, election.file, series.file)
 #data15 <- data
 	
 	#stop()
