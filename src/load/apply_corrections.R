@@ -2029,7 +2029,6 @@ adjust.end.motives <- function(data, election.file, series.file)
 	if(length(idx)>0)
 	{	for(i in 1:length(idx))
 		{	r <- idx[i]
-			print(data[r,])
 			tlog.loop(4,i,"Processing case ",i,"/",length(idx)," (row ",r,")")
 			tlog(6,format.row(data[r,]))
 			
@@ -2044,7 +2043,7 @@ adjust.end.motives <- function(data, election.file, series.file)
 			# update the end motive
 			if(length(matches)>0)
 			{	tlog(6,"Mandate end date matches election ",format(election.dates[matches]))
-				data[r,COL_ATT_MDT_FIN] <- "FM"
+				data[r,COL_ATT_MDT_MOTIF] <- "FM"
 				data[r,COL_ATT_CORREC_INFO] <- TRUE
 				nbr.added <- nbr.added + 1
 				treated.rows <- union(treated.rows, r)
@@ -2076,7 +2075,7 @@ adjust.end.motives <- function(data, election.file, series.file)
 			# update the end motive
 			if(length(matches)>0)
 			{	tlog(6,"Function end date matches election ",format(election.dates[matches]))
-				data[r,COL_ATT_FCT_FIN] <- "FM"
+				data[r,COL_ATT_FCT_MOTIF] <- "FM"
 				data[r,COL_ATT_CORREC_INFO] <- TRUE
 				nbr.added <- nbr.added + 1
 				treated.rows <- union(treated.rows, r)
