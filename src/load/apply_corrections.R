@@ -1686,9 +1686,9 @@ remove.micro.mdtfcts <- function(data, tolerance)
 	}
 	
 	# possibly do the same for functions
+	fct.removed <- 0
 	if(COL_ATT_FCT_DBT %in% colnames(data))
 	{	# compute duration in number of days
-		fct.removed <- 0
 		fct.before <- nrow(data)
 		idx <- which(!is.na(data[,COL_ATT_FCT_DBT]) & !is.na(data[,COL_ATT_FCT_FIN]))
 		tlog(2,"Found ",length(idx)," rows with both start and end function dates")
