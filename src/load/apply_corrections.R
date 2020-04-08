@@ -2260,35 +2260,37 @@ adjust.end.motives <- function(data, election.file, series.file)
 	}
 	
 	# correct missing function motives
-	idx <- which(!is.na(data[,COL_ATT_FCT_FIN]) & is.na(data[,COL_ATT_FCT_MOTIF]))
-	tlog.start.loop(2,length(idx),"Found ",length(idx)," rows with function end date but no motive, trying to complete them")
-	nbr.added <- 0
-	if(length(idx)>0)
-	{	for(i in 1:length(idx))
-		{	r <- idx[i]
-			tlog.loop(4,i,"Processing case ",i,"/",length(idx)," (row ",r,")")
-			tlog(6,format.row(data[r,]))
-			
-			# get the appropriate election dates
-			election.dates <- retrieve.series.election.dates(data, r, election.data, series.file)
-			election.dates <- c(election.dates[,1], election.dates[,2])
-			election.dates <- election.dates[!is.na(election.dates)]
-			
-			# check if the end date matches the day before an election date
-			matches <- which(election.dates-1==data[r,COL_ATT_FCT_FIN])
-			
-			# update the end motive
-			if(length(matches)>0)
-			{	tlog(6,"Function end date matches election ",format(election.dates[matches]))
-				data[r,COL_ATT_FCT_MOTIF] <- "FM"
-				data[r,COL_ATT_CORREC_INFO] <- TRUE
-				nbr.added <- nbr.added + 1
-				treated.rows <- union(treated.rows, r)
+	if(COL_ATT_FCT_MOTIF %in% colnames(data))
+	{	idx <- which(!is.na(data[,COL_ATT_FCT_FIN]) & is.na(data[,COL_ATT_FCT_MOTIF]))
+		tlog.start.loop(2,length(idx),"Found ",length(idx)," rows with function end date but no motive, trying to complete them")
+		nbr.added <- 0
+		if(length(idx)>0)
+		{	for(i in 1:length(idx))
+			{	r <- idx[i]
+				tlog.loop(4,i,"Processing case ",i,"/",length(idx)," (row ",r,")")
+				tlog(6,format.row(data[r,]))
+				
+				# get the appropriate election dates
+				election.dates <- retrieve.series.election.dates(data, r, election.data, series.file)
+				election.dates <- c(election.dates[,1], election.dates[,2])
+				election.dates <- election.dates[!is.na(election.dates)]
+				
+				# check if the end date matches the day before an election date
+				matches <- which(election.dates-1==data[r,COL_ATT_FCT_FIN])
+				
+				# update the end motive
+				if(length(matches)>0)
+				{	tlog(6,"Function end date matches election ",format(election.dates[matches]))
+					data[r,COL_ATT_FCT_MOTIF] <- "FM"
+					data[r,COL_ATT_CORREC_INFO] <- TRUE
+					nbr.added <- nbr.added + 1
+					treated.rows <- union(treated.rows, r)
+				}
+				else
+					tlog(6,"No election match")
 			}
-			else
-				tlog(6,"No election match")
+			tlog.end.loop(2,"Loop over")
 		}
-		tlog.end.loop(2,"Loop over")
 	}
 	
 	##############################
