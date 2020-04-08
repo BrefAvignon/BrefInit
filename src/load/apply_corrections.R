@@ -1685,70 +1685,74 @@ remove.micro.mdtfcts <- function(data, tolerance)
 		}
 	}
 	
-	# compute duration in number of days
-	fct.removed <- 0
-	fct.before <- nrow(data)
-	idx <- which(!is.na(data[,COL_ATT_FCT_DBT]) & !is.na(data[,COL_ATT_FCT_FIN]))
-	tlog(2,"Found ",length(idx)," rows with both start and end function dates")
-	if(length(idx)>0)
-	{	# compute mandate duration
-		durations <- as.integer(data[idx,COL_ATT_FCT_FIN] - data[idx,COL_ATT_FCT_DBT])
-		
-		# compare to limit
-		if(!is.na(tolerance))
-			idx <- idx[durations<=tolerance]
-		tlog(4,"Found ",length(idx)," function(s) which are too short (<=",tolerance," days)")
-		
+	# possibly do the same for functions
+	if(COL_ATT_FCT_DBT %in% colnames(data))
+	{	# compute duration in number of days
+		fct.removed <- 0
+		fct.before <- nrow(data)
+		idx <- which(!is.na(data[,COL_ATT_FCT_DBT]) & !is.na(data[,COL_ATT_FCT_FIN]))
+		tlog(2,"Found ",length(idx)," rows with both start and end function dates")
 		if(length(idx)>0)
-		{	# look for exceptions
-			exception.idx <- c()
-			tlog(6,"Including ",length(exception.idx)," manually marked exceptions")
+		{	# compute mandate duration
+			durations <- as.integer(data[idx,COL_ATT_FCT_FIN] - data[idx,COL_ATT_FCT_DBT])
 			
-			# log the list of micro-mandates
-			tlog.start.loop(4,length(idx),"List of concerned rows:")
-			tmp <- sapply(1:length(idx), function(i)
-			{	tlog.loop(6,i,"Row ", idx[i], "(",i,"/",length(idx),"): ",format.row.dates(data[idx[i],]),
-						if(i %in% exception.idx) " (Exception)" else "")
-				tlog(8, format.row(data[idx[i],]))
-			})
-			tlog.end.loop(4,"Loop over")
-	
-			# get the ids associated to a single micro-function
-			nms1 <- names(which(table(data[,COL_ATT_ELU_ID])==1))
-			nms2 <- unique(data[idx,COL_ATT_ELU_ID])
-			nms <- intersect(nms1,nms2)
-			tlog(4,"Among them, ",length(nms)," correspond to persons with only this very mandate")
+			# compare to limit
+			if(!is.na(tolerance))
+				idx <- idx[durations<=tolerance]
+			tlog(4,"Found ",length(idx)," function(s) which are too short (<=",tolerance," days)")
 			
-			# log the mandates associated to these ids
-			if(length(nms)>0)
-			{	tmp <- sapply(1:length(nms), function(i)
-				{	j <- which(data[,COL_ATT_ELU_ID]==nms[i])
-					tlog(6, "Row ", j, "(",i,"/",length(idx),"): ", format.row(data[j,]))
-				})
-			}
-			
-			# remove exceptions
-			if(length(exception.idx)>0)
-				idx <- idx[-exception.idx]
-			
-			# remove micro-functions
 			if(length(idx)>0)
-			{	data[idx,COL_ATT_FCT_CODE] <- NA
-				data[idx,COL_ATT_FCT_DBT] <- NA
-				data[idx,COL_ATT_FCT_FIN] <- NA
-				data[idx,COL_ATT_FCT_MOTIF] <- NA
-				data[idx,COL_ATT_FCT_NOM] <- NA
-				data[idx,COL_ATT_CORREC_DATE] <- TRUE
-				data[idx,COL_ATT_CORREC_INFO] <- TRUE
+			{	# look for exceptions
+				exception.idx <- c()
+				tlog(6,"Including ",length(exception.idx)," manually marked exceptions")
+				
+				# log the list of micro-mandates
+				tlog.start.loop(4,length(idx),"List of concerned rows:")
+				tmp <- sapply(1:length(idx), function(i)
+				{	tlog.loop(6,i,"Row ", idx[i], "(",i,"/",length(idx),"): ",format.row.dates(data[idx[i],]),
+							if(i %in% exception.idx) " (Exception)" else "")
+					tlog(8, format.row(data[idx[i],]))
+				})
+				tlog.end.loop(4,"Loop over")
+		
+				# get the ids associated to a single micro-function
+				nms1 <- names(which(table(data[,COL_ATT_ELU_ID])==1))
+				nms2 <- unique(data[idx,COL_ATT_ELU_ID])
+				nms <- intersect(nms1,nms2)
+				tlog(4,"Among them, ",length(nms)," correspond to persons with only this very mandate")
+				
+				# log the mandates associated to these ids
+				if(length(nms)>0)
+				{	tmp <- sapply(1:length(nms), function(i)
+					{	j <- which(data[,COL_ATT_ELU_ID]==nms[i])
+						tlog(6, "Row ", j, "(",i,"/",length(idx),"): ", format.row(data[j,]))
+					})
+				}
+				
+				# remove exceptions
+				if(length(exception.idx)>0)
+					idx <- idx[-exception.idx]
+				
+				# remove micro-functions
+				if(length(idx)>0)
+				{	data[idx,COL_ATT_FCT_CODE] <- NA
+					data[idx,COL_ATT_FCT_DBT] <- NA
+					data[idx,COL_ATT_FCT_FIN] <- NA
+					data[idx,COL_ATT_FCT_MOTIF] <- NA
+					data[idx,COL_ATT_FCT_NOM] <- NA
+					data[idx,COL_ATT_CORREC_DATE] <- TRUE
+					data[idx,COL_ATT_CORREC_INFO] <- TRUE
+				}
+				fct.removed <- length(idx)
 			}
-			fct.removed <- length(idx)
 		}
 	}
 	
 	tot.removed <- mdt.removed + fct.removed
 	tlog(2,"CHECKPOINT 9: Removed a total of ",tot.removed," rows (",(100*tot.removed/mdt.before),"%) corresponding to micro-mandates and/or functions")
 	tlog(4,"Removed ",mdt.removed," rows (",(100*mdt.removed/mdt.before),"%) corresponding to micro-mandates")
-	tlog(4,"Removed ",fct.removed," rows (",(100*fct.removed/fct.before),"%) corresponding to micro-functions")
+	if(COL_ATT_FCT_DBT %in% colnames(data))
+		tlog(4,"Removed ",fct.removed," rows (",(100*fct.removed/fct.before),"%) corresponding to micro-functions")
 	tlog(2,"Number of rows remaining: ",nrow(data))
 	return(data)
 }
