@@ -81,9 +81,8 @@ test.col.dates.generic <- function(data, out.folder, tolerance=7)
 				row.names=FALSE,col.names=TRUE)
 		}
 		
-		# start after end, or no start at all (=NA)
-		idx <- which(data[,COL_ATT_MDT_DBT]>data[,COL_ATT_MDT_FIN] 
-						| is.na(data[,COL_ATT_MDT_DBT]) & !is.na(data[,COL_ATT_MDT_FIN]))
+		# start after end
+		idx <- which(!is.na(data[,COL_ATT_MDT_DBT]) & data[,COL_ATT_MDT_DBT]>data[,COL_ATT_MDT_FIN])
 		tlog(6,"Found ",length(idx)," mandate(s) starting after they end")
 		if(length(idx)>0)
 		{	tmp <- cbind(idx,data[idx,])
