@@ -3,6 +3,8 @@
 # always the sale, etc.).
 # 
 # 01/2020 Vincent Labatut
+#
+# source("src/verification/test_persoinf.R")
 #############################################################################################
 
 
@@ -216,12 +218,14 @@ test.occupation.col <- function(data, out.folder)
 
 #############################################################################################
 # Compares approximately the names of the persons in the table, and list the closest ones
-# to allow a manual verification (whether the names should be the same person or not).
+# to allow a manual verification (whether the names should be the same person or not). Exact
+# matches are not listed, they are already dealt with by another function.
 # 
 # data: data table.
 #############################################################################################
 compare.person.names <- function(data)
-{	tlog(0,"Looking for very similar last/first name, in order to detect typos in names")
+{	VERBOSE <- FALSE
+	tlog(0,"Looking for very similar last/first name, in order to detect typos in names")
 	
 	# concatenate last and first names
 	tlog(2,"Retrieving all unique last/first name pairs")
@@ -233,31 +237,72 @@ compare.person.names <- function(data)
 	
 	tlog.start.loop(2,(length(unique.names)-1),"Processing each unique name separately")
 	for(i in 1:(length(unique.names)-1))
-	{	tlog.loop(4,i,"Processing name \"",unique.names[i],"\"")
+	{	if(VERBOSE) tlog.loop(4,i,"Processing name \"",unique.names[i],"\" (",i,"/",(length(unique.names)-1),")")
 		
 		# compute string distance
-		tlog(6,"Computing distance to all remaining names")
+		if(VERBOSE) tlog(6,"Computing distance to all remaining names")
 		dd <- stringdist(a=unique.names[i],b=unique.names[(i+1):length(unique.names)],method="osa") # osa lv lcs
 		mm <- min(dd)
 		if(mm<=2)
-		{	# display the names
-			idx <- which(dd==mm) + i
-			tlog(6,"Found ",length(idx)," close names:")
-			for(j in idx)
-				tlog(8,unique.names[j])
-			# display the rows
-			tlog(6,"Corresponding rows:")
-			rows <- which(fullnames==unique.names[i])
-			for(r in rows)
-				tlog(8, format.row(data[r,]))
-			for(j in idx)
-			{	rows <- which(fullnames==unique.names[j])
-				for(r in rows)
-					tlog(8, format.row(data[r,]))
+		{	idx <- which(dd==mm) + i
+			dpt.lst <- list()
+			nme.lst <- list()
+			
+			# possibly filter using the department
+			if(COL_ATT_DPT_CODE %in% colnames(data))
+			{	# get the department for the current name
+				rows1 <- which(fullnames==unique.names[i])
+				dpts1 <- unique(data[rows1,COL_ATT_DPT_CODE])
+				# init lists
+				dpt.lst0 <- list()
+				nme.lst0 <- list()
+				for(dpt in dpts1)
+				{	dpt.lst0[[as.character(dpt)]] <- c(dpt.lst0[[as.character(dpt)]], rows1[which(data[rows1,COL_ATT_DPT_CODE]==dpt)])
+					nme.lst0[[as.character(dpt)]] <- union(nme.lst0[[as.character(dpt)]], unique.names[i])
+				}
+				# complete with rows containing similar name and same dpt
+				for(j in idx)
+				{	rows2 <- which(fullnames==unique.names[j])
+					dpts2 <- unique(data[rows2,COL_ATT_DPT_CODE])
+					com.dpts <- intersect(dpts1, dpts2)
+					# add to the list
+					for(dpt in com.dpts)
+					{	dpt.lst[[as.character(dpt)]] <- c(dpt.lst0[[as.character(dpt)]], rows2[which(data[rows2,COL_ATT_DPT_CODE]==dpt)])
+						nme.lst[[as.character(dpt)]] <- union(nme.lst0[[as.character(dpt)]], unique.names[j])
+					}
+				}
+			}
+			# no department in the table
+			else if(length(idx)>0)
+			{	dpt.lst[[1]] <- rows1
+				nme.lst[[1]] <- union(unique.names[i], unique.names[idx])
+			}
+			
+			# log results
+			if(length(dpt.lst)>0)
+			{	if(!VERBOSE) tlog.loop(4,i,"Processing name \"",unique.names[i],"\" (",i,"/",(length(unique.names)-1),")")
+				for(k in 1:length(dpt.lst))
+				{	if(length(dpt.lst)>1)
+						tlog(6,"Group of similar names ",k,"/",length(dpt.lst))
+					# display the names
+					tlog(8,"Found ",(length(nme.lst[[k]])-1)," close names:")
+					for(name in nme.lst[[k]])
+						tlog(10,name)
+					# display the rows
+					tlog(8,"Corresponding rows:")
+					for(r in dpt.lst[[k]])
+						tlog(10, format.row(data[r,]))
+				}
+			}
+			# no department match
+			else
+			{	if(VERBOSE) tlog(6,"Found some close names, but different department")
 			}
 		}
+		# no match
 		else
-			tlog(6,"No other name is close enough")
+		{	if(VERBOSE) tlog(6,"No other name is close enough")
+		}
 		
 	}
 }

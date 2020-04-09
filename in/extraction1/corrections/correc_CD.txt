@@ -149,4 +149,7 @@ NA	NA	NA	NA	Libellé du canton	MARSEILLE VAUBAN	VAUBAN	Nom existant déjà sous 
 12585	1196885	PELTIER	Paule Helyette	ID RNE	1196885	NA	Suppression, mandat inexistant (WP)
 12586	1196885	PELTIER	Paule Helyette	ID RNE	1196885	NA	Suppression, mandat inexistant (WP)
 12442	822764	TINOT	Marie-Frantz	Date debut mandat	16/3/2009	29/3/2010	Date incorrecte (WP)
-11805	1185799	BEDREDDINE	Belaid	Prenom elu	Belaid	Belaïde	Correction coquille
+11805	1185799	BEDREDDINE	Belaid	Prenom elu	Belaid	Belaïde	Coquille prénom
+1890	22909	GUINANDIE	Janine	Prenom elu	Janine	Jeanine	Coquille prénom
+8375	833716	FRANCQ	Natalie	Prenom elu	Natalie	Nathalie	Coquille prénom
+11266	2003	GIMMILLARO	Martine	Nom elu	GIMMILLARO	GIMMILARO	Coquille nom
