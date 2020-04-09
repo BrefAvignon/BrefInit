@@ -525,7 +525,8 @@ test.position.cr <- function(data, out.folder)
 	# ignore the following (non-unique) functions
 	ign.functs <- c(
 		"PRESIDENT DE COMMISSION",
-		"AUTRE MEMBRE COMMISSION PERMANENTE")
+		"AUTRE MEMBRE COMMISSION PERMANENTE"
+	)
 	
 	# identify all unique functions: departement code + city code + function name
 	tlog(2,"Identifying all unique function positions")

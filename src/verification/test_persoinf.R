@@ -215,6 +215,57 @@ test.occupation.col <- function(data, out.folder)
 
 
 #############################################################################################
+# Compares approximately the names of the persons in the table, and list the closest ones
+# to allow a manual verification (whether the names should be the same person or not).
+# 
+# data: data table.
+#############################################################################################
+compare.person.names <- function(data)
+{	tlog(0,"Looking for very similar last/first name, in order to detect typos in names")
+	
+	# concatenate last and first names
+	tlog(2,"Retrieving all unique last/first name pairs")
+	fullnames <- apply(as.matrix(data[,c(COL_ATT_ELU_NOM,COL_ATT_ELU_PRENOM)]), 1, function(r) paste(r,collapse=" "))
+	tlog(4,"Found ",length(fullnames)," of them")
+	# keep only one occurrence of each
+	unique.names <- unique(fullnames)
+	tlog(4,"Keep ",length(unique.names)," unique first/last names")
+	
+	tlog.start.loop(2,(length(unique.names)-1),"Processing each unique name separately")
+	for(i in 1:(length(unique.names)-1))
+	{	tlog.loop(4,i,"Processing name \"",unique.names[i],"\"")
+		
+		# compute string distance
+		tlog(6,"Computing distance to all remaining names")
+		dd <- stringdist(a=unique.names[i],b=unique.names[(i+1):length(unique.names)],method="osa") # osa lv lcs
+		mm <- min(dd)
+		if(mm<=2)
+		{	# display the names
+			idx <- which(dd==mm) + i
+			tlog(6,"Found ",length(idx)," close names:")
+			for(j in idx)
+				tlog(8,unique.names[j])
+			# display the rows
+			tlog(6,"Corresponding rows:")
+			rows <- which(fullnames==unique.names[i])
+			for(r in rows)
+				tlog(8, format.row(data[r,]))
+			for(j in idx)
+			{	rows <- which(fullnames==unique.names[j])
+				for(r in rows)
+					tlog(8, format.row(data[r,]))
+			}
+		}
+		else
+			tlog(6,"No other name is close enough")
+		
+	}
+}
+
+
+
+
+#############################################################################################
 # Checks the columns related to personal information: first name, last name, birthdate, nationality,
 # sex, occupation.
 #
@@ -227,4 +278,7 @@ test.personal.info <- function(data, out.folder)
 	
 	# check the occupation column
 	test.occupation.col(data, out.folder)
+	
+	# approximately compare names
+	compare.person.names(data)
 }
