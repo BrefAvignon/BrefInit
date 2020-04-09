@@ -40,7 +40,7 @@ start.rec.log <- function(text=NA)
 end.rec.log <- function()
 {	end.time <- Sys.time()
 	duration <- difftime(end.time, START_TIME, units="secs")
-	tlog(0, "Total processing time: ", format(.POSIXct(duration,tz="GMT"),"%H:%M:%S"))
+	tlog(0, "Total processing time: ", format(.POSIXct(duration,tz="GMT"),"%d:%H:%M:%S"))
 	sink()
 	close(CONNECTION)
 }
