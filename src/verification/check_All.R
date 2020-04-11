@@ -4,6 +4,7 @@
 # 03/2020 Vincent Labatut
 #
 # source("src/verification/check_All.R")
+# setwd("C:/Users/Vincent/Eclipse/workspaces/Extraction/Datapol")
 #############################################################################################
 source("src/common/include.R")
 source("src/verification/evolution_plot.R")
@@ -28,22 +29,7 @@ out.folder <- FOLDER_OUT_ALL
 dir.create(path=out.folder, showWarnings=FALSE, recursive=TRUE)
 
 # load the data
-tlog(0,"Reading the merged table")
-types <- rep("character",length(COLS_ATT_NORMALIZED))
-types[which(COL_TYPES[COLS_ATT_NORMALIZED]=="dat")] <- "Date"
-types[which(COL_TYPES[COLS_ATT_NORMALIZED]=="num")] <- "integer"
-data <- read.table(
-	file=FILES_TAB_ALL,			# name of the data file
-	header=TRUE, 				# look for a header
-	sep="\t", 					# character used to separate columns 
-	check.names=FALSE, 			# don't change the column names from the file
-	comment.char="", 			# ignore possible comments in the content
-	row.names=NULL, 			# don't look for row names in the file
-#	quote="", 					# don't expect double quotes "..." around text fields
-#	as.is=TRUE,					# don't convert strings to factors
-	colClasses=types			# force column types
-)
-tlog(2,"Read ",nrow(data)," rows and ",ncol(data)," columns")
+data <- read.cached.table(cache.file=FILE_CACHE_ALL)
 #print(sapply(1:ncol(data),function(col) class(data[,col])))
 
 # summarizes each column separately

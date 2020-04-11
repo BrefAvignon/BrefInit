@@ -51,6 +51,10 @@ test.col.dates.epci(data=data, out.folder=out.folder)
 tlog(0,"Checking locations")
 test.col.locations(data=data, out.folder=out.folder, merged=FALSE)
 
+# check overlapping mandates for the same position
+tlog(0,"Checking overlapping mandates for the same position")
+test.position.epci(data=data, out.folder=out.folder)
+
 # look for duplicates (not really necessary to do that here, better after the merge)
 tlog(0,"Looking for duplicates")
 test.duplicates(data=data, loc.col=COL_ATT_DPT_CODE, out.folder=out.folder)
