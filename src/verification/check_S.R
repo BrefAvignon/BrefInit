@@ -4,6 +4,7 @@
 # 07/2019 Vincent Labatut
 #
 # source("src/verification/check_S.R")
+# setwd("C:/Users/Vincent/Eclipse/workspaces/Extraction/Datapol")
 #############################################################################################
 source("src/common/include.R")
 source("src/verification/evolution_plot.R")
@@ -21,6 +22,7 @@ source("src/verification/test_duplicates.R")
 extraction <- 1 # 1 or 2
 correct.data <- TRUE
 complete.data <- TRUE
+type <- "S"
 
 # start logging
 start.rec.log(text="S")
@@ -62,8 +64,7 @@ test.duplicates(data=data, loc.col=COL_ATT_DPT_CODE, out.folder=out.folder)
 
 # plots the number of persons over time
 tlog(0,"Ploting the number of simultaneously hold positions over time")
-#plot.pers.time(data=data, out.folder=out.folder, daily=TRUE)
-plot.pers.time2(data=data, out.folder=out.folder)
+plot.pers.time(data=data, out.folder=out.folder, type=type)
 
 # close the log file
 tlog(0,"Done")

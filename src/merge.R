@@ -26,6 +26,7 @@ complete.data <- TRUE	# only for D and S
 
 # start logging
 start.rec.log(text=paste0("MERGE",extraction))
+tlog(0,"Merging all tables to get a unique one containing all data")
 
 
 

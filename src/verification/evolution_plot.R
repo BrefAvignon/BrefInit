@@ -9,12 +9,14 @@
 
 #############################################################################################
 # Plots the evolution of the number of people holding a mandate simultaneously as a function
-# of time. 
+# of time.
+#
+# NOTE: this is the old version.
 #
 # data: table containing the data.
 # out.folder: output folder.
 #############################################################################################
-plot.pers.time <- function(data, out.folder, daily=FALSE)
+plot.pers.time0 <- function(data, out.folder, daily=FALSE)
 {	tlog(2,"Plotting number of mandate occurrences as a function of time")
 	
 	# set up start/end dates
@@ -216,17 +218,156 @@ plot.pers.time <- function(data, out.folder, daily=FALSE)
 
 
 #############################################################################################
+# Adds to an existing plots some vertical lines representing election dates. If this information
+# is not available, the plot is not changed.
+#
+# type: category of the data table (CD, CM, etc.).
+# start.date: earliest date covered by the plot.
+# end.date: latest date covered by the plot.
+# max.val: maximal plotted value (y-axis).
+#############################################################################################
+plot.election.dates <- function(type, start.date, end.date, max.val)
+{	# get the election dates
+	if(type=="CD")
+		election.table <- load.election.data(data, election.file=FILE_VERIF_DATES_CD, series.file=FILE_VERIF_SERIES_CD)$election.table
+	else if(type=="CM" || type=="EPCI" || type=="M")
+		election.table <- load.election.data(data, election.file=FILE_VERIF_DATES_CM)$election.table
+	else if(type=="CR")
+		election.table <- load.election.data(data, election.file=FILE_VERIF_DATES_CR)$election.table
+	else if(type=="D")
+		election.table <- load.election.data(data, election.file=FILE_VERIF_DATES_D)$election.table
+	else if(type=="DE")
+		election.table <- load.election.data(data, election.file=FILE_VERIF_DATES_DE)$election.table
+	else if(type=="S")
+		election.table <- load.election.data(data, election.file=FILE_VERIF_DATES_S, series.file=FILE_VERIF_SERIES_S)$election.table
+	
+	# plot them as vertical lines
+	for(i in 1:nrow(election.table))
+	{	pos <- election.table[i,1]
+		if(pos>=start.date)
+		{	# plot the first round
+			abline(v=pos, col="BLACK", lty=3)
+			# possibly plot the second round
+			if(!is.na(election.table[i,2]))
+			{	pos <- election.table[i,2]
+				abline(v=pos, col="BLACK", lty=3)
+			}
+			# possibly plot the electoral series
+			if(ncol(election.table)>2 && !is.na(election.table[i,3]))
+				text(pos,max.val,election.table[i,3],pos=4,col="DARKGRAY")
+		}
+	}
+}
+
+
+
+
+#############################################################################################
+# Adds to an existing plot some lines representing the legal maximal number of positions for
+# the specified type, if the information is available. Other wise, the function does nothing.
+#
+# type: category of the data table (CD, CM, etc.).
+# start.date: earliest date covered by the plot.
+# end.date: latest date covered by the plot.
+#############################################################################################
+plot.position.limit <- function(type, start.date, end.date)
+{	limit.dates <- c()
+	limit.vals <- c()
+	
+	# setup limit changes
+	if(type=="CD")
+	{	limit.dates <- c(as.Date("1789/12/22"),as.Date("1793/12/4"),
+				as.Date("1800/2/17"),as.Date("1871/8/10"),as.Date("2015/3/22"))
+		limit.vals <- c(2988,0,2988,4042,4058)
+	}
+	else if(type=="CM")
+	{	limit.dates <- c(as.Date("1884/4/5"))
+		limit.vals <- c(503305)
+	}
+	else if(type=="CR")
+	{	limit.dates <- c(as.Date("1986/3/10"),as.Date("2015/12/5"))
+		limit.vals <- c(1880,1900)
+	}
+	else if(type=="EPCI")
+	{	limit.dates <- c(as.Date("1992/2/6"))
+		limit.vals <- c(67159)
+	}
+	else if(type=="D")
+	{	limit.dates <- c(as.Date("1958/11/23"), as.Date("1962/11/18"),
+			as.Date("1967/3/5"), as.Date("1968/6/23"), as.Date("1973/3/4"),
+			as.Date("1978/3/12"), as.Date("1981/6/14"), as.Date("1986/3/16"),
+			as.Date("1988/6/5"), as.Date("1993/3/21"), as.Date("1997/5/25"),
+			as.Date("2002/6/9"), as.Date("2007/6/10"), as.Date("2012/6/10"),
+			as.Date("2017/6/11"))
+		limit.vals <- c(579, 482, 487, 487, 490, 491, 491, 577, 577, 577, 
+				577, 577, 577, 577, 577)
+	}
+	else if(type=="DE")
+	{	limit.dates <- c(as.Date("1979/06/07"), as.Date("1984/06/17"),
+			as.Date("1989/06/18"), as.Date("1994/06/12"), as.Date("1999/06/13"),
+			as.Date("2004/06/13"), as.Date("2009/06/07"), as.Date("2014/05/25"),
+			as.Date("2019/5/25"))
+		limit.vals <- c(81, 81, 81, 87, 87, 78, 72, 74, 79)
+	}
+	else if(type=="M")
+	{	limit.dates <- c(as.Date("1962/1/1"), 
+			as.Date("1968/1/1"), as.Date("1975/1/1"),
+			as.Date("1982/1/1"), as.Date("1985/1/1"), 
+			as.Date("1990/1/1"), as.Date("1994/1/1"), 
+			seq(as.Date("1999/1/1"),as.Date("2019/1/1"),"year"))
+		limit.vals <- c(38076, 37823, 36407, 36547, 36614, 36664, 36673, 36679,
+			36680, 36677, 36679, 36678, 36682, 36684, 36685, 36683, 36681,
+			36682, 36682, 36680, 36700, 36681, 36681, 36658, 35885, 35416,
+			35357, 34968)
+	}
+	else if(type=="S")
+	{	limit.dates <- c(as.Date("1959/4/26"), as.Date("1962/9/23"), 
+			as.Date("1965/9/26"), as.Date("1968/9/22"), as.Date("1971/9/26"), 
+			as.Date("1974/9/22"), as.Date("1977/9/25"), as.Date("1980/9/28"), 
+			as.Date("1983/9/25"), as.Date("1986/9/28"), as.Date("1989/9/24"), 
+			as.Date("1992/9/27"), as.Date("1995/9/24"), as.Date("1998/9/27"), 
+			as.Date("2001/9/23"), as.Date("2004/9/26"), as.Date("2008/9/21"), 
+			as.Date("2011/9/25"), as.Date("2014/9/28"), as.Date("2017/9/24"))
+		limit.vals <- c(309, 274, 275, 283, 283, 283, 295, 305, 318, 320,
+				322, 322, 322, 322, 322, 311, 343, 348, 348, 348)
+	}
+	
+	# plot each segment
+	if(length(limit.vals)>0)
+	{	for(i in 1:length(limit.vals))
+		{	# get start date
+			sd <- limit.dates[i]
+			# get end date
+			if(i==length(limit.vals))
+				ed <- max(end.date, sd+1)
+			else
+				ed <- limit.dates[i+1]
+			# plot main segment
+			segments(x0=sd, y0=limit.vals[i], x1=ed, y1=limit.vals[i], col="BLUE")
+			# possibly prepare next change
+			if(i<length(limit.vals))
+				segments(x0=ed, y0=limit.vals[i], x1=ed, y1=limit.vals[i+1], col="BLUE")
+		}
+	}
+}
+
+
+
+#############################################################################################
 # Plots the evolution of the number of people holding a mandate simultaneously as a function
 # of time. 
 #
 # data: table containing the data.
 # out.folder: output folder.
+# type: table processed (CD, CM, CR, etc.)
 #############################################################################################
-plot.pers.time2 <- function(data, out.folder)
+plot.pers.time <- function(data, out.folder, type)
 {	tlog(2,"Plotting number of mandate occurrences as a function of time")
 	
 	# set up start/end dates
 	start.date <- min(c(data[,COL_ATT_MDT_DBT],data[,COL_ATT_MDT_FIN]),na.rm=TRUE)
+## forcing the start date to be less than it should
+#start.date <- max(start.date, as.Date("1998/1/1"))	
 	end.date <- max(c(data[,COL_ATT_MDT_DBT],data[,COL_ATT_MDT_FIN]),na.rm=TRUE)
 	tlog(4,"Period: ",format(start.date),"--",format(end.date))
 	
@@ -247,6 +388,9 @@ plot.pers.time2 <- function(data, out.folder)
 				edate <- end.date
 		
 			idx <- match(sdate:edate,day.idx)
+## when forcing the start date to be less than it should
+#idx <- idx[!is.na(idx)]
+#if(length(idx)>0)
 			day.vals[idx] <- day.vals[idx] + rep(1,length(idx))
 		}
 	}
@@ -256,11 +400,11 @@ plot.pers.time2 <- function(data, out.folder)
 	file <- file.path(out.folder,"persons_by_day.txt")
 	tab <- data.frame(Date=format(day.dates,format="%d/%m/%Y"),Count=day.vals)
 	write.table(x=tab,file=file,
-#			fileEncoding="UTF-8",
-			row.names=FALSE,
-			col.names=TRUE,
-#			quote=TRUE,
-			sep="\t"
+#		fileEncoding="UTF-8",
+		row.names=FALSE,
+		col.names=TRUE,
+#		quote=TRUE,
+		sep="\t"
 	)
 	
 	# generate plot only starting from 2000
@@ -268,37 +412,84 @@ plot.pers.time2 <- function(data, out.folder)
 	file <- file.path(out.folder,paste0("persons_by_day_2001.",PLOT_FORMAT))
 	tlog(4, "Generating plot in file \"",file,"\"")
 	if(PLOT_FORMAT=="pdf")
-		pdf(file)
+		pdf(file, width=11, height=7)
 	else if(PLOT_FORMAT=="png")
 		png(file, width=1024, height=1024)
-	plot(
-		x=as.Date(day.dates[idx], origin="1970-01-01"),
-		y=day.vals[idx], 
-		col="Red", 
-		xlab="Dates", 
-		ylab="Count",
-		type="l",
-#		las=2, 
+	par(mar=c(5, 4, 1, 0)+0.1)	# B L T R
+	# create plot
+	plot(x=NULL,
+		xlab="Date", 
+		ylab="Nombre de lignes",
+		xaxt="n", yaxt="n",
+		xlim=range(as.Date(day.dates[idx], origin="1970-01-01")),
+		ylim=range(day.vals[idx])
 #		cex.names=min(1,20/length(uvals))
 	)
+	# setup x axis
+	ticks <- seq(as.Date("2000/1/1"),as.Date("2019/1/1"),"year")
+	axis(side=1, at=ticks, labels=get.year(ticks), las=2)
+	# setup y axis
+	ticks <- axTicks(2)
+	axis(side=2, at=ticks, labels=format(ticks,scientific=FALSE))
+	# plot election dates as vertical lines
+	plot.election.dates(type,
+		start.date=as.Date("2000/1/1"), 
+		end.date=max(as.Date(day.dates[idx], origin="1970-01-01")),
+		max.val=max(day.vals[idx]))
+	# plot theoretical limit
+	plot.position.limit(type, 
+		start.date=as.Date("2000/1/1"), 
+		end.date=max(as.Date(day.dates[idx], origin="1970-01-01")))
+	# plot main data
+	lines(x=as.Date(day.dates[idx], origin="1970-01-01"),
+		y=day.vals[idx], 
+		col="Red", 
+		type="l"
+	)
+	# add legend
+	legend(x="bottomright", legend=c("Valeur mesuree", "Valeur theorique"), fill=c("RED","BLUE"), bg="WHITE")
+	# restaure options
+	par(mar=c(5, 4, 4, 2)+0.1)	# B L T R
 	dev.off()
 	
 	# generate plot for all dates
 	file <- file.path(out.folder,paste0("persons_by_day.",PLOT_FORMAT))
 	tlog(4, "Generating plot in file \"",file,"\"")
 	if(PLOT_FORMAT=="pdf")
-		pdf(file)
+		pdf(file, width=11, height=7)
 	else if(PLOT_FORMAT=="png")
 		png(file, width=1024, height=1024)
-	plot(
-		x=as.Date(day.dates, origin="1970-01-01"),
-		y=day.vals, 
-		col="Red", 
-		xlab="Dates", 
-		ylab="Count",
-		type="l",
-#		las=2, 
+	par(mar=c(5, 4, 1, 0)+0.1)	# B L T R
+	# create plot
+	plot(x=NULL,
+		xlab="Date", 
+		ylab="Nombre de lignes",
+		xaxt="n",
+		xlim=range(as.Date(day.dates, origin="1970-01-01")),
+		ylim=range(day.vals)
 #		cex.names=min(1,20/length(uvals))
 	)
+	# setup x axis
+	ticks <- seq(min(as.Date(day.dates, origin="1970-01-01")),as.Date("2019/1/1"), "2 year")
+	axis(side=1, at=ticks, labels=get.year(ticks), las=2)
+	# plot election dates as vertical lines
+	plot.election.dates(type, 
+		start.date=min(as.Date(day.dates, origin="1970-01-01")), 
+		end.date=max(as.Date(day.dates[idx], origin="1970-01-01")),
+		max.val=max(day.vals))
+	# plot theoretical limit
+	plot.position.limit(type, 
+		start.date=min(as.Date(day.dates, origin="1970-01-01")), 
+		end.date=max(as.Date(day.dates[idx], origin="1970-01-01")))
+	# plot main data
+	lines(x=as.Date(day.dates, origin="1970-01-01"),
+		y=day.vals, 
+		col="Red", 
+		type="l",
+	)
+	# add legend
+	legend(x="bottomright", legend=c("Valeur mesuree", "Valeur theorique"), fill=c("RED","BLUE"), bg="WHITE")
+	# restaure options
+	par(mar=c(5, 4, 1, 0)+0.1)	# B L T R
 	dev.off()
 }

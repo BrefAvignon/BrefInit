@@ -155,26 +155,32 @@ source("src/common/include.R")
 # - passer en revue les logs: CD, CM, CR, D, DE, EPCI, M, S
 # - faire la fusion et re-tester
 # - traiter la comparaison approchée des noms
-# - S: readline=erreur à l'intégration de la base du sénat, à voir
-# - D: p-ê même situation ? à voir
 
 # il existe une BD recensant les EPCI (SIREN)
 # https://www.data.gouv.fr/fr/datasets/base-nationale-sur-linter-communalite/
 # https://www.collectivites-locales.gouv.fr/liste-et-composition-des-epci-a-fiscalite-propre
 
-#CM caching >> en cours
+# pb repéré sur les figures d'évolution du nre de mandat *après* corrections
+# >> pb à voir, notamment sur DE et D (S ?)
+# >> pourtant, on trouve dans la BD S ou AN toutes les lignes présentent dans le RNE, donc il ne devrait pas y avoir de pb...
+#    et pr députés, on s'assure de ne pas avoir un poste occupé par plusieurs personnes à la fois...
 
-#finir de vérifier que test_position marche bien pr CR (fini, à éval) + D + S 
-#>> autres ? EPCI ??
+# récup commune/dpt manquant dans EPCI à partir de CM, puisqu'ils doivent aussi être conseillers municipaux
 
+
+#################################
+# Check logs and files
+# position test D/CD/
 #################################
 # Desktop
-# C1=testing positions *D/S
-# C2=caching CM
-# C3=testing positions *CR/CM
+# C1=testing positions: S/M...CM
+# C2=caching *CM
+# C3=testing positions: CR
+# C4=
 #################################
 # Zenbook S:
-# C1=analyse de All
+# C1=
 # C2=
 # C3=
+# C4=
 #################################
