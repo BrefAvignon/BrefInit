@@ -17,7 +17,39 @@ TOTAL_ITERATIONS <- NA
 
 
 #############################################################################################
+# Properly formats a duration.
+# Note: I tried first to use 
+#	format(.POSIXct(duration,tz="GMT"),"%d:%H:%M:%S")
+# But this command does not handle days properly (adds an extra day for no reason).
+#
+# duration: time duration to display, expressed in seconds.
+#############################################################################################
+format.duration <- function(duration)
+{	# old version
+	#res <- format(.POSIXct(duration,tz="GMT"),"%d:%H:%M:%S")
+	
+	# new version
+	duration <- round(as.numeric(duration))
+	days <- duration %/% 86400
+	duration <- duration %% 86400
+	hours <- duration %/% 3600
+	duration <- duration %% 3600
+	minutes <- duration %/% 60
+	seconds <- duration %% 60
+	if(days>0)
+		res <- sprintf("%02d:%02d:%02d:%02d",days,hours,minutes,seconds)
+	else
+		res <- sprintf("%02d:%02d:%02d",hours,minutes,seconds)
+	
+	return(res)
+}
+
+
+
+#############################################################################################
 # Start recording the logs in a text file.
+#
+# text: main name of the log file.
 #############################################################################################
 start.rec.log <- function(text=NA)
 {	START_TIME <<- Sys.time()
@@ -40,7 +72,7 @@ start.rec.log <- function(text=NA)
 end.rec.log <- function()
 {	end.time <- Sys.time()
 	duration <- difftime(end.time, START_TIME, units="secs")
-	tlog(0, "Total processing time: ", format(.POSIXct(duration,tz="GMT"),"%H:%M:%S"))
+	tlog(0, "Total processing time: ", format.duration(duration))
 	sink()
 	close(CONNECTION)
 }
@@ -119,9 +151,8 @@ tlog.loop <- function(offset=NA, it, ...)
 	el.duration <- as.numeric(difftime(cur.time, LOOP_START_TIME, units="secs"))
 	avg.duration <- el.duration / it
 	rem.duration <- as.difftime(max(0, avg.duration * TOTAL_ITERATIONS - el.duration), units="secs")
-	suffix <- paste0(" [[ETA: ",format(.POSIXct(rem.duration,tz="GMT"),"%H:%M:%S"),"]]")
-	
-	cat(prefix, ..., suffix, "\n", sep="")
+	suffix <- paste0(" [[ETA: ",format.duration(rem.duration),"]]")
+suffix, "\n", sep="")
 }
 
 
@@ -140,13 +171,8 @@ tlog.end.loop <- function(offset=NA, ...)
 	
 	end.time <- Sys.time()
 	duration <- difftime(end.time, LOOP_START_TIME, units="secs")
-	suffix <- paste0(" [[Total duration: ",format(.POSIXct(duration,tz="GMT"),"%H:%M:%S"),"]]")
-	
-	cat(prefix, ..., suffix, "\n", sep="")
-}
-
-## test
-#n <- 100
+	suffix <- paste0(" [[Total duration: ",fo	suffix <- paste0(" [[Total duration: ",format.duration(duration),"]]")
+ 100
 #tlog.start.loop(0,n,"Starting the loop")
 #for(i in 1:n)
 #{	Sys.sleep(runif(n=1,min=0,max=1))

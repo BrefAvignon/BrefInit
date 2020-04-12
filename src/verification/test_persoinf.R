@@ -40,14 +40,14 @@ test.personal.details <- function(data, out.folder)
 	issues <- matrix(NA,nrow=length(ids),ncol=length(cols))
 	colnames(issues) <- cols
 	issues <- t(future_sapply(ids, function(id)
-			{	idx <- which(data[,COL_ATT_ELU_ID]==id)
-				res <- sapply(cols, function(col)
-					{	vals <- data[idx,col]
-						res <- !all(vals[1]==vals)
-						return(res)
-					})
+	{	idx <- which(data[,COL_ATT_ELU_ID]==id)
+		res <- sapply(cols, function(col)
+			{	vals <- data[idx,col]
+				res <- !all(vals[1]==vals)
 				return(res)
-			}))
+			})
+		return(res)
+	}))
 	
 	tlog(4,"Recording the detected issues")
 	for(col in cols)
@@ -325,5 +325,5 @@ test.personal.info <- function(data, out.folder)
 	test.occupation.col(data, out.folder)
 	
 	# approximately compare names
-	compare.person.names(data)
+#	compare.person.names(data)
 }

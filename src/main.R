@@ -155,26 +155,32 @@ source("src/common/include.R")
 # - passer en revue les logs: CD, CM, CR, D, DE, EPCI, M, S
 # - faire la fusion et re-tester
 # - traiter la comparaison approchée des noms
-# - S: readline=erreur à l'intégration de la base du sénat, à voir
-# - D: p-ê même situation ? à voir
 
 # il existe une BD recensant les EPCI (SIREN)
 # https://www.data.gouv.fr/fr/datasets/base-nationale-sur-linter-communalite/
 # https://www.collectivites-locales.gouv.fr/liste-et-composition-des-epci-a-fiscalite-propre
 
-#CM caching >> en cours
 
-#finir de vérifier que test_position marche bien pr CR (fini, à éval) + D + S 
-#>> autres ? EPCI ??
 
+#################################
+# Check logs and files
+# position test D/CD/
 #################################
 # Desktop
-# C1=testing positions *D/S
-# C2=caching CM
-# C3=testing positions *CR/CM
+# C1=testing positions: S/M...CM
+# C2=caching *CM
+# C3=testing positions: CR
+# C4=
 #################################
 # Zenbook S:
-# C1=analyse de All
+# C1=
 # C2=
 # C3=
+# C4=
 #################################
+
+# TODO spliter les fonctions qui ont la même date de début/fin mais pas de fin/début, comme pour les mandats
+# sauf que ça se ferait après le traitement des mandats, et ne requierait pas de modifier les mandats (dc plus simple)
+
+# TODO quand on modifie une fonction à la suite d'une modif de mandat, le compter à part ?
+# ou juste l'expliquer dans le rapport ?

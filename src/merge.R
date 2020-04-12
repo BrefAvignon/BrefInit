@@ -25,7 +25,7 @@ correct.data <- TRUE	# load raw or corrected data
 complete.data <- TRUE	# only for D and S
 
 # start logging
-start.rec.log(text="MERGE")
+start.rec.log(text=paste0("MERGE",extraction))
 
 
 
@@ -88,6 +88,8 @@ data <- data.frame(
 	check.names=FALSE,
 	stringsAsFactors=FALSE
 )
+data[,COL_ATT_ELU_DDD] <- as.Date(data[,COL_ATT_ELU_DDD])
+class(data[,COL_ATT_ELU_DDD])
 
 # add departmental data
 tlog(2,"Merge departmental data")
@@ -96,8 +98,9 @@ tmp <- data.frame(
 		check.names=FALSE,
 		stringsAsFactors=FALSE
 	)
+tmp[,COL_ATT_ELU_DDD] <- as.Date(tmp[,COL_ATT_ELU_DDD])
 col.inter <- intersect(cols, colnames(cd.data))
-tmp[,col.inter] <- cd.data[,col.inter]
+tmp[,col.inter] <- cd.data[,col.inter]	# TODO do that for all columns, define a function for that
 tlog(2,"  Remaining columns: ",paste(setdiff(colnames(cd.data), col.inter), collapse=", "))
 data <- rbind(data, tmp)
 
@@ -108,6 +111,7 @@ tmp <- data.frame(
 		check.names=FALSE,
 		stringsAsFactors=FALSE
 	)
+tmp[,COL_ATT_ELU_DDD] <- as.Date(tmp[,COL_ATT_ELU_DDD])
 col.inter <- intersect(cols, colnames(cm.data))
 tmp[,col.inter] <- cm.data[,col.inter]
 tlog(2,"  Remaining columns: ",paste(setdiff(colnames(cm.data), col.inter), collapse=", "))
@@ -120,6 +124,7 @@ tmp <- data.frame(
 		check.names=FALSE,
 		stringsAsFactors=FALSE
 	)
+tmp[,COL_ATT_ELU_DDD] <- as.Date(tmp[,COL_ATT_ELU_DDD])
 col.inter <- intersect(cols, colnames(cr.data))
 tmp[,col.inter] <- cr.data[,col.inter]
 tlog(2,"  Remaining columns: ",paste(setdiff(colnames(cr.data), col.inter), collapse=", "))
@@ -132,6 +137,7 @@ tmp <- data.frame(
 		check.names=FALSE,
 		stringsAsFactors=FALSE
 	)
+tmp[,COL_ATT_ELU_DDD] <- as.Date(tmp[,COL_ATT_ELU_DDD])
 col.inter <- intersect(cols, colnames(d.data))
 tmp[,col.inter] <- d.data[,col.inter]
 tlog(3,"  Remaining columns: ",paste(setdiff(colnames(d.data), col.inter), collapse=", "))
@@ -144,6 +150,7 @@ tmp <- data.frame(
 		check.names=FALSE,
 		stringsAsFactors=FALSE
 	)
+tmp[,COL_ATT_ELU_DDD] <- as.Date(tmp[,COL_ATT_ELU_DDD])
 col.inter <- intersect(cols, colnames(de.data))
 tmp[,col.inter] <- de.data[,col.inter]
 tlog(4,"  Remaining columns: ",paste(setdiff(colnames(de.data), col.inter), collapse=", "))
@@ -156,6 +163,7 @@ tmp <- data.frame(
 		check.names=FALSE,
 		stringsAsFactors=FALSE
 	)
+tmp[,COL_ATT_ELU_DDD] <- as.Date(tmp[,COL_ATT_ELU_DDD])
 col.inter <- intersect(cols, colnames(epci.data))
 tmp[,col.inter] <- epci.data[,col.inter]
 tlog(4,"  Remaining columns: ",paste(setdiff(colnames(epci.data), col.inter), collapse=", "))
@@ -168,6 +176,7 @@ tmp <- data.frame(
 		check.names=FALSE,
 		stringsAsFactors=FALSE
 	)
+tmp[,COL_ATT_ELU_DDD] <- as.Date(tmp[,COL_ATT_ELU_DDD])
 col.inter <- intersect(cols, colnames(m.data))
 tmp[,col.inter] <- m.data[,col.inter]
 tlog(4,"  Remaining columns: ",paste(setdiff(colnames(m.data), col.inter), collapse=", "))
@@ -180,6 +189,7 @@ tmp <- data.frame(
 		check.names=FALSE,
 		stringsAsFactors=FALSE
 	)
+tmp[,COL_ATT_ELU_DDD] <- as.Date(tmp[,COL_ATT_ELU_DDD])
 col.inter <- intersect(cols, colnames(s.data))
 tmp[,col.inter] <- s.data[,col.inter]
 tlog(4,"  Remaining columns: ",paste(setdiff(colnames(s.data), col.inter), collapse=", "))
@@ -197,16 +207,7 @@ dir.create(path=FOLDER_OUT_ALL, showWarnings=FALSE, recursive=TRUE)
 tlog(0,"Ordering the full table")
 idx <- order(data[,COL_ATT_ELU_NOM], data[,COL_ATT_ELU_PRENOM], data[,COL_ATT_ELU_ID],
 		data[,COL_ATT_MDT_DBT], data[,COL_ATT_MDT_FIN], data[,COL_ATT_FCT_DBT], data[,COL_ATT_FCT_FIN])
-tlog(0,"Recording the full table in file \"",FILES_TAB_ALL,"\"")
-write.table(x=data[idx,],		# sorted data
-	file=FILES_TAB_ALL,			# name of file containing the new table
-	quote=TRUE,					# put double quotes around strings
-	sep="\t",					# use tabulations as separators
-#	fileEncoding="UTF-8",		# character encoding
-	row.names=FALSE,			# no names for rows
-	col.names=TRUE				# record table headers
-)
-tlog(0,"Recording over")
+write.cached.table(data[idx,], cache.file=FILE_CACHE_ALL)
 
 
 
