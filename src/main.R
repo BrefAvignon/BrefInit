@@ -160,6 +160,12 @@ source("src/common/include.R")
 # https://www.data.gouv.fr/fr/datasets/base-nationale-sur-linter-communalite/
 # https://www.collectivites-locales.gouv.fr/liste-et-composition-des-epci-a-fiscalite-propre
 
+# pb repéré sur les figures d'évolution du nre de mandat *après* corrections
+# >> pb à voir, notamment sur DE et D (S ?)
+# >> pourtant, on trouve dans la BD S ou AN toutes les lignes présentent dans le RNE, donc il ne devrait pas y avoir de pb...
+#    et pr députés, on s'assure de ne pas avoir un poste occupé par plusieurs personnes à la fois...
+
+# récup commune/dpt manquant dans EPCI à partir de CM, puisqu'ils doivent aussi être conseillers municipaux
 
 
 #################################
@@ -178,9 +184,3 @@ source("src/common/include.R")
 # C3=
 # C4=
 #################################
-
-# TODO spliter les fonctions qui ont la même date de début/fin mais pas de fin/début, comme pour les mandats
-# sauf que ça se ferait après le traitement des mandats, et ne requierait pas de modifier les mandats (dc plus simple)
-
-# TODO quand on modifie une fonction à la suite d'une modif de mandat, le compter à part ?
-# ou juste l'expliquer dans le rapport ?
