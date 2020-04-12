@@ -152,7 +152,7 @@ tlog.loop <- function(offset=NA, it, ...)
 	avg.duration <- el.duration / it
 	rem.duration <- as.difftime(max(0, avg.duration * TOTAL_ITERATIONS - el.duration), units="secs")
 	suffix <- paste0(" [[ETA: ",format.duration(rem.duration),"]]")
-suffix, "\n", sep="")
+	cat(prefix, ..., suffix, "\n", sep="")
 }
 
 
@@ -171,8 +171,13 @@ tlog.end.loop <- function(offset=NA, ...)
 	
 	end.time <- Sys.time()
 	duration <- difftime(end.time, LOOP_START_TIME, units="secs")
-	suffix <- paste0(" [[Total duration: ",fo	suffix <- paste0(" [[Total duration: ",format.duration(duration),"]]")
- 100
+	suffix <- paste0(" [[Total duration: ",format.duration(duration),"]]")
+	
+	cat(prefix, ..., suffix, "\n", sep="")
+}
+
+## test
+#n <- 100
 #tlog.start.loop(0,n,"Starting the loop")
 #for(i in 1:n)
 #{	Sys.sleep(runif(n=1,min=0,max=1))
