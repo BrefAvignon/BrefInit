@@ -152,7 +152,6 @@ tlog.loop <- function(offset=NA, it, ...)
 	avg.duration <- el.duration / it
 	rem.duration <- as.difftime(max(0, avg.duration * TOTAL_ITERATIONS - el.duration), units="secs")
 	suffix <- paste0(" [[ETA: ",format.duration(rem.duration),"]]")
-	
 	cat(prefix, ..., suffix, "\n", sep="")
 }
 
