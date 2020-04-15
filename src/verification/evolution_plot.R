@@ -276,9 +276,12 @@ plot.position.limit <- function(type, start.date, end.date)
 	
 	# setup limit changes
 	if(type=="CD")
-	{	limit.dates <- c(as.Date("1789/12/22"),as.Date("1793/12/4"),
-				as.Date("1800/2/17"),as.Date("1871/8/10"),as.Date("2015/3/22"))
-		limit.vals <- c(2988,0,2988,4042,4058)
+	{	# old values
+		#limit.dates <- c(as.Date("1789/12/22"),as.Date("1793/12/4"),
+		#		as.Date("1800/2/17"),as.Date("1871/8/10"),as.Date("2015/3/22"))
+		limit.dates <- c(as.Date("1967/09/24"), as.Date("1976/03/07"), as.Date("1985/03/10"),
+			as.Date("2015/03/22"), as.Date("2015/12/16"), as.Date("2018/01/01"))
+		limit.vals <- c(3988,4048,4055,4177,4113,4061)
 	}
 	else if(type=="CM")
 	{	limit.dates <- c(as.Date("1884/4/5"))
@@ -286,7 +289,7 @@ plot.position.limit <- function(type, start.date, end.date)
 	}
 	else if(type=="CR")
 	{	limit.dates <- c(as.Date("1986/3/10"),as.Date("2015/12/5"))
-		limit.vals <- c(1880,1900)
+		limit.vals <- c(1821,1757)
 	}
 	else if(type=="EPCI")
 	{	limit.dates <- c(as.Date("1992/2/6"))

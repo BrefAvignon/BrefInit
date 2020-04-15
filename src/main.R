@@ -165,8 +165,10 @@ source("src/common/include.R")
 # >> pourtant, on trouve dans la BD S ou AN toutes les lignes présentent dans le RNE, donc il ne devrait pas y avoir de pb...
 #    et pr députés, on s'assure de ne pas avoir un poste occupé par plusieurs personnes à la fois...
 
-# récup commune/dpt manquant dans EPCI à partir de CM, puisqu'ils doivent aussi être conseillers municipaux
+# TODO récup commune/dpt manquant dans EPCI à partir de CM, puisqu'ils doivent aussi être conseillers municipaux
 
+# TODO tester que la même personne n'occupe pas plusieurs positions en même temps ?
+# >> à voir en fonction de la feuille détaillée de Guillaume
 
 #################################
 # Check logs and files
