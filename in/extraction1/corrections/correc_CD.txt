@@ -153,3 +153,14 @@ NA	NA	NA	NA	Libellé du canton	MARSEILLE VAUBAN	VAUBAN	Nom existant déjà sous 
 1890	22909	GUINANDIE	Janine	Prenom elu	Janine	Jeanine	Coquille prénom
 8375	833716	FRANCQ	Natalie	Prenom elu	Natalie	Nathalie	Coquille prénom
 11266	2003	GIMMILLARO	Martine	Nom elu	GIMMILLARO	GIMMILARO	Coquille nom
+585	175	BALARELLO	José	Date naissance	24/12/1926	25/12/1926	Coquille date de naissance
+586	175	BALARELLO	José	Date naissance	24/12/1926	25/12/1926	Coquille date de naissance
+44942	92972	FAURE	Martine	Date naissance	30/9/1958	30/9/1948	Coquille date de naissance
+2947	143295	NEVERS	Danièle	Nom elu	NEVERS	CHOULET NEVERS	Coquille nom
+2948	143295	NEVERS	Danièle	Nom elu	NEVERS	CHOULET NEVERS	Coquille nom
+2949	143295	NEVERS	Danièle	Nom elu	NEVERS	CHOULET NEVERS	Coquille nom
+5961	157418	GOUGET	Jean-Claude	Date naissance	5/12/1942	5/11/1942	Date de naissance incorrecte
+5962	157418	GOUGET	Jean-Claude	Date naissance	5/12/1942	5/11/1942	Date de naissance incorrecte
+4499	558501	LE MENN	Jacky	Date naissance	10/3/1941	17/3/1941	Date de naissance incorrecte
+4500	558501	LE MENN	Jacky	Date naissance	10/3/1941	17/3/1941	Date de naissance incorrecte
+12320	863244	PONCHATEAU	Marie-Yveline	Nom elu	PONCHATEAU	PONCHATEAU THEOBALD	Nom incomplet

@@ -540,6 +540,7 @@ apply.systematic.corrections <- function(data, type)
 		print(tmp)		# debug
 		# log result
 		idx <- which(old.names!=data[,COL_ATT_ELU_NOM])
+		data[idx,COL_ATT_CORREC_INFO] <- TRUE 
 		corr.rows <- union(corr.rows,idx)
 		tlog(2,"Normalized ",length(idx)," last names")
 	}
@@ -568,8 +569,8 @@ apply.systematic.corrections <- function(data, type)
 	# EPCI-specific cleaning
 	if(type=="EPCI")
 	{	# clean missing department codes
-		tlog(0,"Cleaning missing department codes")
-		idx <- which(data[,COL_ATT_DPT_CODE]=="0" | data[,COL_ATT_DPT_CODE]=="00")	# TODO add these zeroes to the count in the report
+		tlog(0,"Cleaning missing EPCI department codes")
+		idx <- which(data[,COL_ATT_DPT_CODE]=="0" | data[,COL_ATT_DPT_CODE]=="00")
 		if(length(idx)>0)
 		{	data[idx,COL_ATT_DPT_CODE] <- NA
 			data[idx,COL_ATT_CORREC_INFO] <- TRUE 
@@ -578,7 +579,7 @@ apply.systematic.corrections <- function(data, type)
 		tlog(2,"Cleaned ",length(idx)," rows")
 		
 		# clean missing municipality codes
-		tlog(0,"Cleaning missing municipality codes")
+		tlog(0,"Cleaning missing EPCI municipality codes")
 		idx <- which(data[,COL_ATT_COM_CODE]=="0" | data[,COL_ATT_COM_CODE]=="00")
 		if(length(idx)>0)
 		{	data[idx,COL_ATT_COM_CODE] <- NA
@@ -587,13 +588,13 @@ apply.systematic.corrections <- function(data, type)
 		}
 		tlog(2,"Cleaned ",length(idx)," rows")
 		
-		# complete missing municipality names (when code is available)
-		idx <- which(is.na(data[,COL_ATT_COM_NOM]) & !is.na(data[,COL_ATT_COM_CODE]))
+		# complete missing municipality names (when municipality and department codes areavailable)
+		tlog(0,"Completing missing EPCI municipality names")
+		idx <- which(is.na(data[,COL_ATT_COM_NOM]) & !is.na(data[,COL_ATT_COM_CODE]) & !is.na(data[,COL_ATT_DPT_CODE]))
 		if(length(idx)>0)
-		{	idx2 <- idx[is.na(data[idx,COL_ATT_DPT_CODE])]
-			if(length(idx2)>0)
-				data[idx2,COL_ATT_DPT_CODE] <- data[idx2,COL_ATT_EPCI_DPT]
+		{	# list full codes and associated names
 			locs <- cbind(apply(cbind(data[,COL_ATT_DPT_CODE],data[,COL_ATT_COM_CODE]),1,function(r) paste(r,collapse="_")),data[,COL_ATT_COM_NOM])
+			# match missing codes to this list
 			idx2 <- match(locs[idx,1],locs[-idx,1])
 			idx3 <- which(!is.na(idx2))
 			idx1 <- idx[idx3]
@@ -605,35 +606,91 @@ apply.systematic.corrections <- function(data, type)
 				idx <- idx1
 			}
 		}
+		tlog(2,"Completed municipality names in ",length(idx)," rows")
+		
+		# fix missing info using CM whenever possible
+		tlog(0,"Completing missing EPCI data using CM")
+		idx <- which(is.na(data[,COL_ATT_DPT_CODE]) | is.na(data[,COL_ATT_COM_CODE]) | is.na(data[,COL_ATT_COM_NOM]))
+		if(length(idx)>0)
+		{	idx0 <- c()
+			cm.data <- load.cm.data(correct.data=TRUE, complete.data=TRUE)
+			# for each problematic row in EPCI
+			for(j in 1:length(idx))
+			{	r <- idx[j]
+				if(j %% 1000 == 0)
+					tlog(2,"Computing row ",j,"/",length(idx))
+				
+				# get rows with matching ids in CM
+				idx2 <- which(cm.data[,COL_ATT_ELU_ID_RNE]==data[r,COL_ATT_ELU_ID_RNE])
+				if(length(idx2)==0)
+				{	# should not happen at all
+					#tlog(2,"PROBLEM: did not find EPCI person ",data[r,COL_ATT_ELU_ID_RNE]," in CM (",j,"/",length(idx),")")
+					#candidates <- which(cm.data[,COL_ATT_ELU_NOM]==data[r,COL_ATT_ELU_NOM] & cm.data[,COL_ATT_ELU_PRENOM]==data[r,COL_ATT_ELU_PRENOM] & cm.data[,COL_ATT_ELU_NAIS_DATE]==data[r,COL_ATT_ELU_NAIS_DATE])
+					#if(length(candidates)==0)
+					#	candidates <- which(cm.data[,COL_ATT_ELU_NOM]==data[r,COL_ATT_ELU_NOM] & cm.data[,COL_ATT_ELU_PRENOM]==data[r,COL_ATT_ELU_PRENOM])
+					#cand.idx <- cm.data[candidates,COL_ATT_ELU_ID_RNE]
+					#tlog(2,data[r,COL_ATT_ELU_ID_RNE]," : ",paste(cand.idx,colapse=","))
+				}
+				# look for a matching mandate amongst them
+				else
+				{	match.idx <- NA
+					i <- 1
+					while(is.na(match.idx) && i<=length(idx2))
+					{	r2 <- idx2[i]
+						if(date.intersect(start1=data[r,COL_ATT_MDT_DBT], end1=data[r,COL_ATT_MDT_FIN], 
+								start2=cm.data[r2,COL_ATT_MDT_DBT], end2=cm.data[r2,COL_ATT_MDT_FIN]))
+							match.idx <- r2
+						i <- i + 1
+					}
+					# if found one, make the correction
+					if(is.na(match.idx))
+					{	match.idx <- idx2[1]
+						#stop("PROBLEM: did not find EPCI mandate in CM (",j,"/",length(idx),")")
+					}
+					for(col in c(COL_ATT_DPT_CODE, COL_ATT_COM_CODE, COL_ATT_COM_NOM))
+					{	if(is.na(data[r,col]))
+							data[r,col] <- cm.data[match.idx,col]
+					}
+					# update list of corrected rows
+					idx0 <- c(idx0, r)
+				}
+			}
+			idx <- idx0
+			data[idx,COL_ATT_CORREC_INFO] <- TRUE 
+			corr.rows <- union(corr.rows,idx)
+		}
+		tlog(2,"Completed ",length(idx)," missing EPCI municipality-related values")
 		
 		# fix typo in function name
+		tlog(0,"Correcting EPCI function names")
 		idx <- which(!is.na(data[,COL_ATT_FCT_NOM]) & data[,COL_ATT_FCT_NOM]=="PRESIDENT")
 		if(length(idx)>0)
 		{	data[idx,COL_ATT_FCT_NOM] <- "PRESIDENT D EPCI"
-			tlog(2,"Fixed ",length(idx)," rows (function)")
+			data[idx,COL_ATT_CORREC_INFO] <- TRUE 
 			corr.rows <- union(corr.rows,idx)
 		}
-		
-		tlog(2,"Fixed ",length(idx)," rows")
+		tlog(2,"Fixed ",length(idx)," rows (function)")
 	}
 	# M-specific cleaning
 	if(type=="M")
-	{	tlog(0,"Align dates that are systematically wrong (by a few days) for certain departments and elections") # NOTE this is very ad hoc
+	{	tlog(0,"Align dates that are systematically wrong (by a few days) for certain departments and elections in M") # NOTE this is very ad hoc
 		#
 		idx <- which(data[,COL_ATT_DPT_NOM]=="CREUSE" & data[,COL_ATT_MDT_DBT]==as.Date("3/3/2001"))
 		if(length(idx)>0)
 		{	data[idx,COL_ATT_MDT_DBT] <- "11/3/2001"
+			data[idx,COL_ATT_CORREC_DATE] <- TRUE 
 			tlog(2,"Fixed ",length(idx)," rows for CREUSE 03/03/2001--")
 			corr.rows <- union(corr.rows,idx)
 		}
 	}
 	# D-specific cleaning
 	if(type=="D")
-	{	tlog(0,"Fix a typo in the Preseident function")
+	{	tlog(0,"Fix a typo in D, for the President function")
 		#
 		idx <- which(!is.na(data[,COL_ATT_FCT_NOM]) & data[,COL_ATT_FCT_NOM]=="PRESIDENT DE ASSEMBLEE NATIONALE")
 		if(length(idx)>0)
 		{	data[idx,COL_ATT_FCT_NOM] <- "PRESIDENT DE L ASSEMBLEE NATIONALE"
+			data[idx,COL_ATT_CORREC_INFO] <- TRUE 
 			tlog(2,"Fixed ",length(idx)," rows (function)")
 			corr.rows <- union(corr.rows,idx)
 		}

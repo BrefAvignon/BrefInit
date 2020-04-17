@@ -2,7 +2,10 @@ Row	Id RNE	Nom	Prenom	Attribut	ValAvt	ValApr	Commentaire
 50111	14132	ALLIX	NA	Prenom elu	NA	Marie-Danielle	Prénom manquant
 64697	889027	ESPENEL	NA	Prenom elu	NA	Marie-Danielle	Prénom manquant
 143024	909541	DUPONT	NA	Prenom elu	NA	Marie-Danielle	Prénom manquant
+143024	909541	DUPONT	Marie-Danielle	Date naissance	27/5/1954	27/4/1954	Date de naissance incorrecte
 153527	909541	DUPONT	NA	Prenom elu	NA	Marie-Danielle	Prénom manquant
+153528	909541	DUPONT	NA	Prenom elu	NA	Marie-Danielle	Prénom manquant
+153528	909541	DUPONT	Marie-Danielle	Date naissance	27/5/1954	27/4/1954	Date de naissance incorrecte
 184894	146336	GIRAUDEAU	NA	Prenom elu	NA	Marie-Danielle	Prénom manquant
 289859	631701	DUBOULE	NA	Prenom elu	NA	Marie-Danielle	Prénom manquant
 292728	944964	ARNAUD	NA	Prenom elu	NA	Marie-Danielle	Prénom manquant
@@ -145,8 +148,10 @@ NA	NA	NA	NA	Libelle commune	TEVA I UTA SECTION 01 MATAIEA	TEVA I UTA	On ignore l
 534807	1001706	DOLAMAZON	Laurent	ID RNE	1001706	NA	Suppression, mandat inexistant (WP)
 535373	1002115	ANDRE	Lydie	ID RNE	1002115	NA	Suppression, mandat inexistant (WP)
 816686	173186	HILMOINE	Guy	ID RNE	173186	NA	Suppression, mandat inexistant (WP)
-871566	171568	BRUZEAUD-SOUCAZE	Anne-Marie	ID RNE	171568	NA	Suppression, mandat inexistant (WP)
-871585	171568	SOUCAZE-BRUZEAUD	Anne-Marie	Nom elu	SOUCAZE-BRUZEAUD	BRUZEAUD	Typo dans le nom
+871564	171568	BRUZEAUD	Anne-Marie	Nom elu	BRUZEAUD	SOUCAZE BRUZEAUD	Nom incorrect
+871565	171568	BRUZEAUD	Anne-Marie	Nom elu	BRUZEAUD	SOUCAZE BRUZEAUD	Nom incorrect
+871566	171568	BRUZEAUD-SOUCAZE	Anne-Marie	Nom elu	BRUZEAUD-SOUCAZE	SOUCAZE BRUZEAUD	Nom incorrect
+871566	171568	SOUCAZE BRUZEAUD	Anne-Marie	ID RNE	171568	NA	Suppression, mandat inexistant (WP)
 887853	171019	LE GENTIL	Francis	ID RNE	171019	NA	Suppression, mandat inexistant (WP)
 158908	1526417	DENUAULT	SOPHIE	Date fin mandat	8/4/2018	NA	Corrigé pour mandat en cours
 158913	1194540	DUBOIS	CHRISTOPHE	Date fin mandat	8/4/2018	NA	Corrigé pour mandat en cours
@@ -549,3 +554,31 @@ NA	NA	NA	NA	Libelle commune	TEVA I UTA SECTION 01 MATAIEA	TEVA I UTA	On ignore l
 1044405	1114225	TASD'HOMME	Thierry	Date debut fonction	26/6/2015	NA	Fonction incorrecte
 1044414	606681	VERGNAUD	Brigitte	Libelle fonction	Second adjoint au maire	NA	Fonction incorrecte
 1044414	606681	VERGNAUD	Brigitte	Date debut fonction	26/6/2015	NA	Fonction incorrecte
+56676	175	BALARELLO	José	Date naissance	24/12/1926	25/12/1926	Coquille date de naissance
+1238284	789	COPPENRATH EPOUSE VERNAUD	Béatrice	Nom elu	COPPENRATH EPOUSE VERNAUD	VERNAUDON COPPENRATH	Coquille nom
+1238342	789	VERNAUDON	Béatrice	Nom elu	VERNAUDON	VERNAUDON COPPENRATH	Coquille nom
+966685	47034	MECHIN	Gisèle	Nom elu	MECHIN	MECHIN LIORET	Coquille nom
+966686	47034	MECHIN	Gisèle	Nom elu	MECHIN	MECHIN LIORET	Coquille nom
+76136	63573	SIMON	Florence	Nom élu	SIMON	SIMON VESELY	Coquille nom
+76136	63573	VESELY EPOUSE SIMON	Florence	Nom élu	VESELY EPOUSE SIMON	SIMON VESELY	Coquille nom
+397125	92972	FAURE	Martine	Date naissance	30/9/1958	30/9/1948	Prénom incorrect
+406120	92972	FAURE	Martine	Date naissance	30/9/1958	30/9/1948	Date de naissance incorrecte
+607040	156655	AUGEREAU	Bernard	Date naissance	27/7/1930	14/9/1946	Date de naissance incorrecte
+577960	157418	GOUGET	Jean-Claude	Date naissance	5/12/1942	5/11/1942	Date de naissance incorrecte
+577961	157418	GOUGET	Jean-Claude	Date naissance	5/12/1942	5/11/1942	Date de naissance incorrecte
+1181785	163336	BLONDON ÉPOUSE SEMBLAT	Catherine	Nom elu	BLONDON ÉPOUSE SEMBLAT	SEMBLAT BLONDON	Coquille nom
+1181804	163336	SEMBLAT	Catherine	Nom elu	SEMBLAT	SEMBLAT BLONDON	Coquille nom
+1064088 184589	DUCHENE	Marie-Annick	Code sexe	M	F	Sexe incorrect
+1064089 184589	DUCHENE	Marie-Annick	Code sexe	M	F	Sexe incorrect
+678578	355631	PANIS	Jacqueline	Date naissance	18/4/1948	16/4/1948	Date de naissance incorrecte
+1043927	540150	FARENZENA ÉPOUSE WALLEZ	WALLEZ	Lydie	Nom elu	FARENZENA ÉPOUSE WALLEZ	WALLEZ FARENZENA	Nom incorrect
+1043962	540150	WALLEZ	Lydie	Nom elu	WALLEZ	WALLEZ FARENZENA	Nom incomplet
+1043963	540150	WALLEZ	Lydie	Nom elu	WALLEZ	WALLEZ FARENZENA	Nom incomplet
+1043964	540150	WALLEZ	Lydie	Nom elu	WALLEZ	WALLEZ FARENZENA	Nom incomplet
+86979	795513	DUBOIS	Josette	Nom elu	DUBOIS	DUBOIS RAYNAGUET	Nom incomplet
+1225577	870560	TAILLEPIERRE	Sonia	Nom elu	TAILLEPIERRE	TAILLEPIERRE DEVARIEUX	Nom incomplet
+1235915	1153356	VOISIN	Corine	Nom elu	VOISIN	GEOFFREY VOISIN	Nom incomplet
+1190868	1154688	NTINOU	Monique	Nom elu	NTINOU	NTINOU BEMBA	Nom incomplet
+739906	1179834	ESSAI	Nouvel	ID RNE	1179834	NA	Suppression, ligne inexistante
+694560	1372345	JACQUES	Jean-Michel	Date naissance	26/2/1968	29/2/1968	Coquille date de naissance
+694561	1372345	JACQUES	Jean-Michel	Date naissance	26/2/1968	29/2/1968	Coquille date de naissance

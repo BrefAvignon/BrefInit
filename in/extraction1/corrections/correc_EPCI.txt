@@ -421,3 +421,11 @@ NA	NA	NA	NA	Numero SIREN	20006971	200006971	numéro SIREN incorrect (syntaxiquem
 3283	150340	LAPRUGNE	Jean-Michel	Libelle commune	NA	Haut-Bocage	Commune manquante
 3283	150340	LAPRUGNE	Jean-Michel	Code Insee commune	NA	158	Commune manquante
 3283	150340	LAPRUGNE	Jean-Michel	Code departement	0	03	Commune manquante
+9454	63573	SIMON	Florence	Nom élu	SIMON	SIMON VESELY	Coquille nom
+77838	71186	LEROY	Marie-José	Nom élu	LEROY	LEROY VANDESANDE	Coquille nom
+44942	92972	FAURE	Martine	Date naissance	30/9/1958	30/9/1948	Coquille date de naissance
+40152	436180	CASSAN	Jean	Prenom elu	Jean	Jean-Clément	Prénom incomplet
+127555	872362	VIENNE	Raymonde	Nom elu	VIENNE	VIENNE HUET	Nom incomplet
+127003	1199476	ERIN-SALLER	Valerie	Nom elu	ERIN-SALLER	SALLER ERIN	Coquille nom
+694560	1372345	JACQUES	Jean-Michel	Date naissance	26/2/1968	29/2/1968	Coquille date de naissance
+72420	1372345	JACQUES	Jean-Michel	Date naissance	26/2/1968	29/2/1968	Coquille date de naissance

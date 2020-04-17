@@ -75,7 +75,10 @@ Row	Id RNE	Nom	Prenom	Attribut	ValAvt	ValApr	Commentaire
 51731	1001706	DOLAMAZON	Laurent	ID RNE	1001706	NA	Suppression, mandat inexistant (WP)
 51783	1002115	ANDRE	Lydie	ID RNE	1002115	NA	Suppression, mandat inexistant (WP)
 77746	173186	HILMOINE	Guy	ID RNE	173186	NA	Suppression, mandat inexistant (WP)
-83065	171568	BRUZEAUD-SOUCAZE	Anne-Marie	ID RNE	171568	NA	Suppression, mandat inexistant (WP)
+83063	171568	BRUZEAUD	Anne-Marie	Nom elu	BRUZEAUD	SOUCAZE BRUZEAUD	Nom incorrect
+83064	171568	BRUZEAUD	Anne-Marie	Nom elu	BRUZEAUD	SOUCAZE BRUZEAUD	Nom incorrect
+83065	171568	BRUZEAUD-SOUCAZE	Anne-Marie	Nom elu	BRUZEAUD-SOUCAZE	SOUCAZE BRUZEAUD	Nom incorrect
+83065	171568	SOUCAZE BRUZEAUD	Anne-Marie	ID RNE	171568	NA	Suppression, mandat inexistant (WP)
 83066	171568	SOUCAZE-BRUZEAUD	Anne-Marie	Nom elu	SOUCAZE-BRUZEAUD	BRUZEAUD	Typo dans le nom
 84852	171019	LE GENTIL	Francis	ID RNE	171019	NA	Suppression, mandat inexistant (WP)
 89479	169576	BUISSON	Frédérique	Prenom elu	Frédérique	Frédéric	Typo prénom
@@ -235,3 +238,14 @@ Row	Id RNE	Nom	Prenom	Attribut	ValAvt	ValApr	Commentaire
 113279	33812	FRUTEAU	Eric	ID RNE	33812	NA	Suppression, mandat inexistant
 79247	172776	LAGACHE	Claude	Date naissance	NA	1/1/1936	Date naissance manquante
 64576	154538	PETIT	Jean-Michel	Date naissance	NA	31/8/1958	Date naissance manquante
+113471	789	VERNAUDON	Béatrice	Nom elu	VERNAUDON	VERNAUDON COPPENRATH	Coquille nom
+91957	47034	MECHIN	Gisèle	Nom elu	MECHIN	MECHIN LIORET	Coquille nom
+91958	47034	MECHIN	Gisèle	Nom elu	MECHIN	MECHIN LIORET	Coquille nom
+55350	157418	GOUGET	Jean-Claude	Date naissance	5/12/1942	5/11/1942	Date de naissance incorrecte
+55351	157418	GOUGET	Jean-Claude	Date naissance	5/12/1942	5/11/1942	Date de naissance incorrecte
+110866	163336	SEMBLAT	Catherine	Nom elu	SEMBLAT	SEMBLAT BLONDON	Coquille nom
+98475	540150	FARENZENA ÉPOUSE WALLEZ	WALLEZ	Lydie	Nom elu	FARENZENA ÉPOUSE WALLEZ	WALLEZ FARENZENA	Nom incorrect
+98479	540150	WALLEZ	Lydie	Nom elu	WALLEZ	WALLEZ FARENZENA	Nom incomplet
+113390	1153356	VOISIN	Corine	Nom elu	VOISIN	GEOFFREY VOISIN	Nom incomplet
+694560	1372345	JACQUES	Jean-Michel	Date naissance	26/2/1968	29/2/1968	Coquille date de naissance
+67297	1372345	JACQUES	Jean-Michel	Date naissance	26/2/1968	29/2/1968	Coquille date de naissance

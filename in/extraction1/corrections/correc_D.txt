@@ -6,9 +6,10 @@ Row	Id RNE	Nom	Prenom	Attribut	ValAvt	ValApr	Commentaire
 649	92972	FAURE	Martine	Date naissance	30/9/1958	30/9/1948	Date de naissance incorrecte (BD Assemblée)
 662	92972	FAURE	Martine	Date naissance	30/9/1958	30/9/1948	Date de naissance incorrecte (BD Assemblée)
 969	157418	GOUGET	Jean-Claude	Date naissance	5/12/1942	5/11/1942	Date de naissance incorrecte (BD Assemblée)
-314	834248	QUERE	Catherine	Date naissance	12/2/1972	16/3/1948	Date de naissance incorrecte (BD Assemblée)
-314	834248	QUERE	Catherine	Code profession	20	58	Code profession incorrect (BD Assemblée)
-314	834248	QUERE	Catherine	Libelle profession	Employés (secteur privé)	Retraités agricoles	Nom profession incorrect (BD Assemblée)
+314	834248	QUERE	Catherine	ID RNE	834248	1191991	ID incorrect (BD Assemblée)
+314	1191991	QUERE	Catherine	Date naissance	12/2/1972	16/3/1948	Date de naissance incorrecte (BD Assemblée)
+314	1191991	QUERE	Catherine	Code profession	20	58	Code profession incorrect (BD Assemblée)
+314	1191991	QUERE	Catherine	Libelle profession	Employés (secteur privé)	Retraités agricoles	Nom profession incorrect (BD Assemblée)
 2239	1192022	HAMMADI	Razzy	Date naissance	22/1/1979	22/2/1979	Date de naissance incorrecte (BD Assemblée)
 2243	1192023	POCHON	Elisabeth	Date naissance	19/4/1954	19/4/1955	Date de naissance incorrecte (BD Assemblée)
 1128	1372345	JACQUES	Jean-Michel	Date naissance	26/2/1968	29/2/1968	Date de naissance incorrecte (BD Assemblée)
@@ -218,3 +219,4 @@ Row	Id RNE	Nom	Prenom	Attribut	ValAvt	ValApr	Commentaire
 1689	1159065	DUFLOT	Cécile	Date debut mandat	20/6/2012	3/5/2014	Erreur date de début (BD Assemblée)
 2469	1192035	LEMAIRE	Axelle	Date debut mandat	20/6/2012	27/3/2017	Erreur date de début (BD Assemblée)
 2205	85407	DEVEDJIAN	Patrick	Date debut mandat	17/6/2010	15/12/2010	Erreur date de début (WP)
+2445	789	VERNAUDON	Béatrice	Nom elu	VERNAUDON	VERNAUDON COPPENRATH	Coquille nom
