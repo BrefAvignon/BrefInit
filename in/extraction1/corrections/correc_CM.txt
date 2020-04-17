@@ -570,7 +570,7 @@ NA	NA	NA	NA	Libelle commune	TEVA I UTA SECTION 01 MATAIEA	TEVA I UTA	On ignore l
 1181785	163336	BLONDON ÉPOUSE SEMBLAT	Catherine	Nom elu	BLONDON ÉPOUSE SEMBLAT	SEMBLAT BLONDON	Coquille nom
 1181804	163336	SEMBLAT	Catherine	Nom elu	SEMBLAT	SEMBLAT BLONDON	Coquille nom
 1064088	184589	DUCHENE	Marie-Annick	Code sexe	M	F	Sexe incorrect
-1064089 184589	DUCHENE	Marie-Annick	Code sexe	M	F	Sexe incorrect
+1064089	184589	DUCHENE	Marie-Annick	Code sexe	M	F	Sexe incorrect
 678578	355631	PANIS	Jacqueline	Date naissance	18/4/1948	16/4/1948	Date de naissance incorrecte
 1043962	540150	WALLEZ	Lydie	Nom elu	WALLEZ	WALLEZ FARENZENA	Nom incomplet
 1043963	540150	WALLEZ	Lydie	Nom elu	WALLEZ	WALLEZ FARENZENA	Nom incomplet
