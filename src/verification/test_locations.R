@@ -467,7 +467,8 @@ test.col.locations.eurocirco <- function(data, out.folder)
 			ns[is.na(ns)] <- "NA"
 			
 			if(any(ns!=ns[1]))
-			{	row <- c(unique.code,
+			{	row <- c(
+					unique.code,
 					paste(sort(unique(ns)),collapse=",")
 				)
 #				print(row)

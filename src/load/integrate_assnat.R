@@ -1215,23 +1215,23 @@ assembly.match.assembly.vs.rne.rows <- function(asn.tab, rne.tab, tolerance)
 				{	# difference in days between the start dates
 					start.gaps <- abs(asn.tab[idx.asn,COL_ATT_MDT_DBT] - rne.tab[idx1,COL_ATT_MDT_DBT])
 					end.gaps <- sapply(asn.tab[idx.asn,COL_ATT_MDT_FIN], function(date)
-								if(is.na(date))
-								{	if(is.na(rne.tab[idx1,COL_ATT_MDT_FIN]))
-										0
-									else
-										.Machine$integer.max
-								}
-								else
-								{	if(is.na(rne.tab[idx1,COL_ATT_MDT_FIN]))
-										.Machine$integer.max
-									else
-										abs(date-rne.tab[idx1,COL_ATT_MDT_FIN])
-								})
+					if(is.na(date))
+					{	if(is.na(rne.tab[idx1,COL_ATT_MDT_FIN]))
+							0
+						else
+							.Machine$integer.max
+					}
+					else
+					{	if(is.na(rne.tab[idx1,COL_ATT_MDT_FIN]))
+							.Machine$integer.max
+						else
+							abs(date-rne.tab[idx1,COL_ATT_MDT_FIN])
+					})
 					total.gaps <- start.gaps + end.gaps
 					# get the closest period
 					g <- which(total.gaps==min(total.gaps))
 					
-					# check it is within the tolerance
+					# check if it is within the tolerance
 					if(length(g)==1 && start.gaps[g]<=tolerance && end.gaps[g]<=tolerance)
 					{	idx2 <- idx.asn[g]
 						tlog(8,"Found a matching Assembly row using approximate dates:")

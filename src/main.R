@@ -174,6 +174,9 @@ source("src/common/include.R")
 # - remplacer NA par "" partout sauf valeur numériques et dates
 # - remplacer NA par NULL dans valeurs numériques et dates
 
+# TODO
+# dans AN, certaines personnes ont 2 fonctions en même temps
+# ex. dubois
 
 #################################
 # Check logs and files

@@ -1066,7 +1066,7 @@ adjust.function.dates <- function(data)
 				if(changed.end)
 					tlog(8,"Modifying function end")
 				data[r,COL_ATT_CORREC_DATE] <- TRUE
-				tlog(6,"After: ",format.row(data[r,]))
+				tlog(6,"After : ",format.row(data[r,]))
 				nbr.corr <- nbr.corr + 1
 			}
 		}
@@ -1380,8 +1380,8 @@ round.mdtfct.dates <- function(data, election.file, series.file, tolerance)
 		{	tlog(6, "Before: ", bef.str)
 			nbr.corrected <- nbr.corrected + 1
 			# log changes
-			#tlog(6, "After: ", format.row.dates(data[r,]))
-			tlog(6, "After: ", format.row(data[r,]))
+			#tlog(6, "After : ", format.row.dates(data[r,]))
+			tlog(6, "After : ", format.row(data[r,]))
 			#readline()
 		}
 		
@@ -1412,9 +1412,11 @@ merge.overlapping.mandates <- function(data, type)
 	has.fct <- COL_ATT_FCT_DBT %in% colnames(data)
 	
 	# set the attributes used to test for compatibility
-	atts <- setdiff(colnames(data), c(COL_ATT_ELU_ID, 	# person ID
-				COL_ATT_MDT_DBT, COL_ATT_MDT_FIN, 		# mandate dates
-				COL_ATT_FCT_DBT, COL_ATT_FCT_FIN))		# function dates
+	atts <- setdiff(colnames(data), c(COL_ATT_ELU_ID, 		# person ID
+				COL_ATT_MDT_DBT, COL_ATT_MDT_FIN, 			# mandate dates
+				COL_ATT_FCT_DBT, COL_ATT_FCT_FIN,			# function dates
+				COL_ATT_CORREC_INFO, COL_ATT_CORREC_DATE,	# correction flags
+				COL_ATT_SOURCES))							# sources
 	
 	# set the attribute used to represent the function
 	fct.att <- NA
@@ -1522,10 +1524,25 @@ merge.overlapping.mandates <- function(data, type)
 									}
 								}
 								
+								# update the sources
+								src1 <- strsplit(data[idx[j],COL_ATT_SOURCES],",")[[1]]
+								src2 <- strsplit(data[idx[k],COL_ATT_SOURCES],",")[[1]]
+								src <- paste(union(src1,src2),collapse=",")
+								data[idx[j],COL_ATT_SOURCES] <- src
+								
+								# update the correction flags
+								data[idx[j],COL_ATT_CORREC_INFO] <- data[idx[j],COL_ATT_CORREC_INFO] || data[idx[k],COL_ATT_CORREC_INFO]
+								data[idx[j],COL_ATT_CORREC_DATE] <- data[idx[j],COL_ATT_CORREC_DATE] || data[idx[k],COL_ATT_CORREC_DATE]
+								
 								# update the rest of the columns
 								for(c in 1:length(atts))
 								{	if(is.na(data[idx[j],atts[c]]))
 										data[idx[j],atts[c]] <- data[idx[k],atts[c]]
+									# if both are not NA, priority to RNE data
+									else if(!is.na(data[idx[k],atts[c]]))
+									{	if(!("RNE" %in% src1))
+											data[idx[j],atts[c]] <- data[idx[k],atts[c]]
+									}
 								}
 								
 								# log merged row
@@ -1607,7 +1624,7 @@ split.long.mandates <- function(data, election.file, series.file)
 #				else
 				{	# log event
 					tlog(6,"Splitting overlap detected for election ",format(election.dates[idx.tests,1]),"--",format(election.dates[idx.tests,2]))
-					tlog(8,"Before: ",format.row.dates(data[r,])," vs. ", format(election.dates[idx.tests,1]), "--", format(election.dates[idx.tests,2]))
+					tlog(8,"Before : ",format.row.dates(data[r,])," vs. ", format(election.dates[idx.tests,1]), "--", format(election.dates[idx.tests,2]))
 					data[r,COL_ATT_CORREC_DATE] <- TRUE
 					#readline() #stop()
 					
