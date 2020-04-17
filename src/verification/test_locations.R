@@ -235,6 +235,8 @@ test.col.locations.canton <- function(data, out.folder)
 			
 			idx <- which(codes==unique.code)
 			ns <- names[idx]
+			ns[is.na(ns)] <- "NA"
+			
 			if(any(ns!=ns[1]))
 			{	row <- c(
 					strsplit(x=unique.code, split=":", fixed=TRUE)[[1]],
@@ -361,6 +363,8 @@ test.col.locations.legcirco <- function(data, out.folder)
 			
 			idx <- which(codes==unique.code)
 			ns <- names[idx]
+			ns[is.na(ns)] <- "NA"
+			
 			if(any(ns!=ns[1]))
 			{	row <- c(
 					strsplit(x=unique.code, split=":", fixed=TRUE)[[1]],
@@ -460,6 +464,8 @@ test.col.locations.eurocirco <- function(data, out.folder)
 			
 			idx <- which(codes==unique.code)
 			ns <- names[idx]
+			ns[is.na(ns)] <- "NA"
+			
 			if(any(ns!=ns[1]))
 			{	row <- c(unique.code,
 					paste(sort(unique(ns)),collapse=",")
@@ -556,6 +562,8 @@ test.col.locations.epci <- function(data, out.folder)
 			
 			idx <- which(codes==unique.code)
 			ns <- names[idx]
+			ns[is.na(ns)] <- "NA"
+			
 			if(any(ns!=ns[1]))
 			{	row <- c(
 					unique.code,
@@ -654,6 +662,7 @@ test.col.locations.department <- function(data, out.folder)
 			idx <- which(codes==unique.code)
 			ns <- names[idx]
 			ns[is.na(ns)] <- "NA"
+
 			if(any(ns!=ns[1]))
 			{	row <- c(
 					unique.code,
@@ -751,6 +760,8 @@ test.col.locations.region <- function(data, out.folder)
 			
 			idx <- which(codes==unique.code)
 			ns <- names[idx]
+			ns[is.na(ns)] <- "NA"
+			
 			if(any(ns!=ns[1]))
 			{	row <- c(
 					unique.code,

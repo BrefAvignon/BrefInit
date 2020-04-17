@@ -110,9 +110,11 @@ test.occupation.col <- function(data, out.folder)
 			idx <- which(codes==unique.code)
 			if(length(idx)>0)
 			{	ns <- names[idx]
-				if(any(is.na(ns) | ns!=ns[1]))
+				ns[is.na(ns)] <- "NA"
+				
+				if(ns!=ns[1])
 				{	row <- c(unique.code,
-							paste(sort(unique(ns)),collapse=",")
+						paste(sort(unique(ns)),collapse=",")
 					)
 #					print(row)
 					tab1 <- rbind(tab1, row)
