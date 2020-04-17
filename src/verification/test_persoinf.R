@@ -202,7 +202,7 @@ test.occupation.col <- function(data, out.folder)
 			colnames(tab)[1] <- "Ligne"
 			tab.file <- file.path(out.folder,paste0(BASENAMES[COL_ATT_PRO_CODE],"_problems_codeless.txt"))
 			tlog(2,"Recording in file \"",tab.file,"\"")
-			write.table(x=tab1, file=tab.file,
+			write.table(x=tab, file=tab.file,
 #				fileEncoding="UTF-8",
 				row.names=FALSE, 
 				col.names=TRUE,
