@@ -160,7 +160,7 @@ source("src/common/include.R")
 # https://www.data.gouv.fr/fr/datasets/base-nationale-sur-linter-communalite/
 # https://www.collectivites-locales.gouv.fr/liste-et-composition-des-epci-a-fiscalite-propre
 
-# pb repéré sur les figures d'évolution du nre de mandat *après* corrections
+# pb repéré sur les figures d'évolution du nbre de mandat *après* corrections
 # >> pb à voir, notamment sur DE et D (S ?)
 # >> pourtant, on trouve dans la BD S ou AN toutes les lignes présentent dans le RNE, donc il ne devrait pas y avoir de pb...
 #    et pr députés, on s'assure de ne pas avoir un poste occupé par plusieurs personnes à la fois...
@@ -169,6 +169,11 @@ source("src/common/include.R")
 
 # TODO tester que la même personne n'occupe pas plusieurs positions en même temps ?
 # >> à voir en fonction de la feuille détaillée de Guillaume
+
+# TODO pr EV :
+# - remplacer NA par "" partout sauf valeur numériques et dates
+# - remplacer NA par NULL dans valeurs numériques et dates
+
 
 #################################
 # Check logs and files
