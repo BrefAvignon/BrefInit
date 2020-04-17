@@ -78,6 +78,20 @@ tlog(4,"Dimensions of the table: ",paste(dim(s.data),collapse="x"))
 
 
 #############################################################################################
+# match tests
+cm.ids <- unique(cm.data[,COL_ATT_ELU_ID_RNE])
+epci.ids <- unique(epci.data[,COL_ATT_ELU_ID_RNE])
+m.ids <- unique(m.data[,COL_ATT_ELU_ID_RNE])
+non.matching <- length(which(is.na(match(epci.ids, cm.ids))))
+tlog(4,"EPCI ids not matching CM ids: ",non.matching,"/",length(epci.ids), "(",non.matching/length(epci.ids)*100,"%)")
+non.matching <- length(which(is.na(match(m.ids, cm.ids))))
+tlog(4,"M ids not matching CM ids: ",non.matching,"/",length(m.ids), "(",non.matching/length(m.ids)*100,"%)")
+
+
+
+
+
+#############################################################################################
 # merge the appropriate columns
 tlog(0,"Start merging the partial tables")
 tlog(2,"Init main table")
