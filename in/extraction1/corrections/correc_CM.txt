@@ -264,7 +264,8 @@ NA	NA	NA	NA	Libelle commune	TEVA I UTA SECTION 01 MATAIEA	TEVA I UTA	On ignore l
 1228980	151270	CRUSOL	Jean	ID RNE	151270	NA	Suppression, ligne redondante
 1229242	1180775	MAYER-ROSSIGNOL	Nicolas	ID RNE	1180775	NA	Suppression, mandat inexistant (WP)
 874478	678147	LAFFONT	François	ID RNE	678147	NA	Suppression, mandat inexistant (WP)
-1043927	540150	FARENZENA ÉPOUSE WALLEZ	Lydie	ID RNE	540150	NA	Suppression, mandat redondant (WP)
+1043927	540150	FARENZENA ÉPOUSE WALLEZ	Lydie	Nom elu	FARENZENA ÉPOUSE WALLEZ	WALLEZ FARENZENA	Nom incorrect
+1043927	540150	WALLEZ FARENZENA	Lydie	ID RNE	540150	NA	Suppression, mandat redondant (WP)
 39917	882661	BROUTET	Chantal	ID RNE	882661	NA	Suppression, mandat redondant (WP)
 125702	672745	GAYRAUD	Didier	Libelle fonction	Maire	NA	Suppression, fonction inexistante (WP)
 125702	672745	GAYRAUD	Didier	Date debut fonction	6/3/2007	NA	Suppression, fonction inexistante (WP)
@@ -571,7 +572,6 @@ NA	NA	NA	NA	Libelle commune	TEVA I UTA SECTION 01 MATAIEA	TEVA I UTA	On ignore l
 1064088 184589	DUCHENE	Marie-Annick	Code sexe	M	F	Sexe incorrect
 1064089 184589	DUCHENE	Marie-Annick	Code sexe	M	F	Sexe incorrect
 678578	355631	PANIS	Jacqueline	Date naissance	18/4/1948	16/4/1948	Date de naissance incorrecte
-1043927	540150	FARENZENA ÉPOUSE WALLEZ	WALLEZ	Lydie	Nom elu	FARENZENA ÉPOUSE WALLEZ	WALLEZ FARENZENA	Nom incorrect
 1043962	540150	WALLEZ	Lydie	Nom elu	WALLEZ	WALLEZ FARENZENA	Nom incomplet
 1043963	540150	WALLEZ	Lydie	Nom elu	WALLEZ	WALLEZ FARENZENA	Nom incomplet
 1043964	540150	WALLEZ	Lydie	Nom elu	WALLEZ	WALLEZ FARENZENA	Nom incomplet

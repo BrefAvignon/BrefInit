@@ -244,8 +244,7 @@ Row	Id RNE	Nom	Prenom	Attribut	ValAvt	ValApr	Commentaire
 55350	157418	GOUGET	Jean-Claude	Date naissance	5/12/1942	5/11/1942	Date de naissance incorrecte
 55351	157418	GOUGET	Jean-Claude	Date naissance	5/12/1942	5/11/1942	Date de naissance incorrecte
 110866	163336	SEMBLAT	Catherine	Nom elu	SEMBLAT	SEMBLAT BLONDON	Coquille nom
-98475	540150	FARENZENA ÉPOUSE WALLEZ	WALLEZ	Lydie	Nom elu	FARENZENA ÉPOUSE WALLEZ	WALLEZ FARENZENA	Nom incorrect
+98475	540150	FARENZENA ÉPOUSE WALLEZ	Lydie	Nom elu	FARENZENA ÉPOUSE WALLEZ	WALLEZ FARENZENA	Nom incorrect
 98479	540150	WALLEZ	Lydie	Nom elu	WALLEZ	WALLEZ FARENZENA	Nom incomplet
 113390	1153356	VOISIN	Corine	Nom elu	VOISIN	GEOFFREY VOISIN	Nom incomplet
-694560	1372345	JACQUES	Jean-Michel	Date naissance	26/2/1968	29/2/1968	Coquille date de naissance
 67297	1372345	JACQUES	Jean-Michel	Date naissance	26/2/1968	29/2/1968	Coquille date de naissance

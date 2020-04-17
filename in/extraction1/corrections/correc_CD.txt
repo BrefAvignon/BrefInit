@@ -155,7 +155,7 @@ NA	NA	NA	NA	Libellé du canton	MARSEILLE VAUBAN	VAUBAN	Nom existant déjà sous 
 11266	2003	GIMMILLARO	Martine	Nom elu	GIMMILLARO	GIMMILARO	Coquille nom
 585	175	BALARELLO	José	Date naissance	24/12/1926	25/12/1926	Coquille date de naissance
 586	175	BALARELLO	José	Date naissance	24/12/1926	25/12/1926	Coquille date de naissance
-44942	92972	FAURE	Martine	Date naissance	30/9/1958	30/9/1948	Coquille date de naissance
+4123	92972	FAURE	Martine	Date naissance	30/9/1958	30/9/1948	Coquille date de naissance
 2947	143295	NEVERS	Danièle	Nom elu	NEVERS	CHOULET NEVERS	Coquille nom
 2948	143295	NEVERS	Danièle	Nom elu	NEVERS	CHOULET NEVERS	Coquille nom
 2949	143295	NEVERS	Danièle	Nom elu	NEVERS	CHOULET NEVERS	Coquille nom
