@@ -279,7 +279,7 @@ Row	Id RNE	Nom	Prenom	Attribut	ValAvt	ValApr	Commentaire
 108549	1144179	FORTERRE	Denis	Motif fin mandat	NA	DV	Information manquante
 108549	1144179	FORTERRE	Denis	Date fin fonction	NA	22/6/2017	Information manquante
 108919	1486353	THIÉBAUT	Gilbert	Motif fin mandat	NA	DV	Information manquante
-108919	1486353	THIÉBAUT	Gilbert	Date fin fonction	NA 13/1/2017	Information manquante
-112921	162927	ABRAHAM	Michel	Motif fin mandat	NA DV	Information manquante
-112921	162927	ABRAHAM	Michel	Motif fin fonction	NA DV	Information manquante
-112921	162927	ABRAHAM	Michel	Date fin fonction	NA 30/6/2015	Information manquante
+108919	1486353	THIÉBAUT	Gilbert	Date fin fonction	NA	13/1/2017	Information manquante
+112921	162927	ABRAHAM	Michel	Motif fin mandat	NA	DV	Information manquante
+112921	162927	ABRAHAM	Michel	Motif fin fonction	NA	DV	Information manquante
+112921	162927	ABRAHAM	Michel	Date fin fonction	NA	30/6/2015	Information manquante
