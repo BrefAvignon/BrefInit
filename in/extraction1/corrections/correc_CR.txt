@@ -21,3 +21,4 @@ NA	NA	NA	NA	Date fin mandat	31/12/2015	12/12/2015	Ajustement date de fin pr rég
 119	863244	PONCHATEAU	Marie-Yveline	Nom elu	PONCHATEAU	PONCHATEAU THEOBALD	Nom incomplet
 124	870384	SAMUEL	Valérie	Nom elu	SAMUEL	SAMUEL CESARIUS	Nom incomplet
 127	870560	TAILLEPIERRE	Sonia	Nom elu	TAILLEPIERRE	TAILLEPIERRE DEVARIEUX	Nom incorrect
+5389	63915	BOURQUIN	Christian	Motif fin fonction	NA	DC	Motif de fin de fonction manquant

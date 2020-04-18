@@ -1,42 +1,43 @@
 Row	Id RNE	Nom	Prenom	Attribut	ValAvt	ValApr	Commentaire
 5210	14132	ALLIX	NA	Prenom elu	NA	Marie-Danielle	Prénom manquant
 18690	146336	GIRAUDEAU	NA	Prenom elu	NA	Marie-Danielle	Prénom manquant
-33874	671	TANGUY	Hélène	Date de fin de la fonction	1/7/0012	1/7/2012	Typo dans la date
-80256	47125	BOYER	Jean-Marc	Date de fin de la fonction	20/10/0017	20/10/2017	Typo dans la date
-106878	80360	SENECHAULT	Jean-Paul	Date de fin de la fonction	22/3/0013	22/3/2013	Typo dans la date
-106945	90614	BRIE	Simon	Date de début de la fonction	25/3/0201	25/3/2001	Typo dans la date
-1258	106532	BOLON	André	Date de fin de la fonction	20/9/0014	20/9/2014	Typo dans la date
-1126	106573	JANIER	Jacques	Date de fin de la fonction	27/2/0013	27/2/2013	Typo dans la date
-15385	147305	MULLOIS	Dominique	Date de fin de la fonction	20/3/0015	20/3/2015	Typo dans la date
-72008	152251	MUSELET	Bernard	Date de début de la fonction	16/3/0020	16/3/2000	Typo dans la date
-68294	153412	GERARD	Jean-Claude	Date de début de la fonction	13/3/0983	13/3/1983	Typo dans la date
-64153	154678	JACQUEL	Denis	Date de fin du mandat	14/10/0201	14/10/2010	Ou est-ce plutôt 2014 ?
-53616	157950	ARRETEAU	Paula	Date de fin de la fonction	15/1/0012	15/1/2012	Typo dans la date
-111370	163176	MANG	Jean-Jacques	Date de début de la fonction	16/3/0200	16/3/2001	Typo dans la date
-107870	164229	CHABRIER	Yves	Date de début de la fonction	25/3/0201	25/3/2001	Typo dans la date
-105668	164780	AUPHAN	Philippe	Date de début de la fonction	1/2/3003	1/2/2003	Typo dans la date
-96743	167343	DUBOS	René	Date de début de la fonction	16/3/0201	16/3/2001	Typo dans la date
-96424	167452	DUCROCQ	Christian	Date de début de la fonction	24/3/0201	24/3/2001	Typo dans la date
-96221	167508	MAILLARD	Philippe	Date de début de la fonction	16/3/0200	16/3/2001	Typo dans la date
-95969	167575	NOEL	François-Mary	Date de début de la fonction	17/3/0201	17/3/2001	Typo dans la date
-95980	167578	PLAILLY	Christian	Date de début de la fonction	23/3/0201	23/3/2001	Typo dans la date
-83891	171311	DULHOSTE	Jean-Pierre	Date de fin de la fonction	7/7/0016	7/7/2016	Typo dans la date
-83829	171319	FARET	Gabriel	Date de fin de la fonction	30/5/0015	30/5/2015	Typo dans la date
-83133	171548	BRUN	Jean	Date de fin de la fonction	4/12/0017	4/12/2017	Typo dans la date
-53319	469570	RIHOUAY	Gilles	Date de fin de la fonction	24/2/0013	24/2/2013	Typo dans la date
-14229	738771	LEBOUCHER	Dominique	Date de fin de la fonction	23/5/0014	23/5/2014	Typo dans la date
-83944	869169	SASTRE	Serge	Date de fin de la fonction	14/3/0014	14/3/2014	Typo dans la date
-524	872810	MACLET	Bernard	Date de fin de la fonction	17/7/0013	17/7/2013	Typo dans la date
-873	875576	MABILLARD	René	Date de fin de la fonction	6/6/0013	6/6/2013	Typo dans la date
-5958	887794	BORNET	Pierre	Date de fin de la fonction	10/7/0014	10/7/2014	Typo dans la date
-30149	944908	QUENARDEL	Françoise	Date de début de la fonction	8/1/0018	8/1/2018	Typo dans la date
-79818	1068960	BRUT	Eric	Date de fin de la fonction	21/11/0017	21/11/2017	Typo dans la date
-83275	1077631	BOUR	Marguerite	Date de fin de la fonction	23/10/0015	23/10/2015	Typo dans la date
-83160	1077876	DASTUGUE	Gilbert	Date de fin de la fonction	12/6/0014	12/6/2014	Typo dans la date
-84112	1079145	BOSC	Marie-Claude	Date de fin de la fonction	20/7/0012	20/7/2012	Typo dans la date
-108748	1144788	TROUY	Noël	Date de naissance	1/1/1900	27/2/1949	Typo dans la date, et il est en double, cf id 1486017
-113230	151263	ROZE	Eric	Date de fin de la fonction	28/3/2020	NA	Date incorrecte, située dans le futur
-113244	871717	JACARIA	Véronique	Date de fin de la fonction	28/3/2020	NA	Date incorrecte, située dans le futur
+33874	671	TANGUY	Hélène	Date fin fonction	1/7/0012	1/7/2012	Typo dans la date
+80256	47125	BOYER	Jean-Marc	Date fin fonction	20/10/0017	20/10/2017	Typo dans la date
+106878	80360	SENECHAULT	Jean-Paul	Date fin fonction	22/3/0013	22/3/2013	Typo dans la date
+106945	90614	BRIE	Simon	Date début fonction	25/3/0201	25/3/2001	Typo dans la date
+1258	106532	BOLON	André	Date fin fonction	20/9/0014	20/9/2014	Typo dans la date
+1126	106573	JANIER	Jacques	Date fin fonction	27/2/0013	27/2/2013	Typo dans la date
+15385	147305	MULLOIS	Dominique	Date fin fonction	20/3/0015	20/3/2015	Typo dans la date
+72008	152251	MUSELET	Bernard	Date début fonction	16/3/0020	16/3/2000	Typo dans la date
+68294	153412	GERARD	Jean-Claude	Date début fonction	13/3/0983	13/3/1983	Typo dans la date
+64153	154678	JACQUEL	Denis	Date fin mandat	14/10/0201	22/3/2014	Typo dans la date
+64153	154678	JACQUEL	Denis	Motif fin mandat	NA	FM	Manque motif fin mandat
+53616	157950	ARRETEAU	Paula	Date fin fonction	15/1/0012	15/1/2012	Typo dans la date
+111370	163176	MANG	Jean-Jacques	Date début fonction	16/3/0200	16/3/2001	Typo dans la date
+107870	164229	CHABRIER	Yves	Date début fonction	25/3/0201	25/3/2001	Typo dans la date
+105668	164780	AUPHAN	Philippe	Date début fonction	1/2/3003	1/2/2003	Typo dans la date
+96743	167343	DUBOS	René	Date début fonction	16/3/0201	16/3/2001	Typo dans la date
+96424	167452	DUCROCQ	Christian	Date début fonction	24/3/0201	24/3/2001	Typo dans la date
+96221	167508	MAILLARD	Philippe	Date début fonction	16/3/0200	16/3/2001	Typo dans la date
+95969	167575	NOEL	François-Mary	Date début fonction	17/3/0201	17/3/2001	Typo dans la date
+95980	167578	PLAILLY	Christian	Date début fonction	23/3/0201	23/3/2001	Typo dans la date
+83891	171311	DULHOSTE	Jean-Pierre	Date fin fonction	7/7/0016	7/7/2016	Typo dans la date
+83829	171319	FARET	Gabriel	Date fin fonction	30/5/0015	30/5/2015	Typo dans la date
+83133	171548	BRUN	Jean	Date fin fonction	4/12/0017	4/12/2017	Typo dans la date
+53319	469570	RIHOUAY	Gilles	Date fin fonction	24/2/0013	24/2/2013	Typo dans la date
+14229	738771	LEBOUCHER	Dominique	Date fin fonction	23/5/0014	23/5/2014	Typo dans la date
+83944	869169	SASTRE	Serge	Date fin fonction	14/3/0014	14/3/2014	Typo dans la date
+524	872810	MACLET	Bernard	Date fin fonction	17/7/0013	17/7/2013	Typo dans la date
+873	875576	MABILLARD	René	Date fin fonction	6/6/0013	6/6/2013	Typo dans la date
+5958	887794	BORNET	Pierre	Date fin fonction	10/7/0014	10/7/2014	Typo dans la date
+30149	944908	QUENARDEL	Françoise	Date début fonction	8/1/0018	8/1/2018	Typo dans la date
+79818	1068960	BRUT	Eric	Date fin fonction	21/11/0017	21/11/2017	Typo dans la date
+83275	1077631	BOUR	Marguerite	Date fin fonction	23/10/0015	23/10/2015	Typo dans la date
+83160	1077876	DASTUGUE	Gilbert	Date fin fonction	12/6/0014	12/6/2014	Typo dans la date
+84112	1079145	BOSC	Marie-Claude	Date fin fonction	20/7/0012	20/7/2012	Typo dans la date
+108748	1144788	TROUY	Noël	Date naissance	1/1/1900	27/2/1949	Typo dans la date, et il est en double, cf id 1486017
+113230	151263	ROZE	Eric	Date fin fonction	28/3/2020	NA	Date incorrecte, située dans le futur
+113244	871717	JACARIA	Véronique	Date fin fonction	28/3/2020	NA	Date incorrecte, située dans le futur
 16014	1198393	LE BAS	Christian	Date fin mandat	8/4/2018	NA	Date incorrecte remplacée par NA pour fusion ultérieure
 42391	973328	GABAUDAN	Jean-Pierre	Date fin mandat	19/2/2017	NA	Date incorrecte remplacée par NA pour fusion ultérieure
 5414	150062	VALLET	Jean-Pierre	Date début fonction	16/3/2013	16/3/2001	Coquille dans la date
@@ -248,3 +249,37 @@ Row	Id RNE	Nom	Prenom	Attribut	ValAvt	ValApr	Commentaire
 98479	540150	WALLEZ	Lydie	Nom elu	WALLEZ	WALLEZ FARENZENA	Nom incomplet
 113390	1153356	VOISIN	Corine	Nom elu	VOISIN	GEOFFREY VOISIN	Nom incomplet
 67297	1372345	JACQUES	Jean-Michel	Date naissance	26/2/1968	29/2/1968	Coquille date de naissance
+2690	150784	FERNANDES	Guy	Motif fin mandat	NA	DV	Information manquante
+2690	150784	FERNANDES	Guy	Motif fin fonction	NA	DV	Information manquante
+16019	1194546	LEMARCHAND	Christophe	Date fin mandat	8/4/2018	NA	Information incorrecte
+16019	1194546	LEMARCHAND	Christophe	Motif fin fonction	NA	DV	Information manquante
+17248	1243452	ESTEBAN	Philippe	Date fin fonction	NA	1/1/2017	Information manquante
+17248	1243452	ESTEBAN	Philippe	Motif fin fonction	NA	DO	Information manquante
+17248	1243452	ESTEBAN	Philippe	Motif fin mandat	NA	DO	Information manquante
+17397	146696	TAMAGNA	Jean-Michel	Date fin fonction	NA	29/3/2016	Information manquante
+17397	146696	TAMAGNA	Jean-Michel	Motif fin fonction	NA	DV	Information manquante
+17397	146696	TAMAGNA	Jean-Michel	Motif fin mandat	NA	DV	Information manquante
+41345	657970	BENESSE	Jean-Michel	Date fin fonction	NA	3/12/2017	Information manquante
+41345	657970	BENESSE	Jean-Michel	Motif fin fonction	NA	FM	Information manquante
+51545	158589	GARRIDO	Pascal	Date fin fonction	NA	13/1/2017	Information manquante
+51545	158589	GARRIDO	Pascal	Motif fin fonction	NA	DV	Information manquante
+53859	701600	JOUILI	Estelle	Motif fin mandat	NA	FM	Information manquante
+63499	435932	LAUNAY	Noëlle	Date fin fonction	NA	25/9/2017	Information manquante
+63499	435932	LAUNAY	Noëlle	Motif fin fonction	NA	FM	Information manquante
+63499	435932	LAUNAY	Noëlle	Motif fin mandat	NA	FM	Information manquante
+75616	68745	HOUSSIN	Pascal	Date fin fonction	NA	15/4/2018	Information manquante
+75616	68745	HOUSSIN	Pascal	Motif fin fonction	NA	FM	Information manquante
+75616	68745	HOUSSIN	Pascal	Motif fin mandat	NA	FM	Information manquante
+79973	172562	MINGON	René	Date fin mandat	30/11/2010	22/3/2014	Date incorrecte
+79973	172562	MINGON	René	Motif fin mandat	NA	FM	Information manquante
+99882	788079	DANIAULT	Alain	Date fin fonction	22/3/2014	31/12/2012	Date incorrecte
+99882	788079	DANIAULT	Alain	Motif fin mandat	NA	FM	Information manquante
+106195	1136214	PINEAU	Florence	Motif fin fonction	NA	DV	Information manquante
+106195	1136214	PINEAU	Florence	Motif fin mandat	NA	DV	Information manquante
+108549	1144179	FORTERRE	Denis	Motif fin mandat	NA	DV	Information manquante
+108549	1144179	FORTERRE	Denis	Date fin fonction	NA	22/6/2017	Information manquante
+108919	1486353	THIÉBAUT	Gilbert	Motif fin mandat	NA DV	Information manquante
+108919	1486353	THIÉBAUT	Gilbert	Date fin fonction	NA 13/1/2017	Information manquante
+112921	162927	ABRAHAM	Michel	Motif fin mandat	NA DV	Information manquante
+112921	162927	ABRAHAM	Michel	Motif fin fonction	NA DV	Information manquante
+112921	162927	ABRAHAM	Michel	Date fin fonction	NA 30/6/2015	Information manquante

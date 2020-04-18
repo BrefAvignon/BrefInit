@@ -44,7 +44,8 @@ Row	Id RNE	Nom	Prenom	Attribut	ValAvt	ValApr	Commentaire
 152847	147305	MULLOIS	Dominique	Date fin fonction	20/3/0015	20/3/2015	Typo dans la date
 750418	152251	MUSELET	Bernard	Date debut fonction	16/3/0020	16/3/2001	Typo dans la date
 708523	153412	GERARD	Jean-Claude	Date debut fonction	13/3/0983	13/03/1983	Typo dans la date
-665930	154678	JACQUEL	Denis	Date fin mandat	14/10/0201	14/10/2010	Ou est-ce plutôt 2014 ?
+665930	154678	JACQUEL	Denis	Date fin mandat	14/10/0201	22/3/2014	Typo dans la date
+665930	154678	JACQUEL	Denis	Motif fin mandat	NA	FM	Manque motif fin mandat
 560462	157950	ARRETEAU	Paula	Date fin fonction	15/1/0012	15/1/2012	Typo dans la date
 1186786	163176	MANG	Jean-Jacques	Date debut fonction	16/3/0200	16/3/2001	Typo dans la date
 1154380	164229	CHABRIER	Yves	Date debut fonction	25/3/0201	25/3/2001	Typo dans la date
@@ -72,7 +73,7 @@ Row	Id RNE	Nom	Prenom	Attribut	ValAvt	ValApr	Commentaire
 873112	1077631	BOUR	Marguerite	Date fin fonction	23/10/0015	23/10/2015	Typo dans la date
 872327	1077876	DASTUGUE	Gilbert	Date fin fonction	12/6/0014	12/6/2014	Typo dans la date
 879616	1079145	BOSC	Marie-Claude	Date fin fonction	20/7/0012	20/7/2012	Typo dans la date
-1162579	1144788	TROUY	Noël	Date de naissance	1/1/1900	27/2/1949	Typo dans la date, et il est en double, cf id 1486017
+1162579	1144788	TROUY	Noël	Date naissance	1/1/1900	27/2/1949	Typo dans la date, et il est en double, cf id 1486017
 294373	1277552	DRAY	Bernadette	Date debut fonction	8/1/0018	23/03/2014	Pas sûr, à voir
 294386	1277554	MOULIN	Geneviève	Date debut fonction	8/1/0018	23/03/2014	Pas sûr, à voir
 467611	1317870	FAVRE	Aurélie	Date debut fonction	28/8/0014	28/8/2014	Typo dans la date
@@ -129,9 +130,10 @@ NA	NA	NA	NA	Libelle commune	TEVA I UTA SECTION 01 MATAIEA	TEVA I UTA	On ignore l
 1000166	469845	PEUTET	Jean-Marc	Date debut fonction	1/4/2009	1/4/2008	Date incorrecte
 1003970	162924	DELANOE	Bertrand	Date debut fonction	21/3/2008	21/3/2001	Date incorrecte
 1106766	25126	BONHOMME	François	Date debut fonction	21/3/2008	21/3/2001	Date incorrecte
-1134847	1136214	PINEAU	Florence	Date debut fonction	29/6/2017	21/3/2014	Date incorrecte
-1134847	1136214	PINEAU	Florence	Date fin fonction	20/6/2017	21/8/2015	Date incorrecte
-1134848	1136214	PINEAU	Florence	Date debut fonction	29/6/2017	21/3/2014	Date incorrecte
+1134846	1136214	PINEAU	Florence	Motif fin fonction	NA	DV	Information manquante
+1134846	1136214	PINEAU	Florence	Motif fin mandat	NA	DV	Information manquante
+1134847	1136214	PINEAU	Florence	ID RNE	1136214	NA	Suppression, ligne incorrecte
+1134848	1136214	PINEAU	Florence	ID RNE	1136214	NA	Suppression, ligne incorrecte
 1172586	1503809	SABARD	Sandrine	Date debut fonction	16/3/2018	27/2/2015	Date incorrecte
 1185679	7695	FORCINAL	Anne-Marie	Date debut fonction	20/3/2008	21/3/2001	Date incorrecte
 1187569	17523	FOURNIER	Pascal	Date debut fonction	15/3/2008	25/3/2001	Date incorrecte
@@ -167,7 +169,10 @@ NA	NA	NA	NA	Libelle commune	TEVA I UTA SECTION 01 MATAIEA	TEVA I UTA	On ignore l
 168544	914272	DECHANT	JEANNIE	Date fin mandat	31/12/2016	NA	Corrigé pour mandat en cours
 168546	1243451	DEGORCE	CHRISTIAN	Date fin mandat	31/12/2016	NA	Corrigé pour mandat en cours
 168548	913014	DEROBINSON	MARIE CHRISTINE	Date fin mandat	31/12/2016	NA	Corrigé pour mandat en cours
-168550	1243452	ESTEBAN	PHILIPPE	Date fin mandat	31/12/2016	NA	Corrigé pour mandat en cours
+168550	1243452	ESTEBAN	Philippe	ID RNE	1243452	NA	Suppression, ligne redondante
+170726	1243452	ESTEBAN	Philippe	Date fin fonction	NA	1/1/2017	Information manquante
+170726	1243452	ESTEBAN	Philippe	Motif fin fonction	NA	DO	Information manquante
+170726	1243452	ESTEBAN	Philippe	Motif fin mandat	NA	DO	Information manquante
 168557	914274	GROLLEAU	JEAN CLAUDE	Date fin mandat	31/12/2016	NA	Corrigé pour mandat en cours
 168559	69242	GROLLEAU	LAURENT	Date fin mandat	31/12/2016	NA	Corrigé pour mandat en cours
 168561	1242975	HAMON	YVES	Date fin mandat	31/12/2016	NA	Corrigé pour mandat en cours
@@ -584,3 +589,35 @@ NA	NA	NA	NA	Libelle commune	TEVA I UTA SECTION 01 MATAIEA	TEVA I UTA	On ignore l
 694561	1372345	JACQUES	Jean-Michel	Date naissance	26/2/1968	29/2/1968	Coquille date de naissance
 357733	862745	BRACHET	Annie	Nom elu	BRACHET	BRACHET GIBERT	Nom incomplet
 357766	862745	GIBERT EPOUSE BRACHET	Annie	Nom elu	GIBERT EPOUSE BRACHET	BRACHET GIBERT	Nom incorrect
+26805	150784	FERNANDES	Guy	Motif fin mandat	NA	DV	Information manquante
+26805	150784	FERNANDES	Guy	Motif fin fonction	NA	DV	Information manquante
+158966	1194546	LEMARCHAND	Christophe	Date fin mandat	8/4/2018	NA	Information incorrecte
+158966	1194546	LEMARCHAND	Christophe	Motif fin fonction	NA	DV	Information manquante
+158967	1194546	LEMARCHAND	Christophe	Date fin mandat	8/4/2018	NA	Information incorrecte
+158967	1194546	LEMARCHAND	Christophe	Motif fin fonction	NA	DV	Information manquante
+158967	1194546	LEMARCHAND	Christophe	ID RNE	1194546	NA	Suppression ligne superflue
+172212	146696	TAMAGNA	Jean-Michel	Date fin fonction	NA	29/3/2016	Information manquante
+172212	146696	TAMAGNA	Jean-Michel	Motif fin fonction	NA	DV	Information manquante
+172212	146696	TAMAGNA	Jean-Michel	Motif fin mandat	NA	DV	Information manquante
+414401	657970	BENESSE	Jean-Michel	Motif fin fonction	NA	FM	Information manquante
+414401	657970	BENESSE	Jean-Michel	Date fin fonction	NA	3/12/2017	Information manquante
+532676	158589	GARRIDO	Pascal	Date fin fonction	NA	13/1/2017	Information manquante
+532676	158589	GARRIDO	Pascal	Motif fin fonction	NA	DV	Information manquante
+563530	701600	JOUILI	Estelle	Motif fin mandat	NA	FM	Information manquante
+659865	435932	LAUNAY	Noëlle	Date fin fonction	NA	25/9/2017	Information manquante
+659865	435932	LAUNAY	Noëlle	Motif fin fonction	NA	FM	Information manquante
+659865	435932	LAUNAY	Noëlle	Motif fin mandat	NA	FM	Information manquante
+794207	68745	HOUSSIN	Pascal	Date fin fonction	NA	15/4/2018	Information manquante
+794207	68745	HOUSSIN	Pascal	Motif fin fonction	NA	FM	Information manquante
+794207	68745	HOUSSIN	Pascal	Motif fin mandat	NA	FM	Information manquante
+814482	172562	MINGON	René	Date fin mandat	30/11/2010	22/3/2014	Date incorrecte
+814482	172562	MINGON	René	Motif fin mandat	NA	FM	Information manquante
+1065889	788079	DANIAULT	Alain	Date fin fonction	22/3/2014	31/12/2012	Date incorrecte
+1065889	788079	DANIAULT	Alain	Motif fin mandat	NA	FM	Information manquante
+1160658	1144179	FORTERRE	Denis	Motif fin mandat	NA	DV	Information manquante
+1160658	1144179	FORTERRE	Denis	Date fin fonction	NA	22/6/2017	Information manquante
+1163910	1486353	THIÉBAUT	Gilbert	Motif fin mandat	NA DV	Information manquante
+1163910	1486353	THIÉBAUT	Gilbert	Date fin fonction	NA 13/1/2017	Information manquante
+1223146	162927	ABRAHAM	Michel	Motif fin mandat	NA DV	Information manquante
+1223146	162927	ABRAHAM	Michel	Motif fin fonction	NA DV	Information manquante
+1223146	162927	ABRAHAM	Michel	Date fin fonction	NA 30/6/2015	Information manquante
