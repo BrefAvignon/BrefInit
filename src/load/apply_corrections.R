@@ -2431,17 +2431,19 @@ fix.mdtfct.dates <- function(data, election.file, series.file, type)
 #data <- split.long.mandates(data, election.file)
 #data12 <- data
 	
-	# solve mandate intersections (same position)
+	# solve mandate and function intersections (same position)
 	data <- shorten.overlapping.mandates(data, type, tolerance=8)
 #data13 <- data
+	data <- shorten.overlapping.functions(data, type, tolerance=8)
+#data14 <- data
 	
 	# remove micro-mandates again (in case split created any)
 	data <- remove.micro.mdtfcts(data, tolerance=7)
-#data14 <- data
+#data15 <- data
 	
 	# adjust end of mandate or function motives
 	data <- adjust.end.motives(data, election.file, series.file)
-#data15 <- data
+#data16 <- data
 	
 	#stop()
 	return(data)
