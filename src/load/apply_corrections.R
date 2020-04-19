@@ -59,13 +59,17 @@ retrieve.normalize.data <- function(filenames, col.map, correct.data)
 	
 	# EPCI-specific cleaning
 	if(correct.data && COL_ATT_EPCI_NOM %in% colnames(data))
-	{	# clean CC names (must be done before normalization)
+	{	idx <- which(grepl("archiv",data[,COL_ATT_EPCI_NOM],fixed=TRUE))
+		tlog(0,"EPCI-specific cleaning: ",length(idx)," names")
+		# clean CC names (must be done before normalization)
 		data[,COL_ATT_EPCI_NOM] <- gsub(pattern=" (archivé)",replacement="",x=data[,COL_ATT_EPCI_NOM],fixed=TRUE)
 		data[,COL_ATT_EPCI_NOM] <- gsub(pattern=" - archivé",replacement="",x=data[,COL_ATT_EPCI_NOM],fixed=TRUE)
 	}
 	# municipality-specific cleaning
-	if(correct.data && COL_ATT_EPCI_NOM %in% colnames(data))
-	{	# clean municipality names (must be done before normalization)
+	if(correct.data && COL_ATT_COM_NOM %in% colnames(data))
+	{	idx <- which(grepl("archiv",data[,COL_ATT_COM_NOM],fixed=TRUE))
+		tlog(0,"CM- and M-specific cleaning: ",length(idx)," names")
+		# clean municipality names (must be done before normalization)
 		data[,COL_ATT_COM_NOM] <- gsub(pattern=" (archivée)",replacement="",x=data[,COL_ATT_COM_NOM],fixed=TRUE)
 	}
 	
@@ -637,8 +641,10 @@ apply.systematic.corrections <- function(data, type)
 					i <- 1
 					while(is.na(match.idx) && i<=length(idx2))
 					{	r2 <- idx2[i]
-						if(date.intersect(start1=data[r,COL_ATT_MDT_DBT], end1=data[r,COL_ATT_MDT_FIN], 
-								start2=cm.data[r2,COL_ATT_MDT_DBT], end2=cm.data[r2,COL_ATT_MDT_FIN]))
+						if(date.intersect(start1=as.Date(data[r,COL_ATT_MDT_DBT], "%d/%m/%Y"), 
+								end1=as.Date(data[r,COL_ATT_MDT_FIN], "%d/%m/%Y"), 
+								start2=cm.data[r2,COL_ATT_MDT_DBT], 
+								end2=cm.data[r2,COL_ATT_MDT_FIN]))
 							match.idx <- r2
 						i <- i + 1
 					}
