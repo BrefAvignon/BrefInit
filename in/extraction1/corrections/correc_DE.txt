@@ -65,12 +65,12 @@ Row	Id RNE	Nom	Prenom	Attribut	ValAvt	ValApr	Commentaire
 77	1786	GRIESBECK	Nathalie	Date debut mandat	7/6/2009	9/7/2009	Date incorrecte
 78	1786	GRIESBECK	Nathalie	Date fin mandat	NA	25/5/2019	Date manquante
 79	16024	HAMON	Benoît	Date fin mandat	30/6/2014	6/6/2009	Date incorrecte
-81	48	ISLER-BEGUIN	Marie-Anne	Date debut mandat 13/6/1999	13/6/2004	Date incorrecte
-81	48	ISLER-BEGUIN	Marie-Anne	Date fin mandat 30/6/2014	6/6/2009	Date incorrecte
+81	48	ISLER-BEGUIN	Marie-Anne	Date debut mandat	13/6/1999	13/6/2004	Date incorrecte
+81	48	ISLER-BEGUIN	Marie-Anne	Date fin mandat	30/6/2014	6/6/2009	Date incorrecte
 82	4679	JALKH	Jean-François	Date fin mandat	NA	25/5/2019	Date manquante
 83	1177453	KAHN	Jean-François	Date fin mandat	30/6/2014	8/7/2009	date incorrecte
 84	1501524	MARTIN	Edouard	Date fin mandat	NA	25/5/2019	Date manquante
-85	62	MATHIEU	Véronique	Date debut mandat 13/6/1999	13/6/2004	Date incorrecte
+85	62	MATHIEU	Véronique	Date debut mandat	13/6/1999	13/6/2004	Date incorrecte
 87	45362	MONTEL	Sophie	Date fin mandat	NA	25/5/2019	Date manquante
 88	850	MORANO	Nadine	Date fin mandat	30/6/2014	NA	Correction pour fusion
 89	850	MORANO	Nadine	Date fin mandat	NA	25/5/2019	Date manquante
@@ -80,9 +80,9 @@ Row	Id RNE	Nom	Prenom	Attribut	ValAvt	ValApr	Commentaire
 92	1501525	SANDER	Anne	Date fin mandat	NA	25/5/2019	Date manquante
 97	833186	ALLIOT-MARIE	Michèle	Date debut mandat	25/5/2014	18/6/1989	Date incorrecte
 97	833186	ALLIOT-MARIE	Michèle	Date fin mandat	30/6/2014	30/3/1993	Date incorrecte
-97	833186	ALLIOT-MARIE	Michèle	Libelle circo euro	SUD-OUEST	UNIQUE	Date incorrecte
-97	833186	ALLIOT-MARIE	Michèle	Code circo euro	04	00	Date incorrecte
-98	833186	ALLIOT-MARIE	Michèle	Date fin mandat	30/6/2014	25/5/2019	Date incorrecte
+97	833186	ALLIOT-MARIE	Michèle	Libelle circo euro	SUD-OUEST	UNIQUE	Circonscription incorrecte
+97	833186	ALLIOT-MARIE	Michèle	Code circo euro	04	00	Circonscription incorrecte
+98	833186	ALLIOT-MARIE	Michèle	Date fin mandat	NA	25/5/2019	Date incorrecte
 99	4908	ANDRIEU	Eric	Date debut mandat	7/6/2009	16/5/2012	Date incorrecte
 100	4908	ANDRIEU	Eric	Date fin mandat	NA	25/5/2019	Date incorrecte
 101	962324	ARIF	Kader	Date fin mandat	30/6/2014	6/6/2009	Correction (WP)
@@ -145,16 +145,15 @@ Row	Id RNE	Nom	Prenom	Attribut	ValAvt	ValApr	Commentaire
 168	870044	RIVASI	Michèle	Date debut mandat	1/7/2014	25/5/2019	Date incorrecte
 169	73	ROCARD	Michel	Date debut mandat	13/6/1999	13/6/2004	Date incorrecte
 169	73	ROCARD	Michel	Date fin mandat	30/6/2014	31/1/2009	Date incorrecte
-169	73	ROCARD	Michel	Motif fin mandat	NA	DV	Information manquante
 170	183490	ROURE	Martine	Date debut mandat	13/6/1999	13/6/2004	Date incorrecte
 170	183490	ROURE	Martine	Date fin mandat	30/6/2014	6/6/2009	Date incorrecte
 170	183490	ROURE	Martine	Motif fin mandat	NA	FM	Date incorrecte
-175 1177460	VERGIAT	Marie-Christine	Date fin mandat	NA	25/5/2019	Mise à jour
+175	1177460	VERGIAT	Marie-Christine	Date fin mandat	NA	25/5/2019	Mise à jour
 177	770065	AUDY	Jean-Pierre	Date debut mandat	1/6/2004	11/6/2005	Date incorrecte
 177	770065	AUDY	Jean-Pierre	Date fin mandat	30/6/2014	6/6/2009	Date incorrecte
 181	1180784	DELAHAYE	Angélique	Date fin mandat	NA	25/5/2019	Date manquante
 182	164294	DENANOT	Jean-Paul	Date fin mandat	30/6/2014	6/6/2009	Date incorrecte
-182	164294	DENANOT	Jean-Paul	Date fin mandat	NA	10/6/2018	Date incorrecte
+183	164294	DENANOT	Jean-Paul	Date fin mandat	NA	10/6/2018	Date incorrecte
 184	27	DESCAMPS	Marie-Hélène	Date debut mandat	12/6/2002	13/6/2004	Date incorrecte
 184	27	DESCAMPS	Marie-Hélène	Date fin mandat	30/6/2014	6/6/2009	Date incorrecte
 184	27	DESCAMPS	Marie-Hélène	Motif fin mandat	NA	FM	Information manquante
@@ -196,7 +195,7 @@ Row	Id RNE	Nom	Prenom	Attribut	ValAvt	ValApr	Commentaire
 220	32	FERREIRA	Anne	Date fin mandat	13/7/2009	12/6/2004	Date incorrecte
 220	32	FERREIRA	Anne	Libelle circo euro	ILE-DE-FRANCE	UNIQUE	Circonscription incorrecte
 220	32	FERREIRA	Anne	Code circo euro	07	00	Circonscription incorrecte
-221	838005	FONTAINE	Nicole	Date fin mandat	13/7/2009	6/6/2009	Date incorrecte
+221	838005	FONTAINE	Nicole	Date fin mandat	30/6/2014	6/6/2009	Date incorrecte
 223	838003	GAUBERT	Patrick	Date fin mandat	30/6/2014	6/6/2009	Date incorrecte
 225	1177467	JOLY	Eva	Date fin mandat	NA	25/5/2019	Date manquante
 227	163156	JUVIN	Philippe	Date fin mandat	NA	25/5/2019	Date manquante
@@ -208,7 +207,7 @@ Row	Id RNE	Nom	Prenom	Attribut	ValAvt	ValApr	Commentaire
 235	58	LIPIETZ	Alain	Date debut mandat	13/6/1999	13/6/2004	Date incorrecte
 235	58	LIPIETZ	Alain	Date fin mandat	30/6/2014	6/6/2009	Date incorrecte
 236	336999	REVAULT D'ALLONNES	Christine	Date debut mandat	7/6/2009	9/4/2014	Date incorrecte
-236	336999	REVAULT D'ALLONNES	Christine	Date fin mandat	NA	25/5/2019	Date manquante
+237	336999	REVAULT D'ALLONNES	Christine	Date fin mandat	NA	25/5/2019	Date manquante
 239	77	SAVARY	Gilles	Date fin mandat	30/6/2014	6/6/2009	Date incorrecte
 240	1423272	SCHAFFHAUSER	Jean-Luc	Date fin mandat	NA	25/5/2019	Date manquante
 241	336711	SCHAPIRA	Pierre	Date fin mandat	30/6/2014	6/6/2009	Date incorrecte
@@ -222,7 +221,7 @@ Row	Id RNE	Nom	Prenom	Attribut	ValAvt	ValApr	Commentaire
 248	1190936	OMARJEE	Younous	Date debut mandat	7/6/2009	5/1/2012	Date incorrecte
 249	1190936	OMARJEE	Younous	Date fin mandat	NA	25/5/2019	Date manquante
 251	1177470	PONGA	Maurice	Date fin mandat	NA	25/5/2019	Date manquante
-252	81	SUDRE	Margie	Date debut mandat	13/6/2004	6/6/2009	Date incorrecte
+252	81	SUDRE	Margie	Date debut mandat	13/6/1999	13/6/2004	Date incorrecte
+252	81	SUDRE	Margie	Date fin mandat	30/6/2014	6/6/2009	Date incorrecte
 NA	NA	NA	NA	Date debut mandat	1/7/2014	25/5/2014	Rectifié pour date election
 NA	NA	NA	NA	Date fin mandat	30/6/2014	24/5/2014	Rectifié pour date election
-

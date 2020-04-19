@@ -208,6 +208,7 @@ source("src/common/include.R")
 # - rajouter les vieux mandats manquants en passant en revue les MEP hors-période
 # - faire la liste des ID
 # - rajouter sarko dans les députés
+# - rajouter les mandats 2019 !
 
 # TODO
-# tester l'unicité des nouveaux ids
+# tester l'unicité des nouveaux ids (AN, Senat, PE, etc.)

@@ -17,7 +17,7 @@
 #############################################################################################
 manual.integrate.data.de <- function(data)
 {	# load the supplementary data
-	supp.data <- retrieve.normalize.data(filenames, correct.data=FALSE)
+	supp.data <- retrieve.normalize.data(filenames=FILE_SUPPL_DE, correct.data=FALSE)
 	
 	# fix id duplicates and other id-related issues
 	supp.data <- fix.id.problems(supp.data)
@@ -46,7 +46,7 @@ manual.integrate.data.de <- function(data)
 	
 	# order the resulting table
 	idx <- order(data[,COL_ATT_ELU_NOM], data[,COL_ATT_ELU_PRENOM], data[,COL_ATT_ELU_ID],
-		data[,COL_ATT_MDT_DBT], data[,COL_ATT_MDT_FIN], data[,COL_ATT_FCT_DBT], data[,COL_ATT_FCT_FIN])
+		data[,COL_ATT_MDT_DBT], data[,COL_ATT_MDT_FIN])
 	data <- data[idx,]
 	
 	return(data)
