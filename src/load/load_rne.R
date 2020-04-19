@@ -626,7 +626,10 @@ load.d.data <- function(correct.data, complete.data)
 		
 		# correct/complete with secondary sources
 		if(complete.data)
-		{	# senate database
+		{	# manually constituted table
+			data <- manual.integrate.data.d(data)
+			
+			# senate database
 			# NOTE Senate data eventually not used
 			#data <- senate.integrate.data(data, type="D", cache=TRUE, compare=FALSE)
 			
@@ -694,12 +697,23 @@ load.de.data <- function(correct.data, complete.data)
 		
 		# correct/complete with secondary sources
 		if(complete.data)
-		{	# senate database
+		{	# manually constituted table
+			data <- manual.integrate.data.de(data)
+			
+			# senate database
 			# NOTE Senate data eventually not used
 			#data <- senate.integrate.data(data, type="DE", cache=TRUE, compare=FALSE)
 			
 			# assembly database
 			# no DE data in the assembly database
+			
+			# clean another time
+			if(correct.data)
+			{	data <- merge.similar.rows(data)
+				data <- fix.mdtfct.dates(data, 
+						election.file=FILE_VERIF_DATES_DE,
+						type="DE")
+			}
 		}
 		
 		if(CACHE_DATA)

@@ -54,6 +54,7 @@ source("src/comparison/compare_tables.R")
 
 source("src/load/apply_corrections.R")
 source("src/load/integrate_assnat.R")
+source("src/load/integrate_manual.R")
 source("src/load/integrate_senat.R")
 source("src/load/load_rne.R")
 

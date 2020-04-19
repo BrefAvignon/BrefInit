@@ -51,11 +51,13 @@ retrieve.normalize.data <- function(filenames, col.map, correct.data)
 	tlog(2,"Columns: ",paste(colnames(data), collapse=","))
 	
 	# normalize data table column names
-	norm.names <- col.map[colnames(data)]
-	if(any(is.na(norm.names)) || length(norm.names)!=ncol(data))
-		stop("Problem with the number of columns (or their names) when loading the table, after normalization")
-	else
-		colnames(data) <- norm.names
+	if(hasArg(col.map))
+	{	norm.names <- col.map[colnames(data)]
+		if(any(is.na(norm.names)) || length(norm.names)!=ncol(data))
+			stop("Problem with the number of columns (or their names) when loading the table, after normalization")
+		else
+			colnames(data) <- norm.names
+	}
 	
 	# EPCI-specific cleaning
 	if(correct.data && COL_ATT_EPCI_NOM %in% colnames(data))

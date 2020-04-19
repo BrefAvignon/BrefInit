@@ -1,0 +1,74 @@
+Code circo euro	Libelle circo euro	Nom elu	Prenom elu	Date naissance	Code sexe	Code profession	Libelle profession	Libelle mandat	Date debut mandat	Date fin mandat	Motif fin mandat	Nuance politique	ID RNE	ID Europe	ID universel
+00	UNIQUE	ANDRIEU	Eric	14/4/1960	M	56	Autres professions	Représentant au Parlement Européen	26/5/2019	NA	NA	SOC	4908	113892	RNE_0004908
+00	UNIQUE	AUTANT-LARA	Claude	5/8/1901	38	Hommes de lettres et Artistes	Représentant au Parlement Européen	18/6/1989	4/9/1989	DV	FN	NA	1034	EUR_0001034
+00	UNIQUE	BAUDIS	Dominique	14/4/1947	M	37	Journalistes et autres médias	Représentant au Parlement Européen	12/6/1994	2/10/1997	DV	UMP	1177455	1759	RNE_1177455
+00	UNIQUE	BAUDIS	Dominique	14/4/1947	M	37	Journalistes et autres médias	Représentant au Parlement Européen	17/6/1984	20/6/1988	DV	UMP	1177455	1759	RNE_1177455
+00	UNIQUE	BAY	Nicolas	21/12/1977	M	56	Autres professions	Représentant au Parlement Européen	26/5/2019	NA	NA	FN	1180764	124760	RNE_1180764
+00	UNIQUE	BERÈS	Pervenche	10/3/1957	F	47	Fonctionnaires de catégorie A	Représentant au Parlement Européen	13/6/1999	12/6/2004	FM	SOC	1501533	1985	RNE_1501533
+00	UNIQUE	BILDE	Dominique	1/8/1953	F	09	Commercants	Représentant au Parlement Européen	26/5/2019	NA	NA	FN	1379953	124771	RNE_1379953
+06	MASSIF-CENTRAL CENTRE	BOURZAI	Bernadette	28/5/1945	F	62	Retraités de l'enseignement	Représentant au Parlement Européen	13/10/2004	30/9/2008	FM	SOC	1174433	28143	RNE_1174433
+00	UNIQUE	BRIOIS	Steeve	28/11/1972	M	51	Cadres (entreprises publiques)	Représentant au Parlement Européen	26/5/2019	NA	NA	FN	1441	124757	RNE_0001441
+07	ILE-DE-FRANCE	CANFIN	Pascal	22/8/1974	M	37	Journalistes et autres médias	Représentant au Parlement Européen	3/5/2014	24/5/2014	FM	VEC	1177463	96711	RNE_1177463
+07	ILE-DE-FRANCE	CANFIN	Pascal	22/8/1974	M	37	Journalistes et autres médias	Représentant au Parlement Européen	26/5/2019	NA	NA	VEC	1177463	96711	RNE_1177463
+00	UNIQUE	CORNILLET	Thierry	23/7/1951	M	47	Fonctionnaires de catégorie A	Représentant au Parlement Européen	13/6/1999	12/6/2004	FM	UDF	20	4338	RNE_0000020
+00	UNIQUE	DANJEAN	Arnaud	11/2/1971	M	47	Fonctionnaires de catégorie A	Représentant au Parlement Européen	26/5/2019	NA	NA	UMP	1177451	96747	RNE_1177451
+00	UNIQUE	DAUL	Joseph	13/4/1947	M	54	Permanents politiques	Représentant au Parlement Européen	13/6/1999	12/6/2004	FM	UMP	24	4342	RNE_0000024
+00	UNIQUE	DE SARNEZ	Marielle	27/3/1951	F	56	Autres professions	Représentant au Parlement Européen	13/6/1999	12/6/2004	FM	UDF	26	4335	RNE_0000026
+00	UNIQUE	DE VEYRAC	Christine	6/11/1959	F	18	Cadres supérieurs (secteur privé)	Représentant au Parlement Européen	16/6/1999	12/6/2004	FM	UMP	29	4347	RNE_0000029
+00	UNIQUE	DE VILLIERS	Philippe	25/3/1949	M	54	Permanents politiques	Représentant au Parlement Européen	12/6/1994	15/6/1997	DV	DVD	1083	2212	RNE_0001083
+00	UNIQUE	DELLI	Karima	4/3/1979	F	50	Cadres sup. (entreprises publiques)	Représentant au Parlement Européen	26/5/2019	NA	NA	VEC	1177465	96868	RNE_1177465
+00	UNIQUE	DESCAMPS	Marie-Hélène	5/7/1938	F	06	Administrateurs de sociétés	Représentant au Parlement Européen	13/6/2002	14/6/2004	FM	UMP	27	22859	RNE_0000027
+00	UNIQUE	DIDIER	Geoffroy	12/4/1976	M	29	Avocats	Représentant au Parlement Européen	26/5/2019	NA	NA	UMP	1180683	190774	RNE_1180683
+00	UNIQUE	DURAND	Pascal	3/10/1960	M	29	Avocats	Représentant au Parlement Européen	26/5/2019	NA	NA	VEC	1501535	124693	RNE_1501535
+07	ILE-DE-FRANCE	FERREIRA	Anne	18/3/1961	F	43	Enseignants 1er deg.-directeurs école	Représentant au Parlement Européen	13/6/2004	7/6/2009	FM	SOC	32	5735	RNE_0000032
+00	UNIQUE	FONTAINE	Nicole	16/1/1942	F	29	Avocats	Représentant au Parlement Européen	17/6/1984	16/6/2002	DV	UMP	838005	945	RNE_0838005
+00	UNIQUE	FOURTOU	Janelly	4/2/1939	F	57	Sans profession déclarée	Représentant au Parlement Européen	13/6/1999	12/6/2004	FM	UDF	821668	4336	RNE_0821668
+06	MASSIF-CENTRAL CENTRE	GLOANEC MAURIN	Karine	11/1/1958	F	18	Cadres supérieurs (secteur privé)	Représentant au Parlement Européen	11/6/2018	25/5/2019	FM	SOC	70239	193080	RNE_0070239
+02	OUEST	GOULARD	Sylvie	6/12/1964	F	47	Fonctionnaires de catégorie A	Représentant au Parlement Européen	7/6/2004	24/5/2009	FM	MDM	1177447	97137	RNE_1177447
+00	UNIQUE	GUY-QUINT	Catherine	1/9/1949	F	50	Cadres sup. (entreprises publiques)	Représentant au Parlement Européen	13/6/1999	12/6/2004	FM	SOC	43	4314	RNE_0000043
+00	UNIQUE	HAZAN	Adeline	21/1/1956	F	45	Magistrats	Représentant au Parlement Européen	12/6/1999	12/6/2004	DV	SOC	44	4299	RNE_0000044
+03	EST	HAZAN	Adeline	21/1/1956	F	45	Magistrats	Représentant au Parlement Européen	13/6/2004	17/5/2008	DV	SOC	44	4299	RNE_0000044
+07	ILE-DE-FRANCE	HOLLANDE	François	12/8/1954	M	46	GRANDS CORPS DE L ETAT	Représentant au Parlement Européen	13/6/1999	17/12/1999	DV	SOC	724	4285	RNE_0000724
+06	MASSIF-CENTRAL CENTRE	HORTEFEUX	Brice	11/5/1958	M	56	Autres professions	Représentant au Parlement Européen	13/6/2004	10/6/2005	AU	UMP	47	5565	RNE_0000047
+00	UNIQUE	ISLER-BEGUIN	Marie-Anne	30/6/1956	F	56	Autres professions	Représentant au Parlement Européen	13/6/1999	12/6/2004	FM	VEC	48	1833	RNE_0000048
+00	UNIQUE	JADOT	Yannick	27/7/1967	M	56	Autres professions	Représentant au Parlement Européen	26/5/2019	NA	NA	VEC	1177448	96740	RNE_1177448
+00	UNIQUE	JALKH	Jean-François	23/5/1957	M	37	Journalistes et autres médias	Représentant au Parlement Européen	26/5/2019	NA	NA	FN	4679	124770	RNE_0004679
+00	UNIQUE	JAMET	France	5/2/1961	F	54	Permanents politiques	Représentant au Parlement Européen	26/5/2019	NA	NA	FN	46389	189065	RNE_0046389
+00	UNIQUE	LAIGNEL	André	4/12/1942	M	62	Retraités de l'enseignement	Représentant au Parlement Européen	12/6/1994	13/6/1999	FM	SOC	42279	1980	RNE_0042279
+00	UNIQUE	LAIGNEL	André	4/12/1942	M	62	Retraités de l'enseignement	Représentant au Parlement Européen	28/3/2001	4/4/2001	FM	SOC	42279	1980	RNE_0042279
+00	UNIQUE	LAMASSOURE	Alain	10/2/1944	M	56	Autres professions	Représentant au Parlement Européen	13/6/1999	12/6/2004	FM	UMP	54	1204	RNE_0000054
+00	UNIQUE	LANG	Carl	20/9/1957	M	23	Salariés du secteur médical	Représentant au Parlement Européen	12/6/1994	12/6/2004	FM	FN	55	2057	RNE_0000055
+01	NORD-OUEST	LE PEN	Marine	5/8/1968	F	29	Avocats	Représentant au Parlement Européen	7/6/2009	18/6/2017	DV	FN	834072	28210	RNE_0834072
+00	UNIQUE	LEBRETON	Gilles	11/10/1958	M	41	Professeurs de faculté	Représentant au Parlement Européen	26/5/2019	NA	NA	FN	1451031	124738	RNE_1451031
+00	UNIQUE	LEHIDEUX	Bernard	23/9/1944	M	19	Autres cadres (secteur privé)	Représentant au Parlement Européen	25/4/1998	12/6/1999	FM	UDF	28517	2326	RNE_0028517
+00	UNIQUE	LIENEMANN	Marie-Noëlle	12/7/1951	F	62	Retraités de l'enseignement	Représentant au Parlement Européen	17/6/1984	25/6/1988	DV	SOC	7014	1708	RNE_0007014
+00	UNIQUE	LIENEMANN	Marie-Noëlle	12/7/1951	F	62	Retraités de l'enseignement	Représentant au Parlement Européen	6/6/1997	27/3/2001	DV	SOC	7014	1708	RNE_0007014
+00	UNIQUE	LIPIETZ	Alain	19/9/1947	M	13	Ingénieurs	Représentant au Parlement Européen	13/6/1999	12/6/2004	FM	VEC	58	4384	RNE_0000058
+00	UNIQUE	MARTINEZ	Jean-Claude	30/7/1945	M	41	Professeurs de faculté	Représentant au Parlement Européen	5/9/1989	12/6/2004	FM	FN	61	966	RNE_0000061
+00	UNIQUE	MATHIEU	Véronique	27/1/1953	F	52	Employés (autres entrep. publiques)	Représentant au Parlement Européen	13/6/1999	12/6/2004	FM	UMP	62	4412	RNE_0000062
+00	UNIQUE	MAUREL	Emmanuel	10/3/1973	M	44	Professions rattachées à enseignt.	Représentant au Parlement Européen	26/5/2019	NA	NA	SOC	1501522	24505	RNE_1501522
+00	UNIQUE	MÉLIN	Joëlle	26/3/1950	F	24	Médecins	Représentant au Parlement Européen	26/5/2019	NA	NA	FN	3406	124765	RNE_0003406
+00	UNIQUE	MONTEL	Sophie	22/11/1969	F	19	Autres cadres (secteur privé)	Représentant au Parlement Européen	26/5/2019	NA	NA	FN	45362	124769	RNE_0045362
+00	UNIQUE	MORANO	Nadine	6/11/1963	F	05	Industriels-Chefs entreprise	Représentant au Parlement Européen	26/5/2019	NA	NA	UMP	850	72779	RNE_0000850
+00	UNIQUE	MORILLON	Philippe	24/10/1935	M	46	Grands corps de l'état	Représentant au Parlement Européen	13/6/1999	12/6/2004	FM	UDF	64	4332	RNE_0000064
+00	UNIQUE	MOSCOVICI Pierre	16/9/1957	M	46	Grands corps de l'état	Représentant au Parlement Européen	12/6/1994	5/6/1997	DV	SOC	45374	1983	RNE_0045374
+03	EST	MOSCOVICI Pierre	16/9/1957	M	46	Grands corps de l'état	Représentant au Parlement Européen	13/6/2004	25/6/2007	DV	SOC	45374	1983	RNE_0045374
+04	SUD-OUEST	NAVARRO	Robert	M	1/5/1952	64	Retraités des entreprises publiques	Représentant au Parlement Européen	13/6/2004	7/10/2008	DV	46275	28164	RNE_0046275
+00	UNIQUE	OMARJEE	Younous	30/9/1969	M	57	Sans profession déclarée	Représentant au Parlement Européen	26/5/2019	NA	NA	DVG	1190936	30482	RNE_1190936
+00	UNIQUE	PATRIE	Béatrice	12/5/1957	F	45	Magistrats	Représentant au Parlement Européen	13/6/1999	12/6/2004	FM	SOC	69	4309	RNE_0000069
+01	NORD-OUEST	PEILLON	Vincent	7/7/1960	M	42	Professeurs du secondaire et techn.	Représentant au Parlement Européen	13/6/2004	6/6/2009	AU	SOC	836476	28166	RNE_0836476
+00	UNIQUE	POIGNANT	Bernard	19/9/1945	M	62	Retraités de l'enseignement	Représentant au Parlement Européen	13/6/1999	12/6/2004	FM	SOC	71	4311	RNE_0000071
+02	OUEST	REYNAUD	Marie-Line	17/7/1954	F	57	Sans profession déclarée	Représentant au Parlement Européen	13/6/2004	25/6/2007	DV	SOC	824956	28168	RNE_0824956
+00	UNIQUE	RIQUET	Dominique	18/9/1946	M	56	Autres professions	Représentant au Parlement Européen	26/5/2019	NA	NA	UDI	10326	96885	RNE_0010326
+00	UNIQUE	RIVASI	Michèle	9/2/1953	F	56	Autres professions	Représentant au Parlement Européen	26/5/2019	NA	NA	VEC	870044	96743	RNE_0870044
+00	UNIQUE	ROCARD	Michel	23/8/1930	M	46	Grands corps de l'état	Représentant au Parlement Européen	13/6/1999	12/6/2004	FM	SOC	73	1977	RNE_0000073
+00	UNIQUE	ROURE	Martine	28/9/1948	F	54	Permanents politiques	Représentant au Parlement Européen	13/6/1999	12/6/2004	FM	SOC	183490	4313	RNE_0183490
+00	UNIQUE	SANDER	Anne	1/10/1973	F	54	Permanents politiques	Représentant au Parlement Européen	26/5/2019	NA	NA	UMP	1501525	24594	RNE_1501525
+00	UNIQUE	SARKOZY	Nicolas	28/1/1955	M	29	Avocats	Député	Représentant au Parlement Européen	13/6/1999	14/9/1999	DV	UMP	NA	4339	EUR_0004339
+00	UNIQUE	SCARBONCHI	Michel	24/7/1950	M	NA	NA	Représentant au Parlement Européen	5/2/1997	12/6/1999	FM	MRC	NA	2312	EUR_0002312
+00	UNIQUE	SCARBONCHI	Michel	24/7/1950	M	NA	NA	Représentant au Parlement Européen	5/4/2001	12/6/2004	FM	MRC	NA	2312	EUR_0002312
+01	NORD-OUEST	SIMONOT	Chantal	22/9/1962	F	NA	NA	Représentant au Parlement Européen	13/6/2004	30/9/2004	FM	FN	NA	28212	EUR_0028212
+00	UNIQUE	SUDRE	Margie	17/10/1943	F	24	Médecins	Représentant au Parlement Européen	13/6/1999	12/6/2004	FM	UMP	81	4340	RNE_0000081
+06	MASSIF-CENTRAL CENTRE	WEBER	Henri	23/6/1944	M	56	Autres professions	Représentant au Parlement Européen	7/6/2009	24/5/2014	FM	SOC	328	2319	RNE_0000328
+00	UNIQUE	WURTZ	Francis	3/1/1948	M	42	Professeurs du secondaire et techn.	Représentant au Parlement Européen	7/6/1979	12/6/2004	FM	COM	88	1018	RNE_0000088
+

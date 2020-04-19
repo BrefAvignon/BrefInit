@@ -168,11 +168,11 @@ NA	NA	NA	NA	Libellé du canton	MARSEILLE VAUBAN	VAUBAN	Nom existant déjà sous 
 12320	863244	PONCHATEAU	Marie-Yveline	Nom elu	PONCHATEAU	PONCHATEAU THEOBALD	Nom incomplet
 1356	25007	LUCHE	Jean-Claude	Date fin mandat	30/3/2011	1/4/2015	Date incorrecte
 1356	25007	LUCHE	Jean-Claude	Date fin fonction	30/3/2011	1/4/2015	Date incorrecte
-1356	25007	LUCHE	Jean-Claude	Date fin fonction	30/3/2011	1/4/2015	Date incorrecte
 1356	25007	LUCHE	Jean-Claude	Motif fin fonction	NA	FM	Information manquante
 1357	25007	LUCHE	Jean-Claude	ID RNE	25007	NA	Suppression, ligne redondante
 2332	92817	VACHER	Alain	ID RNE	92817	NA	Suppression, ligne redondante
 2977	944054	ANTHOINE	Emmanuelle	Date fin mandat	26/6/2017	NA	Inversion date fonction/mandat
-2977	944054	ANTHOINE	Emmanuelle	Date fin fonction	NA 26/6/2017	Inversion date fonction/mandat
+2977	944054	ANTHOINE	Emmanuelle	Date fin fonction	NA	26/6/2017	Inversion date fonction/mandat
 2979	944054	ANTHOINE	Emmanuelle	ID RNE	944054	NA	Suppression, ligne redondante
 5559	1188991	GUERRA	Anne-Sophie	Date debut mandat	9/3/2008	21/10/2011	Date incorrecte
+10680	1503938	BERNARD	Alain	Date debut mandat	9/3/2008	19/12/2014	Date incorrecte

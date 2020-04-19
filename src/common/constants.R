@@ -70,6 +70,7 @@ COL_ATT_ELU_ID <- "ID universel"
 COL_ATT_ELU_ID_RNE <- "ID RNE"
 COL_ATT_ELU_ID_ASSEMB <- "ID Assemblee"
 COL_ATT_ELU_ID_SENAT <- "ID Senat"
+COL_ATT_ELU_ID_EURO <- "ID Europe"
 COL_ATT_ELU_NAT <- "Nationalite elu"
 COL_ATT_ELU_NOM <- "Nom elu"
 COL_ATT_ELU_PRENOM <- "Prenom elu"
@@ -117,6 +118,7 @@ COLS_ATT_NORMALIZED <- c(
 	COL_ATT_ELU_ID_RNE,
 	COL_ATT_ELU_ID_ASSEMB,
 	COL_ATT_ELU_ID_SENAT,
+	COL_ATT_ELU_ID_EURO,
 	COL_ATT_ELU_NAIS_DATE,
 	COL_ATT_ELU_NAIS_COM,
 	COL_ATT_ELU_NAIS_DPT,
@@ -190,6 +192,7 @@ LONGNAMES[COL_ATT_ELU_ID] <- "Id universel de l'élu"
 LONGNAMES[COL_ATT_ELU_ID_RNE] <- "Id RNE de l'élu"
 LONGNAMES[COL_ATT_ELU_ID_ASSEMB] <- "Id parlementaire de l'élu"
 LONGNAMES[COL_ATT_ELU_ID_SENAT] <- "Id sénatorial de l'élu"
+LONGNAMES[COL_ATT_ELU_ID_EURO] <- "Id européen de l'élu"
 LONGNAMES[COL_ATT_ELU_NAT] <- "Nationalité de l'élu"
 LONGNAMES[COL_ATT_ELU_NOM] <- "Nom de l'élu"
 LONGNAMES[COL_ATT_ELU_PRENOM] <- "Prénom de l'élu"
@@ -239,6 +242,7 @@ BASENAMES[COL_ATT_ELU_ID] <- "elu_id_univ"
 BASENAMES[COL_ATT_ELU_ID_RNE] <- "elu_id_rne"
 BASENAMES[COL_ATT_ELU_ID_ASSEMB] <- "elu_id_assemb"
 BASENAMES[COL_ATT_ELU_ID_SENAT] <- "elu_id_senat"
+BASENAMES[COL_ATT_ELU_ID_EURO] <- "elu_id_euro"
 BASENAMES[COL_ATT_ELU_NAT] <- "elu_nation"
 BASENAMES[COL_ATT_ELU_NOM] <- "elu_nom"
 BASENAMES[COL_ATT_ELU_NUANCE] <- "elu_nuance"
@@ -288,6 +292,7 @@ COL_TYPES[COL_ATT_ELU_ID] <- "nom"
 COL_TYPES[COL_ATT_ELU_ID_RNE] <- "cat"
 COL_TYPES[COL_ATT_ELU_ID_ASSEMB] <- "nom"
 COL_TYPES[COL_ATT_ELU_ID_SENAT] <- "nom"
+COL_TYPES[COL_ATT_ELU_ID_EURO] <- "nom"
 COL_TYPES[COL_ATT_ELU_NAT] <- "cat"
 COL_TYPES[COL_ATT_ELU_NOM] <- "nom"
 COL_TYPES[COL_ATT_ELU_NUANCE] <- "cat"
@@ -408,6 +413,7 @@ FOLDER_IN <- "in"
 	FILE_CORREC_EPCI <- file.path(FOLDER_CORRECS, "correc_EPCI.txt")
 	FILE_CORREC_M <- file.path(FOLDER_CORRECS, "correc_M.txt")
 	FILE_CORREC_S <- file.path(FOLDER_CORRECS, "correc_S.txt")
+	FILE_SUPPL_DE <- file.path(FOLDER_CORRECS, "supp_DE.txt")
 	# second extraction
 	FILE_CORREC_CD2 <- file.path(FOLDER_CORRECS2, "correc_CD.txt")
 	FILE_CORREC_CM2 <- file.path(FOLDER_CORRECS2, "correc_CM.txt")

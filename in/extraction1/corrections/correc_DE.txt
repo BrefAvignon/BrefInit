@@ -1,30 +1,228 @@
 Row	Id RNE	Nom	Prenom	Attribut	ValAvt	ValApr	Commentaire
-47	989	JOULAUD	Marc	Date fin mandat	30/6/2014	NA	Correction pour fusion
-88	850	MORANO	Nadine	Date fin mandat	30/6/2014	NA	Correction pour fusion
-97	833186	ALLIOT-MARIE	Michèle	Date fin mandat	30/6/2014	NA	Correction pour fusion
-145	22359	D'ORNANO	Mireille	Date fin mandat	30/6/2014	NA	Correction pour fusion
-147	87	FLEURY VLASTO	Dominique	Date debut mandat	17/6/2004	1/1/2000	Correction (WP)
+1	1180764	BAY	Nicolas	Date fin mandat	NA	25/5/2019	Date manquante
+2	151833	BOULLAND	Philippe	Date debut mandat	7/6/2009	14/12/2010	Date incorrecte
+3	1441	BRIOIS	Steeve	Date debut mandat	1/7/2014	30/11/2014	Date incorrecte
+3	1441	BRIOIS	Steeve	Date fin mandat	NA	25/5/2019	Date incorrecte
+4	2553	COTTIGNY	Jean-Louis	Date debut mandat	13/6/2004	17/6/2012	Correction (WP)
+5	2553	COTTIGNY	Jean-Louis	Date debut mandat	7/6/2009	12/6/2004	Correction (WP)
+5	2553	COTTIGNY	Jean-Louis	Date fin mandat	30/6/2014	6/6/2009	Correction (WP)
+6	1177465	DELLI	Karima	Date fin mandat	NA	25/5/2019	Date incorrecte
+7	276787	DOUAY	Brigitte	Date fin mandat	30/6/2014	6/6/2009	Date incorrecte
+12	45873	GODDYN	Sylvie	Date fin mandat	NA	25/5/2019	Date manquante
+14	801251	GRUNY	Pascale	Date fin mandat	30/6/2014	13/12/2010	Date incorrecte
+17	55	LANG	Carl	Date fin mandat	30/6/2014	6/6/2009	Date incorrecte
+18	3577	LAVRILLEUX	Jérôme	Date fin mandat	NA	25/5/2019	Date manquante
+19	1238241	LECHEVALIER	Christelle	Date fin mandat	NA	25/5/2019	Date manquante
+23	831396	LE RACHINEL	Fernand	Date fin mandat	30/6/2014	6/6/2009	Date incorrecte
+24	7014	LIENEMANN	Marie-Noëlle	Date fin mandat	30/6/2014	6/6/2009	Correction (WP)
+26	34076	PARGNEAUX	Gilles	Date fin mandat	NA	25/5/2019	Date manquante
+27	836476	PEILLON	Vincent	Date fin mandat	30/6/2014	6/6/2009	Correction (WP)
+29	10326	RIQUET	Dominique	Date fin mandat	NA	25/5/2019	Date manquante
+32	1048123	SAÏFI	Tokia	Date fin mandat	NA	25/5/2019	Mise à jour (WP)
+33	1180761	TROSZCZYNSKI	Mylène	Date fin mandat	NA	25/5/2019	Date manquante
+34	328	WEBER	Henri	Date fin mandat	30/6/2014	6/6/2009	Date incorrecte
+35	233	ARTHUIS	Jean	Date fin mandat	NA	25/5/2019	Date manquante
+36	837985	AUBERT	Marie-Hélène	Date fin mandat	30/6/2014	6/6/2009	Date incorrecte
+37	16394	BECHU	Christophe	Date fin mandat	30/6/2014	1/1/2011	Date incorrecte
+38	1373515	BERGERON	Joëlle	Date fin mandat	NA	25/5/2019	Date manquante
+40	60370	CADEC	Alain	Date fin mandat	NA	25/5/2019	Date manquante
 41	1083	DE VILLIERS	Philippe	Date debut mandat	9/6/2002	13/6/2004	Correction (WP)
 42	1083	DE VILLIERS	Philippe	Date debut mandat	7/6/2009	13/6/1999	Correction (WP)
 42	1083	DE VILLIERS	Philippe	Date fin mandat	30/6/2014	16/12/1999	Correction (WP)
 42	1083	DE VILLIERS	Philippe	Motif fin mandat	NA	DV	Correction (WP)
-4	2553	COTTIGNY	Jean-Louis	Date debut mandat	13/6/2004	17/6/2012	Correction (WP)
-5	2553	COTTIGNY	Jean-Louis	Date debut mandat	7/6/2009	20/7/2004	Correction (WP)
-5	2553	COTTIGNY	Jean-Louis	Date fin mandat	30/6/2014	6/6/2009	Correction (WP)
+42	1083	DE VILLIERS	Philippe	Libelle circo euro	OUEST	UNIQUE	Circonscription incorrecte
+42	1083	DE VILLIERS	Philippe	Code circo euro	02	00	Circonscription incorrecte
+44	4969	GUELLEC	Ambroise	Date fin mandat	30/6/2014	6/6/2009	Date incorrecte
+46	1177448	JADOT	Yannick	Date fin mandat	NA	25/5/2019	Date manquante
+47	989	JOULAUD	Marc	ID RNE	989	NA	Suppression, ligne redondante
+48	989	JOULAUD	Marc	Date fin mandat	NA	25/5/2019	Date manquante
+50	1451031	LEBRETON	Gilles	Date fin mandat	NA	25/5/2019	Date manquante
+51	187526	LE BRUN	Agnès	Date debut mandat	7/6/2009	2/1/2011	Date incorrecte
 52	526701	LE FOLL	Stéphane	Date fin mandat	30/6/2014	6/6/2009	Correction (WP)
 53	526701	LE FOLL	Stéphane	Date fin mandat	30/6/2014	15/5/2012	Correction (WP)
-27	836476	PEILLON	Vincent	Date fin mandat	30/6/2014	6/6/2009	Correction (WP)
-165	836476	PEILLON	Vincent	Date fin mandat	30/6/2014	15/5/2015	Correction (WP)
-166	836476	PEILLON	Vincent	Date fin mandat	NA	1/7/2019	Mise à jour (WP)
+55	1501522	MAUREL	Emmanuel	Date fin mandat	NA	25/5/2019	Date manquante
+56	64	MORILLON	Philippe	Date debut mandat	13/6/1999	13/6/2004	Date incorrecte
+56	64	MORILLON	Philippe	Date fin mandat	30/6/2014	6/6/2009	Date incorrecte
+57	4604	MORIN	Elisabeth	Nom elu	MORIN	MORIN-CHARTIER	Nom incomplet
+57	4604	MORIN-CHARTIER	Elisabeth	Date fin mandat	30/6/2014	6/6/2009	Date incorrecte
+58	4604	MORIN	Elisabeth	Nom elu	MORIN	MORIN-CHARTIER	Nom incomplet
+59	4604	MORIN-CHARTIER	Elisabeth	Date fin mandat	NA	25/5/2019	Date manquante
+60	71	POIGNANT	Bernard	Date fin mandat	30/6/2014	6/6/2009	Date incorrecte
+61	559504	THOMAS	Isabelle	Date debut mandat	7/6/2009	16/5/2012	Date incorrecte
+62	559504	THOMAS	Isabelle	Date fin mandat	NA	25/5/2019	Date manquante
+63	27702	VAUGRENARD	Yannick	Date fin mandat	30/6/2014	6/6/2009	Date incorrecte
+66	16800	BEAUPUY	Jean-Marie	Date fin mandat	30/6/2014	6/6/2009	Date incorrecte
+68	1379953	BILDE	Dominique	Date fin mandat	NA	25/5/2019	Date manquante
+69	154673	BOURSIER	Catherine	Date fin mandat	30/6/2014	6/6/2009	Date incorrecte
+71	1177451	DANJEAN	Arnaud	Date fin mandat	NA	25/5/2019	Date manquante
+72	24	DAUL	Joseph	Date debut mandat	13/6/1999	13/6/2004	Date incorrecte
+72	24	DAUL	Joseph	Date fin mandat	30/6/2014	6/6/2009	Date incorrecte
+74	41	GOLLNISCH	Bruno	Date debut mandat	13/6/1999	17/6/1989	Date incorrecte
+74	41	GOLLNISCH	Bruno	Date fin mandat	30/6/2014	12/6/2004	Date incorrecte
+74	41	GOLLNISCH	Bruno	Libelle circo euro	EST	UNIQUE	Circonscription incorrecte
+74	41	GOLLNISCH	Bruno	Code circo euro	03	00	Circonscription incorrecte
+75	41	GOLLNISCH	Bruno	Date debut mandat	7/6/2009	13/6/2004	Date incorrecte
+77	1786	GRIESBECK	Nathalie	Date debut mandat	7/6/2009	9/7/2009	Date incorrecte
+78	1786	GRIESBECK	Nathalie	Date fin mandat	NA	25/5/2019	Date manquante
+79	16024	HAMON	Benoît	Date fin mandat	30/6/2014	6/6/2009	Date incorrecte
+81	48	ISLER-BEGUIN	Marie-Anne	Date debut mandat 13/6/1999	13/6/2004	Date incorrecte
+81	48	ISLER-BEGUIN	Marie-Anne	Date fin mandat 30/6/2014	6/6/2009	Date incorrecte
+82	4679	JALKH	Jean-François	Date fin mandat	NA	25/5/2019	Date manquante
+83	1177453	KAHN	Jean-François	Date fin mandat	30/6/2014	8/7/2009	date incorrecte
+84	1501524	MARTIN	Edouard	Date fin mandat	NA	25/5/2019	Date manquante
+85	62	MATHIEU	Véronique	Date debut mandat 13/6/1999	13/6/2004	Date incorrecte
+87	45362	MONTEL	Sophie	Date fin mandat	NA	25/5/2019	Date manquante
+88	850	MORANO	Nadine	Date fin mandat	30/6/2014	NA	Correction pour fusion
+89	850	MORANO	Nadine	Date fin mandat	NA	25/5/2019	Date manquante
+90	1376985	PHILIPPOT	Florian	Date fin mandat	NA	25/5/2019	Date manquante
+91	267965	PRIBETICH	Pierre	Date debut mandat	17/6/2007	25/6/2007	Date incorrecte
+91	267965	PRIBETICH	Pierre	Date fin mandat	30/6/2014	6/6/2009	Date incorrecte
+92	1501525	SANDER	Anne	Date fin mandat	NA	25/5/2019	Date manquante
+97	833186	ALLIOT-MARIE	Michèle	Date debut mandat	25/5/2014	18/6/1989	Date incorrecte
+97	833186	ALLIOT-MARIE	Michèle	Date fin mandat	30/6/2014	30/3/1993	Date incorrecte
+97	833186	ALLIOT-MARIE	Michèle	Libelle circo euro	SUD-OUEST	UNIQUE	Date incorrecte
+97	833186	ALLIOT-MARIE	Michèle	Code circo euro	04	00	Date incorrecte
+98	833186	ALLIOT-MARIE	Michèle	Date fin mandat	30/6/2014	25/5/2019	Date incorrecte
+99	4908	ANDRIEU	Eric	Date debut mandat	7/6/2009	16/5/2012	Date incorrecte
+100	4908	ANDRIEU	Eric	Date fin mandat	NA	25/5/2019	Date incorrecte
+101	962324	ARIF	Kader	Date fin mandat	30/6/2014	6/6/2009	Correction (WP)
+102	962324	ARIF	Kader	Date fin mandat	30/6/2014	15/5/2012	Correction (WP)
+103	1177455	BAUDIS	Dominique	Date fin mandat	30/6/2014	22/6/2011	Date incorrecte
+104	1501527	BOVÉ	José	Date fin mandat	30/6/2014	6/6/2009	Date incorrecte
+105	1501527	BOVÉ	José	Date fin mandat	NA	25/5/2019	Date incorrecte
+105	1501527	BOVÉ	José	Motif fin mandat	NA	FM	Date incorrecte
+108	837987	CAVADA	Jean-Marie	Date fin mandat	30/6/2014	6/6/2009	Date incorrecte
+109	531559	COLOMBIER	Jacques	Date debut mandat	1/2/2018	2/2/2018	Date manquante
+109	531559	COLOMBIER	Jacques	Date fin mandat	NA	25/5/2019	Date manquante
+110	29	DE VEYRAC	Christine	Date debut mandat	16/6/1999	13/6/2004	Date incorrecte
+114	46389	JAMET	France	Date fin mandat	NA	25/5/2019	Date incorrecte
+115	54	LAMASSOURE	Alain	Date debut mandat	13/6/1999	13/6/2004	Date incorrecte
+117	165355	LAPERROUZE	Anne	Date fin mandat	30/6/2014	6/6/2009	Date incorrecte
+118	61	MARTINEZ	Jean-Claude	Date debut mandat	13/6/1999	13/6/2004	Date incorrecte
+118	61	MARTINEZ	Jean-Claude	Date fin mandat	30/6/2014	6/6/2009	Date incorrecte
+121	3406	MÉLIN	Joëlle	Date fin mandat	NA	25/5/2019	Date manquante
+122	69	PATRIE	Béatrice	Date debut mandat	13/6/1999	13/6/2004	Date incorrecte
+122	69	PATRIE	Béatrice	Date fin mandat	30/6/2014	6/6/2009	Date incorrecte
+123	833812	PROUST	Franck	Date debut mandat	7/6/2009	23/6/2011	Date incorrecte
+124	833812	PROUST	Franck	Date fin mandat	NA	25/5/2019	Date incorrecte
+126	1177458	ROCHEFORT	Robert	Date fin mandat	NA	25/5/2019	Date incorrecte
+127	1501529	ROZIÈRE	Virginie	Date fin mandat	NA	25/5/2019	Date incorrecte
+129	799238	TEYCHENNE	Michel	Date fin mandat	30/6/2014	6/6/2009	Date incorrecte
+130	834082	VIEU	Marie-Pierre	Date fin mandat	NA	25/5/2019	Date incorrecte
+133	4308	ARNAUTU	Marie-Christine	Date fin mandat	NA	25/5/2019	Date incorrecte
+141	20	CORNILLET	Thierry	Date debut mandat	13/6/1999	13/6/2004	Date incorrecte
+142	20	CORNILLET	Thierry	Date fin mandat	NA	25/5/2019	Date manquante
+141	20	CORNILLET	Thierry	Date fin mandat	30/6/2014	6/6/2009	Date incorrecte
+144	750145	DANTIN	Michel	Date fin mandat	NA	25/5/2019	Date incorrecte
+145	22359	D'ORNANO	Mireille	ID RNE	22359	NA	Suppression, ligne redondante
+146	22359	D'ORNANO	Mireille	Date fin mandat	NA	25/5/2019	Date incorrecte
+147	87	FLEURY VLASTO	Dominique	Date debut mandat	17/6/2004	1/1/2000	Correction (WP)
+151	41	GOLLNISCH	Bruno	Date fin mandat	NA	25/5/2019	Date incorrecte
+152	1177447	GOULARD	Sylvie	Date fin mandat	1/5/2017	17/5/2017	Date incorrecte
+153	1501530	GROSSETÊTE	Françoise	Date debut mandat	13/6/1999	12/6/1994	Correction (WP)
+153	1501530	GROSSETÊTE	Françoise	Date fin mandat	30/6/2014	12/6/2004	Date incorrecte
+153	1501530	GROSSETÊTE	Françoise	Libelle circo euro	SUD-EST	UNIQUE	Circonscription incorrecte
+153	1501530	GROSSETÊTE	Françoise	Code circo euro	05	00	Circonscription incorrecte
+154	1501530	GROSSETÊTE	Françoise	Date debut mandat	7/6/2009	13/6/2004	Correction (WP)
+155	1501530	GROSSETÊTE	Françoise	Date fin mandat	NA	25/5/2019	Mise à jour (WP)
+156	45181	GUILLAUME	Sylvie	Date fin mandat	30/6/2014	25/5/2019	Date incorrecte
+157	45181	GUILLAUME	Sylvie	Date debut mandat	1/7/2014	26/5/2019	Date incorrecte
+157	45181	GUILLAUME	Sylvie	Libelle circo euro	SUD-EST	UNIQUE	Circonscription incorrecte
+157	45181	GUILLAUME	Sylvie	Code circo euro	05	00	Circonscription incorrecte
+158	1524504	LALONDE	Patricia	Date debut mandat	1/5/2017	18/5/2017	Date incorrecte
+158	1524504	LALONDE	Patricia	Date fin mandat	NA	25/5/2019	Date incorrecte
 160	837980	LE PEN	Jean-Marie	Date debut mandat	7/6/2009	24/7/1984	Correction (WP)
 160	837980	LE PEN	Jean-Marie	Date fin mandat	30/6/2014	10/4/2003	Correction (WP)
 160	837980	LE PEN	Jean-Marie	Motif fin mandat	NA	DO	Correction (WP)
-161	837980	LE PEN	Jean-Marie	Date fin mandat	NA	1/7/2019	Mise à jour (WP)
-205	837987	CAVADA	Jean-Marie	Date fin mandat	NA	1/7/2019	Mise à jour (WP)
-101	962324	ARIF	Kader	Date fin mandat	30/6/2014	6/6/2009	Correction (WP)
-102	962324	ARIF	Kader	Date fin mandat	30/6/2014	15/5/2012	Correction (WP)
-32	1048123	SAÏFI	Tokia	Date fin mandat	NA	1/7/2019	Mise à jour (WP)
-153	1501530	GROSSETÊTE	Françoise	Date debut mandat	13/6/1999	12/6/1994	Correction (WP)
-155	1501530	GROSSETÊTE	Françoise	Date fin mandat	NA	1/7/2019	Mise à jour (WP)
+160	837980	LE PEN	Jean-Marie	Libelle circo euro	SUD-EST	UNIQUE	Circonscription incorrecte
+160	837980	LE PEN	Jean-Marie	Code circo euro	05	00	Circonscription incorrecte
+161	837980	LE PEN	Jean-Marie	Date fin mandat	NA	25/5/2019	Mise à jour (WP)
+163	24716	MARTIN	Dominique	Date fin mandat	NA	25/5/2019	Mise à jour (WP)
+164	335740	MUSELIER	Renaud	Date fin mandat	NA	25/5/2019	Mise à jour (WP)
+165	836476	PEILLON	Vincent	Date fin mandat	30/6/2014	15/5/2012	Correction (WP)
+166	836476	PEILLON	Vincent	Date fin mandat	NA	25/5/2019	Mise à jour (WP)
+167	870044	RIVASI	Michèle	Date fin mandat	30/6/2014	24/5/2019	Date incorrecte
+168	870044	RIVASI	Michèle	Date debut mandat	1/7/2014	25/5/2019	Date incorrecte
+169	73	ROCARD	Michel	Date debut mandat	13/6/1999	13/6/2004	Date incorrecte
+169	73	ROCARD	Michel	Date fin mandat	30/6/2014	31/1/2009	Date incorrecte
+169	73	ROCARD	Michel	Motif fin mandat	NA	DV	Information manquante
+170	183490	ROURE	Martine	Date debut mandat	13/6/1999	13/6/2004	Date incorrecte
+170	183490	ROURE	Martine	Date fin mandat	30/6/2014	6/6/2009	Date incorrecte
+170	183490	ROURE	Martine	Motif fin mandat	NA	FM	Date incorrecte
+175 1177460	VERGIAT	Marie-Christine	Date fin mandat	NA	25/5/2019	Mise à jour
+177	770065	AUDY	Jean-Pierre	Date debut mandat	1/6/2004	11/6/2005	Date incorrecte
+177	770065	AUDY	Jean-Pierre	Date fin mandat	30/6/2014	6/6/2009	Date incorrecte
+181	1180784	DELAHAYE	Angélique	Date fin mandat	NA	25/5/2019	Date manquante
+182	164294	DENANOT	Jean-Paul	Date fin mandat	30/6/2014	6/6/2009	Date incorrecte
+182	164294	DENANOT	Jean-Paul	Date fin mandat	NA	10/6/2018	Date incorrecte
+184	27	DESCAMPS	Marie-Hélène	Date debut mandat	12/6/2002	13/6/2004	Date incorrecte
+184	27	DESCAMPS	Marie-Hélène	Date fin mandat	30/6/2014	6/6/2009	Date incorrecte
+184	27	DESCAMPS	Marie-Hélène	Motif fin mandat	NA	FM	Information manquante
+185	821668	FOURTOU	Janelly	Date debut mandat	13/6/1999	13/6/2004	Date incorrecte
+185	821668	FOURTOU	Janelly	Date fin mandat	30/6/2014	6/6/2009	Date incorrecte
+185	821668	FOURTOU	Janelly	Motif fin mandat	NA	FM	Information manquante
+186	43	GUY-QUINT	Catherine	Date debut mandat	13/6/1999	13/6/2004	Date incorrecte
+186	43	GUY-QUINT	Catherine	Date fin mandat	30/6/2014	6/6/2009	Date incorrecte
+186	43	GUY-QUINT	Catherine	Motif fin mandat	NA	FM	Information manquante
+187	47	HORTEFEUX	Brice	Date debut mandat	7/6/2009	15/9/1999	Date incorrecte
+187	47	HORTEFEUX	Brice	Date fin mandat	30/6/2014	12/6/2004	Date incorrecte
+187	47	HORTEFEUX	Brice	Libelle circo euro	MASSIF-CENTRAL CENTRE	UNIQUE	Date incorrecte
+187	47	HORTEFEUX	Brice	Code circo euro	06	00	Date incorrecte
+188	47	HORTEFEUX	Brice	Date debut mandat	7/6/2009	4/11/2011	Date incorrecte
+190	42279	LAIGNEL	André	Date fin mandat	30/6/2014	6/6/2009	Date incorrecte
+191	345742	LOISEAU	Philippe	Date fin mandat	NA	25/5/2019	Date manquante
+192	1501531	MONOT	Bernard	Date fin mandat	NA	25/5/2019	Date manquante
+194	701641	SOULLIE	Catherine	Date fin mandat	30/6/2014	3/11/2011	Date incorrecte
+196	833896	BALAS	Guillaume	Date fin mandat	NA	25/5/2019	Date manquante
+197	1177462	BARNIER	Michel	Date fin mandat	30/6/2014	10/2/2010	Date incorrecte
+198	1501533	BERÈS	Pervenche	Date debut mandat	13/6/1999	13/6/2004	Date incorrecte
+198	1501533	BERÈS	Pervenche	Date fin mandat	30/6/2014	6/6/2009	Date incorrecte
+200	1501533	BERÈS	Pervenche	Date fin mandat	NA	25/5/2019	Date manquante
+201	1108196	BICEP	Jean-Jacob	Date debut mandat	7/6/2009	16/5/2015	Date incorrecte
+201	1108196	BICEP	Jean-Jacob	Date fin mandat	30/6/2014	2/5/2014	Date incorrecte
+202	254184	BOUTONNET	Marie-Christine	Date fin mandat	NA	25/5/2019	Date manquante
+203	1177463	CANFIN	Pascal	Date fin mandat	30/6/2014	15/5/2012	Date incorrecte
+205	837987	CAVADA	Jean-Marie	Date fin mandat	NA	25/5/2019	Mise à jour (WP)
+206	1501534	CHAUPRADE	Aymeric	Date fin mandat	NA	25/5/2019	Date manquante
+209	21	COUTEAUX	Paul	Date fin mandat	30/6/2014	6/6/2009	Date incorrecte
+211	1107978	DATI	Rachida	Date fin mandat	NA	25/5/2019	Date manquante
+213	26	DE SARNEZ	Marielle	Date debut mandat	13/6/1999	13/6/2004	Date incorrecte
+213	26	DE SARNEZ	Marielle	Date fin mandat	30/6/2014	6/6/2009	Date incorrecte
+216	28	DESIR	Harlem	Date debut mandat	13/6/2004	13/6/1999	Date incorrecte
+216	28	DESIR	Harlem	Date fin mandat	30/6/2014	8/4/2014	Date incorrecte
+218	1180683	DIDIER	Geoffroy	Date fin mandat	NA	25/5/2019	Date manquante
+219	1501535	DURAND	Pascal	Date fin mandat	NA	25/5/2019	Date manquante
+220	32	FERREIRA	Anne	Date debut mandat	17/1/2000	18/12/1999	Date incorrecte
+220	32	FERREIRA	Anne	Date fin mandat	13/7/2009	12/6/2004	Date incorrecte
+220	32	FERREIRA	Anne	Libelle circo euro	ILE-DE-FRANCE	UNIQUE	Circonscription incorrecte
+220	32	FERREIRA	Anne	Code circo euro	07	00	Circonscription incorrecte
+221	838005	FONTAINE	Nicole	Date fin mandat	13/7/2009	6/6/2009	Date incorrecte
+223	838003	GAUBERT	Patrick	Date fin mandat	30/6/2014	6/6/2009	Date incorrecte
+225	1177467	JOLY	Eva	Date fin mandat	NA	25/5/2019	Date manquante
+227	163156	JUVIN	Philippe	Date fin mandat	NA	25/5/2019	Date manquante
+228	54	LAMASSOURE	Alain	Date fin mandat	NA	25/5/2019	Date manquante
+229	1184650	LE GRIP	Constance	Date debut mandat	7/6/2009	11/2/2010	Date incorrecte
+231	28517	LEHIDEUX	Bernard	Date fin mandat	30/6/2014	6/6/2009	Date incorrecte
+233	1177468	LE HYARIC	Patrick	Date fin mandat	NA	25/5/2019	Date manquante
+234	834072	LE PEN	Marine	Date fin mandat	30/6/2014	6/6/2009	Date incorrecte
+235	58	LIPIETZ	Alain	Date debut mandat	13/6/1999	13/6/2004	Date incorrecte
+235	58	LIPIETZ	Alain	Date fin mandat	30/6/2014	6/6/2009	Date incorrecte
+236	336999	REVAULT D'ALLONNES	Christine	Date debut mandat	7/6/2009	9/4/2014	Date incorrecte
+236	336999	REVAULT D'ALLONNES	Christine	Date fin mandat	NA	25/5/2019	Date manquante
+239	77	SAVARY	Gilles	Date fin mandat	30/6/2014	6/6/2009	Date incorrecte
+240	1423272	SCHAFFHAUSER	Jean-Luc	Date fin mandat	NA	25/5/2019	Date manquante
+241	336711	SCHAPIRA	Pierre	Date fin mandat	30/6/2014	6/6/2009	Date incorrecte
+242	336718	TOUBON	Jacques	Date fin mandat	30/6/2014	6/6/2009	Date incorrecte
+243	88	WURTZ	Francis	Date debut mandat	13/6/1999	13/6/2004	Date incorrecte
+243	88	WURTZ	Francis	Date fin mandat	30/6/2014	6/6/2009	Date incorrecte
+244	823678	DE GRANDMAISON	Madeleine	Date fin mandat	30/6/2014	6/6/2009	Date incorrecte
+245	1184607	HOARAU	Elie	Date fin mandat	30/6/2014	4/1/2012	Date incorrecte
+246	802	MANSCOUR	Louis-Joseph	Date fin mandat	NA	25/5/2019	Date manquante
+247	867262	NERIS	Catherine	Date fin mandat	30/6/2014	6/6/2009	Date incorrecte
+248	1190936	OMARJEE	Younous	Date debut mandat	7/6/2009	5/1/2012	Date incorrecte
+249	1190936	OMARJEE	Younous	Date fin mandat	NA	25/5/2019	Date manquante
+251	1177470	PONGA	Maurice	Date fin mandat	NA	25/5/2019	Date manquante
+252	81	SUDRE	Margie	Date debut mandat	13/6/2004	6/6/2009	Date incorrecte
 NA	NA	NA	NA	Date debut mandat	1/7/2014	25/5/2014	Rectifié pour date election
 NA	NA	NA	NA	Date fin mandat	30/6/2014	24/5/2014	Rectifié pour date election
+

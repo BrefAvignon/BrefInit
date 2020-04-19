@@ -178,6 +178,14 @@ source("src/common/include.R")
 # dans AN, certaines personnes ont 2 fonctions en même temps
 # ex. dubois
 
+# TODO
+# Sarko n'apparait ds aucune base, même pas AN
+# >> rajouter tous les présidents
+
+# TODO
+# vérifier qu'on ne fusionne pas des mandats dont les circo sont différentes...
+# vérifier que quand on divise un mandat, on met un motif FM
+
 #################################
 # Check logs and files
 # position test D/CD/
@@ -194,3 +202,12 @@ source("src/common/include.R")
 # C3=
 # C4=
 #################################
+
+# PHILIPPOT	Florian	110977
+
+# - rajouter les vieux mandats manquants en passant en revue les MEP hors-période
+# - faire la liste des ID
+# - rajouter sarko dans les députés
+
+# TODO
+# tester l'unicité des nouveaux ids
