@@ -3,12 +3,13 @@ Row	Id RNE	Nom	Prenom	Attribut	ValAvt	ValApr	Commentaire
 2	151833	BOULLAND	Philippe	Date debut mandat	7/6/2009	14/12/2010	Date incorrecte
 3	1441	BRIOIS	Steeve	Date debut mandat	1/7/2014	30/11/2014	Date incorrecte
 3	1441	BRIOIS	Steeve	Date fin mandat	NA	25/5/2019	Date incorrecte
-4	2553	COTTIGNY	Jean-Louis	Date debut mandat	13/6/2004	17/6/2012	Correction (WP)
+4	2553	COTTIGNY	Jean-Louis	Date debut mandat	13/6/2004	21/6/2012	Correction (WP)
 5	2553	COTTIGNY	Jean-Louis	Date debut mandat	7/6/2009	12/6/2004	Correction (WP)
 5	2553	COTTIGNY	Jean-Louis	Date fin mandat	30/6/2014	6/6/2009	Correction (WP)
 6	1177465	DELLI	Karima	Date fin mandat	NA	25/5/2019	Date incorrecte
 7	276787	DOUAY	Brigitte	Date fin mandat	30/6/2014	6/6/2009	Date incorrecte
 12	45873	GODDYN	Sylvie	Date fin mandat	NA	25/5/2019	Date manquante
+13	443809	GRELIER	Estelle	Date fin mandat	30/6/2014	20/6/2012	Date manquante
 14	801251	GRUNY	Pascale	Date fin mandat	30/6/2014	13/12/2010	Date incorrecte
 17	55	LANG	Carl	Date fin mandat	30/6/2014	6/6/2009	Date incorrecte
 18	3577	LAVRILLEUX	Jérôme	Date fin mandat	NA	25/5/2019	Date manquante
@@ -40,10 +41,12 @@ Row	Id RNE	Nom	Prenom	Attribut	ValAvt	ValApr	Commentaire
 51	187526	LE BRUN	Agnès	Date debut mandat	7/6/2009	2/1/2011	Date incorrecte
 52	526701	LE FOLL	Stéphane	Date fin mandat	30/6/2014	6/6/2009	Correction (WP)
 53	526701	LE FOLL	Stéphane	Date fin mandat	30/6/2014	15/5/2012	Correction (WP)
+54	641835	LEFRANCOIS	Roselyne	Date fin mandat	30/6/2014	6/6/2009	Date incorrecte
 55	1501522	MAUREL	Emmanuel	Date fin mandat	NA	25/5/2019	Date manquante
 56	64	MORILLON	Philippe	Date debut mandat	13/6/1999	13/6/2004	Date incorrecte
 56	64	MORILLON	Philippe	Date fin mandat	30/6/2014	6/6/2009	Date incorrecte
 57	4604	MORIN	Elisabeth	Nom elu	MORIN	MORIN-CHARTIER	Nom incomplet
+57	4604	MORIN-CHARTIER	Elisabeth	Date debut mandat	18/5/2007	26/6/2007	Date incorrecte
 57	4604	MORIN-CHARTIER	Elisabeth	Date fin mandat	30/6/2014	6/6/2009	Date incorrecte
 58	4604	MORIN	Elisabeth	Nom elu	MORIN	MORIN-CHARTIER	Nom incomplet
 59	4604	MORIN-CHARTIER	Elisabeth	Date fin mandat	NA	25/5/2019	Date manquante
@@ -62,6 +65,7 @@ Row	Id RNE	Nom	Prenom	Attribut	ValAvt	ValApr	Commentaire
 74	41	GOLLNISCH	Bruno	Libelle circo euro	EST	UNIQUE	Circonscription incorrecte
 74	41	GOLLNISCH	Bruno	Code circo euro	03	00	Circonscription incorrecte
 75	41	GOLLNISCH	Bruno	Date debut mandat	7/6/2009	13/6/2004	Date incorrecte
+76	1786	GRIESBECK	Nathalie	Date fin mandat	30/6/2014	6/6/2009	Date incorrecte
 77	1786	GRIESBECK	Nathalie	Date debut mandat	7/6/2009	9/7/2009	Date incorrecte
 78	1786	GRIESBECK	Nathalie	Date fin mandat	NA	25/5/2019	Date manquante
 79	16024	HAMON	Benoît	Date fin mandat	30/6/2014	6/6/2009	Date incorrecte
@@ -75,11 +79,12 @@ Row	Id RNE	Nom	Prenom	Attribut	ValAvt	ValApr	Commentaire
 88	850	MORANO	Nadine	Date fin mandat	30/6/2014	NA	Correction pour fusion
 89	850	MORANO	Nadine	Date fin mandat	NA	25/5/2019	Date manquante
 90	1376985	PHILIPPOT	Florian	Date fin mandat	NA	25/5/2019	Date manquante
-91	267965	PRIBETICH	Pierre	Date debut mandat	17/6/2007	25/6/2007	Date incorrecte
+91	267965	PRIBETICH	Pierre	Date debut mandat	17/6/2007	26/6/2007	Date incorrecte
 91	267965	PRIBETICH	Pierre	Date fin mandat	30/6/2014	6/6/2009	Date incorrecte
 92	1501525	SANDER	Anne	Date fin mandat	NA	25/5/2019	Date manquante
 97	833186	ALLIOT-MARIE	Michèle	Date debut mandat	25/5/2014	18/6/1989	Date incorrecte
 97	833186	ALLIOT-MARIE	Michèle	Date fin mandat	30/6/2014	30/3/1993	Date incorrecte
+97	833186	ALLIOT-MARIE	Michèle	Motif fin mandat	NA	DV	Date incorrecte
 97	833186	ALLIOT-MARIE	Michèle	Libelle circo euro	SUD-OUEST	UNIQUE	Circonscription incorrecte
 97	833186	ALLIOT-MARIE	Michèle	Code circo euro	04	00	Circonscription incorrecte
 98	833186	ALLIOT-MARIE	Michèle	Date fin mandat	NA	25/5/2019	Date incorrecte
@@ -95,6 +100,7 @@ Row	Id RNE	Nom	Prenom	Attribut	ValAvt	ValApr	Commentaire
 109	531559	COLOMBIER	Jacques	Date debut mandat	1/2/2018	2/2/2018	Date manquante
 109	531559	COLOMBIER	Jacques	Date fin mandat	NA	25/5/2019	Date manquante
 110	29	DE VEYRAC	Christine	Date debut mandat	16/6/1999	13/6/2004	Date incorrecte
+114	46389	JAMET	France	Date debut mandat	18/6/2017	20/6/2017	Date incorrecte
 114	46389	JAMET	France	Date fin mandat	NA	25/5/2019	Date incorrecte
 115	54	LAMASSOURE	Alain	Date debut mandat	13/6/1999	13/6/2004	Date incorrecte
 117	165355	LAPERROUZE	Anne	Date fin mandat	30/6/2014	6/6/2009	Date incorrecte
@@ -108,15 +114,21 @@ Row	Id RNE	Nom	Prenom	Attribut	ValAvt	ValApr	Commentaire
 126	1177458	ROCHEFORT	Robert	Date fin mandat	NA	25/5/2019	Date incorrecte
 127	1501529	ROZIÈRE	Virginie	Date fin mandat	NA	25/5/2019	Date incorrecte
 129	799238	TEYCHENNE	Michel	Date fin mandat	30/6/2014	6/6/2009	Date incorrecte
+130	834082	VIEU	Marie-Pierre	Date debut mandat	18/6/2017	20/6/2017	Date incorrecte
 130	834082	VIEU	Marie-Pierre	Date fin mandat	NA	25/5/2019	Date incorrecte
+131	957577	ABAD	Damien	Date fin mandat	30/6/2014	20/6/2012	Date incorrecte
 133	4308	ARNAUTU	Marie-Christine	Date fin mandat	NA	25/5/2019	Date incorrecte
+137	593459	BERRA	Nora	Date debut mandat	7/6/2009	21/6/2012	Date incorrecte
+139	341305	BONO	Guy	Date fin mandat	30/6/2014	6/6/2009	Date incorrecte
+140	15	CARLOTTI	Marie-Arlette	Date fin mandat	30/6/2014	6/6/2009	Date incorrecte
 141	20	CORNILLET	Thierry	Date debut mandat	13/6/1999	13/6/2004	Date incorrecte
 142	20	CORNILLET	Thierry	Date fin mandat	NA	25/5/2019	Date manquante
 141	20	CORNILLET	Thierry	Date fin mandat	30/6/2014	6/6/2009	Date incorrecte
 144	750145	DANTIN	Michel	Date fin mandat	NA	25/5/2019	Date incorrecte
 145	22359	D'ORNANO	Mireille	ID RNE	22359	NA	Suppression, ligne redondante
 146	22359	D'ORNANO	Mireille	Date fin mandat	NA	25/5/2019	Date incorrecte
-147	87	FLEURY VLASTO	Dominique	Date debut mandat	17/6/2004	1/1/2000	Correction (WP)
+147	87	FLEURY VLASTO	Dominique	Date fin mandat	30/6/2014	6/6/2009	Correction (WP)
+150	837981	GIBAULT	Claire	Date fin mandat	30/6/2014	6/6/2009	Date incorrecte
 151	41	GOLLNISCH	Bruno	Date fin mandat	NA	25/5/2019	Date incorrecte
 152	1177447	GOULARD	Sylvie	Date fin mandat	1/5/2017	17/5/2017	Date incorrecte
 153	1501530	GROSSETÊTE	Françoise	Date debut mandat	13/6/1999	12/6/1994	Correction (WP)
@@ -137,23 +149,30 @@ Row	Id RNE	Nom	Prenom	Attribut	ValAvt	ValApr	Commentaire
 160	837980	LE PEN	Jean-Marie	Libelle circo euro	SUD-EST	UNIQUE	Circonscription incorrecte
 160	837980	LE PEN	Jean-Marie	Code circo euro	05	00	Circonscription incorrecte
 161	837980	LE PEN	Jean-Marie	Date fin mandat	NA	25/5/2019	Mise à jour (WP)
+162	837982	LOUIS	Patrick	Date fin mandat	30/6/2014	6/6/2009	Date incorrecte
 163	24716	MARTIN	Dominique	Date fin mandat	NA	25/5/2019	Mise à jour (WP)
 164	335740	MUSELIER	Renaud	Date fin mandat	NA	25/5/2019	Mise à jour (WP)
 165	836476	PEILLON	Vincent	Date fin mandat	30/6/2014	15/5/2012	Correction (WP)
 166	836476	PEILLON	Vincent	Date fin mandat	NA	25/5/2019	Mise à jour (WP)
-167	870044	RIVASI	Michèle	Date fin mandat	30/6/2014	24/5/2019	Date incorrecte
-168	870044	RIVASI	Michèle	Date debut mandat	1/7/2014	25/5/2019	Date incorrecte
+168	870044	RIVASI	Michèle	Date fin mandat	NA	25/5/2019	Date incorrecte
 169	73	ROCARD	Michel	Date debut mandat	13/6/1999	13/6/2004	Date incorrecte
 169	73	ROCARD	Michel	Date fin mandat	30/6/2014	31/1/2009	Date incorrecte
 170	183490	ROURE	Martine	Date debut mandat	13/6/1999	13/6/2004	Date incorrecte
 170	183490	ROURE	Martine	Date fin mandat	30/6/2014	6/6/2009	Date incorrecte
 170	183490	ROURE	Martine	Motif fin mandat	NA	FM	Date incorrecte
+171	837999	SCHENARDI	Lydia	Date fin mandat	30/6/2014	31/1/2009	Date incorrecte
+171	837999	SCHENARDI	Lydia	Motif fin mandat	NA	DV	Date incorrecte
+172	21524	SOULAGE	Bernard	Date fin mandat	30/6/2014	31/1/2009	Date incorrecte
+173	838000	VATANEN	Ari	Date fin mandat	30/6/2014	31/1/2009	Date incorrecte
+173	838000	VATANEN	Ari	Motif fin mandat	NA	DV	Date incorrecte
 175	1177460	VERGIAT	Marie-Christine	Date fin mandat	NA	25/5/2019	Mise à jour
+176	904524	ZERIBI	Karim	Date debut mandat	7/6/2009	16/5/2012	Date incorrecte
 177	770065	AUDY	Jean-Pierre	Date debut mandat	1/6/2004	11/6/2005	Date incorrecte
 177	770065	AUDY	Jean-Pierre	Date fin mandat	30/6/2014	6/6/2009	Date incorrecte
 181	1180784	DELAHAYE	Angélique	Date fin mandat	NA	25/5/2019	Date manquante
 182	164294	DENANOT	Jean-Paul	Date fin mandat	30/6/2014	6/6/2009	Date incorrecte
 183	164294	DENANOT	Jean-Paul	Date fin mandat	NA	10/6/2018	Date incorrecte
+183	164294	DENANOT	Jean-Paul	Motif fin mandat	NA	DV	Information manquante
 184	27	DESCAMPS	Marie-Hélène	Date debut mandat	12/6/2002	13/6/2004	Date incorrecte
 184	27	DESCAMPS	Marie-Hélène	Date fin mandat	30/6/2014	6/6/2009	Date incorrecte
 184	27	DESCAMPS	Marie-Hélène	Motif fin mandat	NA	FM	Information manquante
@@ -168,6 +187,7 @@ Row	Id RNE	Nom	Prenom	Attribut	ValAvt	ValApr	Commentaire
 187	47	HORTEFEUX	Brice	Libelle circo euro	MASSIF-CENTRAL CENTRE	UNIQUE	Date incorrecte
 187	47	HORTEFEUX	Brice	Code circo euro	06	00	Date incorrecte
 188	47	HORTEFEUX	Brice	Date debut mandat	7/6/2009	4/11/2011	Date incorrecte
+189	47	HORTEFEUX	Brice	Date fin mandat	NA	25/5/2019	Date incorrecte
 190	42279	LAIGNEL	André	Date fin mandat	30/6/2014	6/6/2009	Date incorrecte
 191	345742	LOISEAU	Philippe	Date fin mandat	NA	25/5/2019	Date manquante
 192	1501531	MONOT	Bernard	Date fin mandat	NA	25/5/2019	Date manquante
@@ -183,12 +203,13 @@ Row	Id RNE	Nom	Prenom	Attribut	ValAvt	ValApr	Commentaire
 203	1177463	CANFIN	Pascal	Date fin mandat	30/6/2014	15/5/2012	Date incorrecte
 205	837987	CAVADA	Jean-Marie	Date fin mandat	NA	25/5/2019	Mise à jour (WP)
 206	1501534	CHAUPRADE	Aymeric	Date fin mandat	NA	25/5/2019	Date manquante
+209	21	COUTEAUX	Paul	Date debut mandat	13/6/1999	13/6/2004	Date incorrecte
 209	21	COUTEAUX	Paul	Date fin mandat	30/6/2014	6/6/2009	Date incorrecte
 211	1107978	DATI	Rachida	Date fin mandat	NA	25/5/2019	Date manquante
 213	26	DE SARNEZ	Marielle	Date debut mandat	13/6/1999	13/6/2004	Date incorrecte
 213	26	DE SARNEZ	Marielle	Date fin mandat	30/6/2014	6/6/2009	Date incorrecte
-216	28	DESIR	Harlem	Date debut mandat	13/6/2004	13/6/1999	Date incorrecte
-216	28	DESIR	Harlem	Date fin mandat	30/6/2014	8/4/2014	Date incorrecte
+216	28	DESIR	Harlem	Date fin mandat	30/6/2014	6/6/2009	Date incorrecte
+217	28	DESIR	Harlem	Date fin mandat	30/6/2014	8/4/2014	Date incorrecte
 218	1180683	DIDIER	Geoffroy	Date fin mandat	NA	25/5/2019	Date manquante
 219	1501535	DURAND	Pascal	Date fin mandat	NA	25/5/2019	Date manquante
 220	32	FERREIRA	Anne	Date debut mandat	17/1/2000	18/12/1999	Date incorrecte

@@ -621,3 +621,5 @@ NA	NA	NA	NA	Libelle commune	TEVA I UTA SECTION 01 MATAIEA	TEVA I UTA	On ignore l
 1223146	162927	ABRAHAM	Michel	Motif fin mandat	NA	DV	Information manquante
 1223146	162927	ABRAHAM	Michel	Motif fin fonction	NA	DV	Information manquante
 1223146	162927	ABRAHAM	Michel	Date fin fonction	NA	30/6/2015	Information manquante
+369945	740772	DE VEYRINAS	Béatrix	Nom elu	DE VEYRINAS	HEBRARD DE VEYRINAS	Nom incomplet
+369946	740772	DE VEYRINAS	Béatrix	Nom elu	DE VEYRINAS	HEBRARD DE VEYRINAS	Nom incomplet
