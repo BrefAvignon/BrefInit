@@ -124,7 +124,7 @@ retrieve.normalize.data <- function(filenames, col.map, correct.data)
 	# add columns to store correction flags
 	correc.date <- rep(FALSE, nrow(data))
 	correc.info <- rep(FALSE, nrow(data))
-	correc.inf[corr.idx] <- TRUE
+	correc.info[corr.idx] <- TRUE
 	data <- cbind(data, correc.date, correc.info)
 	colnames(data)[(ncol(data)-1):ncol(data)] <- c(COL_ATT_CORREC_DATE, COL_ATT_CORREC_INFO) 
 	

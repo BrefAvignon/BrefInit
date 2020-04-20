@@ -699,6 +699,8 @@ load.de.data <- function(correct.data, complete.data)
 		if(complete.data)
 		{	# manually constituted table
 			data <- manual.integrate.data.de(data)
+# debug
+# sapply(which(data[,COL_ATT_ELU_NOM]=="LE PEN" & data[,COL_ATT_ELU_PRENOM]=="MARINE"), function(r) format.row(data[r,]))
 			
 			# senate database
 			# NOTE Senate data eventually not used
