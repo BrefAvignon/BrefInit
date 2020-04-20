@@ -204,6 +204,8 @@ source("src/common/include.R")
 #################################
 
 # PHILIPPOT	Florian	110977
+# BRIOIS	Steeve	124757
+# MONTEL	Sophie	124769
 
 # - rajouter les vieux mandats manquants en passant en revue les MEP hors-période
 # - faire la liste des ID
@@ -212,3 +214,6 @@ source("src/common/include.R")
 
 # TODO
 # tester l'unicité des nouveaux ids (AN, Senat, PE, etc.)
+
+# TODO en train de contrôler couteaux (DE)
+# TODO lors de la fusion, ne pas tenir compte source + flag correction (autres ?)
