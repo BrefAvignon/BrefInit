@@ -20,7 +20,9 @@
 # returns: data frame containing only (clean) strings.
 #############################################################################################
 retrieve.normalize.data <- function(filenames, col.map, correct.data)
-{	# load the data table(s)
+{	corr.idx <- c()
+	
+	# load the data table(s)
 	data <- NULL
 	for(filename in filenames)
 	{	tlog(0,"Loading table file \"",filename,"\"")
@@ -61,18 +63,22 @@ retrieve.normalize.data <- function(filenames, col.map, correct.data)
 	
 	# EPCI-specific cleaning
 	if(correct.data && COL_ATT_EPCI_NOM %in% colnames(data))
-	{	idx <- which(grepl("archiv",data[,COL_ATT_EPCI_NOM],fixed=TRUE))
-		tlog(0,"EPCI-specific cleaning: ",length(idx)," names")
-		# clean CC names (must be done before normalization)
+	{	# clean CC names (must be done before normalization)
+		idx <- which(grepl("archiv",data[,COL_ATT_EPCI_NOM],fixed=TRUE))
 		data[,COL_ATT_EPCI_NOM] <- gsub(pattern=" (archivé)",replacement="",x=data[,COL_ATT_EPCI_NOM],fixed=TRUE)
 		data[,COL_ATT_EPCI_NOM] <- gsub(pattern=" - archivé",replacement="",x=data[,COL_ATT_EPCI_NOM],fixed=TRUE)
+		# log
+		tlog(0,"EPCI-specific cleaning: ",length(idx)," names")
+		corr.idx <- union(corr.idx, idx)
 	}
 	# municipality-specific cleaning
 	if(correct.data && COL_ATT_COM_NOM %in% colnames(data))
-	{	idx <- which(grepl("archiv",data[,COL_ATT_COM_NOM],fixed=TRUE))
-		tlog(0,"CM- and M-specific cleaning: ",length(idx)," names")
-		# clean municipality names (must be done before normalization)
+	{	# clean municipality names (must be done before normalization)
+		idx <- which(grepl("archiv",data[,COL_ATT_COM_NOM],fixed=TRUE))
 		data[,COL_ATT_COM_NOM] <- gsub(pattern=" (archivée)",replacement="",x=data[,COL_ATT_COM_NOM],fixed=TRUE)
+		# log
+		tlog(0,"CM- and M-specific cleaning: ",length(idx)," names")
+		corr.idx <- union(corr.idx, idx)
 	}
 	
 	# setting appropriate encoding of string columns, replace "" by NAs, and normalize proper nouns
@@ -118,10 +124,12 @@ retrieve.normalize.data <- function(filenames, col.map, correct.data)
 	# add columns to store correction flags
 	correc.date <- rep(FALSE, nrow(data))
 	correc.info <- rep(FALSE, nrow(data))
+	correc.inf[corr.idx] <- TRUE
 	data <- cbind(data, correc.date, correc.info)
 	colnames(data)[(ncol(data)-1):ncol(data)] <- c(COL_ATT_CORREC_DATE, COL_ATT_CORREC_INFO) 
 	
-	tlog(2,"CHECKPOINT 0: Now ",nrow(data)," rows and ",ncol(data)," columns in main table")
+	tlog(2,"CHECKPOINT 0: performed ",length(corr.idx)," corrections")
+	tlog(4,"Now ",nrow(data)," rows and ",ncol(data)," columns in main table")
 	return(data)
 }
 
