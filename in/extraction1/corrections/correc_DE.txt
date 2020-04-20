@@ -162,7 +162,6 @@ Row	Id RNE	Nom	Prenom	Attribut	ValAvt	ValApr	Commentaire
 170	183490	ROURE	Martine	Motif fin mandat	NA	FM	Date incorrecte
 171	837999	SCHENARDI	Lydia	Date fin mandat	30/6/2014	31/1/2009	Date incorrecte
 171	837999	SCHENARDI	Lydia	Motif fin mandat	NA	DV	Date incorrecte
-172	21524	SOULAGE	Bernard	Date fin mandat	30/6/2014	31/1/2009	Date incorrecte
 173	838000	VATANEN	Ari	Date fin mandat	30/6/2014	31/1/2009	Date incorrecte
 173	838000	VATANEN	Ari	Motif fin mandat	NA	DV	Date incorrecte
 175	1177460	VERGIAT	Marie-Christine	Date fin mandat	NA	25/5/2019	Mise à jour

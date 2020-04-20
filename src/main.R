@@ -116,8 +116,6 @@ source("src/common/include.R")
 # 2. erreur marginale ponctuelle
 # 3. mandat prend fin avant la fin normale, et la fonction va au bout
 #    >> à vérifier manuellement
-		
-# - Dates de la forme 01/01/xxxx représentant apparemment une absence d'information plus précise
 
 # analyse de séquences
 # - gestion temps/evts
@@ -127,15 +125,6 @@ source("src/common/include.R")
 # - mettre le focus sur un poste donné plutot que sur un individu donné
 #   (séquence des personnes ou classes de personnes ayant occupé un poste donné)
 
-# pour les incompatibilités de mandats (plusieurs mandats incompatibles en même temps)
-# >> vérifier manuellement (web ?) si ce ne sont pas simplement plusieurs homonymes réels 
-#    qui auraient été pris pour la même personne et incorrectement fusionnés
-
-# lors de la recherche de personnes ayant plusieurs ids, il ne faut pas fusionner ceux qui ont des mandats incompatibles
-# >> faire un test ad hoc pour vérifier ça, puis intégrer au test qui fait la fusion
-# mais même une id donnée peut avoir plusieurs mandats incompatibles, à cause des erreurs présentes dans la BD
-# >> corriger d'abord ces erreurs ? 
-
 # A faire par Émilie
 # - Explorer plus profondément la version postgresql de la BD du Sénat
 # - Finir de corriger les noms manquants de communautés dans EPCI
@@ -144,11 +133,6 @@ source("src/common/include.R")
 # voir pq il y a autant de lignes supprimées dans CM vs. CM2
 # >> peut être que la correction dans le script de comparaison a résolu le pb ?
 # (traitement en cours sur PC LIA)
-
-# TODO
-# - check si un mandat = plusieurs fonctions est respecté
-# - ne pas fusionner les mandats si circo différente
-# - spliter les mandats de la même personne qui se recouvrent (déjà fait, non ?)
 
 # TODO
 # - passer en revue les fichiers de problèmes: *CM
@@ -164,8 +148,6 @@ source("src/common/include.R")
 # >> pb à voir, notamment sur DE et D (S ?)
 # >> pourtant, on trouve dans la BD S ou AN toutes les lignes présentent dans le RNE, donc il ne devrait pas y avoir de pb...
 #    et pr députés, on s'assure de ne pas avoir un poste occupé par plusieurs personnes à la fois...
-
-# TODO récup commune/dpt manquant dans EPCI à partir de CM, puisqu'ils doivent aussi être conseillers municipaux
 
 # TODO tester que la même personne n'occupe pas plusieurs positions en même temps ?
 # >> à voir en fonction de la feuille détaillée de Guillaume
@@ -183,7 +165,6 @@ source("src/common/include.R")
 # >> rajouter tous les présidents
 
 # TODO
-# vérifier qu'on ne fusionne pas des mandats dont les circo sont différentes...
 # vérifier que quand on divise un mandat, on met un motif FM
 
 #################################
@@ -217,3 +198,4 @@ source("src/common/include.R")
 
 # TODO en train de contrôler couteaux (DE)
 # TODO lors de la fusion, ne pas tenir compte source + flag correction (autres ?)
+# 	   mais seulement pour la comparaison : il faut fusionner ces champs quand même
