@@ -92,7 +92,6 @@ Row	Id RNE	Nom	Prenom	Attribut	ValAvt	ValApr	Commentaire
 101	962324	ARIF	Kader	Date fin mandat	30/6/2014	6/6/2009	Correction (WP)
 102	962324	ARIF	Kader	Date fin mandat	30/6/2014	15/5/2012	Correction (WP)
 103	1177455	BAUDIS	Dominique	Date fin mandat	30/6/2014	22/6/2011	Date incorrecte
-104	1501527	BOVÉ	José	Date fin mandat	30/6/2014	6/6/2009	Date incorrecte
 105	1501527	BOVÉ	José	Date fin mandat	NA	25/5/2019	Date incorrecte
 105	1501527	BOVÉ	José	Motif fin mandat	NA	FM	Date incorrecte
 108	837987	CAVADA	Jean-Marie	Date fin mandat	30/6/2014	6/6/2009	Date incorrecte
@@ -143,6 +142,8 @@ Row	Id RNE	Nom	Prenom	Attribut	ValAvt	ValApr	Commentaire
 157	45181	GUILLAUME	Sylvie	Code circo euro	05	00	Circonscription incorrecte
 158	1524504	LALONDE	Patricia	Date debut mandat	1/5/2017	18/5/2017	Date incorrecte
 158	1524504	LALONDE	Patricia	Date fin mandat	NA	25/5/2019	Date incorrecte
+158	1524504	LALONDE	Patricia	Libelle circo euro	SUD-EST	ILE-DE-FRANCE	Circonscription incorrecte
+158	1524504	LALONDE	Patricia	Code circo euro	05	07	Circonscription incorrecte
 160	837980	LE PEN	Jean-Marie	Date debut mandat	7/6/2009	24/7/1984	Correction (WP)
 160	837980	LE PEN	Jean-Marie	Date fin mandat	30/6/2014	10/4/2003	Correction (WP)
 160	837980	LE PEN	Jean-Marie	Motif fin mandat	NA	DO	Correction (WP)
@@ -162,6 +163,7 @@ Row	Id RNE	Nom	Prenom	Attribut	ValAvt	ValApr	Commentaire
 170	183490	ROURE	Martine	Motif fin mandat	NA	FM	Date incorrecte
 171	837999	SCHENARDI	Lydia	Date fin mandat	30/6/2014	6/6/2009	Date incorrecte
 171	837999	SCHENARDI	Lydia	Motif fin mandat	NA	DV	Date incorrecte
+172	21524	SOULAGE	Bernard	Date fin mandat	30/6/2014	6/6/2009	Date incorrecte
 173	838000	VATANEN	Ari	Date fin mandat	30/6/2014	31/1/2009	Date incorrecte
 173	838000	VATANEN	Ari	Motif fin mandat	NA	DV	Date incorrecte
 175	1177460	VERGIAT	Marie-Christine	Date fin mandat	NA	25/5/2019	Mise à jour
@@ -200,10 +202,13 @@ Row	Id RNE	Nom	Prenom	Attribut	ValAvt	ValApr	Commentaire
 200	1501533	BERÈS	Pervenche	Date fin mandat	NA	25/5/2019	Date manquante
 201	1108196	BICEP	Jean-Jacob	Date debut mandat	7/6/2009	16/5/2012	Date incorrecte
 201	1108196	BICEP	Jean-Jacob	Date fin mandat	30/6/2014	2/5/2014	Date incorrecte
+201	1108196	BICEP	Jean-Jacob	Motif fin mandat	NA	DV	Information manquante
 202	254184	BOUTONNET	Marie-Christine	Date fin mandat	NA	25/5/2019	Date manquante
 203	1177463	CANFIN	Pascal	Date fin mandat	30/6/2014	15/5/2012	Date incorrecte
 205	837987	CAVADA	Jean-Marie	Date fin mandat	NA	25/5/2019	Mise à jour (WP)
 206	1501534	CHAUPRADE	Aymeric	Date fin mandat	NA	25/5/2019	Date manquante
+207	1009	COCHET	Yves	Libelle circo euro	ILE-DE-FRANCE	UNIQUE	Information incorrecte
+207	1009	COCHET	Yves	Code circo euro	07	00	Information incorrecte
 209	21	COUTEAUX	Paul	Date debut mandat	13/6/1999	13/6/2004	Date incorrecte
 209	21	COUTEAUX	Paul	Date fin mandat	30/6/2014	6/6/2009	Date incorrecte
 211	1107978	DATI	Rachida	Date fin mandat	NA	25/5/2019	Date manquante
@@ -231,6 +236,8 @@ Row	Id RNE	Nom	Prenom	Attribut	ValAvt	ValApr	Commentaire
 235	58	LIPIETZ	Alain	Date fin mandat	30/6/2014	6/6/2009	Date incorrecte
 236	336999	REVAULT D'ALLONNES	Christine	Date debut mandat	7/6/2009	9/4/2014	Date incorrecte
 237	336999	REVAULT D'ALLONNES	Christine	Date fin mandat	NA	25/5/2019	Date manquante
+238	760	ROATTA	Jean	Libelle circo euro	ILE-DE-FRANCE	UNIQUE	Information incorrecte
+238	760	ROATTA	Jean	Code circo euro	07	00	Information incorrecte
 239	77	SAVARY	Gilles	Date fin mandat	30/6/2014	6/6/2009	Date incorrecte
 240	1423272	SCHAFFHAUSER	Jean-Luc	Date fin mandat	NA	25/5/2019	Date manquante
 241	336711	SCHAPIRA	Pierre	Date fin mandat	30/6/2014	6/6/2009	Date incorrecte
@@ -246,5 +253,98 @@ Row	Id RNE	Nom	Prenom	Attribut	ValAvt	ValApr	Commentaire
 251	1177470	PONGA	Maurice	Date fin mandat	NA	25/5/2019	Date manquante
 252	81	SUDRE	Margie	Date debut mandat	13/6/1999	13/6/2004	Date incorrecte
 252	81	SUDRE	Margie	Date fin mandat	30/6/2014	6/6/2009	Date incorrecte
+##############Row	Id RNE	Nom	Prenom	Attribut	ValAvt	ValApr	Commentaire
 NA	NA	NA	NA	Date debut mandat	1/7/2014	25/5/2014	Rectifié pour date election
 NA	NA	NA	NA	Date fin mandat	30/6/2014	24/5/2014	Rectifié pour date election
+##############Row	Id RNE	Nom	Prenom	Attribut	ValAvt	ValApr	Commentaire
+131	957577	ABAD	DAMIEN	ID Europe	NA	96850	Ajout de l'ID du PE
+96	46978	ALIOT	LOUIS	ID Europe	NA	30190	Ajout de l'ID du PE
+97	833186	ALLIOT MARIE	MICHELE	ID Europe	NA	1179	Ajout de l'ID du PE
+98	833186	ALLIOT MARIE	MICHELE	ID Europe	NA	1179	Ajout de l'ID du PE
+133	4308	ARNAUTU	MARIE CHRISTINE	ID Europe	NA	124748	Ajout de l'ID du PE
+35	233	ARTHUIS	JEAN	ID Europe	NA	124773	Ajout de l'ID du PE
+196	833896	BALAS	GUILLAUME	ID Europe	NA	124744	Ajout de l'ID du PE
+197	1177462	BARNIER	MICHEL	ID Europe	NA	72776	Ajout de l'ID du PE
+37	16394	BECHU	CHRISTOPHE	ID Europe	NA	97002	Ajout de l'ID du PE
+67	1177450	BELIER	SANDRINE	ID Europe	NA	96738	Ajout de l'ID du PE
+134	1177459	BENARAB ATTOU	MALIKA	ID Europe	NA	96732	Ajout de l'ID du PE
+38	1373515	BERGERON	JOELLE	ID Europe	NA	124740	Ajout de l'ID du PE
+137	593459	BERRA	NORA	ID Europe	NA	96947	Ajout de l'ID du PE
+138	593459	BERRA	NORA	ID Europe	NA	96947	Ajout de l'ID du PE
+179	1177461	BESSET	JEAN PAUL	ID Europe	NA	96699	Ajout de l'ID du PE
+201	1108196	BICEP	JEAN JACOB	ID Europe	NA	113891	Ajout de l'ID du PE
+2	151833	BOULLAND	PHILIPPE	ID Europe	NA	105624	Ajout de l'ID du PE
+202	254184	BOUTONNET	MARIE CHRISTINE	ID Europe	NA	124753	Ajout de l'ID du PE
+104	1501527	BOVE	JOSE	ID Europe	NA	96744	Ajout de l'ID du PE
+180	982201	BRIARD AUCONIE	SOPHIE	ID Europe	NA	96862	Ajout de l'ID du PE
+3	1441	BRIOIS	STEEVE	ID Europe	NA	124757	Ajout de l'ID du PE
+39	60370	CADEC	ALAIN	ID Europe	NA	96849	Ajout de l'ID du PE
+40	60370	CADEC	ALAIN	ID Europe	NA	96849	Ajout de l'ID du PE
+206	1501534	CHAUPRADE	AYMERIC	ID Europe	NA	124752	Ajout de l'ID du PE
+207	1009	COCHET	YVES	ID Europe	NA	1202	Ajout de l'ID du PE
+109	531559	COLOMBIER	JACQUES	ID Europe	NA	191510	Ajout de l'ID du PE
+145	22359	D ORNANO	MIREILLE	ID Europe	NA	124750	Ajout de l'ID du PE
+143	750145	DANTIN	MICHEL	ID Europe	NA	97296	Ajout de l'ID du PE
+144	750145	DANTIN	MICHEL	ID Europe	NA	97296	Ajout de l'ID du PE
+210	1107978	DATI	RACHIDA	ID Europe	NA	72775	Ajout de l'ID du PE
+211	1107978	DATI	RACHIDA	ID Europe	NA	72775	Ajout de l'ID du PE
+181	1180784	DELAHAYE	ANGELIQUE	ID Europe	NA	124732	Ajout de l'ID du PE
+112	6706	FERRAND	EDOUARD	ID Europe	NA	124767	Ajout de l'ID du PE
+149	42042	FRANCO	GASTON	ID Europe	NA	96908	Ajout de l'ID du PE
+222	1177466	GALLO	MARIELLE	ID Europe	NA	96896	Ajout de l'ID du PE
+12	45873	GODDYN	SYLVIE	ID Europe	NA	21331	Ajout de l'ID du PE
+13	443809	GRELIER	ESTELLE	ID Europe	NA	96953	Ajout de l'ID du PE
+113	1177457	GREZE	CATHERINE	ID Europe	NA	96745	Ajout de l'ID du PE
+14	801251	GRUNY	PASCALE	ID Europe	NA	96983	Ajout de l'ID du PE
+80	1177452	HOANG NGOC	LIEM	ID Europe	NA	96950	Ajout de l'ID du PE
+245	1184607	HOARAU	ELIE	ID Europe	NA	96881	Ajout de l'ID du PE
+224	1177467	JOLY	EVA	ID Europe	NA	96883	Ajout de l'ID du PE
+225	1177467	JOLY	EVA	ID Europe	NA	96883	Ajout de l'ID du PE
+47	989	JOULAUD	MARC	ID Europe	NA	124728	Ajout de l'ID du PE
+48	989	JOULAUD	MARC	ID Europe	NA	124728	Ajout de l'ID du PE
+226	163156	JUVIN	PHILIPPE	ID Europe	NA	96884	Ajout de l'ID du PE
+227	163156	JUVIN	PHILIPPE	ID Europe	NA	96884	Ajout de l'ID du PE
+49	641711	KIIL NIELSEN	NICOLE	ID Europe	NA	96737	Ajout de l'ID du PE
+158	1524504	LALONDE	PATRICIA	ID Europe	NA	188254	Ajout de l'ID du PE
+18	3577	LAVRILLEUX	JEROME	ID Europe	NA	124731	Ajout de l'ID du PE
+51	187526	LE BRUN	AGNES	ID Europe	NA	105849	Ajout de l'ID du PE
+229	1184650	LE GRIP	CONSTANCE	ID Europe	NA	101580	Ajout de l'ID du PE
+230	1184650	LE GRIP	CONSTANCE	ID Europe	NA	101580	Ajout de l'ID du PE
+232	1177468	LE HYARIC	PATRICK	ID Europe	NA	96735	Ajout de l'ID du PE
+233	1177468	LE HYARIC	PATRICK	ID Europe	NA	96735	Ajout de l'ID du PE
+19	1238241	LECHEVALIER	CHRISTELLE	ID Europe	NA	188718	Ajout de l'ID du PE
+20	1177445	LEPAGE	CORINNE	ID Europe	NA	97076	Ajout de l'ID du PE
+191	345742	LOISEAU	PHILIPPE	ID Europe	NA	125684	Ajout de l'ID du PE
+246	802	MANSCOUR	LOUIS JOSEPH	ID Europe	NA	124725	Ajout de l'ID du PE
+163	24716	MARTIN	DOMINIQUE	ID Europe	NA	124751	Ajout de l'ID du PE
+84	1501524	MARTIN	EDOUARD	ID Europe	NA	124947	Ajout de l'ID du PE
+119	837803	MELENCHON	JEAN LUC	ID Europe	NA	96742	Ajout de l'ID du PE
+120	837803	MELENCHON	JEAN LUC	ID Europe	NA	96742	Ajout de l'ID du PE
+192	1501531	MONOT	BERNARD	ID Europe	NA	124761	Ajout de l'ID du PE
+87	45362	MONTEL	SOPHIE	ID Europe	NA	124769	Ajout de l'ID du PE
+164	335740	MUSELIER	RENAUD	ID Europe	NA	124729	Ajout de l'ID du PE
+25	34076	PARGNEAUX	GILLES	ID Europe	NA	96948	Ajout de l'ID du PE
+26	34076	PARGNEAUX	GILLES	ID Europe	NA	96948	Ajout de l'ID du PE
+90	1376985	PHILIPPOT	FLORIAN	ID Europe	NA	110977	Ajout de l'ID du PE
+250	1177470	PONGA	MAURICE	ID Europe	NA	96931	Ajout de l'ID du PE
+251	1177470	PONGA	MAURICE	ID Europe	NA	96931	Ajout de l'ID du PE
+123	833812	PROUST	FRANCK	ID Europe	NA	108080	Ajout de l'ID du PE
+124	833812	PROUST	FRANCK	ID Europe	NA	108080	Ajout de l'ID du PE
+236	336999	REVAULT D ALLONNES	CHRISTINE	ID Europe	NA	124287	Ajout de l'ID du PE
+237	336999	REVAULT D ALLONNES	CHRISTINE	ID Europe	NA	124287	Ajout de l'ID du PE
+238	760	ROATTA	JEAN	ID Europe	NA	111068	Ajout de l'ID du PE
+125	1177458	ROCHEFORT	ROBERT	ID Europe	NA	97022	Ajout de l'ID du PE
+126	1177458	ROCHEFORT	ROBERT	ID Europe	NA	97022	Ajout de l'ID du PE
+127	1501529	ROZIERE	VIRGINIE	ID Europe	NA	103845	Ajout de l'ID du PE
+128	819881	SANCHEZ SCHMID	MARIE THERESE	ID Europe	NA	96746	Ajout de l'ID du PE
+240	1423272	SCHAFFHAUSER	JEAN LUC	ID Europe	NA	124755	Ajout de l'ID du PE
+194	701641	SOULLIE	CATHERINE	ID Europe	NA	97294	Ajout de l'ID du PE
+93	1085714	STRIFFLER	MICHELE	ID Europe	NA	96860	Ajout de l'ID du PE
+61	559504	THOMAS	ISABELLE	ID Europe	NA	114279	Ajout de l'ID du PE
+62	559504	THOMAS	ISABELLE	ID Europe	NA	114279	Ajout de l'ID du PE
+253	100953	TIROLIEN	PATRICE	ID Europe	NA	97026	Ajout de l'ID du PE
+33	1180761	TROSZCZYNSKI	MYLENE	ID Europe	NA	124758	Ajout de l'ID du PE
+174	1177460	VERGIAT	MARIE CHRISTINE	ID Europe	NA	96858	Ajout de l'ID du PE
+175	1177460	VERGIAT	MARIE CHRISTINE	ID Europe	NA	96858	Ajout de l'ID du PE
+130	834082	VIEU	MARIE PIERRE	ID Europe	NA	188721	Ajout de l'ID du PE
+176	904524	ZERIBI	KARIM	ID Europe	NA	113890	Ajout de l'ID du PE

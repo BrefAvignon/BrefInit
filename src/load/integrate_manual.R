@@ -51,11 +51,8 @@ manual.integrate.data.de <- function(data)
 		supp.data[idx,COL_ATT_PRO_NOM] <- occ.names[i]
 	}
 	
-	# add EP ID to data table
-	tlog(2,"Adding EP ID column in main table")
-	data <- cbind(data, rep(NA,nrow(data)))
-	colnames(data)[ncol(data)] <- COL_ATT_ELU_ID_EURO
-	# complete missing values
+	# complete missing EP ID to data table
+	tlog(2,"Adding missing EP IDs in main table")
 	idx <- which(is.na(data[,COL_ATT_ELU_ID_EURO]))
 	ids <- unique(data[idx,COL_ATT_ELU_ID_RNE])
 	idx0 <- match(ids, supp.data[,COL_ATT_ELU_ID_RNE])

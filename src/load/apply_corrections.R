@@ -327,6 +327,7 @@ apply.adhoc.corrections <- function(data, col.map, correc.file)
 {	nbr.rows <- nrow(data)
 	# load the correction table
 	correc.table <- load.correction.table(col.map, correc.file)
+print(colnames(data))	
 	
 	# apply ad hoc corrections
 	corrected.rows <- c()
@@ -336,12 +337,25 @@ apply.adhoc.corrections <- function(data, col.map, correc.file)
 		idx.rm <- c()
 		for(r in 1:nrow(correc.table))
 		{	tlog.loop(2,r,"Correction ",r,"/",nrow(correc.table))
-			
 			correc.attr <- correc.table[r,COL_CORREC_ATTR]
+			
+			# check that the column exists
+			if(!(correc.attr %in% colnames(data)))
+			{	if(correc.attr %in% c(COL_ATT_ELU_ID_EURO))
+				{	data <- cbind(data, rep(NA,nrow(data)))
+					colnames(data)[ncol(data)] <- COL_ATT_ELU_ID_EURO
+				}
+				else
+					stop("Could not find column ",correc.attr)
+			}
+			
+			# identify the corresponding correction flag
 			if(correc.attr %in% c(COL_ATT_MDT_DBT, COL_ATT_MDT_FIN, COL_ATT_FCT_DBT, COL_ATT_FCT_FIN))
 				correc.col <- COL_ATT_CORREC_DATE
 			else
 				correc.col <- COL_ATT_CORREC_INFO
+			
+			# get the targed row
 			row <- as.integer(correc.table[r,COL_CORREC_ROW])
 			
 			# general correction

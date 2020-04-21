@@ -768,7 +768,7 @@ test.position.de <- function(data, out.folder)
 		if(found)
 			tab <- rbind(tab, rep(NA,ncol(data)))
 	}
-	tlog.end.loop(4,it,"Processing over: found a total of ",count," pairs of overlapping mandates for the whole table")
+	tlog.end.loop(4,"Processing over: found a total of ",count," pairs of overlapping mandates for the whole table")
 	
 	# possibly record the table of problematic cases
 	if(nrow(tab)>0)
