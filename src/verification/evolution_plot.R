@@ -8,6 +8,17 @@
 
 
 #############################################################################################
+# plot constants
+EVOL_COL_MEAS <- rgb(255,0,0,alpha=255,max=255)		# color of the measured values
+EVOL_COL_LIM <- rgb(0,0,255,alpha=150,max=255)		# color of the legal limit
+EVOL_TCK_MEAS <- 1									# thickness of the measured values
+EVOL_TCK_LIM <- 2									# thickness of the legal limit
+
+
+
+
+
+#############################################################################################
 # Plots the evolution of the number of people holding a mandate simultaneously as a function
 # of time.
 #
@@ -145,7 +156,7 @@ plot.pers.time0 <- function(data, out.folder, daily=FALSE)
 		plot(
 			x=as.Date(day.dates[idx], origin="1970-01-01"),
 			y=day.vals[idx], 
-			col="Red", 
+			col=EVOL_COL_MEAS, 
 			xlab="Dates", 
 			ylab="Count",
 			type="l",
@@ -165,7 +176,7 @@ plot.pers.time0 <- function(data, out.folder, daily=FALSE)
 	plot(
 			x=as.Date(month.dates[idx], origin="1970-01-01"),
 			y=month.vals[idx], 
-			col="Red", 
+			col=EVOL_COL_MEAS, 
 			xlab="Dates", 
 			ylab="Count",
 			type="l",
@@ -185,7 +196,7 @@ plot.pers.time0 <- function(data, out.folder, daily=FALSE)
 		plot(
 			x=as.Date(day.dates, origin="1970-01-01"),
 			y=day.vals, 
-			col="Red", 
+			col=EVOL_COL_MEAS, 
 			xlab="Dates", 
 			ylab="Count",
 			type="l",
@@ -204,7 +215,7 @@ plot.pers.time0 <- function(data, out.folder, daily=FALSE)
 	plot(
 		x=as.Date(month.dates, origin="1970-01-01"),
 		y=month.vals, 
-		col="Red", 
+		col=EVOL_COL_MEAS, 
 		xlab="Dates", 
 		ylab="Count",
 		type="l",
@@ -306,11 +317,10 @@ plot.position.limit <- function(type, start.date, end.date)
 				577, 577, 577, 577, 577)
 	}
 	else if(type=="DE")
-	{	limit.dates <- c(as.Date("1979/06/07"), as.Date("1984/06/17"),
-			as.Date("1989/06/18"), as.Date("1994/06/12"), as.Date("1999/06/13"),
-			as.Date("2004/06/13"), as.Date("2009/06/07"), as.Date("2014/05/25"),
-			as.Date("2019/5/25"))
-		limit.vals <- c(81, 81, 81, 87, 87, 78, 72, 74, 79)
+	{	limit.dates <- c(as.Date("1979/06/07"), as.Date("1994/06/12"), 
+			as.Date("2004/06/13"), as.Date("2009/06/07"), as.Date("2011/12/07"),
+			as.Date("2020/2/1"))
+		limit.vals <- c(81, 87, 78, 72, 74, 79)
 	}
 	else if(type=="M")
 	{	limit.dates <- c(as.Date("1962/1/1"), 
@@ -346,10 +356,16 @@ plot.position.limit <- function(type, start.date, end.date)
 			else
 				ed <- limit.dates[i+1]
 			# plot main segment
-			segments(x0=sd, y0=limit.vals[i], x1=ed, y1=limit.vals[i], col="BLUE")
+			segments(x0=sd, y0=limit.vals[i], 
+				x1=ed, y1=limit.vals[i], 
+				col=EVOL_COL_LIM,
+				lwd=EVOL_TCK_LIM)
 			# possibly prepare next change
 			if(i<length(limit.vals))
-				segments(x0=ed, y0=limit.vals[i], x1=ed, y1=limit.vals[i+1], col="BLUE")
+				segments(x0=ed, y0=limit.vals[i], 
+					x1=ed, y1=limit.vals[i+1], 
+					col=EVOL_COL_LIM,
+					lwd=EVOL_TCK_LIM)
 		}
 	}
 }
@@ -446,11 +462,15 @@ plot.pers.time <- function(data, out.folder, type)
 	# plot main data
 	lines(x=as.Date(day.dates[idx], origin="1970-01-01"),
 		y=day.vals[idx], 
-		col="Red", 
+		col=EVOL_COL_MEAS, 
+		lwd=EVOL_TCK_MEAS,
 		type="l"
 	)
 	# add legend
-	legend(x="bottomright", legend=c("Valeur mesuree", "Valeur theorique"), fill=c("RED","BLUE"), bg="WHITE")
+	legend(x="bottomright", 
+		legend=c("Valeur mesuree", "Valeur theorique"), 
+		fill=c(EVOL_COL_MEAS, EVOL_COL_LIM), 
+		bg="WHITE")
 	# restaure options
 	par(mar=c(5, 4, 4, 2)+0.1)	# B L T R
 	dev.off()
@@ -487,11 +507,15 @@ plot.pers.time <- function(data, out.folder, type)
 	# plot main data
 	lines(x=as.Date(day.dates, origin="1970-01-01"),
 		y=day.vals, 
-		col="Red", 
+		col=EVOL_COL_MEAS,
+		lwd=EVOL_TCK_MEAS,
 		type="l",
 	)
 	# add legend
-	legend(x="bottomright", legend=c("Valeur mesuree", "Valeur theorique"), fill=c("RED","BLUE"), bg="WHITE")
+	legend(x="bottomright", 
+		legend=c("Valeur mesuree", "Valeur theorique"), 
+		fill=c(EVOL_COL_MEAS, EVOL_COL_LIM), 
+		bg="WHITE")
 	# restaure options
 	par(mar=c(5, 4, 1, 0)+0.1)	# B L T R
 	dev.off()

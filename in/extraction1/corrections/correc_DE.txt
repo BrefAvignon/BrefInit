@@ -1,7 +1,6 @@
 Row	Id RNE	Nom	Prenom	Attribut	ValAvt	ValApr	Commentaire
 1	1180764	BAY	Nicolas	Date fin mandat	NA	25/5/2019	Date manquante
 2	151833	BOULLAND	Philippe	Date debut mandat	7/6/2009	14/12/2010	Date incorrecte
-3	1441	BRIOIS	Steeve	Date debut mandat	1/7/2014	30/11/2014	Date incorrecte
 3	1441	BRIOIS	Steeve	Date fin mandat	NA	25/5/2019	Date incorrecte
 4	2553	COTTIGNY	Jean-Louis	Date debut mandat	13/6/2004	21/6/2012	Correction (WP)
 5	2553	COTTIGNY	Jean-Louis	Date debut mandat	7/6/2009	12/6/2004	Correction (WP)
@@ -100,7 +99,7 @@ Row	Id RNE	Nom	Prenom	Attribut	ValAvt	ValApr	Commentaire
 109	531559	COLOMBIER	Jacques	Date debut mandat	1/2/2018	2/2/2018	Date manquante
 109	531559	COLOMBIER	Jacques	Date fin mandat	NA	25/5/2019	Date manquante
 110	29	DE VEYRAC	Christine	Date debut mandat	16/6/1999	13/6/2004	Date incorrecte
-114	46389	JAMET	France	Date debut mandat	18/6/2017	20/6/2017	Date incorrecte
+114	46389	JAMET	France	Date debut mandat	18/6/2017	19/6/2017	Date incorrecte
 114	46389	JAMET	France	Date fin mandat	NA	25/5/2019	Date incorrecte
 115	54	LAMASSOURE	Alain	Date debut mandat	13/6/1999	13/6/2004	Date incorrecte
 117	165355	LAPERROUZE	Anne	Date fin mandat	30/6/2014	6/6/2009	Date incorrecte
@@ -114,7 +113,7 @@ Row	Id RNE	Nom	Prenom	Attribut	ValAvt	ValApr	Commentaire
 126	1177458	ROCHEFORT	Robert	Date fin mandat	NA	25/5/2019	Date incorrecte
 127	1501529	ROZIÈRE	Virginie	Date fin mandat	NA	25/5/2019	Date incorrecte
 129	799238	TEYCHENNE	Michel	Date fin mandat	30/6/2014	6/6/2009	Date incorrecte
-130	834082	VIEU	Marie-Pierre	Date debut mandat	18/6/2017	20/6/2017	Date incorrecte
+130	834082	VIEU	Marie-Pierre	Date debut mandat	18/6/2017	19/6/2017	Date incorrecte
 130	834082	VIEU	Marie-Pierre	Date fin mandat	NA	25/5/2019	Date incorrecte
 131	957577	ABAD	Damien	Date fin mandat	30/6/2014	20/6/2012	Date incorrecte
 133	4308	ARNAUTU	Marie-Christine	Date fin mandat	NA	25/5/2019	Date incorrecte
@@ -124,6 +123,7 @@ Row	Id RNE	Nom	Prenom	Attribut	ValAvt	ValApr	Commentaire
 141	20	CORNILLET	Thierry	Date debut mandat	13/6/1999	13/6/2004	Date incorrecte
 142	20	CORNILLET	Thierry	Date fin mandat	NA	25/5/2019	Date manquante
 141	20	CORNILLET	Thierry	Date fin mandat	30/6/2014	6/6/2009	Date incorrecte
+143	750145	DANTIN	Michel	Date debut mandat	17/6/2009	21/6/2012	Date incorrecte
 144	750145	DANTIN	Michel	Date fin mandat	NA	25/5/2019	Date incorrecte
 145	22359	D'ORNANO	Mireille	ID RNE	22359	NA	Suppression, ligne redondante
 146	22359	D'ORNANO	Mireille	Date fin mandat	NA	25/5/2019	Date incorrecte
@@ -160,7 +160,7 @@ Row	Id RNE	Nom	Prenom	Attribut	ValAvt	ValApr	Commentaire
 170	183490	ROURE	Martine	Date debut mandat	13/6/1999	13/6/2004	Date incorrecte
 170	183490	ROURE	Martine	Date fin mandat	30/6/2014	6/6/2009	Date incorrecte
 170	183490	ROURE	Martine	Motif fin mandat	NA	FM	Date incorrecte
-171	837999	SCHENARDI	Lydia	Date fin mandat	30/6/2014	31/1/2009	Date incorrecte
+171	837999	SCHENARDI	Lydia	Date fin mandat	30/6/2014	6/6/2009	Date incorrecte
 171	837999	SCHENARDI	Lydia	Motif fin mandat	NA	DV	Date incorrecte
 173	838000	VATANEN	Ari	Date fin mandat	30/6/2014	31/1/2009	Date incorrecte
 173	838000	VATANEN	Ari	Motif fin mandat	NA	DV	Date incorrecte
@@ -169,6 +169,7 @@ Row	Id RNE	Nom	Prenom	Attribut	ValAvt	ValApr	Commentaire
 177	770065	AUDY	Jean-Pierre	Date debut mandat	1/6/2004	11/6/2005	Date incorrecte
 177	770065	AUDY	Jean-Pierre	Date fin mandat	30/6/2014	6/6/2009	Date incorrecte
 181	1180784	DELAHAYE	Angélique	Date fin mandat	NA	25/5/2019	Date manquante
+182	164294	DENANOT	Jean-Paul	Date debut mandat	8/10/2008	1/10/2008	Date incorrecte
 182	164294	DENANOT	Jean-Paul	Date fin mandat	30/6/2014	6/6/2009	Date incorrecte
 183	164294	DENANOT	Jean-Paul	Date fin mandat	NA	10/6/2018	Date incorrecte
 183	164294	DENANOT	Jean-Paul	Motif fin mandat	NA	DV	Information manquante
@@ -188,6 +189,7 @@ Row	Id RNE	Nom	Prenom	Attribut	ValAvt	ValApr	Commentaire
 188	47	HORTEFEUX	Brice	Date debut mandat	7/6/2009	4/11/2011	Date incorrecte
 189	47	HORTEFEUX	Brice	Date fin mandat	NA	25/5/2019	Date incorrecte
 190	42279	LAIGNEL	André	Date fin mandat	30/6/2014	6/6/2009	Date incorrecte
+191	345742	LOISEAU	Philippe	Date debut mandat	1/7/2014	2/7/2014	Date manquante
 191	345742	LOISEAU	Philippe	Date fin mandat	NA	25/5/2019	Date manquante
 192	1501531	MONOT	Bernard	Date fin mandat	NA	25/5/2019	Date manquante
 194	701641	SOULLIE	Catherine	Date fin mandat	30/6/2014	3/11/2011	Date incorrecte
@@ -196,7 +198,7 @@ Row	Id RNE	Nom	Prenom	Attribut	ValAvt	ValApr	Commentaire
 198	1501533	BERÈS	Pervenche	Date debut mandat	13/6/1999	13/6/2004	Date incorrecte
 198	1501533	BERÈS	Pervenche	Date fin mandat	30/6/2014	6/6/2009	Date incorrecte
 200	1501533	BERÈS	Pervenche	Date fin mandat	NA	25/5/2019	Date manquante
-201	1108196	BICEP	Jean-Jacob	Date debut mandat	7/6/2009	16/5/2015	Date incorrecte
+201	1108196	BICEP	Jean-Jacob	Date debut mandat	7/6/2009	16/5/2012	Date incorrecte
 201	1108196	BICEP	Jean-Jacob	Date fin mandat	30/6/2014	2/5/2014	Date incorrecte
 202	254184	BOUTONNET	Marie-Christine	Date fin mandat	NA	25/5/2019	Date manquante
 203	1177463	CANFIN	Pascal	Date fin mandat	30/6/2014	15/5/2012	Date incorrecte
@@ -209,6 +211,7 @@ Row	Id RNE	Nom	Prenom	Attribut	ValAvt	ValApr	Commentaire
 213	26	DE SARNEZ	Marielle	Date fin mandat	30/6/2014	6/6/2009	Date incorrecte
 216	28	DESIR	Harlem	Date fin mandat	30/6/2014	6/6/2009	Date incorrecte
 217	28	DESIR	Harlem	Date fin mandat	30/6/2014	8/4/2014	Date incorrecte
+218	1180683	DIDIER	Geoffroy	Date debut mandat	18/6/2017	19/6/2017	Date manquante
 218	1180683	DIDIER	Geoffroy	Date fin mandat	NA	25/5/2019	Date manquante
 219	1501535	DURAND	Pascal	Date fin mandat	NA	25/5/2019	Date manquante
 220	32	FERREIRA	Anne	Date debut mandat	17/1/2000	18/12/1999	Date incorrecte
