@@ -74,6 +74,13 @@ tlog(2,"Loading senatorial data")
 s.data <- load.s.data(correct.data, complete.data)
 tlog(4,"Dimensions of the table: ",paste(dim(s.data),collapse="x"))
 
+# load the presidential table
+if(complete.data)
+{	tlog(2,"Loading presidential data")
+	prf.data <- manual.integrate.data.prf()
+	tlog(4,"Dimensions of the table: ",paste(dim(prf.data),collapse="x"))
+}
+
 
 
 
@@ -210,6 +217,21 @@ tmp[,col.inter] <- s.data[,col.inter]
 tlog(4,"  Remaining columns: ",paste(setdiff(colnames(s.data), col.inter), collapse=", "))
 data <- rbind(data, tmp)
 
+# add presidential data
+if(complete.data)
+{	tlog(2,"Merge presidential data")
+	tmp <- data.frame(
+		matrix(NA, nrow(prf.data), length(cols), dimnames=list(c(), cols)),
+		check.names=FALSE,
+		stringsAsFactors=FALSE
+	)
+	col.inter <- intersect(cols, colnames(prf.data))
+	tmp[,col.inter] <- prf.data[,col.inter]
+	tlog(4,"  Remaining columns: ",paste(setdiff(colnames(prf.data), col.inter), collapse=", "))
+	data <- rbind(data, tmp)
+}
+
+# merge over
 tlog(0,"Merge over")
 tlog(2,"Expected dimensions of the full table: ",dim(cd.data)[1]+dim(cm.data)[1]+dim(cr.data)[1]+dim(d.data)[1]+dim(de.data)[1]+dim(epci.data)[1]+dim(m.data)[1]+dim(s.data)[1],"x",length(cols))
 tlog(2,"Actual dimensions of the full table: ",paste(dim(data),collapse="x"))

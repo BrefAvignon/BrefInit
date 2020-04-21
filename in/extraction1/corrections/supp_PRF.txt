@@ -1,15 +1,15 @@
 Line needed to mimic the original format
-Nom elu	Prenom elu	Date naissance	Code sexe	Code profession	Libelle profession	Libelle mandat	Date debut mandat	Date fin mandat	Motif fin mandat	Nuance politique	ID RNE	ID Europe	ID Assemblee	ID Senat	ID universel
-de Gaulle	Charles	22/11/1890	M	NA	NA	Président de la république	21/12/1958	18/12/1965	FM	RPF	NA	NA	NA	NA	PRF_0000001
-de Gaulle	Charles	22/11/1890	M	NA	NA	Président de la république	19/12/1965	28/04/1969	DV	RPF	NA	NA	NA	NA	PRF_0000001
-Poher	Alain	17/04/1909	M	NA	NA	Président de la république	29/04/1969	14/06/1969	AU	CD	NA	NA	NA	NA	PRF_0000002
-Pompidou	Georges	05/07/1911	M	NA	NA	Président de la république	15/06/1969	02/04/1974	DC	UDR	NA	NA	NA	NA	PRF_0000003
-Poher	Alain	17/04/1909	M	NA	NA	Président de la république	03/04/1974	18/05/1974	AU	CD	NA	NA	NA	NA	PRF_0000002
-Giscard d'Estaing	Valéry	02/02/1926	M	NA	NA	Président de la république	19/05/1974	09/05/1981	FM	FNRI	NA	1030	NA	NA	EUR_0001030
-Mitterrand	François	26/10/1916	M	NA	NA	Président de la république	10/05/1981	07/05/1988	FM	SOC	NA	NA	NA	NA	PRF_0000004
-Mitterrand	François	26/10/1916	M	NA	NA	Président de la république	08/05/1988	06/05/1995	FM	SOC	NA	NA	NA	NA	PRF_0000004
-Chirac	Jacques	29/11/1932	M	NA	NA	Président de la république	07/05/1995	04/05/2002	FM	RPR	NA	916	NA	NA	EUR_0000916
-Chirac	Jacques	29/11/1932	M	NA	NA	Président de la république	05/05/2002	05/05/2007	FM	UMP	NA	916	NA	NA	EUR_0000916
-Sarkozy	Nicolas	28/01/1955	M	NA	NA	Président de la république	06/05/2007	05/05/2012	FM	UMP	NA	4339	NA	NA	EUR_0004339
-Hollande	François	12/08/1954	M	NA	NA	Président de la république	06/05/2012	06/05/2017	FM	SOC	724	4285	NA	NA	RNE_0000724
-Macron	Emmanuel	21/12/1977	M	NA	NA	Président de la république	07/05/2017	NA	FM	REM	NA	NA	NA	NA	PRF_0000005
+Nom elu	Prenom elu	Date naissance	Date deces	Code sexe	Code profession	Libelle profession	Libelle mandat	Date debut mandat	Date fin mandat	Motif fin mandat	Nuance politique	ID RNE	ID Europe	ID Assemblee	ID Senat	ID universel
+de Gaulle	Charles	22/11/1890	09/11/1970	M	NA	NA	Président de la république	21/12/1958	18/12/1965	FM	RPF	NA	NA	NA	NA	PRF_0000001
+de Gaulle	Charles	22/11/1890	09/11/1970	M	NA	NA	Président de la république	19/12/1965	28/04/1969	DV	RPF	NA	NA	NA	NA	PRF_0000001
+Poher	Alain	17/04/1909	09/12/1996	M	NA	NA	Président de la république	29/04/1969	14/06/1969	AU	CD	NA	NA	NA	NA	PRF_0000002
+Pompidou	Georges	05/07/1911	02/04/1974	M	NA	NA	Président de la république	15/06/1969	02/04/1974	DC	UDR	NA	NA	NA	NA	PRF_0000003
+Poher	Alain	17/04/1909	09/12/1996	M	NA	NA	Président de la république	03/04/1974	18/05/1974	AU	CD	NA	NA	NA	NA	PRF_0000002
+Giscard d'Estaing	Valéry	02/02/1926	NA	M	NA	NA	Président de la république	19/05/1974	09/05/1981	FM	FNRI	NA	1030	NA	NA	EUR_0001030
+Mitterrand	François	26/10/1916	08/01/1996	M	NA	NA	Président de la république	10/05/1981	07/05/1988	FM	SOC	NA	NA	NA	NA	PRF_0000004
+Mitterrand	François	26/10/1916	08/01/1996	M	NA	NA	Président de la république	08/05/1988	06/05/1995	FM	SOC	NA	NA	NA	NA	PRF_0000004
+Chirac	Jacques	29/11/1932	26/09/2019	M	NA	NA	Président de la république	07/05/1995	04/05/2002	FM	RPR	NA	916	NA	NA	EUR_0000916
+Chirac	Jacques	29/11/1932	26/09/2019	M	NA	NA	Président de la république	05/05/2002	05/05/2007	FM	UMP	NA	916	NA	NA	EUR_0000916
+Sarkozy	Nicolas	28/01/1955	NA	M	NA	NA	Président de la république	06/05/2007	05/05/2012	FM	UMP	NA	4339	NA	NA	EUR_0004339
+Hollande	François	12/08/1954	NA	M	NA	NA	Président de la république	06/05/2012	06/05/2017	FM	SOC	724	4285	NA	NA	RNE_0000724
+Macron	Emmanuel	21/12/1977	NA	M	NA	NA	Président de la république	07/05/2017	NA	FM	REM	NA	NA	NA	NA	PRF_0000005
