@@ -16,7 +16,7 @@
 # returns: same table, with additional rows.
 #############################################################################################
 manual.integrate.data.de <- function(data)
-{	tlog(0,"Integrating the manually constituted table")
+{	tlog(0,"Integrating the manually constituted DE table")
 	
 	# load the supplementary data
 	supp.data <- retrieve.normalize.data(filenames=FILE_SUPPL_DE, correct.data=FALSE)
@@ -101,5 +101,39 @@ manual.integrate.data.de <- function(data)
 manual.integrate.data.d <- function(data)
 {	# TODO
 	
+	return(data)
+}
+
+
+
+
+#############################################################################################
+# Loads the presidential data.
+#
+# returns: presidential table.
+#############################################################################################
+manual.integrate.data.prf <- function()
+{	tlog(0,"Integrating the manually constituted PRF table")
+	
+	# load the data
+	data <- retrieve.normalize.data(filenames=FILE_SUPPL_PRF, correct.data=FALSE)
+	
+	# apply systematic corrections
+	data <- apply.systematic.corrections(data, type="PRF")
+	
+	# convert date and numeric columns
+	data <- convert.col.types(data)
+	
+	# add data source column
+	tlog(2,"Adding the source column to the table")
+	src.col <- data.frame(rep("WP",nrow(data)), stringsAsFactors=FALSE)
+	data <- cbind(data, src.col)
+	colnames(data)[ncol(data)] <- COL_ATT_SOURCES
+	
+	# normalize columns order
+	tlog(2,"Normalizing column order")
+	data <- normalize.col.order(data)
+	
+	tlog(2,"CHECKPOINT x: loaded ",nrow(data)," rows and ",ncol(data)," columns")
 	return(data)
 }

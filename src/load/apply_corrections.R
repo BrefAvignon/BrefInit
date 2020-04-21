@@ -1429,8 +1429,8 @@ round.mdtfct.dates <- function(data, election.file, series.file, tolerance)
 
 #############################################################################################
 # Merges the mandates that overlap (or are consecutive) and have compatible data. Compatible data 
-# means that besides the personal info and mandate dates, for the rest of the columns, one value 
-# must be NA or both values must be exactly identical.
+# means that besides the personal info and mandate dates (a few other exceptions such as correction
+# flags), for the rest of the columns, one value must be NA or both values must be exactly identical.
 #
 # data: original table.
 # type: type of the considered mandate (CD, CM, etc.).
