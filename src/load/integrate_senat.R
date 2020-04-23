@@ -289,7 +289,7 @@ senate.load.elect.table <- function(type)
 	sen.data.file["DE"] <- FILE_SENAT_ELEC_DE
 	sen.data.file["S"] <- FILE_SENAT_ELEC_S
 	
-	tlog(2,"Loading the Senate madate table: ",sen.data.file)
+	tlog(2,"Loading the Senate mandate table: ",sen.data.file)
 	
 	# load the corresponding senate mandate table(s)
 	elect.table <- read.table(
@@ -314,9 +314,74 @@ senate.load.elect.table <- function(type)
 	elect.table <- cbind(elect.table, rep(FALSE,nrow(elect.table)), rep(FALSE,nrow(elect.table)))
 	colnames(elect.table)[(ncol(elect.table)-1):ncol(elect.table)] <- c(COL_ATT_CORREC_DATE, COL_ATT_CORREC_INFO)
 	
-	# very ad hoc corrections
-	elect.table[which(elect.table[,COL_SENAT_ELU_MATRI]=="08070Y"),COL_SENAT_MDT_FIN] <- "05/04/2014"	# François Rebsamen
-	
+	# make a few corrections
+	if(type=="S")
+	{	# add missing function columns
+		elect.table <- cbind(elect.table, as.Date(rep(NA,nrow(elect.table))), as.Date(rep(NA,nrow(elect.table))), rep(NA,nrow(elect.table)))
+		colnames(elect.table)[(ncol(elect.table)-2):ncol(elect.table)] <- c(COL_SENAT_FCT_DBT, COL_SENAT_FCT_FIN, COL_SENAT_FCT_BUR)
+		
+		# load the correction table
+		tlog(4,"Loading correction table")
+		correc.table <- read.table(
+			file=FILE_SENAT_CORRECS,	# name of the data file
+			header=TRUE, 				# look for a header
+			sep="\t", 					# character used to separate columns 
+			check.names=FALSE, 			# don't change the column names from the file
+			comment.char="", 			# ignore possible comments in the content
+			row.names=NULL, 			# don't look for row names in the file
+			quote="", 					# don't expect double quotes "..." around text fields
+			as.is=TRUE,					# don't convert strings to factors
+			colClasses="character"		# all column originally read as characters, then converted later if needed
+#			fileEncoding="Latin1"		# original tables seem to be encoded in Latin1 (ANSI)
+		)
+		correc.table[correc.table=="NA"] <- NA
+		
+		# apply the corrections
+		idx.rm <- c()
+		tlog(4,"Applying corrections to the data")
+		for(i in 1:nrow(correc.table))
+		{	tlog(6, "Correction ",i,"/",nrow(correc.table))
+			
+			if(correc.table[i,COL_CORREC_ATTR] %in% c(COL_SENAT_MDT_DBT,COL_SENAT_MDT_FIN))
+				cor.col <- COL_ATT_CORREC_DATE
+			else
+				cor.col <- COL_ATT_CORREC_INFO
+			
+			idx <- which(elect.table[,COL_SENAT_ELU_MATRI]==correc.table[i,COL_ATT_ELU_ID_SENAT]
+							& elect.table[,COL_SENAT_MDT_DBT]==correc.table[i,COL_ATT_MDT_DBT]
+							& (elect.table[,COL_SENAT_MDT_FIN]==correc.table[i,COL_ATT_MDT_FIN] 
+								| is.na(elect.table[,COL_SENAT_MDT_FIN]) & is.na(correc.table[i,COL_ATT_MDT_FIN])))
+			
+			if(length(idx)!=1)
+			{	tlog(8, "ERROR: found ",length(idx)," matching rows while correcting the table")
+				stop("ERROR: found ",length(idx)," matching rows while correcting the table")
+			}
+			else
+			{	if(elect.table[idx,correc.table[i,COL_CORREC_ATTR]]==correc.table[i,COL_CORREC_VALAVT])
+				{	if(correc.table[i,COL_CORREC_ATTR]==COL_SENAT_ELU_MATRI && is.na(correc.table[i,COL_CORREC_VALAPR]))
+					{	tlog(8, "Row ",idx," marked for removal")
+						idx.rm <- c(idx.rm, idx)
+					}
+					else
+					{	tlog(8, "Replacing \"",correc.table[i,COL_CORREC_VALAVT],"\" by \"",correc.table[i,COL_CORREC_VALAPR],"\"")
+						elect.table[idx,correc.table[i,COL_CORREC_ATTR]] <- correc.table[i,COL_CORREC_VALAPR]
+						elect.table[idx,cor.col] <- TRUE
+					}
+				}
+				else
+				{	tlog(8, "ERROR: the found value (",elect.table[idx,correc.table[i,COL_CORREC_ATTR]],") does not match the correction file (",correc.table[i,COL_CORREC_VALAVT],")")
+					stop("ERROR: the found value (",elect.table[idx,correc.table[i,COL_CORREC_ATTR]],") does not match the correction file (",correc.table[i,COL_CORREC_VALAVT],")")
+				}
+			}
+		}
+		
+		# remove the marked rows
+		if(length(idx.rm)>0)
+		{	tlog(6,"Removing ",length(idx.rm)," rows from the table")
+			elect.table <- elect.table[-idx.rm,]
+		}
+	}
+		
 	return(elect.table)
 }
 
@@ -382,9 +447,20 @@ senate.convert.mandate.table <- function(general.table, elect.table, type)
 	
 	# possibly get function name
 	tlog(4,"Processing function names")
-	function.names <- general.table[idx,COL_ATT_FCT_NOM]
-	if(COL_SENAT_FCT_NOM %in% colnames(elect.table))
+	if(type=="S")
+	{	function.names <- general.table[idx,COL_ATT_FCT_NOM]
+		
+		# no sexism here, it's jut to ease the comparison later!
+		function.names[function.names=="VICE PRESIDENTE DU SENAT"] <- "VICE PRESIDENT DU SENAT"
+		
+		# add presidents
+		function.names2 <- trimws(normalize.proper.nouns(remove.diacritics(elect.table[,COL_SENAT_FCT_NOM])))
+		idx <- which(!is.na(function.names2))
+		function.names[idx] <- function.names2[idx]
+	}
+	else
 	{	function.names <- trimws(normalize.proper.nouns(remove.diacritics(elect.table[,COL_SENAT_FCT_NOM])))
+		
 		# these are not considered as functions in the RNE
 		if(type=="CD")
 			function.names[which(function.names=="CONSEILLER DEPARTEMENTAL" | function.names=="CONSEILLER GENERAL")] <- NA
@@ -394,10 +470,6 @@ senate.convert.mandate.table <- function(general.table, elect.table, type)
 			function.names[which(function.names=="CONSEILLER REGIONAL")] <- NA
 		else if(type=="D")
 			function.names[which(function.names=="DEPUTE")] <- NA
-	}
-	else
-	{	# no sexism here, it's jut to ease the comparison later!
-		function.names[function.names=="VICE PRESIDENTE DU SENAT"] <- "VICE PRESIDENT DU SENAT"
 	}
 	
 	# build senate table
@@ -606,9 +678,10 @@ senate.convert.mandate.table <- function(general.table, elect.table, type)
 		colnames(sen.tab)[(ncol(sen.tab)-2):ncol(sen.tab)] <- c(COL_ATT_DPT_ID, COL_ATT_DPT_CODE, COL_ATT_DPT_NOM)
 		
 		# specific correction for Edgar Faure (got 2 distinct senatorial circonscriptions)
-		i <- which(sen.tab[,COL_ATT_ELU_ID]=="SEN_0000197" 
-			& sen.tab[,COL_ATT_MDT_DBT]==as.Date("1959/04/28") & sen.tab[,COL_ATT_MDT_FIN]==as.Date("1965/10/01"))
-		sen.tab[i,c(COL_ATT_DPT_ID,COL_ATT_DPT_CODE,COL_ATT_DPT_NOM)] <- c("1790_38","39","JURA")
+		i <- which(sen.tab[,COL_ATT_ELU_ID]=="SEN_0000197"
+			& (sen.tab[,COL_ATT_MDT_DBT]==as.Date("1959/04/28") & sen.tab[,COL_ATT_MDT_FIN]==as.Date("1965/10/01")
+				| sen.tab[,COL_ATT_MDT_DBT]==as.Date("1965/10/02") & sen.tab[,COL_ATT_MDT_FIN]==as.Date("1966/02/08")))
+		sen.tab[i,c(COL_ATT_DPT_ID,COL_ATT_DPT_CODE,COL_ATT_DPT_NOM)] <- rbind(c("1790_38","39","JURA"),c("1790_38","39","JURA"))
 		
 		# use to order table, later
 		place.order <- sen.tab[,COL_ATT_DPT_CODE]
@@ -1003,7 +1076,7 @@ senate.update.rne.table <- function(rne.tab, sen.tab, row.conv, type)
 #
 # returns: the same table, completed using the Senate DB.
 #############################################################################################
-senate.integrate.data <- function(data, type, cache=TRUE, compare=FALSE)
+senate.integrate.data <- function(data, type, cache=FALSE, compare=FALSE)
 {	# load the general senate table, containing individual information
 	general.table <- senate.load.general.table(cache)
 	

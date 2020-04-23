@@ -87,8 +87,11 @@ source("src/common/include.R")
 #################################
 
 # - rajouter les vieux mandats manquants en passant en revue les MEP hors-période
-# - 1979 1984 1989 1994 
+# - 1979 1984 1989
 # - rajouter sarko dans les députés
  
 # TODO
 # tester l'unicité des nouveaux ids dans la table fusionnée (AN, Senat, PE, etc.)
+
+# TODO
+# problème dans la mise en correspondance entre S et Sénat

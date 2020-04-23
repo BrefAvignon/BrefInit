@@ -1,0 +1,90 @@
+ID Senat	Date debut mandat	Date fin mandat	Attribut	ValAvt	ValApr	Commentaire
+000032	05/10/1977	01/10/1980	Date de debut de mandat	05/10/1977	06/10/1977	Date incorrecte
+000043	08/01/1959	23/02/1963	Matricule	000043	NA	Suppression, ligne incorrecte
+000065	06/03/1962	01/10/1962	Date de debut de mandat	06/03/1962	07/03/1962	Date incorrecte
+000161	01/12/1971	01/10/1974	Date de fin de mandat	01/10/1974	22/09/1974	Date incorrecte
+000176	24/09/1961	01/10/1965	Date de debut de mandat	24/09/1961	25/09/1961	Date incorrecte
+000185	03/04/1967	01/10/1974	Date de debut de mandat	03/04/1967	04/04/1967	Date incorrecte
+000365	01/11/1975	25/09/1977	Date de debut de mandat	01/11/1975	02/11/1975	Date incorrecte
+000388	12/01/1976	02/10/1977	Date de debut de mandat	12/01/1976	13/01/1976	Date incorrecte
+000438	03/12/1987	01/10/1992	Date de debut de mandat	03/12/1987	04/12/1987	Date incorrecte
+01043Q	14/12/2010	30/09/2011	Date de debut de mandat	14/12/2010	15/12/2010	Date incorrecte
+04053F	03/05/2014	06/08/2017	Date de debut de mandat	03/05/2014	04/05/2014	Date incorrecte
+04090L	03/05/2014	30/09/2014	Date de debut de mandat	03/05/2014	04/05/2014	Date incorrecte
+08064B	03/05/2014	30/09/2014	Date de debut de mandat	03/05/2014	05/05/2014	Date incorrecte
+08070Y	01/10/2008	02/05/2014	Date de fin de mandat	02/05/2014	05/04/2014	Date incorrecte
+09010Q	22/04/2014	30/09/2014	Date de debut de mandat	22/04/2014	23/04/2014	Date incorrecte
+10005K	17/04/2010	30/09/2011	Date de debut de mandat	17/04/2010	18/04/2010	Date incorrecte
+11001K	23/01/2011	30/09/2011	Date de debut de mandat	23/01/2011	24/01/2011	Date incorrecte
+11003M	28/03/2011	30/09/2011	Date de debut de mandat	28/03/2011	30/03/2011	Date incorrecte
+11003M	02/11/2011	16/06/2012	Date de debut de mandat	02/11/2011	03/11/2011	Date incorrecte
+12038D	22/07/2012	02/05/2014	Date de debut de mandat	22/07/2012	23/07/2012	Date incorrecte
+12039E	22/07/2012	02/05/2014	Date de debut de mandat	22/07/2012	23/07/2012	Date incorrecte
+13005X	01/10/2013	30/09/2014	Date de debut de mandat	01/10/2013	02/10/2013	Date incorrecte
+14013P	10/05/2014	17/06/2017	Date de debut de mandat	10/05/2014	12/05/2014	Date incorrecte
+14014Q	10/05/2014	17/06/2017	Date de debut de mandat	10/05/2014	12/05/2014	Date incorrecte
+14263U	22/12/2014	17/06/2017	Date de debut de mandat	22/12/2014	23/12/2014	Date incorrecte
+14265W	28/12/2014	NA	Date de debut de mandat	28/12/2014	29/12/2014	Date incorrecte
+14361V	11/12/2016	01/10/2017	Date de debut de mandat	11/12/2016	12/12/2016	Date incorrecte
+19269X	22/07/2017	NA	Date de debut de mandat	22/07/2017	23/07/2017	Date incorrecte
+19741B	25/11/2017	NA	Date de debut de mandat	25/11/2017	26/11/2017	Date incorrecte
+58041V	09/07/1974	01/10/1980	Date de debut de mandat	09/07/1974	10/07/1974	Date incorrecte
+58351H	29/08/1981	02/10/1983	Date de debut de mandat	29/08/1981	30/08/1981	Date incorrecte
+58420D	01/10/1978	02/10/1983	Date de debut de mandat	01/10/1978	02/10/1978	Date incorrecte
+58951C	29/07/1988	01/10/1989	Date de debut de mandat	29/07/1988	30/07/1988	Date incorrecte
+59223E	09/07/1974	01/10/1974	Date de debut de mandat	09/07/1974	10/07/1974	Date incorrecte
+59308J	23/04/1981	21/06/1981	Date de debut de mandat	23/04/1981	24/04/1981	Date incorrecte
+59526S	02/04/1986	01/10/1986	Date de debut de mandat	02/04/1986	03/04/1986	Date incorrecte
+73006G	27/06/1973	01/10/1980	Date de debut de mandat	27/06/1973	28/06/1973	Date incorrecte
+77003V	03/05/1977	02/10/1977	Date de fin de mandat	02/10/1977	01/09/1977	Date incorrecte
+85002R	02/04/1985	01/10/1992	Date de debut de mandat	02/04/1985	03/04/1985	Date incorrecte
+86044G	17/06/2012	30/09/2014	Date de debut de mandat	17/06/2012	19/06/2012	Date incorrecte
+86053H	18/12/1986	01/10/1992	Date de debut de mandat	18/12/1986	19/12/1986	Date incorrecte
+87002A	27/02/1987	01/10/1995	Date de debut de mandat	27/02/1987	28/02/1987	Date incorrecte
+95045J	07/03/2010	27/06/2013	Date de debut de mandat	07/03/2010	08/03/2010	Date incorrecte
+96005E	09/07/1996	30/09/1998	Date de debut de mandat	09/07/1996	10/07/1996	Date incorrecte
+96007G	10/09/1996	30/09/2001	Date de debut de mandat	10/09/1996	11/09/1996	Date incorrecte
+97004H	15/10/1997	30/09/2004	Date de debut de mandat	15/10/1997	16/10/1997	Date incorrecte
+000756	28/04/1959	23/11/1962	Date de fin de mandat	23/11/1962	01/10/1962	Date incorrecte
+000677	19/06/1955	27/04/1959	Fonction	NA	PRESIDENT DU SENAT	Information manquante
+000677	19/06/1955	27/04/1959	Date de debut de fonction	NA	09/12/1958	Date manquante
+000677	19/06/1955	27/04/1959	Date de fin de fonction	NA	27/04/1959	Date manquante
+000677	28/04/1959	01/10/1965	Fonction	NA	PRESIDENT DU SENAT	Information manquante
+000677	28/04/1959	01/10/1965	Date de debut de fonction	NA	28/04/1959	Date manquante
+000677	28/04/1959	01/10/1965	Date de fin de fonction	NA	01/10/1965	Date manquante
+000677	02/10/1965	05/03/1974	Fonction	NA	PRESIDENT DU SENAT	Information manquante
+000677	02/10/1965	05/03/1974	Date de debut de fonction	NA	02/10/1965	Date manquante
+000677	02/10/1965	05/03/1974	Date de fin de fonction	NA	02/10/1968	Date manquante
+000211	02/10/1968	02/10/1977	Fonction	NA	PRESIDENT DU SENAT	Information manquante
+000211	02/10/1968	02/10/1977	Date de debut de fonction	NA	03/10/1968	Date manquante
+000211	02/10/1968	02/10/1977	Date de fin de fonction	NA	02/10/1977	Date manquante
+000211	03/10/1977	01/10/1986	Fonction	NA	PRESIDENT DU SENAT	Information manquante
+000211	03/10/1977	01/10/1986	Date de debut de fonction	NA	03/10/1977	Date manquante
+000211	03/10/1977	01/10/1986	Date de fin de fonction	NA	01/10/1986	Date manquante
+000211	02/10/1986	01/10/1995	Fonction	NA	PRESIDENT DU SENAT	Information manquante
+000211	02/10/1986	01/10/1995	Date de debut de fonction	NA	02/10/1986	Date manquante
+000211	02/10/1986	01/10/1995	Date de fin de fonction	NA	01/10/1992	Date manquante
+68036E	04/09/1988	01/10/1995	Fonction	NA	PRESIDENT DU SENAT	Information manquante
+68036E	04/09/1988	01/10/1995	Date de debut de fonction	NA	02/10/1992	Date manquante
+68036E	04/09/1988	01/10/1995	Date de fin de fonction	NA	01/10/1995	Date manquante
+68036E	02/10/1995	30/09/2004	Fonction	NA	PRESIDENT DU SENAT	Information manquante
+68036E	02/10/1995	30/09/2004	Date de debut de fonction	NA	02/10/1995	Date manquante
+68036E	02/10/1995	30/09/2004	Date de fin de fonction	NA	01/10/1998	Date manquante
+77058M	02/10/1995	30/09/2004	Fonction	NA	PRESIDENT DU SENAT	Information manquante
+77058M	02/10/1995	30/09/2004	Date de debut de fonction	NA	02/10/1998	Date manquante
+77058M	02/10/1995	30/09/2004	Date de fin de fonction	NA	30/09/2004	Date manquante
+77058M	01/10/2004	30/09/2014	Fonction	NA	PRESIDENT DU SENAT	Information manquante
+77058M	01/10/2004	30/09/2014	Date de debut de fonction	NA	01/10/2004	Date manquante
+77058M	01/10/2004	30/09/2014	Date de fin de fonction	NA	30/09/2008	Date manquante
+86034E	01/10/2007	30/09/2011	Fonction	NA	PRESIDENT DU SENAT	Information manquante
+86034E	01/10/2007	30/09/2011	Date de debut de fonction	NA	01/10/2008	Date manquante
+86034E	01/10/2007	30/09/2011	Date de fin de fonction	NA	30/09/2011	Date manquante
+98006P	01/10/2008	30/09/2014	Fonction	NA	PRESIDENT DU SENAT	Information manquante
+98006P	01/10/2008	30/09/2014	Date de debut de fonction	NA	01/10/2011	Date manquante
+98006P	01/10/2008	30/09/2014	Date de fin de fonction	NA	30/09/2014	Date manquante
+86034E	01/10/2011	01/10/2017	Fonction	NA	PRESIDENT DU SENAT	Information manquante
+86034E	01/10/2011	01/10/2017	Date de debut de fonction	NA	01/10/2014	Date manquante
+86034E	01/10/2011	01/10/2017	Date de fin de fonction	NA	01/10/2014	Date manquante
+86034E	02/10/2017	01/10/2017	Fonction	NA	PRESIDENT DU SENAT	Information manquante
+86034E	02/10/2017	01/10/2017	Date de debut de fonction	NA	01/10/2017	Date manquante
+86034E	02/10/2017	NA	Date de fin de fonction	NA	02/10/2017	Date manquante

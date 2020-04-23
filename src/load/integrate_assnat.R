@@ -1369,7 +1369,7 @@ assembly.update.rne.table <- function(rne.tab, asn.tab, row.conv)
 #
 # returns: the same table, completed using the Assembly DB.
 #############################################################################################
-assembly.integrate.data <- function(data, cache=TRUE, compare=FALSE)
+assembly.integrate.data <- function(data, cache=FALSE, compare=FALSE)
 {	# parse the large collection of XML files and create the raw tables
 #	assembly.convert.xml()	# already done, do not execute anymore
 	
