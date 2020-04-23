@@ -12,10 +12,12 @@
 # everything that needs to be. This function uses a cache system in order to speed up the process.
 #
 # cache: whether or not to use the cache system.
+# data: current table.
+# type: category of mandate (CD, CM, CR, etc.)
 # 
 # returns: the loaded table.
 #############################################################################################
-senate.load.general.table <- function(cache)
+senate.load.general.table <- function(cache, data, type)
 {	tlog(2,"Loading the Senate general table ")
 	
 	# possibly use the cached file
@@ -150,9 +152,11 @@ senate.load.general.table <- function(cache)
 #		indiv.fonct.names <- rep(NA,nrow(indiv.table))
 		
 		##################### cross referencing with RNE to get ids
-		# load RNE senate table
-		tlog(4,"Loading RNE Senate table")
-		data <- load.s.data(correct.data=TRUE, complete.data=FALSE)
+		# load RNE senate table, only if not currently processing S
+		if(type!="S")
+		{	tlog(4,"Loading RNE Senate table")
+			data <- load.s.data(correct.data=TRUE, complete.data=FALSE)
+		}
 		
 		# match senate ids with RNE ids
 		tlog(4,"Matching Senate and RNE people ids")
@@ -317,8 +321,8 @@ senate.load.elect.table <- function(type)
 	# make a few corrections
 	if(type=="S")
 	{	# add missing function columns
-		elect.table <- cbind(elect.table, as.Date(rep(NA,nrow(elect.table))), as.Date(rep(NA,nrow(elect.table))), rep(NA,nrow(elect.table)))
-		colnames(elect.table)[(ncol(elect.table)-2):ncol(elect.table)] <- c(COL_SENAT_FCT_DBT, COL_SENAT_FCT_FIN, COL_SENAT_FCT_BUR)
+		elect.table <- cbind(elect.table, rep(NA,nrow(elect.table)), rep(NA,nrow(elect.table)), rep(NA,nrow(elect.table)))
+		colnames(elect.table)[(ncol(elect.table)-2):ncol(elect.table)] <- c(COL_SENAT_FCT_DBT, COL_SENAT_FCT_FIN, COL_SENAT_FCT_NOM)
 		
 		# load the correction table
 		tlog(4,"Loading correction table")
@@ -357,7 +361,8 @@ senate.load.elect.table <- function(type)
 				stop("ERROR: found ",length(idx)," matching rows while correcting the table")
 			}
 			else
-			{	if(elect.table[idx,correc.table[i,COL_CORREC_ATTR]]==correc.table[i,COL_CORREC_VALAVT])
+			{	if(is.na(elect.table[idx,correc.table[i,COL_CORREC_ATTR]]) && is.na(correc.table[i,COL_CORREC_VALAVT])
+					|| elect.table[idx,correc.table[i,COL_CORREC_ATTR]]==correc.table[i,COL_CORREC_VALAVT])
 				{	if(correc.table[i,COL_CORREC_ATTR]==COL_SENAT_ELU_MATRI && is.na(correc.table[i,COL_CORREC_VALAPR]))
 					{	tlog(8, "Row ",idx," marked for removal")
 						idx.rm <- c(idx.rm, idx)
@@ -455,8 +460,8 @@ senate.convert.mandate.table <- function(general.table, elect.table, type)
 		
 		# add presidents
 		function.names2 <- trimws(normalize.proper.nouns(remove.diacritics(elect.table[,COL_SENAT_FCT_NOM])))
-		idx <- which(!is.na(function.names2))
-		function.names[idx] <- function.names2[idx]
+		idx0 <- which(!is.na(function.names2))
+		function.names[idx0] <- function.names2[idx0]
 	}
 	else
 	{	function.names <- trimws(normalize.proper.nouns(remove.diacritics(elect.table[,COL_SENAT_FCT_NOM])))
@@ -1078,7 +1083,7 @@ senate.update.rne.table <- function(rne.tab, sen.tab, row.conv, type)
 #############################################################################################
 senate.integrate.data <- function(data, type, cache=FALSE, compare=FALSE)
 {	# load the general senate table, containing individual information
-	general.table <- senate.load.general.table(cache)
+	general.table <- senate.load.general.table(cache, data, type)
 	
 	# load the mandate table
 	elect.table <- senate.load.elect.table(type)

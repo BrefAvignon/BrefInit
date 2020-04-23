@@ -85,6 +85,6 @@ ID Senat	Date debut mandat	Date fin mandat	Attribut	ValAvt	ValApr	Commentaire
 86034E	01/10/2011	01/10/2017	Fonction	NA	PRESIDENT DU SENAT	Information manquante
 86034E	01/10/2011	01/10/2017	Date de debut de fonction	NA	01/10/2014	Date manquante
 86034E	01/10/2011	01/10/2017	Date de fin de fonction	NA	01/10/2014	Date manquante
-86034E	02/10/2017	01/10/2017	Fonction	NA	PRESIDENT DU SENAT	Information manquante
-86034E	02/10/2017	01/10/2017	Date de debut de fonction	NA	01/10/2017	Date manquante
+86034E	02/10/2017	NA	Fonction	NA	PRESIDENT DU SENAT	Information manquante
+86034E	02/10/2017	NA	Date de debut de fonction	NA	01/10/2017	Date manquante
 86034E	02/10/2017	NA	Date de fin de fonction	NA	02/10/2017	Date manquante
