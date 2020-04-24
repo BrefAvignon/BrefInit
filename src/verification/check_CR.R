@@ -25,6 +25,7 @@ complete.data <- FALSE
 type <- "CR"
 
 # start logging
+init.stat.table()
 start.rec.log(text=paste0("CR",extraction))
 
 # create output folder

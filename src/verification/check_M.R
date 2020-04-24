@@ -25,6 +25,7 @@ complete.data <- FALSE
 type <- "M"
 
 # start logging
+init.stat.table()
 start.rec.log(text="M")
 
 # create output folder

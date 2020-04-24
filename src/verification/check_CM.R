@@ -26,6 +26,7 @@ complete.data <- FALSE
 type <- "CM"
 
 # start logging
+init.stat.table()
 start.rec.log(text=paste0("CM",extraction))
 
 # create output folder

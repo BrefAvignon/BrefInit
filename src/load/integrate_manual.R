@@ -82,8 +82,9 @@ manual.integrate.data.de <- function(data)
 		data[,COL_ATT_MDT_DBT], data[,COL_ATT_MDT_FIN])
 	data <- data[idx,]
 	
-	tlog(2,"CHECKPOINT x: added ",added.nbr," rows (",(100*added.nbr/nbr.before),"%)")
+	tlog(2,"CHECKPOINT 16: added ",added.nbr," rows (",(100*added.nbr/nbr.before),"%)")
 	tlog(2,"Now ",nrow(data)," rows and ",ncol(data)," columns in table")
+	update.stat.table(s.nbr=16, s.name="Integrate secondary data source", del.nbr=0, mod.nbr=0, add.nbr=added.nbr, size=nbr.before)
 	return(data)
 }
 
@@ -134,6 +135,7 @@ manual.integrate.data.prf <- function()
 	tlog(2,"Normalizing column order")
 	data <- normalize.col.order(data)
 	
-	tlog(2,"CHECKPOINT x: loaded ",nrow(data)," rows and ",ncol(data)," columns")
+	tlog(2,"CHECKPOINT 1: loaded ",nrow(data)," rows and ",ncol(data)," columns")
+	#update.stat.table(s.nbr=1, s.name="Integrate secondary data source", del.nbr=0, mod.nbr=0, add.nbr=added.nbr, size=nbr.before)
 	return(data)
 }

@@ -25,6 +25,7 @@ complete.data <- FALSE
 type <- "CD"
 
 # start logging
+init.stat.table()
 start.rec.log(text=paste0("CD",extraction))
 
 # create output folder

@@ -22,6 +22,7 @@ source("src/verification/test_duplicates.R")
 extraction <- 1 # 1 or 2
 
 # start logging
+init.stat.table()
 start.rec.log(text=paste0("ALL",extraction))
 
 # create output folder

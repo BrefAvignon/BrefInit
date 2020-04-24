@@ -24,6 +24,7 @@ complete.data <- FALSE
 type <- "EPCI"
 
 # start logging
+init.stat.table()
 start.rec.log(text="EPCI")
 
 # create output folder

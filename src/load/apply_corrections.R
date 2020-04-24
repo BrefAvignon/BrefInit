@@ -51,6 +51,7 @@ retrieve.normalize.data <- function(filenames, col.map, correct.data)
 		tlog(2,"Now ",nrow(data)," rows and ",ncol(data)," columns in main table")
 	}
 	tlog(2,"Columns: ",paste(colnames(data), collapse=","))
+	bef.nrows <- nrow(data)
 	
 	# normalize data table column names
 	if(hasArg(col.map))
@@ -130,6 +131,7 @@ retrieve.normalize.data <- function(filenames, col.map, correct.data)
 	
 	tlog(2,"CHECKPOINT 0: performed ",length(corr.idx)," corrections")
 	tlog(4,"Now ",nrow(data)," rows and ",ncol(data)," columns in main table")
+	update.stat.table(s.nbr=0, s.name="Load data", del.nbr=0, mod.nbr=length(corr.idx), add.nbr=0, size=bef.nrows)
 	return(data)
 }
 
@@ -189,6 +191,7 @@ fix.id.problems <- function(data)
 			data[,COL_ATT_ELU_ID_RNE] <- mat[,1]
 			data[,COL_ATT_CORREC_INFO] <- as.logical(mat[,2])
 			tlog(2,"CHECKPOINT 1: Fixed ",length(corrected.ids)," rows (",(100*length(corrected.ids)/nrow(data)),"%)")
+			update.stat.table(s.nbr=1, s.name="Fix IDs", del.nbr=0, mod.nbr=length(corrected.ids), add.nbr=0, size=nrow(data))
 		}
 		tlog(2,"Now ",nrow(data)," rows and ",ncol(data)," columns in table")
 	}
@@ -464,6 +467,7 @@ print(colnames(data))
 		total <- length(corrected.rows)+length(idx.rm)
 		tlog(2,"CHECKPOINT 2: corrected/removed ",total," rows (",(100*total/nbr.rows),"%)")
 		tlog(2,"Now ",nrow(data)," rows and ",ncol(data)," columns in table")
+		update.stat.table(s.nbr=2, s.name="Apply ad hoc corrections", del.nbr=length(idx.rm), mod.nbr=length(corrected.rows), add.nbr=0, size=nbr.rows)
 	}
 	
 	# debug
@@ -726,9 +730,11 @@ apply.systematic.corrections <- function(data, type)
 		}
 	}
 	tlog(0,"CHECKPOINT 3: Fixed a total of ",length(corr.rows)," rows (",(100*length(corr.rows)/nrow(data)),"%) for various (non-date-related) issues")
+	update.stat.table(s.nbr=3, s.name="Apply systematic non-date corrections", del.nbr=0, mod.nbr=length(corr.rows), add.nbr=0, size=nrow(data))
 	
 	# remove rows without mandate dates and without function dates
 	tlog(0,"Removing rows with no mandate and no function date")
+	bef.nrow <- nrow(data)
 	if(COL_ATT_FCT_DBT %in% colnames(data))
 	{	idx <- which(is.na(data[,COL_ATT_MDT_DBT]) & is.na(data[,COL_ATT_MDT_FIN]) 
 						& is.na(data[,COL_ATT_FCT_DBT]) & is.na(data[,COL_ATT_FCT_FIN]))
@@ -738,6 +744,7 @@ apply.systematic.corrections <- function(data, type)
 		tlog(2,"Now ",nrow(data)," rows and ",ncol(data)," columns in table")
 	}
 	tlog(0,"CHECKPOINT 4: Removed ",length(idx)," incomplete rows (",(100*length(idx)/nrow(data)),"%)")
+	update.stat.table(s.nbr=4, s.name="Remove rows without mandate date", del.nbr=length(idx), mod.nbr=0, add.nbr=0, size=bef.nrow)
 	
 	# use mandate start date when function start date is missing
 	corr.rows <- c()
@@ -765,6 +772,7 @@ apply.systematic.corrections <- function(data, type)
 		tlog(2,"Now ",nrow(data)," rows and ",ncol(data)," columns in table")
 	}
 	tlog(0,"CHECKPOINT 5: Fixed a total of ",length(corr.rows)," rows (",(100*length(corr.rows)/nrow(data)),"%) for start/end function date using mandate dates")
+	update.stat.table(s.nbr=5, s.name="Complete missing function dates", del.nbr=0, mod.nbr=length(corr.rows), add.nbr=0, size=nrow(data))
 	
 	return(data)
 }
@@ -1012,6 +1020,7 @@ merge.similar.rows <- function(data)
 		}
 	}
 	tlog(2,"CHECKPOINT 6: Done merging compatible rows, removed ",removed.nbr," rows (",(100*removed.nbr/nbr.before),"%)")
+	update.stat.table(s.nbr=6, s.name="Merge compatible rows", del.nbr=removed.nbr, mod.nbr=0, add.nbr=0, size=nbr.before)
 	
 	tlog(2,"Now ",nrow(data)," rows and ",ncol(data)," columns in table")
 	return(data)
@@ -1104,6 +1113,7 @@ adjust.function.dates <- function(data)
 	}
 	
 	tlog(2, "CHECKPOINT 7: Total number of adjusted function dates: ",nbr.corr, " (",(100*nbr.corr/nrow(data)),"%)")
+	update.stat.table(s.nbr=7, s.name="Adjust function dates", del.nbr=0, mod.nbr=nbr.corr, add.nbr=0, size=nrow(data))
 	tlog(2, "Number of rows remaining: ",nrow(data))
 	return(data)
 }
@@ -1420,6 +1430,7 @@ round.mdtfct.dates <- function(data, election.file, series.file, tolerance)
 		#	readline()		
 	}
 	tlog.end.loop(2,"CHECKPOINT 8: Rounded ",nbr.corrected," rows with election-related issues (",(100*nbr.corrected/nrow(data)),"%)")
+	update.stat.table(s.nbr=8, s.name="Round rows using election dates", del.nbr=0, mod.nbr=nbr.corrected, add.nbr=0, size=nrow(data))
 	
 	return(data)
 }
@@ -1593,6 +1604,7 @@ merge.overlapping.mandates <- function(data, type)
 		}
 	}
 	tlog.end.loop(2, "CHECKPOINT 10: Total number of rows deleted after merging: ",nbr.corr, " (",100*nbr.corr/nrow(data),"%)")
+	update.stat.table(s.nbr=10, s.name="Merge overlapping mandates", del.nbr=nbr.corr, mod.nbr=0, add.nbr=0, size=nrow(data))
 	
 	if(length(idx.rmv)>0)
 		data <- data[-idx.rmv,]
@@ -1712,6 +1724,7 @@ split.long.mandates <- function(data, election.file, series.file)
 		}
 	}
 	tlog.end.loop(2,"CHECKPOINT 11: Added ",nbr.splits," rows (",(100*nbr.splits/nbr.before),"%) to the table by splitting periods spanning several actual mandates")
+	update.stat.table(s.nbr=11, s.name="Split long mandates", del.nbr=0, mod.nbr=0, add.nbr=nbr.splits, size=nbr.before)
 	
 	data <- rbind(data, new.data)
 	tlog(2, "Table now containing ",nrow(data)," rows")
@@ -1857,6 +1870,7 @@ remove.micro.mdtfcts <- function(data, tolerance)
 	tlog(4,"Removed ",mdt.removed," rows (",(100*mdt.removed/mdt.before),"%) corresponding to micro-mandates")
 	if(COL_ATT_FCT_DBT %in% colnames(data))
 		tlog(4,"Removed ",fct.removed," rows (",(100*fct.removed/fct.before),"%) corresponding to micro-functions")
+	update.stat.table(s.nbr=9, s.name="Remove micro mandates/functions", del.nbr=mdt.removed+fct.removed, mod.nbr=0, add.nbr=0, size=mdt.before)
 	tlog(2,"Number of rows remaining: ",nrow(data))
 	return(data)
 }
@@ -2038,6 +2052,7 @@ shorten.overlapping.mandates <- function(data, type, tolerance=1)
 		
 		tlog(2,"CHECKPOINT 12: Shortened a total of ",count," mandates due to self-overlap, for the whole table (",(100*count/nrow(data)),"%)")
 		tlog(2,"Number of rows remaining: ",nrow(data))
+		update.stat.table(s.nbr=12, s.name="Shorten overlapping mandates", del.nbr=0, mod.nbr=count, add.nbr=0, size=nrow(data))
 	}
 	
 	return(data)
@@ -2279,8 +2294,9 @@ shorten.overlapping.functions <- function(data, type, tolerance=1)
 		}
 		tlog.end.loop(4,"Processing over")
 		
-		tlog(2,"CHECKPOINT 14: Shortened a total of ",count," functions due to overlap, for the whole table (",(100*count/nrow(data)),"%)")
+		tlog(2,"CHECKPOINT 13: Shortened a total of ",count," functions due to overlap, for the whole table (",(100*count/nrow(data)),"%)")
 		tlog(2,"Number of rows remaining: ",nrow(data))
+		update.stat.table(s.nbr=13, s.name="Shorten overlapping functions", del.nbr=0, mod.nbr=count, add.nbr=0, size=nrow(data))
 	}
 	
 	return(data)
@@ -2406,10 +2422,11 @@ adjust.end.motives <- function(data, election.file, series.file)
 			tlog(4, format.row(data[i,]))
 	}
 	
-	tlog(2,"CHECKPOINT 16: adjusted a total of ",length(treated.rows)," rows for the whole table (",(100*length(treated.rows)/nrow(data)),"%)")
+	tlog(2,"CHECKPOINT 15: adjusted a total of ",length(treated.rows)," rows for the whole table (",(100*length(treated.rows)/nrow(data)),"%)")
 	tlog(4,"Motives deleted: ",nbr.removed," rows (",(100*nbr.removed/nrow(data)),"%)")
 	tlog(4,"Motives added: ",nbr.added," rows (",(100*nbr.added/nrow(data)),"%)")
 	tlog(2, "Number of rows remaining: ",nrow(data))
+	update.stat.table(s.nbr=15, s.name="Adjust end motives", del.nbr=0, mod.nbr=length(treated.rows), add.nbr=0, size=nrow(data))
 	#readline()
 	
 	return(data)
