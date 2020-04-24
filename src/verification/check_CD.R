@@ -25,12 +25,14 @@ complete.data <- FALSE
 type <- "CD"
 
 # start logging
-init.stat.table()
 start.rec.log(text=paste0("CD",extraction))
 
 # create output folder
 out.folder <- if(extraction==1) FOLDER_OUT_CD else FOLDER_OUT_CD2
 dir.create(path=out.folder, showWarnings=FALSE, recursive=TRUE)
+
+# init stats table
+init.stat.table(out.folder)
 
 # load the data
 data <- if(extraction==1) load.cd.data(correct.data, complete.data) else load.cd2.data(correct.data, complete.data)

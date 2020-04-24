@@ -97,8 +97,8 @@ update.stat.table <- function(s.nbr, s.name, del.nbr=0, mod.nbr=0, add.nbr=0, si
 		"Proportion of modified rows"=mod.nbr/size*100, 
 		"Number of inserted rows"=add.nbr, 
 		"Proportion of inserted rows"=add.nbr/size*100, 
-		"Total number of changes"=(del.nbr+mod.nbr+add.Nbr), 
-		"Total proportion of changes"=(del.nbr+mod.nbr+add.Nbr)/size*100, 
+		"Total number of changes"=(del.nbr+mod.nbr+add.nbr), 
+		"Total proportion of changes"=(del.nbr+mod.nbr+add.nbr)/size*100, 
 		stringsAsFactors=FALSE 
 	))
 

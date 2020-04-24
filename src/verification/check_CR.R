@@ -25,12 +25,14 @@ complete.data <- FALSE
 type <- "CR"
 
 # start logging
-init.stat.table()
 start.rec.log(text=paste0("CR",extraction))
 
 # create output folder
 out.folder <- if(extraction==1) FOLDER_OUT_CR else FOLDER_OUT_CR2
 dir.create(path=out.folder, showWarnings=FALSE, recursive=TRUE)
+
+# init stats table
+init.stat.table(out.folder)
 
 # load the data
 data <- if(extraction==1) load.cr.data(correct.data, complete.data) else load.cr2.data(correct.data, complete.data)

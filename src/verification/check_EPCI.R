@@ -24,12 +24,14 @@ complete.data <- FALSE
 type <- "EPCI"
 
 # start logging
-init.stat.table()
 start.rec.log(text="EPCI")
 
 # create output folder
 out.folder <- FOLDER_OUT_EPCI
 dir.create(path=out.folder, showWarnings=FALSE, recursive=TRUE)
+
+# init stats table
+init.stat.table(out.folder)
 
 # load the data
 data <- load.epci.data(correct.data, complete.data)

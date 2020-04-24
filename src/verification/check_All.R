@@ -22,12 +22,14 @@ source("src/verification/test_duplicates.R")
 extraction <- 1 # 1 or 2
 
 # start logging
-init.stat.table()
 start.rec.log(text=paste0("ALL",extraction))
 
 # create output folder
 out.folder <- FOLDER_OUT_ALL
 dir.create(path=out.folder, showWarnings=FALSE, recursive=TRUE)
+
+# init stats table
+init.stat.table(out.folder)
 
 # load the data
 data <- read.cached.table(cache.file=FILE_CACHE_ALL)

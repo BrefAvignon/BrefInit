@@ -25,12 +25,14 @@ complete.data <- TRUE
 type <- "S"
 
 # start logging
-init.stat.table()
 start.rec.log(text="S")
 
 # create output folder
 out.folder <- FOLDER_OUT_S
 dir.create(path=out.folder, showWarnings=FALSE, recursive=TRUE)
+
+# init stats table
+init.stat.table(out.folder)
 
 # load the data
 data <- load.s.data(correct.data, complete.data)
