@@ -58,6 +58,7 @@ init.stat.table <- function(out.folder)
 		"Proportion of inserted rows"=numeric(), 
 		"Total number of changes"=integer(), 
 		"Total proportion of changes"=numeric(), 
+		"Total number of rows"=integer(), 
 		stringsAsFactors=FALSE) 
 
 	# init the file name
@@ -99,6 +100,7 @@ update.stat.table <- function(s.nbr, s.name, del.nbr=0, mod.nbr=0, add.nbr=0, si
 		"Proportion of inserted rows"=add.nbr/size*100, 
 		"Total number of changes"=(del.nbr+mod.nbr+add.nbr), 
 		"Total proportion of changes"=(del.nbr+mod.nbr+add.nbr)/size*100, 
+		"Total number of rows"=size+add.nbr-del.nbr, 
 		stringsAsFactors=FALSE 
 	))
 
@@ -113,4 +115,47 @@ update.stat.table <- function(s.nbr, s.name, del.nbr=0, mod.nbr=0, add.nbr=0, si
 	
 	# reset time for next step
 	STATS_TIME <<- Sys.time()
+}
+
+
+
+
+#############################################################################################
+# Initializes the table used to store runtime related stats.
+#
+# out.folder: folder used to record the stat file.
+#############################################################################################
+finalize.stat.table <- function()
+{	# compute sums
+	duration <- sum(STATS_TABLE[,"Step duration"])
+	size <- STATS_TABLE[1,"Total number of rows"]
+	del.nbr <- sum(STATS_TABLE[,"Number of deleted rows"])
+	mod.nbr <- sum(STATS_TABLE[,"Number of modified rows"])
+	add.nbr <- sum(STATS_TABLE[,"Number of inserted rows"])
+	
+	# update the table
+	STATS_TABLE <<- rbind(STATS_TABLE, data.frame(
+		"Step number"=NA, 
+		"Step name"="Total", 
+		"Step duration"=duration, 
+		"Number of deleted rows"=del.nbr, 
+		"Proportion of deleted rows"=del.nbr/size*100, 
+		"Number of modified rows"=mod.nbr, 
+		"Proportion of modified rows"=mod.nbr/size*100, 
+		"Number of inserted rows"=add.nbr, 
+		"Proportion of inserted rows"=add.nbr/size*100, 
+		"Total number of changes"=(del.nbr+mod.nbr+add.nbr), 
+		"Total proportion of changes"=(del.nbr+mod.nbr+add.nbr)/size*100, 
+		"Total number of rows"=size+add.nbr-del.nbr, 
+		stringsAsFactors=FALSE
+	))
+
+	# record it
+	write.table(STATS_TABLE, 
+		file=STATS_FILE,
+		quote=FALSE,
+		sep="\t",
+		row.names=FALSE,
+		col.names=TRUE
+	)
 }
