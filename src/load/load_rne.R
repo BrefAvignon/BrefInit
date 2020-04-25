@@ -67,6 +67,7 @@ read.cached.table <- function(cache.file)
 	types <- rep("character",length(col.names))
 	types[which(COL_TYPES[col.names]=="dat")] <- "Date"
 	types[which(COL_TYPES[col.names]=="num")] <- "integer"
+	types[col.names %in% c(COL_ATT_CORREC_DATE,COL_ATT_CORREC_INFO)] <- "logical"
 	
 	# read the full table normally
 	data <- read.table(

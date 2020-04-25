@@ -67,8 +67,6 @@ source("src/common/include.R")
 # dans AN, certaines personnes ont 2 fonctions en même temps
 # ex. dubois
 
-# TODO
-
 #################################
 # Check logs and files
 # position test D/CD/
@@ -86,12 +84,11 @@ source("src/common/include.R")
 # C4=
 #################################
 
-# - rajouter les vieux mandats manquants en passant en revue les MEP hors-période
-# - 1979 1984 1989
 # - rajouter sarko dans les députés
  
 # TODO
 # tester l'unicité des nouveaux ids dans la table fusionnée (AN, Senat, PE, etc.)
 
 # TODO
-# problème dans la mise en correspondance entre S et Sénat
+# - dans les tests, ne pas compter/détecter si fonction différentes (même si même mandat)
+#   > détecter mandat overlap, puis ne garder que les overlap de fonction (ou pas de fonction)

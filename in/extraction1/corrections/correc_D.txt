@@ -127,6 +127,7 @@ Row	Id RNE	Nom	Prenom	Attribut	ValAvt	ValApr	Commentaire
 284	44999	BONY	Jean-Yves	Date debut mandat	20/7/2007	20/6/2007	Erreur date de début (BD Assemblée)
 1618	46473	FILLON	François	ID RNE	46473	NA	Suppression, mandat inexistant (BD Assemblée)
 2123	5202	MALHERBE	Guy	Date fin mandat	19/6/2012	22/3/2012	Erreur date de fin (BD Assemblée)
+744	46683	LANCELIN	Raymond	Date debut mandat	17/6/2011	30/7/2011	Date incorrecte
 744	46683	LANCELIN	Raymond	Date fin mandat	15/5/2012	15/6/2012	Erreur date de fin (BD Assemblée)
 752	47167	LEZEAU	Michel	Date debut mandat	20/7/2007	20/6/2007	Erreur date de début (BD Assemblée)
 1850	55993	VANDEWALLE	Yves	Date debut mandat	20/7/2007	20/6/2007	Erreur date de début (BD Assemblée)

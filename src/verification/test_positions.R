@@ -796,6 +796,7 @@ test.position.de <- function(data, out.folder)
 #############################################################################################
 test.position.d <- function(data, out.folder)
 {	tlog(0,"Trying to detect problems in legislative positions")
+	hon.fct <- c("PRESIDENT D AGE DE L ASSEMBLEE NATIONALE", "SECRETAIRE D AGE DE L ASSEMBLEE NATIONALE")
 	
 	# possibly create folder to output detailed position chronology
 	folder <- file.path(out.folder,"positions")
@@ -817,7 +818,7 @@ test.position.d <- function(data, out.folder)
 	{	# retrieve the department and circonscription codes
 		tmp <- strsplit(unique.pos[p],"_")[[1]]
 		dpt <- tmp[1]
-		circo <- as.integer(tmp[2])
+		circo <- tmp[2]
 		tlog.loop(4,p,"Processing mandate position ",p,"/",length(unique.pos)," dpt=",dpt," circo=",circo)
 		
 		# get the corresponding rows
@@ -859,21 +860,33 @@ test.position.d <- function(data, out.folder)
 			ccount <- 0
 			for(i in 1:(length(idx)-1))
 			{	# get the dates of the first compared rows
-				start1 <- data[idx[i],COL_ATT_MDT_DBT]
-				end1 <- data[idx[i],COL_ATT_MDT_FIN]
+				mdt.start1 <- data[idx[i],COL_ATT_MDT_DBT]
+				mdt.end1 <- data[idx[i],COL_ATT_MDT_FIN]
+				fct.start1 <- data[idx[i],COL_ATT_FCT_DBT]
+				fct.end1 <- data[idx[i],COL_ATT_FCT_FIN]
+				fct.lib1 <- data[idx[i],COL_ATT_FCT_NOM]
 				
 				for(j in (i+1):length(idx))
 				{	# get the dates of the second compared rows
-					start2 <- data[idx[j],COL_ATT_MDT_DBT]
-					end2 <- data[idx[j],COL_ATT_MDT_FIN]
+					mdt.start2 <- data[idx[j],COL_ATT_MDT_DBT]
+					mdt.end2 <- data[idx[j],COL_ATT_MDT_FIN]
+					fct.start2 <- data[idx[j],COL_ATT_FCT_DBT]
+					fct.end2 <- data[idx[j],COL_ATT_FCT_FIN]
+					fct.lib2 <- data[idx[j],COL_ATT_FCT_NOM]
 					
 					# check if the periods intersect
-					if(date.intersect(start1, end1, start2, end2))
-					{	# add to the table of problematic cases
-						tab <- rbind(tab, data[c(idx[i],idx[j]),], rep(NA,ncol(data)))
-						# add a row of NAs in order to separate pairs of cases
-						count <- count + 1
-						ccount <- ccount + 1
+					if(date.intersect(mdt.start1, mdt.end1, mdt.start2, mdt.end2))			# the mandate periods overlap
+					{	# check the function
+						if(data[idx[i],COL_ATT_ELU_ID]!=data[idx[j],COL_ATT_ELU_ID]			# if not the same person
+							|| is.na(fct.start1) || is.na(fct.start2) 						# or same with at most one function
+							|| (date.intersect(fct.start1, fct.end1, fct.start2, fct.end2)	# or two overlapping functions
+								&& (!fct.lib1 %in% hon.fct) && (!fct.lib2 %in% hon.fct)))	# provided they are not honorific ones
+						{	# add to the table of problematic cases
+							tab <- rbind(tab, data[c(idx[i],idx[j]),], rep(NA,ncol(data)))
+							# add a row of NAs in order to separate pairs of cases
+							count <- count + 1
+							ccount <- ccount + 1
+						}
 					}
 				}
 			}

@@ -391,9 +391,21 @@ plot.position.limit <- function(type, start.date, end.date)
 plot.pers.time <- function(data, out.folder, type)
 {	tlog(2,"Plotting number of mandate occurrences as a function of time")
 	
+	# remove functions in order to ignore them
+	if(COL_ATT_FCT_CODE %in% colnames(data) || COL_ATT_FCT_NOM %in% colnames(data))
+	{	# set all function info to NA
+		if(COL_ATT_FCT_CODE %in% colnames(data)) data[,COL_ATT_FCT_CODE] <- rep(NA, nrow(data))
+		if(COL_ATT_FCT_NOM %in% colnames(data)) data[,COL_ATT_FCT_NOM] <- rep(NA, nrow(data))
+		data[,COL_ATT_FCT_DBT] <- rep(NA, nrow(data))
+		data[,COL_ATT_FCT_FIN] <- rep(NA, nrow(data))
+		if(COL_ATT_FCT_MOTIF %in% colnames(data)) data[,COL_ATT_FCT_MOTIF] <- rep(NA, nrow(data))
+		# merge overlapping mandates to collapse rows that were only differing by their function
+		merge.overlapping.mandates(data, type="D", log=FALSE)
+	}
+	
 	# set up start/end dates
 	start.date <- min(c(data[,COL_ATT_MDT_DBT],data[,COL_ATT_MDT_FIN]),na.rm=TRUE)
-## forcing the start date to be less than it should
+## forcing the start date to be less than it should, to go faster (debug)
 #start.date <- max(start.date, as.Date("1998/1/1"))	
 	end.date <- max(c(data[,COL_ATT_MDT_DBT],data[,COL_ATT_MDT_FIN]),na.rm=TRUE)
 	tlog(4,"Period: ",format(start.date),"--",format(end.date))
@@ -415,7 +427,7 @@ plot.pers.time <- function(data, out.folder, type)
 				edate <- end.date
 		
 			idx <- match(sdate:edate,day.idx)
-## when forcing the start date to be less than it should
+## when forcing the start date to be less than it should, to go faster (debug)
 #idx <- idx[!is.na(idx)]
 #if(length(idx)>0)
 			day.vals[idx] <- day.vals[idx] + rep(1,length(idx))
