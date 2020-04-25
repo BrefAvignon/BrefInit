@@ -147,82 +147,90 @@ plot.pers.time0 <- function(data, out.folder, daily=FALSE)
 	# generate plot only starting from 2000
 	if(daily)
 	{	idx <- which(day.dates>as.Date("2000/1/1"))
-		file <- file.path(out.folder,paste0("persons_by_day_2001.",PLOT_FORMAT))
-		tlog(4, "Generating plot in file \"",file,"\"")
-		if(PLOT_FORMAT=="pdf")
-			pdf(file)
-		else if(PLOT_FORMAT=="png")
-			png(file, width=1024, height=1024)
-		plot(
-			x=as.Date(day.dates[idx], origin="1970-01-01"),
-			y=day.vals[idx], 
-			col=EVOL_COL_MEAS, 
-			xlab="Dates", 
-			ylab="Count",
-			type="l",
-#		las=2, 
-#		cex.names=min(1,20/length(uvals))
-		)
-		dev.off()
+		for(plot.format in PLOT_FORMATS)
+		{	file <- file.path(out.folder,paste0("persons_by_day_2001.",plot.format))
+			tlog(4, "Generating plot in file \"",file,"\"")
+			if(plot.format=="pdf")
+				pdf(file)
+			else if(plot.format=="png")
+				png(file, width=1024, height=1024)
+			plot(
+				x=as.Date(day.dates[idx], origin="1970-01-01"),
+				y=day.vals[idx], 
+				col=EVOL_COL_MEAS, 
+				xlab="Dates", 
+				ylab="Count",
+				type="l",
+#				las=2, 
+#				cex.names=min(1,20/length(uvals))
+			)
+			dev.off()
+		}
 	}
 	# same by month
 	idx <- which(month.dates>as.Date("2000/1/1"))
-	file <- file.path(out.folder,paste0("persons_by_month_2001.",PLOT_FORMAT))
-	tlog(4, "Generating plot in file \"",file,"\"")
-	if(PLOT_FORMAT=="pdf")
-		pdf(file)
-	else if(PLOT_FORMAT=="png")
-		png(file, width=1024, height=1024)
-	plot(
+	for(plot.format in PLOT_FORMATS)
+	{	file <- file.path(out.folder,paste0("persons_by_month_2001.",plot.format))
+		tlog(4, "Generating plot in file \"",file,"\"")
+		if(plot.format=="pdf")
+			pdf(file)
+		else if(plot.format=="png")
+			png(file, width=1024, height=1024)
+		plot(
 			x=as.Date(month.dates[idx], origin="1970-01-01"),
 			y=month.vals[idx], 
 			col=EVOL_COL_MEAS, 
 			xlab="Dates", 
 			ylab="Count",
 			type="l",
-#		las=2, 
-#		cex.names=min(1,20/length(uvals))
-	)
-	dev.off()
+#			las=2, 
+#			cex.names=min(1,20/length(uvals))
+		)
+		dev.off()
+	}
 	
 	# generate plot for all dates
 	if(daily)
-	{	file <- file.path(out.folder,paste0("persons_by_day.",PLOT_FORMAT))
+	{	for(plot.format in PLOT_FORMATS)
+		{	file <- file.path(out.folder,paste0("persons_by_day.",plot.format))
+			tlog(4, "Generating plot in file \"",file,"\"")
+			if(plot.format=="pdf")
+				pdf(file)
+			else if(plot.format=="png")
+				png(file, width=1024, height=1024)
+			plot(
+				x=as.Date(day.dates, origin="1970-01-01"),
+				y=day.vals, 
+				col=EVOL_COL_MEAS, 
+				xlab="Dates", 
+				ylab="Count",
+				type="l",
+#				las=2, 
+#				cex.names=min(1,20/length(uvals))
+			)
+			dev.off()
+		}
+	}
+	# same for months
+	for(plot.format in PLOT_FORMATS)
+	{	file <- file.path(out.folder,paste0("persons_by_month.",plot.format))
 		tlog(4, "Generating plot in file \"",file,"\"")
-		if(PLOT_FORMAT=="pdf")
+		if(plot.format=="pdf")
 			pdf(file)
-		else if(PLOT_FORMAT=="png")
+		else if(plot.format=="png")
 			png(file, width=1024, height=1024)
 		plot(
-			x=as.Date(day.dates, origin="1970-01-01"),
-			y=day.vals, 
+			x=as.Date(month.dates, origin="1970-01-01"),
+			y=month.vals, 
 			col=EVOL_COL_MEAS, 
 			xlab="Dates", 
 			ylab="Count",
 			type="l",
-#		las=2, 
-#		cex.names=min(1,20/length(uvals))
+#			las=2, 
+#			cex.names=min(1,20/length(uvals))
 		)
 		dev.off()
 	}
-	# same for months
-	file <- file.path(out.folder,paste0("persons_by_month.",PLOT_FORMAT))
-	tlog(4, "Generating plot in file \"",file,"\"")
-	if(PLOT_FORMAT=="pdf")
-		pdf(file)
-	else if(PLOT_FORMAT=="png")
-		png(file, width=1024, height=1024)
-	plot(
-		x=as.Date(month.dates, origin="1970-01-01"),
-		y=month.vals, 
-		col=EVOL_COL_MEAS, 
-		xlab="Dates", 
-		ylab="Count",
-		type="l",
-#		las=2, 
-#		cex.names=min(1,20/length(uvals))
-	)
-	dev.off()
 }
 
 
@@ -428,95 +436,99 @@ plot.pers.time <- function(data, out.folder, type)
 	
 	# generate plot only starting from 2000
 	idx <- which(day.dates>as.Date("2000/1/1"))
-	file <- file.path(out.folder,paste0("persons_by_day_2001.",PLOT_FORMAT))
-	tlog(4, "Generating plot in file \"",file,"\"")
-	if(PLOT_FORMAT=="pdf")
-		pdf(file, width=11, height=7)
-	else if(PLOT_FORMAT=="png")
-		png(file, width=1024, height=1024)
-	par(mar=c(5, 4, 1, 0)+0.1)	# B L T R
-	# create plot
-	plot(x=NULL,
-		xlab="Date", 
-		ylab="Nombre de lignes",
-		xaxt="n", yaxt="n",
-		xlim=range(as.Date(day.dates[idx], origin="1970-01-01")),
-		ylim=range(day.vals[idx])
-#		cex.names=min(1,20/length(uvals))
-	)
-	# setup x axis
-	ticks <- seq(as.Date("2000/1/1"),as.Date("2019/1/1"),"year")
-	axis(side=1, at=ticks, labels=get.year(ticks), las=2)
-	# setup y axis
-	ticks <- axTicks(2)
-	axis(side=2, at=ticks, labels=format(ticks,scientific=FALSE))
-	# plot election dates as vertical lines
-	plot.election.dates(type,
-		start.date=as.Date("2000/1/1"), 
-		end.date=max(as.Date(day.dates[idx], origin="1970-01-01")),
-		max.val=max(day.vals[idx]))
-	# plot theoretical limit
-	plot.position.limit(type, 
-		start.date=as.Date("2000/1/1"), 
-		end.date=max(as.Date(day.dates[idx], origin="1970-01-01")))
-	# plot main data
-	lines(x=as.Date(day.dates[idx], origin="1970-01-01"),
-		y=day.vals[idx], 
-		col=EVOL_COL_MEAS, 
-		lwd=EVOL_TCK_MEAS,
-		type="l"
-	)
-	# add legend
-	legend(x="bottomright", 
-		legend=c("Valeur mesuree", "Valeur theorique"), 
-		fill=c(EVOL_COL_MEAS, EVOL_COL_LIM), 
-		bg="WHITE")
-	# restaure options
-	par(mar=c(5, 4, 4, 2)+0.1)	# B L T R
-	dev.off()
+	for(plot.format in PLOT_FORMATS)
+	{	file <- file.path(out.folder,paste0("persons_by_day_2001.",plot.format))
+		tlog(4, "Generating plot in file \"",file,"\"")
+		if(plot.format=="pdf")
+			pdf(file, width=11, height=7)
+		else if(plot.format=="png")
+			png(file, width=1024, height=1024)
+		par(mar=c(5, 4, 1, 0)+0.1)	# B L T R
+		# create plot
+		plot(x=NULL,
+			xlab="Date", 
+			ylab="Nombre de lignes",
+			xaxt="n", yaxt="n",
+			xlim=range(as.Date(day.dates[idx], origin="1970-01-01")),
+			ylim=range(day.vals[idx])
+#			cex.names=min(1,20/length(uvals))
+		)
+		# setup x axis
+		ticks <- seq(as.Date("2000/1/1"),as.Date("2019/1/1"),"year")
+		axis(side=1, at=ticks, labels=get.year(ticks), las=2)
+		# setup y axis
+		ticks <- axTicks(2)
+		axis(side=2, at=ticks, labels=format(ticks,scientific=FALSE))
+		# plot election dates as vertical lines
+		plot.election.dates(type,
+			start.date=as.Date("2000/1/1"), 
+			end.date=max(as.Date(day.dates[idx], origin="1970-01-01")),
+			max.val=max(day.vals[idx]))
+		# plot theoretical limit
+		plot.position.limit(type, 
+			start.date=as.Date("2000/1/1"), 
+			end.date=max(as.Date(day.dates[idx], origin="1970-01-01")))
+		# plot main data
+		lines(x=as.Date(day.dates[idx], origin="1970-01-01"),
+			y=day.vals[idx], 
+			col=EVOL_COL_MEAS, 
+			lwd=EVOL_TCK_MEAS,
+			type="l"
+		)
+		# add legend
+		legend(x="bottomright", 
+			legend=c("Valeur mesuree", "Valeur theorique"), 
+			fill=c(EVOL_COL_MEAS, EVOL_COL_LIM), 
+			bg="WHITE")
+		# restaure options
+		par(mar=c(5, 4, 4, 2)+0.1)	# B L T R
+		dev.off()
+	}
 	
 	# generate plot for all dates
-	file <- file.path(out.folder,paste0("persons_by_day.",PLOT_FORMAT))
-	tlog(4, "Generating plot in file \"",file,"\"")
-	if(PLOT_FORMAT=="pdf")
-		pdf(file, width=11, height=7)
-	else if(PLOT_FORMAT=="png")
-		png(file, width=1024, height=1024)
-	par(mar=c(5, 4, 1, 0)+0.1)	# B L T R
-	# create plot
-	plot(x=NULL,
-		xlab="Date", 
-		ylab="Nombre de lignes",
-		xaxt="n",
-		xlim=range(as.Date(day.dates, origin="1970-01-01")),
-		ylim=range(day.vals)
-#		cex.names=min(1,20/length(uvals))
-	)
-	# setup x axis
-	ticks <- seq(min(as.Date(day.dates, origin="1970-01-01")),as.Date("2019/1/1"), "2 year")
-	axis(side=1, at=ticks, labels=get.year(ticks), las=2)
-	# plot election dates as vertical lines
-	plot.election.dates(type, 
-		start.date=min(as.Date(day.dates, origin="1970-01-01")), 
-		end.date=max(as.Date(day.dates[idx], origin="1970-01-01")),
-		max.val=max(day.vals))
-	# plot theoretical limit
-	plot.position.limit(type, 
-		start.date=min(as.Date(day.dates, origin="1970-01-01")), 
-		end.date=max(as.Date(day.dates[idx], origin="1970-01-01")))
-	# plot main data
-	lines(x=as.Date(day.dates, origin="1970-01-01"),
-		y=day.vals, 
-		col=EVOL_COL_MEAS,
-		lwd=EVOL_TCK_MEAS,
-		type="l",
-	)
-	# add legend
-	legend(x="bottomright", 
-		legend=c("Valeur mesuree", "Valeur theorique"), 
-		fill=c(EVOL_COL_MEAS, EVOL_COL_LIM), 
-		bg="WHITE")
-	# restaure options
-	par(mar=c(5, 4, 1, 0)+0.1)	# B L T R
-	dev.off()
+	for(plot.format in PLOT_FORMATS)
+	{	file <- file.path(out.folder,paste0("persons_by_day.",plot.format))
+		tlog(4, "Generating plot in file \"",file,"\"")
+		if(plot.format=="pdf")
+			pdf(file, width=11, height=7)
+		else if(plot.format=="png")
+			png(file, width=1024, height=1024)
+		par(mar=c(5, 4, 1, 0)+0.1)	# B L T R
+		# create plot
+		plot(x=NULL,
+			xlab="Date", 
+			ylab="Nombre de lignes",
+			xaxt="n",
+			xlim=range(as.Date(day.dates, origin="1970-01-01")),
+			ylim=range(day.vals)
+#			cex.names=min(1,20/length(uvals))
+		)
+		# setup x axis
+		ticks <- seq(min(as.Date(day.dates, origin="1970-01-01")),as.Date("2019/1/1"), "2 year")
+		axis(side=1, at=ticks, labels=get.year(ticks), las=2)
+		# plot election dates as vertical lines
+		plot.election.dates(type, 
+			start.date=min(as.Date(day.dates, origin="1970-01-01")), 
+			end.date=max(as.Date(day.dates[idx], origin="1970-01-01")),
+			max.val=max(day.vals))
+		# plot theoretical limit
+		plot.position.limit(type, 
+			start.date=min(as.Date(day.dates, origin="1970-01-01")), 
+			end.date=max(as.Date(day.dates[idx], origin="1970-01-01")))
+		# plot main data
+		lines(x=as.Date(day.dates, origin="1970-01-01"),
+			y=day.vals, 
+			col=EVOL_COL_MEAS,
+			lwd=EVOL_TCK_MEAS,
+			type="l",
+		)
+		# add legend
+		legend(x="bottomright", 
+			legend=c("Valeur mesuree", "Valeur theorique"), 
+			fill=c(EVOL_COL_MEAS, EVOL_COL_LIM), 
+			bg="WHITE")
+		# restaure options
+		par(mar=c(5, 4, 1, 0)+0.1)	# B L T R
+		dev.off()
+	}
 }

@@ -93,32 +93,38 @@ sumup.col.numerical <- function(data, col, basename, ...)
 	tlog(6, "Stdev: ",s)
 	
 	# plot histogram
-	file <- paste0(basename,"_histo.",PLOT_FORMAT)
-	tlog(4, "Plotting histogram in file \"",file,"\"")
-	if(PLOT_FORMAT=="pdf")
-		pdf(file)
-	else if(PLOT_FORMAT=="png")
-		png(file, width=1024, height=1024)
-	hist(vals, col="Red", main="Distribution", xlab=col)
-	dev.off()
+	for(plot.format in PLOT_FORMATS)
+	{	file <- paste0(basename,"_histo.",plot.format)
+		tlog(4, "Plotting histogram in file \"",file,"\"")
+		if(plot.format=="pdf")
+			pdf(file)
+		else if(plot.format=="png")
+			png(file, width=1024, height=1024)
+		hist(vals, col="Red", main="Distribution", xlab=col)
+		dev.off()
+	}
 	# plot density
-	file <- paste0(basename,"_dens.",PLOT_FORMAT)
-	tlog(4, "Plotting density in file \"",file,"\"")
-	if(PLOT_FORMAT=="pdf")
-		pdf(file)
-	else if(PLOT_FORMAT=="png")
-		png(file, width=1024, height=1024)
-	plot(density(vals), col="Red", main="Kernel density", xlab=col)
-	dev.off()
+	for(plot.format in PLOT_FORMATS)
+	{	file <- paste0(basename,"_dens.",plot.format)
+		tlog(4, "Plotting density in file \"",file,"\"")
+		if(plot.format=="pdf")
+			pdf(file)
+		else if(plot.format=="png")
+			png(file, width=1024, height=1024)
+		plot(density(vals), col="Red", main="Kernel density", xlab=col)
+		dev.off()
+	}
 	# plot log-density
-	file <- paste0(basename,"_logdens.",PLOT_FORMAT)
-	tlog(4, "Plotting log density (only positive for values) in file \"",file,"\"")
-	if(PLOT_FORMAT=="pdf")
-		pdf(file)
-	else if(PLOT_FORMAT=="png")
-		png(file, width=1024, height=1024)
-	suppressWarnings(plot(density(vals), col="Red", main="Log Kernel density", xlab=col, log="y"))
-	dev.off()
+	for(plot.format in PLOT_FORMATS)
+	{	file <- paste0(basename,"_logdens.",plot.format)
+		tlog(4, "Plotting log density (only positive for values) in file \"",file,"\"")
+		if(plot.format=="pdf")
+			pdf(file)
+		else if(plot.format=="png")
+			png(file, width=1024, height=1024)
+		suppressWarnings(plot(density(vals), col="Red", main="Log Kernel density", xlab=col, log="y"))
+		dev.off()
+	}
 	
 	return(result)
 }
@@ -193,34 +199,40 @@ sumup.col.categorical <- function(data, col, basename, ...)
 	tlog(6, "Mode(s): ", paste(s,collapse=", "))
 	
 	# plot distribution with NAs
-	file <- paste0(basename,"_bar_NA.",PLOT_FORMAT)
-	tlog(4, "Plotting barplot (with NAs) in file \"",file,"\"")
-	if(PLOT_FORMAT=="pdf")
-		pdf(file)
-	else if(PLOT_FORMAT=="png")
-		png(file, width=1024, height=1024)
-	barplot(tt, col="Red", xlab=col, ylab="Frequency", las=2, cex.names=min(1,20/length(uvals))) # TODO could switch xlab to main for space purposes
-	dev.off()
+	for(plot.format in PLOT_FORMATS)
+	{	file <- paste0(basename,"_bar_NA.",plot.format)
+		tlog(4, "Plotting barplot (with NAs) in file \"",file,"\"")
+		if(plot.format=="pdf")
+			pdf(file)
+		else if(plot.format=="png")
+			png(file, width=1024, height=1024)
+		barplot(tt, col="Red", xlab=col, ylab="Frequency", las=2, cex.names=min(1,20/length(uvals))) # TODO could switch xlab to main for space purposes
+		dev.off()
+	}
 	
 	# plot distribution without NAs
-	file <- paste0(basename,"_bar.",PLOT_FORMAT)
-	tlog(4, "Plotting barplot (without NAs) in file \"",file,"\"")
-	if(PLOT_FORMAT=="pdf")
-		pdf(file)
-	else if(PLOT_FORMAT=="png")
-		png(file, width=1024, height=1024)
-	barplot(table(vals), col="Red", xlab=col, ylab="Frequency", las=2, cex.names=min(1,20/length(uvals))) # TODO could switch xlab to main for space purposes
-	dev.off()
+	for(plot.format in PLOT_FORMATS)
+	{	file <- paste0(basename,"_bar.",plot.format)
+		tlog(4, "Plotting barplot (without NAs) in file \"",file,"\"")
+		if(plot.format=="pdf")
+			pdf(file)
+		else if(plot.format=="png")
+			png(file, width=1024, height=1024)
+		barplot(table(vals), col="Red", xlab=col, ylab="Frequency", las=2, cex.names=min(1,20/length(uvals))) # TODO could switch xlab to main for space purposes
+		dev.off()
+	}
 	
 	# plot double distr without NAs
-	file <- paste0(basename,"_double_bar.",PLOT_FORMAT)
-	tlog(4, "Plotting double barplot in file \"",file,"\"")
-	if(PLOT_FORMAT=="pdf")
-		pdf(file)
-	else if(PLOT_FORMAT=="png")
-		png(file, width=1024, height=1024)
-	barplot(ttt, col="Red", xlab=paste0("Occurrences of ",col), ylab="Frequency", las=2) # TODO could switch xlab to main for space purposes
-	dev.off()
+	for(plot.format in PLOT_FORMATS)
+	{	file <- paste0(basename,"_double_bar.",plot.format)
+		tlog(4, "Plotting double barplot in file \"",file,"\"")
+		if(plot.format=="pdf")
+			pdf(file)
+		else if(plot.format=="png")
+			png(file, width=1024, height=1024)
+		barplot(ttt, col="Red", xlab=paste0("Occurrences of ",col), ylab="Frequency", las=2) # TODO could switch xlab to main for space purposes
+		dev.off()
+	}
 
 	return(result)
 }
@@ -289,34 +301,40 @@ sumup.col.nominal <- function(data, col, basename, dist.threhsold=3, ...)
 		tlog(8, t)
 	
 	# plot distribution with NAs
-	file <- paste0(basename,"_bar_NA.",PLOT_FORMAT)
-	tlog(4, "Plotting barplot (with NAs) in file \"",file,"\"")
-	if(PLOT_FORMAT=="pdf")
-		pdf(file)
-	else if(PLOT_FORMAT=="png")
-		png(file, width=1024, height=1024)
-	barplot(tt, col="Red", xlab=col, ylab="Frequency", las=2, cex.names=min(1,20/length(uvals))) # TODO could switch xlab to main for space purposes
-	dev.off()
+	for(plot.format in PLOT_FORMATS)
+	{	file <- paste0(basename,"_bar_NA.",plot.format)
+		tlog(4, "Plotting barplot (with NAs) in file \"",file,"\"")
+		if(plot.format=="pdf")
+			pdf(file)
+		else if(plot.format=="png")
+			png(file, width=1024, height=1024)
+		barplot(tt, col="Red", xlab=col, ylab="Frequency", las=2, cex.names=min(1,20/length(uvals))) # TODO could switch xlab to main for space purposes
+		dev.off()
+	}
 	
 	# plot distribution without NAs
-	file <- paste0(basename,"_bar.",PLOT_FORMAT)
-	tlog(4, "Plotting barplot (without NAs) in file \"",file,"\"")
-	if(PLOT_FORMAT=="pdf")
-		pdf(file)
-	else if(PLOT_FORMAT=="png")
-		png(file, width=1024, height=1024)
-	barplot(table(vals), col="Red", xlab=col, ylab="Frequency", las=2, cex.names=min(1,20/length(uvals))) # TODO could switch xlab to main for space purposes
-	dev.off()
+	for(plot.format in PLOT_FORMATS)
+	{	file <- paste0(basename,"_bar.",plot.format)
+		tlog(4, "Plotting barplot (without NAs) in file \"",file,"\"")
+		if(plot.format=="pdf")
+			pdf(file)
+		else if(plot.format=="png")
+			png(file, width=1024, height=1024)
+		barplot(table(vals), col="Red", xlab=col, ylab="Frequency", las=2, cex.names=min(1,20/length(uvals))) # TODO could switch xlab to main for space purposes
+		dev.off()
+	}
 	
 	# plot double distr without NAs
-	file <- paste0(basename,"_double_bar.",PLOT_FORMAT)
-	tlog(4, "Plotting double barplot in file \"",file,"\"")
-	if(PLOT_FORMAT=="pdf")
-		pdf(file)
-	else if(PLOT_FORMAT=="png")
-		png(file, width=1024, height=1024)
-	barplot(ttt, col="Red", xlab=paste0("Occurrences of ",col), ylab="Frequency", las=2) # TODO could switch xlab to main for space purposes
-	dev.off()
+	for(plot.format in PLOT_FORMATS)
+	{	file <- paste0(basename,"_double_bar.",plot.format)
+		tlog(4, "Plotting double barplot in file \"",file,"\"")
+		if(plot.format=="pdf")
+			pdf(file)
+		else if(plot.format=="png")
+			png(file, width=1024, height=1024)
+		barplot(ttt, col="Red", xlab=paste0("Occurrences of ",col), ylab="Frequency", las=2) # TODO could switch xlab to main for space purposes
+		dev.off()
+	}
 	
 #	# compare strings
 #	tlog(4, "Computing distances between unique values (may take a while)")
@@ -439,65 +457,75 @@ sumup.col.temporal <- function(data, col, basename, ...)
 	ticks <- seq(from=mnd,to=mxd,by=(mxd-mnd)/5)
 	
 	# plot histogram without NAs
-	file <- paste0(basename,"_histo.",PLOT_FORMAT) #TODO must fix this date problem
-	tlog(4, "Plotting histogram in file \"",file,"\"")
-	if(PLOT_FORMAT=="pdf")
-		pdf(file)
-	else if(PLOT_FORMAT=="png")
-		png(file, width=1024, height=1024)
-	ht <- hist(secs, col="Red", main="Distribution", xlab=col, xaxt="n")
-	axis(1, at=ticks, labels=format(as.Date(ticks, origin="1970-01-01"), format="%d/%m/%Y"), cex.axis=.7, las=2)
-	dev.off()
-	# plot density without NAs
-	if(length(secs)>1)
-	{	file <- paste0(basename,"_dens.",PLOT_FORMAT)
-		tlog(4, "Plotting density in file \"",file,"\"")
-		if(PLOT_FORMAT=="pdf")
+	for(plot.format in PLOT_FORMATS)
+	{	file <- paste0(basename,"_histo.",plot.format) #TODO must fix this date problem
+		tlog(4, "Plotting histogram in file \"",file,"\"")
+		if(plot.format=="pdf")
 			pdf(file)
-		else if(PLOT_FORMAT=="png")
+		else if(plot.format=="png")
 			png(file, width=1024, height=1024)
-		plot(density(secs), col="Red", main="Kernel density", xlab=col, xaxt="n")
+		ht <- hist(secs, col="Red", main="Distribution", xlab=col, xaxt="n")
 		axis(1, at=ticks, labels=format(as.Date(ticks, origin="1970-01-01"), format="%d/%m/%Y"), cex.axis=.7, las=2)
 		dev.off()
+	}
+	# plot density without NAs
+	if(length(secs)>1)
+	{	for(plot.format in PLOT_FORMATS)
+		{	file <- paste0(basename,"_dens.",plot.format)
+			tlog(4, "Plotting density in file \"",file,"\"")
+			if(plot.format=="pdf")
+				pdf(file)
+			else if(plot.format=="png")
+				png(file, width=1024, height=1024)
+			plot(density(secs), col="Red", main="Kernel density", xlab=col, xaxt="n")
+			axis(1, at=ticks, labels=format(as.Date(ticks, origin="1970-01-01"), format="%d/%m/%Y"), cex.axis=.7, las=2)
+			dev.off()
+		}
 	}
 	else
 		tlog(4, "Not enough points to plot density")
 	# plot log-density without NAs
 	if(length(secs)>1)
-	{	file <- paste0(basename,"_logdens.",PLOT_FORMAT)
-		tlog(4, "Plotting log density (only positive for values) in file \"",file,"\"")
-		if(PLOT_FORMAT=="pdf")
-			pdf(file)
-		else if(PLOT_FORMAT=="png")
-			png(file, width=1024, height=1024)
-		suppressWarnings({
-			plot(density(secs), col="Red", main="Log Kernel density", xlab=col, log="y", xaxt="n");
-			axis(1, at=ticks, labels=format(as.Date(ticks, origin="1970-01-01"), format="%d/%m/%Y"), cex.axis=.7, las=2)
-		})
-		dev.off()
+	{	for(plot.format in PLOT_FORMATS)
+		{	file <- paste0(basename,"_logdens.",plot.format)
+			tlog(4, "Plotting log density (only positive for values) in file \"",file,"\"")
+			if(plot.format=="pdf")
+				pdf(file)
+			else if(plot.format=="png")
+				png(file, width=1024, height=1024)
+			suppressWarnings({
+				plot(density(secs), col="Red", main="Log Kernel density", xlab=col, log="y", xaxt="n");
+				axis(1, at=ticks, labels=format(as.Date(ticks, origin="1970-01-01"), format="%d/%m/%Y"), cex.axis=.7, las=2)
+			})
+			dev.off()
+		}
 	}
 	else
 		tlog(4, "Not enough points to plot log density")
 	
 	# plot distribution with NAs
-	file <- paste0(basename,"_bar_NA.",PLOT_FORMAT)
-	tlog(4, "Plotting barplot (with NAs) in file \"",file,"\"")
-	if(PLOT_FORMAT=="pdf")
-		pdf(file)
-	else if(PLOT_FORMAT=="png")
-		png(file, width=1024, height=1024)
-	barplot(tt, col="Red", xlab=col, ylab="Frequency", las=2, cex.names=min(1,20/length(uvals))) # TODO could switch xlab to main for space purposes
-	dev.off()
+	for(plot.format in PLOT_FORMATS)
+	{	file <- paste0(basename,"_bar_NA.",plot.format)
+		tlog(4, "Plotting barplot (with NAs) in file \"",file,"\"")
+		if(plot.format=="pdf")
+			pdf(file)
+		else if(plot.format=="png")
+			png(file, width=1024, height=1024)
+		barplot(tt, col="Red", xlab=col, ylab="Frequency", las=2, cex.names=min(1,20/length(uvals))) # TODO could switch xlab to main for space purposes
+		dev.off()
+	}
 	
 	# plot double distr without NAs
-	file <- paste0(basename,"_double_bar.",PLOT_FORMAT)
-	tlog(4, "Plotting double barplot in file \"",file,"\"")
-	if(PLOT_FORMAT=="pdf")
-		pdf(file)
-	else if(PLOT_FORMAT=="png")
-		png(file, width=1024, height=1024)
-	barplot(ttt, col="Red", xlab=paste0("Occurrences of ",col), ylab="Frequency", las=2) # TODO could switch xlab to main for space purposes
-	dev.off()
+	for(plot.format in PLOT_FORMATS)
+	{	file <- paste0(basename,"_double_bar.",plot.format)
+		tlog(4, "Plotting double barplot in file \"",file,"\"")
+		if(plot.format=="pdf")
+			pdf(file)
+		else if(plot.format=="png")
+			png(file, width=1024, height=1024)
+		barplot(ttt, col="Red", xlab=paste0("Occurrences of ",col), ylab="Frequency", las=2) # TODO could switch xlab to main for space purposes
+		dev.off()
+	}
 	
 	return(result)
 }

@@ -14,8 +14,9 @@ CORE.NBR <- detectCores(all.tests=TRUE)
 
 
 #############################################################################################
-#PLOT_FORMAT <- "pdf"
-PLOT_FORMAT <- "png"
+#PLOT_FORMATS <- c("pdf","png")
+#PLOT_FORMATS <- "pdf"
+PLOT_FORMATS <- "png"
 
 
 
