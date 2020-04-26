@@ -878,7 +878,7 @@ test.position.d <- function(data, out.folder)
 					if(date.intersect(mdt.start1, mdt.end1, mdt.start2, mdt.end2))			# the mandate periods overlap
 					{	# check the function
 						if(data[idx[i],COL_ATT_ELU_ID]!=data[idx[j],COL_ATT_ELU_ID]			# if not the same person
-							|| is.na(fct.start1) || is.na(fct.start2) 						# or same with at most one function
+							|| is.na(fct.start1) || is.na(fct.start2) 						# or same person with at most one function
 							|| (date.intersect(fct.start1, fct.end1, fct.start2, fct.end2)	# or two overlapping functions
 								&& (!fct.lib1 %in% hon.fct) && (!fct.lib2 %in% hon.fct)))	# provided they are not honorific ones
 						{	# add to the table of problematic cases

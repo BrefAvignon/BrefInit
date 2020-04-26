@@ -32,7 +32,7 @@ PA267136	2002-06-19	2007-06-19	Date debut mandat	2002-06-19	2004-05-07	Date inco
 PA267138	2002-06-19	2007-06-19	Date debut mandat	2002-06-19	2007-04-22	Date incorrecte
 PA267309	2007-06-20	2010-08-05	Date debut mandat	2007-06-20	2008-04-19	Date incorrecte
 PA267366	2002-06-19	2007-06-19	Date debut mandat	2002-06-19	2006-06-24	Date incorrecte
-PA267457	2007-06-20	2012-06-19	Date debut mandat	2007-06-20	2007-07-04	Date incorrecte
+PA267457	2007-06-20	2012-06-19	Date debut mandat	2007-06-20	2007-07-05	Date incorrecte
 PA267459	2007-06-20	2012-06-19	Date debut mandat	2007-06-20	2012-05-11	Date incorrecte
 PA267460	2007-06-20	2012-06-16	Date debut mandat	2007-06-20	2011-07-30	Date incorrecte
 PA267532	2002-06-19	2007-06-19	Date debut mandat	2002-06-19	2003-03-11	Date incorrecte
@@ -70,8 +70,7 @@ PA342332	2007-06-20	2012-06-19	ID Assemblee	PA342332	NA	Suppression ligne incorr
 PA342364	2007-06-20	2012-06-19	ID Assemblee	PA342364	NA	Suppression ligne incorrecte
 PA342539	2007-06-20	2012-06-19	ID Assemblee	PA342539	NA	Suppression ligne incorrecte
 PA342539	2012-06-20	2017-06-17	ID Assemblee	PA342539	NA	Suppression ligne incorrecte
-PA342564	2012-06-20	2017-03-29	Date fin mandat	2017-03-29	2017-06-10	Date incorrecte
-PA342564	2012-06-20	2017-06-10	Code circo legislative	3	1	Circonscription incorrecte
+PA342564	2012-06-20	2017-03-29	Date debut mandat	2012-06-20	2017-03-22	Date incorrecte
 PA342997	2007-06-20	2012-06-19	ID Assemblee	PA342997	NA	Suppression ligne incorrecte
 PA343174	2007-06-20	2012-06-19	ID Assemblee	PA343174	NA	Suppression ligne incorrecte
 PA343385	2007-06-20	2012-06-16	Date debut mandat	2007-06-20	2008-04-20	Date incorrecte
