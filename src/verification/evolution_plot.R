@@ -400,7 +400,7 @@ plot.pers.time <- function(data, out.folder, type)
 		data[,COL_ATT_FCT_FIN] <- rep(NA, nrow(data))
 		if(COL_ATT_FCT_MOTIF %in% colnames(data)) data[,COL_ATT_FCT_MOTIF] <- rep(NA, nrow(data))
 		# merge overlapping mandates to collapse rows that were only differing by their function
-		merge.overlapping.mandates(data, type="D", log=FALSE)
+		data <- merge.overlapping.mandates(data, type="D", log=FALSE)
 	}
 	
 	# set up start/end dates
