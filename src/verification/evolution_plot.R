@@ -258,9 +258,14 @@ plot.election.dates <- function(type, start.date, end.date, max.val)
 	else if(type=="DE")
 		election.table <- load.election.data(data, election.file=FILE_VERIF_DATES_DE)$election.table
 	else if(type=="S")
-		election.table <- load.election.data(data, election.file=FILE_VERIF_DATES_S, series.file=FILE_VERIF_SERIES_S)$election.table
+	{	election.table <- load.election.data(data, election.file=FILE_VERIF_DATES_S, series.file=FILE_VERIF_SERIES_S)$election.table
+		election.table[which(election.table[,3]=="c1,c2"),3] <- "c"
+		election.table[which(election.table[,3]=="a,b,c1,c2"),3] <- "_"
+	}
 	
 	# plot them as vertical lines
+	ticks <- c()
+	labs <- c()
 	for(i in 1:nrow(election.table))
 	{	pos <- election.table[i,1]
 		if(pos>=start.date)
@@ -273,9 +278,16 @@ plot.election.dates <- function(type, start.date, end.date, max.val)
 			}
 			# possibly plot the electoral series
 			if(ncol(election.table)>2 && !is.na(election.table[i,3]))
-				text(pos,max.val,election.table[i,3],pos=4,col="DARKGRAY")
+			{	#text(pos,max.val,election.table[i,3],pos=4,col="DARKGRAY")
+				ticks <- c(ticks, pos)
+				labs <- c(labs, election.table[i,3])
+			}
 		}
 	}
+	
+	# add the top axis with the series
+	if(ncol(election.table)>2)
+		axis(side=3, at=ticks, labels=labs, tick=FALSE, col="DARKGRAY", mgp=c(3, .25, 0))
 }
 
 
@@ -455,11 +467,11 @@ plot.pers.time <- function(data, out.folder, type)
 			pdf(file, width=11, height=7)
 		else if(plot.format=="png")
 			png(file, width=1024, height=1024)
-		par(mar=c(5, 4, 1, 0)+0.1)	# B L T R
+		par(mar=c(5, 4, 1.5, 0)+0.1)	# B L T R
 		# create plot
 		plot(x=NULL,
 			xlab="Date", 
-			ylab="Nombre de lignes",
+			ylab="Nombre de mandats",
 			xaxt="n", yaxt="n",
 			xlim=range(as.Date(day.dates[idx], origin="1970-01-01")),
 			ylim=range(day.vals[idx])
@@ -505,11 +517,11 @@ plot.pers.time <- function(data, out.folder, type)
 			pdf(file, width=11, height=7)
 		else if(plot.format=="png")
 			png(file, width=1024, height=1024)
-		par(mar=c(5, 4, 1, 0)+0.1)	# B L T R
+		par(mar=c(5, 4, 1.5, 0)+0.1)	# B L T R
 		# create plot
 		plot(x=NULL,
 			xlab="Date", 
-			ylab="Nombre de lignes",
+			ylab="Nombre de mandats",
 			xaxt="n",
 			xlim=range(as.Date(day.dates, origin="1970-01-01")),
 			ylim=range(day.vals)
