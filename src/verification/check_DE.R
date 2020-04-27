@@ -31,11 +31,8 @@ start.rec.log(text="DE")
 out.folder <- FOLDER_OUT_DE
 dir.create(path=out.folder, showWarnings=FALSE, recursive=TRUE)
 
-# init stats table
-init.stat.table(out.folder)
-
 # load the data
-data <- load.de.data(correct.data, complete.data)
+data <- load.de.data(out.folder, correct.data, complete.data)
 
 # summarizes each column separately
 tlog(0,"Examining each column separately")

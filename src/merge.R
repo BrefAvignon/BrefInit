@@ -22,11 +22,14 @@ source("src/verification/test_duplicates.R")
 # set up parameters
 extraction <- 1 		# 1 or 2
 correct.data <- TRUE	# load raw or corrected data
-complete.data <- TRUE	# only for D and S
+complete.data <- TRUE	# only for D, DE and S
 
 # start logging
 start.rec.log(text=paste0("MERGE",extraction))
 tlog(0,"Merging all tables to get a unique one containing all data")
+
+# init stats table
+init.stat.table(FOLDER_OUT_ALL)
 
 
 
@@ -56,7 +59,7 @@ tlog(4,"Dimensions of the table: ",paste(dim(d.data),collapse="x"))
 
 # load the European parliamentary table
 tlog(2,"Loading European parliamentary data")
-de.data <- load.de.data(correct.data, complete.data=FALSE)
+de.data <- load.de.data(correct.data, complete.data)
 tlog(4,"Dimensions of the table: ",paste(dim(de.data),collapse="x"))
 
 # load the EPCI councilor table
@@ -273,6 +276,9 @@ write.table(x=data.bis,			# data to record
 
 
 #############################################################################################
+# close the stat file
+finalize.stat.table()
+
 # close the log file
 tlog(0,"Done")
 end.rec.log()

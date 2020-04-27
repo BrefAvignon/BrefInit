@@ -30,11 +30,8 @@ start.rec.log(text="EPCI")
 out.folder <- FOLDER_OUT_EPCI
 dir.create(path=out.folder, showWarnings=FALSE, recursive=TRUE)
 
-# init stats table
-init.stat.table(out.folder)
-
 # load the data
-data <- load.epci.data(correct.data, complete.data)
+data <- load.epci.data(out.folder, correct.data, complete.data)
 
 # summarizes each column separately
 tlog(0,"Examining each column separately")

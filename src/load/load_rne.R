@@ -181,19 +181,23 @@ load.data <- function(filenames, col.map, correc.file, correct.data, election.fi
 #############################################################################################
 # Loads the table for departmental counsilors (first extraction).
 #
+# out.folder: output folder, used to record various runtime stats.
 # correct.data: whether or not to apply the correction on the data read.
 # complete.data: whether or not to use secondary sources to correct/complete the RNE.
 #
 # returns: data frame made of the cleaned data contained in the appropriate files.
 #############################################################################################
-load.cd.data <- function(correct.data, complete.data)
+load.cd.data <- function(out.folder, correct.data, complete.data)
 {	# retrieve cached file
 	if(CACHE_DATA && file.exists(FILE_CACHE_CD))
 		data <- read.cached.table(cache.file=FILE_CACHE_CD)
 	
 	# cache disabled or no cached file
 	else
-	{	# names of the columns
+	{	# init stats table
+		init.stat.table(out.folder)
+		
+		# names of the columns
 		col.map <- c()
 		col.map["Code du département"] <- COL_ATT_DPT_CODE
 		col.map["Libellé du département"] <- COL_ATT_DPT_NOM
@@ -236,6 +240,9 @@ load.cd.data <- function(correct.data, complete.data)
 		{	# cache the data
 			write.cached.table(data=data, cache.file=FILE_CACHE_CD)
 		}
+	
+		# close the stat file
+		finalize.stat.table()
 	}
 	
 	return(data)
@@ -243,19 +250,23 @@ load.cd.data <- function(correct.data, complete.data)
 #############################################################################################
 # Loads the table for departmental counsilors (second extraction).
 #
+# out.folder: output folder, used to record various runtime stats.
 # correct.data: whether or not to apply the correction on the data read.
 # complete.data: whether or not to use secondary sources to correct/complete the RNE.
 #
 # returns: data frame made of the cleaned data contained in the appropriate files.
 #############################################################################################
-load.cd2.data <- function(correct.data, complete.data)
+load.cd2.data <- function(out.folder, correct.data, complete.data)
 {	# retrieve cached file
 	if(CACHE_DATA && file.exists(FILE_CACHE_CD2))
 		data <- read.cached.table(cache.file=FILE_CACHE_CD2)
 	
 	# cache disabled or no cached file
 	else
-	{	# names of the columns
+	{	# init stats table
+		init.stat.table(out.folder)
+		
+		# names of the columns
 		col.map <- c()
 		col.map["Code du département"] <- COL_ATT_DPT_CODE
 		col.map["Libellé du département"] <- COL_ATT_DPT_NOM
@@ -297,6 +308,9 @@ load.cd2.data <- function(correct.data, complete.data)
 		{	# record the data
 			write.cached.table(data=data, cache.file=FILE_CACHE_CD2)
 		}
+		
+		# close the stat file
+		finalize.stat.table()
 	}
 	
 	return(data)
@@ -308,19 +322,23 @@ load.cd2.data <- function(correct.data, complete.data)
 #############################################################################################
 # Loads the tables for municipal counsilors (first extraction).
 #
+# out.folder: output folder, used to record various runtime stats.
 # correct.data: whether or not to apply the correction on the data read.
 # complete.data: whether or not to use secondary sources to correct/complete the RNE.
 #
 # returns: data frame made of the cleaned data contained in the appropriate files.
 #############################################################################################
-load.cm.data <- function(correct.data, complete.data)
+load.cm.data <- function(out.folder, correct.data, complete.data)
 {	# retrieve cached file
 	if(CACHE_DATA && file.exists(FILE_CACHE_CM))
 		data <- read.cached.table(cache.file=FILE_CACHE_CM)
 	
 	# cache disabled or no cached file
 	else
-	{	# names of the columns
+	{	# init stats table
+		init.stat.table(out.folder)
+		
+		# names of the columns
 		col.map <- c()
 		col.map["Code du département (Maire)"] <- COL_ATT_DPT_CODE
 		col.map["Libellé de département (Maires)"] <- COL_ATT_DPT_NOM
@@ -369,6 +387,9 @@ load.cm.data <- function(correct.data, complete.data)
 		{	# record the data
 			write.cached.table(data=data, cache.file=FILE_CACHE_CM)
 		}
+		
+		# close the stat file
+		finalize.stat.table()
 	}
 	
 	return(data)
@@ -380,19 +401,23 @@ load.cm.data <- function(correct.data, complete.data)
 #############################################################################################
 # Loads the tables for municipal counsilors (second extraction).
 #
+# out.folder: output folder, used to record various runtime stats.
 # correct.data: whether or not to apply the correction on the data read.
 # complete.data: whether or not to use secondary sources to correct/complete the RNE.
 #
 # returns: data frame made of the cleaned data contained in the appropriate files.
 #############################################################################################
-load.cm2.data <- function(correct.data, complete.data)
+load.cm2.data <- function(out.folder, correct.data, complete.data)
 {	# retrieve cached file
 	if(CACHE_DATA && file.exists(FILE_CACHE_CM2))
 		data <- read.cached.table(cache.file=FILE_CACHE_CM2)
 	
 	# cache disabled or no cached file
 	else
-	{	# names of the columns
+	{	# init stats table
+		init.stat.table(out.folder)
+		
+		# names of the columns
 		col.map <- c()
 		col.map["N° Identification d'un élu"] <- COL_ATT_ELU_ID_RNE
 		col.map["Nom de l'élu"] <- COL_ATT_ELU_NOM
@@ -435,6 +460,9 @@ load.cm2.data <- function(correct.data, complete.data)
 		{	# record the data
 			write.cached.table(data=data, cache.file=FILE_CACHE_CM2)
 		}
+		
+		# close the stat file
+		finalize.stat.table()
 	}
 	
 	return(data)
@@ -446,19 +474,23 @@ load.cm2.data <- function(correct.data, complete.data)
 #############################################################################################
 # Loads the table for regional counsilors (first extraction).
 #
+# out.folder: output folder, used to record various runtime stats.
 # correct.data: whether or not to apply the correction on the data read.
 # complete.data: whether or not to use secondary sources to correct/complete the RNE.
 #
 # returns: data frame made of the cleaned data contained in the appropriate files.
 #############################################################################################
-load.cr.data <- function(correct.data, complete.data)
+load.cr.data <- function(out.folder, correct.data, complete.data)
 {	# retrieve cached file
 	if(CACHE_DATA && file.exists(FILE_CACHE_CR))
 		data <- read.cached.table(cache.file=FILE_CACHE_CR)
 	
 	# cache disabled or no cached file
 	else
-	{	# names of the columns
+	{	# init stats table
+		init.stat.table(out.folder)
+		
+		# names of the columns
 		col.map <- c()
 		col.map["Code région"] <- COL_ATT_REG_CODE
 		col.map["Libellé de la région"] <- COL_ATT_REG_NOM
@@ -501,6 +533,9 @@ load.cr.data <- function(correct.data, complete.data)
 		{	# record the data
 			write.cached.table(data=data, cache.file=FILE_CACHE_CR)
 		}
+		
+		# close the stat file
+		finalize.stat.table()
 	}
 	
 	return(data)
@@ -512,19 +547,23 @@ load.cr.data <- function(correct.data, complete.data)
 #############################################################################################
 # Loads the table for regional counsilors (first extraction).
 #
+# out.folder: output folder, used to record various runtime stats.
 # correct.data: whether or not to apply the correction on the data read.
 # complete.data: whether or not to use secondary sources to correct/complete the RNE.
 #
 # returns: data frame made of the cleaned data contained in the appropriate files.
 #############################################################################################
-load.cr2.data <- function(correct.data, complete.data)
+load.cr2.data <- function(out.folder, correct.data, complete.data)
 {	# retrieve cached file
 	if(CACHE_DATA && file.exists(FILE_CACHE_CR2))
 		data <- read.cached.table(cache.file=FILE_CACHE_CR2)
 	
 	# cache disabled or no cached file
 	else
-	{	# names of the columns
+	{	# init stats table
+		init.stat.table(out.folder)
+		
+		# names of the columns
 		col.map <- c()
 		col.map["Région"] <- COL_ATT_REG_NOM
 		col.map["Circonscription électorale"] <- COL_ATT_DPT_CODE
@@ -573,6 +612,9 @@ load.cr2.data <- function(correct.data, complete.data)
 		{	# record the data
 			write.cached.table(data=data, cache.file=FILE_CACHE_CR2)
 		}
+		
+		# close the stat file
+		finalize.stat.table()
 	}
 	
 	return(data)
@@ -584,19 +626,23 @@ load.cr2.data <- function(correct.data, complete.data)
 #############################################################################################
 # Loads the table for members of the parliament.
 #
+# out.folder: output folder, used to record various runtime stats.
 # correct.data: whether or not to apply the correction on the data read.
 # complete.data: whether or not to use secondary sources to correct/complete the RNE.
 #
 # returns: data frame made of the cleaned data contained in the appropriate files.
 #############################################################################################
-load.d.data <- function(correct.data, complete.data)
+load.d.data <- function(out.folder, correct.data, complete.data)
 {	# retrieve cached file
 	if(CACHE_DATA && file.exists(FILE_CACHE_D))
 		data <- read.cached.table(cache.file=FILE_CACHE_D)
 	
 	# cache disabled or no cached file
 	else
-	{	# names of the columns
+	{	# init stats table
+		init.stat.table(out.folder)
+		
+		# names of the columns
 		col.map <- c()
 		col.map["Code du département"] <- COL_ATT_DPT_CODE
 		col.map["Libellé du département"] <- COL_ATT_DPT_NOM
@@ -650,6 +696,9 @@ load.d.data <- function(correct.data, complete.data)
 		{	# record the data
 			write.cached.table(data=data, cache.file=FILE_CACHE_D)
 		}
+		
+		# close the stat file
+		finalize.stat.table()
 	}
 	
 	return(data)
@@ -661,19 +710,23 @@ load.d.data <- function(correct.data, complete.data)
 #############################################################################################
 # Loads the table for European counsilors.
 #
+# out.folder: output folder, used to record various runtime stats.
 # correct.data: whether or not to apply the correction on the data read.
 # complete.data: whether or not to use secondary sources to correct/complete the RNE.
 #
 # returns: data frame made of the cleaned data contained in the appropriate files.
 #############################################################################################
-load.de.data <- function(correct.data, complete.data)
+load.de.data <- function(out.folder, correct.data, complete.data)
 {	# retrieve cached file
 	if(CACHE_DATA && file.exists(FILE_CACHE_DE))
 		data <- read.cached.table(cache.file=FILE_CACHE_DE)
 	
 	# cache disabled or no cached file
 	else
-	{	# names of the columns
+	{	# init stats table
+		init.stat.table(out.folder)
+		
+		# names of the columns
 		col.map <- c()
 		col.map["CodeCirER"] <- COL_ATT_CIRCE_CODE
 		col.map["LibelléCirER"] <- COL_ATT_CIRCE_NOM
@@ -723,6 +776,9 @@ load.de.data <- function(correct.data, complete.data)
 		{	# record the data
 			write.cached.table(data=data, cache.file=FILE_CACHE_DE)
 		}
+		
+		# close the stat file
+		finalize.stat.table()
 	}
 	
 	return(data)
@@ -734,19 +790,23 @@ load.de.data <- function(correct.data, complete.data)
 #############################################################################################
 # Loads the table for EPCI counsilors.
 #
+# out.folder: output folder, used to record various runtime stats.
 # correct.data: whether or not to apply the correction on the data read.
 # complete.data: whether or not to use secondary sources to correct/complete the RNE.
 #
 # returns: data frame made of the cleaned data contained in the appropriate files.
 #############################################################################################
-load.epci.data <- function(correct.data, complete.data)
+load.epci.data <- function(out.folder, correct.data, complete.data)
 {	# retrieve cached file
 	if(CACHE_DATA && file.exists(FILE_CACHE_EPCI))
 		data <- read.cached.table(cache.file=FILE_CACHE_EPCI)
 	
 	# cache disabled or no cached file
 	else
-	{	# names of the columns
+	{	# init stats table
+		init.stat.table(out.folder)
+		
+		# names of the columns
 		col.map <- c()
 		col.map["Code département EPCI"] <- COL_ATT_EPCI_DPT
 		col.map["Code département commune rattachée"] <- COL_ATT_DPT_CODE
@@ -795,6 +855,9 @@ load.epci.data <- function(correct.data, complete.data)
 		{	# record the data
 			write.cached.table(data=data, cache.file=FILE_CACHE_EPCI)
 		}
+		
+		# close the stat file
+		finalize.stat.table()
 	}
 	
 	return(data)
@@ -806,19 +869,23 @@ load.epci.data <- function(correct.data, complete.data)
 #############################################################################################
 # Loads the table for mayors.
 #
+# out.folder: output folder, used to record various runtime stats.
 # correct.data: whether or not to apply the correction on the data read.
 # complete.data: whether or not to use secondary sources to correct/complete the RNE.
 #
 # returns: data frame made of the cleaned data contained in the appropriate files.
 #############################################################################################
-load.m.data <- function(correct.data, complete.data)
+load.m.data <- function(out.folder, correct.data, complete.data)
 {	# retrieve cached file
 	if(CACHE_DATA && file.exists(FILE_CACHE_M))
 		data <- read.cached.table(cache.file=FILE_CACHE_M)
 	
 	# cache disabled or no cached file
 	else
-	{	# names of the columns
+	{	# init stats table
+		init.stat.table(out.folder)
+		
+		# names of the columns
 		col.map <- c()
 		col.map["Code du département (Maire)"] <- COL_ATT_DPT_CODE
 		col.map["Libellé de département (Maires)"] <- COL_ATT_DPT_NOM
@@ -862,6 +929,9 @@ load.m.data <- function(correct.data, complete.data)
 		{	# record the data
 			write.cached.table(data=data, cache.file=FILE_CACHE_M)
 		}
+		
+		# close the stat file
+		finalize.stat.table()
 	}
 	
 	return(data)
@@ -873,19 +943,23 @@ load.m.data <- function(correct.data, complete.data)
 #############################################################################################
 # Loads the table for senators.
 #
+# out.folder: output folder, used to record various runtime stats.
 # correct.data: whether or not to apply the correction on the data read.
 # complete.data: whether or not to use secondary sources to correct/complete the RNE.
 #
 # returns: data frame made of the cleaned data contained in the appropriate files.
 #############################################################################################
-load.s.data <- function(correct.data, complete.data)
+load.s.data <- function(out.folder, correct.data, complete.data)
 {	# retrieve cached file
 	if(CACHE_DATA && file.exists(FILE_CACHE_S))
 		data <- read.cached.table(cache.file=FILE_CACHE_S)
 	
 	# cache disabled or no cached file
 	else
-	{	# names of the columns
+	{	# init stats table
+		init.stat.table(out.folder)
+		
+		# names of the columns
 		col.map <- c()
 		col.map["Code du département"] <- COL_ATT_DPT_CODE
 		col.map["Libellé du département"] <- COL_ATT_DPT_NOM
@@ -933,6 +1007,9 @@ load.s.data <- function(correct.data, complete.data)
 		{	# record the data
 			write.cached.table(data=data, cache.file=FILE_CACHE_S)
 		}
+		
+		# close the stat file
+		finalize.stat.table()
 	}
 	
 	return(data)

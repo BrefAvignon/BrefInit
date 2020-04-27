@@ -31,11 +31,8 @@ start.rec.log(text=paste0("CR",extraction))
 out.folder <- if(extraction==1) FOLDER_OUT_CR else FOLDER_OUT_CR2
 dir.create(path=out.folder, showWarnings=FALSE, recursive=TRUE)
 
-# init stats table
-init.stat.table(out.folder)
-
 # load the data
-data <- if(extraction==1) load.cr.data(correct.data, complete.data) else load.cr2.data(correct.data, complete.data)
+data <- if(extraction==1) load.cr.data(out.folder, correct.data, complete.data) else load.cr2.data(out.folder, correct.data, complete.data)
 
 # summarizes each column separately
 tlog(0,"Examining each column separately")

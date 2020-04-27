@@ -289,7 +289,15 @@ plot.election.dates <- function(type, start.date, end.date, max.val)
 	
 	# add the top axis with the series
 	if(ncol(election.table)>2)
-		axis(side=3, at=ticks, labels=labs, tick=FALSE, col="DARKGRAY", mgp=c(3, .25, 0))
+	{	axis(side=3, 			# top axis
+			at=ticks, 			# where to put text
+			labels=labs, 		# text to show
+			cex.axis=0.75,		# smaller text		
+			tick=FALSE, 		# hide tick marks
+			col="DARKGRAY", 	# text color
+			mgp=c(3, .25, 0)	# closer to axis
+		)
+	}
 }
 
 
@@ -474,7 +482,7 @@ plot.pers.time <- function(data, out.folder, type)
 	end.dates <- c(
 		max(as.Date(day.dates, origin="1970-01-01")),	# latest date in the data
 		as.Date("2018/7/31"),							# RNE extraction date
-		as.Date("2020/5/1")							# (approximately) current date
+		as.Date("2020/5/1")								# (approximately) current date
 	)
 	file.names <- c(
 		"persons_by_day_all",
