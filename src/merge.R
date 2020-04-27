@@ -29,6 +29,7 @@ start.rec.log(text=paste0("MERGE",extraction))
 tlog(0,"Merging all tables to get a unique one containing all data")
 
 # init stats table
+dir.create(path=FOLDER_OUT_ALL, showWarnings=FALSE, recursive=TRUE)
 init.stat.table(FOLDER_OUT_ALL)
 
 
@@ -254,15 +255,18 @@ write.cached.table(data[idx,], cache.file=FILE_CACHE_ALL)
 
 #############################################################################################
 # export for EV
+file.name <- paste0(FILE_CACHE_ALL,"_EV.txt")
+tlog(0,"Exporting to ",file.name)
 data.bis <- data
 for(c in 1:ncol(data.bis))
 {	if(class(data.bis[,c])=="character")
 		repl <- ""
 	else
-		repl <- "NULL"
+	{	repl <- "NULL"
+		data.bis[,c] <- as.character(data.bis[,c])
+	}
 	data.bis[is.na(data.bis[,c]),c] <- repl
 }
-file.name <- paste0(FILE_CACHE_ALL,"_EV.txt")
 write.table(x=data.bis,			# data to record
 	file=file.name,				# name of file containing the new table
 	quote=FALSE,				# put double quotes around strings

@@ -59,7 +59,9 @@ init.stat.table <- function(out.folder)
 		"Total number of changes"=integer(), 
 		"Total proportion of changes"=numeric(), 
 		"Total number of rows"=integer(), 
-		stringsAsFactors=FALSE) 
+		stringsAsFactors=FALSE,
+		check.names=FALSE
+	) 
 
 	# init the file name
 	STATS_FILE <<- file.path(out.folder, "_runtime_stats.txt")
@@ -101,7 +103,8 @@ update.stat.table <- function(s.nbr, s.name, del.nbr=0, mod.nbr=0, add.nbr=0, si
 		"Total number of changes"=(del.nbr+mod.nbr+add.nbr), 
 		"Total proportion of changes"=(del.nbr+mod.nbr+add.nbr)/size*100, 
 		"Total number of rows"=size+add.nbr-del.nbr, 
-		stringsAsFactors=FALSE 
+		stringsAsFactors=FALSE,
+		check.names=FALSE
 	))
 
 	# record it
@@ -126,8 +129,17 @@ update.stat.table <- function(s.nbr, s.name, del.nbr=0, mod.nbr=0, add.nbr=0, si
 # out.folder: folder used to record the stat file.
 #############################################################################################
 finalize.stat.table <- function()
-{	# compute sums
-	duration <- sum(STATS_TABLE[,"Step duration"])
+{	# compute duration sum
+	duration <- 0
+	for(r in 1:nrow(STATS_TABLE))
+	{	sp <- as.integer(strsplit(STATS_TABLE[r,"Step duration"],":",fixed=TRUE)[[1]])
+		if(length(sp)==3)
+			sp <- c(0,sp)
+		dur <- (((sp[1]*24) + sp[2])*60 + sp[3])*60 + sp[4]
+		duration <- duration + dur
+	}
+	
+	# compute other sums
 	size <- STATS_TABLE[1,"Total number of rows"]
 	del.nbr <- sum(STATS_TABLE[,"Number of deleted rows"])
 	mod.nbr <- sum(STATS_TABLE[,"Number of modified rows"])
@@ -137,7 +149,7 @@ finalize.stat.table <- function()
 	STATS_TABLE <<- rbind(STATS_TABLE, data.frame(
 		"Step number"=NA, 
 		"Step name"="Total", 
-		"Step duration"=duration, 
+		"Step duration"=format.duration(duration), 
 		"Number of deleted rows"=del.nbr, 
 		"Proportion of deleted rows"=del.nbr/size*100, 
 		"Number of modified rows"=mod.nbr, 
@@ -147,7 +159,8 @@ finalize.stat.table <- function()
 		"Total number of changes"=(del.nbr+mod.nbr+add.nbr), 
 		"Total proportion of changes"=(del.nbr+mod.nbr+add.nbr)/size*100, 
 		"Total number of rows"=size+add.nbr-del.nbr, 
-		stringsAsFactors=FALSE
+		stringsAsFactors=FALSE,
+		check.names=FALSE
 	))
 
 	# record it
