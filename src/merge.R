@@ -250,6 +250,29 @@ write.cached.table(data[idx,], cache.file=FILE_CACHE_ALL)
 
 
 #############################################################################################
+# export for EV
+data.bis <- data
+for(c in 1:ncol(data.bis))
+{	if(class(data.bis[,c])=="character")
+		repl <- ""
+	else
+		repl <- "NULL"
+	data.bis[is.na(data.bis[,c]),c] <- repl
+}
+file.name <- paste0(FILE_CACHE_ALL,"_EV.txt")
+write.table(x=data.bis,			# data to record
+	file=file.name,				# name of file containing the new table
+	quote=FALSE,				# put double quotes around strings
+	sep="\t",					# use tabulations as separators
+#	fileEncoding="UTF-8",		# character encoding
+	row.names=FALSE,			# no names for rows
+	col.names=TRUE				# record table headers
+)
+
+
+
+
+#############################################################################################
 # close the log file
 tlog(0,"Done")
 end.rec.log()
