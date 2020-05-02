@@ -330,7 +330,7 @@ apply.adhoc.corrections <- function(data, col.map, correc.file)
 {	nbr.rows <- nrow(data)
 	# load the correction table
 	correc.table <- load.correction.table(col.map, correc.file)
-print(colnames(data))	
+	#print(colnames(data))	
 	
 	# apply ad hoc corrections
 	corrected.rows <- c()
@@ -590,11 +590,22 @@ apply.systematic.corrections <- function(data, type)
 	# replace the NC political nuance by proper NAs
 	if(COL_ATT_ELU_NUANCE %in% colnames(data))
 	{	tlog(0,"Normalizing political nuance labels")
+		# replace the NC political nuance by proper NAs
 		idx <- which(data[,COL_ATT_ELU_NUANCE]=="NC")
 		if(length(idx)>0)
 		{	data[idx,COL_ATT_ELU_NUANCE] <- NA
 			data[idx,COL_ATT_CORREC_INFO] <- TRUE 
 			corr.rows <- union(corr.rows,idx)
+		}
+		# replace the duplicate labels
+		dupl.nuances <- c("RDG"="PRG", "M-NC"="MAJ")
+		for(i in 1:length(dupl.nuances))
+		{	idx <- which(data[,COL_ATT_ELU_NUANCE]==names(dupl.nuances)[i])
+			if(length(idx)>0)
+			{	data[idx,COL_ATT_ELU_NUANCE] <- dupl.nuances[i]
+				data[idx,COL_ATT_CORREC_INFO] <- TRUE 
+				corr.rows <- union(corr.rows,idx)
+			}
 		}
 		tlog(2,"Fixed ",length(idx)," political nuances")
 	}
@@ -1559,7 +1570,13 @@ merge.overlapping.mandates <- function(data, type, log=TRUE)
 									
 									# update mandate start date
 									if(is.na(data[idx[j],COL_ATT_MDT_DBT]) || is.na(data[idx[k],COL_ATT_MDT_DBT]))
-										stop("ERROR: empty mandate start date")
+									{	if(log) stop("ERROR: empty mandate start date")
+										# issue handled in a more relaxed way when function called from verification script
+										else
+										{	if(is.na(data[idx[j],COL_ATT_MDT_DBT]))
+												data[idx[j],COL_ATT_MDT_DBT] <- data[idx[k],COL_ATT_MDT_DBT]
+										}
+									}
 									else 
 										data[idx[j],COL_ATT_MDT_DBT] <- min(data[idx[j],COL_ATT_MDT_DBT], data[idx[k],COL_ATT_MDT_DBT])
 									# update mandate end date
