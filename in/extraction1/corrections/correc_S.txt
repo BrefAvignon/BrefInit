@@ -110,4 +110,4 @@ Row	Id RNE	Nom	Prenom	Attribut	ValAvt	ValApr	Commentaire
 1064	413	GUERRY	Michel	ID RNE	413	NA	uppression, mandat inexistant (BD Sénat)
 1065	837970	KAMMERMANN	Christiane	ID RNE	837970	NA	uppression, mandat inexistant (BD Sénat)
 1072	1174431	LEPAGE	Claudine	Date naissance	19/8/1949	10/8/1949	Date de naissance incohérente
-1074	837971	YUNG	Richard	ID RNE	837971	NA	uppression, mandat inexistant (BD Sénat)
+1074	837971	YUNG	Richard	ID RNE	837971	NA	Suppression, mandat inexistant (BD Sénat)

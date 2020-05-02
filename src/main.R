@@ -87,13 +87,6 @@ source("src/common/include.R")
 # - rajouter sarko dans les députés
  
 # TODO
-# tester l'unicité des nouveaux ids dans la table fusionnée (AN, Senat, PE, etc.)
-
-# TODO
-# - dans les tests, ne pas compter/détecter si fonction différentes (même si même mandat)
-#   > détecter mandat overlap, puis ne garder que les overlap de fonction (ou pas de fonction)
-
-
-# TODO
-# tester chaque fct de correct en l'appliquant plusieurs fois
-# pb avec merge overlapping mandates, qui continue à faire des fusions alors que devrait pas...
+# - tester l'unicité des nouveaux ids dans la table fusionnée (AN, Senat, PE, etc.)
+# - vérifier que la subst des noms de partis a marché dans CM
+#   >> dupl.nuances <- c("RDG"="PRG", "M-NC"="MAJ")
