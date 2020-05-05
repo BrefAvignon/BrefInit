@@ -1097,6 +1097,8 @@ adjust.function.dates <- function(data)
 					&& data[r,COL_ATT_FCT_FIN]>data[r,COL_ATT_MDT_FIN])
 			{	data[r,COL_ATT_FCT_FIN] <- data[r,COL_ATT_MDT_FIN]
 				changed.end <- TRUE
+				if(COL_ATT_FCT_MOTIF %in% colnames(data))
+					data[r,COL_ATT_FCT_MOTIF] <- data[r,COL_ATT_MDT_MOTIF]
 			}
 			
 #			# sometimes, the function start date is posterior to the mandate end date
@@ -1468,6 +1470,7 @@ merge.overlapping.mandates <- function(data, type, log=TRUE)
 	atts <- setdiff(colnames(data), c(COL_ATT_ELU_ID, 		# person ID
 				COL_ATT_MDT_DBT, COL_ATT_MDT_FIN, 			# mandate dates
 				COL_ATT_FCT_DBT, COL_ATT_FCT_FIN,			# function dates
+				COL_ATT_MDT_MOTIF, COL_ATT_FCT_MOTIF,		# end motives
 				COL_ATT_CORREC_INFO, COL_ATT_CORREC_DATE,	# correction flags
 				COL_ATT_SOURCES))							# sources
 	
@@ -1575,9 +1578,15 @@ merge.overlapping.mandates <- function(data, type, log=TRUE)
 										data[idx[j],COL_ATT_MDT_DBT] <- min(data[idx[j],COL_ATT_MDT_DBT], data[idx[k],COL_ATT_MDT_DBT])
 									# update mandate end date
 									if(is.na(data[idx[j],COL_ATT_MDT_FIN]) || is.na(data[idx[k],COL_ATT_MDT_FIN]))
-										data[idx[j],COL_ATT_MDT_FIN] <- NA
+									{	data[idx[j],COL_ATT_MDT_FIN] <- NA
+										data[idx[j],COL_ATT_MDT_MOTIF] <- NA
+									}
 									else
-										data[idx[j],COL_ATT_MDT_FIN] <- max(data[idx[j],COL_ATT_MDT_FIN], data[idx[k],COL_ATT_MDT_FIN])
+									{	if(data[idx[j],COL_ATT_MDT_FIN] < data[idx[k],COL_ATT_MDT_FIN])
+										{	data[idx[j],COL_ATT_MDT_FIN] <- data[idx[k],COL_ATT_MDT_FIN]
+											data[idx[j],COL_ATT_MDT_MOTIF] <- data[idx[k],COL_ATT_MDT_MOTIF]
+										}
+									}
 									
 									# possibly update function dates
 									if(!is.na(fct.att))
@@ -1586,9 +1595,14 @@ merge.overlapping.mandates <- function(data, type, log=TRUE)
 										else if(!is.na(data[idx[k],COL_ATT_FCT_DBT]))	# both start dates are not NA (second row)
 										{	data[idx[j],COL_ATT_FCT_DBT] <- min(data[idx[j],COL_ATT_FCT_DBT], data[idx[k],COL_ATT_FCT_DBT])
 											if(!is.na(data[idx[j],COL_ATT_FCT_FIN]) && !is.na(data[idx[k],COL_ATT_FCT_FIN]))
-												data[idx[j],COL_ATT_FCT_FIN] <- max(data[idx[j],COL_ATT_FCT_FIN], data[idx[k],COL_ATT_FCT_FIN])
+											{	if(data[idx[j],COL_ATT_FCT_FIN] < data[idx[k],COL_ATT_FCT_FIN])
+												data[idx[j],COL_ATT_FCT_FIN] <- data[idx[k],COL_ATT_FCT_FIN]
+												data[idx[j],COL_ATT_FCT_MOTIF] <- data[idx[k],COL_ATT_FCT_MOTIF]
+											}
 											else
-												data[idx[j],COL_ATT_FCT_FIN] <- NA
+											{	data[idx[j],COL_ATT_FCT_FIN] <- NA
+												data[idx[j],COL_ATT_FCT_MOTIF] <- NA
+											}
 										}
 									}
 									
@@ -2489,41 +2503,30 @@ adjust.end.motives <- function(data, election.file, series.file)
 fix.mdtfct.dates <- function(data, election.file, series.file, type)
 {	# adjust function dates so that they are contained inside the corresponding mandate period
 	data <- adjust.function.dates(data)
-#data8 <- data	
 	
 	# round mandate and function dates to match election dates, when approximately equal
 	if(hasArg(election.file))
 		data <- round.mdtfct.dates(data, election.file, series.file, tolerance=7)
-#data <- round.mdtfct.dates(data, election.file, tolerance=7)	#debug: data9
-#data9 <- data
 	
 	# removes micro-mandates
 	data <- remove.micro.mdtfcts(data, tolerance=7)
-#data10 <- data
 	
 	# merge rows corresponding to overlapping and compatible mandates
 	data <- merge.overlapping.mandates(data, type, log=TRUE)
-#data11 <- data
 	
 	# splits rows containing election dates (other than as a start date)
 	if(hasArg(election.file))
 		data <- split.long.mandates(data, election.file, series.file)
-#data <- split.long.mandates(data, election.file)
-#data12 <- data
 	
 	# solve mandate and function intersections (same position)
 	data <- shorten.overlapping.mandates(data, type, tolerance=8)
-#data13 <- data
 	data <- shorten.overlapping.functions(data, type, tolerance=8)
-#data14 <- data
 	
 	# remove micro-mandates again (in case split created any)
 	data <- remove.micro.mdtfcts(data, tolerance=7)
-#data15 <- data
 	
 	# adjust end of mandate or function motives
 	data <- adjust.end.motives(data, election.file, series.file)
-#data16 <- data
 	
 	#stop()
 	return(data)
