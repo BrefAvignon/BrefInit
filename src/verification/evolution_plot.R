@@ -250,7 +250,9 @@ plot.pers.time0 <- function(data, out.folder, daily=FALSE)
 plot.election.dates <- function(type, start.date, end.date, max.val)
 {	# get the election dates
 	if(type=="CD")
-		election.table <- load.election.data(data, election.file=FILE_VERIF_DATES_CD, series.file=FILE_VERIF_SERIES_CD)$election.table
+	{	election.table <- load.election.data(data, election.file=FILE_VERIF_DATES_CD, series.file=FILE_VERIF_SERIES_CD)$election.table
+		election.table[which(election.table[,3]=="1,2"),3] <- "_"
+	}
 	else if(type=="CM" || type=="EPCI" || type=="M")
 		election.table <- load.election.data(data, election.file=FILE_VERIF_DATES_CM)$election.table
 	else if(type=="CR")

@@ -1573,7 +1573,13 @@ merge.overlapping.mandates <- function(data, type, log=TRUE)
 									
 									# update mandate start date
 									if(is.na(data[idx[j],COL_ATT_MDT_DBT]) || is.na(data[idx[k],COL_ATT_MDT_DBT]))
-										stop("ERROR: empty mandate start date")
+									{	if(log) stop("ERROR: empty mandate start date")
+										# issue handled in a more relaxed way when function called from verification script
+										else
+										{	if(is.na(data[idx[j],COL_ATT_MDT_DBT]))
+												data[idx[j],COL_ATT_MDT_DBT] <- data[idx[k],COL_ATT_MDT_DBT]
+										}
+									}
 									else 
 										data[idx[j],COL_ATT_MDT_DBT] <- min(data[idx[j],COL_ATT_MDT_DBT], data[idx[k],COL_ATT_MDT_DBT])
 									# update mandate end date
