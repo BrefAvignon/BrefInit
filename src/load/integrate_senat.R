@@ -1060,6 +1060,9 @@ senate.update.rne.table <- function(rne.tab, sen.tab, row.conv, type)
 		col.names=TRUE			# record table headers
 	)
 	
+	tlog(2,"CHECKPOINT 16: integration complete")
+	tlog(4,"Now ",nrow(data)," rows and ",ncol(data)," columns in main table")
+	update.stat.table(s.nbr=16, s.name="Integrate secondary source", del.nbr=0, mod.nbr=length(exist.rows), add.nbr=length(missing.rows), size=nrow(rne.tab))
 	return(result)
 }
 
@@ -1107,6 +1110,10 @@ senate.integrate.data <- function(data, type, cache=FALSE, compare=FALSE)
 		rne.tab.file <- file.path(out.folder, "data_rne2.txt")
 		#source("src/comparison/compare_tables.R")
 		compare.tables(files0=rne.tab.file, files1=sen.tab.file, out.folder)
+
+		tlog(2,"CHECKPOINT 17: comparison complete")
+		tlog(4,"Now ",nrow(result)," rows and ",ncol(result)," columns in main table")
+		update.stat.table(s.nbr=17, s.name="Table comparison", del.nbr=0, mod.nbr=0, add.nbr=0, size=nrow(result))
 	}
 	
 	return(result)
