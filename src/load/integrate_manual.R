@@ -84,7 +84,7 @@ manual.integrate.data.de <- function(data)
 	
 	tlog(2,"CHECKPOINT 16: added ",added.nbr," rows (",(100*added.nbr/nbr.before),"%)")
 	tlog(2,"Now ",nrow(data)," rows and ",ncol(data)," columns in table")
-	update.stat.table(s.nbr=16, s.name="Integrate secondary data source", del.nbr=0, mod.nbr=0, add.nbr=added.nbr, size=nbr.before)
+	update.stat.table(s.nbr=16, s.name="Integrate secondary source", del.nbr=0, mod.nbr=0, add.nbr=added.nbr, size=nbr.before)
 	return(data)
 }
 

@@ -244,6 +244,13 @@ tlog(2,"Actual dimensions of the full table: ",paste(dim(data),collapse="x"))
 
 
 #############################################################################################
+# merge rows considered as compatible
+data <- merge.similar.rows(data)
+
+
+
+
+#############################################################################################
 dir.create(path=FOLDER_OUT_ALL, showWarnings=FALSE, recursive=TRUE)
 tlog(0,"Ordering the full table")
 idx <- order(data[,COL_ATT_ELU_NOM], data[,COL_ATT_ELU_PRENOM], data[,COL_ATT_ELU_ID],
