@@ -164,6 +164,10 @@ load.data <- function(filenames, col.map, correc.file, correct.data, election.fi
 		data <- fix.mdtfct.dates(data, election.file, series.file, type)
 	}
 	
+	# count the number of modified rows
+	idx <- which(data[,COL_ATT_CORREC_DATE] | data[,COL_ATT_CORREC_INFO])
+	tlog(0,"Total number of modified rows: ", length(idx))
+	
 	return(data)
 }
 
@@ -682,6 +686,10 @@ load.d.data <- function(out.folder, correct.data, complete.data)
 						election.file=FILE_VERIF_DATES_D,
 						type="D")
 			}
+			
+			# count the number of modified rows
+			idx <- which(data[,COL_ATT_CORREC_DATE] | data[,COL_ATT_CORREC_INFO])
+			tlog(0,"Total number of modified rows: ", length(idx))
 		}
 		
 		if(CACHE_DATA)
@@ -762,6 +770,10 @@ load.de.data <- function(out.folder, correct.data, complete.data)
 						election.file=FILE_VERIF_DATES_DE,
 						type="DE")
 			}
+			
+			# count the number of modified rows
+			idx <- which(data[,COL_ATT_CORREC_DATE] | data[,COL_ATT_CORREC_INFO])
+			tlog(0,"Total number of modified rows: ", length(idx))
 		}
 		
 		if(CACHE_DATA)
@@ -993,6 +1005,10 @@ load.s.data <- function(out.folder, correct.data, complete.data)
 						election.file=FILE_VERIF_DATES_S, series.file=FILE_VERIF_SERIES_S,
 						type="S")
 			}
+			
+			# count the number of modified rows
+			idx <- which(data[,COL_ATT_CORREC_DATE] | data[,COL_ATT_CORREC_INFO])
+			tlog(0,"Total number of modified rows: ", length(idx))
 		}
 		
 		if(CACHE_DATA)
