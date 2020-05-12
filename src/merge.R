@@ -246,7 +246,8 @@ tlog(2,"Actual dimensions of the full table: ",paste(dim(data),collapse="x"))
 #############################################################################################
 # merge rows considered as compatible
 data <- merge.similar.rows(data)
-
+# add missing ids
+data <- complete.missing.ids(data)
 
 
 

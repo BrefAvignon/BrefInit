@@ -2489,6 +2489,46 @@ adjust.end.motives <- function(data, election.file, series.file)
 
 
 #############################################################################################
+# This function is meant to be applied only to the merged (unique) table. It detects missing
+# non-universal id values (RNE, SEN, ASN, EUR, PRF, etc.) and complete them whenever possible,
+# using occurrences coming from other types of mandates.
+#
+# data: merged table.
+#
+# returns: the same table, but with completed ids.
+#############################################################################################
+complete.missing.ids <- function(data)
+{	id.cols <- c(COL_ATT_ELU_ID_ASSEMB, COL_ATT_ELU_ID_EURO, COL_ATT_ELU_ID_RNE, COL_ATT_ELU_ID_SENAT)
+	
+	# list of unique universal ids
+	unique.ids <- unique(data[,COL_ATT_ELU_ID])
+	
+	# build a reference table
+	map <- matrix(as.character(NA), nrow=length(unique.ids), ncol=length(id.cols))
+	colnames(map) <- id.cols
+	rownames(map) <- unique.ids
+	for(i in 1:length(id.cols))
+	{	idx <- which(!is.na(data[,id.cols[i]]))
+		ids <- data[idx,COL_ATT_ELU_ID]
+		map[ids,id.cols[i]] <- data[idx,id.cols[i]]
+	}
+	
+	# update table
+	data.ids <- future_sapply(1:nrow(data), function(r) map[data[r,COL_ATT_ELU_ID],])
+	treated.rows <- length(which(apply(data.ids[,id.cols]!=data[,id.cols], 1, any)))
+	data[,id.cols] <- data.ids
+	
+	tlog(2,"CHECKPOINT 18: completed a total of ",length(treated.rows)," rows for the whole table (",(100*length(treated.rows)/nrow(data)),"%)")
+	tlog(2, "Number of rows remaining: ",nrow(data))
+	update.stat.table(s.nbr=18, s.name="Complete missing ids", del.nbr=0, mod.nbr=length(treated.rows), add.nbr=0, size=nrow(data))
+	
+	return(data)
+}
+
+
+
+
+#############################################################################################
 # Performs various corrections on the dates defining mandates and functions: 
 # 1) Adjusts function dates so that they are contained inside the corresponding mandate period.
 # 2) Rounds mandate and function dates to match election dates, when approximately equal.
