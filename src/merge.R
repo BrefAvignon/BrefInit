@@ -126,7 +126,7 @@ tmp <- data.frame(
 	)
 tmp[,COL_ATT_ELU_DDD] <- as.Date(tmp[,COL_ATT_ELU_DDD])
 col.inter <- intersect(cols, colnames(cd.data))
-tmp[,col.inter] <- cd.data[,col.inter]	# TODO do that for all columns, define a function for that
+tmp[,col.inter] <- cd.data[,col.inter]	# TODO do that for all columns? define a function for that?
 tlog(2,"  Remaining columns: ",paste(setdiff(colnames(cd.data), col.inter), collapse=", "))
 data <- rbind(data, tmp)
 
@@ -251,6 +251,7 @@ data <- merge.similar.rows(data)
 
 
 #############################################################################################
+# cache merged table
 dir.create(path=FOLDER_OUT_ALL, showWarnings=FALSE, recursive=TRUE)
 tlog(0,"Ordering the full table")
 idx <- order(data[,COL_ATT_ELU_NOM], data[,COL_ATT_ELU_PRENOM], data[,COL_ATT_ELU_ID],
