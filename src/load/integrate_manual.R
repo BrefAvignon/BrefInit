@@ -8,6 +8,148 @@
 
 
 #############################################################################################
+# Add supplementary data to the CD table. No verification of transformation is made here,
+# as any error can be directly edited in the table manually constituted by ourselves.
+#
+# data: original table.
+#
+# returns: same table, with additional rows.
+#############################################################################################
+manual.integrate.data.cd <- function(data)
+{	tlog(0,"Integrating the manually constituted CD table")
+	
+	# load the supplementary data
+	supp.data <- retrieve.normalize.data(filenames=FILE_SUPPL_CD, correct.data=FALSE)
+	
+	# fix id duplicates and other id-related issues
+	supp.data <- fix.id.problems(supp.data)
+	
+	# apply systematic corrections
+	supp.data <- apply.systematic.corrections(supp.data, type="CD")
+	
+	# convert date and numeric columns
+	supp.data <- convert.col.types(supp.data)
+	
+	# add missing columns
+	supp.data <- add.missing.columns(supp.data)
+	
+	# add data source column
+	supp.data[,COL_ATT_SOURCES] <- "WP"
+	
+	# complete missing occupation based on RNE
+	tlog(2,"Completing missing occupation info in supplementary table")
+	idx <- which(!is.na(supp.data[,COL_ATT_ELU_ID_RNE]) & is.na(supp.data[,COL_ATT_PRO_CODE]))
+	ids <- unique(supp.data[idx,COL_ATT_ELU_ID_RNE])
+	idx0 <- match(ids, data[,COL_ATT_ELU_ID_RNE])
+	ids <- ids[!is.na(idx0)]
+	idx0 <- idx0[!is.na(idx0)]
+	occ.codes <- data[idx0,COL_ATT_PRO_CODE]
+	occ.names <- data[idx0,COL_ATT_PRO_NOM]
+	for(i in 1:length(ids))
+	{	idx <- which(!is.na(supp.data[,COL_ATT_ELU_ID_RNE]) & supp.data[,COL_ATT_ELU_ID_RNE]==ids[i] & is.na(supp.data[,COL_ATT_PRO_CODE]))
+		supp.data[idx,COL_ATT_PRO_CODE] <- occ.codes[i]
+		supp.data[idx,COL_ATT_PRO_NOM] <- occ.names[i]
+	}
+	
+	# normalize columns order
+	tlog(2,"Normalizing column order in both tables")
+	supp.data <- normalize.col.order(supp.data)
+	data <- normalize.col.order(data)
+	
+	# merge both tables
+	tlog(2,"Merging both tables")
+	added.nbr <- nrow(supp.data)
+	nbr.before <- nrow(data)
+	data <- rbind(data, supp.data)
+	rownames(data) <- NULL
+	
+	# order the resulting table
+	tlog(2,"Ordering merged table")
+	idx <- order(data[,COL_ATT_ELU_NOM], data[,COL_ATT_ELU_PRENOM], data[,COL_ATT_ELU_ID],
+			data[,COL_ATT_MDT_DBT], data[,COL_ATT_MDT_FIN])
+	data <- data[idx,]
+	
+	tlog(2,"CHECKPOINT 16: added ",added.nbr," rows (",(100*added.nbr/nbr.before),"%)")
+	tlog(2,"Now ",nrow(data)," rows and ",ncol(data)," columns in table")
+	update.stat.table(s.nbr=16, s.name="Integrate secondary source", del.nbr=0, mod.nbr=0, add.nbr=added.nbr, size=nbr.before)
+	return(data)
+}
+
+
+
+
+#############################################################################################
+# Add supplementary data to the CM table. No verification of transformation is made here,
+# as any error can be directly edited in the table manually constituted by ourselves.
+#
+# data: original table.
+#
+# returns: same table, with additional rows.
+#############################################################################################
+manual.integrate.data.cm <- function(data)
+{	tlog(0,"Integrating the manually constituted CM table")
+	
+	# load the supplementary data
+	supp.data <- retrieve.normalize.data(filenames=FILE_SUPPL_CM, correct.data=FALSE)
+	
+	# fix id duplicates and other id-related issues
+	supp.data <- fix.id.problems(supp.data)
+	
+	# apply systematic corrections
+	supp.data <- apply.systematic.corrections(supp.data, type="CM")
+	
+	# convert date and numeric columns
+	supp.data <- convert.col.types(supp.data)
+	
+	# add missing columns
+	supp.data <- add.missing.columns(supp.data)
+	
+	# add data source column
+	supp.data[,COL_ATT_SOURCES] <- "WP"
+	
+	# complete missing occupation based on RNE
+	tlog(2,"Completing missing occupation info in supplementary table")
+	idx <- which(!is.na(supp.data[,COL_ATT_ELU_ID_RNE]) & is.na(supp.data[,COL_ATT_PRO_CODE]))
+	ids <- unique(supp.data[idx,COL_ATT_ELU_ID_RNE])
+	idx0 <- match(ids, data[,COL_ATT_ELU_ID_RNE])
+	ids <- ids[!is.na(idx0)]
+	idx0 <- idx0[!is.na(idx0)]
+	occ.codes <- data[idx0,COL_ATT_PRO_CODE]
+	occ.names <- data[idx0,COL_ATT_PRO_NOM]
+	for(i in 1:length(ids))
+	{	idx <- which(!is.na(supp.data[,COL_ATT_ELU_ID_RNE]) & supp.data[,COL_ATT_ELU_ID_RNE]==ids[i] & is.na(supp.data[,COL_ATT_PRO_CODE]))
+		supp.data[idx,COL_ATT_PRO_CODE] <- occ.codes[i]
+		supp.data[idx,COL_ATT_PRO_NOM] <- occ.names[i]
+	}
+	
+	# normalize columns order
+	tlog(2,"Normalizing column order in both tables")
+	supp.data <- normalize.col.order(supp.data)
+	data <- normalize.col.order(data)
+	
+	# merge both tables
+	tlog(2,"Merging both tables")
+	added.nbr <- nrow(supp.data)
+	nbr.before <- nrow(data)
+	data <- rbind(data, supp.data)
+	rownames(data) <- NULL
+	
+	# order the resulting table
+	tlog(2,"Ordering merged table")
+	idx <- order(data[,COL_ATT_ELU_NOM], data[,COL_ATT_ELU_PRENOM], data[,COL_ATT_ELU_ID],
+			data[,COL_ATT_MDT_DBT], data[,COL_ATT_MDT_FIN])
+	data <- data[idx,]
+	
+	tlog(2,"CHECKPOINT 16: added ",added.nbr," rows (",(100*added.nbr/nbr.before),"%)")
+	tlog(2,"Now ",nrow(data)," rows and ",ncol(data)," columns in table")
+	update.stat.table(s.nbr=16, s.name="Integrate secondary source", del.nbr=0, mod.nbr=0, add.nbr=added.nbr, size=nbr.before)
+	return(data)
+}
+
+
+
+
+#############################################################################################
 # Add supplementary data to the DE table. No verification of transformation is made here,
 # as any error can be directly edited in the table manually constituted by ourselves.
 #
@@ -100,8 +242,133 @@ manual.integrate.data.de <- function(data)
 # returns: same table, with additional rows.
 #############################################################################################
 manual.integrate.data.d <- function(data)
-{	# TODO
+{	tlog(0,"Integrating the manually constituted D table")
 	
+	# load the supplementary data
+	supp.data <- retrieve.normalize.data(filenames=FILE_SUPPL_D, correct.data=FALSE)
+	
+	# fix id duplicates and other id-related issues
+	supp.data <- fix.id.problems(supp.data)
+	
+	# apply systematic corrections
+	supp.data <- apply.systematic.corrections(supp.data, type="D")
+	
+	# convert date and numeric columns
+	supp.data <- convert.col.types(supp.data)
+	
+	# add missing columns
+	supp.data <- add.missing.columns(supp.data)
+	
+	# add data source column
+	supp.data[,COL_ATT_SOURCES] <- "WP"
+	
+	# complete missing occupation based on RNE
+	tlog(2,"Completing missing occupation info in supplementary table")
+	idx <- which(!is.na(supp.data[,COL_ATT_ELU_ID_RNE]) & is.na(supp.data[,COL_ATT_PRO_CODE]))
+	ids <- unique(supp.data[idx,COL_ATT_ELU_ID_RNE])
+	idx0 <- match(ids, data[,COL_ATT_ELU_ID_RNE])
+	ids <- ids[!is.na(idx0)]
+	idx0 <- idx0[!is.na(idx0)]
+	occ.codes <- data[idx0,COL_ATT_PRO_CODE]
+	occ.names <- data[idx0,COL_ATT_PRO_NOM]
+	for(i in 1:length(ids))
+	{	idx <- which(!is.na(supp.data[,COL_ATT_ELU_ID_RNE]) & supp.data[,COL_ATT_ELU_ID_RNE]==ids[i] & is.na(supp.data[,COL_ATT_PRO_CODE]))
+		supp.data[idx,COL_ATT_PRO_CODE] <- occ.codes[i]
+		supp.data[idx,COL_ATT_PRO_NOM] <- occ.names[i]
+	}
+	
+	# normalize columns order
+	tlog(2,"Normalizing column order in both tables")
+	supp.data <- normalize.col.order(supp.data)
+	data <- normalize.col.order(data)
+	
+	# merge both tables
+	tlog(2,"Merging both tables")
+	added.nbr <- nrow(supp.data)
+	nbr.before <- nrow(data)
+	data <- rbind(data, supp.data)
+	rownames(data) <- NULL
+	
+	# order the resulting table
+	tlog(2,"Ordering merged table")
+	idx <- order(data[,COL_ATT_ELU_NOM], data[,COL_ATT_ELU_PRENOM], data[,COL_ATT_ELU_ID],
+			data[,COL_ATT_MDT_DBT], data[,COL_ATT_MDT_FIN])
+	data <- data[idx,]
+	
+	tlog(2,"CHECKPOINT 16: added ",added.nbr," rows (",(100*added.nbr/nbr.before),"%)")
+	tlog(2,"Now ",nrow(data)," rows and ",ncol(data)," columns in table")
+	update.stat.table(s.nbr=16, s.name="Integrate secondary source", del.nbr=0, mod.nbr=0, add.nbr=added.nbr, size=nbr.before)
+	return(data)
+}
+
+
+
+
+#############################################################################################
+# Add supplementary data to the M table. No verification of transformation is made here,
+# as any error can be directly edited in the table manually constituted by ourselves.
+#
+# data: original table.
+#
+# returns: same table, with additional rows.
+#############################################################################################
+manual.integrate.data.m <- function(data)
+{	tlog(0,"Integrating the manually constituted M table")
+	
+	# load the supplementary data
+	supp.data <- retrieve.normalize.data(filenames=FILE_SUPPL_M, correct.data=FALSE)
+	
+	# fix id duplicates and other id-related issues
+	supp.data <- fix.id.problems(supp.data)
+	
+	# apply systematic corrections
+	supp.data <- apply.systematic.corrections(supp.data, type="M")
+	
+	# convert date and numeric columns
+	supp.data <- convert.col.types(supp.data)
+	
+	# add missing columns
+	supp.data <- add.missing.columns(supp.data)
+	
+	# add data source column
+	supp.data[,COL_ATT_SOURCES] <- "WP"
+	
+	# complete missing occupation based on RNE
+	tlog(2,"Completing missing occupation info in supplementary table")
+	idx <- which(!is.na(supp.data[,COL_ATT_ELU_ID_RNE]) & is.na(supp.data[,COL_ATT_PRO_CODE]))
+	ids <- unique(supp.data[idx,COL_ATT_ELU_ID_RNE])
+	idx0 <- match(ids, data[,COL_ATT_ELU_ID_RNE])
+	ids <- ids[!is.na(idx0)]
+	idx0 <- idx0[!is.na(idx0)]
+	occ.codes <- data[idx0,COL_ATT_PRO_CODE]
+	occ.names <- data[idx0,COL_ATT_PRO_NOM]
+	for(i in 1:length(ids))
+	{	idx <- which(!is.na(supp.data[,COL_ATT_ELU_ID_RNE]) & supp.data[,COL_ATT_ELU_ID_RNE]==ids[i] & is.na(supp.data[,COL_ATT_PRO_CODE]))
+		supp.data[idx,COL_ATT_PRO_CODE] <- occ.codes[i]
+		supp.data[idx,COL_ATT_PRO_NOM] <- occ.names[i]
+	}
+	
+	# normalize columns order
+	tlog(2,"Normalizing column order in both tables")
+	supp.data <- normalize.col.order(supp.data)
+	data <- normalize.col.order(data)
+	
+	# merge both tables
+	tlog(2,"Merging both tables")
+	added.nbr <- nrow(supp.data)
+	nbr.before <- nrow(data)
+	data <- rbind(data, supp.data)
+	rownames(data) <- NULL
+	
+	# order the resulting table
+	tlog(2,"Ordering merged table")
+	idx <- order(data[,COL_ATT_ELU_NOM], data[,COL_ATT_ELU_PRENOM], data[,COL_ATT_ELU_ID],
+			data[,COL_ATT_MDT_DBT], data[,COL_ATT_MDT_FIN])
+	data <- data[idx,]
+	
+	tlog(2,"CHECKPOINT 16: added ",added.nbr," rows (",(100*added.nbr/nbr.before),"%)")
+	tlog(2,"Now ",nrow(data)," rows and ",ncol(data)," columns in table")
+	update.stat.table(s.nbr=16, s.name="Integrate secondary source", del.nbr=0, mod.nbr=0, add.nbr=added.nbr, size=nbr.before)
 	return(data)
 }
 
@@ -136,6 +403,6 @@ manual.integrate.data.prf <- function()
 	data <- normalize.col.order(data)
 	
 	tlog(2,"CHECKPOINT 16: loaded ",nrow(data)," rows and ",ncol(data)," columns")
-	update.stat.table(s.nbr=16, s.name="Integrate secondary data", del.nbr=0, mod.nbr=0, add.nbr=nrow(data), size=0)
+	update.stat.table(s.nbr=16, s.name="Integrate secondary source", del.nbr=0, mod.nbr=0, add.nbr=nrow(data), size=0)
 	return(data)
 }

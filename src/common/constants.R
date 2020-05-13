@@ -406,20 +406,27 @@ FOLDER_IN <- "in"
 	FILES_TAB_S2 <- file.path(FOLDER_TABLES2, c("RNE_export_S_20200211.txt"))
 # correction files
 	# first extraction
-	FILE_CORREC_CD <- file.path(FOLDER_CORRECS, "correc_CD.txt")
-	FILE_CORREC_CM <- file.path(FOLDER_CORRECS, "correc_CM.txt")
-	FILE_CORREC_CR <- file.path(FOLDER_CORRECS, "correc_CR.txt")
-	FILE_CORREC_D <- file.path(FOLDER_CORRECS, "correc_D.txt")
-	FILE_CORREC_DE <- file.path(FOLDER_CORRECS, "correc_DE.txt")
-	FILE_CORREC_EPCI <- file.path(FOLDER_CORRECS, "correc_EPCI.txt")
-	FILE_CORREC_M <- file.path(FOLDER_CORRECS, "correc_M.txt")
-	FILE_CORREC_S <- file.path(FOLDER_CORRECS, "correc_S.txt")
-	FILE_SUPPL_DE <- file.path(FOLDER_CORRECS, "supp_DE.txt")
-	FILE_SUPPL_PRF <- file.path(FOLDER_CORRECS, "supp_PRF.txt")
+		# correction files
+		FILE_CORREC_CD <- file.path(FOLDER_CORRECS, "correc_CD.txt")
+		FILE_CORREC_CM <- file.path(FOLDER_CORRECS, "correc_CM.txt")
+		FILE_CORREC_CR <- file.path(FOLDER_CORRECS, "correc_CR.txt")
+		FILE_CORREC_D <- file.path(FOLDER_CORRECS, "correc_D.txt")
+		FILE_CORREC_DE <- file.path(FOLDER_CORRECS, "correc_DE.txt")
+		FILE_CORREC_EPCI <- file.path(FOLDER_CORRECS, "correc_EPCI.txt")
+		FILE_CORREC_M <- file.path(FOLDER_CORRECS, "correc_M.txt")
+		FILE_CORREC_S <- file.path(FOLDER_CORRECS, "correc_S.txt")
+		# supplementary data
+		FILE_SUPPL_CD <- file.path(FOLDER_CORRECS, "supp_CD.txt")
+		FILE_SUPPL_CM <- file.path(FOLDER_CORRECS, "supp_CM.txt")
+		FILE_SUPPL_D <- file.path(FOLDER_CORRECS, "supp_D.txt")
+		FILE_SUPPL_DE <- file.path(FOLDER_CORRECS, "supp_DE.txt")
+		FILE_SUPPL_M <- file.path(FOLDER_CORRECS, "supp_M.txt")
+		FILE_SUPPL_PRF <- file.path(FOLDER_CORRECS, "supp_PRF.txt")
 	# second extraction
-	FILE_CORREC_CD2 <- file.path(FOLDER_CORRECS2, "correc_CD.txt")
-	FILE_CORREC_CM2 <- file.path(FOLDER_CORRECS2, "correc_CM.txt")
-	FILE_CORREC_CR2 <- file.path(FOLDER_CORRECS2, "correc_CR.txt")
+		# correction files
+		FILE_CORREC_CD2 <- file.path(FOLDER_CORRECS2, "correc_CD.txt")
+		FILE_CORREC_CM2 <- file.path(FOLDER_CORRECS2, "correc_CM.txt")
+		FILE_CORREC_CR2 <- file.path(FOLDER_CORRECS2, "correc_CR.txt")
 # verification files
 	# position counts
 	FILE_VERIF_NBR_CR <- file.path(FOLDER_VERIFS, "decomptes_CR.txt")

@@ -224,12 +224,27 @@ load.cd.data <- function(out.folder, correct.data, complete.data)
 		
 		# correct/complete with secondary sources
 		if(complete.data)
-		{	# senate database
+		{	# manually constituted table
+			data <- manual.integrate.data.de(data)
+			
+			# senate database
 			# NOTE Senate data eventually not used
 			#data <- senate.integrate.data(data, type="CD", cache=TRUE, compare=FALSE)
 			
 			# assembly database
 			# no CD data in the assembly database
+			
+			# clean another time
+			if(correct.data)
+			{	data <- merge.similar.rows(data)
+				data <- fix.mdtfct.dates(data, 
+						election.file=FILE_VERIF_DATES_CD, series.file=FILE_VERIF_SERIES_CD,
+						type="CD")
+			}
+			
+			# count the number of modified rows
+			idx <- which(data[,COL_ATT_CORREC_DATE] | data[,COL_ATT_CORREC_INFO])
+			tlog(0,"Total number of modified rows: ", length(idx))
 		}
 		
 		if(CACHE_DATA)
@@ -371,12 +386,27 @@ load.cm.data <- function(out.folder, correct.data, complete.data)
 		
 		# correct/complete with secondary sources
 		if(complete.data)
-		{	# senate database
+		{	# manually constituted table
+			data <- manual.integrate.data.de(data)
+			
+			# senate database
 			# NOTE Senate data eventually not used
 			#data <- senate.integrate.data(data, type="CM", cache=TRUE, compare=FALSE)
 			
 			# assembly database
 			# no CM data in the assembly database
+	
+			# clean another time
+			if(correct.data)
+			{	data <- merge.similar.rows(data)
+				data <- fix.mdtfct.dates(data, 
+						election.file=FILE_VERIF_DATES_CM,
+						type="CM")
+			}
+			
+			# count the number of modified rows
+			idx <- which(data[,COL_ATT_CORREC_DATE] | data[,COL_ATT_CORREC_INFO])
+			tlog(0,"Total number of modified rows: ", length(idx))
 		}
 		
 		if(CACHE_DATA)
@@ -921,12 +951,27 @@ load.m.data <- function(out.folder, correct.data, complete.data)
 		
 		# correct/complete with secondary sources
 		if(complete.data)
-		{	# senate database
+		{	# manually constituted table
+			data <- manual.integrate.data.de(data)
+			
+			# senate database
 			# NOTE Senate data eventually not used
 			#data <- senate.integrate.data(data, type="M", cache=TRUE, compare=FALSE)
 			
 			# assembly database
 			# no M data in the assembly database
+	
+			# clean another time
+			if(correct.data)
+			{	data <- merge.similar.rows(data)
+				data <- fix.mdtfct.dates(data, 
+						election.file=FILE_VERIF_DATES_CM,
+						type="M")
+			}
+			
+			# count the number of modified rows
+			idx <- which(data[,COL_ATT_CORREC_DATE] | data[,COL_ATT_CORREC_INFO])
+			tlog(0,"Total number of modified rows: ", length(idx))
 		}
 		
 		if(CACHE_DATA)

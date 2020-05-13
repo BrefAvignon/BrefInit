@@ -22,7 +22,7 @@ source("src/verification/test_duplicates.R")
 # set up parameters
 extraction <- 1 		# 1 or 2
 correct.data <- TRUE	# load raw or corrected data
-complete.data <- TRUE	# only for D, DE and S
+complete.data <- TRUE	# only for certain tables
 
 # start logging
 start.rec.log(text=paste0("MERGE",extraction))
@@ -40,12 +40,12 @@ tlog(0,"Loading all the data tables")
 
 # load the departmental councilor table
 tlog(2,"Loading departmental data")
-cd.data <- if(extraction==1) load.cd.data(correct.data, complete.data=FALSE) else load.cd2.data(correct.data, complete.data=FALSE) 
+cd.data <- if(extraction==1) load.cd.data(correct.data, complete.data) else load.cd2.data(correct.data, complete.data=FALSE) 
 tlog(4,"Dimensions of the table: ",paste(dim(cd.data),collapse="x"))
 
 # load the municipal councilor tables
 tlog(2,"Loading municipal data")
-cm.data <- if(extraction==1) load.cm.data(correct.data, complete.data=FALSE) else load.cm2.data(correct.data, complete.data=FALSE)
+cm.data <- if(extraction==1) load.cm.data(correct.data, complete.data) else load.cm2.data(correct.data, complete.data=FALSE)
 tlog(4,"Dimensions of the table: ",paste(dim(cm.data),collapse="x"))
 
 # load the regional councilor table
@@ -70,7 +70,7 @@ tlog(4,"Dimensions of the table: ",paste(dim(epci.data),collapse="x"))
 
 # load the mayor table
 tlog(2,"Loading mayoral data")
-m.data <- load.m.data(correct.data, complete.data=FALSE)
+m.data <- load.m.data(correct.data, complete.data)
 tlog(4,"Dimensions of the table: ",paste(dim(m.data),collapse="x"))
 
 # load the senator table
