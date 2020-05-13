@@ -2514,8 +2514,12 @@ complete.missing.ids <- function(data)
 	}
 	
 	# update table
-	data.ids <- future_sapply(1:nrow(data), function(r) map[data[r,COL_ATT_ELU_ID],])
-	treated.rows <- length(which(apply(data.ids[,id.cols]!=data[,id.cols], 1, any)))
+	data.ids <- t(future_sapply(1:nrow(data), function(r) map[data[r,COL_ATT_ELU_ID],]))
+	data.ids0 <- data.ids
+	data.ids0[is.na(data.ids0)] <- "NA"
+	data0 <- data[,id.cols]
+	data0[is.na(data0)] <- "NA"
+	treated.rows <- which(apply(data.ids0[,id.cols]!=data0[,id.cols], 1, any))
 	data[,id.cols] <- data.ids
 	
 	tlog(2,"CHECKPOINT 18: completed a total of ",length(treated.rows)," rows for the whole table (",(100*length(treated.rows)/nrow(data)),"%)")
