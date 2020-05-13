@@ -1,0 +1,6 @@
+Line needed to mimic the original format
+Code departement	Libelle departement	Code circo legislative	Libelle circo legislative	Nom elu	Prenom elu	Date naissance	Code sexe	Code profession	Libelle profession	Libelle mandat	Date debut mandat	Date fin mandat	Motif fin mandat	Libelle fonction	Date debut fonction	Date fin fonction	Motif fin fonction	Nuance politique	ID RNE	ID universel
+92	Hauts-de-Seine	6	6EME CIRCONSCRIPTION	Sarkozy	Nicolas	28/01/1955	M	NA	NA	Député	23/06/1988	01/05/1993	NA	NA	NA	NA	NA	RPR	NA	EUR_0004339
+92	Hauts-de-Seine	6	6EME CIRCONSCRIPTION	Sarkozy	Nicolas	28/01/1955	M	NA	NA	Député	24/09/1995	07/06/2002	NA	NA	NA	NA	NA	RPR	NA	EUR_0004339
+92	Hauts-de-Seine	6	6EME CIRCONSCRIPTION	Sarkozy	Nicolas	28/01/1955	M	NA	NA	Député	19/06/2002	18/07/2002	NA	NA	NA	NA	NA	UMP	NA	EUR_0004339
+92	Hauts-de-Seine	6	6EME CIRCONSCRIPTION	Sarkozy	Nicolas	28/01/1955	M	NA	NA	Député	14/03/2005	02/07/2005	NA	NA	NA	NA	NA	UMP	NA	EUR_0004339
