@@ -3,8 +3,8 @@
 # 
 # 03/2020 Vincent Labatut
 #
-# source("src/verification/check_All.R")
 # setwd("C:/Users/Vincent/Eclipse/workspaces/Extraction/Datapol")
+# source("src/verification/check_All.R")
 #############################################################################################
 source("src/common/include.R")
 source("src/verification/evolution_plot.R")

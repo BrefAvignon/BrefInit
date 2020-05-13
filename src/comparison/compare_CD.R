@@ -3,6 +3,7 @@
 # 
 # 10/2019 Vincent Labatut
 #
+# setwd("C:/Users/Vincent/Eclipse/workspaces/Extraction/Datapol")
 # source("src/comparison/compare_CD.R")
 #############################################################################################
 source("src/common/include.R")
