@@ -48,8 +48,8 @@ sel.cols <- c(
 	COL_ATT_MDT_DBT,
 	COL_ATT_MDT_FIN
 )
-cm.codes <- apply(cm.data[,sel.cols],1,function(r) paste(r,collapse=":"))
-m.codes <- apply(m.data[,sel.cols],1,function(r) paste(r,collapse=":"))
+cm.codes <- future_apply(cm.data[,sel.cols],1,function(r) paste(r,collapse=":"))
+m.codes <- future_apply(m.data[,sel.cols],1,function(r) paste(r,collapse=":"))
 # look for all mayors in the municipal data
 idx <- match(m.codes,cm.codes)
 m.unmatched <- which(is.na(idx))
