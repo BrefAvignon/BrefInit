@@ -38,7 +38,7 @@ cm.data <- load.cm.data(correct.data)
 
 
 #############################################################################################
-# look for all mayors in the municipal data
+# compare rows
 sel.cols <- c(
 	COL_ATT_ELU_ID,
 	COL_ATT_ELU_NOM,
@@ -50,10 +50,11 @@ sel.cols <- c(
 )
 cm.codes <- apply(cm.data[,sel.cols],1,function(r) paste(r,collapse=":"))
 m.codes <- apply(m.data[,sel.cols],1,function(r) paste(r,collapse=":"))
+# look for all mayors in the municipal data
 idx <- match(m.codes,cm.codes)
-unmatched <- which(is.na(idx))
-tlog(2,"Unmatched row:")
-print(m.codes[unmatched])
+m.unmatched <- which(is.na(idx))
+tlog(2,"Unmatched rows of M:")
+print(m.codes[m.unmatched])
 
 
 
