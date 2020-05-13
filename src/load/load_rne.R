@@ -696,7 +696,7 @@ load.d.data <- function(out.folder, correct.data, complete.data)
 				correc.file=FILE_CORREC_D, correct.data,
 				election.file=FILE_VERIF_DATES_D,
 				type="D")
-		
+#return(data)
 		# correct/complete with secondary sources
 		if(complete.data)
 		{	# manually constituted table
