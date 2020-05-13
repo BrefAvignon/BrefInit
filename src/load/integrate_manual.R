@@ -135,7 +135,7 @@ manual.integrate.data.prf <- function()
 	tlog(2,"Normalizing column order")
 	data <- normalize.col.order(data)
 	
-	tlog(2,"CHECKPOINT 1: loaded ",nrow(data)," rows and ",ncol(data)," columns")
-	update.stat.table(s.nbr=1, s.name="Integrate secondary data source", del.nbr=0, mod.nbr=0, add.nbr=nrow(data), size=1)
+	tlog(2,"CHECKPOINT 16: loaded ",nrow(data)," rows and ",ncol(data)," columns")
+	update.stat.table(s.nbr=16, s.name="Integrate secondary data", del.nbr=0, mod.nbr=0, add.nbr=nrow(data), size=0)
 	return(data)
 }
