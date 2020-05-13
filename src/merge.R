@@ -248,6 +248,14 @@ tlog(2,"Actual dimensions of the full table: ",paste(dim(data),collapse="x"))
 data <- merge.similar.rows(data)
 # add missing ids
 data <- complete.missing.ids(data)
+# merge cm/m mandates
+idx.mm <- which(data[,COL_ATT_MDT_NOM]=="CONSEILLER MUNICIPAL")
+data.mm <- data[idx.mm,]
+data.mm <- merge.overlapping.mandates(data=data.mm, type="CM", log=TRUE)
+# split long cm/m mandates
+data.mm <- split.long.mandates(data=data.mm, election.file=FILE_VERIF_DATES_CM)
+data <- rbind(data[-idx.mm,], data.mm)
+
 
 
 
