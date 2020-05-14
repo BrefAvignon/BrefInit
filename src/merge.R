@@ -287,7 +287,7 @@ for(c in 1:ncol(data.bis))
 write.table(x=data.bis,			# data to record
 	file=file.name,				# name of file containing the new table
 	quote=FALSE,				# put double quotes around strings
-	sep="\t",					# use tabulations as separators
+	sep=";",					# use semicolons as separators
 #	fileEncoding="UTF-8",		# character encoding
 	row.names=FALSE,			# no names for rows
 	col.names=TRUE				# record table headers
