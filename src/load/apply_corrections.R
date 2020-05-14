@@ -875,9 +875,11 @@ add.missing.columns <- function(data)
 	colnames(data)[ncol(data)] <- COL_ATT_SOURCES
 	
 	# add universal id column
-	ids.col <- data.frame(paste("RNE",sprintf("%07d", as.integer(data[,COL_ATT_ELU_ID_RNE])),sep="_"), stringsAsFactors=FALSE)
-	data <- cbind(data, ids.col)
-	colnames(data)[ncol(data)] <- COL_ATT_ELU_ID
+	if(!(COL_ATT_ELU_ID %in% colnames(data)))
+	{	ids.col <- data.frame(paste("RNE",sprintf("%07d", as.integer(data[,COL_ATT_ELU_ID_RNE])),sep="_"), stringsAsFactors=FALSE)
+		data <- cbind(data, ids.col)
+		colnames(data)[ncol(data)] <- COL_ATT_ELU_ID
+	}
 	
 	# possibly add unique department id column
 	if(COL_ATT_DPT_NOM %in% colnames(data))
@@ -1052,7 +1054,7 @@ normalize.col.order <- function(data)
 {	tlog(0,"Normalizing column order")
 	norm.cols <- intersect(COLS_ATT_NORMALIZED, colnames(data))
 	if(length(norm.cols)!=ncol(data))
-		stop("Problem with the number of columns when loading the table, after reordering")
+		stop("Problem with the number of columns when reordering the columns")
 	else
 		data <- data[,norm.cols]
 	tlog(2,"Now ",nrow(data)," rows and ",ncol(data)," columns in table")
@@ -1905,7 +1907,8 @@ remove.micro.mdtfcts <- function(data, tolerance)
 				
 				# remove micro-functions
 				if(length(idx)>0)
-				{	data[idx,COL_ATT_FCT_CODE] <- NA
+				{	if(COL_ATT_FCT_CODE %in% colnames(data))
+						data[idx,COL_ATT_FCT_CODE] <- NA
 					data[idx,COL_ATT_FCT_DBT] <- NA
 					data[idx,COL_ATT_FCT_FIN] <- NA
 					data[idx,COL_ATT_FCT_MOTIF] <- NA

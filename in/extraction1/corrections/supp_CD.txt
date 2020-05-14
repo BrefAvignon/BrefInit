@@ -1,0 +1,3 @@
+Line needed to mimic the original format
+Code departement	Libelle departement	Nom elu	Prenom elu	Code sexe	Code canton	Libelle canton	Nuance politique	Libelle fonction	Code profession	Libelle profession	Date naissance	ID RNE	Date debut mandat	Date debut fonction	Libelle mandat	Date fin mandat	Motif fin mandat	Date fin fonction	Motif fin fonction	ID universel
+92	Hauts-de-Seine	Sarkozy	Nicolas	M	30	NEUILLY SUR SEINE NORD	UMP	Président du conseil départemental	NA	NA	28/01/1955	NA	01/04/2004	01/04/2004	Conseiller départemental	14/05/2007	NA	14/05/2007	NA	EUR_0004339

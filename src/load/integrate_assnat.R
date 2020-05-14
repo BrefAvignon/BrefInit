@@ -2,6 +2,9 @@
 # Functions used to inject data from the National Assembly database into the RNE.
 # 
 # 02/2020 Vincent Labatut
+#
+# setwd("C:/Users/Vincent/Eclipse/workspaces/Extraction/Datapol")
+# source("src/load/integrate_assnat.R")
 #############################################################################################
 
 
@@ -1186,7 +1189,10 @@ assembly.match.assembly.vs.rne.rows <- function(asn.tab, rne.tab, tolerance)
 		idx.rne <- which(rne.tab[,COL_ATT_ELU_ID]==ids[i])
 		idx.asn <- which(asn.tab[,COL_ATT_ELU_ID]==ids[i])
 		
-		if(!(rne.tab[idx.rne[1],COL_ATT_ELU_ID_RNE] %in% c(1513599)))		#(length(idx.asn)>0) # because no mandate after 2001
+		if(length(idx.asn)==0)
+			tlog(6,"WARNING: Did not find any matching row for this id in the Assembly dataset (which is weird)")
+		
+		else if(!(rne.tab[idx.rne[1],COL_ATT_ELU_ID_RNE] %in% c(1513599)))		#(length(idx.asn)>0) # because no mandate after 2001
 		{	# match each RNE row, possibly correcting its mandate dates
 			for(j in 1:length(idx.rne))
 			{	idx1 <- idx.rne[j]
@@ -1215,18 +1221,18 @@ assembly.match.assembly.vs.rne.rows <- function(asn.tab, rne.tab, tolerance)
 				{	# difference in days between the start dates
 					start.gaps <- abs(asn.tab[idx.asn,COL_ATT_MDT_DBT] - rne.tab[idx1,COL_ATT_MDT_DBT])
 					end.gaps <- sapply(asn.tab[idx.asn,COL_ATT_MDT_FIN], function(date)
-					if(is.na(date))
-					{	if(is.na(rne.tab[idx1,COL_ATT_MDT_FIN]))
-							0
+						if(is.na(date))
+						{	if(is.na(rne.tab[idx1,COL_ATT_MDT_FIN]))
+								0
+							else
+								.Machine$integer.max
+						}
 						else
-							.Machine$integer.max
-					}
-					else
-					{	if(is.na(rne.tab[idx1,COL_ATT_MDT_FIN]))
-							.Machine$integer.max
-						else
-							abs(date-rne.tab[idx1,COL_ATT_MDT_FIN])
-					})
+						{	if(is.na(rne.tab[idx1,COL_ATT_MDT_FIN]))
+								.Machine$integer.max
+							else
+								abs(date-rne.tab[idx1,COL_ATT_MDT_FIN])
+						})
 					total.gaps <- start.gaps + end.gaps
 					# get the closest period
 					g <- which(total.gaps==min(total.gaps))

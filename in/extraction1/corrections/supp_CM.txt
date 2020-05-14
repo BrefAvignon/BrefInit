@@ -1,0 +1,3 @@
+Line needed to mimic the original format
+Code departement	Libelle departement	Code Insee commune	Libelle commune	Population commune	Nom elu	Prenom elu	Code sexe	Date naissance	Code profession	Libelle profession	Date debut mandat	Date fin mandat	Motif fin mandat	Libelle fonction	Date debut fonction	Date fin fonction	Motif fin fonction	Nuance politique	ID RNE	ID universel
+92	Hauts-de-Seine	051	Neuilly-sur-Seine	61797	Sarkozy	Nicolas	M	28/01/1955	NA	NA	29/04/1983	07/05/2002	NA	Maire	29/04/1983	07/05/2002	NA	UMP	NA	EUR_0004339
