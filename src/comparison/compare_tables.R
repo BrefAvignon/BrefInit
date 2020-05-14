@@ -2,7 +2,65 @@
 # Compares two text files containing two tables, row by row.
 # 
 # 10/2019 Vincent Labatut
+
+# source("src/comparison/compare_tables.R")
 #############################################################################################
+
+
+
+
+#############################################################################################
+# Compare CM and M, two tables containing similar information.
+#
+# data.m: mayoral table (M).
+# data.cm: municipal table (CM).
+#
+# returns: matches of M in CM.
+#############################################################################################
+match.similar.tables <- function(data.m, data.cm)
+{	comp.cols <- c(COL_ATT_ELU_ID, COL_ATT_ELU_NOM, COL_ATT_ELU_PRENOM, COL_ATT_ELU_SEXE, COL_ATT_ELU_NAIS_DATE)
+	other.cols <- setdiff(colnames(data.m), comp.cols)
+	tlog(0,"Matching compatible rows for compulsory columns \"",paste(comp.cols, collapse="\",\""),"\"")
+	
+	# identify redundant rows
+	concat.m <- apply(data.m[,comp.cols], 1, function(row) paste(row, collapse=":"))
+	concat.cm <- apply(data.cm[,comp.cols], 1, function(row) paste(row, collapse=":"))
+	
+	# identify compatible rows against redundant ones
+	tlog(2,"Matching ",length(concat.m)," rows")
+	result <- future_sapply(1:length(concat.m), function(r1)
+	{	code <- concat.m[r1]
+		res <- NA
+		tlog(4,"Processing row ",r1,"/",length(concat.m))
+		tlog(4, format.row(data.m[r1,]))
+		
+		rs <- which(concat.cm==code)
+		if(length(rs)>0)
+		{	j <- 1
+			while(is.na(res) && j<=length(rs))
+			{	r2 <- rs[j]
+				tlog(6,"Comparing to row ",r2,"(",j,"/",length(rs),")")
+				tlog(6, format.row(data.cm[r2,]))
+				
+				if(all(is.na(data.m[r1,other.cols]) 
+					| is.na(data.cm[r2,other.cols]) 
+					| data.m[r1,other.cols]==data.cm[r2,other.cols]))
+#					| sapply(1:length(cmp.col.m), function(col) 
+#							{ print(col); data.m[r1,cmp.col.m[col]]==data.cm[r2,cmp.col.cm[col]]})))
+				{	tlog(6, "Found a match:")
+					tlog(6, format.row(data.m[r1,]))
+					tlog(6, format.row(data.cm[r2,]))
+					res <- r2
+				}
+				else
+					j <- j + 1
+			}
+		}
+		return(res)
+	})
+	
+	return(result)
+}
 
 
 
