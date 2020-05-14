@@ -225,7 +225,7 @@ load.cd.data <- function(out.folder, correct.data, complete.data)
 		# correct/complete with secondary sources
 		if(complete.data)
 		{	# manually constituted table
-			data <- manual.integrate.data.de(data)
+			data <- manual.integrate.data.cd(data)
 			
 			# senate database
 			# NOTE Senate data eventually not used
@@ -387,7 +387,7 @@ load.cm.data <- function(out.folder, correct.data, complete.data)
 		# correct/complete with secondary sources
 		if(complete.data)
 		{	# manually constituted table
-			data <- manual.integrate.data.de(data)
+			data <- manual.integrate.data.cm(data)
 			
 			# senate database
 			# NOTE Senate data eventually not used
@@ -952,7 +952,7 @@ load.m.data <- function(out.folder, correct.data, complete.data)
 		# correct/complete with secondary sources
 		if(complete.data)
 		{	# manually constituted table
-			data <- manual.integrate.data.de(data)
+			data <- manual.integrate.data.m(data)
 			
 			# senate database
 			# NOTE Senate data eventually not used

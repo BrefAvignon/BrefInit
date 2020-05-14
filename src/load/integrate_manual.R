@@ -38,15 +38,15 @@ manual.integrate.data.cd <- function(data)
 	
 	# complete missing occupation based on RNE
 	tlog(2,"Completing missing occupation info in supplementary table")
-	idx <- which(!is.na(supp.data[,COL_ATT_ELU_ID_RNE]) & is.na(supp.data[,COL_ATT_PRO_CODE]))
-	ids <- unique(supp.data[idx,COL_ATT_ELU_ID_RNE])
-	idx0 <- match(ids, data[,COL_ATT_ELU_ID_RNE])
+	idx <- which(!is.na(supp.data[,COL_ATT_ELU_ID]) & is.na(supp.data[,COL_ATT_PRO_CODE]))
+	ids <- unique(supp.data[idx,COL_ATT_ELU_ID])
+	idx0 <- match(ids, data[,COL_ATT_ELU_ID])
 	ids <- ids[!is.na(idx0)]
 	idx0 <- idx0[!is.na(idx0)]
 	occ.codes <- data[idx0,COL_ATT_PRO_CODE]
 	occ.names <- data[idx0,COL_ATT_PRO_NOM]
 	for(i in 1:length(ids))
-	{	idx <- which(!is.na(supp.data[,COL_ATT_ELU_ID_RNE]) & supp.data[,COL_ATT_ELU_ID_RNE]==ids[i] & is.na(supp.data[,COL_ATT_PRO_CODE]))
+	{	idx <- which(!is.na(supp.data[,COL_ATT_ELU_ID]) & supp.data[,COL_ATT_ELU_ID]==ids[i] & is.na(supp.data[,COL_ATT_PRO_CODE]))
 		supp.data[idx,COL_ATT_PRO_CODE] <- occ.codes[i]
 		supp.data[idx,COL_ATT_PRO_NOM] <- occ.names[i]
 	}
@@ -109,15 +109,15 @@ manual.integrate.data.cm <- function(data)
 	
 	# complete missing occupation based on RNE
 	tlog(2,"Completing missing occupation info in supplementary table")
-	idx <- which(!is.na(supp.data[,COL_ATT_ELU_ID_RNE]) & is.na(supp.data[,COL_ATT_PRO_CODE]))
-	ids <- unique(supp.data[idx,COL_ATT_ELU_ID_RNE])
-	idx0 <- match(ids, data[,COL_ATT_ELU_ID_RNE])
+	idx <- which(!is.na(supp.data[,COL_ATT_ELU_ID]) & is.na(supp.data[,COL_ATT_PRO_CODE]))
+	ids <- unique(supp.data[idx,COL_ATT_ELU_ID])
+	idx0 <- match(ids, data[,COL_ATT_ELU_ID])
 	ids <- ids[!is.na(idx0)]
 	idx0 <- idx0[!is.na(idx0)]
 	occ.codes <- data[idx0,COL_ATT_PRO_CODE]
 	occ.names <- data[idx0,COL_ATT_PRO_NOM]
 	for(i in 1:length(ids))
-	{	idx <- which(!is.na(supp.data[,COL_ATT_ELU_ID_RNE]) & supp.data[,COL_ATT_ELU_ID_RNE]==ids[i] & is.na(supp.data[,COL_ATT_PRO_CODE]))
+	{	idx <- which(!is.na(supp.data[,COL_ATT_ELU_ID]) & supp.data[,COL_ATT_ELU_ID]==ids[i] & is.na(supp.data[,COL_ATT_PRO_CODE]))
 		supp.data[idx,COL_ATT_PRO_CODE] <- occ.codes[i]
 		supp.data[idx,COL_ATT_PRO_NOM] <- occ.names[i]
 	}
@@ -180,15 +180,15 @@ manual.integrate.data.d <- function(data)
 	
 	# complete missing occupation based on RNE
 	tlog(2,"Completing missing occupation info in supplementary table")
-	idx <- which(!is.na(supp.data[,COL_ATT_ELU_ID_RNE]) & is.na(supp.data[,COL_ATT_PRO_CODE]))
-	ids <- unique(supp.data[idx,COL_ATT_ELU_ID_RNE])
-	idx0 <- match(ids, data[,COL_ATT_ELU_ID_RNE])
+	idx <- which(!is.na(supp.data[,COL_ATT_ELU_ID]) & is.na(supp.data[,COL_ATT_PRO_CODE]))
+	ids <- unique(supp.data[idx,COL_ATT_ELU_ID])
+	idx0 <- match(ids, data[,COL_ATT_ELU_ID])
 	ids <- ids[!is.na(idx0)]
 	idx0 <- idx0[!is.na(idx0)]
 	occ.codes <- data[idx0,COL_ATT_PRO_CODE]
 	occ.names <- data[idx0,COL_ATT_PRO_NOM]
 	for(i in 1:length(ids))
-	{	idx <- which(!is.na(supp.data[,COL_ATT_ELU_ID_RNE]) & supp.data[,COL_ATT_ELU_ID_RNE]==ids[i] & is.na(supp.data[,COL_ATT_PRO_CODE]))
+	{	idx <- which(!is.na(supp.data[,COL_ATT_ELU_ID]) & supp.data[,COL_ATT_ELU_ID]==ids[i] & is.na(supp.data[,COL_ATT_PRO_CODE]))
 		supp.data[idx,COL_ATT_PRO_CODE] <- occ.codes[i]
 		supp.data[idx,COL_ATT_PRO_NOM] <- occ.names[i]
 	}
@@ -335,15 +335,15 @@ manual.integrate.data.m <- function(data)
 	
 	# complete missing occupation based on RNE
 	tlog(2,"Completing missing occupation info in supplementary table")
-	idx <- which(!is.na(supp.data[,COL_ATT_ELU_ID_RNE]) & is.na(supp.data[,COL_ATT_PRO_CODE]))
-	ids <- unique(supp.data[idx,COL_ATT_ELU_ID_RNE])
-	idx0 <- match(ids, data[,COL_ATT_ELU_ID_RNE])
+	idx <- which(!is.na(supp.data[,COL_ATT_ELU_ID]) & is.na(supp.data[,COL_ATT_PRO_CODE]))
+	ids <- unique(supp.data[idx,COL_ATT_ELU_ID])
+	idx0 <- match(ids, data[,COL_ATT_ELU_ID])
 	ids <- ids[!is.na(idx0)]
 	idx0 <- idx0[!is.na(idx0)]
 	occ.codes <- data[idx0,COL_ATT_PRO_CODE]
 	occ.names <- data[idx0,COL_ATT_PRO_NOM]
 	for(i in 1:length(ids))
-	{	idx <- which(!is.na(supp.data[,COL_ATT_ELU_ID_RNE]) & supp.data[,COL_ATT_ELU_ID_RNE]==ids[i] & is.na(supp.data[,COL_ATT_PRO_CODE]))
+	{	idx <- which(!is.na(supp.data[,COL_ATT_ELU_ID]) & supp.data[,COL_ATT_ELU_ID]==ids[i] & is.na(supp.data[,COL_ATT_PRO_CODE]))
 		supp.data[idx,COL_ATT_PRO_CODE] <- occ.codes[i]
 		supp.data[idx,COL_ATT_PRO_NOM] <- occ.names[i]
 	}
