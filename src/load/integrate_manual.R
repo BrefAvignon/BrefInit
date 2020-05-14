@@ -64,10 +64,10 @@ manual.integrate.data.cd <- function(data)
 	rownames(data) <- NULL
 	
 	# order the resulting table
-	tlog(2,"Ordering merged table")
-	idx <- order(data[,COL_ATT_ELU_NOM], data[,COL_ATT_ELU_PRENOM], data[,COL_ATT_ELU_ID],
-			data[,COL_ATT_MDT_DBT], data[,COL_ATT_MDT_FIN])
-	data <- data[idx,]
+#	tlog(2,"Ordering merged table")
+#	idx <- order(data[,COL_ATT_ELU_NOM], data[,COL_ATT_ELU_PRENOM], data[,COL_ATT_ELU_ID],
+#			data[,COL_ATT_MDT_DBT], data[,COL_ATT_MDT_FIN])
+#	data <- data[idx,]
 	
 	tlog(2,"CHECKPOINT 16: added ",added.nbr," rows (",(100*added.nbr/nbr.before),"%)")
 	tlog(2,"Now ",nrow(data)," rows and ",ncol(data)," columns in table")
@@ -135,10 +135,10 @@ manual.integrate.data.cm <- function(data)
 	rownames(data) <- NULL
 	
 	# order the resulting table
-	tlog(2,"Ordering merged table")
-	idx <- order(data[,COL_ATT_ELU_NOM], data[,COL_ATT_ELU_PRENOM], data[,COL_ATT_ELU_ID],
-			data[,COL_ATT_MDT_DBT], data[,COL_ATT_MDT_FIN])
-	data <- data[idx,]
+#	tlog(2,"Ordering merged table")
+#	idx <- order(data[,COL_ATT_ELU_NOM], data[,COL_ATT_ELU_PRENOM], data[,COL_ATT_ELU_ID],
+#			data[,COL_ATT_MDT_DBT], data[,COL_ATT_MDT_FIN])
+#	data <- data[idx,]
 	
 	tlog(2,"CHECKPOINT 16: added ",added.nbr," rows (",(100*added.nbr/nbr.before),"%)")
 	tlog(2,"Now ",nrow(data)," rows and ",ncol(data)," columns in table")
@@ -361,10 +361,10 @@ manual.integrate.data.m <- function(data)
 	rownames(data) <- NULL
 	
 	# order the resulting table
-	tlog(2,"Ordering merged table")
-	idx <- order(data[,COL_ATT_ELU_NOM], data[,COL_ATT_ELU_PRENOM], data[,COL_ATT_ELU_ID],
-			data[,COL_ATT_MDT_DBT], data[,COL_ATT_MDT_FIN])
-	data <- data[idx,]
+#	tlog(2,"Ordering merged table")
+#	idx <- order(data[,COL_ATT_ELU_NOM], data[,COL_ATT_ELU_PRENOM], data[,COL_ATT_ELU_ID],
+#			data[,COL_ATT_MDT_DBT], data[,COL_ATT_MDT_FIN])
+#	data <- data[idx,]
 	
 	tlog(2,"CHECKPOINT 16: added ",added.nbr," rows (",(100*added.nbr/nbr.before),"%)")
 	tlog(2,"Now ",nrow(data)," rows and ",ncol(data)," columns in table")
