@@ -1598,14 +1598,18 @@ merge.overlapping.mandates <- function(data, type, log=TRUE)
 									
 									# possibly update function dates
 									if(!is.na(fct.att))
-									{	if(is.na(data[idx[j],COL_ATT_FCT_DBT]))			# the end date should also be NA (first row)
-											data[idx[j],c(COL_ATT_FCT_DBT,COL_ATT_FCT_FIN)] <- data[idx[k],c(COL_ATT_FCT_DBT,COL_ATT_FCT_FIN)]
+									{	if(is.na(data[idx[j],COL_ATT_FCT_DBT]))			# the end date and motive should also be NA (first row)
+										{	data[idx[j],COL_ATT_FCT_DBT] <- data[idx[k],COL_ATT_FCT_DBT]
+											data[idx[j],COL_ATT_FCT_FIN] <- data[idx[k],COL_ATT_FCT_FIN]
+											data[idx[j],COL_ATT_FCT_MOTIF] <- data[idx[k],COL_ATT_FCT_MOTIF]
+										}
 										else if(!is.na(data[idx[k],COL_ATT_FCT_DBT]))	# both start dates are not NA (second row)
 										{	data[idx[j],COL_ATT_FCT_DBT] <- min(data[idx[j],COL_ATT_FCT_DBT], data[idx[k],COL_ATT_FCT_DBT])
 											if(!is.na(data[idx[j],COL_ATT_FCT_FIN]) && !is.na(data[idx[k],COL_ATT_FCT_FIN]))
 											{	if(data[idx[j],COL_ATT_FCT_FIN] < data[idx[k],COL_ATT_FCT_FIN])
-												data[idx[j],COL_ATT_FCT_FIN] <- data[idx[k],COL_ATT_FCT_FIN]
-												data[idx[j],COL_ATT_FCT_MOTIF] <- data[idx[k],COL_ATT_FCT_MOTIF]
+												{	data[idx[j],COL_ATT_FCT_FIN] <- data[idx[k],COL_ATT_FCT_FIN]
+													data[idx[j],COL_ATT_FCT_MOTIF] <- data[idx[k],COL_ATT_FCT_MOTIF]
+												}
 											}
 											else
 											{	data[idx[j],COL_ATT_FCT_FIN] <- NA
