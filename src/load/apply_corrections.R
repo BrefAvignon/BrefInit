@@ -1501,7 +1501,6 @@ merge.overlapping.mandates <- function(data, type, log=TRUE)
 	
 	# process each id present in the table
 	unique.ids <- sort(unique(data[,COL_ATT_ELU_ID]))
-	nbr.corr <- 0
 	idx.rmv <- c()
 	tlog.start.loop(2,length(unique.ids),"Processing each unique id")
 	for(i in 1:length(unique.ids))
@@ -1642,7 +1641,6 @@ merge.overlapping.mandates <- function(data, type, log=TRUE)
 									#readline() #stop()
 									
 									# update counters
-									nbr.corr <- nbr.corr + 1
 									idx.rmv <- c(idx.rmv, idx[k])
 									data[idx[j],COL_ATT_CORREC_DATE] <- TRUE
 									changed <- TRUE
@@ -1655,11 +1653,11 @@ merge.overlapping.mandates <- function(data, type, log=TRUE)
 		}
 	}
 	if(log) 
-	{	tlog.end.loop(2, "CHECKPOINT 10: Total number of rows deleted after merging: ",nbr.corr, " (",100*nbr.corr/nrow(data),"%)")
-		update.stat.table(s.nbr=10, s.name="Merge overlapping mandates", del.nbr=nbr.corr, mod.nbr=0, add.nbr=0, size=nrow(data))
+	{	tlog.end.loop(2, "CHECKPOINT 10: Total number of rows deleted after merging: ",length(idx.rmv), " (",100*length(idx.rmv)/nrow(data),"%)")
+		update.stat.table(s.nbr=10, s.name="Merge overlapping mandates", del.nbr=length(idx.rmv), mod.nbr=0, add.nbr=0, size=nrow(data))
 	}
 	else
-		tlog.end.loop(2, "Total number of rows deleted after merging: ",nbr.corr, " (",100*nbr.corr/nrow(data),"%)")
+		tlog.end.loop(2, "Total number of rows deleted after merging: ",length(idx.rmv), " (",100*length(idx.rmv)/nrow(data),"%)")
 	
 	if(length(idx.rmv)>0)
 		data <- data[-idx.rmv,]
