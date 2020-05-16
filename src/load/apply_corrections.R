@@ -1751,6 +1751,8 @@ split.long.mandates <- function(data, election.file, series.file)
 								new.row[1,COL_ATT_FCT_CODE] <- NA
 							if(COL_ATT_FCT_NOM %in% colnames(data))
 								new.row[1,COL_ATT_FCT_NOM] <- NA
+							if(COL_ATT_FCT_MOTIF %in% colnames(data))
+								new.row[1,COL_ATT_FCT_MOTIF] <- NA
 						}
 						# case where the function ends before the 2nd mandate
 						else
@@ -1760,6 +1762,8 @@ split.long.mandates <- function(data, election.file, series.file)
 								data[r,COL_ATT_FCT_CODE] <- NA
 							if(COL_ATT_FCT_NOM %in% colnames(data))
 								data[r,COL_ATT_FCT_NOM] <- NA
+							if(COL_ATT_FCT_MOTIF %in% colnames(data))
+								data[r,COL_ATT_FCT_MOTIF] <- NA
 						}
 					}
 					
@@ -2377,7 +2381,12 @@ adjust.end.motives <- function(data, election.file, series.file)
 	idx <- which(is.na(data[,COL_ATT_MDT_FIN]) & !is.na(data[,COL_ATT_MDT_MOTIF]))
 	tlog(2,"Found ",length(idx)," superfluous mandate end motives")
 	if(length(idx)>0)
-	{	data[idx,COL_ATT_MDT_MOTIF] <- NA
+	{	# log changes
+		tlog(4,"List of incorrect rows:")
+		for(i in idx)
+			tlog(6, format.row(data[i,]))
+		# correct rows
+		data[idx,COL_ATT_MDT_MOTIF] <- NA
 		nbr.removed <- nbr.removed + length(idx)
 		treated.rows <- union(treated.rows, idx)
 	}
@@ -2388,7 +2397,12 @@ adjust.end.motives <- function(data, election.file, series.file)
 		idx <- which(is.na(data[,COL_ATT_FCT_FIN]) & !is.na(data[,COL_ATT_FCT_MOTIF]))
 		tlog(2,"Found ",length(idx)," superfluous function end motives")
 		if(length(idx)>0)
-		{	data[idx,COL_ATT_FCT_MOTIF] <- NA
+		{	# log rows
+			tlog(4,"List of incorrect rows:")
+			for(i in idx)
+				tlog(6, format.row(data[i,]))
+			# correct rows
+			data[idx,COL_ATT_FCT_MOTIF] <- NA
 			nbr.removed <- nbr.removed + length(idx)
 			treated.rows <- union(treated.rows, idx)
 		}
