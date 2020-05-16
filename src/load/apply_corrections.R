@@ -2149,33 +2149,33 @@ shorten.overlapping.functions <- function(data, type, tolerance=1)
 				"AUTRE MEMBRE COMMISSION PERMANENTE",				# several of them, but not distinguished
 				"AUTRE MEMBRE"										# many
 			)
-			idx <- which(!(data[,COL_ATT_FCT_NOM] %in% ign.functs))
-			dpts <- data[idx,COL_ATT_DPT_CODE]
-			functs <- data[idx,COL_ATT_FCT_NOM]
+			ign.rws <- data[,COL_ATT_FCT_NOM] %in% ign.functs
+			dpts <- data[,COL_ATT_DPT_CODE]
+			functs <- data[,COL_ATT_FCT_NOM]
 			data.pos <- apply(cbind(dpts,functs),1,function(r) paste(r,collapse="_"))
-			unique.pos <- sort(unique(data.pos[!is.na(functs)]))
+			unique.pos <- sort(unique(data.pos[!is.na(functs) & !ign.rws]))
 		}
 		else if(type=="CM")
 		{	ign.functs <- c(
 				"MAIRE DELEGUE"
 			)
-			idx <- which(!(data[,COL_ATT_FCT_NOM] %in% ign.functs))
-			dpts <- data[idx,COL_ATT_DPT_CODE]
-			coms <- data[idx,COL_ATT_COM_CODE]
-			functs <- data[idx,COL_ATT_FCT_NOM]
+			ign.rws <- data[,COL_ATT_FCT_NOM] %in% ign.functs
+			dpts <- data[,COL_ATT_DPT_CODE]
+			coms <- data[,COL_ATT_COM_CODE]
+			functs <- data[,COL_ATT_FCT_NOM]
 			data.pos <- apply(cbind(dpts,coms,functs),1,function(r) paste(r,collapse="_"))
-			unique.pos <- sort(unique(data.pos[!is.na(functs)]))
+			unique.pos <- sort(unique(data.pos[!is.na(functs) & !ign.rws]))
 		}
 		else if(type=="CR")
 		{	ign.functs <- c(
 				"PRESIDENT DE COMMISSION",
 				"AUTRE MEMBRE COMMISSION PERMANENTE"
 			)
-			idx <- which(!(data[,COL_ATT_FCT_NOM] %in% ign.functs))
-			regs <- data[idx,COL_ATT_REG_CODE]
-			functs <- data[idx,COL_ATT_FCT_NOM]
+			ign.rws <- data[,COL_ATT_FCT_NOM] %in% ign.functs
+			regs <- data[,COL_ATT_REG_CODE]
+			functs <- data[,COL_ATT_FCT_NOM]
 			data.pos <- apply(cbind(regs,functs),1,function(r) paste(r,collapse="_"))
-			unique.pos <- sort(unique(data.pos[!is.na(functs)]))
+			unique.pos <- sort(unique(data.pos[!is.na(functs) & !ign.rws]))
 		}
 		else if(type=="D")
 		{	ign.functs <- c(
@@ -2185,20 +2185,20 @@ shorten.overlapping.functions <- function(data, type, tolerance=1)
 				"SECRETAIRE D AGE DE L ASSEMBLEE NATIONALE",	# several but not distinguished
 				"VICE PRESIDENT DE L ASSEMBLEE NATIONALE"		# several but not distinguished
 			)
-			idx <- which(!(data[,COL_ATT_FCT_NOM] %in% ign.functs))
-			functs <- data[idx,COL_ATT_FCT_NOM]
+			ign.rws <- data[,COL_ATT_FCT_NOM] %in% ign.functs
+			functs <- data[,COL_ATT_FCT_NOM]
 			data.pos <- functs
-			unique.pos <- sort(unique(data.pos[!is.na(functs)]))
+			unique.pos <- sort(unique(data.pos[!is.na(functs) & !ign.rws]))
 		}
 		else if(type=="EPCI")
 		{	ign.functs <- c(
 				"VICE PRESIDENT D EPCI"
 			)
-			idx <- which(!(data[,COL_ATT_FCT_NOM] %in% ign.functs))
-			siren <- data[idx,COL_ATT_EPCI_SIREN]
-			functs <- data[idx,COL_ATT_FCT_NOM]
+			ign.rws <- data[,COL_ATT_FCT_NOM] %in% ign.functs
+			siren <- data[,COL_ATT_EPCI_SIREN]
+			functs <- data[,COL_ATT_FCT_NOM]
 			data.pos <- apply(cbind(siren,functs),1,function(r) paste(r,collapse="_"))
-			unique.pos <- sort(unique(data.pos[!is.na(functs)]))
+			unique.pos <- sort(unique(data.pos[!is.na(functs) & !ign.rws]))
 			
 		}
 		else if(type=="M")
@@ -2213,10 +2213,10 @@ shorten.overlapping.functions <- function(data, type, tolerance=1)
 				"SECRETAIRE DU SENAT",		# several but not distinguished
 				"VICE PRESIDENT DU SENAT"	# several but not distinguished
 			)
-			idx <- which(!(data[,COL_ATT_FCT_NOM] %in% ign.functs))
-			functs <- data[idx,COL_ATT_FCT_NOM]
+			ign.rws <- data[,COL_ATT_FCT_NOM] %in% ign.functs
+			functs <- data[,COL_ATT_FCT_NOM]
 			data.pos <- functs
-			unique.pos <- sort(unique(data.pos[!is.na(functs)]))
+			unique.pos <- sort(unique(data.pos[!is.na(functs) & !ign.rws]))
 		}
 		tlog(4,"Found ",length(unique.pos)," of them")
 		
