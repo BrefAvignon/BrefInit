@@ -1446,6 +1446,7 @@ round.mdtfct.dates <- function(data, election.file, series.file, tolerance)
 	}
 	tlog.end.loop(2,"CHECKPOINT 8: Rounded ",nbr.corrected," rows with election-related issues (",(100*nbr.corrected/nrow(data)),"%)")
 	update.stat.table(s.nbr=8, s.name="Round rows using election dates", del.nbr=0, mod.nbr=nbr.corrected, add.nbr=0, size=nrow(data))
+	tlog(2, "Now ",nrow(data)," rows")
 	
 	return(data)
 }
@@ -1857,9 +1858,9 @@ remove.micro.mdtfcts <- function(data, tolerance)
 	
 	# possibly do the same for functions
 	fct.removed <- 0
+	fct.before <- nrow(data)
 	if(COL_ATT_FCT_DBT %in% colnames(data))
 	{	# compute duration in number of days
-		fct.before <- nrow(data)
 		idx <- which(!is.na(data[,COL_ATT_FCT_DBT]) & !is.na(data[,COL_ATT_FCT_FIN]))
 		tlog(2,"Found ",length(idx)," rows with both start and end function dates")
 		if(length(idx)>0)
@@ -1920,11 +1921,8 @@ remove.micro.mdtfcts <- function(data, tolerance)
 	}
 	
 	tot.removed <- mdt.removed + fct.removed
-	tlog(2,"CHECKPOINT 9: Removed a total of ",tot.removed," rows (",(100*tot.removed/mdt.before),"%) corresponding to micro-mandates and/or functions")
-	tlog(4,"Removed ",mdt.removed," rows (",(100*mdt.removed/mdt.before),"%) corresponding to micro-mandates")
-	if(COL_ATT_FCT_DBT %in% colnames(data))
-		tlog(4,"Removed ",fct.removed," rows (",(100*fct.removed/fct.before),"%) corresponding to micro-functions")
-	update.stat.table(s.nbr=9, s.name="Remove micro mandates/functions", del.nbr=mdt.removed+fct.removed, mod.nbr=0, add.nbr=0, size=mdt.before)
+	tlog(2,"CHECKPOINT 9: Removed ",mdt.removed," rows (",(100*tot.removed/mdt.before),"%) corresponding to micro-mandates then changed ",fct.removed," rows (",(100*fct.removed/fct.before),"%) corresponding to micro-functions")
+	update.stat.table(s.nbr=9, s.name="Remove micro mandates/functions", del.nbr=mdt.removed, mod.nbr=fct.removed, add.nbr=0, size=mdt.before)
 	tlog(2,"Number of rows remaining: ",nrow(data))
 	return(data)
 }
