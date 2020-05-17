@@ -418,6 +418,7 @@ FOLDER_IN <- "in"
 		# supplementary data
 		FILE_SUPPL_CD <- file.path(FOLDER_CORRECS, "supp_CD.txt")
 		FILE_SUPPL_CM <- file.path(FOLDER_CORRECS, "supp_CM.txt")
+		FILE_SUPPL_CR <- file.path(FOLDER_CORRECS, "supp_CR.txt")
 		FILE_SUPPL_D <- file.path(FOLDER_CORRECS, "supp_D.txt")
 		FILE_SUPPL_DE <- file.path(FOLDER_CORRECS, "supp_DE.txt")
 		FILE_SUPPL_M <- file.path(FOLDER_CORRECS, "supp_M.txt")
