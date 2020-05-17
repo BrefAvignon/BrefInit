@@ -22,3 +22,9 @@ NA	NA	NA	NA	Date fin mandat	31/12/2015	12/12/2015	Ajustement date de fin pr rég
 124	870384	SAMUEL	Valérie	Nom elu	SAMUEL	SAMUEL CESARIUS	Nom incomplet
 127	870560	TAILLEPIERRE	Sonia	Nom elu	TAILLEPIERRE	TAILLEPIERRE DEVARIEUX	Nom incorrect
 5389	63915	BOURQUIN	Christian	Motif fin fonction	NA	DC	Motif de fin de fonction manquant
+319	833946	FOTSE-NJOMGANG	Paul	Fin mandat	13/3/2010	15/9/2009	Fin incorrecte (PM)
+404	839480	TAMON	Marie-Aline	Debut mandat	1/2/2006	16/1/2005	Debut incorrect (PM)
+391	47585	ROBERT	Didier	Fin mandat	13/3/2010	30/6/2007	Fin incorrecte (PM)
+359	1180075	MARIANNE	Lysiane Marie Leonide	Debut mandat	28/3/2004	1/7/2007	Debut incorrect (PM)
+4003	82604	CHATILLON	Alain	Fin mandat	13/3/2010	29/10/2008	Fin incorrecte (PM)
+4016	82325	DOUNOT-SOBRAQUES	Chantal	Debut mandat	28/3/2004	30/10/2008	Debut incorrect (PM)
