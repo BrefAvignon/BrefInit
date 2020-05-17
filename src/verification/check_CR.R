@@ -21,7 +21,7 @@ source("src/verification/test_duplicates.R")
 # set up the extraction
 extraction <- 1 # 1 or 2
 correct.data <- TRUE
-complete.data <- FALSE
+complete.data <- TRUE
 type <- "CR"
 
 # start logging
