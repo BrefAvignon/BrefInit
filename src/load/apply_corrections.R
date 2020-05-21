@@ -1461,7 +1461,9 @@ round.mdtfct.dates <- function(data, election.file, series.file, tolerance)
 #
 # data: original table.
 # type: type of the considered mandate (CD, CM, etc.).
-# strict: whether to merge when auxiliary attributes differ. 
+# strict: whether to merge when auxiliary attributes differ.
+#         Edit: in the ind we always use it with value FALSE, as otherwise
+#         we'd have to handle a bunch of inconsistencies manually.
 # log: whether or not to display log messages.
 #
 # return: same table, with merged overlapping mandates.

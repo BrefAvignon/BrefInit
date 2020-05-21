@@ -251,7 +251,7 @@ data <- complete.missing.ids(data)
 # merge cm/m mandates
 idx.mm <- which(!is.na(data[,COL_ATT_FCT_NOM]) & data[,COL_ATT_FCT_NOM]=="MAIRE")
 data.mm <- data[idx.mm,]
-data.mm <- merge.overlapping.mandates(data=data.mm, type="CM", strict=TRUE, log=TRUE)
+data.mm <- merge.overlapping.mandates(data=data.mm, type="CM", strict=FALSE, log=TRUE)
 # split long cm/m mandates
 data.mm <- split.long.mandates(data=data.mm, election.file=FILE_VERIF_DATES_CM)
 # solve mandate and function intersections (same position)
