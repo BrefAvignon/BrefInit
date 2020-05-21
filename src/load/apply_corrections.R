@@ -1461,11 +1461,12 @@ round.mdtfct.dates <- function(data, election.file, series.file, tolerance)
 #
 # data: original table.
 # type: type of the considered mandate (CD, CM, etc.).
+# strict: whether to merge when auxiliary attributes differ. 
 # log: whether or not to display log messages.
 #
 # return: same table, with merged overlapping mandates.
 #############################################################################################
-merge.overlapping.mandates <- function(data, type, log=TRUE)
+merge.overlapping.mandates <- function(data, type, strict, log=TRUE)
 {	tlog(0,"Merging overlapping rows of the same person (provided their functions are compatible)")
 	has.fct <- COL_ATT_FCT_DBT %in% colnames(data)
 	
@@ -1565,6 +1566,9 @@ merge.overlapping.mandates <- function(data, type, log=TRUE)
 														&& data[idx[k],COL_ATT_FCT_DBT]==(data[idx[j],COL_ATT_FCT_FIN]+1)))
 												)
 										)
+									&& (!strict || 															# possibly compare the rest of the attributes
+										all(is.na(data[idx[k],atts]) | is.na(data[idx[j],atts])				# must be identifical, or at least one NA
+											| data[idx[k],atts]==data[idx[j],atts]))
 								)
 								{	# log detected overlap
 									if(log) tlog(12, format.row(data[idx[j],]))
@@ -2574,10 +2578,11 @@ complete.missing.ids <- function(data)
 # election.file: name of the file containing the election dates.
 # series.file: name of the file containing the series (optional, depends on the type of mandate).
 # type: type of mandate (CD, CM, etc.).
+# strict: the process is less strict once secondary data has been integrated.
 #
 # returns: same table, but with corrected dates.
 #############################################################################################
-fix.mdtfct.dates <- function(data, election.file, series.file, type)
+fix.mdtfct.dates <- function(data, election.file, series.file, type, strict)
 {	# adjust function dates so that they are contained inside the corresponding mandate period
 	data <- adjust.function.dates(data)
 	
@@ -2589,7 +2594,7 @@ fix.mdtfct.dates <- function(data, election.file, series.file, type)
 	data <- remove.micro.mdtfcts(data, tolerance=7)
 	
 	# merge rows corresponding to overlapping and compatible mandates
-	data <- merge.overlapping.mandates(data, type, log=TRUE)
+	data <- merge.overlapping.mandates(data, type, strict, log=TRUE)
 	
 	# splits rows containing election dates (other than as a start date)
 	if(hasArg(election.file))

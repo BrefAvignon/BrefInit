@@ -161,7 +161,7 @@ load.data <- function(filenames, col.map, correc.file, correct.data, election.fi
 	{	# merge rows considered as compatible
 		data <- merge.similar.rows(data)
 		# fix mandate/function dates
-		data <- fix.mdtfct.dates(data, election.file, series.file, type)
+		data <- fix.mdtfct.dates(data, election.file, series.file, type, strict=TRUE)
 	}
 	
 	# count the number of modified rows
@@ -239,7 +239,7 @@ load.cd.data <- function(out.folder, correct.data, complete.data)
 			{	data <- merge.similar.rows(data)
 				data <- fix.mdtfct.dates(data, 
 						election.file=FILE_VERIF_DATES_CD, series.file=FILE_VERIF_SERIES_CD,
-						type="CD")
+						type="CD", strict=TRUE)
 			}
 			
 			# count the number of modified rows
@@ -401,7 +401,7 @@ load.cm.data <- function(out.folder, correct.data, complete.data)
 			{	data <- merge.similar.rows(data)
 				data <- fix.mdtfct.dates(data, 
 						election.file=FILE_VERIF_DATES_CM,
-						type="CM")
+						type="CM", strict=TRUE)
 			}
 			
 			# count the number of modified rows
@@ -562,7 +562,7 @@ load.cr.data <- function(out.folder, correct.data, complete.data)
 			{	data <- merge.similar.rows(data)
 				data <- fix.mdtfct.dates(data, 
 						election.file=FILE_VERIF_DATES_CR,
-						type="CR")
+						type="CR", strict=TRUE)
 			}
 			
 			# count the number of modified rows
@@ -729,7 +729,7 @@ load.d.data <- function(out.folder, correct.data, complete.data)
 			{	data <- merge.similar.rows(data)
 				data <- fix.mdtfct.dates(data, 
 						election.file=FILE_VERIF_DATES_D,
-						type="D")
+						type="D", strict=FALSE)
 			}
 			
 			# count the number of modified rows
@@ -811,7 +811,7 @@ load.de.data <- function(out.folder, correct.data, complete.data)
 			{	data <- merge.similar.rows(data)
 				data <- fix.mdtfct.dates(data, 
 						election.file=FILE_VERIF_DATES_DE,
-						type="DE")
+						type="DE", strict=TRUE)
 			}
 			
 			# count the number of modified rows
@@ -902,7 +902,7 @@ load.epci.data <- function(out.folder, correct.data, complete.data)
 			{	data <- merge.similar.rows(data)
 				data <- fix.mdtfct.dates(data, 
 						election.file=FILE_VERIF_DATES_CM,
-						type="EPCI")
+						type="EPCI", strict=TRUE)
 			}
 			
 			# count the number of modified rows
@@ -991,7 +991,7 @@ load.m.data <- function(out.folder, correct.data, complete.data)
 			{	data <- merge.similar.rows(data)
 				data <- fix.mdtfct.dates(data, 
 						election.file=FILE_VERIF_DATES_CM,
-						type="M")
+						type="M", strict=TRUE)
 			}
 			
 			# count the number of modified rows
@@ -1073,7 +1073,7 @@ load.s.data <- function(out.folder, correct.data, complete.data)
 			{	data <- merge.similar.rows(data)
 				data <- fix.mdtfct.dates(data, 
 						election.file=FILE_VERIF_DATES_S, series.file=FILE_VERIF_SERIES_S,
-						type="S")
+						type="S", strict=FALSE)
 			}
 			
 			# count the number of modified rows

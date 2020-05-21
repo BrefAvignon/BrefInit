@@ -265,7 +265,6 @@ data <- rbind(data[-idx.mm,], data.mm)
 
 
 
-
 #############################################################################################
 # cache merged table
 dir.create(path=FOLDER_OUT_ALL, showWarnings=FALSE, recursive=TRUE)
