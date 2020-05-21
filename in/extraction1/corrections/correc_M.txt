@@ -284,4 +284,3 @@ Row	Id RNE	Nom	Prenom	Attribut	ValAvt	ValApr	Commentaire
 112921	162927	ABRAHAM	Michel	Motif fin fonction	NA	DV	Information manquante
 112921	162927	ABRAHAM	Michel	Date fin fonction	NA	30/6/2015	Information manquante
 8982	795513	DUBOIS	Josette	Nom elu	DUBOIS	DUBOIS RAYNAGUET	Nom incomplet
-

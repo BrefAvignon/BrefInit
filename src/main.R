@@ -67,4 +67,9 @@ source("src/common/include.R")
 #   >> dupl.nuances <- c("RDG"="PRG", "M-NC"="MAJ")
 
 # TODO table fusionnée
-# - compléter les champs parfois vide (données perso ? autres ?)
+# - compléter les champs parfois vides (données perso ? autres ?)
+
+# TODO
+# - on dirait que la ré-application des corrections standard fait encore évoluer certaines tables (CM ? M ?)
+#   >> à regarder
+# - fusionner M et CM à part, réappliquer tout le traitement ? ou seulement sur les maires ?

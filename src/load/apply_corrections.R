@@ -2613,3 +2613,4 @@ fix.mdtfct.dates <- function(data, election.file, series.file, type, strict)
 	#stop()
 	return(data)
 }
+

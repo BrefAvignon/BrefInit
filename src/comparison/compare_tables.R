@@ -10,39 +10,40 @@
 
 
 #############################################################################################
-# Compare CM and M, two tables containing similar information.
+# Compare two tables containing similar information. Compares the person id and the 
+# mandate dates with a 1 week tolerance.
 #
-# data.m: mayoral table (M).
-# data.cm: municipal table (CM).
+# data1: first table to compare.
+# data2: municipal table (CM).
 #
-# returns: matches of M in CM.
+# returns: matches of the first table in the second one.
 #############################################################################################
-match.similar.tables <- function(data.m, data.cm)
+match.similar.tables <- function(data1, data2)
 {	tlog(0,"Matching compatible rows")
 	
 	# identify compatible rows against redundant ones
-	tlog(2,"Matching ",nrow(data.m)," rows vs. ",nrow(data.cm)," rows")
-	result <- future_sapply(1:nrow(data.m), function(r1)
+	tlog(2,"Matching ",nrow(data1)," rows vs. ",nrow(data2)," rows")
+	result <- future_sapply(1:nrow(data1), function(r1)
 	{	res <- NA
-		tlog(4,"Processing row ",r1,"/",nrow(data.m))
-		tlog(4, format.row(data.m[r1,]))
+		tlog(4,"Processing row ",r1,"/",nrow(data1))
+		tlog(4, format.row(data1[r1,]))
 		
-		rs <- which(data.cm[,COL_ATT_ELU_ID]==data.m[r1,COL_ATT_ELU_ID])
+		rs <- which(data2[,COL_ATT_ELU_ID]==data1[r1,COL_ATT_ELU_ID])
 		if(length(rs)>0)
 		{	j <- 1
 			while(is.na(res) && j<=length(rs))
 			{	r2 <- rs[j]
 				tlog(6,"Comparing to row ",r2,"(",j,"/",length(rs),")")
-				tlog(6, format.row(data.cm[r2,]))
+				tlog(6, format.row(data2[r2,]))
 				
-				if(abs(data.m[r1,COL_ATT_MDT_DBT]-data.cm[r2,COL_ATT_MDT_DBT])<=7
-					&& (is.na(data.m[r1,COL_ATT_MDT_FIN]) && is.na(data.cm[r2,COL_ATT_MDT_FIN]) 
-						|| (!is.na(data.m[r1,COL_ATT_MDT_FIN]) && !is.na(data.cm[r2,COL_ATT_MDT_FIN])
-							&& abs(data.m[r1,COL_ATT_MDT_FIN]-data.cm[r2,COL_ATT_MDT_FIN])<=7))
+				if(abs(data1[r1,COL_ATT_MDT_DBT]-data2[r2,COL_ATT_MDT_DBT])<=7
+					&& (is.na(data1[r1,COL_ATT_MDT_FIN]) && is.na(data2[r2,COL_ATT_MDT_FIN]) 
+						|| (!is.na(data1[r1,COL_ATT_MDT_FIN]) && !is.na(data2[r2,COL_ATT_MDT_FIN])
+							&& abs(data1[r1,COL_ATT_MDT_FIN]-data2[r2,COL_ATT_MDT_FIN])<=7))
 				)
 				{	tlog(6, "Found a match:")
-					tlog(6, format.row(data.m[r1,]))
-					tlog(6, format.row(data.cm[r2,]))
+					tlog(6, format.row(data1[r1,]))
+					tlog(6, format.row(data2[r2,]))
 					res <- r2
 				}
 				else
@@ -56,6 +57,34 @@ match.similar.tables <- function(data.m, data.cm)
 }
 
 
+
+
+#############################################################################################
+# Check if the rows taken pairwise in both tables are compatible (i.e. first row of table1 
+# compatible with first row of table2, and so on). Compatibility here means that they have either
+# the same value or at least one is NA, for each field excluding mandate and function dates,
+# which must overlap.
+#
+# table1: first table to compare.
+# table2: second table. They must have the same dimensions.
+#
+# returns: a vector indicating whether each pair of rows is compatible.
+#############################################################################################
+check.compatibility <- function(table1, table2)
+{	atts <- setdiff(colnames(table1), c(COL_ATT_MDT_DBT, COL_ATT_MDT_FIN, COL_ATT_FCT_DBT, COL_ATT_FCT_FIN, COL_ATT_CORREC_DATE, COL_ATT_CORREC_INFO))
+	
+	result <- future_sapply(1:nrow(table1), function(r)
+	{	(all(is.na(table1[r,atts]) | is.na(table2[r,atts]) | table1[r,atts]==table2[r,atts])
+			&& date.intersect(start1=table1[r,COL_ATT_MDT_DBT], end1=table1[r,COL_ATT_MDT_FIN], 
+					start2=table2[r,COL_ATT_MDT_DBT], end2=table2[r,COL_ATT_MDT_FIN])
+			&& date.intersect(start1=table1[r,COL_ATT_FCT_DBT], end1=table1[r,COL_ATT_FCT_FIN], 
+					start2=table2[r,COL_ATT_FCT_DBT], end2=table2[r,COL_ATT_FCT_FIN])
+		)
+	})
+	return(result)
+}
+
+	
 
 
 #############################################################################################

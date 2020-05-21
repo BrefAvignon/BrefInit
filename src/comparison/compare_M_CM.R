@@ -37,7 +37,9 @@ m.data <- load.m.data(out.folder=FOLDER_OUT_CM, correct.data, complete.data)
 tlog(0,"Load municipal data")
 cm.data <- load.cm.data(out.folder=FOLDER_OUT_M, correct.data, complete.data)
 # keep only the mayors
-cm.data <- cm.data[which(cm.data[,COL_ATT_FCT_NOM]=="MAIRE"),]
+cm.idx <- which(cm.data[,COL_ATT_FCT_NOM]=="MAIRE")
+tlog(2,"Keeping only the mayors, i.e. ", length(cm.idx)," rows")
+cm.data <- cm.data[cm.idx,]
 tlog(0,"Comparing ",nrow(m.data)," (M) vs. ",nrow(cm.data), " (CM)")
 
 
@@ -77,11 +79,20 @@ cm.data <- cm.data[cm.unmatched,]
 #############################################################################################
 # compare remaining rows in a more flexible way (dates)
 m.map <- match.similar.tables(m.data, cm.data)
+m.matched <- which(!is.na(m.map))
 m.unmatched <- which(is.na(m.map))
 cm.map <- match.similar.tables(cm.data, m.data)
+cm.matched <- which(!is.na(cm.map))
 cm.unmatched <- which(is.na(cm.map))
+tlog(2,"Found ",length(m.matched),"/",nrow(m.data)," matched rows in M and ",length(cm.matched),"/",nrow(cm.data)," in CM")
+# check if matched rows are compatible
+m.incompat <- which(!check.compatibility(m.data[m.matched,], cm.data[m.map[m.matched],]))
+cm.incompat <- which(!check.compatibility(cm.data[cm.matched,], m.data[cm.map[cm.matched],]))
+tlog(2,"Found ",length(m.incompat),"/",length(m.matched)," incompatible rows among the matched ones for M and ",length(cm.incompat),"/",length(cm.matched)," for CM")
+print(rbind(m.data[m.matched[m.incompat[1]],], cm.data[m.map[m.matched[m.incompat[1]]],]))
+
 # remove matched rows from tables
-tlog(2,"Found ",length(m.unmatched)," unmatched rows in M and ",length(cm.unmatched)," in CM")
+tlog(2,"Found ",length(m.unmatched),"/",nrow(m.data)," unmatched rows in M and ",length(cm.unmatched),"/",nrow(cm.data)," in CM")
 m.data <- m.data[m.unmatched,]
 cm.data <- cm.data[cm.unmatched,]
 
