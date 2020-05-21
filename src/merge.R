@@ -22,7 +22,7 @@ source("src/verification/test_duplicates.R")
 # set up parameters
 extraction <- 1 		# 1 or 2
 correct.data <- TRUE	# load raw or corrected data
-complete.data <- TRUE	# only for certain tables
+complete.data <- TRUE	# whether to use secondary source (except EPCI)
 
 # start logging
 start.rec.log(text=paste0("MERGE",extraction))
@@ -50,7 +50,7 @@ tlog(4,"Dimensions of the table: ",paste(dim(cm.data),collapse="x"))
 
 # load the regional councilor table
 tlog(2,"Loading regional data")
-cr.data <- if(extraction==1) load.cr.data(correct.data, complete.data=FALSE) else load.cr2.data(correct.data, complete.data=FALSE)
+cr.data <- if(extraction==1) load.cr.data(correct.data, complete.data) else load.cr2.data(correct.data, complete.data=FALSE)
 tlog(4,"Dimensions of the table: ",paste(dim(cr.data),collapse="x"))
 
 # load the parliamentary table
@@ -249,12 +249,19 @@ data <- merge.similar.rows(data)
 # add missing ids
 data <- complete.missing.ids(data)
 # merge cm/m mandates
-idx.mm <- which(data[,COL_ATT_MDT_NOM]=="CONSEILLER MUNICIPAL")
+idx.mm <- which(!is.na(data[,COL_ATT_FCT_NOM]) & data[,COL_ATT_FCT_NOM]=="MAIRE")
 data.mm <- data[idx.mm,]
-data.mm <- merge.overlapping.mandates(data=data.mm, type="CM", log=TRUE)
+data.mm <- merge.overlapping.mandates(data=data.mm, type="CM", strict=TRUE, log=TRUE)
 # split long cm/m mandates
 data.mm <- split.long.mandates(data=data.mm, election.file=FILE_VERIF_DATES_CM)
+# solve mandate and function intersections (same position)
+data.mm <- shorten.overlapping.mandates(data.mm, type="M", tolerance=8)
+data.mm <- shorten.overlapping.functions(data.mm, type="M", tolerance=8)
+# remove micro-mandates
+data.mm <- remove.micro.mdtfcts(data.mm, tolerance=7)
+# put the remaining rows back in the main table
 data <- rbind(data[-idx.mm,], data.mm)
+
 
 
 
@@ -272,7 +279,7 @@ write.cached.table(data[idx,], cache.file=FILE_CACHE_ALL)
 
 #############################################################################################
 # export for EV
-file.name <- paste0(FILE_CACHE_ALL,"_EV.txt")
+file.name <- paste0(FILE_CACHE_ALL,"_EV.csv")
 tlog(0,"Exporting to ",file.name)
 data.bis <- data
 for(c in 1:ncol(data.bis))
