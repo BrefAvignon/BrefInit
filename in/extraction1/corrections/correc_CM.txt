@@ -319,8 +319,9 @@ NA	NA	NA	NA	Libelle commune	TEVA I UTA SECTION 01 MATAIEA	TEVA I UTA	On ignore l
 647885	155308	HUOT	René	Date debut fonction	14/3/2013	9/3/2008	Date incorrecte
 1044296	4676	DELESSARD	Monique	Date debut fonction	26/6/2015	30/3/2014	Date incorrecte (WP)
 1044296	4676	DELESSARD	Monique	Date fin fonction	NA	21/5/2015	Date incorrecte (WP)
+1044297	4676	DELESSARD	Monique	Date debut mandat	21/6/2015	22/5/2015	Date incorrecte (WP)
 1044297	4676	DELESSARD	Monique	Libelle fonction	NA	Maire	Fonction manquante (WP)
-1044297	4676	DELESSARD	Monique	Date debut fonction	NA	26/6/2015	Date manquante (WP)
+1044297	4676	DELESSARD	Monique	Date debut fonction	NA	22/5/2015	Date manquante (WP)
 1044297	4676	DELESSARD	Monique	Date fin fonction	NA	15/1/2018	Fonction manquante (WP)
 1044297	4676	DELESSARD	Monique	Motif fin fonction	NA	DV	Fonction manquante (WP)
 1143452	85417	PICHEREAU	Françoise	Libelle fonction	Maire	NA	Fonction incorrecte (WP)
