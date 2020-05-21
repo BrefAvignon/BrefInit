@@ -547,12 +547,27 @@ load.cr.data <- function(out.folder, correct.data, complete.data)
 		
 		# correct/complete with secondary sources
 		if(complete.data)
-		{	# senate database
+		{	# manually constituted table
+			data <- manual.integrate.data.cr(data)
+			
+			# senate database
 			# NOTE Senate data eventually not used
 			#data <- senate.integrate.data(data, type="CR", cache=TRUE, compare=FALSE)
 			
 			# assembly database
 			# no CR data in the assembly database
+			
+			# clean another time
+			if(correct.data)
+			{	data <- merge.similar.rows(data)
+				data <- fix.mdtfct.dates(data, 
+						election.file=FILE_VERIF_DATES_CR,
+						type="CR")
+			}
+			
+			# count the number of modified rows
+			idx <- which(data[,COL_ATT_CORREC_DATE] | data[,COL_ATT_CORREC_INFO])
+			tlog(0,"Total number of modified rows: ", length(idx))
 		}
 		
 		if(CACHE_DATA)
@@ -696,7 +711,7 @@ load.d.data <- function(out.folder, correct.data, complete.data)
 				correc.file=FILE_CORREC_D, correct.data,
 				election.file=FILE_VERIF_DATES_D,
 				type="D")
-#return(data)
+		
 		# correct/complete with secondary sources
 		if(complete.data)
 		{	# manually constituted table
@@ -783,8 +798,6 @@ load.de.data <- function(out.folder, correct.data, complete.data)
 		if(complete.data)
 		{	# manually constituted table
 			data <- manual.integrate.data.de(data)
-# debug
-# sapply(which(data[,COL_ATT_ELU_NOM]=="LE PEN" & data[,COL_ATT_ELU_PRENOM]=="MARINE"), function(r) format.row(data[r,]))
 			
 			# senate database
 			# NOTE Senate data eventually not used
@@ -883,6 +896,18 @@ load.epci.data <- function(out.folder, correct.data, complete.data)
 			
 			# assembly database
 			# no EPCI data in the assembly database
+			
+			# clean another time
+			if(correct.data)
+			{	data <- merge.similar.rows(data)
+				data <- fix.mdtfct.dates(data, 
+						election.file=FILE_VERIF_DATES_CM,
+						type="EPCI")
+			}
+			
+			# count the number of modified rows
+			idx <- which(data[,COL_ATT_CORREC_DATE] | data[,COL_ATT_CORREC_INFO])
+			tlog(0,"Total number of modified rows: ", length(idx))
 		}
 		
 		if(CACHE_DATA)

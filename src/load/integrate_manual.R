@@ -2,6 +2,8 @@
 # Functions used to inject data from some manually constitued table.
 # 
 # 04/2020 Vincent Labatut
+#
+# source("src/load/integrate_manual.R")
 #############################################################################################
 
 
@@ -34,7 +36,7 @@ manual.integrate.data.cd <- function(data)
 	supp.data <- add.missing.columns(supp.data)
 	
 	# add data source column
-	supp.data[,COL_ATT_SOURCES] <- "WIKIPEDIA"
+	supp.data[,COL_ATT_SOURCES] <- rep("WIKIPEDIA", nrow(supp.data))
 	
 	# complete missing occupation based on RNE
 	tlog(2,"Completing missing occupation info in supplementary table")
@@ -105,7 +107,11 @@ manual.integrate.data.cm <- function(data)
 	supp.data <- add.missing.columns(supp.data)
 	
 	# add data source column
-	supp.data[,COL_ATT_SOURCES] <- "WIKIPEDIA"
+	supp.data[,COL_ATT_SOURCES] <- rep("WIKIPEDIA", nrow(supp.data))
+	
+	# add mandate name column
+	supp.data <- cbind(supp.data, rep("CONSEILLER MUNICIPAL", nrow(supp.data)))
+	colnames(supp.data)[ncol(supp.data)] <- COL_ATT_MDT_NOM
 	
 	# complete missing occupation based on RNE
 	tlog(2,"Completing missing occupation info in supplementary table")
@@ -126,6 +132,8 @@ manual.integrate.data.cm <- function(data)
 	tlog(2,"Normalizing column order in both tables")
 	supp.data <- normalize.col.order(supp.data)
 	data <- normalize.col.order(data)
+print(colnames(supp.data))
+print(colnames(data))
 	
 	# merge both tables
 	tlog(2,"Merging both tables")
@@ -176,7 +184,7 @@ manual.integrate.data.cr <- function(data)
 	supp.data <- add.missing.columns(supp.data)
 	
 	# add data source column
-	supp.data[,COL_ATT_SOURCES] <- "WIKIPEDIA"
+	supp.data[,COL_ATT_SOURCES] <- rep("WIKIPEDIA", nrow(supp.data))
 	
 	# complete missing occupation based on RNE
 	tlog(2,"Completing missing occupation info in supplementary table")
@@ -247,7 +255,7 @@ manual.integrate.data.d <- function(data)
 	supp.data <- add.missing.columns(supp.data)
 	
 	# set data source column
-	supp.data[,COL_ATT_SOURCES] <- "WIKIPEDIA"
+	supp.data[,COL_ATT_SOURCES] <- rep("WIKIPEDIA", nrow(supp.data))
 	
 	# complete missing occupation based on RNE
 	tlog(2,"Completing missing occupation info in supplementary table")
@@ -402,7 +410,7 @@ manual.integrate.data.m <- function(data)
 	supp.data <- add.missing.columns(supp.data)
 	
 	# add data source column
-	supp.data[,COL_ATT_SOURCES] <- "WIKIPEDIA"
+	supp.data[,COL_ATT_SOURCES] <- rep("WIKIPEDIA", nrow(supp.data))
 	
 	# complete missing occupation based on RNE
 	tlog(2,"Completing missing occupation info in supplementary table")

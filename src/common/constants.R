@@ -2,6 +2,8 @@
 # Defines functions or constants used by all other scripts.
 # 
 # 07/2019 Vincent Labatut
+#
+# source("src/common/constants.R")
 #############################################################################################
 
 
