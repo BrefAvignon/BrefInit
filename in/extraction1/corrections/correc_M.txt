@@ -80,7 +80,7 @@ Row	Id RNE	Nom	Prenom	Attribut	ValAvt	ValApr	Commentaire
 83064	171568	BRUZEAUD	Anne-Marie	Nom elu	BRUZEAUD	SOUCAZE BRUZEAUD	Nom incorrect
 83065	171568	BRUZEAUD-SOUCAZE	Anne-Marie	Nom elu	BRUZEAUD-SOUCAZE	SOUCAZE BRUZEAUD	Nom incorrect
 83065	171568	SOUCAZE BRUZEAUD	Anne-Marie	ID RNE	171568	NA	Suppression, mandat inexistant (WP)
-83066	171568	SOUCAZE-BRUZEAUD	Anne-Marie	Nom elu	SOUCAZE-BRUZEAUD	BRUZEAUD	Typo dans le nom
+#83066	171568	SOUCAZE-BRUZEAUD	Anne-Marie	Nom elu	SOUCAZE-BRUZEAUD	BRUZEAUD	Typo dans le nom
 84852	171019	LE GENTIL	Francis	ID RNE	171019	NA	Suppression, mandat inexistant (WP)
 89479	169576	BUISSON	Frédérique	Prenom elu	Frédérique	Frédéric	Typo prénom
 89479	169576	BUISSON	Frédéric	Code sexe	F	M	Typo sexe
@@ -283,3 +283,4 @@ Row	Id RNE	Nom	Prenom	Attribut	ValAvt	ValApr	Commentaire
 112921	162927	ABRAHAM	Michel	Motif fin mandat	NA	DV	Information manquante
 112921	162927	ABRAHAM	Michel	Motif fin fonction	NA	DV	Information manquante
 112921	162927	ABRAHAM	Michel	Date fin fonction	NA	30/6/2015	Information manquante
+8982	795513	DUBOIS	Josette	Nom elu	DUBOIS	DUBOIS RAYNAGUET	Nom incomplet
