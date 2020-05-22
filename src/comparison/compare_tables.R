@@ -11,39 +11,49 @@
 
 #############################################################################################
 # Compare two tables containing similar information. Compares the person id and the 
-# mandate dates with a 1 week tolerance.
+# mandate dates with a 1 week tolerance. If ovelap is true, the function just checks if
+# the mandates and functions overlap, instead.
 #
 # data1: first table to compare.
 # data2: municipal table (CM).
+# log.details: whether or not to log the details of the processing.
+# overlap: if TRUE, the test constraints are more relaxed.
 #
 # returns: matches of the first table in the second one.
 #############################################################################################
-match.similar.tables <- function(data1, data2)
+match.similar.tables <- function(data1, data2, log.details=FALSE, overlap=FALSE)
 {	tlog(0,"Matching compatible rows")
 	
 	# identify compatible rows against redundant ones
 	tlog(2,"Matching ",nrow(data1)," rows vs. ",nrow(data2)," rows")
 	result <- future_sapply(1:nrow(data1), function(r1)
 	{	res <- NA
-		tlog(4,"Processing row ",r1,"/",nrow(data1))
-		tlog(4, format.row(data1[r1,]))
+		if(log.details) tlog(4,"Processing row ",r1,"/",nrow(data1))
+		if(log.details) tlog(4, format.row(data1[r1,]))
 		
 		rs <- which(data2[,COL_ATT_ELU_ID]==data1[r1,COL_ATT_ELU_ID])
 		if(length(rs)>0)
 		{	j <- 1
 			while(is.na(res) && j<=length(rs))
 			{	r2 <- rs[j]
-				tlog(6,"Comparing to row ",r2,"(",j,"/",length(rs),")")
-				tlog(6, format.row(data2[r2,]))
+				if(log.details) tlog(6,"Comparing to row ",r2,"(",j,"/",length(rs),")")
+				if(log.details) tlog(6, format.row(data2[r2,]))
 				
-				if(abs(data1[r1,COL_ATT_MDT_DBT]-data2[r2,COL_ATT_MDT_DBT])<=7
+				if((!overlap 
+					&& abs(data1[r1,COL_ATT_MDT_DBT]-data2[r2,COL_ATT_MDT_DBT])<=7
 					&& (is.na(data1[r1,COL_ATT_MDT_FIN]) && is.na(data2[r2,COL_ATT_MDT_FIN]) 
 						|| (!is.na(data1[r1,COL_ATT_MDT_FIN]) && !is.na(data2[r2,COL_ATT_MDT_FIN])
-							&& abs(data1[r1,COL_ATT_MDT_FIN]-data2[r2,COL_ATT_MDT_FIN])<=7))
-				)
-				{	tlog(6, "Found a match:")
-					tlog(6, format.row(data1[r1,]))
-					tlog(6, format.row(data2[r2,]))
+							&& abs(data1[r1,COL_ATT_MDT_FIN]-data2[r2,COL_ATT_MDT_FIN])<=7)))
+					|| (overlap 
+						&& date.intersect(start1=data1[r1,COL_ATT_MDT_DBT], end1=data1[r1,COL_ATT_MDT_FIN], 
+								start2=data2[r2,COL_ATT_MDT_DBT], end2=data2[r2,COL_ATT_MDT_FIN])
+						&& date.intersect(start1=data1[r1,COL_ATT_FCT_DBT], end1=data1[r1,COL_ATT_FCT_FIN], 
+								start2=data2[r2,COL_ATT_FCT_DBT], end2=data2[r2,COL_ATT_FCT_FIN])
+						)
+					)
+				{	if(log.details) tlog(6, "Found a match:")
+					if(log.details) tlog(6, format.row(data1[r1,]))
+					if(log.details) tlog(6, format.row(data2[r2,]))
 					res <- r2
 				}
 				else
@@ -74,7 +84,13 @@ check.compatibility <- function(table1, table2)
 {	atts <- setdiff(colnames(table1), c(COL_ATT_MDT_DBT, COL_ATT_MDT_FIN, COL_ATT_FCT_DBT, COL_ATT_FCT_FIN, COL_ATT_CORREC_DATE, COL_ATT_CORREC_INFO))
 	
 	result <- future_sapply(1:nrow(table1), function(r)
-	{	(all(is.na(table1[r,atts]) | is.na(table2[r,atts]) | table1[r,atts]==table2[r,atts])
+	{	# debug
+		#if(!all(is.na(table1[r,atts]) | is.na(table2[r,atts]) | table1[r,atts]==table2[r,atts]))
+		#{	idx <- which(!(is.na(table1[r,atts]) | is.na(table2[r,atts]) | table1[r,atts]==table2[r,atts]))
+		#	print(colnames(table1)[idx])
+		#}
+		#
+		(all(is.na(table1[r,atts]) | is.na(table2[r,atts]) | table1[r,atts]==table2[r,atts])
 			&& date.intersect(start1=table1[r,COL_ATT_MDT_DBT], end1=table1[r,COL_ATT_MDT_FIN], 
 					start2=table2[r,COL_ATT_MDT_DBT], end2=table2[r,COL_ATT_MDT_FIN])
 			&& date.intersect(start1=table1[r,COL_ATT_FCT_DBT], end1=table1[r,COL_ATT_FCT_FIN], 

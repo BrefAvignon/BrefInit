@@ -67,10 +67,8 @@ tlog(2,"Number of CM rows appearing several times: ",which(table(m.unmatched)>1)
 cm.map <- match(cm.codes,m.codes)
 cm.unmatched <- which(is.na(cm.map))
 tlog(2,"Number of M rows appearing several times: ",which(table(cm.unmatched)>1))
-# remove matched rows from tables
-tlog(2,"Found ",length(m.unmatched)," unmatched rows in M and ",length(cm.unmatched)," in CM")
-m.data <- m.data[m.unmatched,]
-cm.data <- cm.data[cm.unmatched,]
+# display result
+tlog(2,"Found ",length(m.unmatched),"/",nrow(m.data)," unmatched rows in M and ",length(cm.unmatched),"/",nrow(cm.data)," in CM")
 #print(m.codes[m.unmatched])
 
 
@@ -78,23 +76,43 @@ cm.data <- cm.data[cm.unmatched,]
 
 #############################################################################################
 # compare remaining rows in a more flexible way (dates)
-m.map <- match.similar.tables(m.data, cm.data)
-m.matched <- which(!is.na(m.map))
+m.map[m.unmatched] <- match.similar.tables(m.data[m.unmatched,], cm.data)
+m.newmatches <- m.unmatched[which(!is.na(m.map[m.unmatched]))]
 m.unmatched <- which(is.na(m.map))
-cm.map <- match.similar.tables(cm.data, m.data)
-cm.matched <- which(!is.na(cm.map))
+cm.map[cm.unmatched] <- match.similar.tables(cm.data[cm.unmatched,], m.data)
+cm.newmatches <- cm.unmatched[which(!is.na(cm.map[cm.unmatched]))]
 cm.unmatched <- which(is.na(cm.map))
-tlog(2,"Found ",length(m.matched),"/",nrow(m.data)," matched rows in M and ",length(cm.matched),"/",nrow(cm.data)," in CM")
+tlog(2,"Now ",length(m.unmatched),"/",nrow(m.data)," unmatched rows in M and ",length(cm.unmatched),"/",nrow(cm.data)," in CM")
 # check if matched rows are compatible
-m.incompat <- which(!check.compatibility(m.data[m.matched,], cm.data[m.map[m.matched],]))
-cm.incompat <- which(!check.compatibility(cm.data[cm.matched,], m.data[cm.map[cm.matched],]))
-tlog(2,"Found ",length(m.incompat),"/",length(m.matched)," incompatible rows among the matched ones for M and ",length(cm.incompat),"/",length(cm.matched)," for CM")
-print(rbind(m.data[m.matched[m.incompat[1]],], cm.data[m.map[m.matched[m.incompat[1]]],]))
+#m.incompat <- m.newmatches[which(!check.compatibility(m.data[m.newmatches,], cm.data[m.map[m.newmatches],]))]
+#cm.incompat <- cm.newmatches[which(!check.compatibility(cm.data[cm.newmatches,], m.data[cm.map[cm.newmatches],]))]
+#tlog(2,"Found ",length(m.incompat),"/",length(m.newmatches)," incompatible rows among the matched ones for M and ",length(cm.incompat),"/",length(cm.newmatches)," for CM")
+#print(rbind(m.data[m.incompat[1],], cm.data[m.map[m.incompat[1]],]))
 
-# remove matched rows from tables
-tlog(2,"Found ",length(m.unmatched),"/",nrow(m.data)," unmatched rows in M and ",length(cm.unmatched),"/",nrow(cm.data)," in CM")
-m.data <- m.data[m.unmatched,]
-cm.data <- cm.data[cm.unmatched,]
+
+
+
+#############################################################################################
+# compare remaining rows in a more flexible way (dates)
+m.map[m.unmatched] <- match.similar.tables(m.data[m.unmatched,], cm.data, overlap=TRUE)
+m.newmatches <- m.unmatched[which(!is.na(m.map[m.unmatched]))]
+m.unmatched <- which(is.na(m.map))
+cm.map[cm.unmatched] <- match.similar.tables(cm.data[cm.unmatched,], m.data, overlap=TRUE)
+cm.newmatches <- cm.unmatched[which(!is.na(cm.map[cm.unmatched]))]
+cm.unmatched <- which(is.na(cm.map))
+tlog(2,"Now ",length(m.unmatched),"/",nrow(m.data)," unmatched rows in M and ",length(cm.unmatched),"/",nrow(cm.data)," in CM")
+# display problems
+#i=3;print(rbind(m.data[m.unmatched[i],], cm.data[which(cm.data[,COL_ATT_ELU_ID]==m.data[m.unmatched[i],COL_ATT_ELU_ID]),]))
+#i=1;print(rbind(cm.data[cm.unmatched[i],], m.data[which(m.data[,COL_ATT_ELU_ID]==cm.data[cm.unmatched[i],COL_ATT_ELU_ID]),]))
+
+# TODO controler les M restants: sont ils vraiment différents ? ou mvais id ?
+# puis finaliser le traitement destiner à fusionner CM et M
+# en fusionnant les lignes matchées (et ajoutant les lignes M différentes)
+
+
+
+
+
 
 
 
