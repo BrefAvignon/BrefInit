@@ -1791,11 +1791,23 @@ split.long.mandates <- function(data, election.file, series.file)
 			}
 		}
 	}
-	tlog.end.loop(2,"CHECKPOINT 11: Added ",nbr.splits," rows (",(100*nbr.splits/nbr.before),"%) to the table by splitting periods spanning several actual mandates")
-	update.stat.table(s.nbr=11, s.name="Split long mandates", del.nbr=0, mod.nbr=0, add.nbr=nbr.splits, size=nbr.before)
-	
 	data <- rbind(data, new.data)
 	tlog(2, "Table now containing ",nrow(data)," rows")
+	
+	# possibly remove rows without function, only for M
+	nbr.del <- 0
+	if(type=="M")
+	{	idx <- which(is.na(data[,COL_ATT_FCT_NOM]))
+		tlog(2, "Removing empty function (specific to M) : found ",length(idx))
+		data <- data[-idx,]
+		tlog(4, "Table now containing ",nrow(data)," rows")
+		nbr.del <- length(idx)
+	}
+	
+	tlog.end.loop(2,"CHECKPOINT 11: Added ",nbr.splits," rows (",(100*nbr.splits/nbr.before),"%) to the table by splitting periods spanning several actual mandates",
+		if(type=="M") paste0(" and removed ",nbr.del," rows (",(100*nbr.del/nbr.splits),"%) of them for a total of ",nbr.splits-nbr.del," rows (",(100*(nbr.splits-nbr.del)/nbr.before),"%) new rows") else "")
+	update.stat.table(s.nbr=11, s.name="Split long mandates", del.nbr=nbr.del, mod.nbr=0, add.nbr=nbr.splits, size=nbr.before)
+	
 	return(data)
 }
 
