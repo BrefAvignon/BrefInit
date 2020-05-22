@@ -485,7 +485,14 @@ NA	NA	NA	NA	Libelle commune	TEVA I UTA SECTION 01 MATAIEA	TEVA I UTA	On ignore l
 815845	1165263	PETIT	Jean-Michel	Libelle profession	Retraités salariés privés	Professeurs du secondaire et techn.	Confusion d'homonymes
 564183	1008493	LLOBIS	Christophe	Nom elu	LLOBIS	LLOPIS	Coquille dans le nom
 1046739	173684	TURPIN	Jean	ID RNE	173684	541703	Confusion d'homonymes
-154912	909612	VAY	Bruno	ID RNE	909612	NA	Ligne redondante
+154909	909612	VAY	Bruno	ID RNE	909612	NA	Ligne redondante
+154910	909612	VAY	Bruno	Date fin mandat	27/6/2008	22/3/2014	Date incorrecte
+154910	909612	VAY	Bruno	Motif fin mandat	AU	FM	Motif incorrect
+154910	909612	VAY	Bruno	Motif fin fonction	NA	AU	Motif incorrect
+154911	909612	VAY	Bruno	Date fin mandat	27/6/2008	22/3/2014	Date incorrecte
+154911	909612	VAY	Bruno	Motif fin mandat	AU	FM	Motif incorrect
+154911	909612	VAY	Bruno	Motif fin fonction	NA	AU	Motif incorrect
+154912	909612	VAY	Bruno	Date fin mandat	27/6/2008	22/3/2014	Date incorrecte
 158867	906446	ANGOT	Geneviève	Libelle fonction	Troisième adjoint au maire	NA	Fonction incorrecte
 158867	906446	ANGOT	Geneviève	Date debut fonction	21/4/2018	NA	Fonction incorrecte
 158873	1240629	BERTHAUX	Thierry	Libelle fonction	Quatrième adjoint au maire	NA	Fonction incorrecte
@@ -624,3 +631,4 @@ NA	NA	NA	NA	Libelle commune	TEVA I UTA SECTION 01 MATAIEA	TEVA I UTA	On ignore l
 1223146	162927	ABRAHAM	Michel	Date fin fonction	NA	30/6/2015	Information manquante
 369945	740772	DE VEYRINAS	Béatrix	Nom elu	DE VEYRINAS	HEBRARD DE VEYRINAS	Nom incomplet
 369946	740772	DE VEYRINAS	Béatrix	Nom elu	DE VEYRINAS	HEBRARD DE VEYRINAS	Nom incomplet
+500132	786819	DORBON	Henri	ID RNE	786819	NA	Suppression, ligne incorrecte

@@ -284,3 +284,6 @@ Row	Id RNE	Nom	Prenom	Attribut	ValAvt	ValApr	Commentaire
 112921	162927	ABRAHAM	Michel	Motif fin fonction	NA	DV	Information manquante
 112921	162927	ABRAHAM	Michel	Date fin fonction	NA	30/6/2015	Information manquante
 8982	795513	DUBOIS	Josette	Nom elu	DUBOIS	DUBOIS RAYNAGUET	Nom incomplet
+8600	604027	MERCIER	Agnès	Date fin mandat	NA	4/5/2009	23/3/2014	Date incorrecte
+8600	604027	MERCIER	Agnès	Date fin fonction	NA	4/5/2009	23/3/2014	Date incorrecte
+15614	909612	VAY	Bruno	ID RNE	909612	NA	Suppression, ligne incorrecte
