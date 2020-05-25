@@ -628,3 +628,23 @@ NA	NA	NA	NA	Libelle commune	TEVA I UTA SECTION 01 MATAIEA	TEVA I UTA	On ignore l
 369945	740772	DE VEYRINAS	Béatrix	Nom elu	DE VEYRINAS	HEBRARD DE VEYRINAS	Nom incomplet
 369946	740772	DE VEYRINAS	Béatrix	Nom elu	DE VEYRINAS	HEBRARD DE VEYRINAS	Nom incomplet
 500132	786819	DORBON	Henri	ID RNE	786819	NA	Suppression, ligne incorrecte
+83813	604027	MERCIER	Agnès	Date fin mandat	4/5/2009	22/3/2014	Date incorrecte
+83813	604027	MERCIER	Agnès	Date debut fonction	4/5/2009	5/5/2009	Date incorrecte
+83813	604027	MERCIER	Agnès	Date fin fonction	4/5/2009	22/3/2014	Date incorrecte
+83814	604027	MERCIER	Agnès	Date fin mandat	4/5/2009	22/3/2014	Date incorrecte
+195229	23154	MARTIN	Jean-Michel	Date naissance	28/5/1960	29/9/1942	Date incorrecte
+195229	23154	MARTIN	Jean-Michel	Libelle profession	Autres cadres (secteur privé)	Autres retraités	Profession incorrecte
+195229	23154	MARTIN	Jean-Michel	Code profession	19	65	Profession incorrecte
+1082062	23154	MARTIN	Jean-Michel	ID RNE	23154	89879	Id incorrect
+244808	144240	LAUVERGNE	Colette	Date debut mandat	3/3/2001	11/3/2001	Date incorrecte
+244808	144240	LAUVERGNE	Colette	Date debut fonction	3/3/1995	11/3/2001	Date incorrecte
+245189	774113	VENUAT	André	Date debut mandat	3/3/2001	11/3/2001	Date incorrecte
+245189	774113	VENUAT	André	Date debut foonction	3/3/2001	11/3/2001	Date incorrecte
+245867	144196	SACHET	Jean-Marie	Date debut mandat	3/3/2001	11/3/2001	Date incorrecte
+245867	144196	SACHET	Jean-Marie	Date debut fonction	3/3/2001	11/3/2001	Date incorrecte
+247004	144161	DUGENEST	Jean-Claude	Date debut mandat	3/3/2001	11/3/2001	Date incorrecte
+247004	144161	DUGENEST	Jean-Claude	Date debut fonction	3/3/2001	11/3/2001	Date incorrecte
+247324	698	VERGNIER	Michel	Date debut mandat	3/3/2001	11/3/2001	Date incorrecte
+247324	698	VERGNIER	Michel	Date debut fonction	3/3/2001	11/3/2001	Date incorrecte
+247264	144142	LATOUR	Dominique	Date debut mandat	3/3/2001	11/3/2001	Date incorrecte
+247264	144142	LATOUR	Dominique	Date debut fonction	3/3/2001	11/3/2001	Date incorrecte
