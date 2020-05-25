@@ -104,6 +104,7 @@ Row	Id RNE	Nom	Prenom	Attribut	ValAvt	ValApr	Commentaire
 30779	849661	WOHLSCHLEGEL	Eric	ID RNE	849661	NA	Suppression, mandat inexistant (WP)
 113184	817494	SALIBER	Lucien	ID RNE	817494	NA	Suppression, mandat inexistant (WP)
 101734	220028	BAILLET	Alain	ID RNE	220028	NA	Suppression, mandat inexistant (WP)
+101735	220028	BAILLET Alain	Fin mandat	30/5/2011	22/3/2014 Date fin incorrecte
 93247	168415	MIGUET	Roger	Date debut mandat	11/3/2003	11/3/2001	Date de début incorrecte (WP)
 93249	743394	MIGUET	Vincent	ID RNE	743394	NA	Suppression, mandat inexistant (WP)
 83920	676816	RAYNAL	Yannick	ID RNE	676816	NA	Suppression, mandat inexistant (WP)
@@ -284,6 +285,6 @@ Row	Id RNE	Nom	Prenom	Attribut	ValAvt	ValApr	Commentaire
 112921	162927	ABRAHAM	Michel	Motif fin fonction	NA	DV	Information manquante
 112921	162927	ABRAHAM	Michel	Date fin fonction	NA	30/6/2015	Information manquante
 8982	795513	DUBOIS	Josette	Nom elu	DUBOIS	DUBOIS RAYNAGUET	Nom incomplet
-8600	604027	MERCIER	Agnès	Date fin mandat	NA	4/5/2009	23/3/2014	Date incorrecte
-8600	604027	MERCIER	Agnès	Date fin fonction	NA	4/5/2009	23/3/2014	Date incorrecte
+8600	604027	MERCIER	Agnès	Date fin mandat	4/5/2009	23/3/2014	Date incorrecte
+8600	604027	MERCIER	Agnès	Date fin fonction	4/5/2009	23/3/2014	Date incorrecte
 15614	909612	VAY	Bruno	ID RNE	909612	NA	Suppression, ligne incorrecte

@@ -284,11 +284,8 @@ NA	NA	NA	NA	Libelle commune	TEVA I UTA SECTION 01 MATAIEA	TEVA I UTA	On ignore l
 1229593	817494	SALIBER	Lucien	Date debut fonction	3/4/2013	NA	Fonction incorrecte
 1229593	817494	SALIBER	Lucien	Date fin fonction	22/3/2014	NA	Fonction incorrecte
 1229593	817494	SALIBER	Lucien	Motif fin fonction	FM	NA	Fonction incorrecte
-1083537	220028	BAILLET	Alain	Date naissance	21/12/1954	31/12/1954	Date incohérente
-1083538	220028	BAILLET	Alain	Libelle fonction	Maire	NA	Fonction incorrecte
-1083538	220028	BAILLET	Alain	Date debut fonction	30/5/2011	NA	Fonction incorrecte
-1083538	220028	BAILLET	Alain	Date fin fonction	22/3/2014	NA	Fonction incorrecte
-1083538	220028	BAILLET	Alain	Motif fin fonction	FM	NA	Fonction incorrecte
+1083537	220028	BAILLET	Alain	ID RNE	220028	NA	Ligne superflue et fausse
+1083538	220028	BAILLET	Alain	Date fin mandat	30/5/2011	22/3/2014	Date incorrecte
 980699	168415	MIGUET	Roger	Date debut mandat	11/3/2003	11/3/2001	Date de début incorrecte (WP)
 980702	743394	MIGUET	Vincent	Libelle fonction	Maire	NA	Fonction incorrecte
 980702	743394	MIGUET	Vincent	Date debut fonction	21/3/2008	NA	Fonction incorrecte
@@ -492,7 +489,6 @@ NA	NA	NA	NA	Libelle commune	TEVA I UTA SECTION 01 MATAIEA	TEVA I UTA	On ignore l
 154911	909612	VAY	Bruno	Date fin mandat	27/6/2008	22/3/2014	Date incorrecte
 154911	909612	VAY	Bruno	Motif fin mandat	AU	FM	Motif incorrect
 154911	909612	VAY	Bruno	Motif fin fonction	NA	AU	Motif incorrect
-154912	909612	VAY	Bruno	Date fin mandat	27/6/2008	22/3/2014	Date incorrecte
 158867	906446	ANGOT	Geneviève	Libelle fonction	Troisième adjoint au maire	NA	Fonction incorrecte
 158867	906446	ANGOT	Geneviève	Date debut fonction	21/4/2018	NA	Fonction incorrecte
 158873	1240629	BERTHAUX	Thierry	Libelle fonction	Quatrième adjoint au maire	NA	Fonction incorrecte
