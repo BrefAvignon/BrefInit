@@ -12,6 +12,7 @@ source("src/verification/sumup_col.R")
 source("src/verification/test_dates.R")
 source("src/verification/test_locations.R")
 source("src/verification/test_persoinf.R")
+source("src/verification/test_positions.R")
 source("src/verification/test_duplicates.R")
 
 
