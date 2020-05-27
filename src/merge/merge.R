@@ -7,6 +7,7 @@
 # setwd("C:/Users/Vincent/Eclipse/workspaces/Extraction/Datapol")
 #############################################################################################
 source("src/common/include.R")
+source("src/merge/merge_municipal.R")
 source("src/verification/evolution_plot.R")
 source("src/verification/sumup_col.R")
 source("src/verification/test_dates.R")
@@ -98,6 +99,12 @@ tlog(4,"EPCI ids not matching CM ids: ",non.matching,"/",length(epci.ids), "(",n
 non.matching <- length(which(is.na(match(m.ids, cm.ids))))
 tlog(4,"M ids not matching CM ids: ",non.matching,"/",length(m.ids), "(",non.matching/length(m.ids)*100,"%)")
 
+
+
+
+#############################################################################################
+# merge M in CM
+cm.data <- merge.municipal(m.data, cm.data)
 
 
 
@@ -195,19 +202,6 @@ tmp[,col.inter] <- epci.data[,col.inter]
 tlog(4,"  Remaining columns: ",paste(setdiff(colnames(epci.data), col.inter), collapse=", "))
 data <- rbind(data, tmp)
 
-# add mayoral data
-tlog(2,"Merge mayoral data")
-tmp <- data.frame(
-		matrix(NA, nrow(m.data), length(cols), dimnames=list(c(), cols)),
-		check.names=FALSE,
-		stringsAsFactors=FALSE
-	)
-tmp[,COL_ATT_ELU_DDD] <- as.Date(tmp[,COL_ATT_ELU_DDD])
-col.inter <- intersect(cols, colnames(m.data))
-tmp[,col.inter] <- m.data[,col.inter]
-tlog(4,"  Remaining columns: ",paste(setdiff(colnames(m.data), col.inter), collapse=", "))
-data <- rbind(data, tmp)
-
 # add senatorial data
 tlog(2,"Merge senatorial data")
 tmp <- data.frame(
@@ -245,23 +239,9 @@ tlog(2,"Actual dimensions of the full table: ",paste(dim(data),collapse="x"))
 
 #############################################################################################
 # merge rows considered as compatible
-stop()
 data <- merge.similar.rows(data)
 # add missing ids
 data <- complete.missing.ids(data)
-# merge cm/m mandates
-idx.mm <- which(!is.na(data[,COL_ATT_FCT_NOM]) & data[,COL_ATT_FCT_NOM]=="MAIRE")
-data.mm <- data[idx.mm,]
-data.mm <- merge.overlapping.mandates(data=data.mm, type="CM", strict=FALSE, log=TRUE)
-# split long cm/m mandates
-data.mm <- split.long.mandates(data=data.mm, election.file=FILE_VERIF_DATES_CM)
-# solve mandate and function intersections (same position)
-data.mm <- shorten.overlapping.mandates(data.mm, type="M", tolerance=8)
-data.mm <- shorten.overlapping.functions(data.mm, type="M", tolerance=8)
-# remove micro-mandates
-data.mm <- remove.micro.mdtfcts(data.mm, tolerance=7)
-# put the remaining rows back in the main table
-data <- rbind(data[-idx.mm,], data.mm)
 
 # 114194
 

@@ -4,7 +4,7 @@
 # 10/2019 Vincent Labatut
 #
 # setwd("C:/Users/Vincent/Eclipse/workspaces/Extraction/Datapol")
-# source("src/check.R")
+# source("src/verification/check.R")
 #############################################################################################
 
 ############################################
