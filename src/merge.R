@@ -245,6 +245,7 @@ tlog(2,"Actual dimensions of the full table: ",paste(dim(data),collapse="x"))
 
 #############################################################################################
 # merge rows considered as compatible
+stop()
 data <- merge.similar.rows(data)
 # add missing ids
 data <- complete.missing.ids(data)
@@ -262,7 +263,7 @@ data.mm <- remove.micro.mdtfcts(data.mm, tolerance=7)
 # put the remaining rows back in the main table
 data <- rbind(data[-idx.mm,], data.mm)
 
-
+# 114194
 
 
 #############################################################################################

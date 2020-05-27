@@ -105,12 +105,36 @@ tlog(2,"Now ",length(m.unmatched),"/",nrow(m.data)," unmatched rows in M and ",l
 #i=3;print(rbind(m.data[m.unmatched[i],], cm.data[which(cm.data[,COL_ATT_ELU_ID]==m.data[m.unmatched[i],COL_ATT_ELU_ID]),]))
 #i=1;print(rbind(cm.data[cm.unmatched[i],], m.data[which(m.data[,COL_ATT_ELU_ID]==cm.data[cm.unmatched[i],COL_ATT_ELU_ID]),]))
 
-# TODO controler les M restants: sont ils vraiment différents ? ou mvais id ?
-# puis finaliser le traitement destiner à fusionner CM et M
-# en fusionnant les lignes matchées (et ajoutant les lignes M différentes)
 
 
 
+#############################################################################################
+## check multiple matches
+#m.tt <- table(m.map)
+#m.rs <- as.integer(names(m.tt[which(m.tt>1)]))
+##r=1;print(rbind(m.data[which(m.map==m.rs[r]),],cm.data[m.rs[r],]))
+#
+#cm.tt <- table(cm.map)
+#cm.rs <- as.integer(names(cm.tt[which(cm.tt>1)]))
+##r=1;print(rbind(cm.data[which(cm.map==cm.rs[r]),],m.data[cm.rs[r],]))
+
+
+
+
+#############################################################################################
+tlog(0, "Merging the rows of both tables based on the matches")
+res <- m.data[NULL,]
+for(r in 1:nrow(m.data))
+{	tlog(2, "Merging rows ",r,"/",nrow(m.data))
+	tab <- rbind(m.data[r,], cm.data[m.map[r],])
+	tab <- merge.overlapping.mandates(data=tab, type="M", strict=FALSE, log=FALSE)
+	res <- rbind(res,tab)
+}
+
+# TODO passer le script merge sous forme de fonction?
+# ou en tout cas y intégrer sous forme de fonction le script de ce fichier-ci
+# et restaurer ce fichier à son ancienne forme (comparaison de 2 fichiers texte bruts)
+# voir aussi s'il n'y a pas des choses à restaurer dans le fichier compare_table, du coup
 
 
 
