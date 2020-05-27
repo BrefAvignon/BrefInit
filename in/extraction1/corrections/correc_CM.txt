@@ -639,12 +639,12 @@ NA	NA	NA	NA	Libelle commune	TEVA I UTA SECTION 01 MATAIEA	TEVA I UTA	On ignore l
 244808	144240	LAUVERGNE	Colette	Date debut mandat	3/3/2001	11/3/2001	Date incorrecte
 244808	144240	LAUVERGNE	Colette	Date debut fonction	3/3/1995	11/3/2001	Date incorrecte
 245189	774113	VENUAT	André	Date debut mandat	3/3/2001	11/3/2001	Date incorrecte
-245189	774113	VENUAT	André	Date debut foonction	3/3/2001	11/3/2001	Date incorrecte
+245189	774113	VENUAT	André	Date debut fonction	3/3/2001	11/3/2001	Date incorrecte
 245867	144196	SACHET	Jean-Marie	Date debut mandat	3/3/2001	11/3/2001	Date incorrecte
 245867	144196	SACHET	Jean-Marie	Date debut fonction	3/3/2001	11/3/2001	Date incorrecte
 247004	144161	DUGENEST	Jean-Claude	Date debut mandat	3/3/2001	11/3/2001	Date incorrecte
 247004	144161	DUGENEST	Jean-Claude	Date debut fonction	3/3/2001	11/3/2001	Date incorrecte
 247324	698	VERGNIER	Michel	Date debut mandat	3/3/2001	11/3/2001	Date incorrecte
 247324	698	VERGNIER	Michel	Date debut fonction	3/3/2001	11/3/2001	Date incorrecte
-247264	144142	LATOUR	Dominique	Date debut mandat	3/3/2001	11/3/2001	Date incorrecte
-247264	144142	LATOUR	Dominique	Date debut fonction	3/3/2001	11/3/2001	Date incorrecte
+247347	144142	LATOUR	Dominique	Date debut mandat	3/3/2001	11/3/2001	Date incorrecte
+247347	144142	LATOUR	Dominique	Date debut fonction	3/3/2001	11/3/2001	Date incorrecte
