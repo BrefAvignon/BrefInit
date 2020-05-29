@@ -890,7 +890,7 @@ assembly.convert.mandate.table <- function(general.table, elect.table, data)
 	# adjusting mandate dates to match elections
 	asn.tab <- round.mdtfct.dates(data=asn.tab, election.file=FILE_VERIF_DATES_D, tolerance=7)
 	# split long mandates spanning several elections
-	asn.tab <- split.long.mandates(data=asn.tab, election.file=FILE_VERIF_DATES_D)
+	asn.tab <- split.long.mandates(data=asn.tab, type="D", election.file=FILE_VERIF_DATES_D)
 	
 	# record the Assembly table
 	folder <- file.path(FOLDER_COMP_SRC_ASSEMB, "D")

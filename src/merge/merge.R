@@ -3,7 +3,7 @@
 # 
 # 10/2019 Vincent Labatut
 #
-# source("src/merge.R")
+# source("src/merge/merge.R")
 # setwd("C:/Users/Vincent/Eclipse/workspaces/Extraction/Datapol")
 #############################################################################################
 source("src/common/include.R")
@@ -91,20 +91,38 @@ if(complete.data)
 
 #############################################################################################
 # match tests
+tlog(0,"Compare ids in municipal and EPCI tables")
 cm.ids <- unique(cm.data[,COL_ATT_ELU_ID_RNE])
 epci.ids <- unique(epci.data[,COL_ATT_ELU_ID_RNE])
 m.ids <- unique(m.data[,COL_ATT_ELU_ID_RNE])
 non.matching <- length(which(is.na(match(epci.ids, cm.ids))))
-tlog(4,"EPCI ids not matching CM ids: ",non.matching,"/",length(epci.ids), "(",non.matching/length(epci.ids)*100,"%)")
+tlog(2,"EPCI ids not matching CM ids: ",non.matching,"/",length(epci.ids), "(",non.matching/length(epci.ids)*100,"%)")
 non.matching <- length(which(is.na(match(m.ids, cm.ids))))
-tlog(4,"M ids not matching CM ids: ",non.matching,"/",length(m.ids), "(",non.matching/length(m.ids)*100,"%)")
+tlog(2,"M ids not matching CM ids: ",non.matching,"/",length(m.ids), "(",non.matching/length(m.ids)*100,"%)")
 
 
 
 
 #############################################################################################
 # merge M in CM
+tlog(0,"Merging M and CM")
 cm.data <- merge.municipal(m.data, cm.data)
+	write.cached.table(data=cm.data, cache.file=paste0(FILE_CACHE_CM,"_01.txt"))
+tlog(2,"Size of CM after merging with M: ",nrow(cm.data)," rows")
+cm.data <- merge.overlapping.mandates(data=cm.data, type="CM", strict=FALSE, log=TRUE)
+	# 221264 1002906
+	write.cached.table(data=cm.data, cache.file=paste0(FILE_CACHE_CM,"_02.txt"))
+	tlog(2,"Size of CM after merging overlapping mandates: ",nrow(cm.data)," rows")
+cm.data <- split.long.mandates(data=cm.data, type="CM", election.file=FILE_VERIF_DATES_CM)
+	write.cached.table(data=cm.data, cache.file=paste0(FILE_CACHE_CM,"_03.txt"))
+	tlog(2,"Size of CM after splitting long mandates: ",nrow(cm.data)," rows")
+cm.data <- shorten.overlapping.functions(cm.data, type="CM", tolerance=8)
+	write.cached.table(data=cm.data, cache.file=paste0(FILE_CACHE_CM,"_04.txt"))
+	tlog(2,"Size of CM after shortening overlapping functions: ",nrow(cm.data)," rows")
+cm.data <- remove.micro.mdtfcts(cm.data, tolerance=7)
+	write.cached.table(data=cm.data, cache.file=paste0(FILE_CACHE_CM,"_05.txt"))
+	tlog(2,"Size of CM after removing micro-mandates: ",nrow(cm.data)," rows")
+tlog(2,"Size of CM after post-processing: ",nrow(cm.data)," rows")
 
 
 
@@ -243,7 +261,7 @@ data <- merge.similar.rows(data)
 # add missing ids
 data <- complete.missing.ids(data)
 
-# 114194
+
 
 
 #############################################################################################

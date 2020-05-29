@@ -1684,12 +1684,13 @@ merge.overlapping.mandates <- function(data, type, strict, log=TRUE)
 # the election dates. The functions dates are updated accordingly.
 #
 # data: original table.
+# type: type of mandate (CD, CM, etc.).
 # election.file: name of the file containing the election dates.
 # series.file: name of the file containing the series (optional, depends on the type of mandate).
 #
 # return: same table, with split long mandates.
 #############################################################################################
-split.long.mandates <- function(data, election.file, series.file)
+split.long.mandates <- function(data, type, election.file, series.file)
 {	tlog(0,"Split rows spanning several mandates")
 	series.present <- hasArg(series.file)
 	nbr.before <- nrow(data)
@@ -1961,7 +1962,7 @@ remove.micro.mdtfcts <- function(data, tolerance)
 # older one.
 #
 # data: original table.
-# type: type of mandate (CD, CM, etc.).
+# type: type of mandate (CD, D, etc.).
 # tolerance: maximal overlap (if too long, the overlap is ignored, not solved here).
 #
 # return: same table, without the (minor) overlaps.
@@ -2543,7 +2544,8 @@ adjust.end.motives <- function(data, election.file, series.file)
 # returns: the same table, but with completed ids.
 #############################################################################################
 complete.missing.ids <- function(data)
-{	id.cols <- c(COL_ATT_ELU_ID_ASSEMB, COL_ATT_ELU_ID_EURO, COL_ATT_ELU_ID_RNE, COL_ATT_ELU_ID_SENAT)
+{	tlog(0,"Completing missing ids whenever possible")
+	id.cols <- c(COL_ATT_ELU_ID_ASSEMB, COL_ATT_ELU_ID_EURO, COL_ATT_ELU_ID_RNE, COL_ATT_ELU_ID_SENAT)
 	
 	# list of unique universal ids
 	unique.ids <- unique(data[,COL_ATT_ELU_ID])
@@ -2612,7 +2614,7 @@ fix.mdtfct.dates <- function(data, election.file, series.file, type, strict)
 	
 	# splits rows containing election dates (other than as a start date)
 	if(hasArg(election.file))
-		data <- split.long.mandates(data, election.file, series.file)
+		data <- split.long.mandates(data, type, election.file, series.file)
 	
 	# solve mandate and function intersections (same position)
 	data <- shorten.overlapping.mandates(data, type, tolerance=8)

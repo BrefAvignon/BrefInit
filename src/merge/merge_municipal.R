@@ -5,7 +5,7 @@
 # 10/2019 Vincent Labatut
 #
 # setwd("C:/Users/Vincent/Eclipse/workspaces/Extraction/Datapol")
-# source("src/comparison/compare_M_CM.R")
+# source("src/merge/merge_municipal.R")
 #############################################################################################
 
 
@@ -121,7 +121,7 @@ merge.municipal <- function(m.data, cm.data)
 	# keep only the mayors from the municipal table
 	cm.idx <- which(cm.data[,COL_ATT_FCT_NOM]=="MAIRE")
 	tlog(2,"Keeping only the mayors, i.e. ", length(cm.idx)," rows")
-	result <- cm.data[-cm.idx]
+	result <- cm.data[-cm.idx,]
 	cm.data <- cm.data[cm.idx,]
 	tlog(2,"Comparing ",nrow(m.data)," (M) vs. ",nrow(cm.data), " (CM)")
 	
@@ -188,14 +188,15 @@ merge.municipal <- function(m.data, cm.data)
 	##r=1;print(rbind(cm.data[which(cm.map==cm.rs[r]),],m.data[cm.rs[r],]))
 
 	# matching over, merging the rows
-	tlog(2, "Merging the rows of both tables based on the matches")
+	tlog.start.loop(2, nrow(m.data), "Merging the rows of both tables based on the matches")
 	res <- m.data[NULL,]
 	for(r in 1:nrow(m.data))
-	{	tlog(4, "Merging rows ",r,"/",nrow(m.data))
+	{	tlog.loop(4, r, "Merging rows ",r,"/",nrow(m.data))
 		tab <- rbind(m.data[r,], cm.data[m.map[r],])
 		tab <- merge.overlapping.mandates(data=tab, type="M", strict=FALSE, log=FALSE)
 		res <- rbind(res,tab)
 	}
+	tlog.end.loop(4, "Process over")
 	
 	# set up the result table
 	result <- rbind(result, res)
