@@ -9,9 +9,9 @@ START_TIME <- Sys.time()
 CONNECTION <- NA
 
 # loop start time
-LOOP_START_TIME <- NA
+LOOP_START_TIME <- NULL
 # total number of loop iterations
-TOTAL_ITERATIONS <- NA
+TOTAL_ITERATIONS <- NULL
 
 
 
@@ -126,8 +126,11 @@ tlog <- function(offset=NA, ...)
 # ...: parameters fetched to the cat function.
 #############################################################################################
 tlog.start.loop <- function(offset=NA, total.it, ...)
-{	TOTAL_ITERATIONS <<- total.it
-	LOOP_START_TIME <<- Sys.time()
+{	# init variables
+	TOTAL_ITERATIONS <<- c(TOTAL_ITERATIONS, total.it)
+	LOOP_START_TIME <<- c(LOOP_START_TIME, Sys.time())
+	
+	# display message
 	tlog(offset, ...)
 }
 
@@ -145,13 +148,17 @@ tlog.start.loop <- function(offset=NA, total.it, ...)
 # ...: parameters fetched to the cat function.
 #############################################################################################
 tlog.loop <- function(offset=NA, it, ...)
-{	prefix <- get.log.prefix(offset)
+{	# get prefix
+	prefix <- get.log.prefix(offset)
 	
+	# set suffix
 	cur.time <- Sys.time()
-	el.duration <- as.numeric(difftime(cur.time, LOOP_START_TIME, units="secs"))
+	el.duration <- as.numeric(difftime(cur.time, LOOP_START_TIME[length(LOOP_START_TIME)], units="secs"))
 	avg.duration <- el.duration / it
-	rem.duration <- as.difftime(max(0, avg.duration * TOTAL_ITERATIONS - el.duration), units="secs")
+	rem.duration <- as.difftime(max(0, avg.duration * TOTAL_ITERATIONS[length(TOTAL_ITERATIONS)] - el.duration), units="secs")
 	suffix <- paste0(" [[ETA: ",format.duration(rem.duration),"]]")
+	
+	# display message
 	cat(prefix, ..., suffix, "\n", sep="")
 }
 
@@ -167,13 +174,20 @@ tlog.loop <- function(offset=NA, it, ...)
 # ...: parameters fetched to the cat function.
 #############################################################################################
 tlog.end.loop <- function(offset=NA, ...)
-{	prefix <- get.log.prefix(offset)
+{	# get prefix
+	prefix <- get.log.prefix(offset)
 	
+	# set suffix
 	end.time <- Sys.time()
-	duration <- difftime(end.time, LOOP_START_TIME, units="secs")
+	duration <- difftime(end.time, LOOP_START_TIME[length(LOOP_START_TIME)], units="secs")
 	suffix <- paste0(" [[Total duration: ",format.duration(duration),"]]")
 	
+	# display message
 	cat(prefix, ..., suffix, "\n", sep="")
+	
+	# update variables
+	LOOP_START_TIME <<- LOOP_START_TIME[-length(LOOP_START_TIME)]
+	TOTAL_ITERATIONS <<- TOTAL_ITERATIONS[-length(TOTAL_ITERATIONS)]
 }
 
 ## test
