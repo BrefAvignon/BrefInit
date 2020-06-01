@@ -244,7 +244,7 @@ load.cd.data <- function(out.folder, correct.data, complete.data)
 			
 			# count the number of modified rows
 			idx <- which(data[,COL_ATT_CORREC_DATE] | data[,COL_ATT_CORREC_INFO])
-			tlog(0,"Total number of modified rows: ", length(idx))
+			tlog(0,"Total number of modified rows: ", length(idx), " (",length(idx)/nrow(data)*100,"%)")
 		}
 		
 		if(CACHE_DATA)
@@ -406,7 +406,7 @@ load.cm.data <- function(out.folder, correct.data, complete.data)
 			
 			# count the number of modified rows
 			idx <- which(data[,COL_ATT_CORREC_DATE] | data[,COL_ATT_CORREC_INFO])
-			tlog(0,"Total number of modified rows: ", length(idx))
+			tlog(0,"Total number of modified rows: ", length(idx), " (",length(idx)/nrow(data)*100,"%)")
 		}
 		
 		if(CACHE_DATA)
@@ -567,7 +567,7 @@ load.cr.data <- function(out.folder, correct.data, complete.data)
 			
 			# count the number of modified rows
 			idx <- which(data[,COL_ATT_CORREC_DATE] | data[,COL_ATT_CORREC_INFO])
-			tlog(0,"Total number of modified rows: ", length(idx))
+			tlog(0,"Total number of modified rows: ", length(idx), " (",length(idx)/nrow(data)*100,"%)")
 		}
 		
 		if(CACHE_DATA)
@@ -734,7 +734,7 @@ load.d.data <- function(out.folder, correct.data, complete.data)
 			
 			# count the number of modified rows
 			idx <- which(data[,COL_ATT_CORREC_DATE] | data[,COL_ATT_CORREC_INFO])
-			tlog(0,"Total number of modified rows: ", length(idx))
+			tlog(0,"Total number of modified rows: ", length(idx), " (",length(idx)/nrow(data)*100,"%)")
 		}
 		
 		if(CACHE_DATA)
@@ -816,7 +816,7 @@ load.de.data <- function(out.folder, correct.data, complete.data)
 			
 			# count the number of modified rows
 			idx <- which(data[,COL_ATT_CORREC_DATE] | data[,COL_ATT_CORREC_INFO])
-			tlog(0,"Total number of modified rows: ", length(idx))
+			tlog(0,"Total number of modified rows: ", length(idx), " (",length(idx)/nrow(data)*100,"%)")
 		}
 		
 		if(CACHE_DATA)
@@ -907,7 +907,7 @@ load.epci.data <- function(out.folder, correct.data, complete.data)
 			
 			# count the number of modified rows
 			idx <- which(data[,COL_ATT_CORREC_DATE] | data[,COL_ATT_CORREC_INFO])
-			tlog(0,"Total number of modified rows: ", length(idx))
+			tlog(0,"Total number of modified rows: ", length(idx), " (",length(idx)/nrow(data)*100,"%)")
 		}
 		
 		if(CACHE_DATA)
@@ -996,7 +996,7 @@ load.m.data <- function(out.folder, correct.data, complete.data)
 			
 			# count the number of modified rows
 			idx <- which(data[,COL_ATT_CORREC_DATE] | data[,COL_ATT_CORREC_INFO])
-			tlog(0,"Total number of modified rows: ", length(idx))
+			tlog(0,"Total number of modified rows: ", length(idx), " (",length(idx)/nrow(data)*100,"%)")
 		}
 		
 		if(CACHE_DATA)
@@ -1078,7 +1078,7 @@ load.s.data <- function(out.folder, correct.data, complete.data)
 			
 			# count the number of modified rows
 			idx <- which(data[,COL_ATT_CORREC_DATE] | data[,COL_ATT_CORREC_INFO])
-			tlog(0,"Total number of modified rows: ", length(idx))
+			tlog(0,"Total number of modified rows: ", length(idx), " (",length(idx)/nrow(data)*100,"%)")
 		}
 		
 		if(CACHE_DATA)
