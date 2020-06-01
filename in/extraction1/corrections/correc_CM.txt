@@ -651,8 +651,8 @@ NA	NA	NA	NA	Libelle commune	TEVA I UTA SECTION 01 MATAIEA	TEVA I UTA	On ignore l
 24672	1209431	BOURGEOIS	Valérie	Date fin mandat	27/3/2014	NA	Date incorrecte (EPCI)
 1096172	242783	VALAX	Jacques	Date fin mandat	2/4/2014	26/5/2014	Date incorrecte (EPCI)
 1098084	870111	TESTAS	Christophe	Date fin mandat	1/4/2014	8/4/2014	Date incorrecte (EPCI)
-205273	833847	DESCARGUES	Jacques	ID elu	833847	NA	Ligne redondante 
-205274	833847	DESCARGUES	Jacques	Prenom elu	Jacques Guy Mar	Jacques Guy	Prénom incorrect
+205273	833847	DESCARGUES	Jacques	ID RNE	833847	NA	Ligne redondante 
+205274	833847	DESCARGUES	Jacques Guy Mar	Prenom elu	Jacques Guy Mar	Jacques Guy	Prénom incorrect
 50434	1216131	LAISSUS	Agnès	Date fin mandat	25/3/2014	31/12/2016	Date incorrecte (EPCI)
 111872	1230699	MANTOUX	Jacques	Date fin mandat	26/3/2014	26/4/2014	Date incorrecte (EPCI)
 146397	1238154	GAULT	Alain	Date fin mandat	3/4/2014	8/4/2014	Date incorrecte (EPCI)
@@ -674,7 +674,7 @@ NA	NA	NA	NA	Libelle commune	TEVA I UTA SECTION 01 MATAIEA	TEVA I UTA	On ignore l
 894094	1420768	WAGNER	Fabien	Date fin mandat	27/3/2014	1/1/2017	Date incorrecte (EPCI)
 1000029	1446876	LABORIER	Edwige	Date fin mandat	27/3/2014	1/1/2017	Date incorrecte (EPCI)
 1026474	576425	LESUEUR	Jacki	Prenom elu	Jacki	Jacky	Prénom incorrect
-1026474	576425	LESUEUR	Jacki	Date fin mandat	31/3/2014	1/1/2017	Date incorrecte (EPCI)
+1026474	576425	LESUEUR	Jacky	Date fin mandat	31/3/2014	1/1/2017	Date incorrecte (EPCI)
 1066862	1461925	CHAILLOU	Jean-Marie	Date fin mandat	3/4/2014	NA	Date incorrecte (EPCI)
 1103591	1471052	CASTEL	Eloy	Date fin mandat	4/4/2014	26/5/2014	Date incorrecte (EPCI)
 1133141	1478361	CORNIERE	Chantal	Date fin mandat	25/3/2014	1/1/2017	Date incorrecte (EPCI)
