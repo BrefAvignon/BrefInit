@@ -569,7 +569,7 @@ apply.systematic.corrections <- function(data, type)
 		}
 		tlog.end.loop(2,"Loop over")
 		tmp <- tmp[order(tmp[,1]),]
-		print(tmp)		# debug
+		if(nrow(tmp)>0) print(tmp)		# debug
 		# log result
 		idx <- which(old.names!=data[,COL_ATT_ELU_NOM])
 		data[idx,COL_ATT_CORREC_INFO] <- TRUE 
