@@ -266,6 +266,14 @@ data <- complete.missing.ids(data)
 
 
 #############################################################################################
+# count the number of modified rows
+idx <- which(data[,COL_ATT_CORREC_DATE] | data[,COL_ATT_CORREC_INFO])
+tlog(0,"Total number of modified rows: ", length(idx))
+
+
+
+
+#############################################################################################
 # cache merged table
 dir.create(path=FOLDER_OUT_ALL, showWarnings=FALSE, recursive=TRUE)
 tlog(0,"Ordering the full table")
