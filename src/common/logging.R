@@ -9,7 +9,7 @@ START_TIME <- Sys.time()
 CONNECTION <- NA
 
 # loop start time
-LOOP_START_TIME <- NULL
+LOOP_START_TIME <- as.POSIXct(NA)
 # total number of loop iterations
 TOTAL_ITERATIONS <- NULL
 
