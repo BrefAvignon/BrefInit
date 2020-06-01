@@ -533,13 +533,13 @@ apply.systematic.corrections <- function(data, type)
 	# normalise usage names
 	tlog(0,"Normalizing usage names")
 	old.names <- data[,COL_ATT_ELU_NOM]
-	idx <- which(grepl(pattern="(.+)( EP | EPOUSE )(.+)", x=data[,COL_ATT_ELU_NOM]))
+	idx <- which(grepl(pattern="(.+)( EP | EPOUSE | NEE )(.+)", x=data[,COL_ATT_ELU_NOM]))
 	if(length(idx)>0)
 	{	tlog(0,"Found ",length(idx)," spouse names")
 		# update names explicitly containing "spouse" 
-		usage.names <- gsub(x=data[idx,COL_ATT_ELU_NOM], pattern="(.+)( EP | EPOUSE )(.+)",replacement="\\1")
-		birth.names <- gsub(x=data[idx,COL_ATT_ELU_NOM], pattern="(.+)( EP | EPOUSE )(.+)",replacement="\\3")
-		new.names <- gsub(x=data[idx,COL_ATT_ELU_NOM], pattern="(.+)( EP | EPOUSE )(.+)",replacement="\\3 \\1")
+		usage.names <- gsub(x=data[idx,COL_ATT_ELU_NOM], pattern="(.+)( EP | EPOUSE | NEE )(.+)",replacement="\\1")
+		birth.names <- gsub(x=data[idx,COL_ATT_ELU_NOM], pattern="(.+)( EP | EPOUSE | NEE )(.+)",replacement="\\3")
+		new.names <- gsub(x=data[idx,COL_ATT_ELU_NOM], pattern="(.+)( EP | EPOUSE | NEE )(.+)",replacement="\\3 \\1")
 		#head(cbind(old.names[idx], birth.names, new.names))
 		data[idx,COL_ATT_ELU_NOM] <- new.names
 		tmp <- matrix(ncol=2,nrow=0)

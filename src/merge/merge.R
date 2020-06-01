@@ -97,6 +97,7 @@ epci.ids <- unique(epci.data[,COL_ATT_ELU_ID_RNE])
 m.ids <- unique(m.data[,COL_ATT_ELU_ID_RNE])
 non.matching <- length(which(is.na(match(epci.ids, cm.ids))))
 tlog(2,"EPCI ids not matching CM ids: ",non.matching,"/",length(epci.ids), "(",non.matching/length(epci.ids)*100,"%)")
+#print(epci.ids[which(is.na(match(epci.ids, cm.ids)))])
 non.matching <- length(which(is.na(match(m.ids, cm.ids))))
 tlog(2,"M ids not matching CM ids: ",non.matching,"/",length(m.ids), "(",non.matching/length(m.ids)*100,"%)")
 

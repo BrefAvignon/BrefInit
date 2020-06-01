@@ -70,6 +70,6 @@ source("src/common/include.R")
 # - compléter les champs parfois vides (données perso ? autres ?)
 
 # TODO
-# - on dirait que la ré-application des corrections standard fait encore évoluer certaines tables (CM ? M ?)
-#   >> à regarder
-# - fusionner M et CM à part, réappliquer tout le traitement ? ou seulement sur les maires ?
+# - faire le nettoyage jusqu'à correcs systématiques
+# - voir quels ids sont à fusionner (noms d'usage) : "WARNING: consider merging RNE ids"
+# - rebalancer le bousin pour toutes les tables, vérifier que tout est OK dans les logs

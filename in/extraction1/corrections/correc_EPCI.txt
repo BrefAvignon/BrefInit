@@ -428,3 +428,5 @@ NA	NA	NA	NA	Numero SIREN	20006971	200006971	numéro SIREN incorrect (syntaxiquem
 127555	872362	VIENNE	Raymonde	Nom elu	VIENNE	VIENNE HUET	Nom incomplet
 127003	1199476	ERIN-SALLER	Valerie	Nom elu	ERIN-SALLER	SALLER ERIN	Coquille nom
 72420	1372345	JACQUES	Jean-Michel	Date naissance	26/2/1968	29/2/1968	Coquille date de naissance
+23988	833847	DESCARGUES	Jacques	Prenom elu	Jacques	Jacques Guy	Prénom incomplet
+104460	576425	LESUEUR	Jacki	Prenom elu	Jacki	Jacky	Prénom incorrect

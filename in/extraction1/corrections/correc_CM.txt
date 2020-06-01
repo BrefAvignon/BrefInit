@@ -648,3 +648,37 @@ NA	NA	NA	NA	Libelle commune	TEVA I UTA SECTION 01 MATAIEA	TEVA I UTA	On ignore l
 247324	698	VERGNIER	Michel	Date debut fonction	3/3/2001	11/3/2001	Date incorrecte
 247347	144142	LATOUR	Dominique	Date debut mandat	3/3/2001	11/3/2001	Date incorrecte
 247347	144142	LATOUR	Dominique	Date debut fonction	3/3/2001	11/3/2001	Date incorrecte
+24672	1209431	BOURGEOIS	Valérie	Date fin mandat	27/3/2014	NA	Date incorrecte (EPCI)
+1096172	242783	VALAX	Jacques	Date fin mandat	2/4/2014	26/5/2014	Date incorrecte (EPCI)
+1098084	870111	TESTAS	Christophe	Date fin mandat	1/4/2014	8/4/2014	Date incorrecte (EPCI)
+205273	833847	DESCARGUES	Jacques	ID elu	833847	NA	Ligne redondante 
+205274	833847	DESCARGUES	Jacques	Prenom elu	Jacques Guy Mar	Jacques Guy	Prénom incorrect
+50434	1216131	LAISSUS	Agnès	Date fin mandat	25/3/2014	31/12/2016	Date incorrecte (EPCI)
+111872	1230699	MANTOUX	Jacques	Date fin mandat	26/3/2014	26/4/2014	Date incorrecte (EPCI)
+146397	1238154	GAULT	Alain	Date fin mandat	3/4/2014	8/4/2014	Date incorrecte (EPCI)
+170025	1243260	TARTARIN	Jean-Claude	Date fin mandat	3/4/2014	1/1/2017	Date incorrecte (EPCI)
+449401	1313232	CAMBRAY	René-Laurent	Date fin mandat	24/3/2014	NA	Date incorrecte (EPCI)
+546215	1337457	LEVEQUE	Françoise	Date fin mandat	23/3/2014	31/12/2016	Date incorrecte (EPCI)
+548924	1338155	BOUTET	Marie-Françoise	Date fin mandat	26/3/2014	31/12/2016	Date incorrecte (EPCI)
+578075	1345379	PINÈDE	Alain	Date fin mandat	29/3/2014	NA	Date incorrecte (EPCI)
+668371	1031238	JEANNOT	Henri-Michel	Date fin mandat	25/3/2014	31/12/2016	Date incorrecte (EPCI)
+696879	1038739	POIRIER	Loïc	Date fin mandat	24/3/2014	23/7/2015	Date incorrecte (EPCI)
+696880	1038739	POIRIER	Loïc	Date naissance	4/2/1977	11/8/1966	Date de naissance incorrecte
+770589	1390348	MAZZOLINI	William	Date fin mandat	28/3/2014	1/1/2017	Date incorrecte (EPCI)
+792159	1395873	STIEFEL	Lionel	Date fin mandat	29/3/2014	31/12/2016	Date incorrecte (EPCI)
+830494	1404548	VERROUST	Gérald	Date fin mandat	25/3/2014	31/12/2016	Date incorrecte (EPCI)
+890321	860221	ARNOULD	Sylvie	Nom elu	ARNOULD	FUSSLER ARNOULD	Nom d'usage incorrect
+890322	860221	ARNOULD	Sylvie	Nom elu	ARNOULD	FUSSLER ARNOULD	Nom d'usage incorrect
+890323	860221	ARNOULD NÉE FUSSLER	Sylvie	Nom elu	ARNOULD NÉE FUSSLER	FUSSLER ARNOULD	Nom d'usage incorrect
+890323	860221	FUSSLER ARNOULD	Sylvie	Date fin mandat	5/4/2014	1/1/2017	Date incorrecte (EPCI)
+894094	1420768	WAGNER	Fabien	Date fin mandat	27/3/2014	1/1/2017	Date incorrecte (EPCI)
+1000029	1446876	LABORIER	Edwige	Date fin mandat	27/3/2014	1/1/2017	Date incorrecte (EPCI)
+1026474	576425	LESUEUR	Jacki	Prenom elu	Jacki	Jacky	Prénom incorrect
+1026474	576425	LESUEUR	Jacki	Date fin mandat	31/3/2014	1/1/2017	Date incorrecte (EPCI)
+1066862	1461925	CHAILLOU	Jean-Marie	Date fin mandat	3/4/2014	NA	Date incorrecte (EPCI)
+1103591	1471052	CASTEL	Eloy	Date fin mandat	4/4/2014	26/5/2014	Date incorrecte (EPCI)
+1133141	1478361	CORNIERE	Chantal	Date fin mandat	25/3/2014	1/1/2017	Date incorrecte (EPCI)
+1172422	1488428	LUDWIG	Dominique	Date fin mandat	23/3/2014	31/12/2016	Date incorrecte (EPCI)
+1176517	1489432	PYCKE	Séverine	Date fin mandat	2/4/2014	NA	Date incorrecte (EPCI)
+1190482	1492948	CHAUMEIL	Bernard	Date fin mandat	1/4/2014	21/7/2015	Date incorrecte (EPCI)
+1207803	1496290	BARDOUX	Pierrette	Date fin mandat	4/4/2014	31/12/2015	Date incorrecte (EPCI)
