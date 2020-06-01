@@ -34,6 +34,7 @@ init.stat.table(out.folder)
 # load the data
 data <- read.cached.table(cache.file=FILE_CACHE_ALL)
 #print(sapply(1:ncol(data),function(col) class(data[,col])))
+#idx <- which(data[,COL_ATT_ELU_ID_RNE] %in% c(37661,1169957));print(data[idx,])	# debug
 
 # summarizes each column separately
 tlog(0,"Examining each column separately")
