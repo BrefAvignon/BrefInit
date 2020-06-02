@@ -308,3 +308,5 @@ Row	Id RNE	Nom	Prenom	Attribut	ValAvt	ValApr	Commentaire
 25085	144142	LATOUR	Dominique	Date debut mandat	3/3/2001	11/3/2001	Date incorrecte
 25085	144142	LATOUR	Dominique	Date debut fonction	3/3/2001	11/3/2001	Date incorrecte
 20645	833847	DESCARGUES	Jacques Guy Mar	Prenom elu	Jacques Guy Mar	Jacques Guy	Prénom incorrect
+8055	892386	VINCENT	André	Date fin mandat	22/11/2017	NA	Date incorrecte
+8055	892386	VINCENT	André	Date fin fonction	NA	22/11/2017	Date incorrecte

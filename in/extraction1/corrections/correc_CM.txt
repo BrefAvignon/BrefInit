@@ -685,3 +685,47 @@ NA	NA	NA	NA	Libelle commune	TEVA I UTA SECTION 01 MATAIEA	TEVA I UTA	On ignore l
 1190482	1492948	CHAUMEIL	Bernard	Date fin mandat	1/4/2014	21/7/2015	Date incorrecte (EPCI)
 1207803	1496290	BARDOUX	Pierrette	Date fin mandat	4/4/2014	31/12/2015	Date incorrecte (EPCI)
 975111	542539	ROUSSEAU	Patrick	Date naissance	NA	29/5/1947	Date manquante
+106325	1229415	BURGAT	Patrice	ID RNE	1229415	NA	Ligne redondante
+106326	1229415	BURGAT	Patrice	Date fin mandat	27/2/2017	NA	Date incorrecte
+106326	1229415	BURGAT	Patrice	Date fin fonction	NA	26/2/2017	Date incorrecte
+79291	892386	VINCENT	André	Date fin mandat	22/11/2017	NA	Date incorrecte
+79291	892386	VINCENT	André	Date fin fonction	NA	22/11/2017	Date incorrecte
+79292	892386	VINCENT	André	ID RNE	892386	NA	Ligne redondante
+106124	1229364	DUCHATEL	Marie	ID RNE	1229364	NA	Ligne redondante
+106394	898903	DEVILLE	Grégory	ID RNE	898903	NA	Ligne redondante
+106433	1229435	SAINT-AMANS	Isabelle	ID RNE	1229435	NA	Ligne redondante
+106571	1229468	LLASAT	Jean-Pierre	ID RNE	1229468	NA	Ligne redondante
+106723	1229518	DANDINE FOURCADE	Annabelle	ID RNE	1229518	NA	Ligne redondante
+106816	1229543	BOURREL	Marie-Christine	ID RNE	1229543	NA	Ligne redondante
+107029	1229586	MONTAUDRY	Thierry	ID RNE	1229586	NA	Ligne redondante
+107234	899364	MISSE	Éric	ID RNE	899364	NA	Ligne redondante
+107928	899730	DELBOSC	Brigitte	ID RNE	899730	NA	Ligne redondante
+108007	1229817	BONNAL	Rolland	ID RNE	1229817	NA	Ligne redondante
+108020	1229814	HOULES	Gaëtan	ID RNE	1229814	NA	Ligne redondante
+108179	1229835	REBOLLEDO	Franck	ID RNE	1229835	NA	Ligne redondante
+108515	1229926	ARNAUD	Jean-Claude	ID RNE	1229926	NA	Ligne redondante
+108523	1229928	CAZABAN-MONNIER	Mirette	ID RNE	1229928	NA	Ligne redondante
+105834	1229927	POUYTÈS	Jean-Louis	ID RNE	1229927	NA	Ligne redondante
+109065	56339	D'USTON	Lionel	Nom elu	D'USTON	D'USTON	DE VILLEREGLAN	Nom incomplet
+109066	56339	D'USTON DE VILLEREGLAN	Lionel	ID RNE	56339	NA	Ligne redondante
+109739	1230222	BARO	Claudie	ID RNE	1230222	NA	Ligne redondante
+109745	1230219	BLANQUER	André	Date fin mandat	20/10/2015	NA Date incorrecte
+109745	1230219	BLANQUER	André	Date fin fonction	NA	20/10/2015 Date incorrecte
+109746	1230219	BLANQUER	André	ID RNE	1230219	NA	Ligne redondante
+109752	1230217	BOUAMRIOU	Fabien	ID RNE	1230217	NA	Ligne redondante
+109792	69759	BOUETTE	Maurice	ID RNE	69759	NA	Ligne redondante
+109929	1230254	BERNIES	Mathieu	ID RNE	1230254	NA	Ligne redondante
+109935	71026	BERTRAND	Bruno	ID RNE	71026	NA	Ligne redondante
+109936	71026	BERTRAND	Bruno	Date fin mandat	22/3/2017	NA	Date incorrecte
+109936	71026	BERTRAND	Bruno	Date fin fonction	NA	21/3/2017	Date incorrecte
+109953	1230256	BANCO	Sabine	ID RNE	1230256	NA	Ligne redondante
+110379	1230356	CARBO	Christophe	ID RNE	1230356	NA	Ligne redondante
+110788	79391	LOPEZ	Roger	ID RNE	79391	NA	Ligne redondante
+111023	81420	LASSALLE	Nicolas	ID RNE	81420	NA	Ligne redondante
+111041	82155	GACQUIERE	Jean	ID RNE	82155	NA	Ligne redondante
+111072	1230504	DOREMUS	Martine	ID RNE	1230504	NA	Ligne redondante
+111073	1230504	DOREMUS	Martine	Date fin mandat	5/4/2017	NA	Date incorrecte
+111073	1230504	DOREMUS	Martine	Date fin fonction	NA	4/4/2017	Date incorrecte
+111082	1230501	PRADES	Robert	ID RNE	1230501	NA	Ligne redondante
+111090	1230505	SOULIÉ	Benoît	ID RNE	1230505	NA	Ligne redondante
+111185	85340	ALA	Henri	ID RNE	85340	NA	Ligne redondante
