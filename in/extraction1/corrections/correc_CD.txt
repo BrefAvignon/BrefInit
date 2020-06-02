@@ -176,3 +176,6 @@ NA	NA	NA	NA	Libellé du canton	MARSEILLE VAUBAN	VAUBAN	Nom existant déjà sous 
 2979	944054	ANTHOINE	Emmanuelle	ID RNE	944054	NA	Suppression, ligne redondante
 5559	1188991	GUERRA	Anne-Sophie	Date debut mandat	9/3/2008	21/10/2011	Date incorrecte
 10680	1503938	BERNARD	Alain	Date debut mandat	9/3/2008	19/12/2014	Date incorrecte
+6233	870028	BAS	Philippe	Date fin mandat	9/10/2017	3/11/2015	Date incorrecte
+6331	156136	LEFEVRE	Marc	Date debut fonction	5/1/2016	4/11/2015	Date incorrecte
+6331	156136	LEFEVRE	Marc	Date fin fonction	5/1/2016	4/01/2016	Date incorrecte

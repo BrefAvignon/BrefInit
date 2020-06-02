@@ -1,3 +1,5 @@
 Line needed to mimic the original format
 Code departement	Libelle departement	Nom elu	Prenom elu	Code sexe	Code canton	Libelle canton	Nuance politique	Libelle fonction	Code profession	Libelle profession	Date naissance	ID RNE	Date debut mandat	Date debut fonction	Libelle mandat	Date fin mandat	Motif fin mandat	Date fin fonction	Motif fin fonction	ID universel
 92	Hauts-de-Seine	Sarkozy	Nicolas	M	30	NEUILLY SUR SEINE NORD	UMP	Président du conseil départemental	NA	NA	28/01/1955	NA	01/04/2004	01/04/2004	Conseiller départemental	14/05/2007	NA	14/05/2007	NA	EUR_0004339
+50	MANCHE	BAS	Philippe	M	27	Villedieu-les-Poêles	UMP	Président du conseil départemental	46	Grands corps de l'état	20/7/1958	870028	2/4/2015	5/1/2016	Conseiller Départemental			9/10/2017	NA	RNE_0870028
+50	MANCHE	LEFEVRE	Marc	M	05	Carentan	DVD	Président du conseil départemental	60	Retraités des professions libérales	18/7/1950	156136	2/4/2015	6/11/2017	Conseiller Départemental				NA	RNE_0156136

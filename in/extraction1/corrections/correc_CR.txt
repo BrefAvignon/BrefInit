@@ -28,3 +28,5 @@ NA	NA	NA	NA	Date fin mandat	31/12/2015	12/12/2015	Ajustement date de fin pr rég
 359	1180075	MARIANNE	Lysiane Marie Leonide	Date debut mandat	28/3/2004	1/7/2007	Debut incorrect (PM)
 4003	82604	CHATILLON	Alain	Date fin mandat	13/3/2010	29/10/2008	Fin incorrecte (PM)
 4016	82325	DOUNOT-SOBRAQUES	Chantal	Date debut mandat	28/3/2004	30/10/2008	Debut incorrect (PM)
+24	861981	BOREL	Josette	Date fin fonction	NA	1/5/2014	Date incorrecte
+25	861981	BOREL-LINCERTIN	Josette	ID RNE	861981	NA	Ligne redondante

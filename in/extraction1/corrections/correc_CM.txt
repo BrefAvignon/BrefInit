@@ -110,7 +110,8 @@ NA	NA	NA	NA	Libelle commune	TEVA I UTA SECTION 01 MATAIEA	TEVA I UTA	On ignore l
 1065958	1121690	BERNARD	Didier	Code Insee commune	031SN02	097	Mauvais numero INSEE
 1069990	1121760	FOLWELL	Ginette	Code Insee commune	171SN02	228	Mauvais numero INSEE
 95114	741270	GRADOS	Lucien	Date debut fonction	21/3/2009	21/3/2008	Date incorrecte
-158954	1198393	LE BAS	Christian	Date fin mandat	8/4/2018	NA	Date incorrecte remplacée par NA pour fusion ultérieure
+158954	1198393	LE BAS	Christian	ID RNE	1198393	NA	Ligne redondante
+15955	1198393	LE BAS	Christian	Date fin fonction	NA	31/12/2019	Date manquante (WP)
 428016	973328	GABAUDAN	Jean-Pierre	Date fin mandat	19/2/2017	NA	Date incorrecte remplacée par NA pour fusion ultérieure
 52003	150062	VALLET	Jean-Pierre	Date debut fonction	16/3/2013	16/3/2001	Date incorrecte
 118923	148132	CALMES-BOU	Marie-Chantal	Date debut fonction	16/3/2008	21/3/2001	Date incorrecte
@@ -282,10 +283,9 @@ NA	NA	NA	NA	Libelle commune	TEVA I UTA SECTION 01 MATAIEA	TEVA I UTA	On ignore l
 154886	147241	BARATTE	Guy	Date fin fonction	11/6/2008	NA	Suppression, fonction inexistante (WP)
 300876	947930	TREHARD	Frédéric	Date fin mandat	26/2/2017	NA	Date incorrecte (WP)
 300882	849661	WOHLSCHLEGEL	Eric	ID RNE	849661	NA	Suppression, mandat inexistant (WP)
-1229593	817494	SALIBER	Lucien	Libelle fonction	Maire	NA	Fonction incorrecte
-1229593	817494	SALIBER	Lucien	Date debut fonction	3/4/2013	NA	Fonction incorrecte
-1229593	817494	SALIBER	Lucien	Date fin fonction	22/3/2014	NA	Fonction incorrecte
-1229593	817494	SALIBER	Lucien	Motif fin fonction	FM	NA	Fonction incorrecte
+1229593	817494	SALIBER	Lucien	ID RNE	817494	NA	Ligne redondante
+1229594	817494	SALIBER	Lucien	Date debut mandat	3/4/2013	9/3/2008	Date incorrecte
+1229594	817494	SALIBER	Lucien	Date debut fonction	3/4/2013	8/4/2013	Date incorrecte
 1083537	220028	BAILLET	Alain	ID RNE	220028	NA	Ligne superflue et fausse
 1083538	220028	BAILLET	Alain	Date fin mandat	30/5/2011	22/3/2014	Date incorrecte
 980699	168415	MIGUET	Roger	Date debut mandat	11/3/2003	11/3/2001	Date de début incorrecte (WP)
@@ -597,11 +597,14 @@ NA	NA	NA	NA	Libelle commune	TEVA I UTA SECTION 01 MATAIEA	TEVA I UTA	On ignore l
 357766	862745	GIBERT EPOUSE BRACHET	Annie	Nom elu	GIBERT EPOUSE BRACHET	BRACHET GIBERT	Nom incorrect
 26805	150784	FERNANDES	Guy	Motif fin mandat	NA	DV	Information manquante
 26805	150784	FERNANDES	Guy	Motif fin fonction	NA	DV	Information manquante
-158966	1194546	LEMARCHAND	Christophe	Date fin mandat	8/4/2018	NA	Information incorrecte
-158966	1194546	LEMARCHAND	Christophe	Motif fin fonction	NA	DV	Information manquante
+158965	1194546	LEMARCHAND	Christophe	Date fin mandat	31/12/2016	NA	Date incorrecte
+158965	1194546	LEMARCHAND	Christophe	Motif fin mandat	FM	NA	Information incorrecte
+158965	1194546	LEMARCHAND	Christophe	Date fin fonction	31/12/2016	3/2/2018	Date incorrecte
+158965	1194546	LEMARCHAND	Christophe	Motif fin fonction	FM	DV	Information incorrecte
+158966	1194546	LEMARCHAND	Christophe	ID RNE	1194546	NA	Ligne redondante
 158967	1194546	LEMARCHAND	Christophe	Date fin mandat	8/4/2018	NA	Information incorrecte
 158967	1194546	LEMARCHAND	Christophe	Motif fin fonction	NA	DV	Information manquante
-158967	1194546	LEMARCHAND	Christophe	ID RNE	1194546	NA	Suppression ligne superflue
+158968	1194546	LEMARCHAND	Christophe	ID RNE	1194546	NA	Suppression ligne superflue
 172212	146696	TAMAGNA	Jean-Michel	Date fin fonction	NA	29/3/2016	Information manquante
 172212	146696	TAMAGNA	Jean-Michel	Motif fin fonction	NA	DV	Information manquante
 172212	146696	TAMAGNA	Jean-Michel	Motif fin mandat	NA	DV	Information manquante
@@ -729,3 +732,25 @@ NA	NA	NA	NA	Libelle commune	TEVA I UTA SECTION 01 MATAIEA	TEVA I UTA	On ignore l
 111082	1230501	PRADES	Robert	ID RNE	1230501	NA	Ligne redondante
 111090	1230505	SOULIÉ	Benoît	ID RNE	1230505	NA	Ligne redondante
 111185	85340	ALA	Henri	ID RNE	85340	NA	Ligne redondante
+111193	1230532	FRANCES	Jean-Marie	ID RNE	1230532	NA	Ligne redondante
+111329	1230570	MARCOS	Juan Carlos	ID RNE	1230570	NA	Ligne redondante
+111356	1230582	MARTIN	Francis	ID RNE	1230582	NA	Ligne redondante
+111796	1230685	PELLEGRINELLI BOUTIE	Anne	ID RNE	1230685	NA	Ligne redondante
+112004	1230730	DJOUDAD	Bertrand	ID RNE	1230730	NA	Ligne redondante
+112175	899560	TAURAND	Francis	ID RNE	899560	NA	Ligne redondante
+112236	1230767	GAUD	Catherine	ID RNE	1230767	NA	Ligne redondante
+112247	1230770	ROCHE	Georges	ID RNE	1230770	NA	Ligne redondante
+112457	899805	CAUX	Ludovic	ID RNE	899805	NA	Ligne redondante
+112529	1230836	MARTINEZ	Daniel	ID RNE	1230836	NA	Ligne redondante
+253407	805917	MANIERE	Bernard	Date debut fonction	23/3/2014	14/2/2017	Date incorrecte
+255169	806420	MILLARET	Francis	Date debut fonction	23/3/2014	17/2/2018	Date incorrecte
+256444	1267310	FERRIER	Stéphane	Date debut fonction	23/3/2014	29/8/2016	Date incorrecte
+258866	807337	CHAUSSADE	Jean-Claude	Date debut fonction	23/3/2014	2/7/2016	Date incorrecte
+262182	810657	GARRIGOU	Christian	Date debut fonction	23/3/2014	2/12/2017	Date incorrecte
+263657	938670	ÉCLANCHER	Jean-Claude	Date debut fonction	23/3/2014	12/5/2016	Date incorrecte
+265245	809589	FRAY	Roland	Date debut fonction	23/3/2014	14/6/2016	Date incorrecte
+284231	631728	MOLLARD	Maurice	Date debut mandat	1/1/2016	23/3/2014	Date incorrecte
+284231	631728	MOLLARD	Maurice	Date debut fonction	23/3/2014	5/8/2016	Date incorrecte
+600667	156769	MARSAULT	Joseph	Date fin fonction	31/12/2015	14/12/2015	Date incorrecte
+769962	1054282	VANHILLE	Florence	Date debut fonction	23/3/2014	19/7/2017	Date incorrecte
+174862	21668	BOLVIN	Jean-Michel	Date debut fonction	28/3/2014	2/1/2017	Date incorrecte
