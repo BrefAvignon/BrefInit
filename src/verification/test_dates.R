@@ -824,6 +824,9 @@ test.col.dates.epci <- function(data, out.folder)
 	test.col.dates.pre.rne(data, out.folder)
 	test.col.incomplete.mandates(data, out.folder)
 	test.col.incomplete.funtions(data, out.folder)
+	
+	# election dates
+	test.col.dates.election(data, out.folder, election.file=FILE_VERIF_DATES_CM)
 }
 
 
