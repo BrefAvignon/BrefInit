@@ -7,6 +7,8 @@ Row	Id RNE	Nom	Prenom	Attribut	ValAvt	ValApr	Commentaire
 153528	909541	DUPONT	NA	Prenom elu	NA	Marie-Danielle	Prénom manquant
 153528	909541	DUPONT	Marie-Danielle	Date naissance	27/5/1954	27/4/1954	Date de naissance incorrecte
 184894	146336	GIRAUDEAU	NA	Prenom elu	NA	Marie-Danielle	Prénom manquant
+184895	146336	GIRAUDEAU	NA	Prenom elu	NA	Marie-Danielle	Prénom manquant
+184896	146336	GIRAUDEAU	NA	Prenom elu	NA	Marie-Danielle	Prénom manquant
 289859	631701	DUBOULE	NA	Prenom elu	NA	Marie-Danielle	Prénom manquant
 292728	944964	ARNAUD	NA	Prenom elu	NA	Marie-Danielle	Prénom manquant
 339909	956279	RIOU	NA	Prenom elu	NA	Marie-Danielle	Prénom manquant

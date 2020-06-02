@@ -1,6 +1,8 @@
 Row	Id RNE	Nom	Prenom	Attribut	ValAvt	ValApr	Commentaire
 5210	14132	ALLIX	NA	Prenom elu	NA	Marie-Danielle	Prénom manquant
 18690	146336	GIRAUDEAU	NA	Prenom elu	NA	Marie-Danielle	Prénom manquant
+18691	146336	GIRAUDEAU	NA	Prenom elu	NA	Marie-Danielle	Prénom manquant
+18692	146336	GIRAUDEAU	NA	Prenom elu	NA	Marie-Danielle	Prénom manquant
 33874	671	TANGUY	Hélène	Date fin fonction	1/7/0012	1/7/2012	Typo dans la date
 80256	47125	BOYER	Jean-Marc	Date fin fonction	20/10/0017	20/10/2017	Typo dans la date
 106878	80360	SENECHAULT	Jean-Paul	Date fin fonction	22/3/0013	22/3/2013	Typo dans la date

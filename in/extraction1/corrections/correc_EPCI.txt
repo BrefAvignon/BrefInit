@@ -430,3 +430,5 @@ NA	NA	NA	NA	Numero SIREN	20006971	200006971	numéro SIREN incorrect (syntaxiquem
 72420	1372345	JACQUES	Jean-Michel	Date naissance	26/2/1968	29/2/1968	Coquille date de naissance
 23988	833847	DESCARGUES	Jacques	Prenom elu	Jacques	Jacques Guy	Prénom incomplet
 104460	576425	LESUEUR	Jacki	Prenom elu	Jacki	Jacky	Prénom incorrect
+21611	146336	GIRAUDEAU	NA	Prenom elu	NA	Marie-Danielle	Prénom manquant
+80178	45814	HUBART ÉPOUSE PENISSON	NA	Prenom elu	NA	Marie-Danielle	Prénom manquant
