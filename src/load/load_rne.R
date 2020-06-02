@@ -1092,4 +1092,3 @@ load.s.data <- function(out.folder, correct.data, complete.data)
 	
 	return(data)
 }
-

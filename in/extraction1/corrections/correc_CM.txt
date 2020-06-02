@@ -682,3 +682,4 @@ NA	NA	NA	NA	Libelle commune	TEVA I UTA SECTION 01 MATAIEA	TEVA I UTA	On ignore l
 1176517	1489432	PYCKE	Séverine	Date fin mandat	2/4/2014	NA	Date incorrecte (EPCI)
 1190482	1492948	CHAUMEIL	Bernard	Date fin mandat	1/4/2014	21/7/2015	Date incorrecte (EPCI)
 1207803	1496290	BARDOUX	Pierrette	Date fin mandat	4/4/2014	31/12/2015	Date incorrecte (EPCI)
+975111	542539	ROUSSEAU	Patrick	Date naissance	NA	29/5/1947	Date manquante
