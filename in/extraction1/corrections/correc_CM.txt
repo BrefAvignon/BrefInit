@@ -754,3 +754,147 @@ NA	NA	NA	NA	Libelle commune	TEVA I UTA SECTION 01 MATAIEA	TEVA I UTA	On ignore l
 600667	156769	MARSAULT	Joseph	Date fin fonction	31/12/2015	14/12/2015	Date incorrecte
 769962	1054282	VANHILLE	Florence	Date debut fonction	23/3/2014	19/7/2017	Date incorrecte
 174862	21668	BOLVIN	Jean-Michel	Date debut fonction	28/3/2014	2/1/2017	Date incorrecte
+112625	1230856	MIRANDE	Eric	ID RNE	1230856	NA	Ligne redondante
+112647	900016	RICARD	Didier	ID RNE	900016	NA	Ligne redondante
+11268	900027	GRANDJEAN	Stéphanie	ID RNE	900027	NA	Ligne redondante
+112707	1230879	BARTHE	Anne	Date fin mandat	10/2/2016	NA	Date incorrecte
+112707	1230879	BARTHE	Anne	Motif fin mandat	DV	NA	Valeur incorrecte
+112707	1230879	BARTHE	Anne	Date fin fonction	NA	10/2/2016	Date incorrecte
+112707	1230879	BARTHE	Anne	Motif fin fonction	NA	DV	Valeur incorrecte
+112708	1230879	BARTHE	Anne	ID RNE	1230879	NA	Ligne redondante
+112711	900084	CAMPOY	Guillaume	ID RNE	900084	NA	Ligne redondante
+112714	1230877	CANO	Josiane	ID RNE	900084	NA	Ligne redondante
+112715	1230877	CANO	Josiane	Date fin mandat 30/9/2017	NA	Date incorrecte
+112715	1230877	CANO	Josiane	Motif fin mandat AU	NA	Valeur incorrecte
+112715	1230877	CANO	Josiane	Date fin fonction NA	29/9/2017	Date incorrecte
+112715	1230877	CANO	Josiane	Motif fin fonction NA	AU	Valeur incorrecte
+113215	1231001	TALOUR	Alain	ID RNE	1231001	NA	Ligne redondante
+113364	1231026	OLIVAS-GUISSET	Caroline	ID RNE	1231026	NA	Ligne redondante
+113596	899079	GASPARINI	Sébastien	ID RNE	899079	NA	Ligne redondante
+113597	899079	GASPARINI	Sébastien	Date fin mandat	25/1/2018	NA	Date incorrecte
+113597	899079	GASPARINI	Sébastien	Motif fin mandat	AU	NA	Valeur incorrecte
+113597	899079	GASPARINI	Sébastien	Date fin fonction	NA	24/1/2018	Date incorrecte
+113597	899079	GASPARINI	Sébastien	Motif fin fonction	NA	AU	Valeur incorrecte
+113616	1231075	SOLER	Xavier	ID RNE	1231075	NA	Ligne redondante
+113654	1231085	DE LA PALLIÈRE	Louis	ID RNE	1231085	NA	Ligne redondante
+113809	1191473	VERGNES	Georges	ID RNE	1191473	NA	Ligne redondante
+113857	448599	PECH	Bernard	ID RNE	448599	NA	Ligne redondante
+114006	534522	ABAT	Patrick	ID RNE	534522	NA	Ligne redondante
+114072	901111	AVERSENG	Jean-Luc	ID RNE	901111	NA	Ligne redondante
+114419	1231282	BARTES	Daniel	ID RNE	1231282	NA	Ligne redondante
+114452	1231288	ESCUDIÉ	Henri	ID RNE	1231288	NA	Ligne redondante
+114453	1231288	ESCUDIÉ	Henri	Date fin mandat	17/12/2016	NA	Date incorrecte
+114453	1231288	ESCUDIÉ	Henri	Motif fin mandat	AU	NA	Valeur incorrecte
+114453	1231288	ESCUDIÉ	Henri	Date fin fonction	NA	16/12/2016	Date incorrecte
+114453	1231288	ESCUDIÉ	Henri	Motif fin fonction	NA	AU	Valeur incorrecte
+114514	1231305	RIEUSSEC	Michel	1231305	ID RNE	NA	Ligne redondante
+114774	547003	SEGURET	Catherine	ID RNE	547003	NA	Ligne redondante
+115009	900784	YAGUES	Bernard	ID RNE	900784	NA	Ligne redondante
+115010	900784	YAGUES	Bernard	Date fin mandat	21/10/2016	NA	Date incorrecte
+115010	900784	YAGUES	Bernard	Motif fin mandat	AU	NA	Valeurincorrecte
+115010	900784	YAGUES	Bernard	Date fin fonction	NA	20/10/2016	Date incorrecte
+115010	900784	YAGUES	Bernard	Motif fin fonction	NA	AU	Valeurincorrecte
+115046	1231431	FOUSSARIGUES	Fabien	ID RNE	1231431	NA	Ligne redondante
+115269	1231480	SAINT-GENIS	Thierry	ID RNE	1231480	NA	Ligne redondante
+115322	1231497	JORGE	Joseph	ID RNE	1231497	NA	Ligne redondante
+115357	1231505	SCHREYS	Colette	ID RNE	1231505	NA	Ligne redondante
+115380	901128	ROMERO	Antoine	ID RNE	901128	NA	Ligne redondante
+115485	1231536	VIDAL	Alexandre	ID RNE	1231536	NA	Ligne redondante
+115593	1231551	CONSTANSA	Chantal	ID RNE	1231551	NA	Ligne redondante
+115605	1231557	LAURENT	Michaël	ID RNE	1231557	NA	Ligne redondante
+115606	1231557	LAURENT	Michaël	Date fin mandat	23/3/2016	NA	Date incorrecte
+115606	1231557	LAURENT	Michaël	Motif fin mandat	AU	NA	Valeur incorrecte
+115606	1231557	LAURENT	Michaël	Date fin fonction	NA	22/3/2016	Date incorrecte
+115606	1231557	LAURENT	Michaël	Motif fin fonction	NA	AU	Valeur incorrecte
+115876	1231618	GOUDY	Jean-François	ID RNE	1231618	NA	Ligne redondante
+115999	1231636	REGAD	Julie	ID RNE	1231636	NA	Ligne redondante
+116320	642736	BETEILLE	Eric	ID RNE	642736	NA	Ligne redondante
+116321	642736	BETEILLE	Eric	Date fin mandat	13/11/2016	NA	Date incorrecte
+116321	642736	BETEILLE	Eric	Motif fin mandat	AU	NA	Valeur incorrecte
+116321	642736	BETEILLE	Eric	Date fin fonction	NA	12/11/2016	Date incorrecte
+116321	642736	BETEILLE	Eric	Motif fin fonction	NA	AU	Valeur incorrecte
+116331	900867	FUMEY	Pascale	ID RNE	900867	NA	Ligne redondante
+116340	900868	HERRERO	David	ID RNE	900868	NA	Ligne redondante
+116362	1231717	VINCENT	Céline	ID RNE	1231717	NA	Ligne redondante
+116540	641681	BLANQUIER	Martine	ID RNE	641681	NA	Ligne redondante
+116542	641681	BLANQUIER	Martine	ID RNE	641681	NA	Ligne redondante
+116591	1231787	SAVELLI	Luc	ID RNE	1231787	NA	Ligne redondante
+116832	1231848	HAZERA	Isabelle	ID RNE	1231848	NA	Ligne redondante
+116844	1181285	PHILIPPE	Patrick	ID RNE	1181285	NA	Ligne redondante
+117128	1231937	CHEMINAT-MOREAU	Françoise	ID RNE	1231937	NA	Ligne redondante
+117240	1231949	SAINT-ANDRE	Maryse	ID RNE	1231949	NA	Ligne redondante
+117245	899352	SANCHEZ	Stéphane	ID RNE	899352	NA	Ligne redondante
+117245	899352	SANCHEZ	Stéphane	Date fin mandat	9/10/2017	NA	Date incorrecte
+117245	899352	SANCHEZ	Stéphane	Motif fin mandat	AU	NA	Valeur incorrecte
+117245	899352	SANCHEZ	Stéphane	Date fin fonction	NA	8/10/2017	Date incorrecte
+117245	899352	SANCHEZ	Stéphane	Motif fin fonction	NA	AU	Valeur incorrecte
+117354	1231988	PEREZ	Alain	ID RNE	1231988	NA	Ligne redondante
+117355	1231988	PEREZ	Alain	Date fin mandat	22/6/2017	NA	Date incorrecte
+117355	1231988	PEREZ	Alain	Motif fin mandat	AU	NA	Valeur incorrecte
+117355	1231988	PEREZ	Alain	Date fin fonction	NA	21/6/2017	Date incorrecte
+117355	1231988	PEREZ	Alain	Motif fin fonction	NA	AU	Valeur incorrecte
+117421	1231998	TENA	Richard	ID RNE	1231998	NA	Ligne redondante
+117539	1518764	EUGSTER	Dominique	ID RNE	1518764	NA	Ligne redondante
+117553	1518763	MUNSCH	Joëlle	ID RNE	1518763	NA	Ligne redondante
+117648	900772	CROS	Régis	ID RNE	900772	NA	Ligne redondante
+117649	900772	CROS	Régis	Date fin mandat	12/4/2017	NA	Date incorrecte
+117649	900772	CROS	Régis	Motif fin mandat	AU	NA	Valeur incorrecte
+117649	900772	CROS	Régis	Date fin fonction	NA	11/4/2017	Date incorrecte
+117649	900772	CROS	Régis	Motif fin fonction	NA	AU	Valeur incorrecte
+117665	1232058	NAVARRO	Elise	ID RNE	1232058	NA	Ligne redondante
+117669	1232056	PINNA	Jean-Christophe	ID RNE	1232056	NA	Ligne redondante
+117670	1232056	PINNA	Jean-Christophe	Date fin mandat	12/4/2017	NA	Date incorrect
+117670	1232056	PINNA	Jean-Christophe	Motif fin mandat	AU	NA	Valeur incorrect
+117670	1232056	PINNA	Jean-Christophe	Date fin fonction	NA	11/4/2017	Date incorrect
+117670	1232056	PINNA	Jean-Christophe	Motif fin fonction	NA	AU	Valeur incorrect
+117684	900779	ANDREU	Marie	ID RNE	900779	NA	Ligne redondante
+117848	1232091	GRATEPANCHE	Jean-Luc	ID RNE	1232091	NA	Ligne redondante
+117859	1232092	MARIN-FIGUERA	Encarnacion	ID RNE	1232092	NA	Ligne redondante
+117860	1232092	MARIN-FIGUERA	Encarnacion	Date fin mandat	16/2/2018	NA	Date incorrecte
+117860	1232092	MARIN-FIGUERA	Encarnacion	Motif fin mandat	AU	NA	Valeur incorrecte
+117860	1232092	MARIN-FIGUERA	Encarnacion	Date fin fonction	NA	15/2/2018	Date incorrecte
+117860	1232092	MARIN-FIGUERA	Encarnacion	Motif fin fonction	NA	AU	Valeur incorrecte
+196062	919226	BUREAU	Annette	ID RNE	919226	NA	Ligne redondante
+196706	1249979	CHARPAGNE	Frédéric	ID RNE	1249979	NA	Ligne redondante
+196707	1249979	CHARPAGNE	Frédéric	Date fin mandat	28/5/2015	NA	Date incorrecte
+196707	1249979	CHARPAGNE	Frédéric	Motif fin mandat	AU	NA	Valeur incorrecte
+196707	1249979	CHARPAGNE	Frédéric	Date fin fonction	NA	27/5/2015	Date incorrecte
+196708	1249979	CHARPAGNE	Frédéric	Date fin mandat	23/2/2016	NA	Date incorrecte
+196708	1249979	CHARPAGNE	Frédéric	Motif fin mandat	AU	NA	Valeur incorrecte
+196708	1249979	CHARPAGNE	Frédéric	Date fin fonction	NA	22/2/2016	Date incorrecte
+196861	1249985	VANNIEUWENHUYZE	Sophie	ID RNE	1249985	NA	Ligne redondante
+196862	1249985	VANNIEUWENHUYZE	Sophie	Date fin mandat	28/5/2015	NA	Date incorrecte
+196862	1249985	VANNIEUWENHUYZE	Sophie	Motif fin mandat	AU	NA	Valeur incorrecte
+196862	1249985	VANNIEUWENHUYZE	Sophie	Date fin fonction	NA	27/5/2015	Date incorrecte
+196862	1249985	VANNIEUWENHUYZE	Sophie	Motif fin fonction	NA	AU	Valeur incorrecte
+196863	1249985	VANNIEUWENHUYZE	Sophie	Date fin mandat	23/2/2016	NA	Date incorrecte
+196863	1249985	VANNIEUWENHUYZE	Sophie	Motif fin mandat	AU	NA	Valeur incorrecte
+196863	1249985	VANNIEUWENHUYZE	Sophie	Date fin fonction	NA	22/2/2016	Date incorrecte
+326493	1183935	FOUBERT	Alain	ID RNE	1183935	NA	Ligne redondante
+328469	343642	FOIRET	Jean-Yves	ID RNE	343642	NA	Ligne redondante
+436937	1309956	GOMMELET	Florence	ID RNE	1309956	NA	Ligne redondante
+437682	832515	CHAUVIN	Bernard	ID RNE	832515	NA	Ligne redondante
+437688	977836	DREAN	Nadine	ID RNE	977836	NA	Ligne redondante
+437707	977841	LORANDEL	Bertrand	ID RNE	977841	NA	Ligne redondante
+437716	1173980	PLOTEAU	Christophe	ID RNE	1173980	NA	Ligne redondante
+447225	1192813	ARENA	Sonia	ID RNE	1192813	NA	Ligne redondante
+519405	1330911	ROUSSEAU	Martine	ID RNE	1330911	NA	Ligne redondante
+547499	1337786	LIORIT	Céline	ID RNE	1337786	NA	Ligne redondante
+547525	1337780	POUPARD	Françoise	ID NRE	1337780	NA	Ligne redondante
+547526	1337780	POUPARD	Françoise	ID NRE	1337780	NA	Ligne redondante
+553799	1339257	VEYRAND	Bruno	ID RNE	1339257	NA	Ligne redondante
+735733	46817	JOLY	Patrice	ID RNE	46817	NA	Ligne redondante
+793601	1396191	CHEROT	Éric	ID RNE	1396191	NA	Ligne redondante
+824776	1403267	DEMAGNY	Bertrand	ID RNE	1403267	NA	Ligne redondante
+824803	1067540	VALOIS	Denis	ID RNE	1067540	NA	Ligne redondante
+825093	1403324	JUNG	Patrick	ID RNE	1403324	NA	Ligne redondante
+830047	1404441	HARDY	Blandine	ID RNE	1404441	NA	Ligne redondante
+982184	1441982	VICHARD	Daniel	ID RNE	1441982	NA	Ligne redondante
+985887	1443029	DRAVET	Gildas	ID RNE	1443029	NA	Ligne redondante
+1122584	1135245	BASSANELLI	Magali	ID RNE	1135245	NA	Ligne redondante
+1127301	1476833	VIGNE	Franck	ID RNE	1476833	NA	Ligne redondante
+1129663	1477483	BONNIN	Pascal	ID RNE	1477483	NA	Ligne redondante
+1129669	1137183	RAMBAUD-BOSSARD	Christine	ID RNE	1137183	NA	Ligne redondante
+1148374	674724	SIROT	Dominique	ID RNE	674724	NA	Ligne redondante
+1148379	1141271	TAVILIEN	Maryvonne	ID RNE	1141271	NA	Ligne redondante
+1208824	1496463	DAUVERGNE	Lucie	ID RNE	1496463	NA	Ligne redondante
