@@ -13,6 +13,7 @@ PA1023	2002-12-15	2007-06-19	Date debut mandat	2002-12-15	2002-06-16	Date incorr
 PA1221	2007-06-20	2012-06-16	Date debut mandat	2007-06-20	2010-12-16	Date incorrecte
 PA1224	2002-06-19	2007-06-19	Date debut mandat	2002-06-19	2004-01-14	Date incorrecte
 PA1263	2008-05-25	2012-06-19	Date debut mandat	2008-05-25	2010-12-14	Date incorrecte
+PA1355	2005-03-13	2007-06-19	Date debut mandat	2005-03-13	2005-07-03	Date incorrecte
 PA1567	2007-06-20	2012-06-19	ID Assemblee	PA1567	NA	Suppression ligne superflue
 PA1790	2007-06-20	2012-06-19	Date debut mandat	2007-06-20	2012-05-11	Date incorrecte
 PA1886	2012-06-20	2017-06-20	Date debut mandat	2012-06-20	2017-04-22	Date incorrecte
@@ -110,4 +111,4 @@ PA643211	2012-06-20	2014-05-02	Date debut mandat	2012-06-20	2013-08-03	Date inco
 PA717167	2017-06-18	NA	Date debut mandat	2017-06-18	2019-04-28	Date incorrecte
 PA721012	2017-06-18	NA	Date debut mandat	2017-06-18	2018-04-24	Date incorrecte
 PA721560	2017-06-18	NA	Date debut mandat	2017-06-18	2019-04-28	Date incorrecte
-PA721932	2017-06-18	NA	Date debut mandat	2017-06-18	2017-08-22	Date incorrecte
+PA721932	2017-06-18	NA	Date debut mandat	2017-06-18	2017-08-22	Valeur incorrecte

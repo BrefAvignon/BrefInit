@@ -392,7 +392,7 @@ NA	NA	NA	NA	Libelle commune	TEVA I UTA SECTION 01 MATAIEA	TEVA I UTA	On ignore l
 602659	156750	MANCEAU	Yves	ID RNE	156750	NA	Suppression, mandat inexistant
 604590	272297	HUCHON	Didier	Date debut fonction	15/12/2015	1/1/2016	Date incorrecte
 605308	158455	VINCENT	Louis	ID RNE	158455	NA	Suppression, mandat inexistant
-607040	156655	AUGEREAU	Bernard	ID RNE	156655	NA	Suppression, mandat inexistant
+607040	156655	AUGEREAU	Bernard	ID RNE	271372	NA	Suppression, mandat inexistant
 620050	1355776	LEFORESTIER	Noëlle	Date debut fonction	25/2/2015	26/2/2016	Date incorrecte
 623150	326053	CARNET	Monique	Date fin mandat	19/5/2011	22/3/2014	Date incorrecte
 623150	326053	CARNET	Monique	Date fin fonction	22/3/2014	12/9/2008	Date incorrecte
@@ -567,6 +567,7 @@ NA	NA	NA	NA	Libelle commune	TEVA I UTA SECTION 01 MATAIEA	TEVA I UTA	On ignore l
 1044414	606681	VERGNAUD	Brigitte	Libelle fonction	Second adjoint au maire	NA	Fonction incorrecte
 1044414	606681	VERGNAUD	Brigitte	Date debut fonction	26/6/2015	NA	Fonction incorrecte
 56676	175	BALARELLO	José	Date naissance	24/12/1926	25/12/1926	Coquille date de naissance
+62436	175	BALARELLO	José	Date naissance	24/12/1926	25/12/1926	Coquille date de naissance
 1238284	789	COPPENRATH EPOUSE VERNAUD	Béatrice	Nom elu	COPPENRATH EPOUSE VERNAUD	VERNAUDON COPPENRATH	Coquille nom
 1238342	789	VERNAUDON	Béatrice	Nom elu	VERNAUDON	VERNAUDON COPPENRATH	Coquille nom
 966685	47034	MECHIN	Gisèle	Nom elu	MECHIN	MECHIN LIORET	Coquille nom
@@ -575,7 +576,6 @@ NA	NA	NA	NA	Libelle commune	TEVA I UTA SECTION 01 MATAIEA	TEVA I UTA	On ignore l
 76139	63573	VESELY EPOUSE SIMON	Florence	Nom élu	VESELY EPOUSE SIMON	SIMON VESELY	Coquille nom
 397125	92972	FAURE	Martine	Date naissance	30/9/1958	30/9/1948	Prénom incorrect
 406120	92972	FAURE	Martine	Date naissance	30/9/1958	30/9/1948	Date de naissance incorrecte
-607040	156655	AUGEREAU	Bernard	Date naissance	27/7/1930	14/9/1946	Date de naissance incorrecte
 577960	157418	GOUGET	Jean-Claude	Date naissance	5/12/1942	5/11/1942	Date de naissance incorrecte
 577961	157418	GOUGET	Jean-Claude	Date naissance	5/12/1942	5/11/1942	Date de naissance incorrecte
 1181785	163336	BLONDON ÉPOUSE SEMBLAT	Catherine	Nom elu	BLONDON ÉPOUSE SEMBLAT	SEMBLAT BLONDON	Coquille nom
@@ -898,3 +898,4 @@ NA	NA	NA	NA	Libelle commune	TEVA I UTA SECTION 01 MATAIEA	TEVA I UTA	On ignore l
 1148374	674724	SIROT	Dominique	ID RNE	674724	NA	Ligne redondante
 1148379	1141271	TAVILIEN	Maryvonne	ID RNE	1141271	NA	Ligne redondante
 1208824	1496463	DAUVERGNE	Lucie	ID RNE	1496463	NA	Ligne redondante
+168282	22909	GUINANDIE	Janine	Prenom elu	Janine	Jeanine	Coquille prénom

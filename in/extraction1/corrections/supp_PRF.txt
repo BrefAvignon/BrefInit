@@ -12,4 +12,4 @@ Chirac	Jacques	29/11/1932	26/09/2019	M	NA	NA	Président de la république	07/05/
 Chirac	Jacques	29/11/1932	26/09/2019	M	NA	NA	Président de la république	05/05/2002	05/05/2007	FM	UMP	NA	916	NA	NA	EUR_0000916
 Sarkozy	Nicolas	28/01/1955	NA	M	NA	NA	Président de la république	06/05/2007	05/05/2012	FM	UMP	NA	4339	NA	NA	EUR_0004339
 Hollande	François	12/08/1954	NA	M	NA	NA	Président de la république	06/05/2012	06/05/2017	FM	SOC	724	4285	NA	NA	RNE_0000724
-Macron	Emmanuel	21/12/1977	NA	M	NA	NA	Président de la république	07/05/2017	NA	FM	REM	NA	NA	NA	NA	PRF_0000005
+Macron	Emmanuel	21/12/1977	NA	M	NA	NA	Président de la république	07/05/2017	NA	NA	REM	NA	NA	NA	NA	PRF_0000005

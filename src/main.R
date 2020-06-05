@@ -27,11 +27,6 @@ source("src/common/include.R")
 #   (séquence des personnes ou classes de personnes ayant occupé un poste donné)
 
 # TODO
-# voir pq il y a autant de lignes supprimées dans CM vs. CM2
-# >> peut être que la correction dans le script de comparaison a résolu le pb ?
-# (traitement en cours sur PC LIA)
-
-# TODO
 # - passer en revue les fichiers de problèmes: *CM
 # - passer en revue les logs: CD, CM, CR, D, DE, EPCI, M, S
 # - faire la fusion et re-tester
@@ -42,25 +37,6 @@ source("src/common/include.R")
 # >> pourtant, on trouve dans la BD S ou AN toutes les lignes présentent dans le RNE, donc il ne devrait pas y avoir de pb...
 #    et pr députés, on s'assure de ne pas avoir un poste occupé par plusieurs personnes à la fois...
 
-#################################
-# Check logs and files
-# position test D/CD/
-#################################
-# Desktop
-# C1=testing positions: S/M...CM
-# C2=caching *CM
-# C3=testing positions: CR
-# C4=
-#################################
-# Zenbook S:
-# C1=
-# C2=
-# C3=
-# C4=
-#################################
-
-# - rajouter sarko dans les députés
- 
 # TODO
 # - tester l'unicité des nouveaux ids dans la table fusionnée (AN, Senat, PE, etc.)
 # - vérifier que la subst des noms de partis a marché dans CM
@@ -69,7 +45,3 @@ source("src/common/include.R")
 # TODO table fusionnée
 # - compléter les champs parfois vides (données perso ? autres ?)
 
-# TODO
-# - faire le nettoyage jusqu'à correcs systématiques
-# - voir quels ids sont à fusionner (noms d'usage) : "WARNING: consider merging RNE ids"
-# - rebalancer le bousin pour toutes les tables, vérifier que tout est OK dans les logs

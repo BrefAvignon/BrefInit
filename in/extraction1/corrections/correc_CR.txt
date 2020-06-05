@@ -13,15 +13,14 @@ NA	NA	NA	NA	Date fin mandat	31/12/2015	12/12/2015	Ajustement date de fin pr rég
 1421	1109193	LEFRANCOIS	Xavier	Date fin mandat	15/12/2015	NA	Date fausse (mandat en cours)
 3844	937	LASSALLE	Jean	Date fin mandat	24/3/2010	5/12/2015	Date probablement fausse, changée pour mandat complet
 991	17440	HUGONET	Jean-Raymond	Date fin mandat	18/12/2015	18/10/2017	Date incorrecte
-152	151270	CRUSOL	Jean	Prenom elu	Jean	Pierre	Prénom incorrect
-152	151270	CRUSOL	Pierre	Date naissance	20/9/1943	1/7/1942	Date naissance incorrecte
+152	151270	CRUSOL	Jean	Prenom elu	Jean	Louis	Prénom incorrect
+152	151270	CRUSOL	Louis	Date naissance	20/9/1943	1/7/1942	Date naissance incorrecte
 5121	637345	LAMBERT	Marie-Thérèse	Nom elu	LAMBERT	LAMBERT MOULIN	Nom incomplet
 5339	834309	FASSIO	Françoise	Nom elu	FASSIO	FASSIO RIGAUD	Nom incomplet
 118	863244	PONCHATEAU	Marie-Yveline	Nom elu	PONCHATEAU	PONCHATEAU THEOBALD	Nom incomplet
 119	863244	PONCHATEAU	Marie-Yveline	Nom elu	PONCHATEAU	PONCHATEAU THEOBALD	Nom incomplet
 124	870384	SAMUEL	Valérie	Nom elu	SAMUEL	SAMUEL CESARIUS	Nom incomplet
 127	870560	TAILLEPIERRE	Sonia	Nom elu	TAILLEPIERRE	TAILLEPIERRE DEVARIEUX	Nom incorrect
-5389	63915	BOURQUIN	Christian	Motif fin fonction	NA	DC	Motif de fin de fonction manquant
 319	833946	FOTSE-NJOMGANG	Paul	Date fin mandat	13/3/2010	15/9/2009	Fin incorrecte (PM)
 404	839480	TAMON	Marie-Aline	Date debut mandat	1/2/2006	16/1/2005	Debut incorrect (PM)
 391	47585	ROBERT	Didier	Date fin mandat	13/3/2010	30/6/2007	Fin incorrecte (PM)
@@ -29,4 +28,46 @@ NA	NA	NA	NA	Date fin mandat	31/12/2015	12/12/2015	Ajustement date de fin pr rég
 4003	82604	CHATILLON	Alain	Date fin mandat	13/3/2010	29/10/2008	Fin incorrecte (PM)
 4016	82325	DOUNOT-SOBRAQUES	Chantal	Date debut mandat	28/3/2004	30/10/2008	Debut incorrect (PM)
 24	861981	BOREL	Josette	Date fin fonction	NA	1/5/2014	Date incorrecte
+24	861981	BOREL	Josette	Motif fin fonction	NA	DV	Valeur manquante
 25	861981	BOREL-LINCERTIN	Josette	ID RNE	861981	NA	Ligne redondante
+3626	830	LE DRIAN	Jean-Yves	Motif fin mandat	NA	DV	Motif manquant
+3626	830	LE DRIAN	Jean-Yves	Motif fin fonction	NA	DV	Motif manquant
+5389	63915	BOURQUIN	Christian	Motif fin mandat	NA	DC	Motif manquant
+5389	63915	BOURQUIN	Christian	Date fin fonction	NA	26/8/2014	Date manquante
+5389	63915	BOURQUIN	Christian	Motif fin fonction	NA	DC	Motif manquant
+5344	86409	FRECHE	Georges	Date fin fonction	NA	24/10/2010	Date manquante
+5344	86409	FRECHE	Georges	Motif fin fonction	NA	DC	Motif manquant
+4449	1509839	REYNIÉ	Dominique	Motif fin fonction	NA	DO	Valeur manquante
+4449	1509839	REYNIÉ	Dominique	Date fin fonction	NA	27/5/2016	Valeur manquante
+4388	1075670	SEMAVOINE	Monique	Motif fin fonction	NA	DV	Valeur manquante
+4388	1075670	SEMAVOINE	Monique	Date fin fonction	NA	25/7/2017	Valeur manquante
+3389	13050	RETAILLEAU	Bruno	Date fin mandat	1/10/2017	NA	Date incorrecte
+3389	13050	RETAILLEAU	Bruno	Motif fin mandat	AU	NA	Valeur incorrecte
+3389	13050	RETAILLEAU	Bruno	Motif fin fonction	NA	AU	Valeur incorrecte
+3390	13050	RETAILLEAU	Bruno	ID RNE	13050	NA	Ligne redondante
+3276	845	FAVENNEC	Yannick	Motif fin mandat	DV	NA	Valeur incorrecte
+3276	845	FAVENNEC	Yannick	Date fin mandat	19/6/2017	NA	Valeur incorrecte
+3276	845	FAVENNEC	Yannick	Motif fin fonction	NA	DV	Valeur incorrecte
+3276	845	FAVENNEC	Yannick	Date fin fonction	NA	19/6/2017	Valeur incorrecte
+3277	845	FAVENNEC	Yannick	ID RNE	845	NA	Ligne redondante
+3230	270123	DUPONT	Stella	Motif fin fonction	NA	DV	Valeur manquante
+3230	270123	DUPONT	Stella	Date fin fonction	NA	18/7/2017	Valeur manquante
+3145	158268	HUNAULT	Alain	Motif fin fonction	NA	DV	Valeur manquante
+3145	158268	HUNAULT	Alain	Date fin fonction	NA	1/6/2017	Valeur manquante
+2445	66722	LHERBIER	Brigitte	Motif fin fonction	NA	DO	Valeur manquante
+2445	66722	LHERBIER	Brigitte	Date fin fonction	NA	15/12/2017	Valeur manquante
+2115	42234	JUMEL	Sébastien	Motif fin fonction	NA	DV	Valeur manquante
+2115	42234	JUMEL	Sébastien	Date fin fonction	NA	17/7/2017	Valeur manquante
+1966	143197	SOMMER	Denis	Motif fin fonction	NA	DV	Valeur manquante
+1966	143197	SOMMER	Denis	Date fin fonction	NA	1/7/2017	Valeur manquante
+1952	618160	BRANGET	Françoise	Motif fin fonction	NA	DV	Valeur manquante
+1952	618160	BRANGET	Françoise	Date fin fonction	NA	31/1/2017	Valeur manquante
+1429	42733	LE VERN	Alain	Motif fin fonction	NA	DV	Valeur manquante
+1429	42733	LE VERN	Alain	Date fin fonction	NA	1/10/2013	Valeur manquante
+311	87682	DINDAR	Nassimah	Motif fin fonction	NA	DV	Valeur manquante
+311	87682	DINDAR	Nassimah	Date fin fonction	NA	16/2/2018	Valeur manquante
+490	14769	LEHIDEUX	Martine	Date naissance	27/6/1933	27/5/1933	Date incorrecte
+3757	4604	MORIN	Elisabeth	Nom elu	MORIN	MORIN CHARTIER	Nom incomplet
+4379	833716	FRANCQ	Nathalie	Prenom elu	Natalie	Nathalie	Coquille prénom
+4273	145861	DELCOUDERC-JUILLARD	Nathalie	Date fin fonction	NA	22/10/2017	Date manquante
+5213	867294	MEUNIER	Philippe	Date fin fonction	NA	1/10/2017	Date manquante

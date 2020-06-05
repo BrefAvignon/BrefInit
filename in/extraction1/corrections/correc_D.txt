@@ -233,3 +233,4 @@ Row	Id RNE	Nom	Prenom	Attribut	ValAvt	ValApr	Commentaire
 606	696422	MONTAUGE	Franck	Date debut mandat	10/6/2012	3/8/2013	Date incorrecte
 872	3294	SALEN	Paul	Date debut mandat	10/6/2007	6/5/2011	Date incorrecte
 2181	1118	OLLIER	Patrick	Date debut mandat	15/5/2012	10/6/2012	Date incorrecte
+2173	1117	CECCALDI-RAYNAUD	Joëlle	Date debut mandat	13/3/2005	3/7/2005	Date incorrecte

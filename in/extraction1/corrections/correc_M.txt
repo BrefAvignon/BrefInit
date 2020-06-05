@@ -178,7 +178,7 @@ Row	Id RNE	Nom	Prenom	Attribut	ValAvt	ValApr	Commentaire
 57525	156750	MANCEAU	Yves	ID RNE	156750	NA	Suppression, mandat inexistant
 57653	272297	HUCHON	Didier	Date debut fonction	15/12/2015	1/1/2016	Date incorrecte
 57701	158455	VINCENT	Louis	ID RNE	158455	NA	Suppression, mandat inexistant
-57805	156655	AUGEREAU	Bernard	ID RNE	156655	NA	Suppression, mandat inexistant
+57805	156655	AUGEREAU	Bernard	ID RNE	271372	NA	Suppression, mandat inexistant
 58356	1354272	MARTIN	Serge	Date debut fonction	14/1/2017	28/11/2017	Date incorrecte
 59042	1355776	LEFORESTIER	Noëlle	Date debut fonction	25/2/2015	26/2/2016	Date incorrecte
 59334	326053	CARNET	Monique	Date fin mandat	19/5/2011	22/3/2014	Date incorrecte
