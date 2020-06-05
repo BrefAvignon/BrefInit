@@ -154,7 +154,6 @@ NA	NA	NA	NA	Libellé du canton	MARSEILLE VAUBAN	VAUBAN	Nom existant déjà sous 
 11805	1185799	BEDREDDINE	Belaid	Prenom elu	Belaid	Belaïde	Coquille prénom
 1890	22909	GUINANDIE	Janine	Prenom elu	Janine	Jeanine	Coquille prénom
 8375	833716	FRANCQ	Natalie	Prenom elu	Natalie	Nathalie	Coquille prénom
-11266	2003	GIMMILLARO	Martine	Nom elu	GIMMILLARO	GIMMILARO	Coquille nom
 585	175	BALARELLO	José	Date naissance	24/12/1926	25/12/1926	Coquille date de naissance
 586	175	BALARELLO	José	Date naissance	24/12/1926	25/12/1926	Coquille date de naissance
 4123	92972	FAURE	Martine	Date naissance	30/9/1958	30/9/1948	Coquille date de naissance
@@ -179,3 +178,10 @@ NA	NA	NA	NA	Libellé du canton	MARSEILLE VAUBAN	VAUBAN	Nom existant déjà sous 
 6233	870028	BAS	Philippe	Date fin mandat	9/10/2017	3/11/2015	Date incorrecte
 6331	156136	LEFEVRE	Marc	Date debut fonction	5/1/2016	4/11/2015	Date incorrecte
 6331	156136	LEFEVRE	Marc	Date fin fonction	5/1/2016	4/01/2016	Date incorrecte
+11264	2003	GIMMILARO	Martine	Nom elu	GIMMILARO	GIMMILLARO	Coquille dans le nom
+11265	2003	GIMMILARO	Martine	Nom elu	GIMMILARO	GIMMILLARO	Coquille dans le nom
+11342	163387	BOUCHIER	Alexandre	Libelle fonction	1er Secrétaire	1er Secrétaire	Multiples 1er secrétaires
+11371	1490120	DORTE	Grégory	Libelle fonction	1er Secrétaire	5ème Secrétaire	Multiples 1er secrétaires
+11376	1489779	EVRARD	Marie-Agnès	Libelle fonction	1er Secrétaire	2ème Secrétaire	Multiples 1er secrétaires
+11424	1505520	MAUDET	Catherine	Libelle fonction	1er Secrétaire	4ème Secrétaire	Multiples 1er secrétaires
+11442	1490679	QUENTIN	Clarisse	Libelle fonction	1er Secrétaire	3ème Secrétaire	Multiples 1er secrétaires

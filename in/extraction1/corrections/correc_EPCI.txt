@@ -424,7 +424,6 @@ NA	NA	NA	NA	Numero SIREN	20006971	200006971	numéro SIREN incorrect (syntaxiquem
 9454	63573	SIMON	Florence	Nom élu	SIMON	SIMON VESELY	Coquille nom
 77838	71186	LEROY	Marie-José	Nom élu	LEROY	LEROY VANDESANDE	Coquille nom
 44942	92972	FAURE	Martine	Date naissance	30/9/1958	30/9/1948	Coquille date de naissance
-40152	436180	CASSAN	Jean	Prenom elu	Jean	Jean-Clément	Prénom incomplet
 127555	872362	VIENNE	Raymonde	Nom elu	VIENNE	VIENNE HUET	Nom incomplet
 127003	1199476	ERIN-SALLER	Valerie	Nom elu	ERIN-SALLER	SALLER ERIN	Coquille nom
 72420	1372345	JACQUES	Jean-Michel	Date naissance	26/2/1968	29/2/1968	Coquille date de naissance
@@ -432,3 +431,42 @@ NA	NA	NA	NA	Numero SIREN	20006971	200006971	numéro SIREN incorrect (syntaxiquem
 104460	576425	LESUEUR	Jacki	Prenom elu	Jacki	Jacky	Prénom incorrect
 21611	146336	GIRAUDEAU	NA	Prenom elu	NA	Marie-Danielle	Prénom manquant
 80178	45814	HUBART ÉPOUSE PENISSON	NA	Prenom elu	NA	Marie-Danielle	Prénom manquant
+5189	1173238	LALEVEE	Solange	Date naissance	1/1/1960	26/8/1946	Date incorrecte
+110072	23154	MARTIN	Jean-Michel	Date naissance	28/5/1960	29/9/1942	Date incorrecte
+19941	22909	GUINANDIE	Janine	Prenom elu	Janine	Jeanine	Coquille prénom
+26438	259800	GARROT	Rémi	Prenom elu	Rémy	Rémi	Coquille prénom
+40152	436180	CASSAN	Jean	Prenom elu	Jean	Jean-Clément	Prénom incomplet
+40155	436180	CASSAN	Jean	Prenom elu	Jean	Jean Clement	Prénom incomplet
+126858	870560	DEVARIEUX EP. TAILLEPIERR	Sonia	Nom elu	DEVARIEUX EP. TAILLEPIERR	TAILLEPIERRE DEVARIEUX	Nom incorrect
+3300	1212288	TREBOSC-COUPAS	Corinne	Date debut fonction	28/3/2014	25/4/2015	Date incorrecte
+5523	885150	GUIBERT	Lucas	Date debut fonction	4/11/2014	23/7/2015	Date incorrecte
+5365	1634	DUBUS	Laurent	Date debut fonction	20/10/2014	1/10/2015	Date incorrecte
+5448	1215281	SURLE-GIRIEUD	Magali	Date debut fonction	19/10/2014	24/7/2015	Date incorrecte
+10591	149288	SERVAIS	Daniel	Date fin fonction	22/3/2014	8/3/2008	Date incorrecte
+9713	149415	SIGNORET	Francis	Date debut fonction	13/4/2001	9/3/2008	Date incorrecte
+9993	9276	CHEVALIER	René	Date fin fonction	22/3/2014	8/3/2008	Date incorrecte
+10008	149275	BOCQUILLON	Robert	Date debut fonction	21/4/2001	9/3/2008	Date incorrecte
+9624	892219	CHARLOT FAUCHEUX	Sylvie	Date fin fonction	22/3/2014	8/3/2008	Date incorrecte
+10004	149272	DEMORGNY	Patrick	Date debut fonction	11/1/2003	9/3/2008	Date incorrecte
+100450	6210	SALLES	Jean-Marie	Date fin fonction	22/3/2014	8/3/2008	Date incorrecte
+32119	944579	BERNON	Jean-Pierre	ID RNE	944579	NA	Ligne incorrecte
+2746	142820	MALSAND	Régis	Date fin mandat	16/4/2010	8/3/2008	Date incorrecte
+2746	142820	MALSAND	Régis	Motif fin mandat	DV	FM	Date incorrecte
+2746	142820	MALSAND	Régis	Date fin fonction	22/3/2014	8/3/2008	Date incorrecte
+32550	945471	FILLET	Pierre-Louis	Date debut fonction	10/4/2008	17/4/2010	Date incorrecte
+37890	1255119	MARCHETTI	François-Marie	Date debut fonction	30/7/2014	23/6/2015	Date incorrecte
+43333	162027	SABAROT	Henri	Date debut fonction	10/4/2008	11/4/2011	Date incorrecte
+48477	160758	VANDAELE	Christophe	Date debut fonction	30/12/1997	5/11/2010	Date incorrecte
+48517	160767	THIBAULT	Jean-Paul	Date fin fonction	22/3/2014	4/11/2010	Date incorrecte
+48517	160767	THIBAULT	Jean-Paul	Motif fin fonction	FM	DC	Valeur incorrecte
+49974	160410	ROUX	André	Date debut fonction	24/3/2014	17/12/2016	Date incorrecte
+59688	157607	LIEBUS	Gilles	Date debut fonction	1/4/2008	17/1/2010	Date incorrecte
+63898	156522	CAZENEUVE	Bernard	Date debut fonction	1/4/2008	11/4/2008	Date incorrece
+68235	155010	BOURCELOT	Jean	Date debut fonction	16/4/2008	16/5/2008	Date incorrece
+77476	152376	SIMEON	Serge	Date debut fonction	12/7/2017	24/8/2017	Date incorrece
+80770	1060493	DIBO	Ahamada	Date debut fonction	1/7/2017	11/7/2017	Date incorrece
+101920	489327	REY	Sylviane	Date debut fonction	22/3/2008	19/10/2009	Date incorrece
+103943	167452	DUCROCQ	Christian	Date debut fonction	1/4/2008	6/1/2011	Date incorrece
+116539	164543	BATY	Charles	Date debut fonction	8/3/2008	2/6/2008	Date incorrece
+121553	1150603	BECHEREAU	Bernard	Date debut fonction	30/10/2009	13/10/2011	Date incorrece
+124643	163155	GAUTIER	Jacques	Date debut fonction	11/5/2010	5/5/2011	Date incorrece
