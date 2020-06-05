@@ -68,6 +68,6 @@ NA	NA	NA	NA	Date fin mandat	31/12/2015	12/12/2015	Ajustement date de fin pr rég
 311	87682	DINDAR	Nassimah	Date fin fonction	NA	16/2/2018	Valeur manquante
 490	14769	LEHIDEUX	Martine	Date naissance	27/6/1933	27/5/1933	Date incorrecte
 3757	4604	MORIN	Elisabeth	Nom elu	MORIN	MORIN CHARTIER	Nom incomplet
-4379	833716	FRANCQ	Nathalie	Prenom elu	Natalie	Nathalie	Coquille prénom
+4379	833716	FRANCQ	Natalie	Prenom elu	Natalie	Nathalie	Coquille prénom
 4273	145861	DELCOUDERC-JUILLARD	Nathalie	Date fin fonction	NA	22/10/2017	Date manquante
 5213	867294	MEUNIER	Philippe	Date fin fonction	NA	1/10/2017	Date manquante

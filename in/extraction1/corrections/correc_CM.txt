@@ -392,7 +392,7 @@ NA	NA	NA	NA	Libelle commune	TEVA I UTA SECTION 01 MATAIEA	TEVA I UTA	On ignore l
 602659	156750	MANCEAU	Yves	ID RNE	156750	NA	Suppression, mandat inexistant
 604590	272297	HUCHON	Didier	Date debut fonction	15/12/2015	1/1/2016	Date incorrecte
 605308	158455	VINCENT	Louis	ID RNE	158455	NA	Suppression, mandat inexistant
-607040	156655	AUGEREAU	Bernard	ID RNE	271372	NA	Suppression, mandat inexistant
+607040	271372	AUGEREAU	Bernard	ID RNE	271372	NA	Suppression, mandat inexistant
 620050	1355776	LEFORESTIER	Noëlle	Date debut fonction	25/2/2015	26/2/2016	Date incorrecte
 623150	326053	CARNET	Monique	Date fin mandat	19/5/2011	22/3/2014	Date incorrecte
 623150	326053	CARNET	Monique	Date fin fonction	22/3/2014	12/9/2008	Date incorrecte

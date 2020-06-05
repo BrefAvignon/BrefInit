@@ -8,7 +8,7 @@
 
 
 # comparison of character strings
-#install.packages("stringdist")	# not used, in the end...
+install.packages("stringdist")
 
 # parallel computation
 install.packages("future.apply")
