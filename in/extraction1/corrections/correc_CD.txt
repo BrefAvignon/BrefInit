@@ -1,22 +1,22 @@
 Row	Id RNE	Nom	Prenom	Attribut	ValAvt	ValApr	Commentaire
-NA	NA	NA	NA	Libellé du canton	LA COTE VERMEILLE	COTE VERMEILLE	Article superflu
-NA	NA	NA	NA	Libellé du canton	LE GOND PONTOUVRE	GOND PONTOUVRE	Article superflu
-NA	NA	NA	NA	Libellé du canton	LE GRAND BOURG	GRAND BOURG	Article superflu
-NA	NA	NA	NA	Libellé du canton	LE TAMPON 1	TAMPON 1	Article superflu
-NA	NA	NA	NA	Libellé du canton	LE TAMPON 2	TAMPON 2	Article superflu
-NA	NA	NA	NA	Libellé du canton	LES ABYMES 1	ABYMES 1	Article superflu
-NA	NA	NA	NA	Libellé du canton	LES ABYMES 2	ABYMES 2	Article superflu
-NA	NA	NA	NA	Libellé du canton	LES ABYMES 3	ABYMES 3	Article superflu
-NA	NA	NA	NA	Libellé du canton	CARCASONNE 2 SUD	CARCASSONNE 2 SUD	Manque un S
-NA	NA	NA	NA	Libellé du canton	SALIGNAC EYVIGNES	SALIGNAC EYVIGUES	Typo dans nom de canton
-NA	NA	NA	NA	Libellé du canton	MAMOUDZOU 1ER CANTON	MAMOUDZOU 1	Nom existant déjà sous une forme plus simple
-NA	NA	NA	NA	Libellé du canton	MAMOUDZOU 2E CANTON	MAMOUDZOU 2	Nom existant déjà sous une forme plus simple
-NA	NA	NA	NA	Libellé du canton	MAMOUDZOU 3E CANTON	MAMOUDZOU 3	Nom existant déjà sous une forme plus simple
-NA	NA	NA	NA	Libellé du canton	MARSEILLE LA BLANCARDE	LA BLANCARDE	Nom existant déjà sous une forme plus simple
-NA	NA	NA	NA	Libellé du canton	MARSEILLE LES TROIS LUCS	LES TROIS LUCS	Nom existant déjà sous une forme plus simple
-NA	NA	NA	NA	Libellé du canton	MARSEILLE SAINTE MARGUERITE	SAINTE MARGUERITE	Nom existant déjà sous une forme plus simple
-NA	NA	NA	NA	Libellé du canton	MARSEILLE NOTRE DAME LIMITE	NOTRE DAME LIMITE	Nom existant déjà sous une forme plus simple
-NA	NA	NA	NA	Libellé du canton	MARSEILLE VAUBAN	VAUBAN	Nom existant déjà sous une forme plus simple
+NA	NA	NA	NA	Libelle canton	LA COTE VERMEILLE	COTE VERMEILLE	Article superflu
+NA	NA	NA	NA	Libelle canton	LE GOND PONTOUVRE	GOND PONTOUVRE	Article superflu
+NA	NA	NA	NA	Libelle canton	LE GRAND BOURG	GRAND BOURG	Article superflu
+NA	NA	NA	NA	Libelle canton	LE TAMPON 1	TAMPON 1	Article superflu
+NA	NA	NA	NA	Libelle canton	LE TAMPON 2	TAMPON 2	Article superflu
+NA	NA	NA	NA	Libelle canton	LES ABYMES 1	ABYMES 1	Article superflu
+NA	NA	NA	NA	Libelle canton	LES ABYMES 2	ABYMES 2	Article superflu
+NA	NA	NA	NA	Libelle canton	LES ABYMES 3	ABYMES 3	Article superflu
+NA	NA	NA	NA	Libelle canton	CARCASONNE 2 SUD	CARCASSONNE 2 SUD	Manque un S
+NA	NA	NA	NA	Libelle canton	SALIGNAC EYVIGNES	SALIGNAC EYVIGUES	Typo dans nom de canton
+NA	NA	NA	NA	Libelle canton	MAMOUDZOU 1ER CANTON	MAMOUDZOU 1	Nom existant déjà sous une forme plus simple
+NA	NA	NA	NA	Libelle canton	MAMOUDZOU 2E CANTON	MAMOUDZOU 2	Nom existant déjà sous une forme plus simple
+NA	NA	NA	NA	Libelle canton	MAMOUDZOU 3E CANTON	MAMOUDZOU 3	Nom existant déjà sous une forme plus simple
+NA	NA	NA	NA	Libelle canton	MARSEILLE LA BLANCARDE	LA BLANCARDE	Nom existant déjà sous une forme plus simple
+NA	NA	NA	NA	Libelle canton	MARSEILLE LES TROIS LUCS	LES TROIS LUCS	Nom existant déjà sous une forme plus simple
+NA	NA	NA	NA	Libelle canton	MARSEILLE SAINTE MARGUERITE	SAINTE MARGUERITE	Nom existant déjà sous une forme plus simple
+NA	NA	NA	NA	Libelle canton	MARSEILLE NOTRE DAME LIMITE	NOTRE DAME LIMITE	Nom existant déjà sous une forme plus simple
+NA	NA	NA	NA	Libelle canton	MARSEILLE VAUBAN	VAUBAN	Nom existant déjà sous une forme plus simple
 12521	36	FIDJI	JEAN CLAUDE	Date fin mandat	8/3/2008	16/03/2008	Corrigé pour suppression ultérieure
 4765	62511	ARIAS VILLANUEVA BENET	JOSE	Date fin mandat	8/3/2008	21/03/2015	Corrigé pour mandat complet
 4768	28275	BACHASSON	MARCEL	Date fin mandat	8/3/2008	21/03/2015	Corrigé pour mandat complet
