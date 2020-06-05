@@ -6,23 +6,23 @@ Row	Id RNE	Nom	Prenom	Attribut	ValAvt	ValApr	Commentaire
 33874	671	TANGUY	Hélène	Date fin fonction	1/7/0012	1/7/2012	Typo dans la date
 80256	47125	BOYER	Jean-Marc	Date fin fonction	20/10/0017	20/10/2017	Typo dans la date
 106878	80360	SENECHAULT	Jean-Paul	Date fin fonction	22/3/0013	22/3/2013	Typo dans la date
-106945	90614	BRIE	Simon	Date début fonction	25/3/0201	25/3/2001	Typo dans la date
+106945	90614	BRIE	Simon	Date debut fonction	25/3/0201	25/3/2001	Typo dans la date
 1258	106532	BOLON	André	Date fin fonction	20/9/0014	20/9/2014	Typo dans la date
 1126	106573	JANIER	Jacques	Date fin fonction	27/2/0013	27/2/2013	Typo dans la date
 15385	147305	MULLOIS	Dominique	Date fin fonction	20/3/0015	20/3/2015	Typo dans la date
-72008	152251	MUSELET	Bernard	Date début fonction	16/3/0020	16/3/2000	Typo dans la date
-68294	153412	GERARD	Jean-Claude	Date début fonction	13/3/0983	13/3/1983	Typo dans la date
+72008	152251	MUSELET	Bernard	Date debut fonction	16/3/0020	16/3/2000	Typo dans la date
+68294	153412	GERARD	Jean-Claude	Date debut fonction	13/3/0983	13/3/1983	Typo dans la date
 64153	154678	JACQUEL	Denis	Date fin mandat	14/10/0201	22/3/2014	Typo dans la date
 64153	154678	JACQUEL	Denis	Motif fin mandat	NA	FM	Manque motif fin mandat
 53616	157950	ARRETEAU	Paula	Date fin fonction	15/1/0012	15/1/2012	Typo dans la date
-111370	163176	MANG	Jean-Jacques	Date début fonction	16/3/0200	16/3/2001	Typo dans la date
-107870	164229	CHABRIER	Yves	Date début fonction	25/3/0201	25/3/2001	Typo dans la date
-105668	164780	AUPHAN	Philippe	Date début fonction	1/2/3003	1/2/2003	Typo dans la date
-96743	167343	DUBOS	René	Date début fonction	16/3/0201	16/3/2001	Typo dans la date
-96424	167452	DUCROCQ	Christian	Date début fonction	24/3/0201	24/3/2001	Typo dans la date
-96221	167508	MAILLARD	Philippe	Date début fonction	16/3/0200	16/3/2001	Typo dans la date
-95969	167575	NOEL	François-Mary	Date début fonction	17/3/0201	17/3/2001	Typo dans la date
-95980	167578	PLAILLY	Christian	Date début fonction	23/3/0201	23/3/2001	Typo dans la date
+111370	163176	MANG	Jean-Jacques	Date debut fonction	16/3/0200	16/3/2001	Typo dans la date
+107870	164229	CHABRIER	Yves	Date debut fonction	25/3/0201	25/3/2001	Typo dans la date
+105668	164780	AUPHAN	Philippe	Date debut fonction	1/2/3003	1/2/2003	Typo dans la date
+96743	167343	DUBOS	René	Date debut fonction	16/3/0201	16/3/2001	Typo dans la date
+96424	167452	DUCROCQ	Christian	Date debut fonction	24/3/0201	24/3/2001	Typo dans la date
+96221	167508	MAILLARD	Philippe	Date debut fonction	16/3/0200	16/3/2001	Typo dans la date
+95969	167575	NOEL	François-Mary	Date debut fonction	17/3/0201	17/3/2001	Typo dans la date
+95980	167578	PLAILLY	Christian	Date debut fonction	23/3/0201	23/3/2001	Typo dans la date
 83891	171311	DULHOSTE	Jean-Pierre	Date fin fonction	7/7/0016	7/7/2016	Typo dans la date
 83829	171319	FARET	Gabriel	Date fin fonction	30/5/0015	30/5/2015	Typo dans la date
 83133	171548	BRUN	Jean	Date fin fonction	4/12/0017	4/12/2017	Typo dans la date
@@ -32,7 +32,7 @@ Row	Id RNE	Nom	Prenom	Attribut	ValAvt	ValApr	Commentaire
 524	872810	MACLET	Bernard	Date fin fonction	17/7/0013	17/7/2013	Typo dans la date
 873	875576	MABILLARD	René	Date fin fonction	6/6/0013	6/6/2013	Typo dans la date
 5958	887794	BORNET	Pierre	Date fin fonction	10/7/0014	10/7/2014	Typo dans la date
-30149	944908	QUENARDEL	Françoise	Date début fonction	8/1/0018	8/1/2018	Typo dans la date
+30149	944908	QUENARDEL	Françoise	Date debut fonction	8/1/0018	8/1/2018	Typo dans la date
 79818	1068960	BRUT	Eric	Date fin fonction	21/11/0017	21/11/2017	Typo dans la date
 83275	1077631	BOUR	Marguerite	Date fin fonction	23/10/0015	23/10/2015	Typo dans la date
 83160	1077876	DASTUGUE	Gilbert	Date fin fonction	12/6/0014	12/6/2014	Typo dans la date
@@ -43,32 +43,32 @@ Row	Id RNE	Nom	Prenom	Attribut	ValAvt	ValApr	Commentaire
 16014	1198393	LE BAS	Christian	ID RNE	1198393	NA	Ligne incorrecte
 16015	1198393	LE BAS	Christian	Date fin fonction	NA	31/12/2019	Date manquante (WP)
 42391	973328	GABAUDAN	Jean-Pierre	Date fin mandat	19/2/2017	NA	Date incorrecte remplacée par NA pour fusion ultérieure
-5414	150062	VALLET	Jean-Pierre	Date début fonction	16/3/2013	16/3/2001	Coquille dans la date
-12683	148132	CALMES-BOU	Marie-Chantal	Date début fonction	16/3/2008	21/3/2001	Date incorrecte
-13200	147945	AUGUY	Francis	Date début fonction	18/3/2008	18/3/2001	Date incorrecte
-30558	946204	MAROUARD	Céline	Date début fonction	4/1/2018	4/1/2017	Date incorrecte
-32056	142007	LOISEAU	Jacques	Date début fonction	9/3/2008	21/3/2001	Date incorrecte
-45408	160488	ABERT	Jean-Claude	Date début fonction	18/3/2008	18/3/2001	Date incorrecte
-46624	160114	PROBY	René	Date début fonction	14/3/2008	21/3/2001	Date incorrecte
-57900	156630	AVENEL	Max	Date début fonction	21/3/2008	21/3/2001	Date incorrecte
-57904	156631	LE BLOND	Jacqueline	Date début fonction	21/3/2008	21/3/2001	Date incorrecte
-59339	156171	DIGARD	François	Date début fonction	15/3/2008	15/3/2001	Date incorrecte
-76973	92587	LEFEBVRE	Alain	Date début fonction	14/3/2008	21/3/2001	Date incorrecte
-77171	81452	DAGBERT	Michel	Date début fonction	14/3/2008	21/3/2001	Date incorrecte
-77247	21837	KRAJEWSKI	Jean-Marie	Date début fonction	21/3/2008	21/3/2001	Date incorrecte
-77721	2763	ROSSIGNOL	Françoise	Date début fonction	14/3/2008	14/3/2001	Date incorrecte
-78848	96501	CORBISEZ	Jean-Pierre	Date début fonction	14/3/2008	21/3/2001	Date incorrecte
-78866	61255	GUILBERT	Thérèse	Date début fonction	14/3/2008	21/3/2001	Date incorrecte
-84847	818995	RAYMOND	Alain	Date début fonction	15/3/2008	21/3/2001	Date incorrecte
-87278	170273	TOUSSAINT	Michel	Date début fonction	15/3/2008	21/3/2001	Date incorrecte
-95094	162924	DELANOE	Bertrand	Date début fonction	21/3/2008	21/3/2001	Date incorrecte
-104271	25126	BONHOMME	François	Date début fonction	21/3/2008	21/3/2001	Date incorrecte
-109864	1503809	SABARD	Sandrine	Date début fonction	16/3/2018	27/2/2015	Date incorrecte
-111251	7695	FORCINAL	Anne-Marie	Date début fonction	20/3/2008	21/3/2001	Date incorrecte
-111437	17523	FOURNIER	Pascal	Date début fonction	15/3/2008	25/3/2001	Date incorrecte
-111445	5565	DESSENNE	Brigitte	Date début fonction	14/3/2008	23/3/2001	Date incorrecte
-111463	17532	BERNARD	Jacques	Date début fonction	14/3/2008	24/3/2001	Date incorrecte
-113279	33812	FRUTEAU	Eric	Date début fonction	16/3/2008	18/3/2001	Date incorrecte
+5414	150062	VALLET	Jean-Pierre	Date debut fonction	16/3/2013	16/3/2001	Coquille dans la date
+12683	148132	CALMES-BOU	Marie-Chantal	Date debut fonction	16/3/2008	21/3/2001	Date incorrecte
+13200	147945	AUGUY	Francis	Date debut fonction	18/3/2008	18/3/2001	Date incorrecte
+30558	946204	MAROUARD	Céline	Date debut fonction	4/1/2018	4/1/2017	Date incorrecte
+32056	142007	LOISEAU	Jacques	Date debut fonction	9/3/2008	21/3/2001	Date incorrecte
+45408	160488	ABERT	Jean-Claude	Date debut fonction	18/3/2008	18/3/2001	Date incorrecte
+46624	160114	PROBY	René	Date debut fonction	14/3/2008	21/3/2001	Date incorrecte
+57900	156630	AVENEL	Max	Date debut fonction	21/3/2008	21/3/2001	Date incorrecte
+57904	156631	LE BLOND	Jacqueline	Date debut fonction	21/3/2008	21/3/2001	Date incorrecte
+59339	156171	DIGARD	François	Date debut fonction	15/3/2008	15/3/2001	Date incorrecte
+76973	92587	LEFEBVRE	Alain	Date debut fonction	14/3/2008	21/3/2001	Date incorrecte
+77171	81452	DAGBERT	Michel	Date debut fonction	14/3/2008	21/3/2001	Date incorrecte
+77247	21837	KRAJEWSKI	Jean-Marie	Date debut fonction	21/3/2008	21/3/2001	Date incorrecte
+77721	2763	ROSSIGNOL	Françoise	Date debut fonction	14/3/2008	14/3/2001	Date incorrecte
+78848	96501	CORBISEZ	Jean-Pierre	Date debut fonction	14/3/2008	21/3/2001	Date incorrecte
+78866	61255	GUILBERT	Thérèse	Date debut fonction	14/3/2008	21/3/2001	Date incorrecte
+84847	818995	RAYMOND	Alain	Date debut fonction	15/3/2008	21/3/2001	Date incorrecte
+87278	170273	TOUSSAINT	Michel	Date debut fonction	15/3/2008	21/3/2001	Date incorrecte
+95094	162924	DELANOE	Bertrand	Date debut fonction	21/3/2008	21/3/2001	Date incorrecte
+104271	25126	BONHOMME	François	Date debut fonction	21/3/2008	21/3/2001	Date incorrecte
+109864	1503809	SABARD	Sandrine	Date debut fonction	16/3/2018	27/2/2015	Date incorrecte
+111251	7695	FORCINAL	Anne-Marie	Date debut fonction	20/3/2008	21/3/2001	Date incorrecte
+111437	17523	FOURNIER	Pascal	Date debut fonction	15/3/2008	25/3/2001	Date incorrecte
+111445	5565	DESSENNE	Brigitte	Date debut fonction	14/3/2008	23/3/2001	Date incorrecte
+111463	17532	BERNARD	Jacques	Date debut fonction	14/3/2008	24/3/2001	Date incorrecte
+113279	33812	FRUTEAU	Eric	Date debut fonction	16/3/2008	18/3/2001	Date incorrecte
 57430	156775	BERTIN	Guy	ID RNE	156775	NA	Suppression, mandat inexistant (WP)
 27971	143259	BILLOD	Marc	Nom elu	BILLOD	BILLOT	Typo dans le nom
 27971	143259	BILLOT	Marc	Date debut mandat	9/3/2008	11/3/2001	Date début incorrecte (WP)

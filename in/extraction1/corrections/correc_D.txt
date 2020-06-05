@@ -1,6 +1,6 @@
 Row	Id RNE	Nom	Prenom	Attribut	ValAvt	ValApr	Commentaire
-2448	1154458	GIRARDIN	Annick	Libellé de la cir.législative	1ère circonscription	Saint-Pierre-et-Miquelon	Nom changé au cours du temps
-2449	790	GRIGNON	Gérard	Libellé de la cir.législative	1ère circonscription	Saint-Pierre-et-Miquelon	Nom changé au cours du temps
+2448	1154458	GIRARDIN	Annick	Libelle circo legislative	1ère circonscription	Saint-Pierre-et-Miquelon	Nom changé au cours du temps
+2449	790	GRIGNON	Gérard	Libelle circo legislative	1ère circonscription	Saint-Pierre-et-Miquelon	Nom changé au cours du temps
 315	719	BEAULIEU	Jean-Claude	Date naissance	21/6/1944	24/6/1944	Date de naissance incorrecte (BD Assemblée)
 563	47119	PAIX	Bernardette	Prenom elu	Bernardette	Bernadette	Typo dans le prénom (BD Assemblée)
 649	92972	FAURE	Martine	Date naissance	30/9/1958	30/9/1948	Date de naissance incorrecte (BD Assemblée)

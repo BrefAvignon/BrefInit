@@ -1,15 +1,15 @@
 Row	Id RNE	Nom	Prenom	Attribut	ValAvt	ValApr	Commentaire
-18921	147305	MULLOIS	Dominique	Date de fin de la fonction	20/3/0015	20/3/2015	Typo dans la date
-15455	147955	BULA	Eric	Date de fin de la fonction	10/4/0008	10/4/2008	Typo dans la date
-105906	539497	RIBOURG	Patrick	Date de début de la fonction	19/10/1017	23/3/2014	A verifier
-106652	542039	CHEVALIER	Luc	Date de début de la fonction	19/10/1017	23/3/2014	A verifier
-106654	542063	DESCROUET	Philippe	Date de début de la fonction	19/10/1017	23/3/2014	A verifier
-117351	741190	REBY	Franck	Date de début de la fonction	14/4/0201	14/4/2014	Complètement arbitraire, a verifier
-104957	842417	GBIORCZYK	Anne	Date de début de la fonction	19/10/1017	19/10/2014	Completement arbitraire, a verifier
-104961	842425	OUKAS	Vanessa	Date de début de la fonction	19/10/1017	23/3/2014	A verifier
-1473	875539	PENICHON	Bruno	Date de fin de la fonction	12/9/0009	12/9/2009	Typo dans la date
-105318	1454255	DANILOFF	Véronique	Date de début de la fonction	19/10/1017	23/3/2014	A verifier
-49766	28252	PERAZIO	Bernard	Date de début de la fonction	1/3/2016	9/4/2014	Date incorrecte, estimation
+18921	147305	MULLOIS	Dominique	Date fin fonction	20/3/0015	20/3/2015	Typo dans la date
+15455	147955	BULA	Eric	Date fin fonction	10/4/0008	10/4/2008	Typo dans la date
+105906	539497	RIBOURG	Patrick	Date debut fonction	19/10/1017	23/3/2014	A verifier
+106652	542039	CHEVALIER	Luc	Date debut fonction	19/10/1017	23/3/2014	A verifier
+106654	542063	DESCROUET	Philippe	Date debut fonction	19/10/1017	23/3/2014	A verifier
+117351	741190	REBY	Franck	Date debut fonction	14/4/0201	14/4/2014	Complètement arbitraire, a verifier
+104957	842417	GBIORCZYK	Anne	Date debut fonction	19/10/1017	19/10/2014	Completement arbitraire, a verifier
+104961	842425	OUKAS	Vanessa	Date debut fonction	19/10/1017	23/3/2014	A verifier
+1473	875539	PENICHON	Bruno	Date fin fonction	12/9/0009	12/9/2009	Typo dans la date
+105318	1454255	DANILOFF	Véronique	Date debut fonction	19/10/1017	23/3/2014	A verifier
+49766	28252	PERAZIO	Bernard	Date debut fonction	1/3/2016	9/4/2014	Date incorrecte, estimation
 NA	NA	NA	NA	Libelle commune	MARSEILLE ARRVILL 02	MARSEILLE	On ignore les subdivisions de Marseille
 NA	NA	NA	NA	Libelle commune	MARSEILLE SECTEUR 1	MARSEILLE	On ignore les subdivisions de Marseille
 NA	NA	NA	NA	Libelle commune	MARSEILLE SECTEUR 2	MARSEILLE	On ignore les subdivisions de Marseille
@@ -421,8 +421,8 @@ NA	NA	NA	NA	Numero SIREN	20006971	200006971	numéro SIREN incorrect (syntaxiquem
 3283	150340	LAPRUGNE	Jean-Michel	Libelle commune	NA	Haut-Bocage	Commune manquante
 3283	150340	LAPRUGNE	Jean-Michel	Code Insee commune	NA	158	Commune manquante
 3283	150340	LAPRUGNE	Jean-Michel	Code departement	0	03	Commune manquante
-9454	63573	SIMON	Florence	Nom élu	SIMON	SIMON VESELY	Coquille nom
-77838	71186	LEROY	Marie-José	Nom élu	LEROY	LEROY VANDESANDE	Coquille nom
+9454	63573	SIMON	Florence	Nom elu	SIMON	SIMON VESELY	Coquille nom
+77838	71186	LEROY	Marie-José	Nom elu	LEROY	LEROY VANDESANDE	Coquille nom
 44942	92972	FAURE	Martine	Date naissance	30/9/1958	30/9/1948	Coquille date de naissance
 127555	872362	VIENNE	Raymonde	Nom elu	VIENNE	VIENNE HUET	Nom incomplet
 127003	1199476	ERIN-SALLER	Valerie	Nom elu	ERIN-SALLER	SALLER ERIN	Coquille nom
