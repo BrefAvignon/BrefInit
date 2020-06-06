@@ -631,7 +631,7 @@ apply.systematic.corrections <- function(data, type)
 		}
 		tlog(2,"Cleaned ",length(idx)," rows")
 		
-		# complete missing municipality names (when municipality and department codes areavailable)
+		# complete missing municipality names (when municipality and department codes are available)
 		tlog(0,"Completing missing EPCI municipality names")
 		idx <- which(is.na(data[,COL_ATT_COM_NOM]) & !is.na(data[,COL_ATT_COM_CODE]) & !is.na(data[,COL_ATT_DPT_CODE]))
 		if(length(idx)>0)
