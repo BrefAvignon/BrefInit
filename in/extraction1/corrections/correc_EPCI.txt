@@ -434,7 +434,7 @@ NA	NA	NA	NA	Numero SIREN	20006971	200006971	numéro SIREN incorrect (syntaxiquem
 5189	1173238	LALEVEE	Solange	Date naissance	1/1/1960	26/8/1946	Date incorrecte
 110072	23154	MARTIN	Jean-Michel	Date naissance	28/5/1960	29/9/1942	Date incorrecte
 19941	22909	GUINANDIE	Janine	Prenom elu	Janine	Jeanine	Coquille prénom
-26438	259800	GARROT	Rémi	Prenom elu	Rémy	Rémi	Coquille prénom
+26438	259800	GARROT	Rémy	Prenom elu	Rémy	Rémi	Coquille prénom
 40152	436180	CASSAN	Jean	Prenom elu	Jean	Jean-Clément	Prénom incomplet
 40155	436180	CASSAN	Jean	Prenom elu	Jean	Jean Clement	Prénom incomplet
 126858	870560	DEVARIEUX EP. TAILLEPIERR	Sonia	Nom elu	DEVARIEUX EP. TAILLEPIERR	TAILLEPIERRE DEVARIEUX	Nom incorrect
