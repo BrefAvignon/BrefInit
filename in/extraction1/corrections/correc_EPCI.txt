@@ -448,11 +448,11 @@ NA	NA	NA	NA	Numero SIREN	20006971	200006971	numéro SIREN incorrect (syntaxiquem
 10008	149275	BOCQUILLON	Robert	Date debut fonction	21/4/2001	9/3/2008	Date incorrecte
 9624	892219	CHARLOT FAUCHEUX	Sylvie	Date fin fonction	22/3/2014	8/3/2008	Date incorrecte
 10004	149272	DEMORGNY	Patrick	Date debut fonction	11/1/2003	9/3/2008	Date incorrecte
-100450	6210	SALLES	Jean-Marie	Date fin fonction	22/3/2014	8/3/2008	Date incorrecte
+13928	6210	SALLES	Jean-Marie	Date fin fonction	22/3/2014	8/3/2008	Date incorrecte
 32119	944579	BERNON	Jean-Pierre	ID RNE	944579	NA	Ligne incorrecte
-2746	142820	MALSAND	Régis	Date fin mandat	16/4/2010	8/3/2008	Date incorrecte
-2746	142820	MALSAND	Régis	Motif fin mandat	DV	FM	Date incorrecte
-2746	142820	MALSAND	Régis	Date fin fonction	22/3/2014	8/3/2008	Date incorrecte
+32746	142820	MALSAND	Régis	Date fin mandat	16/4/2010	8/3/2008	Date incorrecte
+32746	142820	MALSAND	Régis	Motif fin mandat	DV	FM	Date incorrecte
+32746	142820	MALSAND	Régis	Date fin fonction	22/3/2014	8/3/2008	Date incorrecte
 32550	945471	FILLET	Pierre-Louis	Date debut fonction	10/4/2008	17/4/2010	Date incorrecte
 37890	1255119	MARCHETTI	François-Marie	Date debut fonction	30/7/2014	23/6/2015	Date incorrecte
 43333	162027	SABAROT	Henri	Date debut fonction	10/4/2008	11/4/2011	Date incorrecte
