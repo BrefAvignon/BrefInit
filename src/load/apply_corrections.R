@@ -2242,7 +2242,7 @@ shorten.overlapping.functions <- function(data, type, tolerance=1)
 		# process each unique position
 		tlog.start.loop(2,length(unique.pos),"Processing each unique position")
 		for(p in 1:length(unique.pos))
-		{	tlog.loop(4,p,"Processing position ",unique.pos[p], "(",p,"/",length(unique.pos),")")
+		{	tlog.loop(4,p,"Processing function position ",unique.pos[p], "(",p,"/",length(unique.pos),")")
 			
 			# get the corresponding rows
 			idx <- which(data.pos==unique.pos[p])
@@ -2629,4 +2629,3 @@ fix.mdtfct.dates <- function(data, election.file, series.file, type, strict)
 	#stop()
 	return(data)
 }
-
