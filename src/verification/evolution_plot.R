@@ -472,7 +472,7 @@ plot.pers.time <- function(data, out.folder, type)
 	
 	# set up parameters to cover various time periods
 	focus.date <- as.Date("2000/1/1")
-	if(type=="CD" || type=="DE")
+	if(type=="DE")
 		focus.date <- as.Date("1978/1/1")
 	else if(type=="S")
 		focus.date <- as.Date("1957/1/1")
