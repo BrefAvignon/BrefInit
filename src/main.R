@@ -37,11 +37,3 @@ source("src/common/include.R")
 # >> pourtant, on trouve dans la BD S ou AN toutes les lignes présentent dans le RNE, donc il ne devrait pas y avoir de pb...
 #    et pr députés, on s'assure de ne pas avoir un poste occupé par plusieurs personnes à la fois...
 
-# TODO
-# - tester l'unicité des nouveaux ids dans la table fusionnée (AN, Senat, PE, etc.)
-# - vérifier que la subst des noms de partis a marché dans CM
-#   >> dupl.nuances <- c("RDG"="PRG", "M-NC"="MAJ")
-
-# TODO table fusionnée
-# - compléter les champs parfois vides (données perso ? autres ?)
-

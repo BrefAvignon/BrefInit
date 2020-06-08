@@ -261,6 +261,8 @@ tlog(2,"Actual dimensions of the full table: ",paste(dim(data),collapse="x"))
 data <- merge.similar.rows(data)
 # add missing ids
 data <- complete.missing.ids(data)
+# add missing personal information
+data <- complete.missing.persinf(data)
 
 
 

@@ -2580,6 +2580,51 @@ complete.missing.ids <- function(data)
 
 
 #############################################################################################
+# This function is meant to be applied only to the merged (unique) table. It detects missing
+# personal information and complete them based on other occurrences of the same person.
+#
+# data: merged table.
+#
+# returns: the same table, but with completed personal information.
+#############################################################################################
+complete.missing.persinf <- function(data)
+{	tlog(0,"Completing missing personal information whenever possible")
+	val.cols <- c(COL_ATT_ELU_NAIS_COM, COL_ATT_ELU_NAIS_DPT, COL_ATT_ELU_NAIS_PAYS, COL_ATT_ELU_DDD, COL_ATT_ELU_NAT)
+	
+	# list of unique universal ids
+	unique.ids <- unique(data[,COL_ATT_ELU_ID])
+	
+	# build a reference table
+	map <- matrix(as.character(NA), nrow=length(unique.ids), ncol=length(val.cols))
+	colnames(map) <- val.cols
+	rownames(map) <- unique.ids
+	for(i in 1:length(val.cols))
+	{	idx <- which(!is.na(data[,val.cols[i]]))
+		ids <- data[idx,COL_ATT_ELU_ID]
+		map[ids,val.cols[i]] <- data[idx,val.cols[i]]
+	}
+	
+	# update table
+	data.vals <- t(future_sapply(1:nrow(data), function(r) map[data[r,COL_ATT_ELU_ID],]))
+	data.vals0 <- data.vals
+	data.vals0[is.na(data.vals0)] <- "NA"
+	data0 <- data[,val.cols]
+	data0[is.na(data0)] <- "NA"
+	treated.rows <- which(apply(data.vals0[,val.cols]!=data0[,val.cols], 1, any))
+	data[,val.cols] <- data.vals
+	data[treated.rows, COL_ATT_CORREC_INFO] <- TRUE
+	
+	tlog(2,"CHECKPOINT 19: completed a total of ",length(treated.rows)," rows for the whole table (",(100*length(treated.rows)/nrow(data)),"%)")
+	tlog(2, "Number of rows remaining: ",nrow(data))
+	update.stat.table(s.nbr=19, s.name="Complete missing personal information", del.nbr=0, mod.nbr=length(treated.rows), add.nbr=0, size=nrow(data))
+	
+	return(data)
+}
+
+
+
+
+#############################################################################################
 # Performs various corrections on the dates defining mandates and functions: 
 # 1) Adjusts function dates so that they are contained inside the corresponding mandate period.
 # 2) Rounds mandate and function dates to match election dates, when approximately equal.
