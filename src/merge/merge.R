@@ -106,14 +106,14 @@ tlog(2,"M ids not matching CM ids: ",non.matching,"/",length(m.ids), "(",non.mat
 
 #############################################################################################
 # merge M in CM
-tlog(0,"Merging M and CM")
+tlog(0,"Merging M and CM")																	# 1,224,194 vs. 114,193
 cm.data <- merge.municipal(m.data, cm.data)
 	write.cached.table(data=cm.data, cache.file=paste0(FILE_CACHE_CM,"_01.txt"))
-tlog(2,"Size of CM after merging with M: ",nrow(cm.data)," rows")
+tlog(2,"Size of CM after merging with M: ",nrow(cm.data)," rows")							# 1,224,198
 cm.data <- merge.overlapping.mandates(data=cm.data, type="CM", strict=FALSE, log=TRUE)
-	# 221264 1002906
+	# 221,264 1,002,906
 	write.cached.table(data=cm.data, cache.file=paste0(FILE_CACHE_CM,"_02.txt"))
-	tlog(2,"Size of CM after merging overlapping mandates: ",nrow(cm.data)," rows")
+	tlog(2,"Size of CM after merging overlapping mandates: ",nrow(cm.data)," rows")			# 1,002,829
 cm.data <- split.long.mandates(data=cm.data, type="CM", election.file=FILE_VERIF_DATES_CM)
 	write.cached.table(data=cm.data, cache.file=paste0(FILE_CACHE_CM,"_03.txt"))
 	tlog(2,"Size of CM after splitting long mandates: ",nrow(cm.data)," rows")

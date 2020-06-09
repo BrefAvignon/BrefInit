@@ -191,9 +191,14 @@ merge.municipal <- function(m.data, cm.data)
 	tlog.start.loop(2, nrow(m.data), "Merging the rows of both tables based on the matches")
 	res <- m.data[NULL,]
 	for(r in 1:nrow(m.data))
-	{	tlog.loop(4, r, "Merging rows ",r,"/",nrow(m.data))
+	{	tlog.loop(4, r, "Merging rows M=",r," and CM=",m.map[r]," (",r,"/",nrow(m.data),")")
 		tab <- rbind(m.data[r,], cm.data[m.map[r],])
 		tab <- merge.overlapping.mandates(data=tab, type="M", strict=FALSE, log=FALSE)
+if(all(is.na(tab[1,])))
+{	tlog(6, format.row(m.data[r,]))
+	tlog(6, format.row(cm.data[m.map[r],]))
+	stop()
+}
 		res <- rbind(res,tab)
 	}
 	tlog.end.loop(4, "Process over")
