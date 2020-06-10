@@ -2595,22 +2595,20 @@ complete.missing.persinf <- function(data)
 	unique.ids <- unique(data[,COL_ATT_ELU_ID])
 	
 	# build a reference table
-	map <- matrix(as.character(NA), nrow=length(unique.ids), ncol=length(val.cols))
-	colnames(map) <- val.cols
+	map <- data[1:length(unique.ids),val.cols]
+	map[1:nrow(map),1:ncol(map)] <- NA
 	rownames(map) <- unique.ids
 	for(i in 1:length(val.cols))
 	{	idx <- which(!is.na(data[,val.cols[i]]))
-		ids <- data[idx,COL_ATT_ELU_ID]
+		ids <- match(data[idx,COL_ATT_ELU_ID],unique.ids)
 		map[ids,val.cols[i]] <- data[idx,val.cols[i]]
 	}
 	
 	# update table
-	data.vals <- t(future_sapply(1:nrow(data), function(r) map[data[r,COL_ATT_ELU_ID],]))
-	data.vals0 <- data.vals
-	data.vals0[is.na(data.vals0)] <- "NA"
-	data0 <- data[,val.cols]
-	data0[is.na(data0)] <- "NA"
-	treated.rows <- which(apply(data.vals0[,val.cols]!=data0[,val.cols], 1, any))
+	data.vals <- map[data[,COL_ATT_ELU_ID],]
+	treated.rows <- which(
+			apply(!is.na(data.vals[,val.cols]) & is.na(data[,val.cols])
+					| data.vals[,val.cols]!=data[,val.cols], 1, any))
 	data[,val.cols] <- data.vals
 	data[treated.rows, COL_ATT_CORREC_INFO] <- TRUE
 	
