@@ -175,7 +175,7 @@ merge.municipal <- function(m.data, cm.data)
 	cm.unmatched <- which(is.na(cm.map))
 	tlog(4,"Now ",length(m.unmatched),"/",nrow(m.data)," unmatched rows in M and ",length(cm.unmatched),"/",nrow(cm.data)," in CM")
 	# display problems
-	#i=3;print(rbind(m.data[m.unmatched[i],], cm.data[which(cm.data[,COL_ATT_ELU_ID]==m.data[m.unmatched[i],COL_ATT_ELU_ID]),]))
+	#i=1;print(rbind(m.data[m.unmatched[i],], cm.data[which(cm.data[,COL_ATT_ELU_ID]==m.data[m.unmatched[i],COL_ATT_ELU_ID]),]))
 	#i=1;print(rbind(cm.data[cm.unmatched[i],], m.data[which(m.data[,COL_ATT_ELU_ID]==cm.data[cm.unmatched[i],COL_ATT_ELU_ID]),]))
 	
 	## check multiple matches (is the same row mapped several times?)
@@ -186,7 +186,7 @@ merge.municipal <- function(m.data, cm.data)
 	#cm.tt <- table(cm.map)
 	#cm.rs <- as.integer(names(cm.tt[which(cm.tt>1)]))
 	##r=1;print(rbind(cm.data[which(cm.map==cm.rs[r]),],m.data[cm.rs[r],]))
-
+	
 	# matching over, merging the rows
 	tlog.start.loop(2, nrow(m.data), "Merging the rows of both tables based on the matches")
 	res <- m.data[NULL,]
@@ -194,11 +194,11 @@ merge.municipal <- function(m.data, cm.data)
 	{	tlog.loop(4, r, "Merging rows M=",r," and CM=",m.map[r]," (",r,"/",nrow(m.data),")")
 		tab <- rbind(m.data[r,], cm.data[m.map[r],])
 		tab <- merge.overlapping.mandates(data=tab, type="M", strict=FALSE, log=FALSE)
-if(all(is.na(tab[1,])))
-{	tlog(6, format.row(m.data[r,]))
-	tlog(6, format.row(cm.data[m.map[r],]))
-	stop()
-}
+#		if(all(is.na(tab[1,])))
+#		{	tlog(6, format.row(m.data[r,]))
+#			tlog(6, format.row(cm.data[m.map[r],]))
+#			stop("ERROR: empty row")
+#		}
 		res <- rbind(res,tab)
 	}
 	tlog.end.loop(4, "Process over")
