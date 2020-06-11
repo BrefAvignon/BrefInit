@@ -106,24 +106,40 @@ tlog(2,"M ids not matching CM ids: ",non.matching,"/",length(m.ids), "(",non.mat
 
 #############################################################################################
 # merge M in CM
-tlog(0,"Merging M and CM")																	# 1,224,194 vs. 114,193
-cm.data <- merge.municipal(m.data, cm.data)
-	write.cached.table(data=cm.data, cache.file=paste0(FILE_CACHE_CM,"_01.txt"))
-tlog(2,"Size of CM after merging with M: ",nrow(cm.data)," rows")							# 1,224,196
-cm.data <- merge.overlapping.mandates(data=cm.data, type="CM", strict=FALSE, log=TRUE)
-	# 221,264 1,002,906
-	write.cached.table(data=cm.data, cache.file=paste0(FILE_CACHE_CM,"_02.txt"))
-	tlog(2,"Size of CM after merging overlapping mandates: ",nrow(cm.data)," rows")			# 1,002,828
-cm.data <- split.long.mandates(data=cm.data, type="CM", election.file=FILE_VERIF_DATES_CM)
-	write.cached.table(data=cm.data, cache.file=paste0(FILE_CACHE_CM,"_03.txt"))
-	tlog(2,"Size of CM after splitting long mandates: ",nrow(cm.data)," rows")				# 1,224,193
-cm.data <- shorten.overlapping.functions(cm.data, type="CM", tolerance=8)
-	write.cached.table(data=cm.data, cache.file=paste0(FILE_CACHE_CM,"_04.txt"))
-	tlog(2,"Size of CM after shortening overlapping functions: ",nrow(cm.data)," rows")		# 1,224,193
-cm.data <- remove.micro.mdtfcts(cm.data, tolerance=7)
-	write.cached.table(data=cm.data, cache.file=paste0(FILE_CACHE_CM,"_05.txt"))
-	tlog(2,"Size of CM after removing micro-mandates: ",nrow(cm.data)," rows")				# 1,224,193
-tlog(2,"Size of CM after post-processing: ",nrow(cm.data)," rows") 
+tlog(0,"Merging M and CM")
+if(correct.data)
+{	# 1,224,194 vs. 114,193
+	cm.data <- merge.municipal(m.data, cm.data)
+		#write.cached.table(data=cm.data, cache.file=paste0(FILE_CACHE_CM,"_01.txt"))
+	tlog(2,"Size of CM after merging with M: ",nrow(cm.data)," rows")
+	
+	# 1,224,196
+	cm.data <- merge.overlapping.mandates(data=cm.data, type="CM", strict=FALSE, log=TRUE)
+		# 221,264 1,002,906
+		#write.cached.table(data=cm.data, cache.file=paste0(FILE_CACHE_CM,"_02.txt"))
+		tlog(2,"Size of CM after merging overlapping mandates: ",nrow(cm.data)," rows")
+		
+	# 1,002,828
+	cm.data <- split.long.mandates(data=cm.data, type="CM", election.file=FILE_VERIF_DATES_CM)
+		#write.cached.table(data=cm.data, cache.file=paste0(FILE_CACHE_CM,"_03.txt"))
+		tlog(2,"Size of CM after splitting long mandates: ",nrow(cm.data)," rows")
+	
+	# 1,224,193
+	cm.data <- shorten.overlapping.functions(cm.data, type="CM", tolerance=8)
+		#write.cached.table(data=cm.data, cache.file=paste0(FILE_CACHE_CM,"_04.txt"))
+		tlog(2,"Size of CM after shortening overlapping functions: ",nrow(cm.data)," rows")
+		
+	# 1,224,193
+	cm.data <- remove.micro.mdtfcts(cm.data, tolerance=7)
+		#write.cached.table(data=cm.data, cache.file=paste0(FILE_CACHE_CM,"_05.txt"))
+		tlog(2,"Size of CM after removing micro-mandates: ",nrow(cm.data)," rows")
+		
+	# 1,224,193
+	tlog(2,"Size of CM after post-processing: ",nrow(cm.data)," rows") 
+}else
+{	# just put everything without checking
+	cm.data <- rbind(cm.data, m.data)
+}
 
 
 
@@ -250,19 +266,21 @@ if(complete.data)
 
 # merge over
 tlog(0,"Merge over")
-tlog(2,"Expected dimensions of the full table: ",dim(cd.data)[1]+dim(cm.data)[1]+dim(cr.data)[1]+dim(d.data)[1]+dim(de.data)[1]+dim(epci.data)[1]+dim(m.data)[1]+dim(s.data)[1],"x",length(cols))
-tlog(2,"Actual dimensions of the full table: ",paste(dim(data),collapse="x"))
+tlog(2,"Dimensions of the full table: ",paste(dim(data),collapse="x"))
+tlog(2,"Proportions of mandate types: ");print(table(data[,COL_ATT_MDT_NOM]))
 
 
 
 
 #############################################################################################
-# merge rows considered as compatible
-data <- merge.similar.rows(data)
-# add missing ids
-data <- complete.missing.ids(data)
-# add missing personal information
-data <- complete.missing.persinf(data)
+if(complete.data)
+{	# merge rows considered as compatible
+	data <- merge.similar.rows(data)
+	# add missing ids
+	data <- complete.missing.ids(data)
+	# add missing personal information
+	data <- complete.missing.persinf(data)
+}
 
 
 
