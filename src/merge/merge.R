@@ -21,7 +21,7 @@ source("src/verification/test_duplicates.R")
 
 #############################################################################################
 # set up parameters
-extraction <- 1 		# 1 or 2
+extraction <- 1 		# version 1 or 2
 correct.data <- TRUE	# load raw or corrected data
 complete.data <- TRUE	# whether to use secondary source (except EPCI)
 
