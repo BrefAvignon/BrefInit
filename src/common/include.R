@@ -1,5 +1,5 @@
 #############################################################################################
-# Loads all the script of this folder, in the appropriate order.
+# Loads all the script of this project, in the appropriate order.
 # 
 # 07/2019 Vincent Labatut
 #
