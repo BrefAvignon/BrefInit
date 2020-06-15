@@ -2,6 +2,7 @@
 # Install all the packages necessary to these scripts.
 # 
 # 09/2019 Vincent Labatut
+# source("src/install.R")
 #############################################################################################
 
 
