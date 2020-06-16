@@ -329,4 +329,4 @@ Row	Id RNE	Nom	Prenom	Attribut	ValAvt	ValApr	Commentaire
 73221	1054282	VANHILLE	Florence	Date debut fonction	23/3/2014	19/7/2017	Date incorrecte
 17658	21668	BOLVIN	Jean-Michel	Date debut fonction	28/3/2014	2/1/2017	Date incorrecte
 105339	164884	TAMISIER	Monique	Nom elu	TAMISIER	TAMISIER JEAN	Nom incomplet
-113181	1195430	MARCELIN	Charles- Alfred	ID RNE	1195430	Mandat incorrect
+113181	1195430	MARCELIN	Charles- Alfred	ID RNE	1195430	NA	Mandat incorrect
