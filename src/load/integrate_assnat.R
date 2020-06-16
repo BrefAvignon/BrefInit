@@ -100,7 +100,7 @@ assembly.convert.xml <- function()
 		tlog(6, "Name: ",perso.tab[i,COL_ATT_ELU_PRENOM]," ",perso.tab[i,COL_ATT_ELU_NOM])
 #		tlog(6, "trigramme: \"",xmlValue(getNodeSet(doc,"/d:acteur/d:etatCivil/d:ident/d:trigramme", c(d="http://schemas.assemblee-nationale.fr/referentiel"))[[1]]),"\"")
 		
-		# retrieve bith-related info
+		# retrieve birth-related info
 		perso.tab[i,COL_ATT_ELU_NAIS_DATE] <- xmlValue(getNodeSet(doc,"/d:acteur/d:etatCivil/d:infoNaissance/d:dateNais", c(d="http://schemas.assemblee-nationale.fr/referentiel"))[[1]])
 		tlog(6, "Birth date: ",perso.tab[i,COL_ATT_ELU_NAIS_DATE])
 		perso.tab[i,COL_ATT_ELU_NAIS_COM] <- xmlValue(getNodeSet(doc,"/d:acteur/d:etatCivil/d:infoNaissance/d:villeNais", c(d="http://schemas.assemblee-nationale.fr/referentiel"))[[1]])
@@ -304,8 +304,10 @@ assembly.load.general.table <- function(cache, data)
 		indiv.last.names <- trimws(normalize.proper.nouns(remove.diacritics(indiv.table[,COL_ATT_ELU_NOM])))
 #indiv.last.names <- trimws(normalize.proper.nouns(remove.diacritics(iconv(x=indiv.table[,COL_ATT_ELU_NOM], from="Latin1", to="UTF8"))))
 		lastname.conv <- load.conversion.file(FILE_ASSEMB_CONV_NOMSFAM)
-		idx <- match(indiv.last.names, lastname.conv[, COL_CORREC_VALAVT])
+		idx <- match(indiv.table[,COL_ATT_ELU_ID_ASSEMB], lastname.conv[, COL_ATT_ELU_ID_ASSEMB])
+		#idx <- match(indiv.last.names, lastname.conv[, COL_CORREC_VALAVT])
 		idx2 <- which(!is.na(idx))
+if(any(indiv.last.names[idx2]!=lastname.conv[idx[idx2], COL_CORREC_VALAVT])) {print(cbind(indiv.last.names[idx2], lastname.conv[idx[idx2], COL_CORREC_VALAVT]));stop()}		
 		indiv.last.names[idx2] <- lastname.conv[idx[idx2], COL_CORREC_VALAPR]
 		
 		# normalize first names

@@ -261,8 +261,7 @@ Row	Id RNE	Nom	Prenom	Attribut	ValAvt	ValApr	Commentaire
 16018	1194546	LEMARCHAND	Christophe	Motif fin mandat	FM	NA	Information incorrecte
 16018	1194546	LEMARCHAND	Christophe	Date fin fonction	31/12/2016	3/2/2018	Date incorrecte
 16018	1194546	LEMARCHAND	Christophe	Motif fin fonction	FM	DV	Information incorrecte
-16019	1194546	LEMARCHAND	Christophe	Date fin mandat	8/4/2018	NA	Information incorrecte
-16019	1194546	LEMARCHAND	Christophe	Motif fin fonction	NA	DV	Information manquante
+16019	1194546	LEMARCHAND	Christophe	ID RNE	1194546	NA	Ligne redondante
 17248	1243452	ESTEBAN	Philippe	Date fin fonction	NA	1/1/2017	Information manquante
 17248	1243452	ESTEBAN	Philippe	Motif fin fonction	NA	DO	Information manquante
 17248	1243452	ESTEBAN	Philippe	Motif fin mandat	NA	DO	Information manquante
@@ -329,3 +328,5 @@ Row	Id RNE	Nom	Prenom	Attribut	ValAvt	ValApr	Commentaire
 57412	156769	MARSAULT	Joseph	Date fin fonction	31/12/2015	14/12/2015	Date incorrecte
 73221	1054282	VANHILLE	Florence	Date debut fonction	23/3/2014	19/7/2017	Date incorrecte
 17658	21668	BOLVIN	Jean-Michel	Date debut fonction	28/3/2014	2/1/2017	Date incorrecte
+105339	164884	TAMISIER	Monique	Nom elu	TAMISIER	TAMISIER JEAN	Nom incomplet
+113181	1195430	MARCELIN	Charles- Alfred	ID RNE	1195430	Mandat incorrect

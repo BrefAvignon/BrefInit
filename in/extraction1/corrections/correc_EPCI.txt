@@ -432,7 +432,7 @@ NA	NA	NA	NA	Numero SIREN	20006971	200006971	numéro SIREN incorrect (syntaxiquem
 21611	146336	GIRAUDEAU	NA	Prenom elu	NA	Marie-Danielle	Prénom manquant
 80178	45814	HUBART ÉPOUSE PENISSON	NA	Prenom elu	NA	Marie-Danielle	Prénom manquant
 5189	1173238	LALEVEE	Solange	Date naissance	1/1/1960	26/8/1946	Date incorrecte
-110072	23154	MARTIN	Jean-Michel	Date naissance	28/5/1960	29/9/1942	Date incorrecte
+110072	23154	MARTIN	Jean-Michel	ID RNE	23154	89879	Id incorrect
 19941	22909	GUINANDIE	Janine	Prenom elu	Janine	Jeanine	Coquille prénom
 26438	259800	GARROT	Rémy	Prenom elu	Rémy	Rémi	Coquille prénom
 40152	436180	CASSAN	Jean	Prenom elu	Jean	Jean-Clément	Prénom incomplet
@@ -470,3 +470,6 @@ NA	NA	NA	NA	Numero SIREN	20006971	200006971	numéro SIREN incorrect (syntaxiquem
 116539	164543	BATY	Charles	Date debut fonction	8/3/2008	2/6/2008	Date incorrece
 121553	1150603	BECHEREAU	Bernard	Date debut fonction	30/10/2009	13/10/2011	Date incorrece
 124643	163155	GAUTIER	Jacques	Date debut fonction	11/5/2010	5/5/2011	Date incorrece
+46318	977708	GESTIN	Nathalie	Nom elu	GESTIN	POULARD GESTIN	Nom incomplet
+46319	977708	GESTIN	Nathalie	Nom elu	GESTIN	POULARD GESTIN	Nom incomplet
+77832	71289	CORNUT	Dominique	Nom elu	CORNUT	CREPIN CORNUT	Nom incomplet

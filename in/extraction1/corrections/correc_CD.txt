@@ -186,3 +186,8 @@ NA	NA	NA	NA	Libelle canton	MARSEILLE VAUBAN	VAUBAN	Nom existant déjà sous une 
 11376	1489779	EVRARD	Marie-Agnès	Libelle fonction	1er Secrétaire	2ème Secrétaire	Multiples 1er secrétaires
 11424	1505520	MAUDET	Catherine	Libelle fonction	1er Secrétaire	4ème Secrétaire	Multiples 1er secrétaires
 11442	1490679	QUENTIN	Clarisse	Libelle fonction	1er Secrétaire	3ème Secrétaire	Multiples 1er secrétaires
+2268	833847	DESCARGUES	Jacques	Prenom elu	Jacques	Jacques Guy	Prénom incomplet
+2269	833847	DESCARGUES	Jacques Guy Mar	Prenom elu	Jacques Guy Mar	Jacques Guy	Prénom incorrect
+12296	842125	MARC	Jeanny	Nom elu	MARC	MATHIASIN MARC	Nom incomplet
+12297	842125	MARC	Jeanny	Nom elu	MARC	MATHIASIN MARC	Nom incomplet
+12298	842125	MARC	Jeanny	Nom elu	MARC	MATHIASIN MARC	Nom incomplet
