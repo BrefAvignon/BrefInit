@@ -68,5 +68,5 @@ source("src/load/load_rne.R")
 CACHE_DATA <- TRUE
 
 # parallel computing options
-options(future.globals.maxSize=800*1024^2)	# max limit for future global env is 650 MB
+options(future.globals.maxSize=800*1024^2)	# max limit for future global env is 800 MB
 plan(multiprocess, workers=CORE.NBR/2)		# set the number of processor cores used
