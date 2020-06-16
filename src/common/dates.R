@@ -195,3 +195,42 @@ date.intersect <- function(start1, end1, start2, end2)
 	
 	return(result)
 }
+
+
+
+
+#############################################################################################
+# Returns the duration, in days, of the intersection between the periods, or NA if they do
+# not intersect.
+#
+# start1: start date of the first period.
+# end1: end date of the first period.
+# start2: start date of the second period.
+# end2: end date of the second period.
+#
+# returns: duration of the intersection, or NA if there is none.
+#############################################################################################
+date.intersect.val <- function(start1, end1, start2, end2)
+{	#cat(format(start1),"--",format(end1)," vs ",format(start2),"--",format(end2),"\n",sep="")
+	
+	if(is.na(start1))
+		start1 <- min(c(start1,end1,start2,end2), na.rm=TRUE)
+	if(is.na(start2))
+		start2 <- min(c(start1,end1,start2,end2), na.rm=TRUE)
+	if(is.na(end1))
+		end1 <- max(c(start1,end1,start2,end2), na.rm=TRUE)
+	if(is.na(end2))
+		end2 <- max(c(start1,end1,start2,end2), na.rm=TRUE)
+	
+	result <- min(end1,end2) - max(start1,start2)
+	if(result<0)
+		result <- NA
+	
+	# tests
+	#date.intersect.val(as.Date("2000/1/1"),as.Date("2002/1/1"),as.Date("2004/1/1"),as.Date("2006/1/1"))
+	#date.intersect.val(as.Date("2000/1/1"),as.Date("2005/1/1"),as.Date("2004/1/1"),as.Date("2006/1/1"))
+	#date.intersect.val(as.Date("2000/1/1"),as.Date("2002/1/1"),as.Date("2001/1/1"),as.Date("2006/1/1"))
+	#date.intersect.val(as.Date("2000/1/1"),as.Date("2012/1/1"),as.Date("2004/1/1"),as.Date("2006/1/1"))
+	
+	return(result)
+}
