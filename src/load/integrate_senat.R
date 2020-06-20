@@ -580,14 +580,14 @@ senate.convert.mandate.table <- function(general.table, elect.table, type)
 		
 		# retrieve department codes and ids
 		dpt.table <- read.table(
-				file=FILE_CONV_DPT,			# name of the data file
-				header=TRUE, 				# look for a header
-				sep="\t", 					# character used to separate columns 
-				check.names=FALSE, 			# don't change the column names from the file
-				comment.char="", 			# ignore possible comments in the content
-				row.names=NULL, 			# don't look for row names in the file
-				quote="", 					# don't expect double quotes "..." around text fields
-				as.is=TRUE					# don't convert strings to factors
+			file=FILE_CONV_DPT,			# name of the data file
+			header=TRUE, 				# look for a header
+			sep="\t", 					# character used to separate columns 
+			check.names=FALSE, 			# don't change the column names from the file
+			comment.char="", 			# ignore possible comments in the content
+			row.names=NULL, 			# don't look for row names in the file
+			quote="", 					# don't expect double quotes "..." around text fields
+			as.is=TRUE					# don't convert strings to factors
 #			fileEncoding="Latin1"		# original tables seem to be encoded in Latin1 (ANSI)
 		)
 		# convert to handle multiple codes/names

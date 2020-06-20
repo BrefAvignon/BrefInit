@@ -421,10 +421,11 @@ apply.adhoc.corrections <- function(data, col.map, correc.file)
 								idx.rm <- c(idx.rm, row)
 							}
 							else
-							{	tlog(4,"Correcting entry: ",paste(correc.table[r,], collapse=";"))
+							{	tlog(4,"Correcting entry: ",format.row(correc.table[r,]))
 								data[row,correc.attr] <- correc.table[r,COL_CORREC_VALAPR]
 								data[idx,correc.col] <- TRUE
 								corrected.rows <- union(corrected.rows,idx)
+								tlog(4,"Corrected entry: ",format.row(correc.table[r,]))
 							}
 						}
 						else
@@ -881,8 +882,8 @@ add.missing.columns <- function(data)
 		colnames(data)[ncol(data)] <- COL_ATT_ELU_ID
 	}
 	
-	# possibly add unique department id column
-	if(COL_ATT_DPT_NOM %in% colnames(data))
+	# possibly add department-related columns
+	if(COL_ATT_DPT_NOM %in% colnames(data) || COL_ATT_DPT_CODE %in% colnames(data))
 	{	# load table of department ids
 		tlog(0,"Loading the table of department ids (",FILE_CONV_DPT,")")
 		dpt.table <- read.table(
@@ -897,7 +898,7 @@ add.missing.columns <- function(data)
 #			fileEncoding="Latin1"		# original tables seem to be encoded in Latin1 (ANSI)
 		)
 		
-		# convert to handle multiple codes/names
+		# convert map to handle multiple codes/names
 		dpt.table.copy <- dpt.table[-(1:nrow(dpt.table)),]
 		for(r in 1:nrow(dpt.table))
 		{	# retrieve info
@@ -913,13 +914,37 @@ add.missing.columns <- function(data)
 		}
 		colnames(dpt.table.copy) <- colnames(dpt.table)
 		
-		# get the appropriate unique ids
-		dpt.idx <- match(data[,COL_ATT_DPT_NOM], dpt.table.copy[,COL_ATT_DPT_NOM])
+		# possibly add department codes
+		if(!(COL_ATT_DPT_CODE %in% colnames(data)))
+		{	tlog(2,"Adding department code column")
+			# get the appropriate codes
+			dpt.idx <- match(data[,COL_ATT_DPT_NOM], dpt.table.copy[,COL_ATT_DPT_NOM])
+			# insert in the table
+			dpt.codes <- data.frame(dpt.table.copy[dpt.idx, COL_ATT_DPT_CODE], stringsAsFactors=FALSE)
+			colnames(dpt.codes) <- COL_ATT_DPT_CODE
+			data <- cbind(data, dpt.codes)
+		}
 		
-		# insert in the table
-		dpt.ids <- data.frame(dpt.table.copy[dpt.idx, COL_ATT_DPT_ID], stringsAsFactors=FALSE)
-		colnames(dpt.ids) <- COL_ATT_DPT_ID
-		data <- cbind(data, dpt.ids)
+		# possibly add department names
+		if(!(COL_ATT_DPT_NOM %in% colnames(data)))
+		{	tlog(2,"Adding department name column")
+			# get the appropriate names
+			dpt.idx <- match(data[,COL_ATT_DPT_CODE], dpt.table.copy[,COL_ATT_DPT_CODE])
+			# insert in the table
+			dpt.names <- data.frame(dpt.table.copy[dpt.idx, COL_ATT_DPT_NOM], stringsAsFactors=FALSE)
+			colnames(dpt.names) <- COL_ATT_DPT_NOM
+			data <- cbind(data, dpt.names)
+		}
+		
+		# add department unique ids
+		{	tlog(2,"Adding department unique id column")
+			# get the appropriate unique ids
+			dpt.idx <- match(data[,COL_ATT_DPT_NOM], dpt.table.copy[,COL_ATT_DPT_NOM])
+			# insert in the table
+			dpt.ids <- data.frame(dpt.table.copy[dpt.idx, COL_ATT_DPT_ID], stringsAsFactors=FALSE)
+			colnames(dpt.ids) <- COL_ATT_DPT_ID
+			data <- cbind(data, dpt.ids)
+		}
 	}
 	
 	# possibly add unique canton id column		
