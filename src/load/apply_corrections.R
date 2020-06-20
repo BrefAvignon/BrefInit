@@ -402,11 +402,12 @@ apply.adhoc.corrections <- function(data, col.map, correc.file)
 								| is.na(data[,correc.attr]) & is.na(correc.table[r,COL_CORREC_VALAVT]))
 				)
 				
-				# there should be exactly one
+				# cannot find any matching row
 				if(length(idx)<1)
 				{	tlog(4,"Could not find a correction: ",paste(correc.table[r,], collapse=";"))
 					stop(paste0("Could not find a correction: ",paste(correc.table[r,], collapse=";")))
 				}
+				# found too many matching rows
 				else if(length(idx)>1)
 				{	if(is.na(row))
 					{	tlog(4,"A correction matches several cases (",paste(idx, collapse=","),"), but no row is specified: ",paste(correc.table[r,], collapse=";"))
@@ -422,11 +423,11 @@ apply.adhoc.corrections <- function(data, col.map, correc.file)
 							}
 							else
 							{	tlog(4,"Correcting entry: ",paste(correc.table[r,], collapse=";"))
-								tlog(6,"Before correction: ",paste(data[idx,], collapse=";"))
-								data[idx,correc.attr] <- correc.table[r,COL_CORREC_VALAPR]
-								data[idx,correc.col] <- TRUE
-								corrected.rows <- union(corrected.rows,idx)
-								tlog(6,"After correction: ",paste(data[idx,], collapse=";"))
+								tlog(6,"Before correction: ",paste(data[row,], collapse=";"))
+								data[row,correc.attr] <- correc.table[r,COL_CORREC_VALAPR]
+								data[row,correc.col] <- TRUE
+								corrected.rows <- union(corrected.rows,row)
+								tlog(6,"After correction: ",paste(data[row,], collapse=";"))
 							}
 						}
 						else
@@ -435,6 +436,7 @@ apply.adhoc.corrections <- function(data, col.map, correc.file)
 						}
 					}
 				}
+				# found exactly one matching row
 				else
 				{	if(!is.na(row) && row!=idx)
 					{	tlog(4,"The specified row (",row,") does not correspond to the one matching the criteria (",idx,")")
