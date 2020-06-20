@@ -421,11 +421,11 @@ apply.adhoc.corrections <- function(data, col.map, correc.file)
 								idx.rm <- c(idx.rm, row)
 							}
 							else
-							{	tlog(4,"Correcting entry: ",format.row(correc.table[r,]))
+							{	tlog(4,"Correcting entry: ",paste(correc.table[r,], collapse=";"))
 								data[row,correc.attr] <- correc.table[r,COL_CORREC_VALAPR]
 								data[idx,correc.col] <- TRUE
 								corrected.rows <- union(corrected.rows,idx)
-								tlog(4,"Corrected entry: ",format.row(correc.table[r,]))
+								tlog(4,"Corrected entry: ",paste(correc.table[r,], collapse=";"))
 							}
 						}
 						else
@@ -452,6 +452,7 @@ apply.adhoc.corrections <- function(data, col.map, correc.file)
 							data[idx,correc.attr] <- correc.table[r,COL_CORREC_VALAPR]
 							data[idx,correc.col] <- TRUE 
 							corrected.rows <- union(corrected.rows,idx)
+							tlog(4,"Corrected entry: ",paste(correc.table[r,], collapse=";"))
 						}
 					}
 				}
