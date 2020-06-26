@@ -3,7 +3,7 @@
 # 
 # 03/2020 Vincent Labatut
 #
-# setwd("C:/Users/Vincent/Eclipse/workspaces/Extraction/Datapol")
+# setwd("C:/Users/Vincent/Eclipse/workspaces/Extraction/BrefInit")
 # source("src/verification/check_All.R")
 #############################################################################################
 source("src/common/include.R")

@@ -4,7 +4,7 @@
 # 10/2019 Vincent Labatut
 #
 # source("src/merge/merge.R")
-# setwd("C:/Users/Vincent/Eclipse/workspaces/Extraction/Datapol")
+# setwd("C:/Users/Vincent/Eclipse/workspaces/Extraction/BrefInit")
 #############################################################################################
 source("src/common/include.R")
 source("src/merge/merge_municipal.R")

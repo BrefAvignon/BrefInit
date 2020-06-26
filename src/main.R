@@ -6,8 +6,8 @@
 # 
 # 07/2019 Vincent Labatut
 #
-# setwd("C:/Users/Vincent/Eclipse/workspaces/Extraction/Datapol")
-# setwd("eclipse/workspaces/Extraction/Datapol")
+# setwd("C:/Users/Vincent/Eclipse/workspaces/Extraction/BrefInit")
+# setwd("eclipse/workspaces/Extraction/BrefInit")
 #############################################################################################
 source("src/common/include.R")
 

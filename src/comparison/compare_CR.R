@@ -3,7 +3,7 @@
 # 
 # 11/2019 Vincent Labatut
 #
-# setwd("C:/Users/Vincent/Eclipse/workspaces/Extraction/Datapol")
+# setwd("C:/Users/Vincent/Eclipse/workspaces/Extraction/BrefInit")
 # source("src/comparison/compare_CR.R")
 #############################################################################################
 source("src/common/include.R")

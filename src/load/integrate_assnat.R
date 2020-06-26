@@ -3,7 +3,7 @@
 # 
 # 02/2020 Vincent Labatut
 #
-# setwd("C:/Users/Vincent/Eclipse/workspaces/Extraction/Datapol")
+# setwd("C:/Users/Vincent/Eclipse/workspaces/Extraction/BrefInit")
 # source("src/load/integrate_assnat.R")
 #############################################################################################
 

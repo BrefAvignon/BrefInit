@@ -3,7 +3,7 @@
 # 
 # 07/2019 Vincent Labatut
 #
-# setwd("C:/Users/Vincent/Eclipse/workspaces/Extraction/Datapol")
+# setwd("C:/Users/Vincent/Eclipse/workspaces/Extraction/BrefInit")
 # source("src/verification/check_CM.R")
 # nohup R --vanilla < src/verification/check_CM.R > termout.evol.txt &
 #############################################################################################

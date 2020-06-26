@@ -3,7 +3,7 @@
 # 
 # 10/2019 Vincent Labatut
 #
-# setwd("C:/Users/Vincent/Eclipse/workspaces/Extraction/Datapol")
+# setwd("C:/Users/Vincent/Eclipse/workspaces/Extraction/BrefInit")
 # source("src/comparison/compare_CM.R")
 # nohup R --vanilla < src/comparison/compare_CM.R > termout.comparison.txt &
 #############################################################################################
