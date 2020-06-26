@@ -54,7 +54,8 @@ In order to load the tables and generate the description files:
 
 
 ## Todo
-* Update the data link after the end of the embargo
+* Update the data link after the end of the embargo.
+* Update HAL reference of the report.
 
 
 ## References
