@@ -14,11 +14,21 @@ source("src/common/include.R")
 
 
 
-# analyse de séquences
-# - TODO convertir la table pour qu'elle soit exploitable pour l'analyse de séquences
-# - gestion temps/evts
-#   - évt sans accumulation (pas de distinction entre mandats consécutifs)
-#   - evt avec accu (on distingue mandats consécutifs)
-#   - on considère la durée du mandat
-# - mettre le focus sur un poste donné plutot que sur un individu donné
-#   (séquence des personnes ou classes de personnes ayant occupé un poste donné)
+############################################
+# extract and test all mandate-specific tables
+source("src/verification/check_CD.R")
+source("src/verification/check_CR.R")
+source("src/verification/check_D.R")
+source("src/verification/check_DE.R")
+source("src/verification/check_M.R")
+source("src/verification/check_S.R")
+source("src/verification/check_CM.R")
+source("src/verification/check_EPCI.R")
+
+
+
+
+############################################
+# merge mandate-specific tables to get a single table
+source("src/merge/merge.R")
+source("src/verification/check_All.R")

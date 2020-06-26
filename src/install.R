@@ -17,4 +17,3 @@ install.packages("future.apply")
 # solves certain encoding problems when loading tables
 # https://dss.iq.harvard.edu/blog/escaping-character-encoding-hell-r-windows
 #install.packages("readr") # not used, in the end...
-
