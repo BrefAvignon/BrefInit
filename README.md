@@ -45,7 +45,7 @@ In order to load the tables and generate the description files:
 
 1. Open the `R` console.
 2. Set the project root as the working directory, using `setwd` again.
-3. Launch the `check_all.R` script, and the files will be generated in the `out` folder. Note that the process is very long (3-4 days in total).
+3. Launch the `src/main.R` script, and the files will be generated in the `out` folder. Note that the process is very long (3-4 days in total).
 
 
 ## Dependencies
