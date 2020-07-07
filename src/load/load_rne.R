@@ -855,7 +855,7 @@ load.epci.data <- function(out.folder, correct.data, complete.data)
 		
 		# names of the columns
 		col.map <- c()
-		col.map["Code département EPCI"] <- COL_ATT_EPCI_DPT
+		col.map["Code département EPCI"] <- COL_ATT_EPCI_DPT_CODE
 		col.map["Code département commune rattachée"] <- COL_ATT_DPT_CODE
 		col.map["Code de la commune"] <- COL_ATT_COM_CODE
 		col.map["Libellé commune rattachée"] <- COL_ATT_COM_NOM

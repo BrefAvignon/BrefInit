@@ -903,7 +903,7 @@ add.missing.columns <- function(data)
 #			fileEncoding="Latin1"		# original tables seem to be encoded in Latin1 (ANSI)
 		)
 		
-		# convert map to handle multiple codes/names
+		# convert map to associate multiple names to last code
 		dpt.table.copy <- dpt.table[-(1:nrow(dpt.table)),]
 		for(r in 1:nrow(dpt.table))
 		{	# retrieve info
@@ -913,8 +913,8 @@ add.missing.columns <- function(data)
 			names <- strsplit(dpt.table[r,COL_ATT_DPT_NOM], ",", fixed=TRUE)[[1]]
 			# add to table
 			for(name in names)
-			{	df <- data.frame(id,code,name, stringsAsFactors=FALSE)
-				dpt.table.copy <- rbind(dpt.table.copy,df)
+			{	df <- data.frame(id, code, name, stringsAsFactors=FALSE)
+				dpt.table.copy <- rbind(dpt.table.copy, df)
 			}
 		}
 		colnames(dpt.table.copy) <- colnames(dpt.table)
@@ -930,13 +930,24 @@ add.missing.columns <- function(data)
 			data <- cbind(data, dpt.codes)
 		}
 		
+		# convert map to associate last code, last name, and id
+		data.cd <- load.cd.data(out.folder=FOLDER_OUT_CD, correct.data=TRUE, complete.data=TRUE)
+		dpt.codes <- sort(unique(data.cd[,COL_ATT_DPT_CODE]))
+		dpt.idx <- match(dpt.codes, data.cd[,COL_ATT_DPT_CODE])
+		dpt.names <- data.cd[dpt.idx,COL_ATT_DPT_NOM]
+		dpt.ids <- data.cd[dpt.idx,COL_ATT_DPT_ID]
+		dpt.table2 <- cbind(dpt.ids, dpt.codes, dpt.names)
+		dpt.table2 <- rbind(dpt.table2, c("1790_60","75","PARIS"))
+		dpt.table2 <- rbind(dpt.table2, c("1958_987","ZP","POLYNESIE FRANCAISE"))
+		colnames(dpt.table2) <- cbind(COL_ATT_DPT_ID, COL_ATT_DPT_CODE, COL_ATT_DPT_NOM)
+		
 		# possibly add department names
 		if(!(COL_ATT_DPT_NOM %in% colnames(data)))
 		{	tlog(2,"Adding department name column")
 			# get the appropriate names
-			dpt.idx <- match(data[,COL_ATT_DPT_CODE], dpt.table.copy[,COL_ATT_DPT_CODE])
+			dpt.idx <- match(data[,COL_ATT_DPT_CODE], dpt.table2[,COL_ATT_DPT_CODE])
 			# insert in the table
-			dpt.names <- data.frame(dpt.table.copy[dpt.idx, COL_ATT_DPT_NOM], stringsAsFactors=FALSE)
+			dpt.names <- data.frame(dpt.table2[dpt.idx, COL_ATT_DPT_NOM], stringsAsFactors=FALSE)
 			colnames(dpt.names) <- COL_ATT_DPT_NOM
 			data <- cbind(data, dpt.names)
 		}
@@ -948,6 +959,17 @@ add.missing.columns <- function(data)
 			# insert in the table
 			dpt.ids <- data.frame(dpt.table.copy[dpt.idx, COL_ATT_DPT_ID], stringsAsFactors=FALSE)
 			colnames(dpt.ids) <- COL_ATT_DPT_ID
+			data <- cbind(data, dpt.ids)
+		}
+		
+		# possibly add EPCI department ID
+		if(COL_ATT_EPCI_DPT_CODE %in% colnames(data))
+		{	tlog(2,"Adding EPCI department unique id column")
+			# get the appropriate unique ids
+			dpt.idx <- match(data[,COL_ATT_EPCI_DPT_CODE], dpt.table2[,COL_ATT_DPT_CODE])
+			# insert in the table
+			dpt.ids <- data.frame(dpt.table2[dpt.idx, COL_ATT_DPT_ID], stringsAsFactors=FALSE)
+			colnames(dpt.ids) <- COL_ATT_EPCI_DPT_ID
 			data <- cbind(data, dpt.ids)
 		}
 	}

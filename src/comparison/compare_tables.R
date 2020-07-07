@@ -208,7 +208,7 @@ read.string.table <- function(files, ...)
 	col.map["Code de la cir.législative"] <- COL_ATT_CIRC_CODE
 	col.map["Code de la commune"] <- COL_ATT_COM_CODE
 	col.map["Code département commune rattachée"] <- COL_ATT_DPT_CODE
-	col.map["Code département EPCI"] <- COL_ATT_EPCI_DPT
+	col.map["Code département EPCI"] <- COL_ATT_EPCI_DPT_CODE
 	col.map["Code du canton"] <- COL_ATT_CANT_CODE
 	col.map["Code du département (Maire)"] <- COL_ATT_DPT_CODE
 	col.map["Code du département"] <- COL_ATT_DPT_CODE

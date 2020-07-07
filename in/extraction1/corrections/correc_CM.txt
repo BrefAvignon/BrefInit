@@ -16,6 +16,7 @@ Row	Id RNE	Nom	Prenom	Attribut	ValAvt	ValApr	Commentaire
 358984	959113	LOPEZ DUBERGEY	NA	Prenom elu	NA	Marie-Danielle	Prénom manquant
 373157	963011	PINON	NA	Prenom elu	NA	Marie-Danielle	Prénom manquant
 408488	659771	MIGAYRON	NA	Prenom elu	NA	Marie-Danielle	Prénom manquant
+408489	659771	MIGAYRON	NA	Prenom elu	NA	Marie-Danielle	Prénom manquant
 439132	977368	BOUVET	NA	Prenom elu	NA	Marie-Danielle	Prénom manquant
 478393	1320731	TROUILLET	NA	Prenom elu	NA	Marie-Danielle	Prénom manquant
 548217	853458	HOGREL	NA	Prenom elu	NA	Marie-Danielle	Prénom manquant

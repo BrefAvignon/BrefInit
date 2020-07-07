@@ -81,7 +81,8 @@ COL_ATT_ELU_SEXE <- "Code sexe"
 COL_ATT_ELU_NUANCE <- "Nuance politique"
 COL_ATT_EPCI_NOM <- "Libelle EPCI"
 COL_ATT_EPCI_SIREN <- "Numero SIREN"
-COL_ATT_EPCI_DPT <- "Code departement EPCI"
+COL_ATT_EPCI_DPT_CODE <- "Code departement EPCI"
+COL_ATT_EPCI_DPT_ID <- "ID departement EPCI"
 COL_ATT_FCT_DBT <- "Date debut fonction"
 COL_ATT_FCT_FIN <- "Date fin fonction"
 COL_ATT_FCT_MOTIF <- "Motif fin fonction"
@@ -116,7 +117,8 @@ COLS_ATT_NORMALIZED <- c(
 	COL_ATT_COM_POP,
 	COL_ATT_EPCI_SIREN,
 	COL_ATT_EPCI_NOM,
-	COL_ATT_EPCI_DPT,
+	COL_ATT_EPCI_DPT_ID,
+	COL_ATT_EPCI_DPT_CODE,
 	COL_ATT_ELU_ID,
 	COL_ATT_ELU_ID_RNE,
 	COL_ATT_ELU_ID_ASSEMB,
@@ -203,7 +205,8 @@ LONGNAMES[COL_ATT_ELU_SEXE] <- "Code sexe de l'élu"
 LONGNAMES[COL_ATT_ELU_NUANCE] <- "Nuance politique de l'élu"
 LONGNAMES[COL_ATT_EPCI_NOM] <- "Libellé de l'EPCI"
 LONGNAMES[COL_ATT_EPCI_SIREN] <- "N° SIREN"
-LONGNAMES[COL_ATT_EPCI_DPT] <- "Code du département de l'EPCI"
+LONGNAMES[COL_ATT_EPCI_DPT_CODE] <- "Code du département de l'EPCI"
+LONGNAMES[COL_ATT_EPCI_DPT_ID] <- "Id du département de l'EPCI"
 LONGNAMES[COL_ATT_FCT_DBT] <- "Date de début de la fonction"
 LONGNAMES[COL_ATT_FCT_FIN] <- "Date de fin de la fonction"
 LONGNAMES[COL_ATT_FCT_MOTIF] <- "Motif de fin de fonction"
@@ -251,7 +254,8 @@ BASENAMES[COL_ATT_ELU_NOM] <- "elu_nom"
 BASENAMES[COL_ATT_ELU_NUANCE] <- "elu_nuance"
 BASENAMES[COL_ATT_ELU_PRENOM] <- "elu_prenom"
 BASENAMES[COL_ATT_ELU_SEXE] <- "elu_sexe"
-BASENAMES[COL_ATT_EPCI_DPT] <- "epci_dept"
+BASENAMES[COL_ATT_EPCI_DPT_CODE] <- "epci_dept_code"
+BASENAMES[COL_ATT_EPCI_DPT_ID] <- "epci_dept_id"
 BASENAMES[COL_ATT_EPCI_NOM] <- "epci_lib"
 BASENAMES[COL_ATT_EPCI_SIREN] <- "epci_siren"
 BASENAMES[COL_ATT_FCT_DBT] <- "fonction_debut"
@@ -303,7 +307,8 @@ COL_TYPES[COL_ATT_ELU_PRENOM] <- "nom"
 COL_TYPES[COL_ATT_ELU_SEXE] <- "cat"
 COL_TYPES[COL_ATT_EPCI_SIREN] <- "cat"
 COL_TYPES[COL_ATT_EPCI_NOM] <- "nom"
-COL_TYPES[COL_ATT_EPCI_DPT] <- "cat"
+COL_TYPES[COL_ATT_EPCI_DPT_CODE] <- "cat"
+COL_TYPES[COL_ATT_EPCI_DPT_ID] <- "nom"
 COL_TYPES[COL_ATT_FCT_CODE] <- "cat"
 COL_TYPES[COL_ATT_FCT_NOM] <- "nom"
 COL_TYPES[COL_ATT_FCT_DBT] <- "dat"
