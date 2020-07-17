@@ -721,6 +721,28 @@ apply.systematic.corrections <- function(data, type)
 			corr.rows <- union(corr.rows,idx)
 		}
 		tlog(2,"Fixed ",length(idx)," rows (function)")
+		
+		# fix different EPCI departments
+		tlog(0,"Correcting inconsistent EPCI departments")
+		unique.sirens <- unique(data[,COL_ATT_EPCI_SIREN])
+		count <- 0
+		for(unique.siren in unique.sirens)
+		{	idx <- which(data[,COL_ATT_EPCI_SIREN]==unique.siren)
+			unique.dpts <- unique(data[idx,COL_ATT_EPCI_DPT_CODE])
+			if(length(unique.dpts)>1)
+			{	tlog(2,"Correcting EPCI ",unique.siren, " (",data[idx[1],COL_ATT_EPCI_NOM],")")
+				tlog(4,paste(unique.dpts,collapse=","))
+				tt <- table(data[idx,COL_ATT_EPCI_DPT_CODE])
+				maj.dpt <- names(tt)[which.max(tt)]
+				idx <- idx[which(data[idx,COL_ATT_EPCI_DPT_CODE]!=maj.dpt)]
+				data[idx,COL_ATT_EPCI_DPT_CODE] <- maj.dpt
+				#
+				data[idx,COL_ATT_CORREC_INFO] <- TRUE 
+				corr.rows <- union(corr.rows, idx)
+				count <- count + length(idx)
+			}
+		}
+		tlog(2,"Fixed ",count," rows (department)")
 	}
 	# M-specific cleaning
 	if(type=="M")

@@ -473,3 +473,8 @@ NA	NA	NA	NA	Numero SIREN	20006971	200006971	numéro SIREN incorrect (syntaxiquem
 46318	977708	GESTIN	Nathalie	Nom elu	GESTIN	POULARD GESTIN	Nom incomplet
 46319	977708	GESTIN	Nathalie	Nom elu	GESTIN	POULARD GESTIN	Nom incomplet
 77832	71289	CORNUT	Dominique	Nom elu	CORNUT	CREPIN CORNUT	Nom incomplet
+#32264	1276388	GAMBUS	Mercedes	Code departement EPCI	26	84	Département EPCI incorrect
+#13358	900209	ARMANGAU	Alexis	Code departement EPCI	11	66	Département EPCI incorrect
+#13359	1230283	AYROLLES	Roselyne	Code departement EPCI	11	66	Département EPCI incorrect
+#13360	72029	TARRIUS	Patrick	Code departement EPCI	11	66	Département EPCI incorrect
+#75866	46982	DE MAURAIGE	Pascale	Code departement EPCI	58	89	Département EPCI incorrect
