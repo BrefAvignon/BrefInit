@@ -23,7 +23,7 @@ source("src/verification/test_duplicates.R")
 # set up parameters
 extraction <- 1 		# version 1 or 2
 correct.data <- TRUE	# load raw or corrected data
-complete.data <- TRUE	# whether to use secondary source (except EPCI)
+complete.data <- TRUE	# whether to use secondary source
 
 # start logging
 start.rec.log(text=paste0("MERGE",extraction))
@@ -66,7 +66,7 @@ tlog(4,"Dimensions of the table: ",paste(dim(de.data),collapse="x"))
 
 # load the EPCI councilor table
 tlog(2,"Loading EPCI data")
-epci.data <- load.epci.data(correct.data, complete.data=FALSE)
+epci.data <- load.epci.data(correct.data, complete.data)
 tlog(4,"Dimensions of the table: ",paste(dim(epci.data),collapse="x"))
 
 # load the mayor table

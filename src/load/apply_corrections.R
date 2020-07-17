@@ -731,9 +731,9 @@ apply.systematic.corrections <- function(data, type)
 			unique.dpts <- unique(data[idx,COL_ATT_EPCI_DPT_CODE])
 			if(length(unique.dpts)>1)
 			{	tlog(2,"Correcting EPCI ",unique.siren, " (",data[idx[1],COL_ATT_EPCI_NOM],")")
-				tlog(4,paste(unique.dpts,collapse=","))
 				tt <- table(data[idx,COL_ATT_EPCI_DPT_CODE])
 				maj.dpt <- names(tt)[which.max(tt)]
+				tlog(4,paste(unique.dpts,collapse=",")," >> ",maj.dpt)
 				idx <- idx[which(data[idx,COL_ATT_EPCI_DPT_CODE]!=maj.dpt)]
 				data[idx,COL_ATT_EPCI_DPT_CODE] <- maj.dpt
 				#
