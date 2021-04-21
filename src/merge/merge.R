@@ -350,3 +350,46 @@ end.rec.log()
 #		colClasses="character"		# all column originally read as characters, then converted later if needed
 #)
 
+
+
+
+#############################################################################################
+## loading an existing dataset (version EV) to extrat only certain columns 
+#data <- read.table(
+#	file="D:/Users/Vincent/Documents/Travail/Ecrits/_Projets/Trajectoires pol - Noémie Fevrat/07. Données/02. Données BRÉF v1/5. Base v1/bref_20200708_EV_v1.0.2.csv",			# name of the data file
+#	header=TRUE, 				# look for a header
+#	sep=";", 					# character used to separate columns 
+#	check.names=FALSE, 			# don't change the column names from the file
+#	comment.char="", 			# ignore possible comments in the content
+#	row.names=NULL, 			# don't look for row names in the file
+#	as.is=TRUE					# don't convert strings to factors
+#)
+## selecting a few columns
+#cols <- c(
+#	"ID universel",
+#	"Date naissance",
+#	"Commune de naissance",
+#	"Departement de naissance",
+#	"Pays de naissance",
+#	"Date deces",
+#	"Nom elu",
+#	"Prenom elu",
+#	"Code sexe",
+#	"Nationalite elu",
+#	"Numero SIREN",
+#	"Libelle profession",
+#	"Date debut mandat",
+#	"Date fin mandat",
+#	"Date debut fonction",
+#	"Date fin fonction"
+#)
+#data2 <- data[,cols]
+## exporting
+#write.table(x=data2,			# data to record
+#	file="D:/Users/Vincent/Documents/Travail/Ecrits/_Projets/Trajectoires pol - Noémie Fevrat/07. Données/02. Données BRÉF v1/5. Base v1/bref_20200708_v1.0.2_extraction.csv",			# name of the data file
+#	quote=FALSE,				# put double quotes around strings
+#	sep=";",					# use semicolons as separators
+##	fileEncoding="UTF-8",		# character encoding
+#	row.names=FALSE,			# no names for rows
+#	col.names=TRUE				# record table headers
+#)
