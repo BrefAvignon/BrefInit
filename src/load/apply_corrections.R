@@ -953,15 +953,17 @@ add.missing.columns <- function(data)
 		}
 		
 		# convert map to associate last code, last name, and id
-		data.cd <- load.cd.data(out.folder=FOLDER_OUT_CD, correct.data=TRUE, complete.data=TRUE)
-		dpt.codes <- sort(unique(data.cd[,COL_ATT_DPT_CODE]))
-		dpt.idx <- match(dpt.codes, data.cd[,COL_ATT_DPT_CODE])
-		dpt.names <- data.cd[dpt.idx,COL_ATT_DPT_NOM]
-		dpt.ids <- data.cd[dpt.idx,COL_ATT_DPT_ID]
-		dpt.table2 <- cbind(dpt.ids, dpt.codes, dpt.names)
-		dpt.table2 <- rbind(dpt.table2, c("1790_60","75","PARIS"))
-		dpt.table2 <- rbind(dpt.table2, c("1958_987","ZP","POLYNESIE FRANCAISE"))
-		colnames(dpt.table2) <- cbind(COL_ATT_DPT_ID, COL_ATT_DPT_CODE, COL_ATT_DPT_NOM)
+		if(!(COL_ATT_DPT_NOM %in% colnames(data)) || COL_ATT_EPCI_DPT_CODE %in% colnames(data))
+		{	data.cd <- load.cd.data(out.folder=FOLDER_OUT_CD, correct.data=TRUE, complete.data=TRUE)
+			dpt.codes <- sort(unique(data.cd[,COL_ATT_DPT_CODE]))
+			dpt.idx <- match(dpt.codes, data.cd[,COL_ATT_DPT_CODE])
+			dpt.names <- data.cd[dpt.idx,COL_ATT_DPT_NOM]
+			dpt.ids <- data.cd[dpt.idx,COL_ATT_DPT_ID]
+			dpt.table2 <- cbind(dpt.ids, dpt.codes, dpt.names)
+			dpt.table2 <- rbind(dpt.table2, c("1790_60","75","PARIS"))
+			dpt.table2 <- rbind(dpt.table2, c("1958_987","ZP","POLYNESIE FRANCAISE"))
+			colnames(dpt.table2) <- cbind(COL_ATT_DPT_ID, COL_ATT_DPT_CODE, COL_ATT_DPT_NOM)
+		}
 		
 		# possibly add department names
 		if(!(COL_ATT_DPT_NOM %in% colnames(data)))

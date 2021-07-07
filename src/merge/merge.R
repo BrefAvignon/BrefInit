@@ -37,46 +37,46 @@ init.stat.table(FOLDER_OUT_ALL)
 
 
 #############################################################################################
-tlog(0,"Loading all the data tables")
+tlog(0,"Loading all the data tables: THEY ARE SUPPOSED TO BE ALREADY CACHED")
 
 # load the departmental councilor table
 tlog(2,"Loading departmental data")
-cd.data <- if(extraction==1) load.cd.data(correct.data, complete.data) else load.cd2.data(correct.data, complete.data=FALSE) 
+cd.data <- if(extraction==1) load.cd.data(correct.data=correct.data, complete.data=complete.data) else load.cd2.data(correct.data=correct.data, complete.data=FALSE) 
 tlog(4,"Dimensions of the table: ",paste(dim(cd.data),collapse="x"))
 
 # load the municipal councilor tables
 tlog(2,"Loading municipal data")
-cm.data <- if(extraction==1) load.cm.data(correct.data, complete.data) else load.cm2.data(correct.data, complete.data=FALSE)
+cm.data <- if(extraction==1) load.cm.data(correct.data=correct.data, complete.data=complete.data) else load.cm2.data(correct.data=correct.data, complete.data=FALSE)
 tlog(4,"Dimensions of the table: ",paste(dim(cm.data),collapse="x"))
 
 # load the regional councilor table
 tlog(2,"Loading regional data")
-cr.data <- if(extraction==1) load.cr.data(correct.data, complete.data) else load.cr2.data(correct.data, complete.data=FALSE)
+cr.data <- if(extraction==1) load.cr.data(correct.data=correct.data, complete.data=complete.data) else load.cr2.data(correct.data=correct.data, complete.data=FALSE)
 tlog(4,"Dimensions of the table: ",paste(dim(cr.data),collapse="x"))
 
 # load the parliamentary table
 tlog(2,"Loading parliamentary data")
-d.data <- load.d.data(correct.data, complete.data)
+d.data <- load.d.data(correct.data=correct.data, complete.data=complete.data)
 tlog(4,"Dimensions of the table: ",paste(dim(d.data),collapse="x"))
 
 # load the European parliamentary table
 tlog(2,"Loading European parliamentary data")
-de.data <- load.de.data(correct.data, complete.data)
+de.data <- load.de.data(correct.data=correct.data, complete.data=complete.data)
 tlog(4,"Dimensions of the table: ",paste(dim(de.data),collapse="x"))
 
 # load the EPCI councilor table
 tlog(2,"Loading EPCI data")
-epci.data <- load.epci.data(correct.data, complete.data)
+epci.data <- load.epci.data(correct.data=correct.data, complete.data=complete.data)
 tlog(4,"Dimensions of the table: ",paste(dim(epci.data),collapse="x"))
 
 # load the mayor table
 tlog(2,"Loading mayoral data")
-m.data <- load.m.data(correct.data, complete.data)
+m.data <- load.m.data(correct.data=correct.data, complete.data=complete.data)
 tlog(4,"Dimensions of the table: ",paste(dim(m.data),collapse="x"))
 
 # load the senator table
 tlog(2,"Loading senatorial data")
-s.data <- load.s.data(correct.data, complete.data)
+s.data <- load.s.data(correct.data=correct.data, complete.data=complete.data)
 tlog(4,"Dimensions of the table: ",paste(dim(s.data),collapse="x"))
 
 # load the presidential table

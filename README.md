@@ -1,4 +1,4 @@
-BrefInit
+BrefInit v1.0.1
 ===================
 *Constitution of the BRÉF database*
 
@@ -55,6 +55,11 @@ In order to load the tables and generate the description files:
 
 ## Todo
 * Update the data link after the end of the embargo.
+
+
+## Changelog
+* 1.0.1: fixed a bug when loading CD (infinite loop when adding missing columns).
+* 1: base version.
 
 
 ## References
