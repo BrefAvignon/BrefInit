@@ -13,12 +13,11 @@ BrefInit is free software: you can redistribute it and/or modify it under the te
 -----------------------------------------------------------------------
 
 ## Description
-This set of R scripts was written to initialize BRÉF (Base de données Révisée des Élu·es de France), a data base containing a description of all types of reprsentatives elected in France. It is mainly based on the RNE (Répertoire National des Élus), the open data base of the French Parliament (including both the National Assembly and Senate), as well as the European Parliament website. All details are available in report [LFM'20]. 
+This set of `R` scripts was written to initialize BRÉF (Base de données Révisée des Élu·es de France), a data base containing a description of all types of representatives elected in France. It is mainly based on the RNE (Répertoire National des Élus), the open data base of the French Parliament (including both the National Assembly and Senate), as well as the European Parliament website. All details are available in our technical report [LFM'20]. 
 
 
 # Data
-The raw data is required to execute the scripts, as those basically perform a series of transformations and verifications on these data. This results in a number of tables and plots, as well as a unique table containing all the integrated and corrected data. All of these files are eventually meant to be made available under an open data license, after an embargo matching the end of Noémie Févrat's PhD.
-(**TODO** upate)
+The raw data located in the `in` folder directly come from the mentioned sources (RNE and parliamentary datasets). They are required to execute the scripts, as those basically perform a series of transformations and verifications on these data. This results in a number of tables and plots, as well as a unique table containing all the integrated and corrected data. It corresponds to the first verstion of the BRÉF, whose content was later moved to a proper PostgreSQL data base, resulting in the second version. This first version was used in the course of Noémie Févrat's PhD.
 
 
 ## Organization
@@ -54,13 +53,14 @@ In order to load the tables and generate the description files:
 
 
 ## Todo
-* Update the data link after the end of the embargo.
+* ...
 
 
 ## Changelog
 * 1.0.1: fixed a bug when loading CD (infinite loop when adding missing columns).
-* 1: base version.
+* 1.0.0: base version.
 
 
 ## References
  * **[LFM'20]** V. Labatut, N. Févrat & G. Marrel, *BRÉF – Base de données Révisée des Élu·es de France*, Technical Report, Avignon Université, 2020. [⟨hal-02886580⟩](https://hal.archives-ouvertes.fr/hal-02886580)
+ * **[F'24]** N. Févrat, *Le "mandat de trop" ? La réélection des parlementaires et des maires en France et les conditions de sa remise en cause*, PhD Thesis, Avignon Université, 2024. [⟨tel-04550896⟩](https://hal.archives-ouvertes.fr/tel-04550896)
