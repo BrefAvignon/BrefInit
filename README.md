@@ -16,8 +16,8 @@ BrefInit is free software: you can redistribute it and/or modify it under the te
 This set of `R` scripts was written to initialize BRÉF (Base de données Révisée des Élu·es de France), a data base containing a description of all types of representatives elected in France. It is mainly based on the RNE (Répertoire National des Élus), the open data base of the French Parliament (including both the National Assembly and Senate), as well as the European Parliament website. All details are available in our technical report [LFM'20]. 
 
 
-# Data
-The raw data located in the `in` folder directly come from the mentioned sources (RNE and parliamentary datasets). They are required to execute the scripts, as those basically perform a series of transformations and verifications on these data. This results in a number of tables and plots, as well as a unique table containing all the integrated and corrected data. It corresponds to the first verstion of the BRÉF, whose content was later moved to a proper PostgreSQL data base, resulting in the second version. This first version was used in the course of Noémie Févrat's PhD.
+## Data
+The raw data located in the `in` folder directly come from the mentioned sources (RNE and parliamentary datasets). They are required to execute the scripts, as those basically perform a series of transformations and verifications on these data. Because the files are too big, they have been zipped: it is thus necessary to unzip the files located in folder `in/extraction1/tables` before launching hte process.
 
 
 ## Organization
@@ -45,6 +45,8 @@ In order to load the tables and generate the description files:
 1. Open the `R` console.
 2. Set the project root as the working directory, using `setwd` again.
 3. Launch the `src/main.R` script, and the files will be generated in the `out` folder. Note that the process is very long (3-4 days in total).
+
+This results in a number of tables and plots, as well as a unique table containing all the integrated and corrected data. It corresponds to the first verstion of the BRÉF, whose content was later moved to a proper PostgreSQL data base, resulting in the second version. This first version was used in the course of Noémie Févrat's PhD.
 
 
 ## Dependencies
