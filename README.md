@@ -1,6 +1,6 @@
 BrefInit v1.0.1
 ===================
-*Constitution of the BRÉF database*
+*Constitution of the first version of the BRÉF database*
 
 * Copyright 2019-2020 Vincent Labatut
 
