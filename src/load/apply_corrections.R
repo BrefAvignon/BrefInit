@@ -37,7 +37,7 @@ retrieve.normalize.data <- function(filenames, col.map, correct.data)
 			quote="", 					# don't expect double quotes "..." around text fields
 			skip=1,						# ignore the first line of the file ("Titre du rapport")
 			as.is=TRUE,					# don't convert strings to factors
-			colClasses="character"		# all column originally read as characters, then converted later if needed
+			colClasses="character"		# all columns originally read as characters, then converted later if needed
 #			fileEncoding="Latin1"		# original tables seem to be encoded in Latin1 (ANSI)
 		)
 		tlog(2,"Read ",nrow(temp)," rows and ",ncol(temp)," columns")
