@@ -1,4 +1,4 @@
-BrefInit v1.0.1
+BrefInit v1.0.2
 ===================
 *Constitution of the first version of the BRÉF database*
 
