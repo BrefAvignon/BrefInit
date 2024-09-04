@@ -157,7 +157,7 @@ plot.pers.time2 <- function(data, out.folder, type)
 	
 	# record data in a text file
 	file <- file.path(out.folder, paste0(type, "_persons_by_day.txt"))
-	tab <- data.frame(Date=format(day.dates,format="%d/%m/%Y"),Count=day.vals)
+	tab <- data.frame(Date=format(day.dates,format="%d/%m/%Y"), Count=day.vals)
 	write.table(x=tab,file=file,
 #		fileEncoding="UTF-8",
 		row.names=FALSE,
@@ -174,19 +174,19 @@ plot.pers.time2 <- function(data, out.folder, type)
 			focus.date <- as.Date("1957/1/1")
 	}
 	start.dates <- c(
-			min(as.Date(day.dates, origin="1970-01-01")),	# earliest date in the data
-			as.Date("2000/1/1"),							# right before RNE creation
-			focus.date										# depends on the mandate type
+		min(as.Date(day.dates, origin="1970-01-01")),	# earliest date in the data
+		as.Date("2000/1/1"),							# right before RNE creation
+		focus.date										# depends on the mandate type
 	)
 	end.dates <- c(
-			max(as.Date(day.dates, origin="1970-01-01")),	# latest date in the data
-			as.Date("2018/7/31"),							# RNE extraction date
-			as.Date("2020/5/1")								# (approximately) current date
+		max(as.Date(day.dates, origin="1970-01-01")),	# latest date in the data
+		as.Date("2018/7/31"),							# RNE extraction date
+		as.Date("2020/5/1")								# (approximately) current date
 	)
 	file.names <- c(
-			"persons_by_day_all",
-			"persons_by_day_2001",
-			"persons_by_day_focus"
+		"persons_by_day_all",
+		"persons_by_day_2001",
+		"persons_by_day_focus"
 	)
 	
 	# generate several plots focusing on different periods
@@ -311,4 +311,141 @@ for(table.name in table.names)
 	write.csv(stats, file=tab.file, row.names=TRUE)
 }
 
-# plot evolution of incompleteness over (DB) time?
+# TODO plot evolution of incompleteness over (DB) time?
+
+
+
+
+###############################################################################
+# plots comparing raw data and BRÉF v2
+
+# TODO utiliser plutot des aires verte vs. rouge, avec le theorique en noir
+
+# redefine colors
+EVOL_COL_OLD <- rgb(255,0,0,alpha=255,max=255)		# color of the v0 measured values
+EVOL_COL_MEAS <- rgb(0,255,0,alpha=255,max=255)		# color of the v2 measured values
+EVOL_COL_LIM <- rgb(0,0,255,alpha=150,max=255)		# color of the legal limit
+
+# loop over mandate types
+for(type in names(mandate.type.map))
+{	# load v0 data
+	tab.file <- file.path(out.folder, "v0", paste0(type, "_persons_by_day.txt"))
+	tab0 <- read.table(
+		file=tab.file,
+#		fileEncoding="UTF-8",
+		header=TRUE,
+#		quote=TRUE,
+		sep="\t"
+	)
+	tab0[,"Date"] <- as.Date(tab0[,"Date"], format("%d/%m/%Y"))
+		
+	# load v2 data
+	tab.file <- file.path(out.folder, "v2", paste0(type, "_persons_by_day.txt"))
+	tab2 <- read.table(
+		file=tab.file,
+#		fileEncoding="UTF-8",
+		header=TRUE,
+#		quote=TRUE,
+		sep="\t"
+	)
+	tab2[,"Date"] <- as.Date(tab2[,"Date"], format("%d/%m/%Y"))
+	
+	# set up parameters to cover various time periods
+	focus.date <- as.Date("2000/1/1")
+	{	if(type=="DE")
+			focus.date <- as.Date("1978/1/1")
+		else if(type=="S")
+			focus.date <- as.Date("1957/1/1")
+	}
+	start.dates <- c(
+		min(c(tab0[,"Date"], tab2[,"Date"])),		# earliest date in the data
+		as.Date("2000/1/1"),						# right before RNE creation
+		focus.date									# depends on the mandate type
+	)
+	end.dates <- c(
+		max(c(tab0[,"Date"], tab2[,"Date"])),		# latest date in the data
+		as.Date("2018/7/31"),						# RNE extraction date
+		as.Date("2020/5/1")							# (approximately) current date
+	)
+	file.names <- c(
+		"persons_by_day_all",
+		"persons_by_day_2001",
+		"persons_by_day_focus"
+	)
+	
+	# generate several plots focusing on different periods
+	for(i in 1:length(start.dates))
+	{	start.year <- get.year(start.dates[i])
+		start.date <- as.Date(paste0(start.year,"/1/1"))
+		end.year <- as.integer(get.year(end.dates[i])) + 1
+		end.date <- as.Date(paste0(end.year,"/1/1"))
+		idx0 <- which(tab0[,"Date"]>=start.date & tab0[,"Date"]<=end.date)
+		idx2 <- which(tab2[,"Date"]>=start.date & tab2[,"Date"]<=end.date)
+		ylim <- range(c(tab0[idx0,"Count"], tab2[idx2,"Count"]))
+		
+		for(plot.format in c(PLOT_FORMATS, "emf"))
+		{	file <- file.path(out.folder, paste0(type, "_", file.names[i], ".", plot.format))
+			tlog(4, "Generating plot in file \"",file,"\"")
+			if(plot.format=="pdf")
+				pdf(file, width=11, height=7)
+			else if(plot.format=="png")
+				png(file, width=1024, height=1024)
+			else if(plot.format=="emf")
+				emf(file, width=11, height=7)
+			
+			par(mar=c(5, 4, 1.5, 0)+0.1)	# B L T R
+			# create plot
+			plot(x=NULL,
+				xlab="Date", 
+				ylab="Number of representatives",
+				xaxt="n", yaxt="n",
+				xlim=c(start.date, end.date),
+				ylim=ylim
+#				cex.names=min(1,20/length(uvals))
+			)
+			# setup x axis
+			if(as.integer(end.year) - as.integer(start.year) > 20)
+				unit <- "2 year"
+			else 
+				unit <- "year"
+			ticks <- seq(start.date, end.date, unit)
+			axis(side=1, at=ticks, labels=get.year(ticks), las=2)
+			# setup y axis
+			ticks <- axTicks(2)
+			axis(side=2, at=ticks, labels=format(ticks,scientific=FALSE))
+			# plot election dates as vertical lines
+			plot.election.dates(type,
+				start.date=start.date, 
+				end.date=end.date,
+				max.val=ylim[2])
+			# plot theoretical limit
+			plot.position.limit(type, 
+				start.date=start.date, 
+				end.date=end.date)
+			# plot v0 stats
+			lines(
+				x=as.Date(tab0[idx0,"Date"], origin="1970-01-01"),
+				y=tab0[idx0, "Count"], 
+				col=EVOL_COL_OLD, 
+				lwd=EVOL_TCK_MEAS,
+				type="l"
+			)
+			# plot v2 stats
+			lines(
+				x=as.Date(tab2[idx0,"Date"], origin="1970-01-01"),
+				y=tab2[idx0, "Count"], 
+				col=EVOL_COL_MEAS, 
+				lwd=EVOL_TCK_MEAS,
+				type="l"
+			)
+			# add legend
+			legend(x="bottomright", 
+				legend=c("Described in the database", "Available positions"), 
+				fill=c(EVOL_COL_MEAS, EVOL_COL_LIM), 
+				bg="WHITE")
+			# restore options
+			par(mar=c(5, 4, 4, 2)+0.1)	# B L T R
+			dev.off()
+		}
+	}
+}	
