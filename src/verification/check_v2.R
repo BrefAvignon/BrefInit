@@ -319,12 +319,10 @@ for(table.name in table.names)
 ###############################################################################
 # plots comparing raw data and BRÉF v2
 
-# TODO utiliser plutot des aires verte vs. rouge, avec le theorique en noir
-
 # redefine colors
 EVOL_COL_OLD <- rgb(255,0,0,alpha=255,max=255)		# color of the v0 measured values
-EVOL_COL_MEAS <- rgb(0,255,0,alpha=255,max=255)		# color of the v2 measured values
-EVOL_COL_LIM <- rgb(0,0,255,alpha=150,max=255)		# color of the legal limit
+EVOL_COL_MEAS <- "#13cf13"							# color of the v2 measured values
+EVOL_COL_LIM <- rgb(0,0,0,alpha=150,max=255)		# color of the legal limit
 
 # loop over mandate types
 for(type in names(mandate.type.map))
@@ -404,10 +402,11 @@ for(type in names(mandate.type.map))
 #				cex.names=min(1,20/length(uvals))
 			)
 			# setup x axis
-			if(as.integer(end.year) - as.integer(start.year) > 20)
+			{	if(as.integer(end.year) - as.integer(start.year) > 20)
 				unit <- "2 year"
 			else 
 				unit <- "year"
+			}
 			ticks <- seq(start.date, end.date, unit)
 			axis(side=1, at=ticks, labels=get.year(ticks), las=2)
 			# setup y axis
@@ -419,33 +418,67 @@ for(type in names(mandate.type.map))
 				end.date=end.date,
 				max.val=ylim[2])
 			# plot theoretical limit
-			plot.position.limit(type, 
+			plot.position.limit(
+				type, 
 				start.date=start.date, 
 				end.date=end.date)
 			# plot v0 stats
+			xs0 <- as.Date(tab0[idx0,"Date"], origin="1970-01-01")
+			polygon(
+				x=c(xs0, max(xs0), min(xs0)),
+				y=c(tab0[idx0, "Count"], 0, 0),
+				border=NA,
+				col=make.color.transparent(color=EVOL_COL_OLD, transparency=75)
+			)
 			lines(
-				x=as.Date(tab0[idx0,"Date"], origin="1970-01-01"),
+				x=xs0,
 				y=tab0[idx0, "Count"], 
 				col=EVOL_COL_OLD, 
 				lwd=EVOL_TCK_MEAS,
 				type="l"
 			)
 			# plot v2 stats
+			xs2 <- as.Date(tab2[idx2,"Date"], origin="1970-01-01")
+			polygon(
+				x=c(xs2, max(xs2), min(xs2)),
+				y=c(tab2[idx2, "Count"], 0, 0),
+				border=NA,
+				col=make.color.transparent(color=EVOL_COL_MEAS, transparency=75)
+			)
 			lines(
-				x=as.Date(tab2[idx0,"Date"], origin="1970-01-01"),
-				y=tab2[idx0, "Count"], 
+				x=xs2,
+				y=tab2[idx2, "Count"], 
 				col=EVOL_COL_MEAS, 
 				lwd=EVOL_TCK_MEAS,
 				type="l"
 			)
 			# add legend
-			legend(x="bottomright", 
-				legend=c("Described in the database", "Available positions"), 
-				fill=c(EVOL_COL_MEAS, EVOL_COL_LIM), 
-				bg="WHITE")
+#			legend(x="bottomright", 
+#				legend=c("Raw data", "BRÉF data", "Legal limit"), 
+#				fill=c(EVOL_COL_OLD, EVOL_COL_MEAS, EVOL_COL_LIM), 
+#				bg="WHITE"
+#			)
 			# restore options
 			par(mar=c(5, 4, 4, 2)+0.1)	# B L T R
 			dev.off()
 		}
 	}
 }	
+
+# plot legend separately
+for(plot.format in c(PLOT_FORMATS, "emf"))
+{	file <- file.path(out.folder, paste0("legend.", plot.format))
+	if(plot.format=="pdf")
+		pdf(file, width=11, height=7)
+	else if(plot.format=="png")
+		png(file, width=1024, height=1024)
+	else if(plot.format=="emf")
+		emf(file, width=11, height=7)
+	plot(NULL, xaxt="n", yaxt="n", bty="n", ylab=NA, xlab=NA, xlim=0:1, ylim=0:1)
+	legend(x="center", 
+		legend=c("Legal limit", "Raw data", "BRÉF data"), 
+		fill=c(EVOL_COL_LIM, EVOL_COL_OLD, EVOL_COL_MEAS), 
+		bg="WHITE"
+	)
+	dev.off()
+}
