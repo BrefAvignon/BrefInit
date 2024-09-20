@@ -7,7 +7,7 @@ BrefInit v1.0.2
 BrefInit is free software: you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation. For source availability and license information see `licence.txt`
 
 * Lab website: http://lia.univ-avignon.fr/
-* GitHub repo: https://github.com/CompNet/BrefInit
+* GitHub repo: https://github.com/BrefAvignon/BrefInit
 * Contact: vincent.labatut@univ-avignon.fr
 
 -----------------------------------------------------------------------
