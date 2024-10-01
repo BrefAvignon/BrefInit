@@ -13,7 +13,7 @@ BrefInit is free software: you can redistribute it and/or modify it under the te
 -----------------------------------------------------------------------
 
 ## Description
-This set of `R` scripts was written to initialize BRÉF (*Base de données Révisée des Élu·es de France* -- Revised Database of Representatives Elected in France), a data base containing a description of all types of representatives elected in France under the Fifth Republic. It is mainly based on the RNE (*Répertoire National des Élus* -- National Registry of Elected Representatives), the open data base of the French Parliament (including both the National Assembly and Senate), as well as the European Parliament website. All details are available in our technical report [LFM'20].
+This set of `R` scripts was written to initialize BRÉF (*Base de données Révisée des Élu·es de France* -- Revised Database of Representatives Elected in France), a data base containing a description of all types of representatives elected in France under the Fifth Republic. It is mainly based on the RNE (*Répertoire National des Élus* -- National Registry of Elected Representatives), the open data base of the French Parliament (including both the National Assembly and Senate), as well as the European Parliament website. All details are available in our technical report [[LFM'20](#references)].
 
 <p align="center">
   <img src="./logo_bref.svg" width="30%">
