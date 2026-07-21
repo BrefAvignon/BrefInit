@@ -21,6 +21,19 @@ This set of `R` scripts was written to initialize BRÉF (*Base de données Révi
 
 The data table produced by these scripts, as well as various plots and descriptive statistics, are available on [Zenodo](https://doi.org/10.5281/zenodo.13822771). Note that the next phase of the processing of the BRÉF data is implemented in a separate repository: see [BrefConversion](https://github.com/BrefAvignon/BrefConversion).
 
+This work was supported by the research federation Agorantic (FR 3621), through the funding of [Noémie Fevrat's PhD](https://agorantic.univ-avignon.fr/theses/theses-terminees/these-2018/). and of interdisciplinary research project [22-DON-3 BRÉF2](https://agorantic.univ-avignon.fr/axes/anciens-axes/axe2/projets-2022-bref-2-guillaume-marrel-lbnc-vincent-labatut-lia/). If you use this source code or the produced database, please cite our data paper [[FLVM'25]](#references).
+
+```bibtex
+@Article{Fevrat2025,
+  author    = {Févrat, Noémie and Labatut, Vincent and Volpi, Émilie and Marrel, Guillaume},
+  title     = {A Dataset of the Representatives Elected in France During the Fifth Republic},
+  journal   = {Data in Brief},
+  year      = {2025},
+  volume    = {60},
+  pages     = {111542},
+  doi       = {10.1016/j.dib.2025.111542},
+}
+```
 
 ## Data
 The raw data located in the `in` folder directly come from the mentioned sources (RNE and parliamentary datasets). They are required to execute the scripts, as those basically perform a series of transformations and verifications on these data. Because the files are too big, they have been zipped: it is thus necessary to unzip the files located in folder `in/extraction1/tables` before launching hte process.
@@ -73,3 +86,4 @@ This results in a number of tables and plots, as well as a unique table containi
 ## References
  * **[LFM'20]** V. Labatut, N. Févrat & G. Marrel, *BRÉF – Base de données Révisée des Élu·es de France*, Technical Report, Avignon Université, 2020. [⟨hal-02886580⟩](https://hal.archives-ouvertes.fr/hal-02886580)
  * **[F'24]** N. Févrat, *Le "mandat de trop" ? La réélection des parlementaires et des maires en France et les conditions de sa remise en cause*, PhD Thesis, Avignon Université, 2024. [⟨tel-04550896⟩](https://hal.archives-ouvertes.fr/tel-04550896)
+ * **[FLVM'25]** N. Févrat, V. Labatut, É. Volpi & G. Marrel, *A Dataset of the Representatives Elected in France During the Fifth Republic*, Data in Brief 60:111542, 2025. DOI: [10.1016/j.dib.2025.111542](http://doi.org/10.1016/j.dib.2025.111542) - [⟨hal-05012514⟩](https://hal.archives-ouvertes.fr/hal-05012514)
